@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvestorsTable extends Migration
+class CreateUserPostingRole extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateInvestorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('investors', function (Blueprint $table) {
+        Schema::create('user_posting_roles', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname');
-            $table->string('mobile');
-            $table->string('email');
-            $table->string('password');
+            $table->unsignedInteger('user_posting_id');
+            $table->unsignedInteger('role_id');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateInvestorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('investors');
+        Schema::dropIfExists('user_posting_role');
     }
 }

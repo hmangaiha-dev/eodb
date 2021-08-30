@@ -17,6 +17,8 @@ class Investor extends Authenticatable
     ];
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $fillable = ['email', 'mobile', 'fullname', 'password','regn_no'];
+    protected $fillable = ['email', 'mobile', 'fullname', 'password'];
     protected $hidden = ['password'];
+
+
 }
