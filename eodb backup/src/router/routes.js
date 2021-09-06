@@ -14,11 +14,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: 'departments', component: () => import('pages/admin/EODB_department/department_info.vue') },
+      { path: 'departments', component: () => import('pages/admin/department/Departments') },
       { path: 'roles', component: () => import('pages/admin/role/Roles') },
-      { path: 'users', component: () => import('pages/admin/user/Users') },
-      
-
       { path: 'users', component: () => import('pages/admin/user/Users') },
       {name:'create-user', path: 'users/create', component: () => import('pages/admin/user/UserContainer') },
     ]

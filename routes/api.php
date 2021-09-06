@@ -28,7 +28,7 @@ Route::group(['prefix' => 'auth'],function(){
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
     Route::post('/otp/send',);
 });
-
+cd 
 Route::group(['prefix' => 'investor'],function(){
     Route::post('/', [InvestorController::class, 'register']);
     Route::get('/', [InvestorController::class, 'register']);
