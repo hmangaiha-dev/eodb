@@ -15,7 +15,7 @@
             flat
             color="green"
            
-             @click="onOKClick" 
+             @click="edit(props)" 
             icon="edit"
           ></q-btn>
           <q-btn
@@ -23,7 +23,7 @@
             round
             flat
             color="red-4"
-            @click="deleteRow(props)"
+            @click="cancel"
             icon="delete"
           ></q-btn>
         </q-td>
@@ -43,19 +43,23 @@
       </template>
     </q-table>
 
-    <q-dialog ref="dialogRef" @hide="onDialogHide">
+    <q-dialog v-model="dialogRef" >
     <q-card class="q-dialog-plugin">
 
-      <div class="h4">Diaglog component</div>
-      <!--
-        ...content
-        ... use q-card-section for it?
-      -->
+      <q-card-section>
+          <div class="text-h6">Edit Department</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          <q-input placeholder="Department Name" dense v-model="dept_name" autofocus @keyup.enter="prompt = false" />
+        </q-card-section>
 
-      <!-- buttons example -->
+        <q-card-section class="q-pt-none">
+          <q-input placeholder="Slug" dense v-model="dept_slug" autofocus @keyup.enter="prompt = false" />
+        </q-card-section>
+     
       <q-card-actions align="right">
-        <q-btn color="primary" label="OK" @click="onOKClick" />
-        <q-btn color="primary" label="Cancel" @click="onCancelClick" />
+        <q-btn color="primary" label="OK" @click="edit" />
+        <q-btn color="primary" label="Cancel" v-close-popup />
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -133,13 +137,33 @@ export default {
     ...useDialogPluginComponent.emits
   ],
   setup() {
-    const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginComponent()
 
-    const  onOKClick  = () => {
-      onDialogOK()
+    const dialogRef = ref(false)
+
+
+    const dept_name =  ref('')
+
+    const dept_slug = ref('')
+   
+
+  
+
+
+    const edit = (props) => {
+    
+    dept_name.value = props.row.dept
+    dept_slug.value = props.row.slug
+    dialogRef.value = true
+
+    console.log('props',props);
+      
+    }
+  
+    const cancel = () => {
+      console.log('cancel');
+      dialogRef.value = false
     }
 
-   
     return {
       visibleColumns: ref([
         "calories",
@@ -151,13 +175,14 @@ export default {
         "calcium",
         "iron",
       ]),
-       dialogRef,
-      onDialogHide,
-      onOKClick,
-      onDialogOK,
-      onCancelClick: onDialogCancel,
-      columns,
+      dept_name,
+      dept_slug,
+      dialogRef,
       rows,
+      columns,
+      edit,
+      cancel
+     
     };
   },
 };

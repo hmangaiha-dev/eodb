@@ -49,7 +49,7 @@
         :key="dept.serial"
         class="col-lg-3 col-sm-6 col-xs-10"
       >
-        <q-list class="cursor-pointer" clickable bordered padding>
+        <q-list class="tile cursor-pointer" clickable bordered padding>
           <q-item class="text" clickable v-ripple>
             <q-item-section avatar> {{ dept.serial }} </q-item-section>
 
@@ -548,7 +548,7 @@ export default defineComponent({
 .contact-us {
   padding: 0px 0px 25px 0px !important;
 }
-.q-list {
+.tile {
   width: 398px;
   /* height: 100px; */
   margin: 0 16px 0px 12px;

@@ -15,6 +15,7 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'departments', component: () => import('pages/admin/EODB_department/department_info.vue') },
+      { path: 'department-profiles', component: () => import('pages/admin/EODB_department/department_profile.vue') },
       { path: 'roles', component: () => import('pages/admin/role/Roles') },
       { path: 'users', component: () => import('pages/admin/user/Users') },
       

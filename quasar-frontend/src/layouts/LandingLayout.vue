@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header style="margin: 0 auto" class="bg-white text-grey">
-      <q-toolbar class="bg-white text-dark q-py-none">
+      <q-toolbar class="container bg-white text-dark q-py-none">
         <img style="width: 80px" src="~assets/eodb-logo.png" />
 
         <q-toolbar-title class="q-mt-md q-pl-lg q-mb-none"
@@ -61,20 +61,23 @@
         <!-- <q-btn @click="leftDrawerOpen = !leftDrawerOpen" class="q-mr-xl" flat dense round icon="menu" aria-label="Menu" /> -->
         <q-btn-dropdown class="lt-md" flat icon="menu">
           <q-list>
-           
-            <q-item to="/h" v-for="link in essentialLinks" :key="link.title" clickable v-close-popup>
+            <q-item
+              to="/h"
+              v-for="link in essentialLinks"
+              :key="link.title"
+              clickable
+              v-close-popup
+            >
               <q-item-section>
-                <q-item-label style="color: #00000080">{{ link.title }}</q-item-label>
+                <q-item-label style="color: #00000080">{{
+                  link.title
+                }}</q-item-label>
               </q-item-section>
             </q-item>
-
-           
           </q-list>
         </q-btn-dropdown>
       </q-toolbar>
     </q-header>
-
-    
 
     <q-page-container>
       <router-view />
@@ -203,12 +206,15 @@ export default defineComponent({
   }
 
   .q-toolbar {
-  width: 100% !important;
-  /* margin: 0 auto; */
+    width: 100% !important;
+    /* margin: 0 auto; */
+  }
 }
 
+.container{
+  width: 80%;
+  margin: 0 auto;
 }
-
 
 .heading {
   /* font-family: "Hammersmith One", sans-serif;
@@ -258,11 +264,6 @@ export default defineComponent({
 
 .q-page-container {
   padding-top: 0px !important;
-}
-
-.q-toolbar {
-  width: 80%;
-  margin: 0 auto;
 }
 
 .q-tab__content {
