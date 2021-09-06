@@ -7,16 +7,17 @@ use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder
 {
-    const USER_PERMISSION = ['name'=>'user:create','name'=>'user:read','name'=>'user:update','name'=>'user:delete'];
-    const DEPARTMENT_PERMISSION = ['name'=>'department:create','name'=> 'department:read','name'=> 'department:update', 'name'=>'department:delete'];
-    const ROLE_PERMISSION = ['name'=>'role:create', 'name'=>'role:read', 'name'=>'role:update', 'name'=>'role:delete'];
-    const POSTING_PERMISSION = ['name'=>'posting:create','name'=> 'posting:update'];
-
+    const USER_PERMISSIONS = [['name'=>'user:create'],['name'=>'user:read'],['name'=>'user:update'],['name'=>'user:delete']];
+    const OFFICE_PERMISSIONS = [['name'=>'office:create'],['name'=> 'office:read'],['name'=> 'office:update'], ['name'=>'office:delete']];
+    const ROLE_PERMISSIONS = [['name'=>'role:create'], ['name'=>'role:read'], ['name'=>'role:update'], ['name'=>'role:delete']];
+    const STAFF_PERMISSIONS = [['name'=>'staff:posting'],['name' => 'staff:create'], ['name' => 'staff:read'], ['name' => 'staff:update'],
+        ['name' => 'staff:delete']];
     public function run()
     {
-        Permission::query()->upsert(self::USER_PERMISSION, 'name');
-        Permission::query()->upsert(self::DEPARTMENT_PERMISSION, 'name');
-        Permission::query()->upsert(self::ROLE_PERMISSION, 'name');
-        Permission::query()->upsert(self::POSTING_PERMISSION, 'name');
+
+        $test = array_merge(self::USER_PERMISSIONS, self::OFFICE_PERMISSIONS, self::ROLE_PERMISSIONS, self::STAFF_PERMISSIONS);
+        Permission::query()->upsert(
+            $test
+        ,'name');
     }
 }

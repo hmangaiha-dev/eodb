@@ -20,11 +20,12 @@ class RoleController extends Controller
         $request->validate(Role::RULES);
 
         $role = Role::query()->create($request->only(['name', 'description']));
-        $role->permissions()->sync($request->get('permissions'));
+        if ($request->has('permissions'))
+            $role->permissions()->sync($request->get('permissions'));
         return response()->json([
-            'data'=>  Role::query()
+            'data' => Role::query()
                 ->paginate($request->has('per_page') ? $request->get('per_page') : 15),
-            'message'=>'Role created successfully'
+            'message' => 'Role created successfully'
         ], 200);
     }
 
@@ -32,21 +33,22 @@ class RoleController extends Controller
     {
         $request->validate(Role::RULES);
         $role = Role::query()->findOrFail($id)->update($request->only(['name', 'description']));
-        $role->permissions()->sync($request->get('permissions'));
+        if ($request->has('permissions'))
+            $role->permissions()->sync($request->get('permissions'));
         return response()->json([
-            'data'=>  Role::query()
+            'data' => Role::query()
                 ->paginate($request->has('per_page') ? $request->get('per_page') : 15),
-            'message'=>'Role updated successfully'
+            'message' => 'Role updated successfully'
         ], 200);
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
         Role::query()->findOrFail($id)->delete();
         return response()->json([
-            'data'=>  Role::query()
+            'data' => Role::query()
                 ->paginate($request->has('per_page') ? $request->get('per_page') : 15),
-            'message'=>'Role deleted successfully'
+            'message' => 'Role deleted successfully'
         ], 200);
     }
 }

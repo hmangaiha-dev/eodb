@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Address extends Model
 {
+    const RULES = [
+        'full_address' => 'required',
+        'locality' => 'required',
+        'pincode' => 'required',
+        'district' => 'required',
+        'ps' => 'required',
+    ];
     use HasFactory;
 
     protected $fillable = ['full_address', 'locality', 'pincode', 'district', 'ps'];

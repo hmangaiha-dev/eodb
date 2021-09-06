@@ -17,7 +17,7 @@ class CreateOtpsTable extends Migration
             $table->id();
             $table->integer('otp');
             $table->boolean('used')->default(false);
-            $table->string('mobile');
+            $table->string('phone');
             $table->timestamps();
         });
     }

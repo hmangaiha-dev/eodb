@@ -13,6 +13,12 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function canDo($action)
+    {
+        $user = request()->user();
+        return$user->tokenCan($action);
+
+    }
 //    public function checkPermission(User $user,$action){
 //        $roles=$user->roles()->get();
 //        $roles->map(function (Role $role) {

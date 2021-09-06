@@ -18,7 +18,6 @@ class CreateRolesTable extends Migration
             $table->string('name')->unique();
             $table->string('description')->nullable();
 
-            $table->morphs('roleable');
             $table->timestamps();
         });
     }

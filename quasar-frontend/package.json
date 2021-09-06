@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "quasar": "^2.0.0",
+    "vue-scrollto": "^2.20.0",
     "vuex": "^4.0.1"
   },
   "devDependencies": {

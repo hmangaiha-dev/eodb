@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Office extends Model
 {
+    const RULES = [
+        'code' => 'required|unique:offices',
+        'name' => 'required'
+    ];
     use HasFactory;
 
     protected $fillable = ['code', 'name', 'description','contacts'];

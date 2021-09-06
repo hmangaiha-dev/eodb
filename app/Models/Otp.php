@@ -10,11 +10,11 @@ class Otp extends Model
     use HasFactory;
     const RULES = [
         'otp' => 'required',
-        'mobile' => 'required',
+        'phone' => 'required|digits:10',
         'used' => 'required'
     ];
 
-    protected $fillable = ['otp','mobile', 'used'];
+    protected $fillable = ['otp','phone', 'used'];
 
     public function scopeLatestOtp($builder, $mobile)
     {

@@ -40,9 +40,9 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'investor'=>[
+        'staff'=>[
             'driver'=>'session',
-            'provider'=>'investors'
+            'provider'=>'staffs'
         ]
     ],
 
@@ -68,9 +68,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'investors' => [
+        'staffs' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Investor::class,
+            'model' => App\Models\Staff::class,
         ],
 
         // 'users' => [

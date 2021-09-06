@@ -16,4 +16,11 @@ class Permission extends Model
     {
         return $this->belongsToMany(Role::class, 'role_permissions');
     }
+
+    public static function extractPermissions(Staff $staff){
+        $post=$staff->currentPost();
+        return $post->roles()->get()->map(function (Role $role) {
+            return$role->permissions()->get()?->toArray();
+        });
+    }
 }
