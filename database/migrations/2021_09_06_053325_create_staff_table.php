@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserPostingRole extends Migration
+class CreateStaffTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateUserPostingRole extends Migration
      */
     public function up()
     {
-        Schema::create('user_posting_roles', function (Blueprint $table) {
+        Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_posting_id');
-            $table->unsignedInteger('role_id');
+            $table->string('full_name');
+            $table->string('designation')->nullable();
+            $table->string('email');
+            $table->string('phone');
+            $table->string('password');
+
+            $table->date('joined_at')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ class CreateUserPostingRole extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_posting_role');
+        Schema::dropIfExists('staff');
     }
 }

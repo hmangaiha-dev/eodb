@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDepartmentRolesTable extends Migration
+class CreateOfficesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateDepartmentRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('department_roles', function (Blueprint $table) {
+        Schema::create('offices', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('department_id');
-            $table->unsignedInteger('role_id');
+            $table->string('code')->unique()->default(now());
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->string('contacts')->nullable();
+
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateDepartmentRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('department_roles');
+        Schema::dropIfExists('offices');
     }
 }

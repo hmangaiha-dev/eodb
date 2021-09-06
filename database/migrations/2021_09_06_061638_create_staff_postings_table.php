@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserPostingsTable extends Migration
+class CreateStaffPostingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,18 +14,16 @@ class CreateUserPostingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_postings', function (Blueprint $table) {
+        Schema::create('staff_postings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('role_id');
-            $table->unsignedInteger('department_id');
+            $table->unsignedInteger('staff_id');
+            $table->unsignedInteger('office_id');
 
-            $table->date('joining_date');
+            $table->date('joining_date')->nullable();
             $table->date('leaving_date')->nullable();
-
             $table->string('remark')->nullable();
 
-            $table->enum('status', PostingStatus::STATUSES);
+            $table->enum('status', PostingStatus::STATUSES)->default(PostingStatus::ON_DUTY);
             $table->timestamps();
         });
     }
@@ -37,6 +35,6 @@ class CreateUserPostingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_postings');
+        Schema::dropIfExists('staff_postings');
     }
 }

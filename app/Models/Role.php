@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Role extends Model
@@ -15,13 +17,17 @@ class Role extends Model
     ];
     protected $fillable = ['name', 'description'];
 
-    public function permissions()
+    public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class, 'role_permissions');
     }
 
-    public function departments()
+    public function postings(): MorphToMany
     {
-        return $this->belongsToMany(Department::class, 'department_roles');
+        return $this->morphedByMany(Office::class, name: 'roleable', table: 'roleable');
+    }
+    public function offices(): MorphToMany
+    {
+        return $this->morphedByMany(Office::class, name: 'roleable', table: 'roleables');
     }
 }
