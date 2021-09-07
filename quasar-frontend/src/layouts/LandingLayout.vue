@@ -68,7 +68,7 @@
               clickable
               v-close-popup
             >
-              <q-item-section>
+              <q-item-section class="btn-dropdown">
                 <q-item-label style="color: #00000080">{{
                   link.title
                 }}</q-item-label>

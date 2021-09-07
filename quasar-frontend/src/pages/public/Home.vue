@@ -51,10 +51,10 @@
       >
         <q-list class="tile cursor-pointer" clickable bordered padding>
           <q-item class="text" clickable v-ripple>
-            <q-item-section avatar> {{ dept.serial }} </q-item-section>
+            <q-item-section class="tile-content" avatar> {{ dept.serial }} </q-item-section>
 
-            <q-item-section class="text-center">{{
-              dept.title
+            <q-item-section class="text-center tile-content">{{
+              dept.title 
             }}</q-item-section>
           </q-item>
         </q-list>
@@ -407,7 +407,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style >
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins&display=swap");
 .col1 {
   color: aqua !important;
@@ -580,7 +580,7 @@ export default defineComponent({
   color: #598b83;
 }
 
-.q-item__section {
+.btn-dropdown, .tile-content {
   font-family: "Poppins";
   font-size: 18px;
   font-weight: 600;

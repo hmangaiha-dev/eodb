@@ -42,7 +42,7 @@
         </q-input>
       </template>
     </q-table>
-
+    
     <q-dialog v-model="dialogRef" >
     <q-card class="q-dialog-plugin">
 
