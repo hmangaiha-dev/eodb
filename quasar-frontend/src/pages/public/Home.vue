@@ -54,7 +54,7 @@
             <q-item-section class="tile-content" avatar> {{ dept.serial }} </q-item-section>
 
             <q-item-section class="text-center tile-content">{{
-              dept.title 
+              dept.title
             }}</q-item-section>
           </q-item>
         </q-list>
@@ -141,10 +141,10 @@
         <q-list class="q-p-none contact-us">
           <q-item class="q-pb-none">
             <q-item-section avatar>
-            
+
               <!-- <img src="~assets/question.png" /> -->
               <q-icon  name="fmd_good" />
-              
+
             </q-item-section>
 
             <q-item-section>
@@ -159,9 +159,9 @@
         <q-list class="q-pt-none contact-us">
           <q-item class="q-pb-none">
             <q-item-section avatar>
-             
+
                 <q-icon  name="call" />
-             
+
             </q-item-section>
 
             <q-item-section>
@@ -700,7 +700,7 @@ h1 {
    padding-left: 20px;
    font-size: 15px;
  }
-  
+
 
   .track {
     background: url("../../assets/bag.png");
@@ -712,7 +712,7 @@ h1 {
 
   .developed-by {
     font-size: 12px;
-    
+
   }
 
   .logos {
@@ -744,7 +744,7 @@ h1 {
 
 
 
-    
+
   }
 
   .content {
@@ -777,7 +777,7 @@ width: 90%;
     height: auto;
     padding: 13px 35px 7px 24px;
 
-   
+
   } */
 
   /* .logos {
@@ -792,9 +792,7 @@ width: 90%;
     grid-template-columns: 6fr 6fr;
   } */
 
-  .q-list {
-    width: 100%;
-  }
+
 
   .group {
     margin: 0px;
