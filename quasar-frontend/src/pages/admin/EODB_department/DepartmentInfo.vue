@@ -1,6 +1,10 @@
 <template>
   <div class="q-pa-lg">
-    <q-table
+    <div class="row q-col-gutter-md justify-center">
+      <div class="col-9">
+ <q-table
+      wrap-cells
+      separator="none"
       title="Treats"
       :rows="rows"
       :columns="columns"
@@ -8,7 +12,7 @@
       :visible-columns="visibleColumns"
     >
       <template v-slot:body-cell-actions="props">
-        <q-td :props="props">
+        <q-td  style="display: flex;" :props="props">
           <q-btn
             dense
             round
@@ -29,7 +33,7 @@
         </q-td>
       </template>
       <template v-slot:top>
-        <span class="text-h5">Department List</span>
+        <span class="text-h5">Department Info List</span>
 
         <q-space />
 
@@ -42,19 +46,84 @@
         </q-input>
       </template>
     </q-table>
-    
+      </div>
+
+     <div class="col-3">
+        <q-card class="my-card">
+          <q-card-section class="q-pb-none">
+            <div class="text-h6">Add Department Info List</div>
+          </q-card-section>
+          <q-card-section class="q-pb-none">
+            <q-input
+              v-model="text"
+              outlined
+              dense
+              type="text"
+              label="Department Name"
+            />
+          </q-card-section>
+
+           <q-card-section class="q-pb-none">
+            <q-input
+              v-model="text"
+              outlined
+              dense
+              type="text"
+              label="Heading"
+            />
+          </q-card-section>
+           <q-card-section class="q-pb-none">
+            <q-input
+              v-model="text"
+              outlined
+              dense
+              type="text"
+              label="Type"
+            />
+          </q-card-section>
+           <q-card-section class="q-pb-none">
+            <q-input
+            type="textarea"
+              v-model="text"
+              outlined
+              dense
+              label="Body"
+            />
+          </q-card-section>
+
+          
+
+         
+
+          <q-card-actions align="right">
+            <q-btn color="red-5" label="Reset" />
+            <q-btn color="green-5" label="Save" />
+          </q-card-actions>
+        </q-card>
+      </div>
+    </div>
+   
+
     <q-dialog v-model="dialogRef" >
     <q-card class="q-dialog-plugin">
 
       <q-card-section>
-          <div class="text-h6">Edit Department</div>
+          <div class="text-h6">Edit Department Info</div>
         </q-card-section>
         <q-card-section class="q-pt-none">
           <q-input placeholder="Department Name" dense v-model="dept_name" autofocus @keyup.enter="prompt = false" />
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <q-input placeholder="Slug" dense v-model="dept_slug" autofocus @keyup.enter="prompt = false" />
+          <q-input placeholder="Heading" dense v-model="dept_slug" autofocus @keyup.enter="prompt = false" />
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <q-input placeholder="Type" dense v-model="dept_slug" autofocus @keyup.enter="prompt = false" />
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <q-input type="textarea" placeholder="Body" dense v-model="dept_slug" autofocus @keyup.enter="prompt = false" />
         </q-card-section>
      
       <q-card-actions align="right">
@@ -78,7 +147,7 @@ const columns = [
   {
     name: "Department Name",
     required: true,
-    label: "Dessert (100g serving)",
+    label: "Department Name",
     align: "left",
     field: "dept",
     format: (val) => `${val}`,
@@ -86,11 +155,31 @@ const columns = [
   },
 
   {
-    name: "Slug",
+    name: "Heading",
     required: true,
-    label: "Dessert (100g serving)",
+    label: "Heading",
     align: "left",
-    field: "slug",
+    field: "heading",
+    format: (val) => `${val}`,
+    sortable: true,
+  },
+
+{
+    name: "Type",
+    required: true,
+    label: "Type",
+    align: "left",
+    field: "type",
+    format: (val) => `${val}`,
+    sortable: true,
+  },
+
+  {
+    name: "Body",
+    required: true,
+    label: "body",
+    align: "left",
+    field: "body",
     format: (val) => `${val}`,
     sortable: true,
   },
@@ -109,20 +198,23 @@ const columns = [
 const rows = [
   {
     dept: "Aizawl Municipal Corporation",
-    slug: "aizawl-municipal-corporation",
+    heading: "Mission",
+    type: "Text",
+    body: "Our Mission is to accelerate industrial development in Mizoram by maximizing investment, output, growth, employment and competitiveness throughdevelopment of infrastructure, human resource, incentives and administrative support network."
   },
-  {
+   {
     dept: "Commerce & Industries Department",
-    slug: "commerce-and-industries-department",
+    heading: "Vision",
+    type: "Text",
+    body: "Our Mission is to accelerate industrial development in Mizoram by maximizing investment, output, growth, employment and competitiveness throughdevelopment of infrastructure, human resource, incentives and administrative support network."
   },
-  {
-    dept: "Environment, Forest & Climate Change Department",
-    slug: "environment-forest-and-climate-change-department",
+   {
+    dept: "Legal Metrology",
+    heading: "Mission",
+    type: "Text",
+    body: " Enforcing Legal Metrology Act, and Rules made there under."
   },
-  {
-    dept: "Excise & Narcotics Department",
-    slug: "excise-and-narcotics-department",
-  },
+ 
 ];
 
 export default {
