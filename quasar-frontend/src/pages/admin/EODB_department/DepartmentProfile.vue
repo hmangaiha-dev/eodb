@@ -1,7 +1,7 @@
 <template>
-  <div class="q-pa-lg">
+  <div class="zcard">
     <div class="row justify-center q-col-gutter-md">
-      <div class="col-8">
+      <div class="col-6">
         <q-table
           wrap-cells
           separator="none"

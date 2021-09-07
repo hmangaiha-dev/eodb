@@ -42,7 +42,17 @@
         </q-btn-dropdown>
         <q-btn-dropdown dropdown-icon="arrow_drop_down" flat color="primary" label="Web management">
           <q-list>
-            <q-item clickable v-close-popup @click="onMenuItemClick('departments')">
+            <q-item to="/admin/departments/" clickable v-close-popup @click="onMenuItemClick('departments')">
+              <q-item-section>
+                <q-item-label>Departments</q-item-label>
+              </q-item-section>
+            </q-item>
+             <q-item to="/admin/department-profiles" clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Department Profile</q-item-label>
+              </q-item-section>
+            </q-item>
+             <q-item to="/admin/depart-info" clickable v-close-popup @click="onMenuItemClick('department-info')">
               <q-item-section>
                 <q-item-label>Department info</q-item-label>
               </q-item-section>
@@ -100,6 +110,10 @@ export default {
               break
         case 'departments':
           router.push('/admin/departments')
+          break;
+
+          case 'department-info':
+          router.push('/admin/department-info')
           break;
       }
     }
