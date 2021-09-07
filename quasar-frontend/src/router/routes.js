@@ -16,12 +16,11 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'departments', component: () => import('pages/admin/EODB_department/DepartmentInfo.vue') },
       { path: 'department-profiles', component: () => import('pages/admin/EODB_department/DepartmentProfile.vue') },
-      { path: 'roles', component: () => import('pages/admin/role/Roles') },
-      { path: 'users', component: () => import('pages/admin/user/Users') },
-      
 
-      { path: 'users', component: () => import('pages/admin/user/Users') },
-      {name:'create-user', path: 'users/create', component: () => import('pages/admin/user/UserContainer') },
+      { path: 'roles', component: () => import('pages/admin/role/Roles') },
+      { path: 'offices', component: () => import('pages/admin/office/Offices') },
+      { path: 'staffs', component: () => import('pages/admin/staff/Staffs') },
+      { path: 'posting', component: () => import('pages/admin/staff/Posting') },
     ]
   }, {
     path: '/investor',

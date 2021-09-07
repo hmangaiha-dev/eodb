@@ -1,2 +1,74 @@
 /* app global css */
+/* app global css */
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.container,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.ztitle{
+  font-size: 24px;
+  font-weight: 900;
+  font-family: "Ubuntu Condensed";
+  line-height: 4rem;
+}
+.green-bottom-border{
+  border-bottom: 2px solid #357c71;
+  background-color: #ffffff;
+  color: inherit;
+}
+.zcard{
+  padding: 24px !important;
+  position: relative;
+  border: 1px solid #e0e7f4;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 10px 12px 0 rgba(0,0,0,.1);
+}
+@media (min-width: 718px) {
+  .container,
+  .container-sm {
+    max-width: 540px;
+  }
+  .zcard{
+    padding: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container,
+  .container-sm,
+  .container-md {
+    max-width: 920px;
+  }
+}
+
+@media (min-width: 1439px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    max-width: 1440px;
+  }
+}
+
 
