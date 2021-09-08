@@ -42,7 +42,7 @@
         </q-btn-dropdown>
         <q-btn-dropdown dropdown-icon="arrow_drop_down" flat color="primary" label="Web management">
           <q-list>
-            <q-item clickable v-close-popup @click="onMenuItemClick('departments')">
+            <q-item clickable v-close-popup @click="onMenuItemClick('departmentscd')">
               <q-item-section>
                 <q-item-label>Department info</q-item-label>
               </q-item-section>
