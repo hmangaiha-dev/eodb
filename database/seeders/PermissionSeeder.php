@@ -14,7 +14,6 @@ class PermissionSeeder extends Seeder
         ['name' => 'staff:delete']];
     public function run()
     {
-
         $test = array_merge(self::USER_PERMISSIONS, self::OFFICE_PERMISSIONS, self::ROLE_PERMISSIONS, self::STAFF_PERMISSIONS);
         Permission::query()->upsert(
             $test

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Role extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory;
 
     const RULES = [
         'name'=>'required|unique:roles'

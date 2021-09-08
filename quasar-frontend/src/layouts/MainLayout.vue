@@ -2,8 +2,8 @@
   <q-layout view="hHh lpR fff">
 
     <q-header elevated class="green-bottom-border text-primary" height-hint="98">
-      <q-toolbar class="container">
-        <q-btn class="lt-sm"  @click="localData.openDrawer=true" flat icon="menu"/>
+      <q-toolbar  class="container">
+        <q-btn class="lt-sm" @click="localData.openDrawer=true" flat icon="menu"/>
         <q-toolbar-title>
           <q-avatar>
             <img class="bg-primary" src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
@@ -12,7 +12,7 @@
         </q-toolbar-title>
       </q-toolbar>
       <q-separator/>
-      <q-toolbar  class="xs-hide container q-pa-md q-gutter-md">
+      <q-toolbar class="xs-hide container q-pa-xs q-gutter-md">
         <q-btn color="primary" icon="dashboard"/>
         <q-btn-dropdown dropdown-icon="arrow_drop_down" flat color="primary" label="Administration">
           <q-list>
@@ -57,7 +57,7 @@
       menu
     </q-drawer>
     <q-page-container>
-      <router-view />
+      <router-view/>
     </q-page-container>
 
     <q-footer elevated class="bg-grey-8 text-white">
@@ -76,15 +76,18 @@
 <script>
 import {useRouter} from "vue-router";
 import {reactive} from "@vue/reactivity";
+import {onMounted} from "@vue/runtime-core";
+import {useStore} from "vuex";
 
 export default {
 
-  setup(props,context){
+  setup(props, context) {
     const router = useRouter();
-    const localData=reactive({
-      openDrawer:false
+    const store = useStore();
+    const localData = reactive({
+      openDrawer: false
     })
-    const onMenuItemClick=menu=>{
+    const onMenuItemClick = menu => {
       switch (menu) {
         case 'posting':
           router.push('/admin/posting')
@@ -97,13 +100,16 @@ export default {
           break;
         case 'role':
           router.push('/admin/roles')
-              break
+          break
         case 'departments':
           router.push('/admin/departments')
           break;
       }
     }
-    return{
+    onMounted(() => {
+      store.dispatch('globalData/fetchGlobalData');
+    })
+    return {
       onMenuItemClick,
       localData
     }

@@ -34,21 +34,13 @@ class StaffController extends Controller
         ], 200);
     }
 
-    public function store(Request $request)
+    public function create(Request $request)
     {
         $this->validate($request, Staff::RULES);
 
         $staff = Staff::query()->create($request->only((new Staff())->getFillable()));
-        if ($request->has('address')) {
-            $this->validate($request, Address::RULES);
-            $address = $request->get('address');
-            $staff->addresses()->save([
-                'full_address' => $address['full_address'],
-                'locality' => $address['locality'],
-                'pincode' => $address['pincode'],
-                'district' => $address['district'],
-            ]);
-        }
+        $address = new Address($request->only((new Address())->getFillable()));
+        $staff->addresses()->save($address);
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
         return response()->json([
             'data' => $staff,
@@ -56,7 +48,8 @@ class StaffController extends Controller
             'message' => 'New staff created successfully'
         ]);
     }
-    public function update(Request $request,int $id)
+
+    public function update(Request $request, int $id)
     {
         $this->validate($request, Staff::RULES);
 
@@ -69,7 +62,7 @@ class StaffController extends Controller
                 'locality' => $address['locality'],
                 'pincode' => $address['pincode'],
                 'district' => $address['district'],
-            ],'id');
+            ], 'id');
         }
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
         return response()->json([
@@ -79,7 +72,7 @@ class StaffController extends Controller
         ]);
     }
 
-    public function destroy(Request $request,Staff $staff)
+    public function destroy(Request $request, Staff $staff)
     {
         $staff->delete();
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
@@ -95,7 +88,7 @@ class StaffController extends Controller
         $this->validate($request, [
             'office_id' => Rule::exists('offices', 'id'),
             'staff_id' => Rule::exists('staffs', 'id'),
-            'roles'=>'required',
+            'roles' => 'required',
             'joining_date' => 'required',
         ]);
         $staff = new Staff();

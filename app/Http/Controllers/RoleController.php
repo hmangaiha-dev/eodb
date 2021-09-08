@@ -15,9 +15,17 @@ class RoleController extends Controller
         return response()?->json($data, 200);
     }
 
+    public function show(Request $request,int $id)
+    {
+        $data=Role::query()->find($id)
+            ->with(['permissions'])
+            ->first();
+        return response()?->json($data, 200);
+    }
+
     public function create(Request $request)
     {
-        $request->validate(Role::RULES);
+        $this->validate($request,Role::RULES);
 
         $role = Role::query()->create($request->only(['name', 'description']));
         if ($request->has('permissions'))
@@ -31,7 +39,7 @@ class RoleController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate(Role::RULES);
+        $this->validate(Role::RULES);
         $role = Role::query()->findOrFail($id)->update($request->only(['name', 'description']));
         if ($request->has('permissions'))
             $role->permissions()->sync($request->get('permissions'));

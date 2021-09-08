@@ -18,10 +18,14 @@ const routes = [
       { path: 'department-profiles', component: () => import('pages/admin/EODB_department/DepartmentProfile.vue') },
       { path: 'department-info', component: () => import('pages/admin/EODB_department/DepartmentInfo.vue') },
 
-      { path: 'roles', component: () => import('pages/admin/role/Roles') },
-      { path: 'offices', component: () => import('pages/admin/office/Offices') },
-      { path: 'staffs', component: () => import('pages/admin/staff/Staffs') },
-      { path: 'posting', component: () => import('pages/admin/staff/Posting') },
+      { path: 'roles', name:'roles', component: () => import('pages/admin/role/Roles') },
+      { path: 'roles/create',name:'role:create', component: () => import('pages/admin/role/Create') },
+      { path: 'roles/:id',name:'role:edit', component: () => import('pages/admin/role/Create') },
+      { path: 'offices', name:'office', component: () => import('pages/admin/office/Offices') },
+      { path: 'offices', name:'office:create', component: () => import('pages/admin/office/Create') },
+      { path: 'staffs', name:'staffs', component: () => import('pages/admin/staff/Staffs') },
+      { path: 'staffs/create', name:'staff:create', component: () => import('pages/admin/staff/Create') },
+      { path: 'posting',name:'posting', component: () => import('pages/admin/staff/Posting') },
     ]
   }, {
     path: '/investor',

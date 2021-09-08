@@ -9,7 +9,7 @@ class OfficeController extends Controller
 {
     public function show(Request $request,int $id)
     {
-        $office=Office::query()->find($id)->with(['permissions'])->first();
+        $office=Office::query()->find($id)->with(['roles'])->first();
         return response()->json([
             'data'=>$office,
             'message' => ''
@@ -18,12 +18,9 @@ class OfficeController extends Controller
     public function index(Request $request){
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
         $data=Office::query()->paginate($per_page);
-        return response()->json([
-            'data'=>$data,
-            'message' => ''
-        ], 200);
+        return response()->json($data, 200);
     }
-    public function store(Request $request)
+    public function create(Request $request)
     {
         $this->validate($request, Office::RULES);
         $office = Office::query()->create($request->only((new Office())->getFillable()));
