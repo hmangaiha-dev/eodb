@@ -6,7 +6,7 @@
       style="background-color: #b9d8d4"
     >
       <div class="col-lg-5 col-sm-10 col-xs-11 q-mb-md col-md-5">
-        <h1 class="content q-px-md"><span>Think of Business!</span></h1>
+        <h1 class="heading content q-px-md"><span>Think of Business!</span></h1>
         <h1 class="content2">
           <span>There is Ease of Doing Business!</span>
         </h1>
@@ -458,9 +458,6 @@ export default defineComponent({
   margin: 0 14px 0 0;
   object-fit: contain;
 
-  filter: gray; /* IE6-9 */
-  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-  filter: grayscale(1);
 }
 
 .logo:hover {
@@ -684,7 +681,7 @@ export default defineComponent({
   color: #f5f5f5;
 }
 
-h1 {
+.heading {
   font: 40px Poppins, sans-serif;
   font-weight: 500 !important;
   font-size: 2.5rem;
@@ -695,19 +692,9 @@ h1 {
     margin-top: 25px !important;
   }
 
- .q-placeholder {
-   /* color: blue; */
-   padding-left: 20px;
-   font-size: 15px;
- }
-
 
   .track {
     background: url("../../assets/bag.png");
-  }
-
-  .q-placeholder {
-    margin: 0px !important;
   }
 
   .developed-by {
@@ -722,7 +709,7 @@ h1 {
     border: none;
   }
 
-  hr {
+  .line {
     width: 40rem !important;
     /* background: olive !important; */
     /* padding: 100px; */

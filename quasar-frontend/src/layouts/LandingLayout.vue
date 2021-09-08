@@ -146,33 +146,7 @@ export default defineComponent({
     const leftDrawerOpen = ref(true);
 
     const navigate = (e) => {
-      console.log("clicked");
 
-      // console.log('length child nodes',e.target.childNodes);
-
-      if (e.target.hasChildNodes()) console.log("no child nodes");
-      else console.log("has child nodes");
-
-      // if(e.target.childNodes)
-
-      // console.log('target',e.target);
-
-      const label = document.querySelectorAll(".q-tab__label");
-
-      // label.style.color = "#00000080";
-
-      var index = 0,
-        length = label.length;
-      for (; index < length; index++) {
-        label[index].style.color = "#00000080";
-      }
-
-      e.target.style.color = "green";
-
-      // label.style.background = "blue"
-
-      // label.style.padding = "50px";
-      // e.target.style.color="red";
     };
 
     return {
@@ -201,19 +175,7 @@ export default defineComponent({
     font-size: 14px !important;
   }
 
-  .ellipsis {
-    overflow: inherit;
-  }
 
-  .q-toolbar {
-    width: 100% !important;
-    /* margin: 0 auto; */
-  }
-}
-
-.container{
-  width: 80%;
-  margin: 0 auto;
 }
 
 .heading {
@@ -234,14 +196,7 @@ export default defineComponent({
   text-align: left;
   color: #393939;
 }
-.text-green-4 {
-  color: #357c71 !important;
-}
 
-.q-menu {
-  min-width: 100% !important;
-  left: 0px !important;
-}
 
 .mizoram {
   width: 178px;
@@ -262,15 +217,6 @@ export default defineComponent({
   color: rgba(0, 0, 0, 0.5);
 }
 
-.q-page-container {
-  padding-top: 0px !important;
-}
 
-.q-tab__content {
-  min-width: 0px !important;
-}
 
-.test {
-  background: red;
-}
 </style>

@@ -1,60 +1,148 @@
 <template>
-  <div class="zcard">
-    <div class="row justify-center q-col-gutter-md">
-      <div class="col-6">
-        <q-table
-          wrap-cells
-          separator="none"
-          table-class="my-table"
-          title="Treats"
-          :rows="rows"
-          :columns="columns"
-          row-key="name"
-        >
-          <template v-slot:body-cell-actions="props">
-            <q-td
-              style="display: flex; padding-bottom: 46px !important"
-              :props="props"
-            >
-              <q-btn
+  <q-page class="container">
+    <div class="zcard">
+      <div class="row justify-center q-col-gutter-md">
+        <div class="col-6">
+          <q-table
+            wrap-cells
+            separator="none"
+            table-class="my-table"
+            title="Treats"
+            :rows="rows"
+            :columns="columns"
+            row-key="name"
+          >
+            <template v-slot:body-cell-actions="props">
+              <q-td
+                style="display: flex; padding-bottom: 46px !important"
+                :props="props"
+              >
+                <q-btn
+                  dense
+                  round
+                  flat
+                  color="green"
+                  @click="edit(props)"
+                  icon="edit"
+                ></q-btn>
+                <q-btn
+                  outl
+                  dense
+                  round
+                  flat
+                  color="red-4"
+                  @click="cancel"
+                  icon="delete"
+                ></q-btn>
+              </q-td>
+            </template>
+            <template v-slot:top>
+              <span class="text-h5">Department Profile List</span>
+              <q-space />
+              <q-input dense rounded outlined v-model="text">
+                <template v-slot:append>
+                  <q-avatar>
+                    <q-icon size="md" name="search" />
+                  </q-avatar>
+                </template>
+              </q-input>
+            </template>
+          </q-table>
+        </div>
+
+        <div class="col-4">
+          <q-card class="my-card">
+            <q-card-section class="q-pb-none">
+              <div class="text-h6">Add Department Profile</div>
+            </q-card-section>
+            <q-card-section class="q-pb-none">
+              <q-input
+                v-model="text"
+                outlined
                 dense
-                round
-                flat
-                color="green"
-                @click="edit(props)"
-                icon="edit"
-              ></q-btn>
-              <q-btn
-                outl
+                type="text"
+                label="Department Name"
+              />
+            </q-card-section>
+
+            <q-card-section class="q-pb-none">
+              <q-file dense label="Secreatriat HOD Name" outlined v-model="model">
+                <template v-slot:prepend>
+                  <q-icon name="attach_file" />
+                </template>
+              </q-file>
+            </q-card-section>
+
+            <q-card-section class="q-pb-none">
+              <q-input
+                v-model="text"
+                outlined
                 dense
-                round
-                flat
-                color="red-4"
-                @click="cancel"
-                icon="delete"
-              ></q-btn>
-            </q-td>
-          </template>
-          <template v-slot:top>
-            <span class="text-h5">Department Profile List</span>
-            <q-space />
-            <q-input dense rounded outlined v-model="text">
-              <template v-slot:append>
-                <q-avatar>
-                  <q-icon size="md" name="search" />
-                </q-avatar>
-              </template>
-            </q-input>
-          </template>
-        </q-table>
+                type="text"
+                label="Secreatriat HOD Designation"
+              />
+            </q-card-section>
+
+            <q-card-section class="q-pb-none">
+              <q-file
+                dense
+                label="Secreatriat HOD Photo"
+                outlined
+                v-model="model"
+              >
+                <template v-slot:prepend>
+                  <q-icon name="attach_file" />
+                </template>
+              </q-file>
+            </q-card-section>
+
+            <q-card-section class="q-pb-none">
+              <q-input
+                v-model="text"
+                outlined
+                dense
+                type="text"
+                label="Directorate HOD Name"
+              />
+            </q-card-section>
+
+            <q-card-section class="q-pb-none">
+              <q-file
+                dense
+                label="Directorate  HOD Designation"
+                outlined
+                v-model="model"
+              >
+                <template v-slot:prepend>
+                  <q-icon name="attach_file" />
+                </template>
+              </q-file>
+            </q-card-section>
+
+            <q-card-section>
+              <q-input
+                v-model="text"
+                outlined
+                dense
+                type="text"
+                label="Directorate HOD Photo"
+              />
+            </q-card-section>
+
+            <q-card-actions align="right">
+              <q-btn color="red-5" label="Reset" />
+              <q-btn color="green-5" label="Save" />
+            </q-card-actions>
+          </q-card>
+        </div>
       </div>
 
-      <div class="col-4">
-        <q-card class="my-card">
+      <q-dialog v-model="dialogRef">
+        <q-card class="q-dialog-plugin">
           <q-card-section class="q-pb-none">
-            <div class="text-h6">Add Department Profile</div>
+            <div class="text-h6">Update Department Profile</div>
           </q-card-section>
-          <q-card-section class="q-pb-none">
+          <q-card-section>
             <q-input
               v-model="text"
               outlined
@@ -64,7 +152,7 @@
             />
           </q-card-section>
 
-          <q-card-section class="q-pb-none">
+          <q-card-section>
             <q-file dense label="Secreatriat HOD Name" outlined v-model="model">
               <template v-slot:prepend>
                 <q-icon name="attach_file" />
@@ -72,7 +160,7 @@
             </q-file>
           </q-card-section>
 
-          <q-card-section class="q-pb-none">
+          <q-card-section>
             <q-input
               v-model="text"
               outlined
@@ -82,20 +170,15 @@
             />
           </q-card-section>
 
-          <q-card-section class="q-pb-none">
-            <q-file
-              dense
-              label="Secreatriat HOD Photo"
-              outlined
-              v-model="model"
-            >
+          <q-card-section>
+            <q-file dense label="Secreatriat HOD Photo" outlined v-model="model">
               <template v-slot:prepend>
                 <q-icon name="attach_file" />
               </template>
             </q-file>
           </q-card-section>
 
-          <q-card-section class="q-pb-none">
+          <q-card-section>
             <q-input
               v-model="text"
               outlined
@@ -105,7 +188,7 @@
             />
           </q-card-section>
 
-          <q-card-section class="q-pb-none">
+          <q-card-section>
             <q-file
               dense
               label="Directorate  HOD Designation"
@@ -133,90 +216,10 @@
             <q-btn color="green-5" label="Save" />
           </q-card-actions>
         </q-card>
-      </div>
+      </q-dialog>
     </div>
 
-    <q-dialog v-model="dialogRef">
-      <q-card class="q-dialog-plugin">
-        <q-card-section class="q-pb-none">
-          <div class="text-h6">Update Department Profile</div>
-        </q-card-section>
-        <q-card-section>
-          <q-input
-            v-model="text"
-            outlined
-            dense
-            type="text"
-            label="Department Name"
-          />
-        </q-card-section>
-
-        <q-card-section>
-          <q-file dense label="Secreatriat HOD Name" outlined v-model="model">
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-        </q-card-section>
-
-        <q-card-section>
-          <q-input
-            v-model="text"
-            outlined
-            dense
-            type="text"
-            label="Secreatriat HOD Designation"
-          />
-        </q-card-section>
-
-        <q-card-section>
-          <q-file dense label="Secreatriat HOD Photo" outlined v-model="model">
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-        </q-card-section>
-
-        <q-card-section>
-          <q-input
-            v-model="text"
-            outlined
-            dense
-            type="text"
-            label="Directorate HOD Name"
-          />
-        </q-card-section>
-
-        <q-card-section>
-          <q-file
-            dense
-            label="Directorate  HOD Designation"
-            outlined
-            v-model="model"
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-        </q-card-section>
-
-        <q-card-section>
-          <q-input
-            v-model="text"
-            outlined
-            dense
-            type="text"
-            label="Directorate HOD Photo"
-          />
-        </q-card-section>
-
-        <q-card-actions align="right">
-          <q-btn color="red-5" label="Reset" />
-          <q-btn color="green-5" label="Save" />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-  </div>
+  </q-page>
 </template>
 
 <script>
@@ -375,8 +378,3 @@ export default {
 };
 </script>
 
-<style lang="sass">
-
-// .q-table thead, .q-table tr, .q-table th, .q-table td
-//   white-space: normal !important
-</style>
