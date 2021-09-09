@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Office;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\Staff;
 use App\Utils\DataUtil;
 use Illuminate\Http\Request;
 
@@ -18,6 +20,8 @@ class PublicDataController extends Controller
                 'label'=>$item->name
             ]),
             'districts' => DataUtil::DISTRICTS,
+            'staffs'=>Staff::query()->get(['id as value','full_name as label']),
+            'offices'=>Office::query()->get(['id as value','name as label'])
 
         ], 200);
     }

@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fff">
 
-    <q-header elevated class="green-bottom-border text-primary" height-hint="98">
+    <q-header elevated  class="bg-white green-bottom-border text-primary" height-hint="98">
       <q-toolbar  class="container">
         <q-btn class="lt-sm" @click="localData.openDrawer=true" flat icon="menu"/>
         <q-toolbar-title>

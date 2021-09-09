@@ -20,6 +20,11 @@ class OfficeController extends Controller
         $data=Office::query()->paginate($per_page);
         return response()->json($data, 200);
     }
+
+    public function officeRoles(Request $request,Office $office)
+    {
+        return response()->json($office->roles()->get(['roles.id as id','roles.name as label']), 200);
+    }
     public function create(Request $request)
     {
         $this->validate($request, Office::RULES);

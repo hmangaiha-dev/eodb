@@ -37,6 +37,8 @@ Route::group(['prefix' => 'office'],function(){
     Route::get('{office}', [OfficeController::class, 'show']);
     Route::put('{office}', [OfficeController::class, 'update']);
     Route::delete('{office}', [OfficeController::class, 'destroy']);
+    Route::get('{office}/roles', [OfficeController::class, 'officeRoles']);
+
 });
 Route::group(['prefix' => 'staff'],function(){
     Route::get('', [StaffController::class, 'index']);
@@ -44,6 +46,7 @@ Route::group(['prefix' => 'staff'],function(){
     Route::get('{staff}', [StaffController::class, 'show']);
     Route::put('{staff}', [StaffController::class, 'update']);
     Route::delete('{staff}', [StaffController::class, 'destroy']);
+    Route::post('post', [StaffController::class, 'staffPosting']);
 });
 
 Route::group(['prefix' => 'auth'],function(){
