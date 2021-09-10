@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\PostingController;
 use App\Http\Controllers\PublicDataController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StaffController;
@@ -47,6 +48,11 @@ Route::group(['prefix' => 'staff'],function(){
     Route::put('{staff}', [StaffController::class, 'update']);
     Route::delete('{staff}', [StaffController::class, 'destroy']);
     Route::post('post', [StaffController::class, 'staffPosting']);
+});
+
+Route::group(['prefix' => 'postings'],function(){
+    Route::get('', [PostingController::class, 'index']);
+    Route::get('{staff}/posts', [PostingController::class, 'staffPostings']);
 });
 
 Route::group(['prefix' => 'auth'],function(){

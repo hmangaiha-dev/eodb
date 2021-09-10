@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fff">
 
-    <q-header elevated  class="bg-white green-bottom-border text-primary" height-hint="98">
+    <q-header  elevated  class="bg-white green-bottom-border text-primary" height-hint="98">
       <q-toolbar  class="container">
         <q-btn class="lt-sm" @click="localData.openDrawer=true" flat icon="menu"/>
         <q-toolbar-title>
@@ -10,11 +10,92 @@
           </q-avatar>
           EODB
         </q-toolbar-title>
+        <q-space/>
+        <q-btn flat icon="account_circle"/>
+        <q-btn flat icon="more_vert"/>
       </q-toolbar>
       <q-separator/>
-      <q-toolbar class="xs-hide container q-pa-xs q-gutter-md">
+      <q-toolbar class="scroll-y xs-hide container q-pa-xs q-gutter-sm">
         <q-btn color="primary" icon="dashboard"/>
-        <q-btn-dropdown dropdown-icon="arrow_drop_down" flat color="primary" label="Administration">
+
+        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat label="File management">
+          <q-list>
+            <q-item :to="{name:'file:create'}" clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>New file</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item :to="{name:'file:incoming',params:{office_id:1}}" clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Incoming files</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item  clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Outgoing files</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
+        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Application management">
+          <q-list>
+            <q-item :to="{name:'application:new'}" clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>New applications</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item :to="{name:'application:verified'}" clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Verified applications</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item  :to="{name:'application:approved'}" clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Approved applications</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
+<!--        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Certificate">-->
+<!--          <q-list>-->
+<!--            <q-item :to="{name:'application:new'}" clickable v-close-popup>-->
+<!--              <q-item-section>-->
+<!--                <q-item-label>Unpaid</q-item-label>-->
+<!--              </q-item-section>-->
+<!--            </q-item>-->
+
+<!--            <q-item :to="{name:'application:verified'}" clickable v-close-popup>-->
+<!--              <q-item-section>-->
+<!--                <q-item-label>Paid</q-item-label>-->
+<!--              </q-item-section>-->
+<!--            </q-item>-->
+
+<!--          </q-list>-->
+<!--        </q-btn-dropdown>-->
+        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Accounting">
+          <q-list>
+            <q-item  clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Transaction book</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item  clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Ledger</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item  clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Balance sheet</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
+        <q-btn-dropdown  no-caps dropdown-icon="arrow_drop_down" flat label="Administration">
           <q-list>
             <q-item clickable v-close-popup @click="onMenuItemClick('posting')">
               <q-item-section>
@@ -40,7 +121,7 @@
             </q-item>
           </q-list>
         </q-btn-dropdown>
-        <q-btn-dropdown dropdown-icon="arrow_drop_down" flat color="primary" label="Web management">
+        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down"  flat label="Web management">
           <q-list>
             <q-item clickable v-close-popup @click="onMenuItemClick('departmentscd')">
               <q-item-section>
@@ -50,6 +131,8 @@
 
           </q-list>
         </q-btn-dropdown>
+        <q-space/>
+        <q-btn flat icon="settings"/>
       </q-toolbar>
     </q-header>
 
@@ -90,7 +173,7 @@ export default {
     const onMenuItemClick = menu => {
       switch (menu) {
         case 'posting':
-          router.push('/admin/posting')
+          router.push('/admin/postings')
           break;
         case 'office':
           router.push('/admin/offices')

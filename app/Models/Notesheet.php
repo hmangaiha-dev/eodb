@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Roleable extends Model
+class Notesheet extends Model
 {
     use HasFactory;
 
-    public function roleable(): MorphTo
+    protected $fillable = ['note'];
+
+    public function noteable(): MorphTo
     {
-        return $this->morphTo('roleable');
+        return $this->morphTo('noteable');
     }
+
 }

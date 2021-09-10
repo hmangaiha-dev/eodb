@@ -27,7 +27,9 @@
           </div>
           <div class="col-xs-12 col-md-6">
             <q-select dropdown-icon="arrow_drop_down"
-                      v-model="formData.role"
+                      multiple
+                      use-chips
+                      v-model="formData.roles"
                       outlined
                       :error="localData.errors.hasOwnProperty('roles')"
                       :options="localData.officeRoles"
@@ -41,7 +43,9 @@
             <q-input outlined v-model="formData.joining_date"
                      label="Joining date"
                      mask="date"
-                     :rules="['date']">
+                     :rules="[
+                       val=> !!val || 'Joining date is required'
+                     ]">
               <template v-slot:append>
                 <q-icon name="event" class="cursor-pointer">
                   <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
@@ -86,8 +90,9 @@
 import {computed, reactive} from "@vue/reactivity";
 import {useStore} from "vuex";
 import {api} from "boot/axios";
-import axios from "axios";
 import {useQuasar} from "quasar";
+import {onMounted} from "@vue/runtime-core";
+import {notify} from "src/utils";
 export default {
   setup(props, context) {
     const store=useStore()
@@ -98,6 +103,7 @@ export default {
     });
     const formData = reactive({
       staff:null,
+      roles:[],
       office: null,
       joining_date: '',
       status: 'on-duty',
@@ -108,14 +114,23 @@ export default {
       const data={
         staff_id:formData.staff.value,
         office_id:formData.office.value,
-        ...formData
+        roles:formData.roles.map(item=>item.id),
+        joining_date:formData.joining_date,
+        status:formData.status,
+        remark:formData.remark
       }
       api.post('staff/post',data)
       .then(res=>{
-
+        reset();
+        q.notify({type:"positive",message:res?.data?.message})
       })
       .catch(err=>{
-
+        if (err?.response?.data?.errors)
+          localData.errors = err.response.data?.errors
+        err?.response?.data?.message && q.notify({
+          type: 'negative',
+          message: err.response?.data?.message
+        })
       })
     }
     const reset=()=>{
@@ -139,6 +154,7 @@ export default {
         })
       })
     }
+    onMounted(()=>notify())
     return {
       formData,
       reset,

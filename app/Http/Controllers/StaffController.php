@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Staff;
 use App\Models\StaffPosting;
 use App\Utils\PostingStatus;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -91,14 +92,16 @@ class StaffController extends Controller
             'roles' => 'required',
             'joining_date' => 'required',
         ]);
-        $staff = new Staff();
-        $staff->postings()->latest()->first()->update([
+        $staff = Staff::query()->findOrFail($request->get('staff_id'));
+        $staff->postings()?->latest()?->first()?->update([
             'leaving_date' => now()
         ]);
-        $posting = new StaffPosting($request->only((new StaffPosting())->getFillable()));
+        $posting=$staff->postings()->create([
+            'office_id'=>$request->get('office_id'),
+            'joining_date'=>$request->get('joining_date'),
+            'status'=>$request->get('status')
+        ]);
         $posting->roles()->sync($request->get('roles'));
-//        $posting->save();
-        $staff->postings()->save($posting);
 
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
         return response()->json([

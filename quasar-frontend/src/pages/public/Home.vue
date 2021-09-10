@@ -63,7 +63,7 @@
 
     <div class="track q-mt-lg row justify-center">
       <div
-        style="height: none !important"
+        style="height: 0px !important"
         class="text-center col-sm-8 track-form col-lg-4 col-xs-12"
       >
         <span>Track your EODB form</span>
@@ -561,36 +561,7 @@ export default defineComponent({
   background: url("../../assets/group.png");
 }
 
-.q-placeholder {
-  /* width: 278px; */
-  /* height: 25px; */
-  margin: 8px 235px 7px 10px;
-  opacity: 0.53;
-  font-family: Poppins;
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.39;
-  letter-spacing: normal;
-  text-align: left;
-  color: #598b83;
-}
 
-.btn-dropdown, .tile-content {
-  font-family: "Poppins";
-  font-size: 18px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #357c71;
-}
-
-.q-focus-helper {
-  background: none !important;
-}
 
 .explore_dept {
   /* width: 613px;
