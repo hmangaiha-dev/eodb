@@ -1,3 +1,5 @@
+import admin from "src/router/admin";
+import investor from "src/router/investor";
 
 const routes = [
   {
@@ -37,31 +39,11 @@ const routes = [
       { path: 'staffs/create', name:'staff:create', component: () => import('pages/admin/staff/Create') },
       { path: 'postings/create',name:'posting:create', component: () => import('pages/admin/posting/Posting') },
       { path: 'postings',name:'posting:read', component: () => import('pages/admin/posting/Postings') },
-
-      { path: 'files',name:'file:read', component: () => import('pages/admin/file/Create') },
-      { path: 'files/create',name:'file:create', component: () => import('pages/admin/file/Files') },
-      { path: 'files/:office_id/files',name:'file:edit', component: () => import('pages/admin/posting/Postings') },
-      //test
-      { path: 'files/:office_id/incoming',name:'file:incoming', component: () => import('pages/admin/file/IncomingFiles') },
-      { path: 'files/:office_id/outgoing',name:'file:outgoing', component: () => import('pages/admin/file/OutgoingFiles') },
-
-      { path: 'applications/new',name:'application:new', component: () => import('pages/admin/application/Application') },
-      { path: 'applications/verified',name:'application:verified', component: () => import('pages/admin/application/Verified') },
-      { path: 'applications/approved',name:'application:approved', component: () => import('pages/admin/application/Approved') },
-    ]
-  }, {
-    path: '/investor',
-    component: () => import('layouts/InvestorLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/investor/Dashboard.vue') }
-    ]
-  },{
-    path: '/department',
-    component: () => import('layouts/DepartmentLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/department/Dashboard.vue') }
+  {...admin},
+  {...investor},
     ]
   },
+
 
   // Always leave this as last one,
   // but you can also remove it
@@ -70,5 +52,6 @@ const routes = [
     component: () => import('pages/Error404.vue')
   }
 ]
+
 
 export default routes

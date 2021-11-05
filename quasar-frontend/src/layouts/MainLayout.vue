@@ -271,17 +271,20 @@
           <div>Title</div>
         </q-toolbar-title>
       </q-toolbar>
+     <MsegFooter/>
     </q-footer>
   </q-layout>
 </template>
 <script>
-import { useRouter } from "vue-router";
-import { reactive } from "@vue/reactivity";
-import { onMounted } from "@vue/runtime-core";
-import { useStore } from "vuex";
+import {useRouter} from "vue-router";
+import {reactive} from "@vue/reactivity";
+import {onMounted} from "@vue/runtime-core";
+import {useStore} from "vuex";
 import {ref} from 'vue'
+import MsegFooter from "components/MsegFooter";
 
 export default {
+  components: {MsegFooter},
   setup(props, context) {
     const services = ref([
       {
