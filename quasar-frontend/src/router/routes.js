@@ -18,6 +18,12 @@ const routes = [
       { path: 'department-profiles', component: () => import('pages/admin/EODB_department/DepartmentProfile.vue') },
       { path: 'department-info', component: () => import('pages/admin/EODB_department/DepartmentInfo.vue') },
 
+
+      { path: 'industries', component: () => import('pages/admin/services/Industries.vue') },
+      { path: 'fire', component: () => import('pages/admin/services/Fire.vue') },
+
+
+
       { path: 'roles', component: () => import('pages/admin/role/Roles') },
       { path: 'offices', component: () => import('pages/admin/office/Offices') },
       { path: 'staffs', component: () => import('pages/admin/staff/Staffs') },

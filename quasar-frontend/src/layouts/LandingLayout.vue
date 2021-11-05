@@ -146,6 +146,7 @@ export default defineComponent({
     const leftDrawerOpen = ref(true);
 
     const navigate = (e) => {
+      // return
       console.log("clicked");
 
       // console.log('length child nodes',e.target.childNodes);
@@ -238,10 +239,10 @@ export default defineComponent({
   color: #357c71 !important;
 }
 
-.q-menu {
+/* .q-menu {
   min-width: 100% !important;
   left: 0px !important;
-}
+} */
 
 .mizoram {
   width: 178px;

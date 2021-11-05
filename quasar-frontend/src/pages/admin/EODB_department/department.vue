@@ -3,6 +3,7 @@
     <div class="zcard">
       <div class="row justify-center q-col-gutter-md ">
         <div class="col-6">
+          <span class="ztitle">Department List</span>
           <q-table
             wrap-cells
             separator="none"
@@ -33,7 +34,7 @@
               </q-td>
             </template>
             <template v-slot:top>
-              <span class="ztitle">Department List</span>
+              <!-- <span class="ztitle">Department List</span> -->
               <q-space />
               <q-input dense rounded outlined v-model="text">
                 <template v-slot:append>
@@ -46,9 +47,11 @@
           </q-table>
         </div>
         <div class="col-4">
+          <h1 class="ztitle">Add Department List</h1>
           <q-card class="my-card">
+            
             <q-card-section class="q-pb-none">
-              <div class="text-h6">Add Department  List</div>
+              <!-- <div class="text-h6">Add Department  List</div> -->
             </q-card-section>
             <q-card-section class="q-pb-none">
               <q-input

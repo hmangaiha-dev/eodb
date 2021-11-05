@@ -684,7 +684,7 @@ export default defineComponent({
   color: #f5f5f5;
 }
 
-h1 {
+.content, .content2 {
   font: 40px Poppins, sans-serif;
   font-weight: 500 !important;
   font-size: 2.5rem;
