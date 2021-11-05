@@ -1,9 +1,8 @@
 <template>
-  <!-- <q-page class="ff"> -->
+  <q-page class="container">
     <div class="zcard">
       <div class="row justify-center q-col-gutter-md">
-        <div class="col-lg-6 col-sm-10">
-          <h1 class="ztitle">Department Profile List</h1>
+        <div class="col-6">
           <q-table
             wrap-cells
             separator="none"
@@ -39,6 +38,7 @@
             </template>
             <template v-slot:top>
               <!-- <span class="text-h5">Department Profile List</span> -->
+              <span class="text-h5">Department Profile List</span>
               <q-space />
               <q-input dense rounded outlined v-model="text">
                 <template v-slot:append>
@@ -65,6 +65,11 @@
                   <q-icon name="attach_file" />
                 </template>
               </q-file>
+
+        <div class="col-4">
+          <q-card class="my-card">
+            <q-card-section class="q-pb-none">
+              <div class="text-h6">Add Department Profile</div>
             </q-card-section>
             <q-card-section class="q-pb-none">
               <q-input
@@ -78,6 +83,31 @@
             <q-card-section class="q-pb-none">
               <q-file
                 dense
+                label="Department Name"
+              />
+            </q-card-section>
+
+            <q-card-section class="q-pb-none">
+              <q-file dense label="Secreatriat HOD Name" outlined v-model="model">
+                <template v-slot:prepend>
+                  <q-icon name="attach_file" />
+                </template>
+              </q-file>
+            </q-card-section>
+
+            <q-card-section class="q-pb-none">
+              <q-input
+                v-model="text"
+                outlined
+                dense
+                type="text"
+                label="Secreatriat HOD Designation"
+              />
+            </q-card-section>
+
+            <q-card-section class="q-pb-none">
+              <q-file
+                dense
                 label="Secreatriat HOD Photo"
                 outlined
                 v-model="model"
@@ -87,6 +117,7 @@
                 </template>
               </q-file>
             </q-card-section>
+
             <q-card-section class="q-pb-none">
               <q-input
                 v-model="text"
@@ -96,6 +127,7 @@
                 label="Directorate HOD Name"
               />
             </q-card-section>
+
             <q-card-section class="q-pb-none">
               <q-file
                 dense
@@ -108,6 +140,7 @@
                 </template>
               </q-file>
             </q-card-section>
+
             <q-card-section>
               <q-input
                 v-model="text"
@@ -117,6 +150,7 @@
                 label="Directorate HOD Photo"
               />
             </q-card-section>
+
             <q-card-actions align="right">
               <q-btn color="red-5" label="Reset" />
               <q-btn color="green-5" label="Save" />
@@ -124,6 +158,7 @@
           </q-card>
         </div>
       </div>
+
       <q-dialog v-model="dialogRef">
         <q-card class="q-dialog-plugin">
           <q-card-section class="q-pb-none">
@@ -138,6 +173,7 @@
               label="Department Name"
             />
           </q-card-section>
+
           <q-card-section>
             <q-file dense label="Secreatriat HOD Name" outlined v-model="model">
               <template v-slot:prepend>
@@ -145,6 +181,7 @@
               </template>
             </q-file>
           </q-card-section>
+
           <q-card-section>
             <q-input
               v-model="text"
@@ -154,6 +191,7 @@
               label="Secreatriat HOD Designation"
             />
           </q-card-section>
+
           <q-card-section>
             <q-file dense label="Secreatriat HOD Photo" outlined v-model="model">
               <template v-slot:prepend>
@@ -161,6 +199,7 @@
               </template>
             </q-file>
           </q-card-section>
+
           <q-card-section>
             <q-input
               v-model="text"
@@ -170,6 +209,7 @@
               label="Directorate HOD Name"
             />
           </q-card-section>
+
           <q-card-section>
             <q-file
               dense
@@ -198,7 +238,10 @@
         </q-card>
       </q-dialog>
     </div>
+    </div>
   <!-- </q-page> -->
+
+  </q-page>
 </template>
 
 <script>
@@ -362,8 +405,3 @@ export default {
 };
 </script>
 
-<style lang="sass">
-
-// .q-table thead, .q-table tr, .q-table th, .q-table td
-//   white-space: normal !important
-</style>

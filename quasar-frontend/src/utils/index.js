@@ -14,3 +14,11 @@ export const processValidationError=(err)=>{
   }
   return err?.response?.data?.errors
 }
+
+export const notify=()=>{
+  const q = useQuasar();
+  q.notify({
+    type:'positive',
+    message:'hello world'
+  })
+}

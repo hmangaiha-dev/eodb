@@ -12,6 +12,7 @@ class StaffPosting extends Model
     use HasFactory;
 
     protected $fillable = ['office_id', 'staff_id', 'joining_date', 'leaving_date', 'remark','status'];
+//    protected $appends = ['staff'];
 
     public function staff(): BelongsTo
     {

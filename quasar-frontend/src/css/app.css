@@ -21,9 +21,14 @@
   font-family: "Ubuntu Condensed";
   line-height: 4rem;
 }
+.zsubtitle{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 3rem;
+}
 .green-bottom-border{
   border-bottom: 2px solid #357c71;
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   color: inherit;
 }
 .zcard{
@@ -31,7 +36,7 @@
   position: relative;
   border: 1px solid #e0e7f4;
   border-radius: 16px;
-  background-color: #fff;
+  /*background-color: #fff;*/
   box-shadow: 0 10px 12px 0 rgba(0,0,0,.1);
 }
 @media (min-width: 718px) {

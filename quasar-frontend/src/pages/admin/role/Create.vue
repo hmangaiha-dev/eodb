@@ -1,83 +1,109 @@
 <template>
-  <q-card style="min-width: 500px"  class="q-pa-md">
-    <q-form @reset="resetForm" @submit="handleSubmit">
+  <q-page class="container">
+    <h1 class='ztitle'>New role</h1>
+    <q-card  class="zcard q-pa-md">
+      <q-form @reset="resetForm" @submit="handleSubmit">
 
-      <div class="flex items-center justify-between">
-        <h1 class="text-h6">New Role</h1>
+          <h1 class="zsubtitle">New Role</h1>
 
-        <q-btn @click="handleClose" icon="close" flat/>
-      </div>
-      <q-input v-model="formData.name"
-               outlined
-               autofocus
-               dense
-               name="name"
-               :error="Boolean(errors?.name)"
-               :error-message="errors?.name?.toString()"
-               @input="delete errors?.name"
-               :rules="[
-                 val=>val || 'Name is required'
+        <q-input v-model="formData.name"
+                 outlined
+                 autofocus
+                 dense
+                 :error="localData.errors.hasOwnProperty('name')"
+                 :error-message="localData.errors?.name?.toString()"
+                 @blur="delete localData.errors['name']"
+                 :rules="[
+                 val=>!!val || 'Name is required'
                ]"
-      />
-      <q-input v-model="formData.description"
-               type="textarea"
-               outlined
-               dense
-               :error="Boolean(errors?.description)"
-               :error-message="errors?.description?.toString()"
-               @input="delete errors?.description"
-               :rules="[
-                 val=>val || 'Description is required'
-               ]"
-      />
-      <q-select
-        filled
-        v-model="modelMultiple"
-        multiple
-        :options="options"
-        use-chips
-        stack-label
-        label="Multiple selection"
-      />
-      <q-card-actions>
-        <q-btn color="primary" type="submit" label="Save"/>
-        <q-btn color="negative" type="reset" label="Cancel"/>
-      </q-card-actions>
-    </q-form>
-  </q-card>
+        />
+        <q-space/>
+        <q-input v-model="formData.description"
+                 type="textarea"
+                 outlined
+                 dense
+                 :error="localData.errors.hasOwnProperty('description')"
+                 :error-message="localData.errors?.description?.toString()"
+                 @blur="delete localData.errors['description']"
+        />
+        <q-space/>
+        <q-select
+          dense
+          outlined
+          dropdown-icon="arrow_drop_down"
+          v-model="tempPerms"
+          multiple
+          :options="permissions"
+          use-chips
+          stack-label
+          label="Permissions"
+        />
+        <q-card-actions>
+          <q-btn color="primary" type="submit" label="Save"/>
+          <q-btn color="negative" type="reset" label="Reset"/>
+        </q-card-actions>
+      </q-form>
+    </q-card>
+  </q-page>
 </template>
 <script>
-import {reactive} from "@vue/reactivity";
+import {computed, reactive} from "@vue/reactivity";
+import {useStore} from "vuex";
+import {api} from "boot/axios";
+import {useQuasar} from "quasar";
+import {ref} from "vue";
 
 export default {
-  emits: ['onCloseDialog'],
+  emits: ['onRoleCreated'],
   setup(props, context) {
-    const errors = reactive({});
+    const store = useStore();
+    const q = useQuasar();
+    const localData=reactive({
+      errors:{}
+    })
+    const tempPerms = ref([]);
     const formData = reactive({
       name: '',
-      description: ''
+      description: '',
+      permissions:[]
     });
 
     const handleSubmit = e => {
-      context.emit(formData)
+      formData['permissions']=tempPerms.value.map(item=>item.value)
+      api.post('role',formData)
+        .then(res=>{
+          q.notify({
+            type:'positive',
+            message:res?.data?.message
+          })
+          resetForm();
+
+        })
+        .catch(err=>{
+          console.log('error',err.response)
+          if (err?.response?.data?.errors)
+            localData.errors= err.response.data?.errors
+          err?.response?.data?.message &&  q.notify({
+            type: 'negative',
+            message: err.response?.data?.message
+          })
+        })
     }
     const resetForm = e => {
       formData.name = '';
       formData.description = '';
+      formData.permissions=[];
+      tempPerms.value=[]
     }
     return {
-      errors,
+      permissions:computed(()=>store.state.globalData.permissions),
+      localData,
       formData,
       resetForm,
       handleSubmit,
       handleClose: val => context.emit('onCloseDialog'),
-      modelMultiple: reactive([]),
+      tempPerms
 
-      options: [
-        {value: 1, label: 'One'},
-        {value: 2, label: 'Two'},
-        {value: 3, label: 'Three'},
-      ]
     }
   }
 }

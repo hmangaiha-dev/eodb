@@ -6,7 +6,7 @@
       style="background-color: #b9d8d4"
     >
       <div class="col-lg-5 col-sm-10 col-xs-11 q-mb-md col-md-5">
-        <h1 class="content q-px-md"><span>Think of Business!</span></h1>
+        <h1 class="heading content q-px-md"><span>Think of Business!</span></h1>
         <h1 class="content2">
           <span>There is Ease of Doing Business!</span>
         </h1>
@@ -63,7 +63,7 @@
 
     <div class="track q-mt-lg row justify-center">
       <div
-        style="height: none !important"
+        style="height: 0px !important"
         class="text-center col-sm-8 track-form col-lg-4 col-xs-12"
       >
         <span>Track your EODB form</span>
@@ -458,9 +458,6 @@ export default defineComponent({
   margin: 0 14px 0 0;
   object-fit: contain;
 
-  filter: gray; /* IE6-9 */
-  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-  filter: grayscale(1);
 }
 
 .logo:hover {
@@ -564,36 +561,7 @@ export default defineComponent({
   background: url("../../assets/group.png");
 }
 
-.q-placeholder {
-  /* width: 278px; */
-  /* height: 25px; */
-  margin: 8px 235px 7px 10px;
-  opacity: 0.53;
-  font-family: Poppins;
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.39;
-  letter-spacing: normal;
-  text-align: left;
-  color: #598b83;
-}
 
-.btn-dropdown, .tile-content {
-  font-family: "Poppins";
-  font-size: 18px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #357c71;
-}
-
-.q-focus-helper {
-  background: none !important;
-}
 
 .explore_dept {
   /* width: 613px;
@@ -684,7 +652,7 @@ export default defineComponent({
   color: #f5f5f5;
 }
 
-.content, .content2 {
+.content, .content2 .heading {
   font: 40px Poppins, sans-serif;
   font-weight: 500 !important;
   font-size: 2.5rem;
@@ -695,19 +663,9 @@ export default defineComponent({
     margin-top: 25px !important;
   }
 
- .q-placeholder {
-   /* color: blue; */
-   padding-left: 20px;
-   font-size: 15px;
- }
-
 
   .track {
     background: url("../../assets/bag.png");
-  }
-
-  .q-placeholder {
-    margin: 0px !important;
   }
 
   .developed-by {
@@ -722,7 +680,7 @@ export default defineComponent({
     border: none;
   }
 
-  hr {
+  .line {
     width: 40rem !important;
     /* background: olive !important; */
     /* padding: 100px; */

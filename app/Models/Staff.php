@@ -15,12 +15,16 @@ class Staff extends Authenticatable
         'full_name' => 'required',
         'email' => 'required',
         'phone' => 'required|digits:10',
-        'password' => 'required|min:6'
+        'password' => 'required|min:6',
+        'full_address'=>'required',
+        'locality'=>'required',
+        'district'=>'required',
+        'pincode'=>'required',
     ];
     use HasFactory, HasApiTokens;
 
     protected $table = 'staffs';
-    protected $fillable = ['full_name', 'email', 'phone', 'password'];
+    protected $fillable = ['full_name', 'email', 'phone', 'password','joined_at'];
     protected $appends = ['presentAddress', 'permanentAddress'];
 
     public function getPresentAddressAttribute()

@@ -12,9 +12,12 @@ class PermissionSeeder extends Seeder
     const ROLE_PERMISSIONS = [['name'=>'role:create'], ['name'=>'role:read'], ['name'=>'role:update'], ['name'=>'role:delete']];
     const STAFF_PERMISSIONS = [['name'=>'staff:posting'],['name' => 'staff:create'], ['name' => 'staff:read'], ['name' => 'staff:update'],
         ['name' => 'staff:delete']];
+
+    const FILE_PERMISSIONS = [['name'=>'file:create'],['name'=>'file:read'],['name'=>'file:update'],['name'=>'file:delete']];
+    const NOTESHEET_PERMISSIONS = [['name'=>'notesheet:create'],['name'=>'notesheet:read'],['name'=>'notesheet:update'],['name'=>'notesheet:delete']];
+
     public function run()
     {
-
         $test = array_merge(self::USER_PERMISSIONS, self::OFFICE_PERMISSIONS, self::ROLE_PERMISSIONS, self::STAFF_PERMISSIONS);
         Permission::query()->upsert(
             $test

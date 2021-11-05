@@ -6,7 +6,7 @@
 
       <div class="row q-col-gutter-md">
         <div class="flex justify-between flex-inline col-12">
-          <q-btn label="New staff" color="primary"/>
+          <q-btn to="/admin/roles/create" label="New role" color="primary"/>
           <q-input outlined dense />
         </div>
 
@@ -15,16 +15,16 @@
         </div>
         <div class="col-12">
           <q-list separator>
-            <q-item>
+            <q-item  v-for="item in localData?.listData?.data" :key="item.id">
               <q-item-section>
-                <q-item-label>one</q-item-label>
-                <q-item-label caption>caption</q-item-label>
+                <q-item-label>{{item?.name}}</q-item-label>
+                <q-item-label caption>{{item?.description}}</q-item-label>
               </q-item-section>
-            </q-item>
-            <q-item>
-              <q-item-section>
-                <q-item-label>Two</q-item-label>
-                <q-item-label caption>caption</q-item-label>
+              <q-item-section  side>
+                <div class="flex-inline">
+                  <q-btn :to="{name:'role:edit',params:{id:item.id}}" flat icon="edit" color="primary"/>
+                  <q-btn @click="deleteRole" flat icon="delete" color="negative"/>
+                </div>
               </q-item-section>
             </q-item>
           </q-list>
@@ -36,5 +36,49 @@
   </q-page>
 </template>
 <script>
+import {reactive} from "@vue/reactivity";
+import {useQuasar} from "quasar";
+import {onMounted} from "@vue/runtime-core";
+import {api} from "boot/axios";
+
+export default {
+  setup(props,context){
+    const q = useQuasar();
+    const localData=reactive({
+      listData:{
+        data:[]
+      }
+    })
+    const deleteRole=()=>{
+      q.dialog({
+        title: 'Confirm',
+        message: 'Would you like to delete?',
+        cancel: true,
+        persistent: true
+      }).onOk(() => {
+        // console.log('>>>> OK')
+      }).onOk(() => {
+        // console.log('>>>> second OK catcher')
+      }).onCancel(() => {
+        // console.log('>>>> Cancel')
+      }).onDismiss(() => {
+        // console.log('I am triggered on both OK and Cancel')
+      })
+    }
+    onMounted(()=>{
+      api.get('role')
+      .then(res=>{
+        localData.listData=res.data
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    })
+    return{
+      localData,
+      deleteRole
+    }
+  }
+}
 
 </script>
