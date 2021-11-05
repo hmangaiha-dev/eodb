@@ -12,7 +12,7 @@
           Title
         </q-toolbar-title>
 
-        <q-btn dense flat round icon="menu">
+        <q-btn dense flat round icon="person">
           <ProfileMenu @onMenuItemClick="handleProfileMenu"/>
         </q-btn>
 

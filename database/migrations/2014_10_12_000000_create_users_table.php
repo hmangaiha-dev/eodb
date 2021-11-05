@@ -19,6 +19,21 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();
+            $table->string('company_name');
+            $table->string('pan');
+            $table->string('address');
+            $table->string('city');
+            $table->string('district');
+            $table->string('state');
+            $table->string('country');
+            $table->string('pincode');
+            $table->string('mobile');
+
+            $table->softDeletes();
+
+            
+            
+
         });
     }
 
