@@ -279,9 +279,41 @@ import { useRouter } from "vue-router";
 import { reactive } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
+import {ref} from 'vue'
 
 export default {
   setup(props, context) {
+    const services = ref([
+      {
+        name: 'Industries',
+        to: 'industries'
+      },
+      {
+        name: 'Fire',
+        to: 'fire'
+      },
+      {
+        name: 'AMC',
+        to: 'amc'
+      },
+      {
+        name: 'MPCB',
+        to: 'mpcb'
+      },
+      {
+        name: 'PWD',
+        to: 'pwd'
+      },
+      {
+        name: 'Food & Drug',
+        to: 'food-and-drug'
+      },
+      {
+        name: 'UD & PA',
+        to: 'ud-and-pa'
+      }
+
+    ]);
     const router = useRouter();
     const store = useStore();
     const localData = reactive({
