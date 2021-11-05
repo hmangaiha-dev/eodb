@@ -15,11 +15,11 @@ class CreateOfficesTable extends Migration
     {
         Schema::create('offices', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->unique()->default(now());
-            $table->string('name');
+            $table->string('code');
+            $table->string("name");
             $table->string('description')->nullable();
-            $table->string('contacts')->nullable();
-
+            $table->string('contact')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

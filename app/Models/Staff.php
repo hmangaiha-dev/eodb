@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Utils\PostingStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -57,10 +58,33 @@ class Staff extends Authenticatable
             ->latest()
             ->first();
     }
-
-    public function postings(): HasMany
+    public function roles(): BelongsToMany
     {
-        return $this->hasMany(StaffPosting::class);
+        return $this->belongsToMany(Role::class, 'staff_roles');
     }
+
+    public function scopeCurrentPost($builder)
+    {
+        $builder->whereHas('postings', function ($query) {
+            $query->where('status', 'on-duty')
+                ->orderBy('staff_posts.id','asc');
+        });
+    }
+    public function getPermissionsName(){
+
+        $perms = [];
+        foreach ($this->roles as $role) {
+            foreach ($role->permissions as $perm) {
+                array_push($perms, $perm['name']);
+            }
+        }
+        return $perms;
+
+    }
+    public function postings(): BelongsToMany
+    {
+        return $this->belongsToMany(Office::class, table: 'staff_posts')->withPivot(['status','joining_date','leaving_date','remark']);
+    }
+
 
 }

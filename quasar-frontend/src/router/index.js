@@ -1,6 +1,7 @@
-import { route } from 'quasar/wrappers'
-import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
+import {route} from 'quasar/wrappers'
+import {createMemoryHistory, createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
 import routes from './routes'
+import {useQuasar} from "quasar";
 
 /*
  * If not building with SSR mode, you can
@@ -10,14 +11,13 @@ import routes from './routes'
  * async/await or return a Promise which resolves
  * with the Router instance.
  */
-
-export default route(function (/* { store, ssrContext } */) {
+export default route(function ({store, ssrContext}) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
     : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
 
   const Router = createRouter({
-    scrollBehavior: () => ({ left: 0, top: 0 }),
+    scrollBehavior: () => ({left: 0, top: 0}),
     routes,
 
     // Leave this as is and make changes in quasar.conf.js instead!
@@ -25,6 +25,41 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
+  // Router.beforeEach((to, from, next) => {
+  //   const loggedIn = store.getters['auth/isAuthenticated'];
+  //   console.log('loggedin',loggedIn)
+  //   let userType = store.getters['auth/getUserType']
+  //   // let loginRoute = userType==='user' ? {name: 'home'} : {name: 'staff:login'};
+  //   // if (to.matched.some(r => r.meta?.protected)) {
+  //   //   if (!loggedIn) {
+  //   //     next("/")
+  //   //   }else{
+  //   //     next()
+  //   //   }
+  //   // }
+  //   // next()
+  //   if (to.matched.some(route => route.meta.protected)) {
+  //     if (!loggedIn) {
+  //       next({
+  //         name: "home",
+  //         query: { redirect: to.fullPath }
+  //       });
+  //     } else {
+  //       if (userType==='staff') {
+  //         next();
+  //       }else if (to.meta?.user==='user' && userType==='user'){
+  //         console.log("to meta" ,to.meta)
+  //         next()
+  //       }else{
+  //         next({name:'access-denied'})
+  //       }
+  //     }
+  //   } else {
+  //     next();
+  //   }
+  //
+  // })
+
 
   return Router
 })

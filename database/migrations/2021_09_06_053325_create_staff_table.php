@@ -21,7 +21,9 @@ class CreateStaffTable extends Migration
             $table->string('phone')->unique();
             $table->string('password');
 
-            $table->date('joined_at')->nullable();
+            $table->date('joined_at')->default(now());
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

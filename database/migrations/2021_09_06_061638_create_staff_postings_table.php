@@ -18,12 +18,10 @@ class CreateStaffPostingsTable extends Migration
             $table->id();
             $table->unsignedInteger('staff_id');
             $table->unsignedInteger('office_id');
-
-            $table->date('joining_date')->nullable();
+            $table->date('joining_date');
             $table->date('leaving_date')->nullable();
             $table->string('remark')->nullable();
-
-            $table->enum('status', PostingStatus::STATUSES)->default(PostingStatus::ON_DUTY);
+            $table->enum('status', ['on-duty', 'pensioned'])->default('on-duty');
             $table->timestamps();
         });
     }

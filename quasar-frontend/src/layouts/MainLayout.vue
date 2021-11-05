@@ -144,14 +144,7 @@
     </q-page-container>
 
     <q-footer elevated class="bg-grey-8 text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          <div>Title</div>
-        </q-toolbar-title>
-      </q-toolbar>
+     <MsegFooter/>
     </q-footer>
 
   </q-layout>
@@ -161,9 +154,10 @@ import {useRouter} from "vue-router";
 import {reactive} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useStore} from "vuex";
+import MsegFooter from "components/MsegFooter";
 
 export default {
-
+  components: {MsegFooter},
   setup(props, context) {
     const router = useRouter();
     const store = useStore();
