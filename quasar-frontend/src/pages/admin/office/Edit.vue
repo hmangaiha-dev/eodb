@@ -1,16 +1,16 @@
 <template>
   <q-page class="container-lg">
     <div class="flex flex-inline items-center">
-      <h1 class='ztitle'>New Office</h1>
+      <h1 class='ztitle'>Edit Office</h1>
       <q-space/>
       <q-breadcrumbs align="right" gutter="xs">
         <q-breadcrumbs-el :to="{name:'office:read'}" label="Offices" />
-        <q-breadcrumbs-el label="New office" />
+        <q-breadcrumbs-el label="Edit office" />
       </q-breadcrumbs>
     </div>
 
     <q-card class="zcard q-pa-md">
-      <q-form ref="formRef" @reset="resetForm" @submit="handleSubmit">
+      <q-form @reset="resetForm" @submit="handleSubmit">
         <div class="row q-col-gutter-md">
           <div class="col-xs-12 zsubtitle">Office detail</div>
           <div class="col-xs-12 col-md-6">
@@ -18,6 +18,7 @@
                      class="q-mt-md"
                      label="Code"
                      outlined
+                     autofocus
                      :error="localData.errors.hasOwnProperty('code')"
                      :error-message="localData.errors?.name?.toString()"
                      @blur="delete localData.errors['code']"
@@ -40,16 +41,6 @@
             />
           </div>
           <div class="col-xs-12 col-md-6">
-            <q-input v-model="formData.contacts"
-                     class="q-mt-md"
-                     label="Contacts"
-                     outlined
-                     :error="localData.errors.hasOwnProperty('contacts')"
-                     :error-message="localData.errors?.description?.toString()"
-                     @blur="delete localData.errors['contacts']"
-            />
-          </div>
-          <div class="col-xs-12 col-md-6">
             <q-input v-model="formData.description"
                      class="q-mt-md"
                      label="Description"
@@ -61,18 +52,20 @@
 
             />
           </div>
-
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="formData.contact"
+                     class="q-mt-md"
+                     label="Contact"
+                     outlined
+                     :error="localData.errors.hasOwnProperty('contact')"
+                     :error-message="localData.errors?.description?.toString()"
+                     @blur="delete localData.errors['contacts']"
+            />
+          </div>
           <div class=col-xs-12>
             <q-separator/>
           </div>
           <div class="col-xs-12 zsubtitle">Bank detail</div>
-          <div class="col-xs-12 col-md-6">
-            <q-input v-model="bankData.mid"
-                     class="q-mt-md"
-                     label="Merchant ID"
-                     outlined
-            />
-          </div>
           <div class="col-xs-12 col-md-6">
             <q-input v-model="bankData.bank_name"
                      class="q-mt-md"
@@ -124,40 +117,78 @@ import {useStore} from "vuex";
 import {api} from "boot/axios";
 import {useQuasar} from "quasar";
 import {ref} from "vue";
+import {onMounted} from "@vue/runtime-core";
+import {useRoute, useRouter} from "vue-router";
 
 export default {
   setup(props, context) {
     const store = useStore();
     const q = useQuasar();
+    const route = useRoute();
+    const router = useRouter();
     const localData = reactive({
       errors: {}
     })
-    const formRef = ref(null);
     const tempRoles = ref([]);
     const bankData = reactive({
-      mid: '',
       bank_name: '',
       ac_holder: '',
       ac_no: '',
+      contact:'',
       ifsc: '',
       description: ''
     });
-    const formData = reactive({
+    let formData = reactive({
+      id:null,
       code: '',
       name: '',
       description: '',
       contacts: '',
     });
 
+    onMounted(()=>{
+      const id=route.params.id;
+
+      api.get(`office/${id}`)
+      .then(res=>{
+        console.log(res.data)
+        const {id,code,name,description,contact,bank_detail}=res.data
+        formData.id = id;
+        formData.code = code;
+        formData.name = name;
+        formData.description = description;
+        formData.contact=contact
+
+        if (bank_detail) {
+          const { bank_name, ac_holder, ac_no,ifsc} = bank_detail;
+          bankData.bank_name = bank_name;
+          bankData.ifsc = ifsc;
+          bankData.ac_holder = ac_holder;
+          bankData.ac_no = ac_no;
+        }
+
+
+      })
+      .catch(err=>{
+        err?.response?.data?.message && q.notify({
+          type: 'negative',
+          message: err.response?.data?.message
+        })
+      })
+    })
     const handleSubmit = e => {
+      const {id} =route.params
       formData.bank_detail={...bankData}
-      api.post('office', formData)
+      api.put(`office/${id}`, formData)
         .then(res => {
           q.notify({
             type: 'positive',
             message: res?.data?.message
           })
-          resetForm();
+          setTimeout(()=>{
+            router.back()
+          },1000)
+
         })
         .catch(err => {
           console.log('error', err.response)
@@ -170,11 +201,16 @@ export default {
         })
     }
     const resetForm = e => {
+      e?.target?.reset();
       formData.code = '';
       formData.name = '';
       formData.description = '';
       formData.contacts = '';
-      formRef.value.reset();
+      bankData.ac_no = '';
+      bankData.ac_holder = '';
+      bankData.ifsc = '';
+      bankData.bank_name = '';
+      bankData.description = '';
     }
     return {
       localData,
@@ -182,8 +218,7 @@ export default {
       formData,
       resetForm,
       handleSubmit,
-      tempRoles,
-      formRef
+      tempRoles
 
     }
   }

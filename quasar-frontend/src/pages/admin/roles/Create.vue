@@ -1,15 +1,19 @@
 <template>
-  <q-page class="container">
-    <h1 class='ztitle'>New role</h1>
+  <q-page class="container-lg">
+    <div class="flex flex-inline items-center">
+      <h1 class='ztitle'>New role</h1>
+      <q-space/>
+      <q-breadcrumbs align="right" gutter="xs">
+        <q-breadcrumbs-el :to="{name:'role:read'}" label="Roles" />
+        <q-breadcrumbs-el label="New role" />
+      </q-breadcrumbs>
+    </div>
     <q-card  class="zcard q-pa-md">
-      <q-form @reset="resetForm" @submit="handleSubmit">
-
-          <h1 class="zsubtitle">New Role</h1>
+      <q-form ref="formRef" @reset="resetForm" @submit="handleSubmit">
 
         <q-input v-model="formData.name"
                  outlined
                  autofocus
-                 dense
                  :error="localData.errors.hasOwnProperty('name')"
                  :error-message="localData.errors?.name?.toString()"
                  @blur="delete localData.errors['name']"
@@ -21,26 +25,23 @@
         <q-input v-model="formData.description"
                  type="textarea"
                  outlined
-                 dense
                  :error="localData.errors.hasOwnProperty('description')"
                  :error-message="localData.errors?.description?.toString()"
                  @blur="delete localData.errors['description']"
         />
         <q-space/>
         <q-select
-          dense
           outlined
           dropdown-icon="arrow_drop_down"
           v-model="tempPerms"
           multiple
           :options="permissions"
           use-chips
-          stack-label
           label="Permissions"
         />
         <q-card-actions>
-          <q-btn color="primary" type="submit" label="Save"/>
-          <q-btn color="negative" type="reset" label="Reset"/>
+          <q-btn flat color="primary" type="submit" label="Save"/>
+          <q-btn flat color="negative" type="reset" label="Reset"/>
         </q-card-actions>
       </q-form>
     </q-card>
@@ -58,6 +59,7 @@ export default {
   setup(props, context) {
     const store = useStore();
     const q = useQuasar();
+    const formRef = ref(null);
     const localData=reactive({
       errors:{}
     })
@@ -70,14 +72,13 @@ export default {
 
     const handleSubmit = e => {
       formData['permissions']=tempPerms.value.map(item=>item.value)
-      api.post('role',formData)
+      api.post('roles',formData)
         .then(res=>{
           q.notify({
             type:'positive',
             message:res?.data?.message
           })
-          resetForm();
-
+          e.target.reset();
         })
         .catch(err=>{
           console.log('error',err.response)
@@ -96,13 +97,13 @@ export default {
       tempPerms.value=[]
     }
     return {
-      permissions:computed(()=>store.state.globalData.permissions),
+      permissions:computed(()=>store.state.masterData.permissions),
       localData,
       formData,
       resetForm,
       handleSubmit,
-      handleClose: val => context.emit('onCloseDialog'),
-      tempPerms
+      tempPerms,
+      formRef
 
     }
   }

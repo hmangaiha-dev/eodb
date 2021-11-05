@@ -17,47 +17,6 @@
       <q-separator/>
       <q-toolbar class="scroll-y xs-hide container q-pa-xs q-gutter-sm">
         <q-btn color="primary" icon="dashboard"/>
-
-        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat label="File management">
-          <q-list>
-            <q-item :to="{name:'file:create'}" clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>New file</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item :to="{name:'file:incoming',params:{office_id:1}}" clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Incoming files</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item  clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Outgoing files</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
-        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Application management">
-          <q-list>
-            <q-item :to="{name:'application:new'}" clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>New applications</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item :to="{name:'application:verified'}" clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Verified applications</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item  :to="{name:'application:approved'}" clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Approved applications</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
 <!--        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Certificate">-->
 <!--          <q-list>-->
 <!--            <q-item :to="{name:'application:new'}" clickable v-close-popup>-->
@@ -74,63 +33,8 @@
 
 <!--          </q-list>-->
 <!--        </q-btn-dropdown>-->
-        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Accounting">
-          <q-list>
-            <q-item  clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Transaction book</q-item-label>
-              </q-item-section>
-            </q-item>
 
-            <q-item  clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Ledger</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item  clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Balance sheet</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
-        <q-btn-dropdown  no-caps dropdown-icon="arrow_drop_down" flat label="Administration">
-          <q-list>
-            <q-item clickable v-close-popup @click="onMenuItemClick('posting')">
-              <q-item-section>
-                <q-item-label>Posting</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup @click="onMenuItemClick('staff')">
-              <q-item-section>
-                <q-item-label>Staff</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-separator/>
-            <q-item clickable v-close-popup @click="onMenuItemClick('office')">
-              <q-item-section>
-                <q-item-label>Office/Department</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item clickable v-close-popup @click="onMenuItemClick('role')">
-              <q-item-section>
-                <q-item-label>Role</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
-        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down"  flat label="Web management">
-          <q-list>
-            <q-item clickable v-close-popup @click="onMenuItemClick('departmentscd')">
-              <q-item-section>
-                <q-item-label>Department info</q-item-label>
-              </q-item-section>
-            </q-item>
-
-          </q-list>
-        </q-btn-dropdown>
+        <AdminNav/>
         <q-space/>
         <q-btn flat icon="settings"/>
       </q-toolbar>
@@ -155,9 +59,10 @@ import {reactive} from "@vue/reactivity";
 import {onMounted} from "@vue/runtime-core";
 import {useStore} from "vuex";
 import MsegFooter from "components/MsegFooter";
+import AdminNav from "components/admin/AdminNav";
 
 export default {
-  components: {MsegFooter},
+  components: {AdminNav, MsegFooter},
   setup(props, context) {
     const router = useRouter();
     const store = useStore();

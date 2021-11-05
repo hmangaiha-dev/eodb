@@ -1,7 +1,7 @@
 <template>
-    <q-card style="width: 450px" class="q-pa-lg">
-      <q-form @submit="onSubmit" @reset="onReset">
-        <h1 class="zsubtitle q-py-md">New Staff</h1>
+  <q-card style="width: 450px" class="q-pa-lg">
+    <q-form @submit="onSubmit" @reset="onReset">
+        <h1 class="zsubtitle q-py-md">Edit Staff</h1>
         <q-input v-model="formData.fullname"
                  outlined
                  autofocus
@@ -11,26 +11,26 @@
                  :error-message="localData.errors['fullname']?.toString()"
                  :rules="[ val => !!val || 'Fullname is required' ]"
         />
-          <q-select
-            outlined
-            multiple
-            v-model="formData.roles"
-            use-chips
-            label="Select role"
-            @select="localData.errors['fullname']=false"
-            :error="localData.errors.hasOwnProperty('roles')"
-            :error-message="localData.errors['roles']?.toString()"
-            :options="roles"
-            :rules="[val=>!!val || 'Roles is required']"
-          >
-            <template v-slot:no-option>
-              <q-item>
-                <q-item-section class="text-grey">
-                  No results
-                </q-item-section>
-              </q-item>
-            </template>
-          </q-select>
+        <q-select
+          outlined
+          multiple
+          v-model="formData.roles"
+          use-chips
+          label="Select role"
+          @select="localData.errors['fullname']=false"
+          :error="localData.errors.hasOwnProperty('roles')"
+          :error-message="localData.errors['roles']?.toString()"
+          :options="roles"
+          :rules="[val=>!!val || 'Roles is required']"
+        >
+          <template v-slot:no-option>
+            <q-item>
+              <q-item-section class="text-grey">
+                No results
+              </q-item-section>
+            </q-item>
+          </template>
+        </q-select>
 
         <q-input v-model="formData.email"
                  outlined
@@ -78,12 +78,12 @@
                  label="Confirm password *"
                  :rules="[ val => val===formData.password || 'Password must match' ]"
         />
-        <div class="flex-inline">
-          <q-btn type="submit" flat color="primary">Save</q-btn>
-          <q-btn type="reset" flat color="negative">Reset</q-btn>
-        </div>
-      </q-form>
-    </q-card>
+      <q-card-section>
+        <q-btn type="submit" flat color="primary">Save</q-btn>
+        <q-btn type="reset" flat color="negative">Reset</q-btn>
+      </q-card-section>
+    </q-form>
+  </q-card>
 
 
 </template>
@@ -92,10 +92,15 @@ import {computed, reactive} from "@vue/reactivity";
 import {useStore} from "vuex";
 import {api} from "boot/axios";
 import {useQuasar} from "quasar";
+import {onMounted} from "@vue/runtime-core";
+import {useRoute} from "vue-router";
+import {ref, toRefs, watch} from "vue";
 
 export default {
-  emits: ['onStaffCreated'],
+  emits: ['onStaffUpdated'],
+  props: ['id'],
   setup(props,context){
+    const id = ref(props.id);
     const store = useStore();
     const q = useQuasar();
     const localData=reactive({
@@ -103,8 +108,9 @@ export default {
       errors:{}
     })
     const formData=reactive({
+      id:null,
       fullname:'',
-      designation:'',
+      designation: '',
       roles:[],
       email:'',
       mobile: '',
@@ -117,28 +123,50 @@ export default {
       const roles=temp.roles.map(role=>role.value);
       temp['roles'] = roles;
 
-      api.post('staff',temp)
-      .then(res=>{
-        q.notify({
-          type:'positive',
-          message:res?.data?.message
-        })
-        context.emit('onStaffCreated',res.data.list)
+      api.put(`staff/${formData.id}`,temp)
+        .then(res=>{
+          q.notify({
+            type:'positive',
+            message:res?.data?.message
+          })
+          context.emit('onStaffUpdated',res.data.list)
 
-      })
-      .catch(err=>{
-        console.log('error',err.response)
-        if (err?.response?.data?.errors)
-          localData.errors= err.response.data?.errors
-        err?.response?.data?.message &&  q.notify({
-          type: 'negative',
-          message: err.response?.data?.message
         })
-      })
+        .catch(err=>{
+          if (err?.response?.data?.errors)
+            localData.errors= err.response.data?.errors
+          err?.response?.data?.message &&  q.notify({
+            type: 'negative',
+            message: err.response?.data?.message
+          })
+        })
     }
+    const fetchDetail=id=>{
+      api.get(`staff/${id}`)
+        .then(res=>{
+          const {fullname, id,email, mobile, roles} = res.data.data;
+          formData.id = id;
+          formData.fullname = fullname;
+          formData.mobile = mobile;
+          formData.email = email;
+          formData.roles = roles.map(r=>({value:r.id,label:r.name}));
+        })
+        .catch(err=>{
+          err?.response?.data?.message && q.notify({
+            type: 'negative',
+            message: err.response?.data?.message
+          })
+        })
+    }
+    onMounted(()=>{
+      fetchDetail(id.value)
+    })
+    // watch(()=>id.value,(newval,old)=>{
+    //
+    //   (newval!==null || newval) && fetchDetail(newval);
+    // })
     const onReset=e=>{
       formData.fullname = '';
-      formData.designation = '';
       formData.email = '';
       formData.roles = [];
       formData.password_confirmation = '';

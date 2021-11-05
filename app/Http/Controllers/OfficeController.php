@@ -2,62 +2,93 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankDetail;
 use App\Models\Office;
 use Illuminate\Http\Request;
+use Illuminate\Validation\UnauthorizedException;
 
 class OfficeController extends Controller
 {
-    public function show(Request $request,int $id)
+    protected Office $office;
+
+    public function __construct(Office $office)
     {
-        $office=Office::query()->find($id)->with(['roles'])->first();
-        return response()->json([
-            'data'=>$office,
-            'message' => ''
-        ], 200);
+        $this->office = $office;
     }
-    public function index(Request $request){
+
+    public function index(Request $request)
+    {
+        $staff = auth('sanctum')->user();
+        if (!$staff->tokenCan('office:read'))
+            throw new UnauthorizedException('Unauthorized access');
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
-        $data=Office::query()->paginate($per_page);
-        return response()->json($data, 200);
+        return response()->json(Office::query()->paginate($per_page), 200);
     }
 
-    public function officeRoles(Request $request,Office $office)
+    public function show(Request $request, int $id)
     {
-        return response()->json($office->roles()->get(['roles.id as id','roles.name as label']), 200);
+        $data = Office::query()->with(['staffs', 'bankDetail'])->find($id);
+        return response()->json(
+            $data
+            , 200);
     }
-    public function create(Request $request)
+
+    public function store(Request $request)
     {
+
+        $staff = auth('sanctum')->user();
+        if (!$staff->tokenCan('office:create'))
+            throw new UnauthorizedException('Unauthorized access');
+        $bankDetail = $request->get('bank_detail');
         $this->validate($request, Office::RULES);
-        $office = Office::query()->create($request->only((new Office())->getFillable()));
 
-        if ($request->has('roles'))
-            $office->roles()->sync($request->get('roles'));
-
+        $office = Office::query()->create($request->only($this->office->getFillable()));
+        if (!blank($bankDetail)) {
+            $bank = new BankDetail($bankDetail);
+            $office->bankDetail()->save($bank);
+        }
+        $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
         return response()->json([
             'data' => $office,
-            'message' => 'New office created successfully'
-        ],200);
+            'list' => Office::query()->paginate($per_page),
+            'message' => 'New Office created successfully'
+        ]);
 
     }
 
-    public function update(Request $request,Office $office)
+    public function update(Request $request, Office $office)
     {
+        $staff = auth('sanctum')->user();
+        if (!$staff->tokenCan('office:update'))
+            throw new UnauthorizedException('Unauthorized access');
+
         $this->validate($request, Office::RULES);
-        $office->update($request->only((new Office())->getFillable()));
-        if ($request->has('roles'))
-            $office->roles()->sync($request->get('roles'));
+        $bankDetail = $request->get('bank_detail');
+        $office->update($request->only($office->getFillable()));
+        if (!blank($bankDetail)) {
+            $bank = new BankDetail($bankDetail);
+            $office->bankDetail()->save($bank);
+        }
+        $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
         return response()->json([
             'data' => $office,
+            'list' => Office::query()->paginate($per_page),
             'message' => 'Office updated successfully'
-        ],200);
+        ]);
     }
 
-    public function destroy(Request $request,Office $office)
+    public function destroy(Request $request, Office $office)
     {
+        $staff = auth('sanctum')->user();
+        if (!$staff->tokenCan('office:delete'))
+            throw new UnauthorizedException('Unauthorized access');
+
         $office->delete();
+        $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
         return response()->json([
             'data' => $office,
-            'message' => 'Office updated successfully'
-        ],200);
+            'list' => Office::query()->get(),
+            'message' => 'Office deleted successfully'
+        ]);
     }
 }

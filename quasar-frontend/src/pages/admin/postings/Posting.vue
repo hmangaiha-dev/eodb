@@ -1,8 +1,15 @@
 <template>
-  <q-page padding class="container">
-    <h1 class="ztitle">Posting</h1>
+  <q-page padding class="container-lg">
+    <div class="flex flex-inline items-center">
+      <h1 class='ztitle'>New post</h1>
+      <q-space/>
+      <q-breadcrumbs align="right" gutter="xs">
+        <q-breadcrumbs-el :to="{name:'posting:read'}" label="Postings" />
+        <q-breadcrumbs-el label="New post" />
+      </q-breadcrumbs>
+    </div>
     <div class="zcard">
-      <q-form @reset="reset" @submit="submit">
+      <q-form ref="formRef" @reset="reset" @submit="submit">
         <div class="row q-col-gutter-md">
           <div class="col-xs-12 col-md-6">
             <q-select dropdown-icon="arrow_drop_down"
@@ -12,40 +19,28 @@
                       :rules="[
                         val=>!!val || 'Please select staff'
                       ]"
+                      :error="localData.errors.hasOwnProperty('staff_id')"
+                      :error-message="localData.errors?.staff_id"
                       label="Select Staff"/>
           </div>
           <div class="col-xs-12 col-md-6">
             <q-select dropdown-icon="arrow_drop_down"
-                      @update:model-value="onDepartmentSelect"
                       v-model="formData.office"
                       outlined
                       :options="offices"
                       :rules="[
                         val=>!!val || 'Please select offices'
                       ]"
+                      :error="localData.errors.hasOwnProperty('office_id')"
+                      :error-message="localData.errors?.office_id?.toString()"
                       label="Select Office"/>
           </div>
-          <div class="col-xs-12 col-md-6">
-            <q-select dropdown-icon="arrow_drop_down"
-                      multiple
-                      use-chips
-                      v-model="formData.roles"
-                      outlined
-                      :error="localData.errors.hasOwnProperty('roles')"
-                      :options="localData.officeRoles"
-                      :rules="[
-                        val=>!!val || 'Please select roles'
-                      ]"
-                      label="Select roles"/>
-          </div>
-
           <div class=" col-xs-12 col-md-6">
             <q-input outlined v-model="formData.joining_date"
                      label="Joining date"
+                     :error="localData.errors.hasOwnProperty('joining_date')"
                      mask="date"
-                     :rules="[
-                       val=> !!val || 'Joining date is required'
-                     ]">
+                     :rules="['date']">
               <template v-slot:append>
                 <q-icon name="event" class="cursor-pointer">
                   <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
@@ -90,20 +85,19 @@
 import {computed, reactive} from "@vue/reactivity";
 import {useStore} from "vuex";
 import {api} from "boot/axios";
+import axios from "axios";
 import {useQuasar} from "quasar";
-import {onMounted} from "@vue/runtime-core";
-import {notify} from "src/utils";
+import {ref} from "vue";
 export default {
   setup(props, context) {
     const store=useStore()
     const q = useQuasar();
+    const formRef = ref(null);
     const localData = reactive({
-      officeRoles:[],
       errors:[]
     });
     const formData = reactive({
       staff:null,
-      roles:[],
       office: null,
       joining_date: '',
       status: 'on-duty',
@@ -114,24 +108,21 @@ export default {
       const data={
         staff_id:formData.staff.value,
         office_id:formData.office.value,
-        roles:formData.roles.map(item=>item.id),
-        joining_date:formData.joining_date,
-        status:formData.status,
-        remark:formData.remark
+        ...formData
       }
-      api.post('staff/post',data)
-      .then(res=>{
-        reset();
-        q.notify({type:"positive",message:res?.data?.message})
-      })
-      .catch(err=>{
-        if (err?.response?.data?.errors)
-          localData.errors = err.response.data?.errors
-        err?.response?.data?.message && q.notify({
-          type: 'negative',
-          message: err.response?.data?.message
+      api.post('posting',data)
+        .then(res=>{
+          q.notify({type:'positive',message:res.data?.message})
+          reset();
         })
-      })
+        .catch(err=>{
+          if (err?.response?.data?.errors)
+            localData.errors= err.response.data?.errors
+          err?.response?.data?.message &&  q.notify({
+            type: 'negative',
+            message: err.response?.data?.message
+          })
+        })
     }
     const reset=()=>{
       formData.staff = null;
@@ -139,31 +130,19 @@ export default {
       formData.joining_date = null;
       formData.status = 'on-duty';
       formData.remark = '';
+      formRef.value.reset()
     }
-    const onDepartmentSelect=e=>fetchRoles(e.value)
 
-    const fetchRoles=(office_id)=>{
-      api.get(`office/${office_id}/roles`)
-      .then(res=>{
-        localData.officeRoles=res.data
-      })
-      .catch(err=>{
-        q.notify({
-          type:'negative',
-          message:err.toString()
-        })
-      })
-    }
-    onMounted(()=>notify())
     return {
       formData,
+      formRef,
       reset,
       submit,
       localData,
-      staffs:computed(()=>store.state.globalData.staffs),
-      offices:computed(()=>store.state.globalData.offices),
-      statuses:computed(()=>store.state.globalData.statuses),
-      onDepartmentSelect
+      staffs:computed(()=>store.state.masterData.staffs),
+      offices:computed(()=>store.state.masterData.offices),
+      statuses:computed(()=>store.state.masterData.postingStatuses),
+      roles:computed(()=>store.state.masterData.roles),
     }
   }
 }

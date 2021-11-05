@@ -4,8 +4,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PostingController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicDataController;
+use App\Http\Controllers\ResourceDataController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StaffAuthController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,35 +27,47 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group(['prefix' => 'profile', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('', [ProfileController::class, 'show']);
+    Route::put('', [ProfileController::class, 'update']);
+});
+
+Route::post('staff-login', [StaffAuthController::class, 'login']);
+
 Route::get('public-data',[PublicDataController::class,'fetchPublicData']);
-Route::group(['prefix' => 'role'],function(){
+Route::group(['prefix' => 'roles', 'middleware' => ['auth:sanctum','staff']], function () {
     Route::get('', [RoleController::class, 'index']);
-    Route::post('', [RoleController::class, 'create']);
-    Route::get('{role}', [RoleController::class, 'show']);
+    Route::post('', [RoleController::class, 'store']);
+    Route::get('{id}', [RoleController::class, 'show']);
     Route::put('{role}', [RoleController::class, 'update']);
     Route::delete('{role}', [RoleController::class, 'destroy']);
 });
-Route::group(['prefix' => 'office'],function(){
+
+Route::group(['prefix' => 'office', 'middleware' => ['auth:sanctum','staff']], function () {
     Route::get('', [OfficeController::class, 'index']);
-    Route::post('', [OfficeController::class, 'create']);
-    Route::get('{office}', [OfficeController::class, 'show']);
+    Route::post('', [OfficeController::class, 'store']);
+    Route::get('{id}', [OfficeController::class, 'show']);
     Route::put('{office}', [OfficeController::class, 'update']);
     Route::delete('{office}', [OfficeController::class, 'destroy']);
-    Route::get('{office}/roles', [OfficeController::class, 'officeRoles']);
-
 });
-Route::group(['prefix' => 'staff'],function(){
-    Route::get('', [StaffController::class, 'index']);
-    Route::post('', [StaffController::class, 'create']);
+Route::group(['prefix' => 'staff', 'middleware' => ['auth:sanctum','staff']], function () {
+    Route::get('index', [StaffController::class, 'index']);
+    Route::post('/', [StaffController::class, 'store']);
     Route::get('{staff}', [StaffController::class, 'show']);
     Route::put('{staff}', [StaffController::class, 'update']);
     Route::delete('{staff}', [StaffController::class, 'destroy']);
-    Route::post('post', [StaffController::class, 'staffPosting']);
 });
-
-Route::group(['prefix' => 'postings'],function(){
-    Route::get('', [PostingController::class, 'index']);
-    Route::get('{staff}/posts', [PostingController::class, 'staffPostings']);
+Route::group(['prefix' => 'posting', 'middleware' => ['auth:sanctum','staff']], function () {
+    Route::get('index', [PostingController::class, 'index']);
+    Route::post('', [PostingController::class, 'postStaff']);
+    Route::put('{post}', [PostingController::class, 'update']);
+});
+Route::group(['prefix' => 'resources', 'middleware' => ['auth:sanctum','staff']], function () {
+    Route::get('{type}/index', [ResourceDataController::class, 'index']);
+    Route::post('store', [ResourceDataController::class, 'store']);
+    Route::put('{id}', [ResourceDataController::class, 'update']);
+    Route::get('{id}', [ResourceDataController::class, 'show']);
+    Route::delete('{id}/destroy', [ResourceDataController::class, 'destroy']);
 });
 
 Route::group(['prefix' => 'auth'],function(){
