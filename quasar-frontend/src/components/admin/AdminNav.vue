@@ -18,7 +18,7 @@ export default {
   setup(props) {
     return{
       menus:[
-        {id:'admin',label:'Admin Control',icon:null,
+        {id:'admin',label:'Admin Control',icon:'edit',
           items:[
             {route_name:'posting:read',label:'Staff postings',leftIcon:'tag',rightIcon:'navigate_next'},
             {route_name:'office:read',label:'Manage offices',leftIcon:'tag',rightIcon:'navigate_next'},

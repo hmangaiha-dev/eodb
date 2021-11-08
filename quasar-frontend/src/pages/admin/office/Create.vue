@@ -9,8 +9,7 @@
       </q-breadcrumbs>
     </div>
 
-    <q-card class="zcard q-pa-md">
-      <q-form ref="formRef" @reset="resetForm" @submit="handleSubmit">
+      <q-form class="zdetailcard q-pa-md" ref="formRef" @reset="resetForm" @submit="handleSubmit">
         <div class="row q-col-gutter-md">
           <div class="col-xs-12 zsubtitle">Office detail</div>
           <div class="col-xs-12 col-md-6">
@@ -115,7 +114,6 @@
           <q-btn color="negative" flat type="reset" label="Reset"/>
         </q-card-actions>
       </q-form>
-    </q-card>
   </q-page>
 </template>
 <script>
@@ -146,7 +144,7 @@ export default {
       code: '',
       name: '',
       description: '',
-      contacts: '',
+      contact: '',
     });
 
     const handleSubmit = e => {
@@ -173,8 +171,16 @@ export default {
       formData.code = '';
       formData.name = '';
       formData.description = '';
-      formData.contacts = '';
+      formData.contact = '';
+
+      bankData.bank_name = '';
+      bankData.ac_holder = '';
+      bankData.ac_no = '';
+      bankData.ifsc = '';
+      bankData.description = '';
+
       formRef.value.reset();
+
     }
     return {
       localData,

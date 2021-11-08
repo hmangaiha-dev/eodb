@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fff">
 
-    <q-header  elevated  class="bg-white green-bottom-border text-primary" height-hint="98">
+    <q-header  elevated  class="bg-white print-hide green-bottom-border text-primary" height-hint="98">
       <q-toolbar  class="container">
         <q-btn class="lt-sm" @click="localData.openDrawer=true" flat icon="menu"/>
         <q-toolbar-title>
@@ -11,7 +11,9 @@
           EODB
         </q-toolbar-title>
         <q-space/>
-        <q-btn flat icon="account_circle"/>
+        <q-btn-dropdown rounded icon="manage_accounts" dropdown-icon="arrow_drop_down" no-caps :label="user.full_name" outline color="primary">
+          <ProfileMenu/>
+        </q-btn-dropdown>
         <q-btn flat icon="more_vert"/>
       </q-toolbar>
       <q-separator/>
@@ -60,9 +62,12 @@ import {onMounted} from "@vue/runtime-core";
 import {useStore} from "vuex";
 import MsegFooter from "components/MsegFooter";
 import AdminNav from "components/admin/AdminNav";
+import {api} from "boot/axios";
+import ProfileMenu from "components/admin/ProfileMenu";
+import {computed} from "vue";
 
 export default {
-  components: {AdminNav, MsegFooter},
+  components: {ProfileMenu, AdminNav, MsegFooter},
   setup(props, context) {
     const router = useRouter();
     const store = useStore();
@@ -89,11 +94,12 @@ export default {
       }
     }
     onMounted(() => {
-      store.dispatch('globalData/fetchGlobalData');
+      store.dispatch('staffData/fetchData');
     })
     return {
       onMenuItemClick,
-      localData
+      localData,
+      user:computed(()=>store.state.authData.currentUser)
     }
   }
 }

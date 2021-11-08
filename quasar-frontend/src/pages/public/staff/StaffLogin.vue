@@ -1,7 +1,7 @@
 <template>
   <q-page padding class="container-lg">
     <q-form class="q-mt-lg flex justify-center" @submit="submit" @reset="reset">
-      <div v-if="!isAuthenticated" style="max-width: 450px" class="zncard row q-col-gutter-sm">
+      <div  style="max-width: 450px" class="zdetailcard row q-col-gutter-sm">
         <div class="col-xs-12">
           <h1 class="ztitle">Login</h1>
         </div>
@@ -83,7 +83,7 @@ export default {
       }
     }
     const submit = () => {
-      api.post('staff-login', formData)
+      api.post('auth/staff-login', formData)
         .then(res => {
           const {token, user} = res.data;
           store.dispatch('authData/setToken',token)

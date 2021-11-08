@@ -22,11 +22,12 @@ class PostingController extends Controller
 
         $perPage = $request->has('rowsPerPage') ? $request->get('rowsPerPage') : 15;
         $sortValue = $request->has('descending') ? 'desc' : 'asc';
-        $sortBy = $request->has('sortBy') ? $request->get('sortBy') : 'fullname';
+        $sortBy = $request->has('sortBy') ? $request->get('sortBy') : 'full_name';
         $search = $request->get('search');
         $data = Staff::query()
+            ->with(['postings'])
             ->when(!blank($search), function ($q) use ($search) {
-                return $q->where('fullname', 'LIKE', "$search%");
+                return $q->where('full_name', 'LIKE', "$search%");
             })
             ->orderBy($sortBy, $sortValue)
             ->paginate($perPage);

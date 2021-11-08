@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BankDetail;
 use App\Models\Office;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\UnauthorizedException;
 
 class OfficeController extends Controller
@@ -42,11 +43,15 @@ class OfficeController extends Controller
         $bankDetail = $request->get('bank_detail');
         $this->validate($request, Office::RULES);
 
-        $office = Office::query()->create($request->only($this->office->getFillable()));
-        if (!blank($bankDetail)) {
-            $bank = new BankDetail($bankDetail);
-            $office->bankDetail()->save($bank);
-        }
+        $office = null;
+        DB::transaction(function ($schema) use ($request, $bankDetail) {
+            $office = Office::query()->create($request->only($this->office->getFillable()));
+            if (!blank($bankDetail)) {
+                $bank = new BankDetail($bankDetail);
+                $office->bankDetail()->save($bank);
+            }
+        });
+
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
         return response()->json([
             'data' => $office,
@@ -62,7 +67,10 @@ class OfficeController extends Controller
         if (!$staff->tokenCan('office:update'))
             throw new UnauthorizedException('Unauthorized access');
 
-        $this->validate($request, Office::RULES);
+        $this->validate($request, [
+            'code' => 'required',
+            'name' => 'required'
+        ]);
         $bankDetail = $request->get('bank_detail');
         $office->update($request->only($office->getFillable()));
         if (!blank($bankDetail)) {

@@ -16,12 +16,13 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'fullname' => 'required',
-            'mobile' => 'required',
+            'full_name' => 'required',
+            'phone' => 'required',
         ]);
         $user = \auth('sanctum')->user();
-        $user->fullname = $request->get('fullname');
-        $user->mobile = $request->get('mobile');
+        $user->full_name = $request->get('full_name');
+        $user->designation = $request->get('designation');
+        $user->phone = $request->get('phone');
         if ($request->has('password')) {
             if ($request->get('password') !== $request->get('password_confirmation')) {
                 throw new \Exception('Password must match', 500);

@@ -17,8 +17,16 @@ class StaffController extends Controller
             throw new \Exception('Unauthorized access', 403);
         }
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
+        $search = $request->get('search');
+        $data = Staff::query()
+            ->when($search,function ($q) use ($search) {
+                $q->where('full_name', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%")
+                    ->orWhere('phone', 'LIKE', "%$search%");
+            })
+            ->paginate($per_page);
         return response()->json([
-            'data' => Staff::query()->paginate($per_page),
+            'data' => $data,
             'message' => ''
         ]);
     }
@@ -44,7 +52,7 @@ class StaffController extends Controller
         }
         $this->validate($request, Staff::RULES);
         DB::transaction(function ($q) use ($request) {
-            $staff = new Staff($request->only(['fullname', 'email', 'mobile']));
+            $staff = new Staff($request->only(['full_name', 'email', 'phone']));
             $staff->password = Hash::make($request->get('password'));
             $staff->save();
             $staff->roles()->sync($request->get('roles'));
@@ -66,9 +74,9 @@ class StaffController extends Controller
             throw new \Exception('Unauthorized access', 403);
         }
         $this->validate($request, [
-            'fullname'=>'required',
+            'full_name'=>'required',
             'email'=>'required',
-            'mobile'=>'required|digits:10',
+            'phone'=>'required|digits:10',
         ]);
         $staff->update($request->only($staff->getFillable()));
         if ($request->has('roles')) {
@@ -87,6 +95,7 @@ class StaffController extends Controller
 
     public function destroy(Request $request, Staff $staff)
     {
+        dd(auth('staff')->user());
         $user = auth('sanctum')->user();
         if ($user->tokenCan('staff:delete')) {
             throw new \Exception('Unauthorized access', 403);

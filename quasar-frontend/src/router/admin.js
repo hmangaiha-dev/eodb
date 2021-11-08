@@ -4,6 +4,8 @@ export default {
   children: [
     { path: '',name:'staff:dashboard', component: () => import('pages/Index.vue') },
 
+    { path: 'profile',name:'profile:read', component: () => import('pages/admin/profile/Profile.vue') },
+
     { path: 'roles', name:'role:read', component: () => import('pages/admin/roles/List') },
     { path: 'roles/create',name:'role:create', component: () => import('pages/admin/roles/Create') },
     { path: 'roles/:id',name:'role:edit', component: () => import('pages/admin/roles/Edit') },

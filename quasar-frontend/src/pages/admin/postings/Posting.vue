@@ -8,7 +8,7 @@
         <q-breadcrumbs-el label="New post" />
       </q-breadcrumbs>
     </div>
-    <div class="zcard">
+    <div class="zdetailcard">
       <q-form ref="formRef" @reset="reset" @submit="submit">
         <div class="row q-col-gutter-md">
           <div class="col-xs-12 col-md-6">
@@ -139,10 +139,10 @@ export default {
       reset,
       submit,
       localData,
-      staffs:computed(()=>store.state.masterData.staffs),
-      offices:computed(()=>store.state.masterData.offices),
-      statuses:computed(()=>store.state.masterData.postingStatuses),
-      roles:computed(()=>store.state.masterData.roles),
+      staffs:computed(()=>store.state.staffData.staffs),
+      offices:computed(()=>store.state.staffData.offices),
+      statuses:computed(()=>store.state.staffData.postingStatuses),
+      roles:computed(()=>store.state.staffData.roles),
     }
   }
 }

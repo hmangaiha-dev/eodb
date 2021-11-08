@@ -1,11 +1,14 @@
 /* app global css */
-/* app global css */
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
+:root {
+  /*--animate-delay: 2s;*/
+}
 .container,
 .container-sm,
 .container-md,
@@ -14,47 +17,86 @@
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+  padding-left: 16px;
+  padding-right: 16px;
 }
-.ztitle{
+
+.asterisk {
+  color: tomato;
+}
+
+.zsubtitle {
+  font-size: 1.25rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+}
+
+.ztitle {
   font-size: 24px;
   font-weight: 900;
-  font-family: "Ubuntu Condensed";
+  font-family: "Lato";
   line-height: 4rem;
 }
-.zsubtitle{
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 3rem;
-}
-.green-bottom-border{
-  border-bottom: 2px solid #357c71;
-  /*background-color: #ffffff;*/
+
+.blue-bottom-border {
+  border-bottom: 2px solid #3A66B5;
+  background-color: #ffffff;
   color: inherit;
 }
-.zcard{
-  padding: 24px !important;
-  position: relative;
+
+.zlabel {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 16px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+}
+.q-field--disabled  .q-field__inner{
+  background-color:#EBEBE4;
+}
+
+.zvalue {
+  color: rgba(0, 0, 0, 0.67);
+  font-size: 16px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+}
+
+.zcard {
+  padding: 24px;
   border: 1px solid #e0e7f4;
   border-radius: 16px;
-  /*background-color: #fff;*/
-  box-shadow: 0 10px 12px 0 rgba(0,0,0,.1);
+  background-color: #fff;
+  box-shadow: 0 10px 12px 0 rgb(0 0 0 / 10%);
 }
+
+.zdetailcard {
+  padding: 24px !important;
+  border: 1px solid #e0e7f4;
+  border-radius: 16px;
+  background-color: #fff;
+}
+
 @media (min-width: 718px) {
   .container,
-  .container-sm {
-    max-width: 540px;
+  .container-lg,
+  .container-sm{
+    padding: 8px;
   }
-  .zcard{
-    padding: 16px;
+  zcard{
+    padding: 8px;
   }
 }
 
 @media (min-width: 1024px) {
   .container,
   .container-sm,
-  .container-md {
-    max-width: 920px;
+  .container-md,
+  .container-lg{
+    max-width: 1024px;
   }
+
 }
 
 @media (min-width: 1439px) {
@@ -62,7 +104,7 @@
   .container-sm,
   .container-md,
   .container-lg {
-    max-width: 1140px;
+    max-width: 1204px;
   }
 }
 
@@ -73,6 +115,345 @@
   .container-lg,
   .container-xl {
     max-width: 1440px;
+  }
+}
+
+.submitted {
+  color: #258292;
+  padding: 4px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #EAFCFF;
+}
+
+.verified {
+  color: #B78107;
+  padding: 4px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #FFF5DF;
+}
+
+.approved {
+  padding: 4px;
+  text-align: center;
+  border-radius: 4px;
+  color: #239B17;
+  font-family: 'Roboto';
+  background: #E6F9E0;
+}
+
+.rejected {
+  color: #D23030;
+  padding: 4px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #FFE2E2;
+}
+
+.paid {
+  color: #afc191;
+  padding: 4px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #48913b;
+}
+
+.q-breadcrumbs__el {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #767676;
+}
+
+.container-fluid {
+  background-color: #f5f8ff;
+  min-height: 100vh;
+}
+
+.btn-login {
+  border-radius: 6px;
+  background-color: #5273af;
+  color: #fff;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+.expansion-link {
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
+
+.service-offer {
+  font-family: "Lato";
+  font-size: 30px;
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2a2a2a;
+}
+
+
+.seamless {
+  /* width: 487px;
+  height: 120px; */
+  /*margin: 119px 44px 29px 16px;*/
+  font-family: "Lato";
+  font-size: 35px;
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2a2a2a;
+}
+
+.card-title {
+  font-family: "Lato";
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #365faa;
+}
+
+.card-section {
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.7px;
+  text-align: left;
+  color: #979797;
+}
+
+.help-title {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2px;
+  letter-spacing: normal;
+  text-align: left;
+  text-decoration: none;
+  color: #1c1c1c;
+}
+
+.footer-header {
+  font-family: "Lato";
+  font-size: 17px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.24;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+}
+
+.badge-titles {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #767676;
+}
+
+.footer-caption {
+  font-weight: 300;
+}
+
+.app-description {
+  font-family: "Lato";
+  font-size: 17px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.65;
+  letter-spacing: normal;
+  text-align: left;
+  color: #808080;
+}
+
+.card-content {
+  font-family: "Roboto";
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474545;
+}
+
+
+.helpline-text {
+  color: #c;
+}
+
+.btn-link {
+  width: 100%;
+}
+
+.helpline-number {
+  color: #fff;
+  font-family: "Lato";
+  font-size: 28px;
+  line-height: 2px;
+}
+
+.login-title {
+  font-family: "Lato";
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  /* text-align: center; */
+  color: #1a1a1a;
+}
+
+.seamless-content {
+  /* width: 461px;
+  height: 138px; */
+  font-family: "Lato";
+  font-size: 17px;
+  font-weight: 500;
+  /*font-stretch: normal;*/
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #808080;
+}
+
+.govt-logo {
+  max-width: 200px !important;
+  /* width: 100%; */
+}
+
+.img-pc {
+  width: "-webkit-fill-available";
+  /* width: 200px !important; */
+}
+
+
+.active-class {
+  background-color: #5279c1;
+  color: #fff;
+}
+
+
+.badge-title {
+  border-radius: 10px;
+  background-color: #f0fff8;
+
+  color: #0ecb73;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.7px;
+}
+
+
+.badge-download {
+  border-radius: 10px;
+  background-color: #f2f7ff;
+
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #365faa;
+}
+.login-card{
+  padding: 16px 50.3px 35.7px 37.5px;
+  border-radius: 9px;
+  box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.16);
+  background-color: #fff;
+}
+.zncard {
+  padding: 35px 22px 15px 25px;
+  border: solid 1px #eee;
+  background-color: #fff;
+}
+
+.zncard:hover {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
+}.zncard:active {
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
+ }
+
+.znhovercard:hover {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
+}
+
+.expansion-label {
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+
+  color: #767676;
+
+  /* padding: 32px 41.1px 16px 40px; */
+  border: solid 1px #eee;
+  background-color: #fff;
+}
+
+
+.q-table thead{
+  border-radius: 14px;
+  background: #F1F1F1;
+}
+
+@media (max-width: 600px) {
+  .govt-logo {
+    width: 100% !important;
   }
 }
 

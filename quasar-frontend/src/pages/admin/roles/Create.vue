@@ -8,30 +8,32 @@
         <q-breadcrumbs-el label="New role" />
       </q-breadcrumbs>
     </div>
-    <q-card  class="zcard q-pa-md">
-      <q-form ref="formRef" @reset="resetForm" @submit="handleSubmit">
-
+      <q-form class="column zdetailcard" ref="formRef" @reset="resetForm" @submit="handleSubmit">
         <q-input v-model="formData.name"
                  outlined
                  autofocus
+                 item-aligned
+                 label="Full name"
                  :error="localData.errors.hasOwnProperty('name')"
                  :error-message="localData.errors?.name?.toString()"
                  @blur="delete localData.errors['name']"
                  :rules="[
                  val=>!!val || 'Name is required'
                ]"
-        />
-        <q-space/>
+        >
+        </q-input>
         <q-input v-model="formData.description"
                  type="textarea"
+                 label="Description"
+                 item-aligned
                  outlined
                  :error="localData.errors.hasOwnProperty('description')"
                  :error-message="localData.errors?.description?.toString()"
                  @blur="delete localData.errors['description']"
         />
-        <q-space/>
         <q-select
           outlined
+          item-aligned
           dropdown-icon="arrow_drop_down"
           v-model="tempPerms"
           multiple
@@ -44,7 +46,6 @@
           <q-btn flat color="negative" type="reset" label="Reset"/>
         </q-card-actions>
       </q-form>
-    </q-card>
   </q-page>
 </template>
 <script>
@@ -97,7 +98,7 @@ export default {
       tempPerms.value=[]
     }
     return {
-      permissions:computed(()=>store.state.masterData.permissions),
+      permissions:computed(()=>store.state.staffData.permissions),
       localData,
       formData,
       resetForm,

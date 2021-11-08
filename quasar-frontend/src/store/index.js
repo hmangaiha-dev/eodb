@@ -3,6 +3,7 @@ import { createStore } from 'vuex'
 
 import authData from './authData'
 import globalData from './globalData'
+import staffData from './staffData.js'
 
 /*
  * If not building with SSR mode, you can
@@ -17,7 +18,8 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
       authData,
-      globalData
+      globalData,
+      staffData
     },
 
     // enable strict mode (adds overhead!)

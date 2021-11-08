@@ -2,7 +2,7 @@
   <q-page class="container-lg" padding>
     <h1 class="ztitle">Offices</h1>
 
-    <div class="zcard">
+    <div class="zdetailcard">
 
       <div class="row q-col-gutter-md">
         <div class="flex justify-between flex-inline col-12">
@@ -58,7 +58,7 @@ export default {
     const deleteRole = (id) => {
       api.delete(`office/${id}`)
         .then(res => {
-          localData.listData = res.data
+          localData.listData = res.data.list
           q.notify({
             type: 'positive',
             message: res.data.message

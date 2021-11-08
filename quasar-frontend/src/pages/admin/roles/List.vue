@@ -2,11 +2,11 @@
   <q-page class="container-lg" padding>
     <h1 class="ztitle">List of roles</h1>
 
-    <div class="zcard">
+    <div class="zdetailcard">
 
       <div class="row q-col-gutter-md">
         <div class="flex justify-between flex-inline col-12">
-          <q-btn to="/admin/roles/create" outline label="New role" color="primary"/>
+          <q-btn :to="{name:'role:create'}" outline label="New role" color="primary"/>
           <q-input v-model="localData.search" placeholder="Search" @keyup="handleSearch" outlined dense>
             <template v-slot:append>
               <q-icon name="search"/>

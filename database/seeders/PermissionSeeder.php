@@ -75,9 +75,16 @@ class PermissionSeeder extends Seeder
                 'full_name' => 'super',
                 'email' => 'super@email.com',
                 'phone' => '9898912344',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('secret'),
             ]);
             $superAdmin->roles()->sync(ids: [$superAdminRole->id]);
+             User::query()->updateOrCreate(['id'=>1],[
+                'id'=>1,
+                'full_name' => 'test',
+                'email' => 'test@email.com',
+                'phone' => '9898912344',
+                'password' => Hash::make('secret'),
+            ]);
         });
 
 

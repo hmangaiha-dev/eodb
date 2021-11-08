@@ -2,14 +2,14 @@
   <q-card style="width: 450px" class="q-pa-lg">
     <q-form @submit="onSubmit" @reset="onReset">
         <h1 class="zsubtitle q-py-md">Edit Staff</h1>
-        <q-input v-model="formData.fullname"
+        <q-input v-model="formData.full_name"
                  outlined
                  autofocus
                  label="Full name *"
-                 @blur="delete localData.errors['fullname']"
-                 :error="localData.errors.hasOwnProperty('fullname')"
-                 :error-message="localData.errors['fullname']?.toString()"
-                 :rules="[ val => !!val || 'Fullname is required' ]"
+                 @blur="delete localData.errors['full_name']"
+                 :error="localData.errors.hasOwnProperty('full_name')"
+                 :error-message="localData.errors['full_name']?.toString()"
+                 :rules="[ val => !!val || 'full_name is required' ]"
         />
         <q-select
           outlined
@@ -17,7 +17,7 @@
           v-model="formData.roles"
           use-chips
           label="Select role"
-          @select="localData.errors['fullname']=false"
+          @select="localData.errors['roles']=false"
           :error="localData.errors.hasOwnProperty('roles')"
           :error-message="localData.errors['roles']?.toString()"
           :options="roles"
@@ -40,13 +40,13 @@
                  :error-message="localData.errors['email']?.toString()"
                  :rules="[ val => !!val || 'Email is required' ]"
         />
-        <q-input v-model="formData.mobile"
+        <q-input v-model="formData.phone"
                  outlined
-                 @blur="delete localData.errors['mobile']"
-                 :error="localData.errors.hasOwnProperty('mobile')"
-                 :error-message="localData.errors['mobile']?.toString()"
-                 label="Mobile *"
-                 :rules="[ val => !!val || 'Mobile is required' ]"
+                 @blur="delete localData.errors['phone']"
+                 :error="localData.errors.hasOwnProperty('phone')"
+                 :error-message="localData.errors['phone']?.toString()"
+                 label="Phone no *"
+                 :rules="[ val => !!val || 'Phone no is required' ]"
         />
         <q-input v-model="formData.designation"
                  outlined
@@ -109,11 +109,11 @@ export default {
     })
     const formData=reactive({
       id:null,
-      fullname:'',
+      full_name:'',
       designation: '',
       roles:[],
       email:'',
-      mobile: '',
+      phone: '',
       password:'',
       password_confirmation:''
     })
@@ -144,10 +144,11 @@ export default {
     const fetchDetail=id=>{
       api.get(`staff/${id}`)
         .then(res=>{
-          const {fullname, id,email, mobile, roles} = res.data.data;
+          const {full_name, id,email,designation, phone, roles} = res.data.data;
           formData.id = id;
-          formData.fullname = fullname;
-          formData.mobile = mobile;
+          formData.full_name = full_name;
+          formData.phone = phone;
+          formData.designation=designation
           formData.email = email;
           formData.roles = roles.map(r=>({value:r.id,label:r.name}));
         })
@@ -166,15 +167,16 @@ export default {
     //   (newval!==null || newval) && fetchDetail(newval);
     // })
     const onReset=e=>{
-      formData.fullname = '';
+      formData.full_name = '';
       formData.email = '';
+      formData.phone = '';
       formData.roles = [];
       formData.password_confirmation = '';
       formData.password=''
     }
 
     return{
-      roles:computed(()=>store.state.masterData.roles),
+      roles:computed(()=>store.state.staffData.roles),
       formData,
       localData,
       onReset,

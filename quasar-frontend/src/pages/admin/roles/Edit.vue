@@ -7,8 +7,7 @@
         <q-breadcrumbs-el label="Edit Role"  />
       </q-breadcrumbs>
     </div>
-    <q-card class="zcard q-pa-md">
-      <q-form @reset="resetForm" @submit="handleSubmit">
+      <q-form class="column zdetailcard" @reset="resetForm" @submit="handleSubmit">
 
         <q-input v-model="formData.name"
                  outlined
@@ -20,7 +19,6 @@
                  val=>!!val || 'Name is required'
                ]"
         />
-        <q-space/>
         <q-input v-model="formData.description"
                  type="textarea"
                  outlined
@@ -28,7 +26,6 @@
                  :error-message="localData.errors?.description?.toString()"
                  @blur="delete localData.errors['description']"
         />
-        <q-space/>
         <q-select
           outlined
           dropdown-icon="arrow_drop_down"
@@ -39,11 +36,10 @@
           label="Permissions"
         />
         <q-card-actions>
-          <q-btn color="primary" type="submit" label="Update"/>
-          <q-btn color="negative" type="reset" label="Reset"/>
+          <q-btn flat color="primary" type="submit" label="Update"/>
+          <q-btn flat color="negative" type="reset" label="Reset"/>
         </q-card-actions>
       </q-form>
-    </q-card>
   </q-page>
 </template>
 <script>
@@ -116,7 +112,7 @@ export default {
         })
     })
     return {
-      permissions: computed(() => store.state.masterData.permissions),
+      permissions: computed(() => store.state.staffData.permissions),
       localData,
       formData,
       resetForm,

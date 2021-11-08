@@ -1,7 +1,7 @@
 <template>
   <q-page class="container-lg" padding>
     <h1 class="ztitle">Staff postings</h1>
-    <div class="row zcard">
+    <div class="row zdetailcard">
       <div class="col-xs-12">
         <q-table
           v-model:pagination="tableData.pagination"
@@ -66,9 +66,9 @@ const columns = [
   //   format: val => `${val}`,
   //   sortable: true
   // },
-  {name: 'fullname', align: 'left', label: 'Fullname', field: 'fullname', sortable: true},
+  {name: 'fullname', align: 'left', label: 'Fullname', field: 'full_name', sortable: true},
   {name: 'email', align: 'left', label: 'Email', field: 'email', sortable: true},
-  {name: 'rolesName',align:'left', label: 'Role', field: 'rolesName', format: val => val.toString()},
+  {name: 'rolesName',align:'left', label: 'Role', field: 'rolesName', format: val => val?.toString()},
 
   // { name: 'email', label: 'Email', field: 'email', sortable: true },
   {name: 'currentPost',align:'left', label: 'Post', field: 'currentPost', format: val => val?.name},

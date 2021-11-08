@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -32,9 +31,22 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth:sanctum'], function (
     Route::put('', [ProfileController::class, 'update']);
 });
 
-Route::post('staff-login', [StaffAuthController::class, 'login']);
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('staff-login', [StaffAuthController::class, 'login']);
+    Route::post('logout', [StaffAuthController::class, 'logout'])->middleware('auth:sanctum');
+});
+
+
+Route::group(['prefix' => 'profile', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('', [ProfileController::class, 'show']);
+    Route::put('', [ProfileController::class, 'update']);
+});
+
 
 Route::get('public-data',[PublicDataController::class,'fetchPublicData']);
+Route::get('staff-data',[PublicDataController::class,'fetchStaffData']);
+
 Route::group(['prefix' => 'roles', 'middleware' => ['auth:sanctum','staff']], function () {
     Route::get('', [RoleController::class, 'index']);
     Route::post('', [RoleController::class, 'store']);
@@ -70,10 +82,6 @@ Route::group(['prefix' => 'resources', 'middleware' => ['auth:sanctum','staff']]
     Route::delete('{id}/destroy', [ResourceDataController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'auth'],function(){
-    Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-});
 Route::group(['prefix' => 'investor'],function(){
     Route::post('/', [InvestorController::class, 'register']);
     Route::get('/', [InvestorController::class, 'register']);
