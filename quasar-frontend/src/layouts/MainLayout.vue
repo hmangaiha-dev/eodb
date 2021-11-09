@@ -13,6 +13,20 @@
           </q-avatar>
           EODB
         </q-toolbar-title>
+        <q-space />
+        <q-btn flat icon="account_circle" />
+        <q-btn flat icon="more_vert" />
+      </q-toolbar>
+      <q-separator />
+      <q-toolbar class="xs-hide container q-pa-md q-gutter-md">
+        <q-btn color="primary" icon="dashboard" />
+        <q-btn-dropdown
+          dropdown-icon="arrow_drop_down"
+          flat
+          color="primary"
+          label="Administration"
+        >
+        </q-btn-dropdown>
         <q-space/>
         <q-btn-dropdown rounded icon="manage_accounts" dropdown-icon="arrow_drop_down" no-caps :label="user.full_name" outline color="primary">
           <ProfileMenu/>
@@ -21,88 +35,27 @@
       </q-toolbar>
       <q-separator />
       <q-toolbar class="scroll-y xs-hide container q-pa-xs q-gutter-sm">
-          </q-list>
-        </q-btn-dropdown>
-        <q-btn-dropdown
-          dropdown-icon="arrow_drop_down"
-          flat
-          color="primary"
-          label="Web management"
-        >
-            <q-item
-              to="/admin/departments/"
-              clickable
-              v-close-popup
-              @click="onMenuItemClick('departments')"
-            >
-              <q-item-section>
-                <q-item-label>Departments</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item to="/admin/department-profiles" clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Department Profile</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item
-              to="/admin/depart-info"
-              clickable
-              v-close-popup
-              @click="onMenuItemClick('department-info')"
-            >
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
+        <q-btn color="primary" icon="dashboard"/>
+<!--        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Certificate">-->
+<!--          <q-list>-->
+<!--            <q-item :to="{name:'application:new'}" clickable v-close-popup>-->
+<!--              <q-item-section>-->
+<!--                <q-item-label>Unpaid</q-item-label>-->
+<!--              </q-item-section>-->
+<!--            </q-item>-->
 
-        <q-btn-dropdown
-          no-caps
-          dropdown-icon="arrow_drop_down"
-          flat
-          label="Web management"
-        >
-          <q-list>
-            <q-item
-              clickable
-              v-close-popup
-              @click="onMenuItemClick('departmentscd')"
-            >
-              <q-item-section>
-                <q-item-label>Department info</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
+        <!--            <q-item :to="{name:'application:verified'}" clickable v-close-popup>-->
+        <!--              <q-item-section>-->
+        <!--                <q-item-label>Paid</q-item-label>-->
+        <!--              </q-item-section>-->
+        <!--            </q-item>-->
 
-        <q-btn-dropdown
-          dropdown-icon="arrow_drop_down"
-          flat
-          color="primary"
-          label="Online Services"
-        >
-          <q-list>
-            <q-item
-              v-for="service in services"
-              :key="service.to"
-              :to="`/admin/${service.to}`"
-              clickable
-              v-close-popup
-            >
-              <q-item-section>
-                <q-item-label> {{ service.name }} </q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
-        <q-space />
-        <q-btn flat icon="settings" />
-=======
 <!--          </q-list>-->
 <!--        </q-btn-dropdown>-->
 
         <AdminNav/>
         <q-space/>
         <q-btn flat icon="settings"/>
->>>>>>> main
       </q-toolbar>
     </q-header>
 
