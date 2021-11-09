@@ -554,6 +554,19 @@ export default defineComponent({
   background-color: #fff;
 }
 
+.btn-dropdown, .tile-content {
+  font-family: "Poppins";
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #357c71;
+}
+
+
+
 .track {
   /* width: 1920px; */
   /* height: 392px; */
@@ -778,6 +791,8 @@ width: 90%;
     text-align: center;
     color: #357c71;
   }
+
+
 
   .track-form {
     background: #fff;

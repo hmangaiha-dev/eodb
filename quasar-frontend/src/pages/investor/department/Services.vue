@@ -103,12 +103,15 @@
 
 <script>
 import AboutUs from "./AboutUs.vue";
+import { useRoute } from 'vue-router'
 import ActRules from "./ActRules.vue";
 import ApplyService from "./ApplyService.vue";
 import Notifications from "./Notifications.vue";
 // import Notifications from "./Notifications.vue";
-import { ref } from "vue";
+import { ref,onMounted } from "vue";
 import OtherInfo from "./OtherInfo.vue";
+import routes from 'src/router/routes';
+
 const columns = [
   {
     name: "name",
@@ -245,6 +248,13 @@ export default {
     OtherInfo,
   },
   setup(props, context) {
+
+      const route = useRoute()
+      
+      onMounted(() => {
+          console.log('mounted hook',route.params.deptname);
+      })
+
     console.log("layouts is".Layouts);
     return {
       rows,
