@@ -25,7 +25,7 @@ class PostingController extends Controller
         $sortBy = $request->has('sortBy') ? $request->get('sortBy') : 'full_name';
         $search = $request->get('search');
         $data = Staff::query()
-            ->with(['postings'])
+            ->with(['postings','roles'])
             ->when(!blank($search), function ($q) use ($search) {
                 return $q->where('full_name', 'LIKE', "$search%");
             })
@@ -75,7 +75,7 @@ class PostingController extends Controller
 
         return response()->json([
             'data' => $office,
-            'message' => 'Posting made successfully'
+            'message' => 'Posting created successfully'
         ]);
 
 

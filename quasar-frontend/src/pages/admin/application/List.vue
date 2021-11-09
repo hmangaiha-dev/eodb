@@ -1,6 +1,6 @@
 <template>
   <q-page class="container">
-    <h1 class="ztitle">Files</h1>
+    <h1 class="ztitle">Applications (active) </h1>
     <div class="row zdetailcard">
       <p>file</p>
     </div>

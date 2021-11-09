@@ -1,8 +1,7 @@
 <template>
-  <q-page class="container-lg">
-    <h1 class="ztitle">Incoming files</h1>
-    <div class="row q-col-gutter-md">
-      <div v-for="item in files" :key="item.fileno" class="col-xs-12 col-md-3">
+  <q-page class="container">
+    <div class="row">
+      <div v-for="item in files" :key="item.fileno" class="col-xs-12 col-md-4">
         <FileCard :file="item"/>
       </div>
     </div>
