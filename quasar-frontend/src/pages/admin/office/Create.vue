@@ -1,71 +1,119 @@
 <template>
-  <q-page class="container">
-    <h1 class='ztitle'>New Office</h1>
-    <q-card class="zcard q-pa-md">
-      <q-form @reset="resetForm" @submit="handleSubmit">
+  <q-page class="container-lg">
+    <div class="flex flex-inline items-center">
+      <h1 class='ztitle'>New Office</h1>
+      <q-space/>
+      <q-breadcrumbs align="right" gutter="xs">
+        <q-breadcrumbs-el :to="{name:'office:read'}" label="Offices" />
+        <q-breadcrumbs-el label="New office" />
+      </q-breadcrumbs>
+    </div>
 
-        <h1 class="zsubtitle">New Office</h1>
-
-        <q-input v-model="formData.code"
-                 class="q-mt-md"
-                 label="Code"
-                 outlined
-                 autofocus
-                 :error="localData.errors.hasOwnProperty('code')"
-                 :error-message="localData.errors?.name?.toString()"
-                 @blur="delete localData.errors['code']"
-                 :rules="[
+      <q-form class="zdetailcard q-pa-md" ref="formRef" @reset="resetForm" @submit="handleSubmit">
+        <div class="row q-col-gutter-md">
+          <div class="col-xs-12 zsubtitle">Office detail</div>
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="formData.code"
+                     class="q-mt-md"
+                     label="Code"
+                     outlined
+                     :error="localData.errors.hasOwnProperty('code')"
+                     :error-message="localData.errors?.name?.toString()"
+                     @blur="delete localData.errors['code']"
+                     :rules="[
                  val=>!!val || 'Code is required'
                ]"
-        />
-        <q-input v-model="formData.name"
-                 class="q-mt-md"
-                 label="Name"
-                 outlined
-                 autofocus
-                 :error="localData.errors.hasOwnProperty('name')"
-                 :error-message="localData.errors?.name?.toString()"
-                 @blur="delete localData.errors['name']"
-                 :rules="[
+            />
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="formData.name"
+                     class="q-mt-md"
+                     label="Name"
+                     outlined
+                     :error="localData.errors.hasOwnProperty('name')"
+                     :error-message="localData.errors?.name?.toString()"
+                     @blur="delete localData.errors['name']"
+                     :rules="[
                  val=>!!val || 'Name is required'
                ]"
-        />
-        <q-input v-model="formData.description"
-                 class="q-mt-md"
-                 label="Description"
-                 type="textarea"
-                 outlined
-                 :error="localData.errors.hasOwnProperty('description')"
-                 :error-message="localData.errors?.description?.toString()"
-                 @blur="delete localData.errors['description']"
+            />
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="formData.contacts"
+                     class="q-mt-md"
+                     label="Contacts"
+                     outlined
+                     :error="localData.errors.hasOwnProperty('contacts')"
+                     :error-message="localData.errors?.description?.toString()"
+                     @blur="delete localData.errors['contacts']"
+            />
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="formData.description"
+                     class="q-mt-md"
+                     label="Description"
+                     type="textarea"
+                     outlined
+                     :error="localData.errors.hasOwnProperty('description')"
+                     :error-message="localData.errors?.description?.toString()"
+                     @blur="delete localData.errors['description']"
 
-        />
-        <q-space/>
-        <q-input v-model="formData.contacts"
-                 class="q-mt-md"
-                 label="Contacts"
-                 outlined
-                 :error="localData.errors.hasOwnProperty('contacts')"
-                 :error-message="localData.errors?.description?.toString()"
-                 @blur="delete localData.errors['contacts']"
-        />
-        <q-space/>
-        <q-select class="q-mt-md"
-                  outlined
-                  dropdown-icon="arrow_drop_down"
-                  v-model="tempRoles"
-                  multiple
-                  :options="roles"
-                  use-chips
-                  stack-label
-                  label="Roles"
-        />
+            />
+          </div>
+
+          <div class=col-xs-12>
+            <q-separator/>
+          </div>
+          <div class="col-xs-12 zsubtitle">Bank detail</div>
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="bankData.mid"
+                     class="q-mt-md"
+                     label="Merchant ID"
+                     outlined
+            />
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="bankData.bank_name"
+                     class="q-mt-md"
+                     label="Name of bank"
+                     outlined
+            />
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="bankData.ac_holder"
+                     class="q-mt-md"
+                     label="Ac Holder"
+                     outlined
+            />
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="bankData.ac_no"
+                     class="q-mt-md"
+                     label="Ac no "
+                     outlined
+            />
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="bankData.ifsc"
+                     class="q-mt-md"
+                     label="IFSC"
+                     outlined
+            />
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <q-input v-model="bankData.remark"
+                     class="q-mt-md"
+                     label="Remark"
+                     outlined
+            />
+          </div>
+        </div>
+
         <q-card-actions class="q-mt-md">
-          <q-btn color="primary" type="submit" label="Save"/>
-          <q-btn color="negative" type="reset" label="Reset"/>
+          <q-btn color="primary" flat type="submit" label="Save"/>
+          <q-btn color="negative" flat type="reset" label="Reset"/>
         </q-card-actions>
       </q-form>
-    </q-card>
   </q-page>
 </template>
 <script>
@@ -82,17 +130,25 @@ export default {
     const localData = reactive({
       errors: {}
     })
+    const formRef = ref(null);
     const tempRoles = ref([]);
+    const bankData = reactive({
+      mid: '',
+      bank_name: '',
+      ac_holder: '',
+      ac_no: '',
+      ifsc: '',
+      description: ''
+    });
     const formData = reactive({
       code: '',
       name: '',
       description: '',
-      contacts: '',
-      permissions: []
+      contact: '',
     });
 
     const handleSubmit = e => {
-      formData['roles'] = tempRoles.value.map(item => item.value)
+      formData.bank_detail={...bankData}
       api.post('office', formData)
         .then(res => {
           q.notify({
@@ -100,7 +156,6 @@ export default {
             message: res?.data?.message
           })
           resetForm();
-
         })
         .catch(err => {
           console.log('error', err.response)
@@ -116,16 +171,25 @@ export default {
       formData.code = '';
       formData.name = '';
       formData.description = '';
-      formData.roles = [];
-      tempRoles.value = []
+      formData.contact = '';
+
+      bankData.bank_name = '';
+      bankData.ac_holder = '';
+      bankData.ac_no = '';
+      bankData.ifsc = '';
+      bankData.description = '';
+
+      formRef.value.reset();
+
     }
     return {
-      roles: computed(() => store.state.globalData.roles),
       localData,
+      bankData,
       formData,
       resetForm,
       handleSubmit,
-      tempRoles
+      tempRoles,
+      formRef
 
     }
   }

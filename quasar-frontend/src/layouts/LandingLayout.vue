@@ -18,37 +18,33 @@
       -->
         <div class="flex tabs gt-sm">
           <q-tabs no-caps>
-            <q-route-tab
-              class="q-px-none"
-              @click="navigate"
-              v-scroll-to="'#home'"
-              label="Home"
-            />
-            <q-route-tab
-              label="About Us"
-              @click="navigate"
-              v-scroll-to="'#about-us'"
-            />
-            <q-route-tab
-              v-scroll-to="'#online-services'"
-              @click="navigate"
-              label="Online Services"
-            />
-            <q-route-tab
-              @click="navigate"
-              v-scroll-to="'#contact-us'"
-              label="Contact Us"
-            />
-            <q-route-tab
-              @click="navigate"
-              v-scroll-to="'#about-us'"
-              label="EODB"
-            />
-            <span class="text-h5">|</span>
-            <q-route-tab label="Login" />
+<!--            <q-route-tab-->
+<!--              class="q-px-none"-->
+<!--              @click="navigate"-->
+<!--              label="Home"-->
+<!--            />-->
+<!--            <q-route-tab-->
+<!--              label="About Us"-->
+<!--              @click="navigate"-->
+<!--            />-->
+<!--            <q-route-tab-->
+<!--              @click="navigate"-->
+<!--              label="Online Services"-->
+<!--            />-->
+<!--            <q-route-tab-->
+<!--              @click="navigate"-->
+<!--              v-scroll-to="'#contact-us'"-->
+<!--              label="Contact Us"-->
+<!--            />-->
+<!--            <q-route-tab-->
+<!--              @click="navigate"-->
+<!--              label="EODB"-->
+<!--            />-->
+<!--            <span class="text-h5">|</span>-->
+<!--            <q-route-tab label="Login" />-->
 
-            <span class="text-h5">|</span>
-            <q-route-tab label="Register" />
+<!--            <span class="text-h5">|</span>-->
+<!--            <q-route-tab label="Register" />-->
           </q-tabs>
 
           <!-- <q-separator dark vertical /> -->
@@ -164,7 +160,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
 

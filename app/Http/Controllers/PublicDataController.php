@@ -25,4 +25,18 @@ class PublicDataController extends Controller
 
         ], 200);
     }
+    public function fetchStaffData(Request $request)
+    {
+        return response()->json([
+            'roles' => Role::query()->get(['id', 'name'])->map(fn($role) => ['value' => $role->id, 'label' => $role->name]),
+            'permissions'=>Permission::query()->get(['id','name'])->map(fn($item)=>[
+                'value'=>$item->id,
+                'label'=>$item->name
+            ]),
+            'districts' => DataUtil::DISTRICTS,
+            'staffs'=>Staff::query()->get(['id as value','full_name as label']),
+            'offices'=>Office::query()->get(['id as value','name as label'])
+
+        ], 200);
+    }
 }

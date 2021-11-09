@@ -2,112 +2,111 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Address;
 use App\Models\Staff;
-use App\Models\StaffPosting;
-use App\Utils\PostingStatus;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
 {
+
     public function index(Request $request)
     {
+        $staff = auth('sanctum')->user();
+        if (!$staff->tokenCan('staff:read')) {
+            throw new \Exception('Unauthorized access', 403);
+        }
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
-        $offices = Staff::query()->paginate($per_page);
+        $search = $request->get('search');
+        $data = Staff::query()
+            ->when($search,function ($q) use ($search) {
+                $q->where('full_name', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%")
+                    ->orWhere('phone', 'LIKE', "%$search%");
+            })
+            ->paginate($per_page);
         return response()->json([
-            'data' => $offices,
+            'data' => $data,
             'message' => ''
-        ], 200);
-    }
-
-    public function show(Request $request, int $id)
-    {
-        $staff = Staff::query()->with('postings', function ($builder) {
-            $builder->where('status', PostingStatus::ON_DUTY)
-                ->latest()
-                ->first();
-        })->find($id);
-        return response()->json([
-            'data' => $staff,
-            'message' => ''
-        ], 200);
-    }
-
-    public function create(Request $request)
-    {
-        $this->validate($request, Staff::RULES);
-
-        $staff = Staff::query()->create($request->only((new Staff())->getFillable()));
-        $address = new Address($request->only((new Address())->getFillable()));
-        $staff->addresses()->save($address);
-        $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
-        return response()->json([
-            'data' => $staff,
-            'list' => Staff::query()->paginate($per_page),
-            'message' => 'New staff created successfully'
         ]);
     }
 
-    public function update(Request $request, int $id)
+    public function show(Request $request,Staff $staff)
     {
-        $this->validate($request, Staff::RULES);
+        $user = auth('sanctum')->user();
+        if (!$user->tokenCan('staff:read')) {
+            throw new \Exception('Unauthorized access', 403);
+        }
+        $data = $staff->load(['roles', 'postings']);
+        return response()->json([
+            'data' => $data,
+            'message' => ''
+        ]);
+    }
 
-        $staff = Staff::query()->findOrFail($id)->update($request->only((new Staff())->getFillable()));
-        if ($request->has('address')) {
-            $this->validate($request, Address::RULES);
-            $address = $request->get('address');
-            $staff->addresses()->upsert([
-                'full_address' => $address['full_address'],
-                'locality' => $address['locality'],
-                'pincode' => $address['pincode'],
-                'district' => $address['district'],
-            ], 'id');
+    public function store(Request $request)
+    {
+        $staff = auth('sanctum')->user();
+        if (!$staff->tokenCan('staff:create')) {
+            throw new \Exception('Unauthorized access', 403);
+        }
+        $this->validate($request, Staff::RULES);
+        DB::transaction(function ($q) use ($request) {
+            $staff = new Staff($request->only(['full_name', 'email', 'phone']));
+            $staff->password = Hash::make($request->get('password'));
+            $staff->save();
+            $staff->roles()->sync($request->get('roles'));
+        });
+
+        $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
+        return response()->json([
+            'list' => Staff::query()->paginate($per_page),
+            'message' => 'Staff created successfully'
+        ], 200);
+
+
+    }
+
+    public function update(Request $request, Staff $staff)
+    {
+        $user = auth('sanctum')->user();
+        if (!$user->tokenCan('staff:update')) {
+            throw new \Exception('Unauthorized access', 403);
+        }
+        $this->validate($request, [
+            'full_name'=>'required',
+            'email'=>'required',
+            'phone'=>'required|digits:10',
+        ]);
+        $staff->update($request->only($staff->getFillable()));
+        if ($request->has('roles')) {
+            $staff->roles()->sync($request->get('roles'));
+        }
+        if ($request->has('password')) {
+            $staff->password = Hash::make($request->get('password'));
         }
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
         return response()->json([
             'data' => $staff,
             'list' => Staff::query()->paginate($per_page),
             'message' => 'Staff updated successfully'
-        ]);
+        ], 200);
     }
 
     public function destroy(Request $request, Staff $staff)
     {
+        dd(auth('staff')->user());
+        $user = auth('sanctum')->user();
+        if ($user->tokenCan('staff:delete')) {
+            throw new \Exception('Unauthorized access', 403);
+        }
+
         $staff->delete();
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
         return response()->json([
             'data' => $staff,
             'list' => Staff::query()->paginate($per_page),
             'message' => 'Staff deleted successfully'
-        ]);
-    }
-
-    public function staffPosting(Request $request)
-    {
-        $this->validate($request, [
-            'office_id' => Rule::exists('offices', 'id'),
-            'staff_id' => Rule::exists('staffs', 'id'),
-            'roles' => 'required',
-            'joining_date' => 'required',
-        ]);
-        $staff = Staff::query()->findOrFail($request->get('staff_id'));
-        $staff->postings()?->latest()?->first()?->update([
-            'leaving_date' => now()
-        ]);
-        $posting=$staff->postings()->create([
-            'office_id'=>$request->get('office_id'),
-            'joining_date'=>$request->get('joining_date'),
-            'status'=>$request->get('status')
-        ]);
-        $posting->roles()->sync($request->get('roles'));
-
-        $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
-        return response()->json([
-            'data' => $posting,
-            'list' => StaffPosting::query()->paginate($per_page),
-            'message' => 'Staff deleted successfully'
-        ]);
+        ], 200);
     }
 }

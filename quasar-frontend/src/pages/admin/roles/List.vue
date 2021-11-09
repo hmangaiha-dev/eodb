@@ -1,15 +1,15 @@
 <template>
-  <q-page class="container" padding>
-    <h1 class="ztitle">Offices</h1>
+  <q-page class="container-lg" padding>
+    <h1 class="ztitle">List of roles</h1>
 
-    <div class="zcard">
+    <div class="zdetailcard">
 
       <div class="row q-col-gutter-md">
         <div class="flex justify-between flex-inline col-12">
-          <q-btn :to="{name:'office:create'}" label="New office" color="primary"/>
-          <q-input placeholder="Search" v-model="localData.search" outlined dense>
+          <q-btn :to="{name:'role:create'}" outline label="New role" color="primary"/>
+          <q-input v-model="localData.search" placeholder="Search" @keyup="handleSearch" outlined dense>
             <template v-slot:append>
-              <q-icon name="search" />
+              <q-icon name="search"/>
             </template>
           </q-input>
         </div>
@@ -25,9 +25,9 @@
                 <q-item-label caption>{{item?.description}}</q-item-label>
               </q-item-section>
               <q-item-section  side>
-                <div class="flex-inline">
-                  <q-btn :to="{name:'role:edit',params:{id:item.id}}" flat icon="edit" color="primary"/>
-                  <q-btn @click="deleteRole" flat icon="delete" color="negative"/>
+                <div class="flex flex-inline q-gutter-sm">
+                  <q-btn size="12px" :to="{name:'role:edit',params:{id:item.id}}" outline icon="edit" />
+<!--                  <q-btn size="12px" @click="deleteRole" outline icon="delete"/>-->
                 </div>
               </q-item-section>
             </q-item>
@@ -41,15 +41,15 @@
 </template>
 <script>
 import {reactive} from "@vue/reactivity";
+import {useQuasar} from "quasar";
 import {onMounted} from "@vue/runtime-core";
 import {api} from "boot/axios";
-import {useQuasar} from "quasar";
 
 export default {
   setup(props,context){
     const q = useQuasar();
     const localData=reactive({
-      search:'',
+      search: '',
       listData:{
         data:[]
       }
@@ -70,19 +70,32 @@ export default {
         // console.log('I am triggered on both OK and Cancel')
       })
     }
-    onMounted(()=>{
-      api.get('office')
+    const handleSearch=(e)=>{
+      if (e.keyCode === 13) {
+        fetchData();
+      }
+    }
+    const fetchData=()=>{
+      api.get('roles',{params:{search:localData.search}})
         .then(res=>{
           localData.listData=res.data
         })
         .catch(err=>{
-          console.log(err)
+          err?.response?.data?.message && q.notify({
+            type: 'negative',
+            message: err.response?.data?.message
+          })
         })
+    }
+    onMounted(()=>{
+      fetchData();
     })
     return{
       localData,
-      deleteRole
+      deleteRole,
+      handleSearch
     }
   }
 }
+
 </script>

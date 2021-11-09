@@ -1,11 +1,10 @@
 <?php
 
-use App\Utils\PostingStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStaffPostingsTable extends Migration
+class CreateStaffPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +13,7 @@ class CreateStaffPostingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('staff_postings', function (Blueprint $table) {
+        Schema::create('staff_posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('staff_id');
             $table->unsignedInteger('office_id');
@@ -33,6 +32,6 @@ class CreateStaffPostingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('staff_postings');
+        Schema::dropIfExists('staff_posts');
     }
 }

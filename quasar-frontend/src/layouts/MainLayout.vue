@@ -1,17 +1,9 @@
 <template>
   <q-layout view="hHh lpR fff">
-    <q-header
-      elevated
-      class="bg-white green-bottom-border text-primary"
-      height-hint="98"
-    >
-      <q-toolbar class="container">
-        <q-btn
-          class="lt-sm"
-          @click="localData.openDrawer = true"
-          flat
-          icon="menu"
-        />
+
+    <q-header  elevated  class="bg-white print-hide green-bottom-border text-primary" height-hint="98">
+      <q-toolbar  class="container">
+        <q-btn class="lt-sm" @click="localData.openDrawer=true" flat icon="menu"/>
         <q-toolbar-title>
           <q-avatar>
             <img
@@ -21,158 +13,14 @@
           </q-avatar>
           EODB
         </q-toolbar-title>
-        <q-space />
-        <q-btn flat icon="account_circle" />
-        <q-btn flat icon="more_vert" />
-      </q-toolbar>
-      <q-separator />
-      <q-toolbar class="xs-hide container q-pa-md q-gutter-md">
-        <q-btn color="primary" icon="dashboard" />
-        <q-btn-dropdown
-          dropdown-icon="arrow_drop_down"
-          flat
-          color="primary"
-          label="Administration"
-        >
+        <q-space/>
+        <q-btn-dropdown rounded icon="manage_accounts" dropdown-icon="arrow_drop_down" no-caps :label="user.full_name" outline color="primary">
+          <ProfileMenu/>
         </q-btn-dropdown>
+        <q-btn flat icon="more_vert"/>
       </q-toolbar>
       <q-separator />
       <q-toolbar class="scroll-y xs-hide container q-pa-xs q-gutter-sm">
-        <q-btn color="primary" icon="dashboard" />
-
-        <q-btn-dropdown
-          no-caps
-          dropdown-icon="arrow_drop_down"
-          flat
-          label="File management"
-        >
-          <q-list>
-            <q-item :to="{ name: 'file:create' }" clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>New file</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item
-              :to="{ name: 'file:incoming', params: { office_id: 1 } }"
-              clickable
-              v-close-popup
-            >
-              <q-item-section>
-                <q-item-label>Incoming files</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Outgoing files</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
-        <q-btn-dropdown
-          no-caps
-          dropdown-icon="arrow_drop_down"
-          flat
-          label="Application management"
-        >
-          <q-list>
-            <q-item :to="{ name: 'application:new' }" clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>New applications</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item
-              :to="{ name: 'application:verified' }"
-              clickable
-              v-close-popup
-            >
-              <q-item-section>
-                <q-item-label>Verified applications</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item
-              :to="{ name: 'application:approved' }"
-              clickable
-              v-close-popup
-            >
-              <q-item-section>
-                <q-item-label>Approved applications</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
-        <!--        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Certificate">-->
-        <!--          <q-list>-->
-        <!--            <q-item :to="{name:'application:new'}" clickable v-close-popup>-->
-        <!--              <q-item-section>-->
-        <!--                <q-item-label>Unpaid</q-item-label>-->
-        <!--              </q-item-section>-->
-        <!--            </q-item>-->
-
-        <!--            <q-item :to="{name:'application:verified'}" clickable v-close-popup>-->
-        <!--              <q-item-section>-->
-        <!--                <q-item-label>Paid</q-item-label>-->
-        <!--              </q-item-section>-->
-        <!--            </q-item>-->
-
-        <!--          </q-list>-->
-        <!--        </q-btn-dropdown>-->
-        <q-btn-dropdown
-          no-caps
-          dropdown-icon="arrow_drop_down"
-          flat
-          label="Accounting"
-        >
-          <q-list>
-            <q-item clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Transaction book</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Ledger</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup>
-              <q-item-section>
-                <q-item-label>Balance sheet</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
-        <q-btn-dropdown
-          no-caps
-          dropdown-icon="arrow_drop_down"
-          flat
-          label="Administration"
-        >
-          <q-list>
-            <q-item clickable v-close-popup @click="onMenuItemClick('posting')">
-              <q-item-section>
-                <q-item-label>Posting</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup @click="onMenuItemClick('staff')">
-              <q-item-section>
-                <q-item-label>Staff</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-separator />
-            <q-item clickable v-close-popup @click="onMenuItemClick('office')">
-              <q-item-section>
-                <q-item-label>Office/Department</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item clickable v-close-popup @click="onMenuItemClick('role')">
-              <q-item-section>
-                <q-item-label>Role</q-item-label>
-              </q-item-section>
-            </q-item>
           </q-list>
         </q-btn-dropdown>
         <q-btn-dropdown
@@ -181,7 +29,6 @@
           color="primary"
           label="Web management"
         >
-          <q-list>
             <q-item
               to="/admin/departments/"
               clickable
@@ -248,6 +95,14 @@
         </q-btn-dropdown>
         <q-space />
         <q-btn flat icon="settings" />
+=======
+<!--          </q-list>-->
+<!--        </q-btn-dropdown>-->
+
+        <AdminNav/>
+        <q-space/>
+        <q-btn flat icon="settings"/>
+>>>>>>> main
       </q-toolbar>
     </q-header>
 
@@ -282,9 +137,13 @@ import {onMounted} from "@vue/runtime-core";
 import {useStore} from "vuex";
 import {ref} from 'vue'
 import MsegFooter from "components/MsegFooter";
+import AdminNav from "components/admin/AdminNav";
+import {api} from "boot/axios";
+import ProfileMenu from "components/admin/ProfileMenu";
+import {computed} from "vue";
 
 export default {
-  components: {MsegFooter},
+  components: {ProfileMenu, AdminNav, MsegFooter},
   setup(props, context) {
     const services = ref([
       {
@@ -342,13 +201,13 @@ export default {
       }
     };
     onMounted(() => {
-      store.dispatch("globalData/fetchGlobalData");
-    });
+      store.dispatch('staffData/fetchData');
+    })
     return {
       onMenuItemClick,
       localData,
-      services,
-    };
-  },
-};
+      user:computed(()=>store.state.authData.currentUser)
+    }
+  }
+}
 </script>
