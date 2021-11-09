@@ -8,7 +8,7 @@
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
           </q-avatar>
-          Title
+          EODB
         </q-toolbar-title>
 
         <q-btn dense flat round icon="person">
@@ -30,9 +30,9 @@
       <!-- QScrollArea is optional -->
       <q-scroll-area class="fit q-pa-sm">
         <q-item>
-          <q-item-section>App icon</q-item-section>
+          <q-item-section class="text-italic text-bold">Applicant Profile</q-item-section>
         </q-item>
-        <q-item>
+        <q-item to="/investor" clickable>
           <q-item-section avatar>
             <q-icon color="negative" name="dashboard" />
           </q-item-section>
@@ -40,7 +40,7 @@
         </q-item>
 
         <q-expansion-item
-        expand-icon="expand_more"
+          expand-icon="expand_more"
           group="somegroup"
           icon="explore"
           label="Online Services"
@@ -52,88 +52,31 @@
             active-class="bg-grey-3"
             to="/investor/industries/online-services"
           >
-           
             <q-item-section avatar>
-              <q-icon color="negative" name="dashboard" />
+              <q-icon color="negative" name="precision_manufacturing" />
             </q-item-section>
             <q-item-section> Industries </q-item-section>
           </q-item>
+
+            <q-item
+            class="q-ml-md"
+            active-class="bg-grey-3"
+            to="/investor/industries/online-services"
+          >
+            <q-item-section avatar>
+              <q-icon color="negative" name="precision_manufacturing" />
+            </q-item-section>
+            <q-item-section> Aizawl Municipal Corporation </q-item-section>
+          </q-item>
         </q-expansion-item>
 
-    
-
-        <q-item>
+        <q-item clickable>
           <q-item-section avatar>
-            <q-icon color="negative" name="dashboard" />
+            <q-icon color="yellow" name="description" />
           </q-item-section>
           <q-item-section> My Applications </q-item-section>
         </q-item>
-        <q-list separator>
-          <q-expansion-item
-            group="somegroup"
-            icon="explore"
-            label="Website management"
-            default-opened
-            header-class="text-primary"
-          >
-            <q-item clickable class="q-ml-lg">
-              <q-item-section avatar>
-                <q-icon color="primary" name="bluetooth" />
-              </q-item-section>
 
-              <q-item-section>Icon as avatar</q-item-section>
-            </q-item>
-            <q-item clickable class="q-ml-lg">
-              <q-item-section avatar>
-                <q-icon color="primary" name="bluetooth" />
-              </q-item-section>
-
-              <q-item-section>Icon as avatar</q-item-section>
-            </q-item>
-          </q-expansion-item>
-          <q-expansion-item
-            group="somegroup"
-            icon="explore"
-            label="File management"
-            default-opened
-            header-class="text-primary"
-          >
-            <q-item clickable class="q-ml-lg">
-              <q-item-section avatar>
-                <q-icon color="primary" name="tag" />
-              </q-item-section>
-              <q-item-section>Tags</q-item-section>
-            </q-item>
-          </q-expansion-item>
-          <q-expansion-item
-            group="somegroup"
-            icon="explore"
-            label="User management"
-            default-opened
-            header-class="text-primary"
-          >
-            <q-item clickable class="q-ml-lg">
-              <q-item-section avatar>
-                <q-icon color="primary" name="tag" />
-              </q-item-section>
-              <q-item-section>Tags</q-item-section>
-            </q-item>
-          </q-expansion-item>
-          <q-expansion-item
-            group="somegroup"
-            icon="explore"
-            label="Master Data"
-            default-opened
-            header-class="text-primary"
-          >
-            <q-item clickable class="q-ml-lg">
-              <q-item-section avatar>
-                <q-icon color="primary" name="tag" />
-              </q-item-section>
-              <q-item-section>Tags</q-item-section>
-            </q-item>
-          </q-expansion-item>
-        </q-list>
         <q-separator />
         <q-item class="absolute-bottom">
           <q-item-section avatar>
