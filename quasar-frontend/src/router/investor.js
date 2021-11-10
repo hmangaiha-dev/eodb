@@ -11,6 +11,10 @@ export default {
     { path: "common-application/create", name:"common:create", component: () => import("pages/investor/CommonApplication.vue") },
     { path: "common-application/create", name:"common:create", component: () => import("pages/investor/CommonApplication.vue") },
     { path: ":deptname/online-services", name:"common:create", component: () => import("pages/investor/services/Services.vue") },
+    { path: 'applications/ongoing',name:'investor:ongoing', component: () => import('pages/investor/OnGoingApplications.vue') },
+    { path: 'applications/approved',name:'investor:approved', component: () => import('pages/investor/CompletedApplications.vue') },
+
+
 
 
 

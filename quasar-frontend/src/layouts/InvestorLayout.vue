@@ -30,7 +30,9 @@
       <!-- QScrollArea is optional -->
       <q-scroll-area class="fit q-pa-sm">
         <q-item>
-          <q-item-section class="text-italic text-bold">Applicant Profile</q-item-section>
+          <q-item-section class="text-italic text-bold"
+            >Applicant Profile</q-item-section
+          >
         </q-item>
         <q-item to="/investor" clickable>
           <q-item-section avatar>
@@ -58,7 +60,7 @@
             <q-item-section> Industries </q-item-section>
           </q-item>
 
-            <q-item
+          <q-item
             class="q-ml-md"
             active-class="bg-grey-3"
             to="/investor/industries/online-services"
@@ -70,12 +72,31 @@
           </q-item>
         </q-expansion-item>
 
-        <q-item clickable>
+
+         <q-expansion-item
+          expand-icon="expand_more"
+          group="somegroup"
+          icon="explore"
+          label="My Applications"
+          default-opened
+          header-class="text-primary"
+        >
+
+        <q-item  class="q-ml-md" :to="{ name: 'investor:ongoing' }" clickable>
           <q-item-section avatar>
             <q-icon color="yellow" name="description" />
           </q-item-section>
-          <q-item-section> My Applications </q-item-section>
+          <q-item-section> Ongoing Applications </q-item-section>
         </q-item>
+
+         <q-item  class="q-ml-md" :to="{ name: 'investor:approved' }" clickable>
+          <q-item-section avatar>
+            <q-icon color="yellow" name="description" />
+          </q-item-section>
+          <q-item-section> Approved Applications </q-item-section>
+        </q-item>
+
+        </q-expansion-item>
 
         <q-separator />
         <q-item class="absolute-bottom">
