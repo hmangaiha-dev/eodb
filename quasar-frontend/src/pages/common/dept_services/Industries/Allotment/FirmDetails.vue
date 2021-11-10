@@ -1,9 +1,6 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-xs-12 zsubtitle">Firm details</div>
-    
-   
-
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="name"
         >Applicant for <span class="asterisk"> *</span></label
@@ -13,7 +10,7 @@
       <q-select
         dropdown-icon="expand_more"
         outlined
-        v-model="model"
+        
         :options="options"
       />
     </div>
@@ -24,7 +21,7 @@
       </label>
     </div>
     <div class="col-xs-12 col-md-4">
-      <q-file outlined v-model="model">
+      <q-file outlined >
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -47,7 +44,7 @@
       <q-select
         dropdown-icon="expand_more"
         outlined
-        v-model="model"
+        
         :options="options"
       />
     </div>

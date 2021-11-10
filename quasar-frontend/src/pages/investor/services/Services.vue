@@ -69,8 +69,11 @@
 
           <q-td key="apply" :props="props">
             <q-btn
+              :to=" {
+                name: 'industries:allotment'
+              } "
               color="blue-6"
-              flat
+              
               label="Apply"
              
             />
@@ -259,7 +262,7 @@ export default {
     return {
       rows,
       columns,
-      tab: ref("actrules"),
+      tab: ref("services"),
     };
   },
 };

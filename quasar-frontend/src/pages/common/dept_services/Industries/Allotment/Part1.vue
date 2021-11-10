@@ -1,237 +1,195 @@
 <template>
-  <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-xs-12 zsubtitle">Firm details</div>
-    
-   
-
-    <div class="col-xs-12 col-md-2">
+  <div class="zcard row items-center q-gutter-md q-col-gutter-md">
+    <div class="col-3">
       <label class="zlabel" for="name"
-        >Applicant for <span class="asterisk"> *</span></label
+        >Name & Location of Industrial Area
+        <span class="asterisk"> *</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-select
-        dropdown-icon="expand_more"
-        outlined
-        v-model="model"
-        :options="options"
-      />
+
+    <div class="col-6">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
+    <p class="text-body col-12">
+      <span class="text-bold"> General Instructions:</span> <br />
+    </p>
+
+    <p class="text-grey col-12 q-py-none q-ml-md">
+      1.The filled in application form should be submitted to Appropriate
+      Authority of a particular 'Industrial Area'. <br />
+      2.Application form should be submitted in Duplicate copies. <br />
+      3.Cost of the application should be Rs. 100. (Rupees One Hundred). <br />
+      4.Attested photo copy of memorandum/Registration Certificate should be
+      5.submitted along with this application <br />
+      6.Attested Photo copy of Voters ID or Family ration card should be
+      submitted.
+    </p>
+
+    <p class="col-12 text-h6 q-pb-none text-center">Part I <br><span class="text-caption"> (To be filled by the Entrepreneur)</span></p>
+    
+      
+    
+
     <div class="col-xs-12 col-md-2">
+      <label class="zsubtitle" for="name"
+        >1.Name of the Applicant <span class="asterisk"> *</span></label
+      >
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <q-input dense outlined v-model="formData.birth_place" />
+    </div>
+
+    <div class="col-xs-12 zsubtitle">2.Address for communication</div>
+
+    <div class="col-xs-12 col-md-1">
       <label class="zlabel" for="dob" type="date"
-        >Applicant photo<span class="asterisk">*</span>
+        >Steet<span class="asterisk">*</span>
       </label>
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-file outlined v-model="model">
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="gender"
-        >Applicant name <span class="asterisk">*</span></label
+        >City/Town/Village <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input outlined v-model="formData.birth_place" />
-    </div>
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="pob">Applicant belongs to</label>
-    </div>
-
-    <div class="col-xs-12 col-md-4">
-      <q-select
-        dropdown-icon="expand_more"
-        outlined
-        v-model="model"
-        :options="options"
-      />
-    </div>
-
-    <div class="col-12">
-      <label class="text-bold" for="pob">Correspondance Addres</label>
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="fname"
-        >Country<span class="asterisk">*</span></label
+      <label class="zlabel" for="gender"
+        >PIN No <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="fname"
-        v-model="formData.father_name"
-        :rules="[(val) => !!val?.trim() || 'Fathers name is required ']"
-        dense
-        item-aligned
-        outlined
-        @blur="onFathernameBlur"
-      />
-    </div>
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="mname">State</label>
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="mname"
-        v-model="formData.mother_name"
-        :rules="[]"
-        dense
-        item-aligned
-        outlined
-        @blur="onMothernameBlur"
-      />
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="mobile"
-        >City/Town<span class="asterisk">*</span></label
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >House No <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="mobile"
-        v-model="formData.phone_no"
-        mask="##########"
-        :rules="[
-          (val) => !!val?.trim() || 'Mobile no is required ',
-          (val) => val.match(/^\d{10}$/) || 'Mobile no must be 10 digit no ',
-        ]"
-        dense
-        item-aligned
-        outlined
-      />
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined v-model="formData.birth_place" />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Phone No <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input label="Office" dense outlined v-model="formData.birth_place" />
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="email">Postal code/Zip code</label>
-    </div>
-    <div class="col-xs-12 col-md-4">
       <q-input
-        id="email"
-        v-model="formData.email"
+        label="Residence"
         dense
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (emailRegex.test(val)) {
-                return true;
-              } else {
-                return 'Invalid email format';
-              }
-            }
-          },
-        ]"
-        item-aligned
         outlined
+        v-model="formData.birth_place"
       />
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+      <q-input label="Mobile" dense outlined v-model="formData.birth_place" />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Email Addess <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined v-model="formData.birth_place" />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Website <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined v-model="formData.birth_place" />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="pob">District</label>
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Address</label>
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
-    <!--    hint="Adhaar no will be used to match the records of your Digilocker AC"-->
 
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="adar"
-        v-model="formData.aadhaar_no"
-        dense
-        item-aligned
-        mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
-        outlined
-      />
+    <div class="col-xs-12 zsubtitle">
+      3.Whether Proposed Or Existing Unit If Existing, Detail Address Of The
+      Unit: Proposed/Existing.
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="dob" type="date"
+        >Steet<span class="asterisk">*</span>
+      </label>
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Phone number</label>
+      <label class="zlabel" for="gender"
+        >City/Town/Village <span class="asterisk">*</span></label
+      >
     </div>
-
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="adar"
-        v-model="formData.aadhaar_no"
-        dense
-        item-aligned
-        mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
-        outlined
-      />
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Fax number</label>
+      <label class="zlabel" for="gender"
+        >PIN No <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="adar"
-        v-model="formData.aadhaar_no"
-        dense
-        item-aligned
-        mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
-        outlined
-      />
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >House No <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined v-model="formData.birth_place" />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Phone No <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input label="Office" dense outlined v-model="formData.birth_place" />
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Email id</label>
-    </div>
-
-    <div class="col-xs-12 col-md-4">
       <q-input
-        id="adar"
-        v-model="formData.aadhaar_no"
+        label="Residence"
         dense
-        item-aligned
-        mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
         outlined
+        v-model="formData.birth_place"
       />
     </div>
+
+    <div class="col-xs-12 col-md-3">
+      <q-input label="Mobile" dense outlined v-model="formData.birth_place" />
+    </div>
+
     <div class="col-xs-12" />
   </div>
 </template>

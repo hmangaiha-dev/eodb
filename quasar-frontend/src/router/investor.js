@@ -13,6 +13,8 @@ export default {
     { path: ":deptname/online-services", name:"common:create", component: () => import("pages/investor/services/Services.vue") },
     { path: 'applications/ongoing',name:'investor:ongoing', component: () => import('pages/investor/OnGoingApplications.vue') },
     { path: 'applications/approved',name:'investor:approved', component: () => import('pages/investor/CompletedApplications.vue') },
+    { path: 'industries/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },
+
 
 
 

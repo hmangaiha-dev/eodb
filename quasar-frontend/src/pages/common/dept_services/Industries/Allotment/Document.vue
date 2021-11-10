@@ -1,36 +1,52 @@
 <template>
-  <div class="zcard row items-center q-col-gutter-md">
-    <h1 class="ztitle">Common Application Form</h1>
-    <q-form class="row">
-      <div class="row q-col-gutter-lg">
-        <div class="col-xs-12">
-          <PersonalDetails ref="applicantRef" />
-        </div>
+  <div class="zcard row items-center q-gutter-md q-col-gutter-md">
+    <div class="col-12 text-h6 q-pb-none text-center">Attach Document</div>
 
-        <div class="col-xs-12">
-          <FirmDetails ref="FirmRef" />
-        </div>
-      </div>
-    </q-form>
+
+
+     <div class="col-xs-12 col-md-5">
+      <label class="zlabel" for="name">
+        Attested Photo Copy Of Memorandum/Registration Certificate <span class="asterisk"> *</span></label
+      >
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <q-file outlined >
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+    </div>
+
+
+     <div class="col-xs-12 col-md-5">
+      <label class="zlabel" for="name">
+        Attested Photo Copy Of Voters ID Or Family Ration Card <span class="asterisk"> *</span></label
+      >
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <q-file outlined >
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+    </div>
+
+    <div class="col-xs-12" />
   </div>
 </template>
+
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 
-import PersonalDetails from "./form/PersonalDetails.vue";
-import FirmDetails from "./form/FirmDetails.vue";
-
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
-  components: {
-    PersonalDetails,
-    FirmDetails,
-  },
   setup(props, context) {
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
@@ -139,7 +155,6 @@ export default {
       emailRegex,
       localData,
       formData,
-      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

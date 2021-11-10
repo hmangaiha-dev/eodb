@@ -1,15 +1,28 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <h1 class="ztitle">Common Application Form</h1>
-    <q-form class="row">
+    <div class="col-12 text-h6 q-pb-none text-center">Schedule - II</div>
+    <p class="col-12 text-caption q-py-none text-center">(See Rule 6A)</p>
+    <div class="col-12 ztitle text-center">
+      APPLICATION FOR ALLOTMENT OF INDUSTRIAL PLOT/SHET AT
+    </div>
+    <q-form @submit.prevent="" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
-          <PersonalDetails ref="applicantRef" />
+          <Part1 ref="applicantRef" />
         </div>
 
         <div class="col-xs-12">
-          <FirmDetails ref="FirmRef" />
+          <Part2 ref="FirmRef" />
         </div>
+
+        <div class="col-xs-12">
+          <Document ref="DocumentRef" />
+        </div>
+      </div>
+
+      <div class="text-center q-mt-md col-12">
+        <q-btn type="submit" color="green-5" label="Submit" />
+        <q-btn class="q-mx-md" color="red-4" label="Reset" />
       </div>
     </q-form>
   </div>
@@ -20,16 +33,18 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 
-import PersonalDetails from "./form/PersonalDetails.vue";
-import FirmDetails from "./form/FirmDetails.vue";
+import Part1 from "./Part1.vue";
+import Part2 from "./Part2.vue";
+import Document from "./Document.vue";
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   components: {
-    PersonalDetails,
-    FirmDetails,
+    Part1,
+    Part2,
+    Document,
   },
   setup(props, context) {
     const store = useStore();
