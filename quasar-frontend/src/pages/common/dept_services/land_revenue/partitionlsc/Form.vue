@@ -10,9 +10,11 @@
       <q-input dense outlined />
     </div>
 
+    <div class="col-12 ztitle">Address</div>
+
     <div class="col-xs-12 col-md-2">
       <label class="zsubtitle" for="name"
-        >Date of Birth <span class="asterisk"> *</span></label
+        >House No <span class="asterisk"> *</span></label
       >
     </div>
 
@@ -22,7 +24,7 @@
 
     <div class="col-xs-12 col-md-1">
       <label class="zlabel" for="dob" type="date"
-        >Present Age<span class="asterisk">*</span>
+        >Hmun Bik (Street/Lane)<span class="asterisk">*</span>
       </label>
     </div>
     <div class="col-xs-12 col-md-2">
@@ -31,7 +33,7 @@
 
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="gender"
-        >Place of Birth <span class="asterisk">*</span></label
+        >Veng <span class="asterisk">*</span></label
       >
     </div>
     <div class="col-xs-12 col-md-2">
@@ -40,7 +42,7 @@
 
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="gender"
-        >District <span class="asterisk">*</span></label
+        >Khua <span class="asterisk">*</span></label
       >
     </div>
     <div class="col-xs-12 col-md-2">
@@ -49,26 +51,26 @@
 
     <div class="col-xs-12 col-md-1">
       <label class="zlabel" for="gender"
-        >Present Address
+        >Pin Code <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Dilna Hmun Hriat Awlsamna Tur (Landmark):
         <span class="asterisk">*</span></label
       >
     </div>
-   <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-2">
       <q-input dense outlined />
     </div>
 
     <div class="col-xs-12 col-md-1">
       <label class="zlabel" for="gender"
-        >Permanent Address <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input  dense outlined />
-    </div>
-
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        >Name of Father <span class="asterisk">*</span></label
+        >Telephone No. <span class="asterisk">*</span></label
       >
     </div>
     <div class="col-xs-12 col-md-2">
@@ -76,8 +78,8 @@
     </div>
 
     <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        >Name of Mother <span class="asterisk">*</span></label
+      <label class="zlabel" for="gender">
+        Email ID <span class="asterisk">*</span></label
       >
     </div>
     <div class="col-xs-12 col-md-2">
@@ -85,30 +87,18 @@
     </div>
 
     <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="pob">Whether Applicant Belongs To A Tribal (Mizo) As Specified In Sub-section (45) Of Section 2 Of The Act</label>
+      <label class="zlabel" for="pob"
+        >Date Of Establishment Of Workshop/factory</label
+      >
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <q-radio val="line" label="Line" />
-      <q-radio val="line" label="Line" />
-    </div>
-
-    <div class="col-12">
-     If Not Born In Mizoram, Do You Enclose Domicile Certificate Issued By Home Department?
-    </div>
-
-   <div class="col-xs-12 col-md-2">
       <q-input dense outlined />
-    </div>
-
-
-    <div class="col-12 ztitle">
-      Exact Location
     </div>
 
     <div class="col-xs-12 col-md-1">
       <label class="zlabel" for="dob" type="date"
-        >Area/Veng.<span class="asterisk">*</span>
+        >Current Registration Number<span class="asterisk">*</span>
       </label>
     </div>
     <div class="col-xs-12 col-md-2">
@@ -119,126 +109,241 @@
 
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="gender"
-        >Indicate Category:Shop Or Stall<span class="asterisk">*</span></label
+        >Registration Date<span class="asterisk">*</span></label
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
+      <q-date v-model="date" landscape minimal />
     </div>
 
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="gender"
-        >Name of Village Council <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
-    </div>
-
-    
-    <div class="col-12 ztitle">Clearly Indicate Name(s) & Addresse(s) Of Immediate Neighbour *</div>
-
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        >South ( Chhim Lam ) <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
-    </div>
-
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        >North ( Hmar Lam ) <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input  dense outlined />
-    </div>
-
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        >West ( Khawthlang Lam )<span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input  dense outlined />
-    </div>
-
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        > East ( Khawchhak Lam )<span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input  dense outlined />
-    </div>
-
-   
-
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        >Whether The Area Is Properly Cleared For Easy Movement Of Surveyors? <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input  dense outlined />
-    </div>
-
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        >Whether 4(four) Boundary Pillars As Prescribed By Revenue Department Are Provided For Fixing On The Day Of Survey Operation? <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input  dense outlined />
-    </div>
-
-
-    <div class="col-12 ztitle">
-      Other Contact Details
-    </div>
-
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        >Telephone Number <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input  dense outlined />
-    </div>
-
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        >Email ID <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input  dense outlined />
-    </div>
-
-
-    <div class="col-12 ztitle">
-      *Notes: Hemi vengah hian a thenawmte hi an awm lo anih pawhin a ram awmna hmun hi chipchiar takin ziah tur a ni (In case neighbours are not present, clear location of land should be described).
-    </div>
-
-
-    <div class="col-12 ztitle">
-     <q-radio val="line" label="I hereby certify that all particulars and documents are true and correct. Any incorrect particulars furnished herein will result in cancellation of settlement or allotment (A chunga sawite khi a dik vek tih ka hriattir e. Diklo a awm a nih chuan allotment emaw settlement pek tawh pawh sut leh theih a ni tih ka hre bawk e). I also hereby agree to abide by terms and conditions laid down in rule 14 & 15 of these Rules ( Rule 14 leh 15 na in a phut zawng zawngte zawm turin ka intiam a, ka zawm loh chuan House Pass pawh sut leh turin ka in tiam e)." />
-    </div>
-
-
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="gender"
-        >Signature of the Applicant
+        >Nature Of Manufacturing Activities At Present
         <span class="asterisk">*</span></label
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input  dense outlined />
+      <q-input dense outlined />
     </div>
 
-   
+    <div class="col-12 zttitle">
+      Type Of Weights And Measures Proposed To Be Manufactured :
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Weights <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Measures <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Weighing Instruments<span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender">
+        Measuring Instruments With Details<span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-12 ztitle">
+      The Number Of Persons Employed/proposed To Be Employed :
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Skilled <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Semi-skilled<span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Unskilled <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Specialist Trained In The Lines <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Monogram Or Trade Mark Intended To Be Imprinted On Weights And Measures
+        To Be Manufactured <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Details Of Machinery, Tools Accessories, Owned And Used For
+        Manufacturing Weights Measures Etc.
+        <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Details Of Foundry/workshop Facilities Arranged.Whether Ownership, Long
+        Term Lease Etc. <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Facilities Of Steel Casting And Hardness Testing Of Vital Parts Etc Or
+        Other Means. <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Availability Of Electricity<span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Details Of Loan Received From Government Or Financial Institution. If
+        So, Give Details<span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Name Of Bankers,if Any<span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >VAT/ Sales Tax Registration Number/CST Number/Professional Tax
+        Registration Number/IT Number<span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Have You Applied Previously For A Manufacturer's Licence? If So, When
+        And With What Results ?<span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Whether The Item (s) Proposed To Be Manufactured Will Be Sold Within
+        The State Or Out Side The State Or Both<span class="asterisk"
+          >*</span
+        ></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Details Of Model Approval Received From Government Of India;<span
+          class="asterisk"
+          >*</span
+        ></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >When Can You Produce For Inspection Samples Of Your Products For Which
+        Licence Is Desired ?<span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-12 ztitle">
+      I do hereby affirm that the informations furnished above are true and the
+      documents attached herewith are genuine.
+    </div>
+
+
+
+    <div class="col-xs-12 col-md-1">
+      <label class="zlabel" for="gender"
+        >Signature of the applicant<span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <q-input dense outlined />
+    </div>
 
     <div class="col-xs-12" />
   </div>

@@ -1,9 +1,9 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-12 text-h6 q-pb-none text-center">Form-2A</div>
-    <p class="col-12 text-caption q-py-none text-center">[See Rule 3(1)]</p>
+    <div class="col-12 text-h6 q-pb-none text-center">Form-12</div>
+    <p class="col-12 text-caption q-py-none text-center">[See Rule 27(2)]</p>
     <div class="col-12 ztitle text-center">
-    APPLICATION FOR ALLOTMENT OF LAND FOR HOUSE SITE
+   APPLICATION FOR PARTITION OF LSC
     </div>
     <q-form @submit.prevent="" class="row">
       <div class="row q-col-gutter-lg">
