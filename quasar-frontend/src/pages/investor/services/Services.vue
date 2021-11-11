@@ -141,7 +141,7 @@ const columns = [
 ];
 const rows = [
   {
-    name: "Frozen Yogurt",
+    name: "Application For Allotment Of Industrial Plot",
     calories: 159,
     fat: 6.0,
     carbs: 24,
@@ -151,7 +151,7 @@ const rows = [
     iron: "1%",
   },
   {
-    name: "Ice cream sandwich",
+    name: "Application for Claiming Interest Subsidy",
     calories: 237,
     fat: 9.0,
     carbs: 37,
