@@ -50,30 +50,21 @@
           header-class="text-primary"
         >
           <q-item
+            v-for="(dept) in depts" :key="dept"
             class="q-ml-md"
             active-class="bg-grey-3"
-            to="/investor/industries/online-services"
+            :to="`/investor/${dept.slug}/online-services`"
           >
             <q-item-section avatar>
               <q-icon color="negative" name="precision_manufacturing" />
             </q-item-section>
-            <q-item-section> Industries </q-item-section>
+            <q-item-section> {{ dept.name }} </q-item-section>
           </q-item>
 
-          <q-item
-            class="q-ml-md"
-            active-class="bg-grey-3"
-            to="/investor/industries/online-services"
-          >
-            <q-item-section avatar>
-              <q-icon color="negative" name="precision_manufacturing" />
-            </q-item-section>
-            <q-item-section> Aizawl Municipal Corporation </q-item-section>
-          </q-item>
+         
         </q-expansion-item>
 
-
-         <q-expansion-item
+        <q-expansion-item
           expand-icon="expand_more"
           group="somegroup"
           icon="explore"
@@ -81,21 +72,19 @@
           default-opened
           header-class="text-primary"
         >
+          <q-item class="q-ml-md" :to="{ name: 'investor:ongoing' }" clickable>
+            <q-item-section avatar>
+              <q-icon color="yellow" name="description" />
+            </q-item-section>
+            <q-item-section> Ongoing Applications </q-item-section>
+          </q-item>
 
-        <q-item  class="q-ml-md" :to="{ name: 'investor:ongoing' }" clickable>
-          <q-item-section avatar>
-            <q-icon color="yellow" name="description" />
-          </q-item-section>
-          <q-item-section> Ongoing Applications </q-item-section>
-        </q-item>
-
-         <q-item  class="q-ml-md" :to="{ name: 'investor:approved' }" clickable>
-          <q-item-section avatar>
-            <q-icon color="yellow" name="description" />
-          </q-item-section>
-          <q-item-section> Approved Applications </q-item-section>
-        </q-item>
-
+          <q-item class="q-ml-md" :to="{ name: 'investor:approved' }" clickable>
+            <q-item-section avatar>
+              <q-icon color="yellow" name="description" />
+            </q-item-section>
+            <q-item-section> Approved Applications </q-item-section>
+          </q-item>
         </q-expansion-item>
 
         <q-separator />
@@ -107,8 +96,6 @@
         </q-item>
       </q-scroll-area>
     </q-drawer>
-
-    
 
     <q-page-container>
       <router-view />
@@ -132,6 +119,67 @@ import { ref } from "vue";
 import ProfileMenu from "components/ProfileMenu";
 import { reactive } from "@vue/reactivity";
 
+const depts = [
+  {
+    name: "Commerce and Industries",
+    slug: "commerce-and-industries",
+  },
+  {
+    name: "Land Revenue and Settlement",
+    slug: "land-and-revenue",
+  },
+  {
+    name: "Environment, Forest & Climate Change",
+    slug: "environment-forest-and-climate-change",
+  },
+  {
+    name: "Mizoram Pollution Control Board",
+    slug: "pollution-control-board",
+  },
+  {
+    name: "Fire & Emergency Services",
+    slug: "fire-and-emergency-services",
+  },
+  {
+    name: "Taxation Department",
+    slug: "taxation",
+  },
+  {
+    name: "Public Works Department",
+    slug: "public-work-department",
+  },
+  {
+    name: "Aizawl Municipal Corporation",
+    slug: "aizawl-municipal-corporation",
+  },
+  {
+    name: "Law & Judicial Department",
+    slug: "law-and-judicial",
+  },
+  {
+    name: "Legal Metrology",
+    slug: "legal-metrology",
+  },
+  {
+    name: "Excise & Narcotics Department",
+    slug: "excise-and-narcotics",
+  },
+ 
+ 
+  {
+    name: "Food & Drug Administration, H&FW Department",
+    slug: "food-and-drug-administration",
+  },
+  {
+    name: "Urban Development & Proverty Alleviation",
+    slug: "urban-development-and-proverty-alleviation",
+  },{
+    name: "Labour Employment, Skill Development & Entreprenuership",
+    slug: "labour-skill-development-and-enterprise",
+  },
+
+];
+
 export default {
   components: { ProfileMenu },
   setup() {
@@ -140,6 +188,7 @@ export default {
     const menuItems = reactive([{}]);
 
     return {
+      depts,
       leftDrawerOpen,
       handleProfileMenu: (menuitem) => console.log(menuitem),
       toggleLeftDrawer() {

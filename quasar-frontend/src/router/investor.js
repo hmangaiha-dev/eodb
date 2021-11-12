@@ -8,12 +8,12 @@ export default {
     { path: "profile", component: () => import("pages/investor/ProfileInfo.vue") },
     { path: "profile/update", name:"profile:update", component: () => import("pages/investor/ProfileEdit.vue") },
     { path: "profile/update", name:"profile:update", component: () => import("pages/investor/ProfileEdit.vue") },
-    { path: "common-application/create", name:"common:create", component: () => import("pages/investor/CommonApplication.vue") },
-    { path: "common-application/create", name:"common:create", component: () => import("pages/investor/CommonApplication.vue") },
+    // { path: "common-application/create", name:"common:create", component: () => import("pages/investor/CommonApplication.vue") },
+    // { path: "common-application/create", name:"common:create", component: () => import("pages/investor/CommonApplication.vue") },
     { path: ":deptname/online-services", name:"common:create", component: () => import("pages/investor/services/Services.vue") },
     { path: "amc/online-services", name:"amc:services", component: () => import("pages/investor/services/Services.vue") },
     { path: "land-revenue-settlement/online-services", name:"amc:services", component: () => import("pages/investor/services/Services.vue") },
-    { path: "commerce-and-industries/online-services", name:"amc:services", component: () => import("pages/investor/services/Services.vue") },
+    // { path: "commerce-and-industries/online-services", name:"amc:services", component: () => import("pages/investor/services/Services.vue") },
 
 
     { path: 'applications/ongoing',name:'investor:ongoing', component: () => import('pages/investor/OnGoingApplications.vue') },
