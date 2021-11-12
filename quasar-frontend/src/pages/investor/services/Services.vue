@@ -46,12 +46,8 @@
 
           <q-td key="apply" :props="props">
             <q-btn
-              :to="{
-                name: 'common:create',
-                params: {
-                  deptname: 'test',
-                },
-              }"
+             :to="`/investor/${route.params.deptname}/${props.row.apply}`"
+             
               color="blue-6"
               label="Apply"
             />
@@ -125,9 +121,17 @@ export default {
     const router = useRouter();
 
     watch(
+
+      
       () => route.params.deptname,
       () => {
-        console.log("route changed");
+
+        if(route.name != "common:create")
+          return
+
+        console.log('route name',route.name);
+        
+        console.log("route changed investor");
 
         refresh()
 
@@ -214,7 +218,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "allotment-of-industrial-plot",
           },
           {
             name: "Application for Claiming Interest Subsidy",
@@ -1258,30 +1262,14 @@ export default {
     onMounted(() => {
       refresh();
 
-      return;
-      console.log("mounted hook", route.params.deptname);
-
-      const result = deptServices.filter((dept) => {
-        return dept.slug == route.params.deptname;
-      });
-
-      const { services } = result;
-
-      console.log("destructure", services);
-
-      rows.value = result[0].services;
-
-      // rows = result;
-
-      // console.log("rows value serivies", rows);
-
-      // console.log("result is", result[0].services);
     });
 
     console.log("layouts is".Layouts);
     return {
       rows,
       columns,
+      route,
+      router,
       tab: ref("services"),
       deptServices,
       refresh,

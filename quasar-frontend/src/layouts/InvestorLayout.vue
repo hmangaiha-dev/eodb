@@ -15,9 +15,7 @@
           <ProfileMenu @onMenuItemClick="handleProfileMenu" />
         </q-btn>
       </q-toolbar>
-      <q-toolbar>
-        <q-toolbar-title>Main menu</q-toolbar-title>
-      </q-toolbar>
+      
 
       <!--      <q-tabs align="left">-->
       <!--        <q-route-tab to="/page1" label="Page One" />-->
@@ -30,11 +28,11 @@
       <!-- QScrollArea is optional -->
       <q-scroll-area class="fit q-pa-sm">
         <q-item>
-          <q-item-section class="text-italic text-bold"
+          <q-item-section class="text-italic text-subtitle1 text-caption"
             >Applicant Profile</q-item-section
           >
         </q-item>
-        <q-item to="/investor" clickable>
+        <q-item to="/investor"  clickable>
           <q-item-section avatar>
             <q-icon color="negative" name="dashboard" />
           </q-item-section>
@@ -53,6 +51,7 @@
             v-for="(dept) in depts" :key="dept"
             class="q-ml-md"
             active-class="bg-grey-3"
+            exact
             :to="`/investor/${dept.slug}/online-services`"
           >
             <q-item-section avatar>
@@ -69,7 +68,7 @@
           group="somegroup"
           icon="explore"
           label="My Applications"
-          default-opened
+          
           header-class="text-primary"
         >
           <q-item class="q-ml-md" :to="{ name: 'investor:ongoing' }" clickable>
@@ -88,12 +87,12 @@
         </q-expansion-item>
 
         <q-separator />
-        <q-item class="absolute-bottom">
+        <!-- <q-item class="absolute-bottom">
           <q-item-section avatar>
             <q-icon color="negative" name="dashboard" />
           </q-item-section>
           <q-item-section> Log out </q-item-section>
-        </q-item>
+        </q-item> -->
       </q-scroll-area>
     </q-drawer>
 

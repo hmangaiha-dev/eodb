@@ -26,10 +26,11 @@
       submitted.
     </p>
 
-    <p class="col-12 text-h6 q-pb-none text-center">Part I <br><span class="text-caption"> (To be filled by the Entrepreneur)</span></p>
-    
-      
-    
+    <p class="col-12 text-h6 q-pb-none text-center">
+      Part I <br /><span class="text-caption">
+        (To be filled by the Entrepreneur)</span
+      >
+    </p>
 
     <div class="col-xs-12 col-md-2">
       <label class="zsubtitle" for="name"
@@ -207,45 +208,47 @@ export default {
   setup(props, context) {
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
-    const currentUser = store.getters["auth/getCurrentUser"];
-    const localData = reactive({
-      genders: [
-        { value: "Male", label: "Male" },
-        { value: "Female", label: "Female" },
-        { value: "Other", label: "Other" },
-      ],
-      epic_relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-      ],
-      relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-        { value: "Spouse", label: "Spouse" },
-        { value: "Guardian", label: "Guardian" },
-      ],
-      adults: [
-        { value: true, label: "Applicant is above 18 years" },
-        { value: false, label: "Applicant is below 18 years" },
-      ],
-    });
 
     const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: currentUser?.email,
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
+      location_name: "Mr",
+      applicant_name: "",
+
+      street: "",
+      city_town_village: "",
+      pin_no: "Male",
+      house_no: "",
+      office_phn: "",
+      residence_phn: "",
+      mobile_phn: "",
+      email: "",
+      website: "",
+      district: "Father",
+
+      street2: "",
+      city_town_village2: "",
+      pin_no2: "Male",
+      house_no2: "",
+      office_phn2: "",
+      residence_phn2: "",
+      mobile_phn2: "",
+
+      enterprise_name: "",
+      enterprise_category: "Mr",
+      nature_activity: true,
+      incase_others: "",
+      ancillary: null,
+      give_detail: "",
+      organisation_type: "",
+      product_manufacture: "",
+      service_provides: "",
+
+
+
+
+
+
+
+
       epic_relation: "Father",
       epic_holder: "",
       constituency: "",
