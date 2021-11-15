@@ -2,7 +2,7 @@ export default {
   path: '/admin',
   component: () => import('layouts/MainLayout.vue'),
   children: [
-    { path: '',name:'staff:dashboard', component: () => import('pages/Index.vue') },
+    { path: '',name:'staff:dashboard', component: () => import('pages/admin/Dashboard.vue') },
 
     { path: 'profile',name:'profile:read', component: () => import('pages/admin/profile/Profile.vue') },
 
@@ -21,17 +21,19 @@ export default {
     { path: 'postings',name:'posting:read', component: () => import('pages/admin/postings/StaffPostings') },
     { path: 'postings/create',name:'posting:create', component: () => import('pages/admin/postings/Posting') },
 
-    { path: 'files',name:'file:read', component: () => import('pages/admin/file/Create') },
-    { path: 'files/create',name:'file:create', component: () => import('pages/admin/file/Files') },
+    { path: 'files',name:'file:read', component: () => import('pages/admin/file/Files') },
+    { path: 'files/create',name:'file:create', component: () => import('pages/admin/file/Create') },
+    { path: 'files/incoming',name:'file:incoming', component: () => import('pages/admin/file/IncomingFiles.vue') },
+    { path: 'files/outgoing',name:'file:outgoing', component: () => import('pages/admin/file/OutgoingFiles.vue') },
+    { path: 'files/archived',name:'file:archived', component: () => import('pages/admin/file/ArchivedFiles.vue') },
+
+    { path: 'applications',name:'application:read', component: () => import('pages/admin/application/List') },
+    { path: 'applications/create',name:'application:create', component: () => import('pages/admin/application/Create') },
+    { path: 'applications/incoming',name:'application:incoming', component: () => import('pages/admin/application/Incoming.vue') },
+    { path: 'applications/archived',name:'application:archived', component: () => import('pages/admin/application/Archived.vue') },
     //test
-    { path: 'files/:office_id/incoming',name:'file:incoming', component: () => import('pages/admin/file/IncomingFiles') },
-    { path: 'files/:office_id/outgoing',name:'file:outgoing', component: () => import('pages/admin/file/OutgoingFiles') },
-
-    { path: 'applications/new',name:'application:new', component: () => import('pages/admin/application/Application') },
-    { path: 'applications/verified',name:'application:verified', component: () => import('pages/admin/application/Verified') },
-    { path: 'applications/approved',name:'application:approved', component: () => import('pages/admin/application/Approved') },
-
-
+    // { path: 'files/:office_id/incoming',name:'file:incoming', component: () => import('pages/admin/file/IncomingFiles') },
+    // { path: 'files/:office_id/outgoing',name:'file:outgoing', component: () => import('pages/admin/file/OutgoingFiles') },
 
     {
       path: 'master-data',

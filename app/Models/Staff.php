@@ -22,7 +22,7 @@ class Staff extends Authenticatable
 
     protected $table = 'staffs';
     protected $fillable = ['full_name','designation', 'email', 'phone', 'password','joined_at'];
-    protected $appends = ['presentAddress', 'permanentAddress'];
+    protected $appends = ['presentAddress', 'permanentAddress','current_post'];
 
     public function getPresentAddressAttribute()
     {
@@ -75,6 +75,12 @@ class Staff extends Authenticatable
             }
         }
         return $perms;
+
+    }
+
+    public function getCurrentPostAttribute(){
+
+        return $this->postings()->latest('joining_date')->first();
 
     }
     public function postings(): BelongsToMany

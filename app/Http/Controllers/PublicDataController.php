@@ -33,6 +33,9 @@ class PublicDataController extends Controller
                 'value'=>$item->id,
                 'label'=>$item->name
             ]),
+            'file_types' => [
+                ['value' => 'common_file', 'label' => 'Common file'],
+            ],
             'districts' => DataUtil::DISTRICTS,
             'staffs'=>Staff::query()->get(['id as value','full_name as label']),
             'offices'=>Office::query()->get(['id as value','name as label'])

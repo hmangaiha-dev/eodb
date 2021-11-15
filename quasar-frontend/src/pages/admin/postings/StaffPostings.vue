@@ -28,19 +28,16 @@
                 <q-icon name="search"/>
               </template>
             </q-input>
-
-            <!--                <q-select-->
-            <!--                  multiple-->
-            <!--                  outlined-->
-            <!--                  dense-->
-            <!--                  options-dense-->
-            <!--                  emit-value-->
-            <!--                  map-options-->
-            <!--                  :options="columns"-->
-            <!--                  option-value="name"-->
-            <!--                  options-cover-->
-            <!--                  style="min-width: 150px"-->
-            <!--                />-->
+          </template>
+          <template v-slot:body-cell-current_post="props">
+            <q-td :props="props">
+              <p class="zlabel">{{props.row.current_post?.code}} : {{props.row.current_post?.name}}</p>
+            </q-td>
+          </template>
+          <template v-slot:body-cell-roles="props">
+            <q-td :props="props">
+              <q-badge v-for="item in props.row.roles" :key="item.id" :label="item.name"/>
+            </q-td>
           </template>
 
         </q-table>
@@ -57,22 +54,13 @@ import {useQuasar} from "quasar";
 
 
 const columns = [
-  // {
-  //   name: 'staff',
-  //   required: true,
-  //   label: 'Staff',
-  //   align: 'left',
-  //   field: row => row.staff,
-  //   format: val => `${val}`,
-  //   sortable: true
-  // },
   {name: 'fullname', align: 'left', label: 'Fullname', field: 'full_name', sortable: true},
   {name: 'email', align: 'left', label: 'Email', field: 'email', sortable: true},
-  {name: 'rolesName',align:'left', label: 'Role', field: 'rolesName', format: val => val?.toString()},
+  {name: 'roles',align:'left', label: 'Roles', field: 'roles'},
 
   // { name: 'email', label: 'Email', field: 'email', sortable: true },
-  {name: 'currentPost',align:'left', label: 'Post', field: 'currentPost', format: val => val?.name},
-  {name: 'status',align:'left', label: 'Status', field: 'currentPost', format: val => val?.pivot?.status},
+  {name: 'current_post',align:'center', label: 'Post', field: 'current_post'},
+  {name: 'status',align:'left', label: 'Status', field: 'current_post', format: val => val.pivot.status},
 ]
 
 export default {

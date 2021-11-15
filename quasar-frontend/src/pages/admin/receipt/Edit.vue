@@ -10,8 +10,8 @@
                   outlined
                   item-aligned
                  dense
-                 v-model="formData.file_no"
-                  :rules="[val=>!!val || 'File no is required']"
+                 v-model="formData.receipt_no"
+                  :rules="[val=>!!val || 'Receipt no is required']"
         />
       </div>
       <div class="col-xs-12 col-md-3 flex items-center">

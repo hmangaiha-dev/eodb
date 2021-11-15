@@ -12,6 +12,8 @@ const state = () => {
     districts: [],
     staffs: [],
     offices: [],
+    file_types: [],
+    application_types: [],
     postingStatuses: [
       {value: "on-duty", label: "On duty"},
       {value: "on-leave", label: "On leave"},
@@ -29,6 +31,8 @@ const mutations = {
   setPostingStatuses: (state, stats) => (state.postingStatuses = stats),
   setOffices: (state, offices) => (state.offices = offices),
   setOccupations: (state, occupations) => (state.occupations = occupations),
+  setFileType: (state, types) => (state.file_types = types),
+  setApplicationTypes: (state, types) => (state.application_types = types),
 };
 
 const actions = {
@@ -42,12 +46,16 @@ const actions = {
           permissions,
           offices,
           staffs,
+          file_types,
+          application_types,
         } = res.data;
         context.commit("setPermissions", permissions);
         context.commit("setRoles", roles);
         context.commit("setDistricts", districts);
         context.commit("setStaffs", staffs);
         context.commit("setOffices", offices);
+        context.commit("setFileType", file_types);
+        context.commit("setApplicationType", application_types);
 
         // console.log('services api data',services[0].items);
       })
