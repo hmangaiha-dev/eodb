@@ -1,5 +1,5 @@
 <template>
-  <!-- <q-page class="container"> -->
+  <q-page class="">
     <div class="zcard">
       <div class="row justify-center q-col-gutter-md ">
         <div class="col-6">
@@ -136,7 +136,7 @@
         </q-card>
       </q-dialog>
     </div>
-  <!-- </q-page> -->
+  </q-page>
 </template>
 
 <script>

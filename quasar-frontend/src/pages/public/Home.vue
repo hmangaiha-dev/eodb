@@ -554,6 +554,19 @@ export default defineComponent({
   background-color: #fff;
 }
 
+.btn-dropdown, .tile-content {
+  font-family: "Poppins";
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #357c71;
+}
+
+
+
 .track {
   /* width: 1920px; */
   /* height: 392px; */
@@ -652,7 +665,7 @@ export default defineComponent({
   color: #f5f5f5;
 }
 
-.heading {
+.content, .content2 .heading {
   font: 40px Poppins, sans-serif;
   font-weight: 500 !important;
   font-size: 2.5rem;
@@ -778,6 +791,8 @@ width: 90%;
     text-align: center;
     color: #357c71;
   }
+
+
 
   .track-form {
     background: #fff;

@@ -12,6 +12,8 @@ const routes = [
       { path: 'register', component: () => import('pages/public/RegisterContainer.vue') }
     ]
   },
+ 
+
   {...admin},
   {...investor},
 
@@ -23,5 +25,6 @@ const routes = [
     component: () => import('pages/Error404.vue')
   }
 ]
+
 
 export default routes

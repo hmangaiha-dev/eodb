@@ -142,6 +142,8 @@ export default defineComponent({
     const leftDrawerOpen = ref(true);
 
     const navigate = (e) => {
+      // return
+      console.log("clicked");
 
     };
 
@@ -193,6 +195,10 @@ export default defineComponent({
   color: #393939;
 }
 
+/* .q-menu {
+  min-width: 100% !important;
+  left: 0px !important;
+} */
 
 .mizoram {
   width: 178px;
