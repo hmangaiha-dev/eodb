@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\CommerceIndustries;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class IndustrialPlotAllotment extends Model
 {
     use HasFactory;
 }

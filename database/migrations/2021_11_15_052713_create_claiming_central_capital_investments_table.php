@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubsidyOnCostOfProjectReportsTable extends Migration
+class CreateClaimingCentralCapitalInvestmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateSubsidyOnCostOfProjectReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subsidy_on_cost_of_project_reports', function (Blueprint $table) {
+        Schema::create('claiming_central_capital_investments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained( );
             $table->json('body');
-            $table->string('cost_of_project')->nullable();
-
-           
+            $table->string('obligatory_certificate');
             
             $table->string('signature')->nullable();
             $table->timestamps();
@@ -33,6 +31,6 @@ class CreateSubsidyOnCostOfProjectReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subsidy_on_cost_of_project_reports');
+        Schema::dropIfExists('claiming_central_capital_investments');
     }
 }

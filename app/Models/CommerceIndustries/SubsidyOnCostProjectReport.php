@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\CommerceIndustries;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class subsidy_on_power_line extends Model
+class SubsidyOnCostProjectReport extends Model
 {
     use HasFactory;
 }
