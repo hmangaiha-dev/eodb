@@ -16,13 +16,14 @@ class CreateDepartmentsTable extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('dept_name');
-            $table->string('slug');
-            $table->string('sect_name');
-            $table->string('dict_name');
-            $table->text('info');
-            $table->text('about_us');
-            $table->text('act_rules');
-            $table->text('other_info');
+            $table->string('dept_code')->unique();
+            $table->string('slug')->unique();
+            $table->string('sect_name')->nullable();
+            $table->string('dict_name')->nullable();
+            $table->text('info')->nullable();
+            $table->text('about_us')->nullable();
+            $table->text('act_rules')->nullable();
+            $table->text('other_info')->nullable();
 
             $table->softDeletes();
             

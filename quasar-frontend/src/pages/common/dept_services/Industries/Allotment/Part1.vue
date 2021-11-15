@@ -8,7 +8,7 @@
     </div>
 
     <div class="col-6">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.industrial_location_name" />
     </div>
 
     <p class="text-body col-12">
@@ -39,7 +39,7 @@
     </div>
 
     <div class="col-xs-12 col-md-4">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.applicant_name" />
     </div>
 
     <div class="col-xs-12 zsubtitle">2.Address for communication</div>
@@ -50,7 +50,7 @@
       </label>
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.communication_street" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -59,7 +59,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.communication_city" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -68,7 +68,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.communication_pin_no" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -77,7 +77,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.communication_house_no" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -86,7 +86,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined v-model="formData.birth_place" />
+      <q-input label="Office" dense outlined v-model="formData.communication_office_phn" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -94,12 +94,12 @@
         label="Residence"
         dense
         outlined
-        v-model="formData.birth_place"
+        v-model="formData.communication_residence_phn"
       />
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input label="Mobile" dense outlined v-model="formData.birth_place" />
+      <q-input label="Mobile" dense outlined v-model="formData.communication_mobile_phn" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -108,7 +108,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.communication_mobile_phn" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -117,7 +117,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.communication_website" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -125,7 +125,7 @@
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.communication_district" />
     </div>
 
     <div class="col-xs-12 zsubtitle">
@@ -139,7 +139,7 @@
       </label>
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.proposed_street" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -148,25 +148,18 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.proposed_city" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="gender"
-        >PIN No <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
-    </div>
+   
 
     <div class="col-xs-12 col-md-1">
       <label class="zlabel" for="gender"
         >House No <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.birth_place" />
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.proposed_house_no" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -175,7 +168,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined v-model="formData.birth_place" />
+      <q-input label="Office" dense outlined v-model="formData.proposed_office_phn" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -183,12 +176,12 @@
         label="Residence"
         dense
         outlined
-        v-model="formData.birth_place"
+        v-model="formData.proposed_residence_phn"
       />
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input label="Mobile" dense outlined v-model="formData.birth_place" />
+      <q-input label="Mobile" dense outlined v-model="formData.proposed_mobile_phn" />
     </div>
 
     <div class="col-xs-12" />
@@ -210,70 +203,32 @@ export default {
     const draft = store.getters["applicantData/getCurrentDraft"];
 
     const formData = reactive({
-      location_name: "Mr",
+      industrial_location_name: "Mr",
       applicant_name: "",
 
-      street: "",
-      city_town_village: "",
-      pin_no: "Male",
-      house_no: "",
-      office_phn: "",
-      residence_phn: "",
-      mobile_phn: "",
-      email: "",
-      website: "",
-      district: "Father",
+      communication_street: "",
+      communication_city : "",
+      communication_pin_no: "Male",
+      communication_house_no: "",
+      communication_office_phn: "",
+      communication_residence_phn: "",
+      communication_mobile_phn: "",
+      communication_email: "",
+      communication_website: "",
+      communication_district: "Father",
 
-      street2: "",
-      city_town_village2: "",
-      pin_no2: "Male",
-      house_no2: "",
-      office_phn2: "",
-      residence_phn2: "",
-      mobile_phn2: "",
+      proposed_street: "",
+      proposed_city: "",
+      proposed_pin_no: "Male",
+      proposed_house_no: "",
+      proposed_office_phn: "",
+      proposed_residence_phn: "",
+      proposed_mobile_phn: "",
 
-      enterprise_name: "",
-      enterprise_category: "Mr",
-      nature_activity: true,
-      incase_others: "",
-      ancillary: null,
-      give_detail: "",
-      organisation_type: "",
-      product_manufacture: "",
-      service_provides: "",
-
-
-
-
-
-
-
-
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
+      
     });
     onMounted(() => {
-      if (draft?.applicant) {
-        formData.title = draft?.applicant?.title;
-        formData.name = draft?.applicant?.name;
-        formData.dob = draft?.applicant?.dob;
-        formData.gender = draft?.applicant?.gender;
-        formData.father_name = draft?.applicant?.father_name;
-        formData.mother_name = draft?.applicant?.mother_name;
-        formData.birth_place = draft?.applicant?.birth_place;
-        formData.phone_no = draft?.applicant?.phone_no;
-        formData.email = draft?.applicant?.email;
-        formData.aadhaar_no = draft?.applicant?.aadhaar_no;
-        formData.relation = draft?.applicant?.relation;
-        formData.relation_name = draft?.applicant?.relation_name;
-        formData.relation_title = draft?.applicant?.title;
-        formData.adult = draft?.applicant?.adult;
-        formData.epic_no = draft?.applicant?.epic_no;
-        formData.epic_relation = draft?.applicant?.epic_relation;
-        formData.epic_holder = draft?.applicant?.epic_holder;
-        formData.constituency = draft?.applicant?.constituency;
-      }
+   
     });
     return {
       onFathernameBlur: (e) => {
@@ -313,7 +268,7 @@ export default {
         }
       },
       emailRegex,
-      localData,
+     
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

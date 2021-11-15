@@ -5,18 +5,18 @@
     <div class="col-12 ztitle text-center">
       APPLICATION FOR ALLOTMENT OF INDUSTRIAL PLOT/SHET AT
     </div>
-    <q-form @submit.prevent="" class="row">
+    <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
-          <Part1 ref="applicantRef" />
+          <Part1 ref="part1Form" />
         </div>
 
         <div class="col-xs-12">
-          <Part2 ref="FirmRef" />
+          <Part2 ref="part2Form" />
         </div>
 
         <div class="col-xs-12">
-          <Document ref="DocumentRef" />
+          <Document ref="documentForm" />
         </div>
       </div>
 
@@ -32,10 +32,12 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
-
+import {ref} from 'vue'
+ 
 import Part1 from "./Part1.vue";
 import Part2 from "./Part2.vue";
 import Document from "./Document.vue";
+import { api } from "src/boot/axios";
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -47,41 +49,25 @@ export default {
     Document,
   },
   setup(props, context) {
+    const part1Form = ref(null);
+    const part2Form = ref(null);
+    const documentForm = ref(null);
+
     const store = useStore();
-    const draft = store.getters["applicantData/getCurrentDraft"];
-    const currentUser = store.getters["auth/getCurrentUser"];
-    const localData = reactive({
-      genders: [
-        { value: "Male", label: "Male" },
-        { value: "Female", label: "Female" },
-        { value: "Other", label: "Other" },
-      ],
-      epic_relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-      ],
-      relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-        { value: "Spouse", label: "Spouse" },
-        { value: "Guardian", label: "Guardian" },
-      ],
-      adults: [
-        { value: true, label: "Applicant is above 18 years" },
-        { value: false, label: "Applicant is below 18 years" },
-      ],
-    });
+    // const draft = store.getters["applicantData/getCurrentDraft"];
+    // const currentUser = store.getters["auth/getCurrentUser"];
+ 
 
     const formData = reactive({
       title: "Mr",
-      name: "",
+      name: "dummy name",
       dob: "",
       gender: "Male",
       father_name: "",
       mother_name: "",
       birth_place: "",
       phone_no: "",
-      email: currentUser?.email,
+      email: "",
       aadhaar_no: "",
       relation: "Father",
       relation_name: "",
@@ -93,66 +79,32 @@ export default {
       constituency: "",
     });
     onMounted(() => {
-      if (draft?.applicant) {
-        formData.title = draft?.applicant?.title;
-        formData.name = draft?.applicant?.name;
-        formData.dob = draft?.applicant?.dob;
-        formData.gender = draft?.applicant?.gender;
-        formData.father_name = draft?.applicant?.father_name;
-        formData.mother_name = draft?.applicant?.mother_name;
-        formData.birth_place = draft?.applicant?.birth_place;
-        formData.phone_no = draft?.applicant?.phone_no;
-        formData.email = draft?.applicant?.email;
-        formData.aadhaar_no = draft?.applicant?.aadhaar_no;
-        formData.relation = draft?.applicant?.relation;
-        formData.relation_name = draft?.applicant?.relation_name;
-        formData.relation_title = draft?.applicant?.title;
-        formData.adult = draft?.applicant?.adult;
-        formData.epic_no = draft?.applicant?.epic_no;
-        formData.epic_relation = draft?.applicant?.epic_relation;
-        formData.epic_holder = draft?.applicant?.epic_holder;
-        formData.constituency = draft?.applicant?.constituency;
-      }
+     
     });
+
+
     return {
-      onFathernameBlur: (e) => {
-        if (!formData.adult) {
-          formData.epic_relation?.toLowerCase() === "father" &&
-            (formData.epic_holder = e?.target?.value);
+
+      part1Form,
+      part2Form,
+      documentForm,
+   
+
+      submit: () => {
+        const formData = {
+          part1: Object.assign({},part1Form.value.formData),
+          part2: Object.assign({},part2Form.value.formData),
+          document: Object.assign({},documentForm.value.formData)
+
         }
-        if (formData.relation?.toLowerCase() === "father") {
-          formData.relation_name = e?.target?.value;
-          formData.relation_title = "Mr";
-        }
-      },
-      onMothernameBlur: (e) => {
-        if (!formData.adult) {
-          formData.epic_relation?.value?.toLowerCase() === "father" &&
-            (formData.epic_holder = e?.target?.value);
-        }
-        if (formData.relation?.value?.toLowerCase() === "mother") {
-          formData.relation_name = e?.target?.value;
-          formData.relation_title = "Mrs";
-        }
-      },
-      handleAdult: (e) => {
-        if (e.target?.checked) {
-          formData.epic_relation?.toLowerCase() === "father" &&
-            (formData.epic_holder = formData.father_name);
-          formData.epic_relation?.toLowerCase() === "mother" &&
-            (formData.epic_holder = formData.mother_name);
-        }
-      },
-      handleEpicSelect: () => {
-        if (formData.epic_relation?.value === "Father") {
-          formData.epic_holder = formData.father_name;
-        }
-        if (formData.epic_relation?.value === "Mother") {
-          formData.epic_holder = formData.mother_name;
-        }
-      },
+        // return console.log('allFormData',formData); 
+      
+        api.post('/investor/store',formData)
+          .then(res => console.log('response value',res.data))
+          .catch(err => console.log('error',err))
+      }, 
       emailRegex,
-      localData,
+     
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
