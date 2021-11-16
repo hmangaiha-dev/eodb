@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
         // OnlineService::factory()
         $this->call([
             DepartmentSeeder::class,
-            InvestorSeeder::class
+            ApplicationSeeder::class,
+            KeyBankSeeder::class
+            // InvestorSeeder::class
         ]);
     }
 }

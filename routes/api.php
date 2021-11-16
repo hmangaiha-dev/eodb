@@ -86,4 +86,4 @@ Route::group(['prefix' => 'investor'],function(){
     Route::get('/', [InvestorController::class, 'register']);
 });
 
-Route::name('rj')->group(base_path('routes/rj/index.php'));
+base_path('routes/rj/index.php');
