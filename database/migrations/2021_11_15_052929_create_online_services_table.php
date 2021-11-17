@@ -15,7 +15,7 @@ class CreateOnlineServicesTable extends Migration
     {
         Schema::create('online_services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('department_id')->constrained();
+            $table->foreignId('department_id');
             $table->text('service_name')->nullable();
             $table->text('who_should_apply')->nullable();
             $table->text('how_to_apply')->nullable();
