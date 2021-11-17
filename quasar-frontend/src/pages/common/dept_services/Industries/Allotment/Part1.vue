@@ -1,5 +1,6 @@
 <template>
   <div class="zcard row items-center q-gutter-md q-col-gutter-md">
+    
     <div class="col-3">
       <label class="zlabel" for="name"
         >Name & Location of Industrial Area
@@ -10,6 +11,7 @@
     <div class="col-6">
       <q-input dense outlined v-model="formData.industrial_location_name" />
     </div>
+
 
     <p class="text-body col-12">
       <span class="text-bold"> General Instructions:</span> <br />

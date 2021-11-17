@@ -202,7 +202,7 @@ export default {
       daily_water: "",
       applicant_signature: null,
       reg_certificate: null,
-      voter_card: null
+      voter_card: null,
     });
     onMounted(() => {
       
