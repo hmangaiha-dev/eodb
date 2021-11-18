@@ -81,6 +81,18 @@ export default {
               "pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue"
             ),
         },
+        {
+          path: "claiming-central-capital-investment-subsidy-scheme",
+          name: "industries:central-captial",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/ClaimOfCentralCapital/ClaimOfCentralCapital.vue"
+            ),
+        },
+
+
+
+        // claiming-central-capital-investment-subsidy-scheme
       ],
     },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },
