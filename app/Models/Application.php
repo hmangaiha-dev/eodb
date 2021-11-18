@@ -4,23 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Application extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 
-        'code',
-        'how_to_apply'
-    ];
+    protected $fillable = ['application_code', 'application_id', 'current_state', 'remark'];
 
-    public function department()
+    public function states()
     {
-        return $this->belongsTo(Department::class);
+        return $this->morphMany('owner', State::class);
     }
 
-    public function keybanks()
+    public function attachments(): MorphMany
     {
-        return $this->hasMany(KeyBank::class);
+        return $this->morphMany('owner', Attachment::class);
     }
 }

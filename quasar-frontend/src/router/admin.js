@@ -42,7 +42,18 @@ export default {
         {path: 'districts', name: 'district:read', component: () => import('pages/admin/master-data/Index')},
         {path: 'keypairs', name: 'keypairs:read', component: () => import('pages/admin/master-data/keypairs/List')},
       ]
-    }
+    },
+    {
+      path: 'settings',
+      component: () => import('layouts/SettingLayout.vue'),
+      children: [
+        {path: 'process-flows', name: 'process-flows:read', component: () => import('pages/admin/setting/ProcessFlows.vue')},
+        {path: 'application_profiles', name: 'application_profiles:read', component: () => import('pages/admin/setting/application_profiles/List.vue')},
+        {path: 'process-flows/create', name: 'process-flows:create', component: () => import('pages/admin/setting/CreateFlow.vue')},
+      ]
+    },
+
+
   ]
 }
 

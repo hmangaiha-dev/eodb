@@ -14,22 +14,7 @@
           EODB
         </q-toolbar-title>
         <q-space />
-        <q-btn flat icon="account_circle" />
-        <q-btn flat icon="more_vert" />
-      </q-toolbar>
-      <q-separator />
-      <q-toolbar class="xs-hide container q-pa-md q-gutter-md">
-        <q-btn color="primary" icon="dashboard" />
-        <q-btn-dropdown
-          dropdown-icon="arrow_drop_down"
-          flat
-          color="primary"
-          label="Administration"
-        >
-        </q-btn-dropdown>
-        <q-space/>
-        <q-btn flat icon="settings"/>
-
+        <q-btn :to="{name:'process-flows:read'}" flat icon="settings"/>
       </q-toolbar>
       <q-separator/>
       <q-toolbar class="scroll-y xs-hide container-lg q-pa-xs q-gutter-sm">

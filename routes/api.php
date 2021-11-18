@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\OfficeController;
@@ -86,4 +87,14 @@ Route::group(['prefix' => 'investor'],function(){
     Route::get('/', [InvestorController::class, 'register']);
 });
 
+<<<<<<< HEAD
 base_path('routes/rj/index.php');
+=======
+Route::group(['prefix' => 'application-profiles'],function(){
+    Route::get('', [ApplicationProfileController::class, 'index']);
+});
+
+
+
+Route::name('rj')->group(base_path('routes/rj/index.php'));
+>>>>>>> main

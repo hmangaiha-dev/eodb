@@ -15,12 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        // OnlineService::factory()
         $this->call([
-            DepartmentSeeder::class,
-            ApplicationSeeder::class,
-            KeyBankSeeder::class
-            // InvestorSeeder::class
+            PermissionSeeder::class,
+            UserSeeder::class,
+            ApplicationProfileSeeder::class,
         ]);
     }
 }

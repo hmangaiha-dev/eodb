@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApplicationProfile;
 use App\Models\Office;
 use App\Models\Permission;
 use App\Models\Role;
@@ -38,7 +39,8 @@ class PublicDataController extends Controller
             ],
             'districts' => DataUtil::DISTRICTS,
             'staffs'=>Staff::query()->get(['id as value','full_name as label']),
-            'offices'=>Office::query()->get(['id as value','name as label'])
+            'offices'=>Office::query()->get(['id as value','name as label']),
+            'application_profiles'=>ApplicationProfile::query()->get()
 
         ], 200);
     }
