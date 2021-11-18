@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClaimingInterestSubsidiesTable extends Migration
+class CreateUserApplicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateClaimingInterestSubsidiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('claiming_interest_subsidies', function (Blueprint $table) {
+        Schema::create('user_applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained( );
-            $table->json('body');
-            $table->string('signature')->nullable();
+            $table->foreignId('key_bank_id');
+            $table->foreignId('user_id');
+            $table->string('key_field');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateClaimingInterestSubsidiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('claiming_interest_subsidies');
+        Schema::dropIfExists('user_applications');
     }
 }

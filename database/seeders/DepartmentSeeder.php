@@ -2,95 +2,113 @@
 
 namespace Database\Seeders;
 
+use App\Models\Department;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class DepartmentSeeder extends Seeder
 {
+    
     private $depts = [
         [
             'id'    =>  1,
-            'department_name' => 'Commerce & Industries Department',
+            'dept_name' => 'Commerce & Industries Department',
             'slug' => 'commerce-and-industries-department',
+            'dept_code' => 'C&E'
         ],
         [
             'id'    =>  2,
-            'department_name' => 'Aizawl Municipal Corporation',
+            'dept_name' => 'Aizawl Municipal Corporation',
             'slug' => 'aizawl-municipal-corporation',
+            'dept_code' => 'AMC'
         ],
         [
             'id'    =>  3,
-            'department_name' => 'Environment, Forest & Climate Change Department',
+            'dept_name' => 'Environment, Forest & Climate Change Department',
             'slug' => 'environment-forest-and-climate-change-department',
+            'dept_code' => 'ENV'
         ],
         [
             'id'    =>  4,
-            'department_name' => 'Excise & Narcotics Department',
+            'dept_name' => 'Excise & Narcotics Department',
             'slug' => 'excise-and-narcotics-department',
+            'dept_code' => 'EXCISE'
         ],
         [
             'id'    =>  5,
-            'department_name' => 'Fire & Emergency Services',
+            'dept_name' => 'Fire & Emergency Services',
             'slug' => 'fire-and-emergency-services',
+            'dept_code' => 'FIRE'
         ],
         [
             'id'    =>  6,
-            'department_name' => 'Food & Drug Administration, H&FW Department',
+            'dept_name' => 'Food & Drug Administration, H&FW Department',
             'slug' => 'food-and-drug-administration-handfw-department',
+            'dept_code' => 'FOOD'
         ],
         [
             'id'    =>  7,
-            'department_name' => 'Labour, Skill Development & Entreprenuership',
+            'dept_name' => 'Labour, Skill Development & Entreprenuership',
             'slug' => 'labour-skill-development-and-entreprenuership',
+            'dept_code' => 'LABOUR'
         ],
         [
             'id'    =>  8,
-            'department_name' => 'Land Revenue & Settlement Department',
+            'dept_name' => 'Land Revenue & Settlement Department',
             'slug' => 'land-revenue-and-settlement-department',
+            'dept_code' => 'LAND'
         ],
         [
             'id'    =>  9,
-            'department_name' => 'Law & Judicial Department',
+            'dept_name' => 'Law & Judicial Department',
             'slug' => 'law-and-judicial-department',
+            'dept_code' => 'LAW'
         ],
         [
             'id'    =>  10,
-            'department_name' => 'Legal Metrology',
+            'dept_name' => 'Legal Metrology',
             'slug' => 'legal-metrology',
+            'dept_code' => 'LEGAL'
         ],
         [
             'id'    =>  11,
-            'department_name' => 'Mizoram Pollution Control Board',
+            'dept_name' => 'Mizoram Pollution Control Board',
             'slug' => 'mizoram-pollution-control-board',
+            'dept_code' => 'MPCB'
         ],
         [
             'id'    =>  12,
-            'department_name' => 'Power & Electricity Department',
+            'dept_name' => 'Power & Electricity Department',
             'slug' => 'power-and-electricity-department',
+            'dept_code' => 'PED'
         ],
         [
             'id'    =>  13,
-            'department_name' => 'Public Health Engineering Department',
+            'dept_name' => 'Public Health Engineering Department',
             'slug' => 'public-health-engineering-department',
+            'dept_code' => 'PHED'
         ],
         [
             'id'    =>  14,
-            'department_name' => 'Public Work Department',
+            'dept_name' => 'Public Work Department',
             'slug' => 'public-work-department',
+            'dept_code' => 'PWD'
         ],
         [
             'id'    =>  15,
-            'department_name' => 'Taxation Department',
+            'dept_name' => 'Taxation Department',
             'slug' => 'taxation-department',
+            'dept_code' => 'TAX'
         ],
         [
             'id'    =>  16,
-            'department_name' => 'Urban Development & Proverty Alleviation',
+            'dept_name' => 'Urban Development & Proverty Alleviation',
             'slug' => 'urban-development-and-proverty-alleviation',
+            'dept_code' => 'URBAN'
         ]
 
-        ];
-    
+    ];
+
     /**
      * Run the database seeds.
      * 
@@ -99,6 +117,8 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
+        // Department::truncate();
+
 
         DB::table('departments')->insert($this->depts);
     }

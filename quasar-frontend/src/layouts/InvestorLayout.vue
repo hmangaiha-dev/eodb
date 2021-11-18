@@ -24,7 +24,7 @@
       <!--      </q-tabs>-->
     </q-header>
 
-    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+    <q-drawer width="350" show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <!-- QScrollArea is optional -->
       <q-scroll-area class="fit q-pa-sm">
         <q-item>

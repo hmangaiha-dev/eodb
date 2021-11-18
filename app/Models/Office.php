@@ -37,4 +37,9 @@ class Office extends Model
     {
         return $this->morphOne(BankDetail::class, 'owner');
     }
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
 }

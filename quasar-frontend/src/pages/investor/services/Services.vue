@@ -228,7 +228,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "claiming-central-interest-subsidy-scheme",
           },
           {
             name: "Application form for Claiming Central Capital Investment Subsidy Scheme",
@@ -238,7 +238,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "claiming-central-capital-investment-subsidy-scheme",
           },
 
           {

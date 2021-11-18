@@ -3,27 +3,14 @@
     <div class="col-12 text-h6 q-pb-none text-center">Schedule - II</div>
     <p class="col-12 text-caption q-py-none text-center">(See Rule 6A)</p>
     <div class="col-12 ztitle text-center">
-      APPLICATION FOR ALLOTMENT OF INDUSTRIAL PLOT/SHET AT
+      APPLICATION FORM FOR CLAIMING CENTRAL INTEREST SUBSIDY SCHEME
     </div>
     <q-form @submit.prevent="submit" class="row">
-      
-
-
-
-
-
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Part1 ref="part1Form" />
         </div>
 
-        <div class="col-xs-12">
-          <Part2 ref="part2Form" />
-        </div>
-
-        <div class="col-xs-12">
-          <Document ref="documentForm" />
-        </div>
       </div>
 
       <div class="text-center q-mt-md col-12">
@@ -39,21 +26,20 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 import {ref} from 'vue'
- 
 import Part1 from "./Part1.vue";
-import Part2 from "./Part2.vue";
-import Document from "./Document.vue";
+ 
+
 import { api } from "src/boot/axios";
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
+
   components: {
-    Part1,
-    Part2,
-    Document,
+    Part1
   },
+ 
   setup(props, context) {
     const part1Form = ref(null);
     const part2Form = ref(null);
