@@ -50,7 +50,7 @@
         class="col-lg-3 col-sm-6 col-xs-10"
       >
         <q-list class="tile cursor-pointer" clickable bordered padding>
-          <q-item class="text" clickable v-ripple>
+          <q-item :to="{ name: 'common:create', params: { deptname: `${dept?.link}` } }" class="text" clickable v-ripple>
             <q-item-section class="tile-content" avatar> {{ dept.serial }} </q-item-section>
 
             <q-item-section class="text-center tile-content">{{
@@ -331,72 +331,89 @@ export default defineComponent({
       {
         serial: "01",
         title: "Aizawl Municipal Corporation",
+        link: "aizawl-municipal-corporation"
       },
 
       {
         serial: "02",
         title: "Commerce & Industrial Department",
+        link: "commerce-and-industries"
       },
 
       {
         serial: "03",
         title: "Environment, Forest & Climate Change Department",
+        link: "environment-forest-and-climate-change"
       },
       {
         serial: "04",
         title: "Excise & Narcotics Department",
+        link: "excise-and-narcotics"
       },
       {
         serial: "05",
         title: "Fire & Emergency Services",
+        link: "fire-and-emergency-services"
       },
       {
         serial: "06",
         title: "Food & Drug Administration, H&FW Department",
+        link: "food-and-drug-administration/"
       },
       {
         serial: "07",
         title: "Labour, Skill Developement & Entrepreneurship",
+        link: "labour-skill-development-and-enterprise"
       },
       {
         serial: "08",
         title: "Land Revenue & Settle Department",
+        link: "land-revenue"
       },
       {
         serial: "09",
         title: "Law & Judicial Department",
+        link: "law-and-judicial"
       },
       {
         serial: "10",
         title: "Legal Metrology",
+        link: "legal-metrology"
       },
       {
         serial: "11",
         title: "Mizoram Pollution Control Board",
+        link: "pollution-control-board"
       },
       {
         serial: "12",
         title: "Power & Electricity Department",
+        link: ""
       },
       {
         serial: "13",
         title: "Public Health Engineering Department",
+        link: ""
       },
       {
         serial: "14",
         title: "Public Works Department",
+        link: "public-work-department"
       },
       {
         serial: "15",
         title: "Taxation Department",
+        link: "taxation"
       },
       {
         serial: "16",
         title: "Urban Developement & Poverty Allievation",
+        link: "urban-development-and-proverty-alleviation"
       },
       {
         serial: "17",
         title: "Labour Employment, Skill Developement & Entrepreneurship",
+        link: "labour-skill-development-and-enterprise/"
       },
     ];
 

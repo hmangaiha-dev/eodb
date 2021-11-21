@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh lpR fFf">
+  <q-layout view="hHh Lpr lff">
     <q-header elevated class="bg-primary text-white" height-hint="98">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
@@ -26,7 +26,7 @@
 
     <q-drawer width="350" show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <!-- QScrollArea is optional -->
-      <q-scroll-area class="fit q-pa-sm">
+      <!-- <q-scroll-area class="fit q-pa-sm"> -->
         <q-item>
           <q-item-section class="text-italic text-subtitle1 text-caption"
             >Applicant Profile</q-item-section
@@ -93,7 +93,7 @@
           </q-item-section>
           <q-item-section> Log out </q-item-section>
         </q-item> -->
-      </q-scroll-area>
+      <!-- </q-scroll-area> -->
     </q-drawer>
 
     <q-page-container>
@@ -125,7 +125,7 @@ const depts = [
   },
   {
     name: "Land Revenue and Settlement",
-    slug: "land-and-revenue",
+    slug: "land-revenue",
   },
   {
     name: "Environment, Forest & Climate Change",

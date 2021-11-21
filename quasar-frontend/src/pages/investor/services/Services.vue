@@ -326,7 +326,7 @@ export default {
         ],
       },
       {
-        slug: "land-and-revenue",
+        slug: "land-revenue",
         services: [
           {
             name: "APPLICATION FOR PERIODIC PATTA (PERIODIC PATTA DILNA)",
@@ -336,7 +336,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "periodic-patta",
           },
           {
             name: "APPLICATION FOR ALLOTMENT OF LAND FOR HOUSE SITE",
