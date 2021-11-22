@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <q-table title-class="text-uppercase" title="Act and Rules" :columns="columns" :rows="rows" row-key="name" >
+  <div style="full-width">
+    <q-table  title-class="text-uppercase" title="Act and Rules" :columns="columns" :rows="rows" row-key="name" >
         <template v-slot:body-cell-download="props">
         <q-td :props="props">
           <div>
@@ -73,4 +73,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+

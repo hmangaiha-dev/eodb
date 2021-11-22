@@ -137,6 +137,42 @@ export default {
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
+
+
+    {
+      path: "environment-forest-and-climate-change",
+      component: () => import("layouts/DummyLayout.vue"),
+      children: [
+        {
+          path: "bamboo-plantions",
+          name: "forest:bamboo-planations",
+          component: () =>
+            import(
+              "pages/common/dept_services/forests/bambooplantations/Application.vue"
+            ),
+        },
+        // {
+        //   path: "permission-to-fell-trees",
+        //   name: "forest:fell-trees",
+        //   component: () =>
+        //     import(
+        //       "pages/common/dept_services/forests/felltrees/Application"
+        //     ),
+        // },
+        {
+          path: "claiming-central-capital-investment-subsidy-scheme",
+          name: "indudsdsfsftries:central-captial",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/ClaimOfCentralCapital/ClaimOfCentralCapital.vue"
+            ),
+        },
+
+
+
+        // claiming-central-capital-investment-subsidy-scheme
+      ],
+    },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },
   ],
 };

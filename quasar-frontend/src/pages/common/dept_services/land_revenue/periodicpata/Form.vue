@@ -47,8 +47,10 @@
         >3.Whether Married?If Married,name Of Husband Or Wife(In Capital
         Letters) <span class="asterisk">*</span></label
       >
-      <q-radio v-model="shape" val="line" label="Yes" />
-      <q-radio v-model="shape" val="line" label="No" />
+      <div>
+        <q-radio v-model="shape" val="line" label="Yes" />
+        <q-radio v-model="shape" val="line" label="No" />
+      </div>
     </div>
 
     <div class="col-md-5 col-xs-10">

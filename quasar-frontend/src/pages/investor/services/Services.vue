@@ -1,6 +1,7 @@
 <template>
-  <div class="q-pa-md">
-    <q-tabs v-model="tab" class="text-teal">
+ <div style="max-width: 1400px;margin:0 auto" class="row q-mt-md q-gutter-md q-pa-md ">
+  <div class="q-pa-md fixed">
+    <q-tabs stretch v-model="tab" class="text-teal">
       <q-tab name="services" icon="mails" label="Online Servies" />
       <q-tab name="about" icon="alarm" label="About Us" />
       <q-tab name="actrules" icon="movie" label="Act & Rules" />
@@ -73,21 +74,8 @@
         <OtherInfo />
       </q-tab-panel>
     </q-tab-panels>
-    <!-- <div v-if="tab == 'about'">
-      <AboutUs />
-    </div>
-
-    <div v-if="tab == 'actrules'">
-      <ActRules />
-    </div>
-
-    <div v-if="tab == 'noti'">
-      <Notifications />
-    </div>
-
-    <div v-if="tab == 'other'">
-      <OtherInfo />
-    </div> -->
+   
+  </div>
   </div>
 </template>
 
@@ -424,7 +412,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "bamboo-plantions",
           },
           {
             name: "Application for Permission to fell tress/ tree plantation in in non-forest area",
@@ -434,7 +422,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "permission-to-fell-trees",
           },
         ],
       },

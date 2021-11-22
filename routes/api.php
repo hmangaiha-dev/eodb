@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ApplicationProfileController;
+// use App\Http\Controllers\ApplicationProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\OfficeController;
@@ -32,7 +32,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth:sanctum'], function (
 });
 
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/login', [AuthController::class, 'investorLogin']);
     Route::post('staff-login', [StaffAuthController::class, 'login']);
     Route::post('logout', [StaffAuthController::class, 'logout'])->middleware('auth:sanctum');
 });
@@ -87,14 +87,10 @@ Route::group(['prefix' => 'investor'],function(){
     Route::get('/', [InvestorController::class, 'register']);
 });
 
-<<<<<<< HEAD
-base_path('routes/rj/index.php');
-=======
 Route::group(['prefix' => 'application-profiles'],function(){
-    Route::get('', [ApplicationProfileController::class, 'index']);
+    // Route::get('', [ApplicationProfileController::class, 'index']);
 });
 
 
 
-Route::name('rj')->group(base_path('routes/rj/index.php'));
->>>>>>> main
+base_path('routes/rj/index.php');

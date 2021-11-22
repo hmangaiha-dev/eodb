@@ -37,7 +37,7 @@ export default boot(({ app,router,store }) => {
       localStorage.removeItem('token');
       store.dispatch('authData/setCurrentUser', null);
       store.dispatch('authData/setToken', null);
-      window.location.replace('/')
+      // window.location.replace('/')
     }
 
     return Promise.reject(error,);

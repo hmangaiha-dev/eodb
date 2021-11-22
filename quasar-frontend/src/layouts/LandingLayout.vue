@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header style="margin: 0 auto" class="bg-white text-grey">
       <q-toolbar class="container bg-white text-dark q-py-none">
-        <img style="width: 80px" src="~assets/eodb-logo.png" />
+        <router-link to="/"><img style="width: 80px" src="~assets/eodb-logo.png" /></router-link>
 
         <q-toolbar-title class="q-mt-md q-pl-lg q-mb-none"
           ><span class="heading q-pb-none">Ease of Doing Business</span>
