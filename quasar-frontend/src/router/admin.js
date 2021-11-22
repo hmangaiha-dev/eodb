@@ -47,9 +47,9 @@ export default {
       path: 'settings',
       component: () => import('layouts/SettingLayout.vue'),
       children: [
-        {path: 'process-flows', name: 'process-flows:read', component: () => import('pages/admin/setting/ProcessFlows.vue')},
+        {path: 'process-flows', name: 'process-flows:read', component: () => import('pages/admin/setting/process-flows/List.vue')},
         {path: 'application_profiles', name: 'application_profiles:read', component: () => import('pages/admin/setting/application_profiles/List.vue')},
-        {path: 'process-flows/create', name: 'process-flows:create', component: () => import('pages/admin/setting/CreateFlow.vue')},
+        {path: 'process-flows/create', name: 'process-flows:create', component: () => import('pages/admin/setting/process-flows/Create.vue')},
       ]
     },
 

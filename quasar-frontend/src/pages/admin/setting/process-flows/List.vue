@@ -20,8 +20,7 @@
           <q-list separator>
             <q-item v-for="item in localData.listData.data" :key="item.id">
               <q-item-section>
-                <q-item-label>{{ item.full_name }} : <span class="text-caption">{{ item?.email }}</span></q-item-label>
-                <q-item-label caption>{{ item?.rolesName?.toString() }}</q-item-label>
+                <q-item-label>{{ JSON.stringify(item) }} : <span class="text-caption">{{ item?.email }}</span></q-item-label>
               </q-item-section>
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">
@@ -78,8 +77,8 @@ export default {
       localData.openEdit = false
       localData.listData = values;
     }
-    const deleteStaff = id => {
-      api.delete(`staff/${id}`)
+    const deleteFlow = id => {
+      api.delete(`process-flows/${id}`)
         .then(res => {
           localData.listData = res.data.list
           q.notify({type: 'positive', message: res.data?.message})
@@ -100,7 +99,7 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        deleteStaff(item.id)
+        deleteFlow(item.id)
       }).onCancel(() => {
         // console.log('>>>> Cancel')
       }).onDismiss(() => {
@@ -118,10 +117,9 @@ export default {
     }
 
     const fetchStaff = (page) => {
-      api.get(`staff/index?page=${page}`, {params: {search: localData.search}})
+      api.get(`application-profiles/index?page=${page}`, {params: {search: localData.search}})
         .then(res => {
-          console.log(res.data)
-          const {current_page, total, per_page, data} = res.data.data;
+          const {current_page, total, per_page, data} = res.data.list;
           localData.listData.current_page = current_page;
           localData.listData.data = data;
           localData.listData.total = total;
@@ -136,7 +134,7 @@ export default {
     return {
       updatePagination,
       pageCount: computed(() => Math.ceil(localData.listData.total / localData.listData.per_page)),
-      deleteStaff,
+      deleteFlow,
       localData,
       onStaffCreated,
       onStaffUpdated,
