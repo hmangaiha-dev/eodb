@@ -151,14 +151,14 @@ export default {
               "pages/common/dept_services/forests/bambooplantations/Application.vue"
             ),
         },
-        // {
-        //   path: "permission-to-fell-trees",
-        //   name: "forest:fell-trees",
-        //   component: () =>
-        //     import(
-        //       "pages/common/dept_services/forests/felltrees/Application"
-        //     ),
-        // },
+        {
+          path: "permission-to-fell-trees",
+          name: "forest:fell-trees",
+          component: () =>
+            import(
+              "pages/common/dept_services/forests/felltrees/Application"
+            ),
+        },
         {
           path: "claiming-central-capital-investment-subsidy-scheme",
           name: "indudsdsfsftries:central-captial",
