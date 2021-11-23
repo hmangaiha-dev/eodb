@@ -1,11 +1,10 @@
 <template>
   <q-page class="container-lg" padding>
-    <p class="zsubtitle">Process flows</p>
+    <p class="zsubtitle">Application profiles</p>
 
     <div>
       <div class="row q-col-gutter-md">
         <div class="flex justify-between flex-inline col-12">
-          <q-btn :to="{name:'process-flows:create'}" outline label="New process flow" color="primary"/>
           <q-input v-model="localData.search" placeholder="Search" @keyup="handleSearch" outlined dense>
             <template v-slot:append>
               <q-icon name="search"/>
@@ -25,8 +24,8 @@
               </q-item-section>
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">
-                  <q-toggle v-model="item.published" left-label @click="publish(item)" label="published?"/>
-                  <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>
+                  <q-toggle :model-value="item.published" left-label @click="publish(item)" label="published?"/>
+<!--                  <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>-->
 
                 </div>
               </q-item-section>
@@ -114,20 +113,20 @@ export default {
 
     const publish=item=>{
       api.put(`application-profiles/${item.id}/toggle`)
-      .then(res=>{
-        const {current_page, total, per_page, data} = res.data.list;
-        localData.listData.current_page = current_page;
-        localData.listData.data = data;
-        localData.listData.total = total;
-        q.notify({type: 'positive', message: res.data?.message})
-      })
-      .catch(err=>{
-        let message = !!err?.response ? err.response?.message : err.toString()
-        q.notify({type: 'negative', message})
-      })
+        .then(res=>{
+          // const {current_page, total, per_page, data} = res.data.list;
+          // localData.listData.current_page = current_page;
+          // localData.listData.data = data;
+          // localData.listData.total = total;
+          q.notify({type: 'positive', message: res.data?.message})
+        })
+        .catch(err=>{
+          let message = !!err?.response ? err.response?.message : err.toString()
+          q.notify({type: 'negative', message})
+        })
     }
     const fetchStaff = (page) => {
-      api.get(`application-profiles/flows?page=${page}`, {params: {search: localData.search}})
+      api.get(`application-profiles/index?page=${page}`, {params: {search: localData.search}})
         .then(res => {
           const {current_page, total, per_page, data} = res.data.list;
           localData.listData.current_page = current_page;

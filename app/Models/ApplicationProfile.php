@@ -11,7 +11,7 @@ class ApplicationProfile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['code', 'title','application_id', 'operational_type','remark'];
+    protected $fillable = ['code', 'title','application_id', 'operational_type','remark','published'];
 
     public function office(): BelongsTo
     {

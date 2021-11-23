@@ -19,6 +19,7 @@ class CreateApplicationProfilesTable extends Migration
             $table->string('title')->nullable();
             $table->string('remark')->nullable();
             $table->string('operational_type')->nullable();
+            $table->boolean('published')->default(false);
 
             $table->unsignedInteger('office_id')->nullable();
             $table->timestamps();

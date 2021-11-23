@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApplicationProfile;
 use App\Models\ProcessFlow;
 use Illuminate\Http\Request;
 
@@ -14,21 +15,25 @@ class ProcessFlowController extends Controller
             'message' => ''
         ]);
     }
+
     public function store(Request $request)
     {
-        $application_id = $request->get('application_id');
         $flows = $request->get('flows');
 
+        $application = ApplicationProfile::query()->find($request->get('application_id'));
+        $application->processFlows()->delete();
+        $application->published = $request->get('published');
+        $application->save();
         foreach ($flows as $index=>$flow) {
             $staff = $flow['staff']['value'];
-            ProcessFlow::query()->create([
+            $flow=new ProcessFlow([
                 'step'=>$index,
                 'duration' => $flow['duration'],
                 'staff_id'=>$staff,
-                'application_profile_id'=>$application_id,
                 'actions'=>json_encode($flow['actions']),
-                'published' => true,
             ]);
+            $flow->applicationProfile()->associate($application);
+            $flow->save();
         }
         return response()->json([
             'message'=>'Process flow created successfully',

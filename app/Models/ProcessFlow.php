@@ -10,7 +10,7 @@ class ProcessFlow extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['step', 'staff_id', 'application_profile_id','actions','remark','published'];
+    protected $fillable = ['step', 'staff_id', 'application_profile_id','actions','remark'];
 
     public function applicationProfile(): BelongsTo
     {

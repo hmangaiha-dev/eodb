@@ -28,6 +28,16 @@ export default {
     { path: 'files/archived',name:'file:archived', component: () => import('pages/admin/file/ArchivedFiles.vue') },
 
     { path: 'applications',name:'application:read', component: () => import('pages/admin/application/List') },
+    {
+      path: 'applications/:id',
+      component: () => import('layouts/ApplicationLayout.vue'),
+      children: [
+        {path: '', name: 'application:detail', component: () => import('pages/admin/application/detail/Index.vue')},
+        {path: 'notes/create', name: 'note:create', component: () => import('pages/admin/application/detail/notes/Create.vue')},
+        {path: 'notes/:note', name: 'note:detail', component: () => import('pages/admin/application/detail/notes/Detail.vue')},
+      ]
+    },
+
     { path: 'applications/create',name:'application:create', component: () => import('pages/admin/application/Create') },
     { path: 'applications/incoming',name:'application:incoming', component: () => import('pages/admin/application/Incoming.vue') },
     { path: 'applications/archived',name:'application:archived', component: () => import('pages/admin/application/Archived.vue') },
@@ -48,7 +58,7 @@ export default {
       component: () => import('layouts/SettingLayout.vue'),
       children: [
         {path: 'process-flows', name: 'process-flows:read', component: () => import('pages/admin/setting/process-flows/List.vue')},
-        {path: 'application_profiles', name: 'application_profiles:read', component: () => import('pages/admin/setting/application_profiles/List.vue')},
+        {path: 'application_profiles', name: 'application-profiles:read', component: () => import('pages/admin/setting/application-profiles/List.vue')},
         {path: 'process-flows/create', name: 'process-flows:create', component: () => import('pages/admin/setting/process-flows/Create.vue')},
       ]
     },
