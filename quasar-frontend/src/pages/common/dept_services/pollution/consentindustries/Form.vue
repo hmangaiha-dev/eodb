@@ -810,55 +810,288 @@
 
               <div class="row justify q-col-gutter-md q-ml-md">
                 <div class="col-md-6 col-xs-10">
-                  <label class="zlabel" for="name">
-                  1) Sulphur Dioxide
-                  </label>
+                  <label class="zlabel" for="name"> 1) Sulphur Dioxide </label>
                   <q-input dense outlined />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
-                  <label class="zlabel" for="name">
-                2) Nitrogen Oxide
-                  </label>
+                  <label class="zlabel" for="name"> 2) Nitrogen Oxide </label>
                   <q-input dense outlined />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
-                  <label class="zlabel" for="name">
-                  3) Hydrocarbons
-                  </label>
+                  <label class="zlabel" for="name"> 3) Hydrocarbons </label>
                   <q-input dense outlined />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
-                  <label class="zlabel" for="name">
-                4) Carbon Monoxide
-                  </label>
+                  <label class="zlabel" for="name"> 4) Carbon Monoxide </label>
                   <q-input dense outlined />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
-                  <label class="zlabel" for="name">
-                 5) Moisture
-                  </label>
+                  <label class="zlabel" for="name"> 5) Moisture </label>
                   <q-input dense outlined />
                 </div>
-                
 
                 <div class="col-md-6 col-xs-10">
-                  <label class="zlabel" for="name">
-                 6) Other Specify
-                  </label>
+                  <label class="zlabel" for="name"> 6) Other Specify </label>
                   <q-input dense outlined />
                 </div>
-
-               
-                
               </div>
             </div>
           </div>
         </div>
+
+        <div class="col-12">
+          <label class="zlabel" for="name">
+            E) Please Specify The Following
+          </label>
+
+          <div class="row justify q-col-gutter-md q-ml-md">
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name">I) Name Of Stacks</label>
+              <q-input dense outlined />
+            </div>
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name">II) Type Of Stacks</label>
+              <q-input dense outlined />
+            </div>
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name">III) Inter Stack Distance</label>
+              <q-input dense outlined />
+            </div>
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name">IV) Height Of Each Stack</label>
+              <q-input dense outlined />
+            </div>
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >V) Internal Diameter Of Each Stack At The Base And Top</label
+              >
+              <q-input dense outlined />
+            </div>
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name">VI) Exist Gas Velocity</label>
+              <q-input dense outlined />
+            </div>
+
+            <div class="col-12">
+              <label class="zlabel" for="name">
+                VII) Fine Gas Characteristics</label
+              >
+
+              <div class="row justify q-col-gutter-md q-ml-md">
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name"> 1) Volume </label>
+                  <q-input dense outlined />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name">2) Temperature </label>
+                  <q-input dense outlined />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name"> 3) Density </label>
+                  <q-input dense outlined />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name">
+                    4) Size Distributions Of Particulars
+                  </label>
+                  <q-input dense outlined />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name"> 5) Gas Composition </label>
+                  <q-input dense outlined />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label class="zlabel" for="name"> F) </label>
+
+          <div class="row justify q-col-gutter-md q-ml-md">
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >I) What Kind Of Stack Emission Monitoring Is Proposed?</label
+              >
+              <q-input dense outlined />
+            </div>
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >II) What Equipment Is Proposed To Be Acquired For This
+                Purpose?</label
+              >
+              <q-input dense outlined />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name"
+            >G) Give Details Of Air Pollution Control Equipment You Proposed To
+            Install</label
+          >
+          <q-input dense outlined />
+        </div>
+
+        <div class="col-12">
+          <label class="zlabel" for=""
+            >H) Emission Rate Of Particulates And Sulphur Dioxide In Terms Of
+            Weight/time Expected To Be Released When Control Equipment
+            Is)</label
+          >
+          <div class="row justify q-col-gutter-md q-ml-md">
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"> I) Function Normally </label>
+              <q-input dense outlined />
+            </div>
+
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"> II) Not Functioning </label>
+              <q-input dense outlined />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-7 col-xs-10">
+          <label class="zlabel" for="name"
+            >I) What Special Procedures Do You Propose To Lay Down For Air
+            Pollution Control During Periods When Emission Exceeds Prescribed
+            Limits For Any Reason Including Malfunctioning Of Equipment?</label
+          >
+          <q-input dense outlined />
+        </div>
+
+        <div class="col-md-5 col-xs-10">
+          <label class="zlabel" for="name"
+            >I) Are Any Standards Of Emission Prescribed For Or Adopt By Your
+            Industry? If Yes, Please Specify</label
+          >
+          <q-input dense outlined />
+        </div>
       </div>
+    </div>
+
+    <div class="col-12">
+      <label for="" class="zlabel">8. OTHER TYPES OF POLLUTION</label>
+
+      <div class="row justify q-col-gutter-md q-ml-md">
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+            A) Is Your Industry Likely To Cause Noise Pollution?
+          </label>
+          <q-input dense outlined />
+        </div>
+
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+            B) Is Your Industry Likely To Cause Odour Pollution?
+          </label>
+          <q-input dense outlined />
+        </div>
+
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+            C) Is Your Industry Likely To Cause Any Thermal Pollution?
+          </label>
+          <q-input dense outlined />
+        </div>
+
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+            D) Is Your Industry Likely Tp Cause Radio- Active Pollution?
+          </label>
+          <q-input dense outlined />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="" class="zlabel">9. MANAGEMENT OF POLLUTION CONTROL</label>
+
+      <div class="row justify q-col-gutter-md q-ml-md">
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+            A) Give Details Of The Organizational Set Up You Propose To Have For
+            Pollution Control
+          </label>
+          <q-input dense outlined />
+        </div>
+
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+            B) What Is The Level Of Expertise Of The Person Incharge Of
+            Pollution Control?
+          </label>
+          <q-input dense outlined />
+        </div>
+
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+            D) What Laboratories Facilities You Propose To Have For The Above?
+          </label>
+          <q-input dense outlined />
+        </div>
+
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+            E) Give Details Of Operation & Maintenance Facilities You Propose To
+            Have Treatment Plants And Pollution Level Monitoring And Control
+            Equipments
+          </label>
+          <q-input dense outlined />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="" class="zlabel">10. COST OF POLLUTION CONTROL</label>
+
+      <div class="row justify q-col-gutter-md q-ml-md">
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+            A) Total Expenditure Proposed For Pollution Monitoring And Control
+          </label>
+          <q-input dense outlined />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="name">
+        11. Details Of Other Industries Approved For Location Or Under
+        Consideration For Location Within 10 Kms Distance. (This Should Be
+        Provided In Consultation With The Appropriate Central/state
+        Authorities.)
+      </label>
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="name">
+        12. Any Other Additional Information And Summary Statement About
+        Environmental Impacts For Your Industry
+      </label>
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-12 text-center">
+      I do hereby affirm that the informations furnished above are true and the
+      documents attached herewith are genuine.
+    </div>
+
+    <q-space />
+
+    <div class="col-md-6 col-xs-10 ">
+      <label class="zlabel" for="name"> Signature Of The Operator </label>
+      <q-input type="file" dense outlined />
     </div>
 
     <div class="col-xs-12" />
