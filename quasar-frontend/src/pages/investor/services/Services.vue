@@ -437,7 +437,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "consent-to-establishment-industries",
           },
           {
             name: "Accident Reporting for Bio-Medical Wastes",

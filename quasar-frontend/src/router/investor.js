@@ -173,6 +173,42 @@ export default {
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
+
+
+    {
+      path: "pollution-control-board",
+      component: () => import("layouts/DummyLayout.vue"),
+      children: [
+        {
+          path: "consent-to-establishment-industries",
+          name: "pcb:consent-industries",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/consentindustries/Application.vue"
+            ),
+        },
+        {
+          path: "permission-to-fell-trees",
+          name: "forest:fell-trees",
+          component: () =>
+            import(
+              "pages/common/dept_services/forests/felltrees/Application"
+            ),
+        },
+        {
+          path: "claiming-central-capital-investment-subsidy-scheme",
+          name: "indudsdsfsftries:central-captial",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/ClaimOfCentralCapital/ClaimOfCentralCapital.vue"
+            ),
+        },
+
+
+
+        // claiming-central-capital-investment-subsidy-scheme
+      ],
+    },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },
   ],
 };
