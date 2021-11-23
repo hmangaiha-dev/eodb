@@ -1,15 +1,16 @@
 <template>
   <div class="my-layout q-ma-lg">
     <q-layout view="hHh Lpr lff">
-      
       <div class="my-layout">
-        <q-header  elevated class="bg-primary text-white" height-hint="98">
+        <q-header elevated class="bg-primary text-white" height-hint="98">
           <q-toolbar>
             <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
             <q-toolbar-title>
               <router-link to="/">
                 <q-avatar>
-                  <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
+                  <img
+                    src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
+                  />
                 </q-avatar>
               </router-link>
               EODB
@@ -24,63 +25,85 @@
           <!--        <q-route-tab to="/page3" label="Page Three" />-->
           <!--      </q-tabs>-->
         </q-header>
-        <q-drawer class="q-ml-md" width="350" show-if-above v-model="leftDrawerOpen" side="left" bordered>
+        <q-drawer
+          class="q-px-md"
+          width="350"
+          show-if-above
+          v-model="leftDrawerOpen"
+          side="left"
+          bordered
+        >
           <!-- QScrollArea is optional -->
           <!-- <q-scroll-area class="fit q-pa-sm"> -->
-            <q-item>
-              <q-item-section class="text-italic text-subtitle1 text-caption"
-                >Applicant Profile</q-item-section
-              >
-            </q-item>
-            <q-item to="/investor"  clickable>
+          <q-item>
+            <q-item-section class="text-italic text-subtitle1 text-caption"
+              >Applicant Profile</q-item-section
+            >
+          </q-item>
+          <q-item to="/investor" clickable>
+            <q-item-section avatar>
+              <q-icon color="negative" name="dashboard" />
+            </q-item-section>
+            <q-item-section> Dashboard </q-item-section>
+          </q-item>
+          <q-expansion-item
+            expand-icon="expand_more"
+            group="somegroup"
+            icon="explore"
+            label="Online Services"
+            default-opened
+            header-class="text-primary"
+          >
+            <q-item
+              v-for="dept in depts"
+              :key="dept"
+              class="q-ml-md"
+              active-class="bg-grey-3"
+              exact
+              :to="`/investor/${dept.slug}/online-services`"
+            >
               <q-item-section avatar>
-                <q-icon color="negative" name="dashboard" />
+                <q-icon color="negative" name="precision_manufacturing" />
               </q-item-section>
-              <q-item-section> Dashboard </q-item-section>
+              <q-item-section> {{ dept.name }} </q-item-section>
             </q-item>
-            <q-expansion-item
-              expand-icon="expand_more"
-              group="somegroup"
-              icon="explore"
-              label="Online Services"
-              default-opened
-              header-class="text-primary"
+          </q-expansion-item>
+          <q-expansion-item
+            expand-icon="expand_more"
+            group="somegroup"
+            icon="explore"
+            label="My Applications"
+            header-class="text-primary"
+          >
+            <q-item
+              class="q-ml-md"
+              :to="{ name: 'investor:ongoing' }"
+              clickable
             >
-              <q-item
-                v-for="(dept) in depts" :key="dept"
-                class="q-ml-md"
-                active-class="bg-grey-3"
-                exact
-                :to="`/investor/${dept.slug}/online-services`"
-              >
-                <q-item-section avatar>
-                  <q-icon color="negative" name="precision_manufacturing" />
-                </q-item-section>
-                <q-item-section> {{ dept.name }} </q-item-section>
-              </q-item>
-            </q-expansion-item>
-            <q-expansion-item
-              expand-icon="expand_more"
-              group="somegroup"
-              icon="explore"
-              label="My Applications"
-              header-class="text-primary"
+              <q-item-section avatar>
+                <q-icon color="yellow" name="description" />
+              </q-item-section>
+              <q-item-section> Ongoing Applications </q-item-section>
+            </q-item>
+            <q-item
+              class="q-ml-md"
+              :to="{ name: 'investor:approved' }"
+              clickable
             >
-              <q-item class="q-ml-md" :to="{ name: 'investor:ongoing' }" clickable>
-                <q-item-section avatar>
-                  <q-icon color="yellow" name="description" />
-                </q-item-section>
-                <q-item-section> Ongoing Applications </q-item-section>
-              </q-item>
-              <q-item class="q-ml-md" :to="{ name: 'investor:approved' }" clickable>
-                <q-item-section avatar>
-                  <q-icon color="yellow" name="description" />
-                </q-item-section>
-                <q-item-section> Approved Applications </q-item-section>
-              </q-item>
-            </q-expansion-item>
-            <q-separator />
-            <!-- <q-item class="absolute-bottom">
+              <q-item-section avatar>
+                <q-icon color="yellow" name="description" />
+              </q-item-section>
+              <q-item-section> Approved Applications </q-item-section>
+            </q-item>
+          </q-expansion-item>
+          <q-separator />
+           <q-item active-class="active-item q-px-md" :to="{ name:'common-application' }" clickable>
+            <q-item-section avatar>
+              <q-icon color="negative" name="dashboard" />
+            </q-item-section>
+            <q-item-section> Common Application </q-item-section>
+          </q-item>
+          <!-- <q-item class="absolute-bottom">
               <q-item-section avatar>
                 <q-icon color="negative" name="dashboard" />
               </q-item-section>
@@ -156,8 +179,7 @@ const depts = [
     name: "Excise & Narcotics Department",
     slug: "excise-and-narcotics",
   },
- 
- 
+
   {
     name: "Food & Drug Administration, H&FW Department",
     slug: "food-and-drug-administration",
@@ -165,11 +187,11 @@ const depts = [
   {
     name: "Urban Development & Proverty Alleviation",
     slug: "urban-development-and-proverty-alleviation",
-  },{
+  },
+  {
     name: "Labour Employment, Skill Development & Entreprenuership",
     slug: "labour-skill-development-and-enterprise",
   },
-
 ];
 
 export default {
@@ -196,12 +218,15 @@ export default {
 };
 </script>
 
-
 <style>
-
 .my-layout {
   /* max-width: 900px !important;
   margin: 0 auto; */
 }
 
+
+.active-item {
+  background: #c8e6c9 !important;
+  border-radius: 30px;
+}
 </style>

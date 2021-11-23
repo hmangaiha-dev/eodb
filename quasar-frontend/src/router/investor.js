@@ -29,7 +29,7 @@ export default {
       component: () => import("pages/investor/OnGoingApplications.vue"),
     },
 
-    // { path: "common-application/create", name:"commonall:create", component: () => import("pages/investor/CommonApplication.vue") },
+    { path: "common-application/create", name:"common-application", component: () => import("pages/investor/CommonApplication.vue") },
     // { path: "common-application/create", name:"common:create", component: () => import("pages/investor/CommonApplication.vue") },
     {
       path: ":deptname?/online-services",
