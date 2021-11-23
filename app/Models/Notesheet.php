@@ -10,7 +10,7 @@ class Notesheet extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['note'];
+    protected $fillable = ['title','body','created_by','noteable_id','noteable_type'];
 
     public function noteable(): MorphTo
     {

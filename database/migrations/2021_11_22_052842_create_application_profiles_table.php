@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApplicationsTable extends Migration
+class CreateApplicationProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('application_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('application_code');
-            $table->string('application_id')->unique();
-            $table->string('current_state')->default('pending');
+            $table->string('code')->nullable();
+            $table->string('title')->nullable();
             $table->string('remark')->nullable();
+            $table->string('operational_type')->nullable();
+            $table->boolean('published')->default(false);
 
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('department_id');
-
+            $table->unsignedInteger('office_id')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ class CreateApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('application_profiles');
     }
 }

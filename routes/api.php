@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DeskController;
 use App\Http\Controllers\InvestorController;
+use App\Http\Controllers\NotesheetController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PostingController;
+use App\Http\Controllers\ProcessFlowController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicDataController;
 use App\Http\Controllers\ResourceDataController;
@@ -37,12 +41,10 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('logout', [StaffAuthController::class, 'logout'])->middleware('auth:sanctum');
 });
 
-
 Route::group(['prefix' => 'profile', 'middleware' => 'auth:sanctum'], function () {
     Route::get('', [ProfileController::class, 'show']);
     Route::put('', [ProfileController::class, 'update']);
 });
-
 
 Route::get('public-data',[PublicDataController::class,'fetchPublicData']);
 Route::get('staff-data',[PublicDataController::class,'fetchStaffData']);
@@ -82,19 +84,33 @@ Route::group(['prefix' => 'resources', 'middleware' => ['auth:sanctum','staff']]
     Route::delete('{id}/destroy', [ResourceDataController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'investor'],function(){
-    Route::post('/', [InvestorController::class, 'register']);
-    Route::get('/', [InvestorController::class, 'register']);
+Route::group(['prefix' => 'process-flows', 'middleware' => ['auth:sanctum','staff']], function () {
+    Route::get('index', [ProcessFlowController::class, 'index']);
+    Route::post('store', [ProcessFlowController::class, 'store']);
+    Route::delete('{id}/destroy', [ProcessFlowController::class, 'destroy']);
 });
 
-<<<<<<< HEAD
-base_path('routes/rj/index.php');
-=======
 Route::group(['prefix' => 'application-profiles'],function(){
-    Route::get('', [ApplicationProfileController::class, 'index']);
+    Route::get('index', [ApplicationProfileController::class, 'index']);
+    Route::get('flows', [ApplicationProfileController::class, 'applicationFlows']);
+    Route::put('{model}/toggle', [ApplicationProfileController::class, 'toggle']);
+    Route::delete('process-flows/{model}', [ApplicationProfileController::class, 'destroyFlow']);
+});
+Route::group(['prefix' => 'application-profiles'],function(){
+    Route::get('index', [ApplicationProfileController::class, 'index']);
+    Route::get('flows', [ApplicationProfileController::class, 'applicationFlows']);
+    Route::put('{model}/toggle', [ApplicationProfileController::class, 'toggle']);
+    Route::delete('process-flows/{model}', [ApplicationProfileController::class, 'destroyFlow']);
+});
+Route::group(['prefix' => 'applications'], function () {
+    Route::post('submit', [ApplicationController::class, 'submitApplication']);
+    Route::get('me', [DeskController::class, 'myApplication']);
+    Route::get('{model}', [ApplicationController::class, 'detail']);
+    Route::get('{model}/notes', [NotesheetController::class, 'notes']);
+    Route::post('{model}/notes/create', [NotesheetController::class, 'create']);
+    Route::get('{model}/notes/{id}', [NotesheetController::class, 'detail']);
 });
 
 
+base_path('routes/rj/index.php');
 
-Route::name('rj')->group(base_path('routes/rj/index.php'));
->>>>>>> main

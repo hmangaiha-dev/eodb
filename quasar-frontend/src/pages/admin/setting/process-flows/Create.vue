@@ -21,7 +21,10 @@
         <q-list separator>
           <q-item class="zdetailcard q-mt-sm" v-for="(item,i) in formData.flows" :key="i">
             <q-item-section>
-              <q-item-label>STEP: {{ i+1 }} : <span class="text-caption">{{ item?.duration }}</span></q-item-label>
+              <q-item-label>STEP: {{ i+1 }} : <span class="text-caption">{{ item?.staff?.label }}</span></q-item-label>
+              <q-item-label caption>
+                <q-chip v-for="action in item.actions" :key="action.id" :label="action.label" />
+              </q-item-label>
             </q-item-section>
             <q-item-section side>
               <div class="flex flex-inline">
@@ -32,7 +35,12 @@
           </q-item>
         </q-list>
 
-      <q-btn class="q-mt-md" outline v-if="formData.flows.length>0"  color="primary" label="Save "/>
+      <br/>
+      <div class="zdetailcard">
+        <q-checkbox v-model="formData.published" label="Published ? "/>
+      </div>
+      <q-separator class="q-my-md"/>
+      <q-btn @click="handleSubmit" class="q-mt-md" outline v-if="formData.flows.length>0"  color="primary" label="Save "/>
       </div>
     <q-dialog v-model="localData.openDialog">
       <FlowDialog @save="handleSave" @close="localData.openDialog=false"/>
@@ -41,28 +49,46 @@
 </template>
 <script>
 import {reactive} from "@vue/reactivity";
-import FlowDialog from "pages/admin/setting/FlowDialog";
+import FlowDialog from "pages/admin/setting/process-flows/FlowDialog";
 import {computed, ref} from "vue";
 import {useStore} from "vuex";
+import {api} from "boot/axios";
+import {useQuasar} from "quasar";
 
 export default {
   components: {FlowDialog},
   setup(props, context) {
     const list = ref([]);
     const store = useStore();
+    const quasar = useQuasar();
     const formData=reactive({
       application:null,
-      flows:[]
+      flows:[],
+      published:false
     })
     const localData=reactive({
       openDialog:false
     })
-    const  handleSave=({staff,duration})=>{
+    const  handleSave=({staff,duration,actions})=>{
       let temp = formData.flows;
-      temp.push({staff, duration});
+      temp.push({staff, duration,actions});
 
       formData.flows = temp;
       localData.openDialog = false;
+    }
+    const handleSubmit=()=>{
+      formData['application_id']=formData.application?.id
+      api.post('process-flows/store',formData)
+      .then(res=>{
+        const {message} = res.data;
+        quasar.notify({
+          type: 'positive',
+          message
+        });
+      })
+      .catch(err=>{
+        console.log(err)
+      })
     }
     const removeFlow=index=>{
       const temp = formData.flows.filter((val,i) => i!==index);
@@ -74,6 +100,7 @@ export default {
       formData,
       handleSave,
       localData,
+      handleSubmit,
       application_profiles:computed(()=>store.state.staffData.application_profiles)
     }
   }

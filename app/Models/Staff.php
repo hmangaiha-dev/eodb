@@ -88,5 +88,10 @@ class Staff extends Authenticatable
         return $this->belongsToMany(Office::class, table: 'staff_posts')->withPivot(['status','joining_date','leaving_date','remark']);
     }
 
+    public function myApplication(): BelongsToMany
+    {
+        return $this->belongsToMany(Application::class, 'application_movements', 'recipient', 'application_id',);
+    }
+
 
 }

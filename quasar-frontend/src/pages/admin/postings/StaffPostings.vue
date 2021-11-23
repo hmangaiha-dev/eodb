@@ -60,7 +60,7 @@ const columns = [
 
   // { name: 'email', label: 'Email', field: 'email', sortable: true },
   {name: 'current_post',align:'center', label: 'Post', field: 'current_post'},
-  {name: 'status',align:'left', label: 'Status', field: 'current_post', format: val => val.pivot.status},
+  // {name: 'status',align:'left', label: 'Status', field: 'current_post', format: val => val.pivot.status},
 ]
 
 export default {
