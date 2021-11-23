@@ -447,7 +447,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "accident-reporting-bio-medical-waste",
           },
           {
             name: "Submission of Annual report for Bio-Medical Wastes.",

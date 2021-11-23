@@ -188,11 +188,11 @@ export default {
             ),
         },
         {
-          path: "permission-to-fell-trees",
-          name: "forest:fell-trees",
+          path: "accident-reporting-bio-medical-waste",
+          name: "pcb:accident-reporting",
           component: () =>
             import(
-              "pages/common/dept_services/forests/felltrees/Application"
+              "pages/common/dept_services/pollution/accidentreporting/Application.vue"
             ),
         },
         {
