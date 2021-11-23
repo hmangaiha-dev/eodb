@@ -196,11 +196,11 @@ export default {
             ),
         },
         {
-          path: "claiming-central-capital-investment-subsidy-scheme",
+          path: "submission-anual-report-bio-medical-wastes",
           name: "indudsdsfsftries:central-captial",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/ClaimOfCentralCapital/ClaimOfCentralCapital.vue"
+              "pages/common/dept_services/pollution/annualreport/Application.vue"
             ),
         },
 
