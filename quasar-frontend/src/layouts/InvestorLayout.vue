@@ -97,7 +97,11 @@
             </q-item>
           </q-expansion-item>
           <q-separator />
-           <q-item active-class="active-item q-px-md" :to="{ name:'common-application' }" clickable>
+          <q-item
+            active-class="active-item q-px-md"
+            :to="{ name: 'common-application' }"
+            clickable
+          >
             <q-item-section avatar>
               <q-icon color="negative" name="dashboard" />
             </q-item-section>
@@ -133,6 +137,8 @@
 import { ref } from "vue";
 import ProfileMenu from "components/ProfileMenu";
 import { reactive } from "@vue/reactivity";
+import { api } from "src/boot/axios";
+import { useRouter } from "vue-router";
 
 const depts = [
   {
@@ -196,7 +202,8 @@ const depts = [
 
 export default {
   components: { ProfileMenu },
-  setup() {
+  setup(props, context) {
+    const router = useRouter();
     const leftDrawerOpen = ref(false);
     const rightDrawerOpen = ref(false);
     const menuItems = reactive([{}]);
@@ -204,7 +211,17 @@ export default {
     return {
       depts,
       leftDrawerOpen,
-      handleProfileMenu: (menuitem) => console.log(menuitem),
+
+      handleProfileMenu: (menuitem) => {
+        if (menuitem != "logout") return console.log('not logout');;
+
+        api.defaults.headers["Authorization"] = "";
+
+        router.push({
+          name: "investor:login",
+        });
+      },
+
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
@@ -219,12 +236,6 @@ export default {
 </script>
 
 <style>
-.my-layout {
-  /* max-width: 900px !important;
-  margin: 0 auto; */
-}
-
-
 .active-item {
   background: #c8e6c9 !important;
   border-radius: 30px;

@@ -1,6 +1,6 @@
 <template>
- <div style="max-width: 1400px;margin:0 auto" class="row q-mt-md q-gutter-md q-pa-md ">
-  <div class="q-pa-md ">
+ <div style="max-width: 1600px;margin:0 auto" class="row q-mt-md q-gutter-md q-pa-md ">
+  <div style="width:100%" class="q-pa-md">
     <q-tabs stretch v-model="tab" class="text-teal">
       <q-tab name="services" icon="mails" label="Online Servies" />
       <q-tab name="about" icon="alarm" label="About Us" />
@@ -10,7 +10,7 @@
     </q-tabs>
     <div v-if="tab == 'services'" class="text-h5 q-my-md">Online services</div>
     <q-table
-      dense
+      
       wrap-cells
       flat
       v-if="tab == 'services'"
@@ -61,7 +61,7 @@
       </template>
     </q-table>
 
-    <q-tab-panels v-model="tab" animated>
+    <q-tab-panels class="full-width" v-model="tab" animated>
       <q-tab-panel name="about">
         <AboutUs />
       </q-tab-panel>

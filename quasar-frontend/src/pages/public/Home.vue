@@ -50,7 +50,7 @@
         class="col-lg-3 col-sm-6 col-xs-10"
       >
         <q-list class="tile cursor-pointer" clickable bordered padding>
-          <q-item :to="{ name: 'common:create', params: { deptname: `${dept?.link}` } }" class="text" clickable v-ripple>
+          <q-item :to="{ name: 'common:show', params: { deptname: `${dept?.link}` } }" class="text" clickable v-ripple>
             <q-item-section class="tile-content" avatar> {{ dept.serial }} </q-item-section>
 
             <q-item-section class="text-center tile-content">{{

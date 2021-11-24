@@ -229,6 +229,31 @@
         outlined
       />
     </div>
+
+     <div class="col-xs-12 col-md-2">
+      <label class="zlabel" for="adar"> Alternate Email ID</label>
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <q-input
+        id="adar"
+        v-model="formData.aadhaar_no"
+        dense
+        item-aligned
+        mask="############"
+        :rules="[
+          (val) => {
+            if (val === '') {
+              return true;
+            } else {
+              if (val?.length !== 12) return 'Invalid aadhaar no';
+              else return true;
+            }
+          },
+        ]"
+        outlined
+      />
+    </div>
     <div class="col-xs-12" />
   </div>
 </template>

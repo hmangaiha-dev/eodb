@@ -1,12 +1,31 @@
+import { api } from "src/boot/axios";
+
+const checkAuth = async(to, from, next) => {
+  console.log('auth check');
+  await api
+    .get("/user")
+    .then((res) => {
+      console.log('auth user',res.data);
+     next();
+    })
+    .catch((err) => {
+      console.log('unathenticated');
+      next({
+        name: 'investor:login'
+      })
+    });
+};
+
 export default {
+  
   path: "/investor",
   component: () => import("layouts/InvestorLayout.vue"),
   children: [
     { path: "", component: () => import("pages/investor/Dashboard.vue") },
-    {
-      path: "register",
-      component: () => import("pages/investor/Register.vue"),
-    },
+    // {
+    //   path: "register",
+    //   component: () => import("pages/investor/Register.vue"),
+    // },
     // { path: "profile", component: () => import("pages/investor/Profile.vue") },
     {
       path: "profile",
@@ -29,16 +48,15 @@ export default {
       component: () => import("pages/investor/OnGoingApplications.vue"),
     },
 
-    { path: "common-application/create", name:"common-application", component: () => import("pages/investor/CommonApplication.vue") },
+    {
+      path: "common-application/create",
+      name: "common-application",
+      component: () => import("pages/investor/CommonApplication.vue"),
+    },
     // { path: "common-application/create", name:"common:create", component: () => import("pages/investor/CommonApplication.vue") },
     {
       path: ":deptname?/online-services",
       name: "common:create",
-      // props: (route) => (
-      //   {
-      //     deptname: 'dd'
-      //   }
-      // ),
       component: () => import("pages/investor/services/Services.vue"),
     },
     {
@@ -69,6 +87,7 @@ export default {
     {
       path: "commerce-and-industries",
       component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
       children: [
         {
           path: "claiming-central-interest-subsidy-scheme",
@@ -95,17 +114,14 @@ export default {
             ),
         },
 
-
-
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
 
-
-
     {
       path: "land-revenue",
       component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
       children: [
         {
           path: "periodic-patta",
@@ -132,16 +148,14 @@ export default {
             ),
         },
 
-
-
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
 
-
     {
       path: "environment-forest-and-climate-change",
       component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
       children: [
         {
           path: "bamboo-plantions",
@@ -155,9 +169,7 @@ export default {
           path: "permission-to-fell-trees",
           name: "forest:fell-trees",
           component: () =>
-            import(
-              "pages/common/dept_services/forests/felltrees/Application"
-            ),
+            import("pages/common/dept_services/forests/felltrees/Application"),
         },
         {
           path: "claiming-central-capital-investment-subsidy-scheme",
@@ -168,16 +180,14 @@ export default {
             ),
         },
 
-
-
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
 
-
     {
       path: "pollution-control-board",
       component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
       children: [
         {
           path: "consent-to-establishment-industries",
@@ -204,11 +214,20 @@ export default {
             ),
         },
 
-
-
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },
   ],
+
+
+  
+
+
+  
+
+  
+ 
+
+  
 };

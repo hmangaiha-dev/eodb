@@ -7,9 +7,14 @@ const routes = [
     component: () => import('layouts/LandingLayout.vue'),
     children: [
       { path: '', component: () => import('pages/public/Home') },
-      { path: 'login', component: () => import('pages/Login.vue') },
+      { path: 'login', name: 'investor:login', component: () => import('pages/public/Login.vue') },
       { path: 'staff-login',name:'staff:login', component: () => import('pages/public/staff/StaffLogin.vue') },
-      { path: 'register', component: () => import('pages/public/RegisterContainer.vue') }
+      { path: 'register', component: () => import('pages/public/RegisterContainer.vue') },
+      {
+        path: ":deptname?/online-services",
+        name: "common:show",
+        component: () => import("pages/investor/services/Services.vue"),
+      },
     ]
   },
  

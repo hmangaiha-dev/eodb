@@ -1,11 +1,11 @@
 <template>
   <q-page>
-    <div class="row justify-center">
+    <div class="row q-mt-lg justify-center">
       <div class="col-sm-10 col-xs-10 col-md-3">
         <q-form @submit="submit" @reset="reset">
           <q-card flat bordered>
             <p class="text-h6 text-weight-regular q-mt-md text-center">Login</p>
-            <q-card-section class="q-col-gutter-lg">
+            <q-card-section>
               <q-input
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
@@ -23,31 +23,41 @@
                 outlined
               />
             </q-card-section>
-            <q-card-actions align="center">
+            <q-card-section style="display: flex" class="q-py-none">
+              <q-checkbox right-label v-model="remember" label="Remember me" />
+              <q-space />
               <q-btn
                 outline
                 padding="sm"
                 type="submit"
                 color="primary"
                 label="Login"
+                class="q-mr-md"
               />
-              <q-btn padding="sm" color="red" label="Reset" />
-            </q-card-actions>
-            <div>
-              <q-btn
-                @click="getUser"
-                padding="sm"
-                color="green"
-                label="Getuser"
-              />
+              <q-btn padding="sm" type="reset" color="red" label="Reset" />
+            </q-card-section>
+            <q-card-section class="q-py-xs">
+              <router-link
+                style="text-decoration: none; color: #3c8dbc"
+                class="q-mb-md"
+                to="/reset-password"
+              >
+                Forgot password?
+              </router-link>
+              <br />
+            </q-card-section>
 
-               <q-btn class="float-right"
-                @click="logout"
-                padding="sm"
-                color="red"
-                label="Logout"
-              />
-            </div>
+            <q-card-section class="q-py-xs">
+              <router-link
+                style="text-decoration: none; color: #3c8dbc"
+                class="q-mt-lg"
+                to="/register"
+              >
+                Register as new membership
+              </router-link>
+            </q-card-section>
+
+          
           </q-card>
         </q-form>
         <q-form class="self-stretch">
@@ -61,11 +71,12 @@
 import { useQuasar } from "quasar";
 import { reactive } from "@vue/reactivity";
 import { api } from "src/boot/axios";
-import {useStore} from "vuex";
+import {ref} from 'vue'
+import { useStore } from "vuex";
 
 export default {
   setup(props, context) {
-      const store = useStore();
+    const store = useStore();
     const q = useQuasar();
     const loginData = reactive({
       email: "investor@email.com",
@@ -75,13 +86,15 @@ export default {
     return {
       loginData,
 
+      remember: ref(true),
+
       submit: () => {
         api
           .post("/auth/login", loginData)
           .then((res) => {
-            const {token, user} = res.data;
-            store.dispatch('authData/setToken', token)
-              store.dispatch('authData/setCurrentUser', user)
+            const { token, user } = res.data;
+            store.dispatch("authData/setToken", token);
+            store.dispatch("authData/setCurrentUser", user);
             console.log("login response", res.data);
 
             // api.defaults.headers["Authorization"] = `Bearer ${token}`;
@@ -102,9 +115,14 @@ export default {
           });
       },
 
-      logout: () =>  {
-        api.defaults.headers["Authorization"] = '';
-      }
+      reset: () => {
+        console.log('reset');
+        loginData.email = loginData.password = ''
+      },
+
+      logout: () => {
+        api.defaults.headers["Authorization"] = "";
+      },
     };
   },
 };
