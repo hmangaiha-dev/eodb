@@ -45,7 +45,10 @@ const actions = {
     context.commit('setCsrfToken', token);
   },
   setCurrentUser: (context, data) => {
-    LocalStorage.set('user', (data));
+    console.log('store data',data);
+    localStorage.clear()
+    localStorage.setItem('user', JSON.stringify(data));
+    // LocalStorage.set('user', JSON.stringify(data));
     context.commit('setCurrentUser', data);
   }
 }

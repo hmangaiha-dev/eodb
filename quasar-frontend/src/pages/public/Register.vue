@@ -13,8 +13,8 @@
           <q-card-section class="q-pb-none">
             <q-input
               outlined
-              type="email"
-              v-model="formData.email"
+              
+              v-model="formData.full_name"
               label="Full name"
               :rules="[(val) => !!val || 'Email is required']"
             />
@@ -27,7 +27,7 @@
             />
             <q-input
               outlined
-              v-model="formData.mobile"
+              v-model="formData.phone"
               label="Mobile no"
               :rules="[(val) => !!val || 'Mobile no is required']"
             />
@@ -77,7 +77,7 @@
               label="Register"
               class="q-mr-md"
             />
-            <q-btn type="reset" color="red" label="Reset" />
+            <q-btn type="reset"  color="red" label="Reset" />
           </q-card-section>
         </q-card>
       </q-form>
@@ -97,15 +97,28 @@ export default {
     let errors = reactive({});
     const q = useQuasar();
     const formData = reactive({
-      fullname: "",
-      email: "",
-      password: "",
-      password_confirmation: "",
-      mobile: "",
+      full_name: "testname",
+      email: "test@email.com",
+      password: "password",
+      password_confirmation: "password",
+      phone: "88888",
      
     });
     const handleSubmit = (e) => {
-      context.emit("sendOtp", formData);
+       api
+          .post("/auth/register", formData)
+          .then((res) => {
+            return console.log('response',res.data);
+            // const { token, user } = res.data;
+            // store.dispatch("authData/setToken", token);
+            // store.dispatch("authData/setCurrentUser", user);
+            // console.log("login response", res.data);
+
+            // api.defaults.headers["Authorization"] = `Bearer ${token}`;
+          })
+          .catch((err) => {
+            console.log("error post response", err);
+          });
     };
 
     const handleReset = (e) => {

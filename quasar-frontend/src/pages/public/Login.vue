@@ -60,9 +60,7 @@
           
           </q-card>
         </q-form>
-        <q-form class="self-stretch">
-          <div></div>
-        </q-form>
+        <q-btn color="primary" icon="check" label="Get User" @click="storeUser " />
       </div>
     </div>
   </q-page>
@@ -92,9 +90,11 @@ export default {
         api
           .post("/auth/login", loginData)
           .then((res) => {
-            const { token, user } = res.data;
-            store.dispatch("authData/setToken", token);
-            store.dispatch("authData/setCurrentUser", user);
+            const { token, currentUser } = res.data;
+
+            console.log('current user',currentUser);
+            // store.dispatch("investor/setToken", token);
+            store.dispatch("investor/setCurrentUser", currentUser);
             console.log("login response", res.data);
 
             // api.defaults.headers["Authorization"] = `Bearer ${token}`;
@@ -102,6 +102,11 @@ export default {
           .catch((err) => {
             console.log("error post response", err);
           });
+      },
+
+
+      storeUser: () => {
+        console.log('store user',store.state.investor.currentUser);
       },
 
       getUser: () => {

@@ -113,5 +113,5 @@ Route::group(['prefix' => 'applications'], function () {
 });
 
 
-base_path('routes/rj/index.php');
+// base_path('routes/rj/index.php');
 
