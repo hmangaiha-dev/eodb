@@ -60,7 +60,7 @@
           
           </q-card>
         </q-form>
-        <q-btn color="primary" icon="check" label="Get User" @click="storeUser " />
+        <q-btn color="primary" icon="check" label="Get User" @click="getUser " />
       </div>
     </div>
   </q-page>
@@ -97,7 +97,7 @@ export default {
             store.dispatch("investor/setCurrentUser", currentUser);
             console.log("login response", res.data);
 
-            // api.defaults.headers["Authorization"] = `Bearer ${token}`;
+            api.defaults.headers["Authorization"] = `Bearer ${token}`;
           })
           .catch((err) => {
             console.log("error post response", err);
