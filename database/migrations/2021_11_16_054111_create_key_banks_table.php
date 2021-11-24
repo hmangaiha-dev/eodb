@@ -19,9 +19,6 @@ class CreateKeyBanksTable extends Migration
             $table->string('key_value');
             $table->string('key_type')->default('text');
             $table->unsignedBigInteger('application_id');
-            // $table->foreignId('department_id')->constrained('departments');
-            $table->foreign('application_id')->references('id')->on('applications');
-            // $table->foreignId('application_type');
             $table->string('default_value')->nullable();
             $table->timestamps();
         });

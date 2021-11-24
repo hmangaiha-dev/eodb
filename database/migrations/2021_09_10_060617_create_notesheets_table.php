@@ -15,7 +15,8 @@ class CreateNotesheetsTable extends Migration
     {
         Schema::create('notesheets', function (Blueprint $table) {
             $table->id();
-            $table->text('note')->nullable();
+            $table->string('title')->default("NA");
+            $table->text('body')->nullable();
             $table->morphs('noteable');
             $table->timestamps();
         });

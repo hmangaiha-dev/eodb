@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunkquasar_frontend"]=self["webpackChunkquasar_frontend"]||[]).push([[483],{4483:(e,a,n)=>{n.r(a),n.d(a,{default:()=>d});var r=n(3673);const s=(0,r.HX)("data-v-095bea26"),t=s(((e,a,n,s,t,u)=>((0,r.wg)(),(0,r.j4)("div",null," Ongoing ")))),u={setup(){return{}}};u.render=t,u.__scopeId="data-v-095bea26";const d=u}}]);

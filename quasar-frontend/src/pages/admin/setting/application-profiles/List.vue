@@ -1,11 +1,10 @@
 <template>
   <q-page class="container-lg" padding>
-    <p class="zsubtitle">Process flows</p>
+    <p class="zsubtitle">Application profiles</p>
 
     <div>
       <div class="row q-col-gutter-md">
         <div class="flex justify-between flex-inline col-12">
-          <q-btn :to="{name:'process-flows:create'}" outline label="New process flow" color="primary"/>
           <q-input v-model="localData.search" placeholder="Search" @keyup="handleSearch" outlined dense>
             <template v-slot:append>
               <q-icon name="search"/>
@@ -20,13 +19,14 @@
           <q-list separator>
             <q-item v-for="item in localData.listData.data" :key="item.id">
               <q-item-section>
-                <q-item-label>{{ item.full_name }} : <span class="text-caption">{{ item?.email }}</span></q-item-label>
-                <q-item-label caption>{{ item?.rolesName?.toString() }}</q-item-label>
+                <q-item-label>{{item.title }} </q-item-label>
+                <q-item-label caption>{{item.code}} </q-item-label>
               </q-item-section>
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">
-                  <q-btn @click="handleEdit(item)" size="12px" outline icon="edit"/>
-                  <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>
+                  <q-toggle :model-value="item.published" left-label @click="publish(item)" label="published?"/>
+<!--                  <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>-->
+
                 </div>
               </q-item-section>
             </q-item>
@@ -70,16 +70,10 @@ export default {
         total: 1
       }
     })
-    const onStaffCreated = (values) => {
-      localData.openCreate = false
-      localData.listData = values;
-    }
-    const onStaffUpdated = (values) => {
-      localData.openEdit = false
-      localData.listData = values;
-    }
-    const deleteStaff = id => {
-      api.delete(`staff/${id}`)
+
+
+    const deleteFlow = id => {
+      api.delete(`application-profiles/process-flows/${id}`)
         .then(res => {
           localData.listData = res.data.list
           q.notify({type: 'positive', message: res.data?.message})
@@ -100,7 +94,7 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        deleteStaff(item.id)
+        deleteFlow(item.id)
       }).onCancel(() => {
         // console.log('>>>> Cancel')
       }).onDismiss(() => {
@@ -117,11 +111,24 @@ export default {
       fetchStaff(value)
     }
 
+    const publish=item=>{
+      api.put(`application-profiles/${item.id}/toggle`)
+        .then(res=>{
+          // const {current_page, total, per_page, data} = res.data.list;
+          // localData.listData.current_page = current_page;
+          // localData.listData.data = data;
+          // localData.listData.total = total;
+          q.notify({type: 'positive', message: res.data?.message})
+        })
+        .catch(err=>{
+          let message = !!err?.response ? err.response?.message : err.toString()
+          q.notify({type: 'negative', message})
+        })
+    }
     const fetchStaff = (page) => {
-      api.get(`staff/index?page=${page}`, {params: {search: localData.search}})
+      api.get(`application-profiles/index?page=${page}`, {params: {search: localData.search}})
         .then(res => {
-          console.log(res.data)
-          const {current_page, total, per_page, data} = res.data.data;
+          const {current_page, total, per_page, data} = res.data.list;
           localData.listData.current_page = current_page;
           localData.listData.data = data;
           localData.listData.total = total;
@@ -136,12 +143,11 @@ export default {
     return {
       updatePagination,
       pageCount: computed(() => Math.ceil(localData.listData.total / localData.listData.per_page)),
-      deleteStaff,
+      deleteFlow,
       localData,
-      onStaffCreated,
-      onStaffUpdated,
       handleSearch,
       handleEdit,
+      publish,
       handleDelete
     }
   }
