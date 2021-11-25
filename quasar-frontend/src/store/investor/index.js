@@ -8,8 +8,8 @@ import {api} from "boot/axios";
 
 const state = () => {
   return {
-    currentUser: LocalStorage.getItem('user'),
-    token: LocalStorage.getItem('token'),
+    currentUser: localStorage.getItem('user'),
+    token: localStorage.getItem('token'),
     csrfToken: ''
   }
 }
@@ -26,12 +26,14 @@ const mutations = {
 const actions = {
   setToken: (context, token) => {
     if (Boolean(token)) {
-      LocalStorage.set('token', token);
+      console.log('token value',token);
+      localStorage.setItem('token',token)
       context.commit('setToken', token);
       api.defaults.headers['Authorization'] = `Bearer ${token}`;
     } else {
-      LocalStorage.remove('token');
-      LocalStorage.remove('user');
+      console.log('else token');
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
       context.commit('setCurrentUser', null);
       context.commit('setToken', null);
       api.defaults.headers['Authorization'] = ``;

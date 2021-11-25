@@ -16,16 +16,29 @@
 
         <q-space />
 
-        <router-link
-          active-class="activebtn"
-          class="q-mr-md btnhover"
-          to="/login"
+        <q-btn-dropdown
+          color="primary"
+          v-if="isAuthenticated"
+          outline
+          class="q-pa-xs"
+          icon="account_circle"
+          rounded
         >
-          Login
-        </router-link>
-        <router-link active-class="activebtn" class="btnhover" to="/register">
-          Register
-        </router-link>
+          <ProfileMenu />
+        </q-btn-dropdown>
+
+        <template v-else>
+          <router-link
+            active-class="activebtn"
+            class="q-mr-md btnhover"
+            to="/login"
+          >
+            Login
+          </router-link>
+          <router-link active-class="activebtn" class="btnhover" to="/register">
+            Register
+          </router-link>
+        </template>
         <!--
         notice shrink property since we are placing it
         as child of QToolbar
@@ -97,6 +110,10 @@
 
 <script>
 import EssentialLink from "components/EssentialLink.vue";
+import ProfileMenu from "components/ProfileMenu.vue";
+import { useStore } from "vuex";
+import {computed} from "vue";
+
 
 const linksList = [
   {
@@ -150,24 +167,17 @@ export default defineComponent({
 
   components: {
     EssentialLink,
+    ProfileMenu,
   },
 
   setup() {
-    const leftDrawerOpen = ref(true);
+    const store = useStore();
 
-    const navigate = (e) => {
-      // return
-      console.log("clicked");
-    };
+    
 
     return {
-      tab: ref(""),
       essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-      navigate,
+      isAuthenticated: computed(() => store.getters["investor/isAuthenticated"]),
     };
   },
 });

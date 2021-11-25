@@ -132,7 +132,10 @@ export default {
         return dept.slug == route.params.deptname;
       });
 
-      rows.value = result[0].services;
+
+      !result.length && router.push({ name:'invalid' })
+
+      rows.value = result[0]?.services;
     };
 
     const columns = ref([

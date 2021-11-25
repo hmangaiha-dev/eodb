@@ -1,6 +1,6 @@
 import { api } from "src/boot/axios";
 
-const checkAuth = async(to, from, next) => {
+export const checkAuth = async(to, from, next) => {
   console.log('auth check');
   await api
     .get("/user")
@@ -9,7 +9,7 @@ const checkAuth = async(to, from, next) => {
      next();
     })
     .catch((err) => {
-      console.log('unathenticated');
+      console.log('unauthenticated');
       next({
         name: 'investor:login'
       })
@@ -20,8 +20,9 @@ export default {
   
   path: "/investor",
   component: () => import("layouts/InvestorLayout.vue"),
+  beforeEnter: checkAuth,
   children: [
-    { path: "", component: () => import("pages/investor/Dashboard.vue") },
+    { path: "", name:'investor:dashboard', component: () => import("pages/investor/Dashboard.vue") },
     // {
     //   path: "register",
     //   component: () => import("pages/investor/Register.vue"),
@@ -29,6 +30,7 @@ export default {
     // { path: "profile", component: () => import("pages/investor/Profile.vue") },
     {
       path: "profile",
+      name: 'investor:profile',
       component: () => import("pages/investor/ProfileInfo.vue"),
     },
     {
@@ -87,7 +89,6 @@ export default {
     {
       path: "commerce-and-industries",
       component: () => import("layouts/DummyLayout.vue"),
-      beforeEnter: checkAuth,
       children: [
         {
           path: "claiming-central-interest-subsidy-scheme",

@@ -4,9 +4,9 @@
     <br/>
     <div class="zcard row  q-col-gutter-md">
       <div class="col-xs-12 zsubtitle">Profile details</div>
-      <div class="col-xs-3">Username</div>
+      <div class="col-xs-3">Full Name</div>
       <div class="col-xs-9">
-        <q-input style="max-width: 260px" v-model="profile.name" disable outlined dense/>
+        <q-input style="max-width: 260px" v-model="profile.full_name" disable outlined dense/>
       </div>
       <div class="col-xs-3 ">Email</div>
       <div class="col-xs-9">
@@ -14,7 +14,7 @@
       </div>
       <div class="col-xs-3 ">Phone</div>
       <div class="col-xs-9">
-        <q-input style="max-width: 260px" v-model="profile.mobile" disable outlined dense/>
+        <q-input style="max-width: 260px" v-model="profile.phone" disable outlined dense/>
       </div>
       <div class="col-xs-12">
         <q-btn @click="handleEdit" color="primary" outline label="Edit profile"/>
@@ -36,18 +36,19 @@ export default {
     const router = useRouter();
     const store = useStore();
     const profile = reactive({
-      name: '',
+      full_name: '',
       email: '',
-      mobile: ''
+      phone: ''
     })
     onMounted(() => {
-      return
-      api.get('profile')
+      
+      api.get('investor/profile')
         .then(res => {
-          const {fullname, email, mobile} = res.data.data;
-          profile.name = fullname;
+          // return console.log('profile info',res.data);
+          const {full_name, email, phone} = res.data.data;
+          profile.full_name = full_name;
           profile.email = email;
-          profile.mobile = mobile
+          profile.phone = phone
         })
         .catch(err => {
           console.log(err)

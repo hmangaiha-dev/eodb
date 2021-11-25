@@ -1,33 +1,70 @@
 <template>
-  <q-menu>
-    <q-list style="min-width: 100px">
+  <q-list separator>
+    <q-item  exact :to="{ name: 'investor:profile' }" clickable>
+      <q-item-section>
+        <q-item-label>Profile</q-item-label>
+      </q-item-section>
+    </q-item>
 
-      <q-item v-for="menu in menus.items" :key="menu.key" @click="handleMenuClick(menu.key)" clickable v-close-popup>
-        <q-item-section>{{menu.title}}</q-item-section>
-      </q-item>
-    </q-list>
-  </q-menu>
+    <q-item exact :to="{ name: 'investor:dashboard' }" clickable>
+      <q-item-section>
+        <q-item-label>Go to dashboard</q-item-label>
+      </q-item-section>
+    </q-item>
+
+    <!--    <q-item :to="{name:'order-history:dashboard'}"  v-show="isAuthenticated"  clickable>-->
+    <!--      <q-item-label></q-item-label>-->
+    <!--    </q-item>-->
+    <!--    <q-item :to="{name:'order-history:dashboard'}"  v-show="isAuthenticated"  clickable>-->
+    <!--      <q-item-label>Order History</q-item-label>-->
+    <!--    </q-item>-->
+    <q-item @click="handleLogout" clickable>
+      <q-item-section>
+        <q-item-label>Sign out</q-item-label>
+      </q-item-section>
+    </q-item>
+  </q-list>
 </template>
 <script>
-import {reactive} from "@vue/reactivity";
+import { reactive } from "@vue/reactivity";
+import { api } from "src/boot/axios";
+import {useRouter} from "vue-router";
+import { useStore } from "vuex";
+
+// import {computed} from "vue";
+
+
 
 export default {
-  emits: ['onMenuItemClick'],
-  setup(props,context){
-    const menus=reactive({
-      items:[
-        {key:'profile',title:'Update profile'},
-        {key:'password',title:'Change password'},
-        {key:'logout',title:'logout'},
-      ]
-    })
-    const handleMenuClick=(menuitem)=>{
+  emits: ["onMenuItemClick"],
+  setup(props, context) {
+    const router = useRouter();
+     const store = useStore();
+    const menus = reactive({
+      items: [
+        { key: "profile", title: "Update profile" },
+        { key: "password", title: "Change password" },
+        { key: "logout", title: "logout" },
+      ],
+    });
+    const handleMenuClick = (menuitem) => {
       context.emit("onMenuItemClick", menuitem);
-    }
-    return{
+    };
+    return {
       menus,
-      handleMenuClick
-    }
-  }
-}
+      handleMenuClick,
+
+      handleLogout: (e) => {
+        api
+          .post("auth/investor/logout")
+          .then((res) => {
+            store.dispatch("investor/setToken", null);
+            store.dispatch("investor/setCurrentUser", null);
+            router.push({ name: "home" });
+          })
+          .catch((err) => console.log(err));
+      },
+    };
+  },
+};
 </script>

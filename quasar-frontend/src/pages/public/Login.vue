@@ -56,11 +56,17 @@
                 Register as new membership
               </router-link>
             </q-card-section>
-
-          
           </q-card>
         </q-form>
-        <q-btn color="primary" icon="check" label="Get User" @click="getUser " />
+        <!-- <q-btn color="primary" icon="check" label="Get User" @click="getUser" />
+        
+        <q-btn
+          class="float-right"
+          color="red-4"
+          icon="check"
+          label="Logout"
+          @click="handleLogout"
+        /> -->
       </div>
     </div>
   </q-page>
@@ -69,11 +75,14 @@
 import { useQuasar } from "quasar";
 import { reactive } from "@vue/reactivity";
 import { api } from "src/boot/axios";
-import {ref} from 'vue'
+import { ref } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 export default {
   setup(props, context) {
+    const router = useRouter();
+
     const store = useStore();
     const q = useQuasar();
     const loginData = reactive({
@@ -92,28 +101,39 @@ export default {
           .then((res) => {
             const { token, currentUser } = res.data;
 
-            console.log('current user',currentUser);
-            // store.dispatch("investor/setToken", token);
+            console.log("current user", currentUser);
             store.dispatch("investor/setCurrentUser", currentUser);
+            store.dispatch("investor/setToken", token);
             console.log("login response", res.data);
 
-            api.defaults.headers["Authorization"] = `Bearer ${token}`;
+            router.push({ name: "home" });
+
+            // api.defaults.headers["Authorization"] = `Bearer ${token}`;
           })
           .catch((err) => {
-            console.log("error post response", err);
+            console.log("error post response", err.response.data.message);
+
+
+            err.response.data.message && q.notify({
+              type: 'negative',
+              position: 'top',
+              icon: 'warnings',
+              color: 'red-4',
+              message: err.response.data.message
+            })
           });
       },
 
-
       storeUser: () => {
-        console.log('store user',store.state.investor.currentUser);
+        console.log("store user", store.state.investor.currentUser);
       },
 
       getUser: () => {
+        console.log("bearer value", api.defaults.headers["Authorization"]);
         api
           .get("/user")
           .then((res) => {
-            console.log("user response", res.data);
+            console.log("user ok response", res.data);
           })
           .catch((err) => {
             console.log("error response", err);
@@ -121,12 +141,23 @@ export default {
       },
 
       reset: () => {
-        console.log('reset');
-        loginData.email = loginData.password = ''
+        console.log("reset");
+        loginData.email = loginData.password = "";
       },
 
       logout: () => {
         api.defaults.headers["Authorization"] = "";
+      },
+
+      handleLogout: (e) => {
+        api
+          .post("auth/investor/logout")
+          .then((res) => {
+            store.dispatch("investor/setToken", null);
+            store.dispatch("investor/setCurrentUser", null);
+            // router.push({ name: "home" });
+          })
+          .catch((err) => console.log(err));
       },
     };
   },

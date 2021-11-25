@@ -2,28 +2,95 @@
   <div class="my-layout q-ma-lg">
     <q-layout view="hHh Lpr lff">
       <div class="my-layout">
-        <q-header elevated class="bg-primary text-white" height-hint="98">
-          <q-toolbar>
+       <q-header elevated class="bg-primary text-white" height-hint="98">
+          <q-toolbar class="containder bg-white text-dark q-py-none">
             <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-            <q-toolbar-title>
-              <router-link to="/">
-                <q-avatar>
-                  <img
-                    src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
-                  />
-                </q-avatar>
-              </router-link>
-              EODB
+            <router-link to="/"
+              ><img style="width: 80px" src="~assets/eodb-logo.png"
+            /></router-link>
+
+            <q-toolbar-title class="q-mt-md q-pl-lg q-mb-none"
+              ><span class="heading q-pb-none">Ease of Doing Business</span>
+              <p class="mizoram q-pt-none text-caption">Mizoram</p>
             </q-toolbar-title>
-            <q-btn dense flat round icon="person">
-              <ProfileMenu @onMenuItemClick="handleProfileMenu" />
-            </q-btn>
+
+            <q-space />
+
+            <q-space />
+
+            <q-btn-dropdown
+              color="primary"
+              v-if="isAuthenticated"
+              outline
+              class="q-pa-xs"
+              icon="account_circle"
+              rounded
+            >
+              <ProfileMenu />
+            </q-btn-dropdown>
+
+         
+            <!--
+        notice shrink property since we are placing it
+        as child of QToolbar
+      -->
+            <div class="flex tabs gt-sm">
+              <q-tabs no-caps>
+                <!--            <q-route-tab-->
+                <!--              class="q-px-none"-->
+                <!--              @click="navigate"-->
+                <!--              label="Home"-->
+                <!--            />-->
+                <!--            <q-route-tab-->
+                <!--              label="About Us"-->
+                <!--              @click="navigate"-->
+                <!--            />-->
+                <!--            <q-route-tab-->
+                <!--              @click="navigate"-->
+                <!--              label="Online Services"-->
+                <!--            />-->
+                <!--            <q-route-tab-->
+                <!--              @click="navigate"-->
+                <!--              v-scroll-to="'#contact-us'"-->
+                <!--              label="Contact Us"-->
+                <!--            />-->
+                <!--            <q-route-tab-->
+                <!--              @click="navigate"-->
+                <!--              label="EODB"-->
+                <!--            />-->
+                <!--            <span class="text-h5">|</span>-->
+                <!--            <q-route-tab label="Login" />-->
+
+                <!--            <span class="text-h5">|</span>-->
+                <!--            <q-route-tab label="Register" />-->
+              </q-tabs>
+
+              <!-- <q-separator dark vertical /> -->
+
+              <!-- <q-item to="/">sfs</q-item> -->
+            </div>
+
+            <!-- <a href="">dsd</a> -->
+
+            <!-- <q-btn @click="leftDrawerOpen = !leftDrawerOpen" class="q-mr-xl" flat dense round icon="menu" aria-label="Menu" /> -->
+            <q-btn-dropdown class="lt-md" flat icon="menu">
+              <q-list>
+                <q-item
+                  to="/h"
+                  v-for="link in essentialLinks"
+                  :key="link.title"
+                  clickable
+                  v-close-popup
+                >
+                  <q-item-section class="btn-dropdown">
+                    <q-item-label style="color: #00000080">{{
+                      link.title
+                    }}</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-btn-dropdown>
           </q-toolbar>
-          <!--      <q-tabs align="left">-->
-          <!--        <q-route-tab to="/page1" label="Page One" />-->
-          <!--        <q-route-tab to="/page2" label="Page Two" />-->
-          <!--        <q-route-tab to="/page3" label="Page Three" />-->
-          <!--      </q-tabs>-->
         </q-header>
         <q-drawer
           class="q-px-md"
@@ -139,6 +206,10 @@ import ProfileMenu from "components/ProfileMenu";
 import { reactive } from "@vue/reactivity";
 import { api } from "src/boot/axios";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+
+import {computed} from "vue";
+
 
 const depts = [
   {
@@ -203,6 +274,8 @@ const depts = [
 export default {
   components: { ProfileMenu },
   setup(props, context) {
+    const store = useStore();
+
     const router = useRouter();
     const leftDrawerOpen = ref(false);
     const rightDrawerOpen = ref(false);
@@ -212,8 +285,10 @@ export default {
       depts,
       leftDrawerOpen,
 
+       isAuthenticated: computed(() => store.getters["investor/isAuthenticated"]),
+
       handleProfileMenu: (menuitem) => {
-        if (menuitem != "logout") return console.log('not logout');;
+        if (menuitem != "logout") return console.log("not logout");
 
         api.defaults.headers["Authorization"] = "";
 
