@@ -218,6 +218,27 @@ export default {
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
+
+
+
+    {
+      path: "power-and-electricity",
+      component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
+      children: [
+        {
+          path: "new-connection",
+          name: "power:newconnection",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/newconnection/Application.vue"
+            ),
+        },
+      
+
+        // claiming-central-capital-investment-subsidy-scheme
+      ],
+    },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },
   ],
 

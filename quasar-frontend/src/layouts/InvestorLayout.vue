@@ -2,7 +2,7 @@
   <div class="my-layout q-ma-lg">
     <q-layout view="hHh Lpr lff">
       <div class="my-layout">
-       <q-header elevated class="bg-primary text-white" height-hint="98">
+        <q-header elevated class="bg-primary text-white" height-hint="98">
           <q-toolbar class="containder bg-white text-dark q-py-none">
             <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
             <router-link to="/"
@@ -29,53 +29,10 @@
               <ProfileMenu />
             </q-btn-dropdown>
 
-         
-            <!--
-        notice shrink property since we are placing it
-        as child of QToolbar
-      -->
-            <div class="flex tabs gt-sm">
-              <q-tabs no-caps>
-                <!--            <q-route-tab-->
-                <!--              class="q-px-none"-->
-                <!--              @click="navigate"-->
-                <!--              label="Home"-->
-                <!--            />-->
-                <!--            <q-route-tab-->
-                <!--              label="About Us"-->
-                <!--              @click="navigate"-->
-                <!--            />-->
-                <!--            <q-route-tab-->
-                <!--              @click="navigate"-->
-                <!--              label="Online Services"-->
-                <!--            />-->
-                <!--            <q-route-tab-->
-                <!--              @click="navigate"-->
-                <!--              v-scroll-to="'#contact-us'"-->
-                <!--              label="Contact Us"-->
-                <!--            />-->
-                <!--            <q-route-tab-->
-                <!--              @click="navigate"-->
-                <!--              label="EODB"-->
-                <!--            />-->
-                <!--            <span class="text-h5">|</span>-->
-                <!--            <q-route-tab label="Login" />-->
-
-                <!--            <span class="text-h5">|</span>-->
-                <!--            <q-route-tab label="Register" />-->
-              </q-tabs>
-
-              <!-- <q-separator dark vertical /> -->
-
-              <!-- <q-item to="/">sfs</q-item> -->
-            </div>
-
-            <!-- <a href="">dsd</a> -->
-
-            <!-- <q-btn @click="leftDrawerOpen = !leftDrawerOpen" class="q-mr-xl" flat dense round icon="menu" aria-label="Menu" /> -->
             <q-btn-dropdown class="lt-md" flat icon="menu">
               <q-list>
                 <q-item
+                  active-class="active-item q-px-md"
                   to="/h"
                   v-for="link in essentialLinks"
                   :key="link.title"
@@ -92,110 +49,101 @@
             </q-btn-dropdown>
           </q-toolbar>
         </q-header>
-        <q-drawer
-          class="q-px-md"
-          width="350"
-          show-if-above
-          v-model="leftDrawerOpen"
-          side="left"
-          bordered
-        >
-          <!-- QScrollArea is optional -->
-          <!-- <q-scroll-area class="fit q-pa-sm"> -->
-          <q-item>
-            <q-item-section class="text-italic text-subtitle1 text-caption"
-              >Applicant Profile</q-item-section
-            >
-          </q-item>
-          <q-item to="/investor" clickable>
-            <q-item-section avatar>
-              <q-icon color="negative" name="dashboard" />
-            </q-item-section>
-            <q-item-section> Dashboard </q-item-section>
-          </q-item>
-          <q-expansion-item
-            expand-icon="expand_more"
-            group="somegroup"
-            icon="explore"
-            label="Online Services"
-            default-opened
-            header-class="text-primary"
+
+        <q-page-container>
+          <q-drawer
+            class="q-px-md q-ml-md"
+            :width="400"
+            show-if-above
+            v-model="leftDrawerOpen"
+            side="left"
+            bordered
           >
+            <q-item>
+              <q-item-section class="text-italic text-subtitle1 text-caption"
+                >Applicant Profile</q-item-section
+              >
+            </q-item>
             <q-item
-              v-for="dept in depts"
-              :key="dept"
-              class="q-ml-md"
-              active-class="bg-grey-3"
               exact
-              :to="`/investor/${dept.slug}/online-services`"
-            >
-              <q-item-section avatar>
-                <q-icon color="negative" name="precision_manufacturing" />
-              </q-item-section>
-              <q-item-section> {{ dept.name }} </q-item-section>
-            </q-item>
-          </q-expansion-item>
-          <q-expansion-item
-            expand-icon="expand_more"
-            group="somegroup"
-            icon="explore"
-            label="My Applications"
-            header-class="text-primary"
-          >
-            <q-item
-              class="q-ml-md"
-              :to="{ name: 'investor:ongoing' }"
+              class="zitem text-primary"
+              active-class="active-item q-px-md"
+              to="/investor"
               clickable
             >
-              <q-item-section avatar>
-                <q-icon color="yellow" name="description" />
-              </q-item-section>
-              <q-item-section> Ongoing Applications </q-item-section>
-            </q-item>
-            <q-item
-              class="q-ml-md"
-              :to="{ name: 'investor:approved' }"
-              clickable
-            >
-              <q-item-section avatar>
-                <q-icon color="yellow" name="description" />
-              </q-item-section>
-              <q-item-section> Approved Applications </q-item-section>
-            </q-item>
-          </q-expansion-item>
-          <q-separator />
-          <q-item
-            active-class="active-item q-px-md"
-            :to="{ name: 'common-application' }"
-            clickable
-          >
-            <q-item-section avatar>
-              <q-icon color="negative" name="dashboard" />
-            </q-item-section>
-            <q-item-section> Common Application </q-item-section>
-          </q-item>
-          <!-- <q-item class="absolute-bottom">
               <q-item-section avatar>
                 <q-icon color="negative" name="dashboard" />
               </q-item-section>
-              <q-item-section> Log out </q-item-section>
-            </q-item> -->
-          <!-- </q-scroll-area> -->
-        </q-drawer>
-        <q-page-container>
+              <q-item-section> Dashboard </q-item-section>
+            </q-item>
+            <q-expansion-item
+              expand-icon="expand_more"
+              group="somegroup"
+              icon="explore"
+              label="Online Services"
+              default-opened
+              header-class="text-primary"
+            >
+              <q-item
+                v-for="dept in depts"
+                :key="dept"
+                class="q-ml-md zitem"
+                active-class="active-item q-px-md"
+                exact
+                :to="`/investor/${dept.slug}/online-services`"
+              >
+                <q-item-section avatar>
+                  <q-icon color="negative" name="precision_manufacturing" />
+                </q-item-section>
+                <q-item-section> {{ dept.name }} </q-item-section>
+              </q-item>
+            </q-expansion-item>
+            <q-expansion-item
+              expand-icon="expand_more"
+              group="somegroup"
+              icon="explore"
+              label="My Applications"
+              header-class="text-primary"
+            >
+              <q-item
+                class="q-ml-md zitem"
+                active-class="active-item q-px-md"
+                :to="{ name: 'investor:ongoing' }"
+                clickable
+              >
+                <q-item-section avatar>
+                  <q-icon color="yellow" name="description" />
+                </q-item-section>
+                <q-item-section> Ongoing Applications </q-item-section>
+              </q-item>
+              <q-item
+                active-class="active-item q-px-md"
+                class="q-ml-md zitem"
+                :to="{ name: 'investor:approved' }"
+                clickable
+              >
+                <q-item-section avatar>
+                  <q-icon color="yellow" name="description" />
+                </q-item-section>
+                <q-item-section> Approved Applications </q-item-section>
+              </q-item>
+            </q-expansion-item>
+            <q-separator />
+            <q-item
+              class="zitem text-primary"
+              active-class="active-item q-px-md"
+              :to="{ name: 'common-application' }"
+              clickable
+            >
+              <q-item-section avatar>
+                <q-icon color="negative" name="dashboard" />
+              </q-item-section>
+              <q-item-section> Common Application </q-item-section>
+            </q-item>
+          </q-drawer>
           <router-view />
         </q-page-container>
       </div>
-      <!-- <q-footer elevated class="bg-grey-8 text-white">
-        <q-toolbar>
-          <q-toolbar-title>
-            <q-avatar>
-              <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
-            </q-avatar>
-            <div>Title</div>
-          </q-toolbar-title>
-        </q-toolbar>
-      </q-footer> -->
     </q-layout>
   </div>
 </template>
@@ -208,8 +156,7 @@ import { api } from "src/boot/axios";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
-import {computed} from "vue";
-
+import { computed } from "vue";
 
 const depts = [
   {
@@ -223,6 +170,10 @@ const depts = [
   {
     name: "Environment, Forest & Climate Change",
     slug: "environment-forest-and-climate-change",
+  },
+  {
+    name: "Power & Electricity",
+    slug: "power-and-electricity",
   },
   {
     name: "Mizoram Pollution Control Board",
@@ -285,7 +236,9 @@ export default {
       depts,
       leftDrawerOpen,
 
-       isAuthenticated: computed(() => store.getters["investor/isAuthenticated"]),
+      isAuthenticated: computed(
+        () => store.getters["investor/isAuthenticated"]
+      ),
 
       handleProfileMenu: (menuitem) => {
         if (menuitem != "logout") return console.log("not logout");
@@ -313,6 +266,10 @@ export default {
 <style>
 .active-item {
   background: #c8e6c9 !important;
+  border-radius: 30px;
+}
+
+.zitem:hover {
   border-radius: 30px;
 }
 </style>

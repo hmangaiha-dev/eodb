@@ -3,15 +3,14 @@
     <div class="col-12 text-h6 q-pb-none text-center">Form-2</div>
     <p class="col-12 text-caption q-py-none text-center">[See Rule 3(1)]</p>
     <div class="col-12 ztitle text-center">
-      APPLICATION FOR REGISTRATION OF PRIVATE BAMBOO PLANTATION IN NON-FOREST AREA
+      APPLICATION FOR REGISTRATION OF PRIVATE BAMBOO PLANTATION IN NON-FOREST
+      AREA
     </div>
     <q-form @submit.prevent="" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />
         </div>
-
-       
       </div>
 
       <div class="text-center q-mt-md col-12">
@@ -26,13 +25,11 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
+import { ref } from "vue";
 
 import Form from "./Form.vue";
 // import Part2 from "./Part2.vue";
 // import Document from "./Document.vue";
-
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   components: {
@@ -41,10 +38,12 @@ export default {
     // Document,
   },
   setup(props, context) {
+    const applicantRef = ref(null);
+    const FirmRef = ref(null);
     const store = useStore();
     // const draft = store.getters["applicantData/getCurrentDraft"];
     // const currentUser = store.getters["auth/getCurrentUser"];
-    
+
     const formData = reactive({
       title: "Mr",
       name: "",
@@ -65,12 +64,12 @@ export default {
       epic_holder: "",
       constituency: "",
     });
-  
+
     return {
-    
-    
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
+      applicantRef,
+      FirmRef,
     };
   },
 };

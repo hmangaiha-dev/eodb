@@ -1,237 +1,165 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-xs-12 zsubtitle">Firm details</div>
-    
-   
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="name"
-        >Applicant for <span class="asterisk"> *</span></label
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="name">
+        Name of Proprietor / Managing Director*
+        <span class="asterisk"> *</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-select
-        dropdown-icon="expand_more"
-        outlined
-        v-model="model"
-        :options="options"
-      />
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="text" type="text" />
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="dob" type="date"
-        >Applicant photo<span class="asterisk">*</span>
-      </label>
+      <label class="zlabel" for="dob" type="date"> Designation* </label>
     </div>
     <div class="col-xs-12 col-md-4">
-      <q-file outlined v-model="model">
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
+      <q-input dense outlined v-model="text" type="text" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender"
-        >Applicant name <span class="asterisk">*</span></label
+        >Name of Enterprise* <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-3">
       <q-input outlined v-model="formData.birth_place" />
     </div>
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="pob">Applicant belongs to</label>
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="pob">
+        Number of Directors/Proprietor/MD/CEO*</label
+      >
     </div>
 
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-3">
       <q-select
+        dense
         dropdown-icon="expand_more"
         outlined
         v-model="model"
         :options="options"
       />
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender"
+        >Number of Directors/Proprietor/MD/CEO*
+        <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        PAN Number <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        PAN Card Attachment* ( Maximum size : 4 MB Format : PDF )
+        <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        AADHAR Number
+        <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
     <div class="col-12">
-      <label class="text-bold" for="pob">Correspondance Addres</label>
+      I hereby state that i have no objection in authenticating myself with
+      Aadhaar based authentication system and consent to providing my Aadhaar
+      number, biometric and/or One Time Pin(OTP) data for Aadhaar based
+      authentication to availing services under Ease of Doing Business(EODB) of
+      Department of Commerce & Industries
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="fname"
-        >Country<span class="asterisk">*</span></label
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        Passport Number
+        <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="fname"
-        v-model="formData.father_name"
-        :rules="[(val) => !!val?.trim() || 'Fathers name is required ']"
-        dense
-        item-aligned
-        outlined
-        @blur="onFathernameBlur"
-      />
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="mname">State</label>
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="mname"
-        v-model="formData.mother_name"
-        :rules="[]"
-        dense
-        item-aligned
-        outlined
-        @blur="onMothernameBlur"
-      />
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="mobile"
-        >City/Town<span class="asterisk">*</span></label
+
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        Applicant is NRI
+        <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="mobile"
-        v-model="formData.phone_no"
-        mask="##########"
-        :rules="[
-          (val) => !!val?.trim() || 'Mobile no is required ',
-          (val) => val.match(/^\d{10}$/) || 'Mobile no must be 10 digit no ',
-        ]"
-        dense
-        item-aligned
-        outlined
-      />
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="email">Postal code/Zip code</label>
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        TIN/VAT/GSTIN Number
+        <span class="asterisk">*</span></label
+      >
     </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="email"
-        v-model="formData.email"
-        dense
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (emailRegex.test(val)) {
-                return true;
-              } else {
-                return 'Invalid email format';
-              }
-            }
-          },
-        ]"
-        item-aligned
-        outlined
-      />
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Address</label>
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        Attach TIN/VAT/GSTIN Certificate* ( Maximum size : 4 MB Format : PDF )
+        <span class="asterisk">*</span></label
+      >
     </div>
-    <!--    hint="Adhaar no will be used to match the records of your Digilocker AC"-->
-
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="adar"
-        v-model="formData.aadhaar_no"
-        dense
-        item-aligned
-        mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
-        outlined
-      />
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Phone number</label>
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        CST Number
+        <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="adar"
-        v-model="formData.aadhaar_no"
-        dense
-        item-aligned
-        mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
-        outlined
-      />
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        Attach CST Certifiacte * ( Maximum size : 4 MB Format : PDF )
+        <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Fax number</label>
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        Udyog Aadhaar Memorandum(For Existing Enterprise Only)
+        <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
 
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="adar"
-        v-model="formData.aadhaar_no"
-        dense
-        item-aligned
-        mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
-        outlined
-      />
-    </div>
-
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Email id</label>
-    </div>
-
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        id="adar"
-        v-model="formData.aadhaar_no"
-        dense
-        item-aligned
-        mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
-        outlined
-      />
-    </div>
     <div class="col-xs-12" />
   </div>
 </template>

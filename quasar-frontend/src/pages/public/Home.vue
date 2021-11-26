@@ -43,17 +43,18 @@
       </div>
     </div>
 
-    <div class="row q-mt-lg justify-center q-col-gutter-md">
+    <div class="row q-mt-lg justify-start q-col-gutter-md">
       <div
         v-for="dept in depts"
         :key="dept.serial"
         class="col-lg-3 col-sm-6 col-xs-10"
       >
-        <q-list class="tile cursor-pointer" clickable bordered padding>
+        <!-- <q-list class="tile cursor-pointer" clickable bordered padding> -->
           <q-item
             :to="{ name: 'common:show', params: { deptname: `${dept?.link}` } }"
-            class="text"
+           class="tile cursor-pointer"
             clickable
+            
             v-ripple
           >
             <q-item-section class="tile-content" avatar>
@@ -64,7 +65,7 @@
               dept.title
             }}</q-item-section>
           </q-item>
-        </q-list>
+        <!-- </q-list> -->
       </div>
     </div>
 
@@ -393,12 +394,12 @@ export default defineComponent({
       {
         serial: "12",
         title: "Power & Electricity Department",
-        link: "",
+        link: "power-and-electricity",
       },
       {
         serial: "13",
         title: "Public Health Engineering Department",
-        link: "",
+        link: "public-health-engineering",
       },
       {
         serial: "14",
@@ -570,7 +571,7 @@ export default defineComponent({
   width: 398px;
   /* height: 100px; */
   margin: 0 16px 0px 12px;
-  padding: 20px 0px 20px 0px;
+  padding: 30px;
   border-radius: 10px;
   background-color: #fff;
 }

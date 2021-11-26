@@ -2,7 +2,7 @@
  <div style="max-width: 1600px;margin:0 auto" class="row q-mt-md q-gutter-md q-pa-md ">
   <div style="width:100%" class="q-pa-md">
     <q-tabs stretch v-model="tab" class="text-teal">
-      <q-tab name="services" icon="mails" label="Online Servies" />
+      <q-tab name="services" icon="mails" label="Online Services" />
       <q-tab name="about" icon="alarm" label="About Us" />
       <q-tab name="actrules" icon="movie" label="Act & Rules" />
       <q-tab name="noti" icon="movie" label="Noftifications" />
@@ -141,7 +141,7 @@ export default {
     const columns = ref([
       {
         name: "name",
-        align: "left",
+        align: "center",
         label: "Name of services",
         field: "name",
         sortable: true,
@@ -178,9 +178,9 @@ export default {
         name: "apply",
         required: true,
         label: "Apply Online",
-        align: "left",
+        align: "center",
         field: "apply",
-        format: (val) => `${val}`,
+        
         sortable: true,
       },
     ]);
@@ -925,7 +925,7 @@ export default {
       },
 
       {
-        slug: "power-and-electricty",
+        slug: "power-and-electricity",
         services: [
           {
             name: "Application form – New Connection (Low Tension Service)",
@@ -935,7 +935,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "new-connection",
           },
           {
             name: "Application Form – New Connection (High Tension / Extra High-Tension Service)",

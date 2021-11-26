@@ -2,7 +2,7 @@
   "name": "quasar-frontend",
   "version": "0.0.1",
   "description": "A project to handle most common application of citizen in govt",
-  "productName": "Quasar App",
+  "productName": "Ease of Doing Business",
   "author": "thangtea thangzaliana <thangtea.18.dec@gmail.com>",
   "private": true,
   "scripts": {
