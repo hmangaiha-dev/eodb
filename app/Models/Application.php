@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Application extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['application_code', 'regn_no','application_profile_id','user_id','department_id' ,'current_state', 'remark'];
-    protected $appends = ['application_name'];
+    protected $fillable = ['application_code', 'regn_no','application_profile_id','user_id','department_id','fields' ,'current_state', 'remark'];
+    protected $appends = ['application_name','current_step','last_step'];
     public function states()
     {
         return $this->morphMany('owner', State::class);
@@ -25,7 +26,12 @@ class Application extends Model
     }
     public function attachments(): MorphMany
     {
-        return $this->morphMany('owner', Attachment::class);
+        return $this->morphMany(Attachment::class, 'owner');
+    }
+
+    public function notesheets(): MorphMany
+    {
+        return $this->morphMany(Notesheet::class,'noteable');
     }
 
     public function staff(): BelongsToMany
@@ -33,9 +39,23 @@ class Application extends Model
         return $this->belongsToMany(Staff::class, 'application_movements', 'application_id', 'recipient');
     }
 
+    public function movements(): HasMany
+    {
+        return $this->hasMany(ApplicationMovement::class);
+    }
+
     public function getApplicationNameAttribute()
     {
 
-        return '';
+        return $this->profile()->first()->title;
+    }
+    public function getCurrentStepAttribute()
+    {
+        return $this->movements()->latest()->first()?->step;
+    }
+    public function getLastStepAttribute()
+    {
+        $profile= $this->profile()->first();
+        return $profile->processFlows()->orderBy('step','desc')->latest()?->first()?->step;
     }
 }

@@ -39,7 +39,7 @@ export default {
         localData.application.current_state = current_state;
       })
       .catch(err=>{
-        let message = !!err?.response ? err.response?.message : err.toString()
+        let message =  err.response?.message || 'Something wrong'
         q.notify({type: 'negative', message})
       })
     })

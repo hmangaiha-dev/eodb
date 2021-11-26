@@ -39,7 +39,8 @@ import {useRoute, useRouter} from "vue-router";
 import {useQuasar} from "quasar";
 
 export default {
-  setup () {
+  emits: ['notes'],
+  setup (props,context) {
     const route = useRoute();
     const router = useRouter();
     const q = useQuasar();
@@ -50,21 +51,22 @@ export default {
 
     const submit=(e)=>{
       const id = route.params.id;
-      api.post(`applications/${id}/notes/create`)
+      api.post(`applications/${id}/notes/create`,formData)
       .then(res=>{
-        const {message} = res.data;
+        const {message,list,data} = res.data;
         q.notify({type: 'positive', message})
-        router.replace({name:'application:detail',params:{id}})
+        context.emit('notes', list);
+        router.replace({name:'note:detail',params:{note:data.id}})
       })
       .catch(err=>{
-        let message = !!err?.response ? err.response?.message : err.toString()
+        let message =  err.response?.message || 'Something wrong'
         q.notify({type: 'negative', message})
       })
     }
 
     return {
       formData,
-      submit
+      submit,
     }
   }
 }

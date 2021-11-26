@@ -12,7 +12,7 @@ class ApplicationProfile extends Model
     use HasFactory;
 
     protected $fillable = ['code', 'title','application_id', 'operational_type','remark','published'];
-
+    protected $appends = ['last_step'];
     public function office(): BelongsTo
     {
         return $this->belongsTo(Office::class);
@@ -20,6 +20,11 @@ class ApplicationProfile extends Model
     public function processFlows(): HasMany
     {
         return $this->hasMany(ProcessFlow::class);
+    }
+
+    public function getLastStepAttribute()
+    {
+        return $this->processFlows()->orderBy('step','desc')->latest()?->first()?->step;
     }
 
 }
