@@ -16,18 +16,20 @@
 <script>
 export default {
 
+  // const test = {
+  //   id: 'admin', label: 'File management', icon: 'bookmark',
+  //   items: [
+  //     {route_name: 'file:create', label: 'New file', leftIcon: 'label', rightIcon: 'navigate_next'},
+  //     {route_name: 'file:read', label: 'Active files', leftIcon: 'label', rightIcon: 'navigate_next'},
+  //     {route_name: 'file:incoming', label: 'Incoming files', leftIcon: 'label', rightIcon: 'navigate_next'},
+  //     {route_name: 'file:outgoing', label: 'Outgoing files', leftIcon: 'label', rightIcon: 'navigate_next'},
+  //     {route_name: 'file:archived', label: 'Archived files', leftIcon: 'label', rightIcon: 'navigate_next'},
+  //   ]
+  // }
   setup(props) {
     return{
       menus:[
-        {id:'admin',label:'File management',icon:'bookmark',
-          items:[
-            {route_name:'file:create',label:'New file',leftIcon:'label',rightIcon:'navigate_next'},
-            {route_name:'file:read',label:'Active files',leftIcon:'label',rightIcon:'navigate_next'},
-            {route_name:'file:incoming',label:'Incoming files',leftIcon:'label',rightIcon:'navigate_next'},
-            {route_name:'file:outgoing',label:'Outgoing files',leftIcon:'label',rightIcon:'navigate_next'},
-            {route_name:'file:archived',label:'Archived files',leftIcon:'label',rightIcon:'navigate_next'},
-          ]
-        }, {id:'admin',label:'Applications',icon:'description',
+         {id:'admin',label:'Applications',icon:'description',
           items:[
             {route_name:'application:create',label:'New application',leftIcon:'label',rightIcon:'navigate_next'},
             {route_name:'application:read',label:'Active application',leftIcon:'label',rightIcon:'navigate_next'},

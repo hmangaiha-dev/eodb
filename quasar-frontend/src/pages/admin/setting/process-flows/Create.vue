@@ -2,7 +2,7 @@
   <q-page padding class="container-lg">
     <p class="zsubtitle">Create flow</p>
     <div class="">
-      <div class="zdetailcard flex justify-between">
+      <div class="zdetailcard flex items-center justify-between">
         <q-select
           style="min-width: 250px"
           outlined
@@ -15,7 +15,9 @@
           use-chips
           label="Select Application"
         />
-        <q-btn flat @click="localData.openDialog=true" label="Add flow" icon="add"/>
+        <div class="text-center">
+          <q-btn  @click="localData.openDialog=true" label="Add step" color="primary" outline icon="add"/>
+        </div>
       </div>
       <br/>
         <q-list separator>

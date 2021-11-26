@@ -1,22 +1,16 @@
 <template>
   <q-card  style="min-height: 150px" class="zcard ">
-    <q-card-section horizontal>
-      <p class="text-grey">REGNO:{{ application?.regn_no }}</p>
-      <q-space/>
-      <q-icon name="more_vert"/>
+    <q-card-section horizontal class="flex items-center">
+<!--      <q-space/>-->
+<!--      <q-btn class="q-pa-none" rounded flat icon="more_vert"/>-->
     </q-card-section>
     <q-card-section>
-      <h1 class="zsubtitle text-primary">{{ application.application_code }}</h1>
-    </q-card-section>
-    <q-card-section>
-      <p class="text-primary">{{ application?.remark }}</p>
-    </q-card-section>
-    <q-card-section>
-      <p class="text-green-4 text-caption">{{ application?.remark }}</p>
+      <p class="zvalue q-ma-none">{{ application?.application_name }}</p>
+      <p class="zlabel">REGNO:{{ application?.regn_no }}</p>
     </q-card-section>
 
     <q-card-actions slot="actions">
-      <q-btn color="primary" flat label="open" @click="$emit('open',application)"/>
+      <q-btn color="primary" outline  label="open" @click="$emit('open',application)"/>
     </q-card-actions>
   </q-card>
 </template>

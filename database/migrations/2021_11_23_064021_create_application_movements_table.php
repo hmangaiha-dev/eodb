@@ -17,10 +17,10 @@ class CreateApplicationMovementsTable extends Migration
             $table->id();
 
             $table->unsignedInteger('application_id');
-            $table->unsignedInteger('recipient');
-            $table->unsignedInteger('sender')->nullable();
+            $table->unsignedInteger('staff_id');
             $table->integer('step')->default(0);
 
+            $table->string('status')->default('dealing');
             $table->string('remark')->nullable();
             $table->timestamps();
         });
