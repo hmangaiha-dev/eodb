@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Staff;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,8 @@ class CreateNotesheetsTable extends Migration
             $table->string('title')->default("NA");
             $table->text('body')->nullable();
             $table->morphs('noteable');
+
+            $table->foreignIdFor(Staff::class,'staff_id');
             $table->timestamps();
         });
     }

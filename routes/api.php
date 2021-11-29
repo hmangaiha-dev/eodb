@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\ApplicationMovementHistory;
 use App\Http\Controllers\ApplicationProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DeskController;
@@ -103,15 +104,20 @@ Route::group(['prefix' => 'application-profiles'],function(){
     Route::put('{model}/toggle', [ApplicationProfileController::class, 'toggle']);
     Route::delete('process-flows/{model}', [ApplicationProfileController::class, 'destroyFlow']);
 });
-Route::group(['prefix' => 'applications'], function () {
-    Route::post('submit', [ApplicationController::class, 'submitApplication']);
+Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], function () {
+//    Route::post('submit', [ApplicationController::class, 'submitApplication']);
     Route::get('me', [DeskController::class, 'myApplication']);
     Route::get('{model}', [ApplicationController::class, 'detail']);
+    Route::post('{model}/forward', [ApplicationController::class, 'forward']);
     Route::get('{model}/notes', [NotesheetController::class, 'notes']);
+    Route::get('{model}/movements', [ApplicationMovementHistory::class, 'movements']);
     Route::post('{model}/notes/create', [NotesheetController::class, 'create']);
     Route::get('{model}/notes/{id}', [NotesheetController::class, 'detail']);
+    Route::put('{model}/notes/{id}', [NotesheetController::class, 'update']);
+    Route::delete('{model}/notes/{id}', [NotesheetController::class, 'destroy']);
 });
 
+Route::post('applications/submit', [ApplicationController::class, 'submitApplication']);
 
 base_path('routes/rj/index.php');
 

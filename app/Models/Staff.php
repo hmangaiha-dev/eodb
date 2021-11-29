@@ -90,7 +90,7 @@ class Staff extends Authenticatable
 
     public function myApplication(): BelongsToMany
     {
-        return $this->belongsToMany(Application::class, 'application_movements', 'recipient', 'application_id',);
+        return $this->belongsToMany(Application::class, 'application_movements', 'staff_id', 'application_id',);
     }
 
 

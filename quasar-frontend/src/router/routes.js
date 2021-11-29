@@ -41,7 +41,7 @@ const routes = [
       },
     ]
   },
- 
+
 
   {...admin},
   {...investor},
