@@ -5,16 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use App\Models\ApplicationMovement;
 use App\Models\ApplicationProfile;
+use App\Utils\KeysUtil;
 use App\Utils\NumberGenerator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\FileBag;
 
 class ApplicationController extends Controller
 {
 
     public function detail(Request $request,Application $model)
     {
-        return $model->load(['profile']);
+        $step=$model->current_step;
+        $flow=$model->profile()->first()->processFlows()->where('process_flows.step',$step)->first();
+
+        $model->load(['profile', 'applicationValues']);
+        return response()->json([
+            'data' => $model,
+            'actions'=>json_decode($flow?->actions)
+        ], 200);
     }
     public function forward(Request $request,Application $model)
     {
@@ -50,9 +59,7 @@ class ApplicationController extends Controller
         $this->validate($request, [
             'application_code' => ['required'],
             'department_id' => ['required'],
-            'fields' => ['required'],
         ]);
-        $formFields = ($request->get('fields'));
 
         $appProfile = ApplicationProfile::query()
             ->where('code', $request->get('application_code'))
@@ -63,23 +70,35 @@ class ApplicationController extends Controller
             'application_code' => $request->get('application_code'),
             'regn_no' => NumberGenerator::fakeIdGenerator(),
             'application_profile_id'=>$appProfile->id,
-            'fields' => json_encode($formFields),
-            'user_id' => Auth::id(),
+            'user_id' => 1,
             'department_id' => $request->get('department_id'),
         ]);
+        DB::transaction(function ($cb) use ($appProfile, $request, $application) {
+
+//        $formData=$request->except(['application_code', 'department_id']);
+//        $application = new Application();
+            $keysArr=KeysUtil::getApplicationKeys($request->get('application_code'));
+            foreach ($keysArr as $key) {
+                $application->applicationValues()->create([
+                    'field_key' => $key,
+                    'field_value'=>$request->get($key),
+                    'field_label' => KeysUtil::getApplicationLabel($key),
+                ]);
+            }
 
 
+            $flow = $appProfile->processFlows()
+                ->orderBy('step')
+                ->first();
 
-        $flow = $appProfile->processFlows()
-            ->orderBy('step')
-            ->first();
+            $movement = ApplicationMovement::query()->create([
+                'application_id' => $application->id,
+                'staff_id' => $flow->staff_id,
+                'status'=>'dealing',
+                'step' => $flow->step,
+            ]);
+        });
 
-        $movement = ApplicationMovement::query()->create([
-            'application_id' => $application->id,
-            'staff_id' => $flow->staff_id,
-            'status'=>'dealing',
-            'step' => $flow->step,
-        ]);
         return response()->json([
             'message' => 'Application submitted successfully'
         ], 200);

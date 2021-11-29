@@ -20,7 +20,7 @@ class CreateApplicationsTable extends Migration
             $table->string('current_state')->default('submitted');
             $table->string('remark')->nullable();
 
-            $table->json('fields')->nullable();
+//            $table->json('fields')->nullable();
 
             $table->unsignedInteger('application_profile_id')->nullable();
             $table->unsignedInteger('user_id');

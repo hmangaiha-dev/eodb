@@ -12,9 +12,19 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Application extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['application_code', 'regn_no','application_profile_id','user_id','department_id','fields' ,'current_state', 'remark'];
+    protected $fillable = ['application_code', 'regn_no','application_profile_id','user_id','department_id' ,'current_state', 'remark'];
     protected $appends = ['application_name','current_step','last_step'];
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
+
+    public function applicationValues(): HasMany
+    {
+        return $this->hasMany(ApplicationValue::class);
+    }
+
     public function states()
     {
         return $this->morphMany('owner', State::class);
