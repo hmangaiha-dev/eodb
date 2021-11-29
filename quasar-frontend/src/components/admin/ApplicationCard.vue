@@ -7,8 +7,8 @@
     <q-card-section>
       <p class="zvalue q-ma-none">{{ application?.application_name }}</p>
       <p class="zlabel">REGNO:{{ application?.regn_no }}</p>
+      <p class="text-caption">Submitted at :{{ date.formatDate(new Date(application?.created_at),'DD/MM/YYYY hh:mm a') }}</p>
     </q-card-section>
-
     <q-card-actions slot="actions">
       <q-btn color="primary" outline  label="open" @click="$emit('open',application)"/>
     </q-card-actions>
@@ -16,6 +16,7 @@
 </template>
 <script>
 import {toRefs} from "@vue/reactivity";
+import {date} from "quasar";
 
 export default {
   props: ['application'],
@@ -23,7 +24,8 @@ export default {
   setup(props, context) {
     const {application} = toRefs(props)
     return {
-      application
+      application,
+      date
     }
   }
 }
