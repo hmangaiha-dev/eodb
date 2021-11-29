@@ -11,7 +11,7 @@
           </div>
           <div class="col-3 flex justify-end">
             <q-btn @click="localData.openHistory=!localData.openHistory;fetchMovements()" no-caps outline flat label="Movement history"/>
-            <q-btn no-caps color="primary" flat label="View more"/>
+            <q-btn :to="{name:'application:detail'}" no-caps color="primary" flat label="View more"/>
           </div>
         </div>
         <div class="bg-grey-2 q-mt-sm rounded-borders q-pa-md flex justify-between">

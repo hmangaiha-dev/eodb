@@ -32,7 +32,11 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
+<<<<<<< HEAD
 import { ref } from "vue";
+=======
+import {ref} from 'vue'
+>>>>>>> main
 
 import Part1 from "./Part1.vue";
 import Part2 from "./Part2.vue";
@@ -56,6 +60,10 @@ export default {
     const store = useStore();
     // const draft = store.getters["applicantData/getCurrentDraft"];
     // const currentUser = store.getters["auth/getCurrentUser"];
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 
     const formData = reactive({
       title: "Mr",
@@ -77,12 +85,23 @@ export default {
       epic_holder: "",
       constituency: "",
     });
+<<<<<<< HEAD
     onMounted(() => {});
+=======
+    onMounted(() => {
+
+    });
+
+>>>>>>> main
 
     return {
       part1Form,
       part2Form,
       documentForm,
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 
       submit: () => {
         let formDatas = new FormData();
@@ -100,6 +119,7 @@ export default {
         const formData = {
           application_code: "CODE1",
           department_id: 1,
+<<<<<<< HEAD
           fields: Object.assign(
             part1Form.value.formData,
             part2Form.value.formData
@@ -118,6 +138,19 @@ export default {
           .post("/applications/submit", formData)
           .then((res) => console.log("response value", res.data))
           .catch((err) => console.log("error", err));
+=======
+          part1: Object.assign({},part1Form.value.formData),
+          part2: Object.assign({},part2Form.value.formData),
+          fields: Object.assign(part1Form.value.formData,part2Form.value.formData),
+          document: Object.assign({},documentForm.value.formData),
+
+        }
+        // return console.log('allFormData',formData);
+
+        api.post('/applications/submit',formData)
+          .then(res => console.log('response value',res.data))
+          .catch(err => console.log('error',err))
+>>>>>>> main
       },
       emailRegex,
 
