@@ -98,14 +98,17 @@ export default {
 
       submit: () => {
         const formData = {
+          application_code: 'CODE1',
+          department_id: 1,
           part1: Object.assign({},part1Form.value.formData),
           part2: Object.assign({},part2Form.value.formData),
-          document: Object.assign({},documentForm.value.formData)
-
+          fields: Object.assign(part1Form.value.formData,part2Form.value.formData),
+          document: Object.assign({},documentForm.value.formData),
+          
         }
         // return console.log('allFormData',formData); 
       
-        api.post('/investor/store',formData)
+        api.post('/applications/submit',formData)
           .then(res => console.log('response value',res.data))
           .catch(err => console.log('error',err))
       }, 

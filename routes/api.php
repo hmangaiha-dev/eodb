@@ -119,6 +119,6 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
 
 Route::post('applications/submit', [ApplicationController::class, 'submitApplication']);
 
-base_path('routes/rj/index.php');
+// base_path('routes/rj/index.php');
 
 
