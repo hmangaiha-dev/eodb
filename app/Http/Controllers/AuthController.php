@@ -35,6 +35,7 @@ class AuthController extends Controller
 
     public function investorLogin(Request $request)
     {
+        // return 'it works';
         Validator::validate($request->only(['email', 'password']), [
             'email' => 'required|email',
             'password' => 'required:confirmed'

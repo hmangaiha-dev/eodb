@@ -7,6 +7,7 @@ use App\Models\ApplicationMovement;
 use App\Models\ApplicationProfile;
 use App\Utils\NumberGenerator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
@@ -41,6 +42,7 @@ class ApplicationController extends Controller
     }
     public function submitApplication(Request $request)
     {
+        // return $request->all();
         $this->validate($request, [
             'application_code' => ['required'],
             'department_id' => ['required'],
@@ -58,7 +60,7 @@ class ApplicationController extends Controller
             'regn_no' => NumberGenerator::fakeIdGenerator(),
             'application_profile_id'=>$appProfile->id,
             'fields' => json_encode($formFields),
-            'user_id' => 1,
+            'user_id' => Auth::id(),
             'department_id' => $request->get('department_id'),
         ]);
 

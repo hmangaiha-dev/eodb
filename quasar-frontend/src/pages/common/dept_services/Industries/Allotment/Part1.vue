@@ -35,7 +35,7 @@
     </p>
 
     <div class="col-xs-12 col-md-2">
-      <label class="zsubtitle" for="name"
+      <label class="zlabel" for="name"
         >1.Name of the Applicant <span class="asterisk"> *</span></label
       >
     </div>
@@ -44,7 +44,7 @@
       <q-input dense outlined v-model="formData.applicant_name" />
     </div>
 
-    <div class="col-xs-12 zsubtitle">2.Address for communication</div>
+    <div class="col-xs-12 zlabel">2.Address for communication</div>
 
     <div class="col-xs-12 col-md-1">
       <label class="zlabel" for="dob" type="date"
@@ -130,7 +130,7 @@
       <q-input dense outlined v-model="formData.communication_district" />
     </div>
 
-    <div class="col-xs-12 zsubtitle">
+    <div class="col-xs-12 zlabel">
       3.Whether Proposed Or Existing Unit If Existing, Detail Address Of The
       Unit: Proposed/Existing.
     </div>

@@ -39,6 +39,7 @@ const mutations = {
 
 const actions = {
   fetchData: (context) => {
+    return
     context.dispatch('globalData/setGlobalLoading', true,{root:true});
     api.get("staff-data")
       .then((res) => {

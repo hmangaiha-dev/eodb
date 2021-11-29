@@ -1,7 +1,8 @@
 <template>
-  <div class="q-pa-md">
-    <q-tabs v-model="tab" class="text-teal">
-      <q-tab name="services" icon="mails" label="Online Servies" />
+ <div style="max-width: 1600px;margin:0 auto" class="row q-mt-md q-gutter-md q-pa-md ">
+  <div style="width:100%" class="q-pa-md">
+    <q-tabs stretch v-model="tab" class="text-teal">
+      <q-tab name="services" icon="mails" label="Online Services" />
       <q-tab name="about" icon="alarm" label="About Us" />
       <q-tab name="actrules" icon="movie" label="Act & Rules" />
       <q-tab name="noti" icon="movie" label="Noftifications" />
@@ -9,6 +10,7 @@
     </q-tabs>
     <div v-if="tab == 'services'" class="text-h5 q-my-md">Online services</div>
     <q-table
+      
       wrap-cells
       flat
       v-if="tab == 'services'"
@@ -59,7 +61,7 @@
       </template>
     </q-table>
 
-    <q-tab-panels v-model="tab" animated>
+    <q-tab-panels class="full-width" v-model="tab" animated>
       <q-tab-panel name="about">
         <AboutUs />
       </q-tab-panel>
@@ -73,21 +75,8 @@
         <OtherInfo />
       </q-tab-panel>
     </q-tab-panels>
-    <!-- <div v-if="tab == 'about'">
-      <AboutUs />
-    </div>
-
-    <div v-if="tab == 'actrules'">
-      <ActRules />
-    </div>
-
-    <div v-if="tab == 'noti'">
-      <Notifications />
-    </div>
-
-    <div v-if="tab == 'other'">
-      <OtherInfo />
-    </div> -->
+   
+  </div>
   </div>
 </template>
 
@@ -143,13 +132,16 @@ export default {
         return dept.slug == route.params.deptname;
       });
 
-      rows.value = result[0].services;
+
+      !result.length && router.push({ name:'invalid' })
+
+      rows.value = result[0]?.services;
     };
 
     const columns = ref([
       {
         name: "name",
-        align: "left",
+        align: "center",
         label: "Name of services",
         field: "name",
         sortable: true,
@@ -186,9 +178,9 @@ export default {
         name: "apply",
         required: true,
         label: "Apply Online",
-        align: "left",
+        align: "center",
         field: "apply",
-        format: (val) => `${val}`,
+        
         sortable: true,
       },
     ]);
@@ -326,7 +318,7 @@ export default {
         ],
       },
       {
-        slug: "land-and-revenue",
+        slug: "land-revenue",
         services: [
           {
             name: "APPLICATION FOR PERIODIC PATTA (PERIODIC PATTA DILNA)",
@@ -336,7 +328,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "periodic-patta",
           },
           {
             name: "APPLICATION FOR ALLOTMENT OF LAND FOR HOUSE SITE",
@@ -424,7 +416,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "bamboo-plantions",
           },
           {
             name: "Application for Permission to fell tress/ tree plantation in in non-forest area",
@@ -434,7 +426,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "permission-to-fell-trees",
           },
         ],
       },
@@ -449,7 +441,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "consent-to-establishment-industries",
           },
           {
             name: "Accident Reporting for Bio-Medical Wastes",
@@ -459,7 +451,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "accident-reporting-bio-medical-waste",
           },
           {
             name: "Submission of Annual report for Bio-Medical Wastes.",
@@ -469,7 +461,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "submission-anual-report-bio-medical-wastes",
           },
           {
             name: "Accident Reporting for Bio-Medical Wastes",
@@ -933,7 +925,7 @@ export default {
       },
 
       {
-        slug: "power-and-electricty",
+        slug: "power-and-electricity",
         services: [
           {
             name: "Application form – New Connection (Low Tension Service)",
@@ -943,7 +935,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "new-connection",
           },
           {
             name: "Application Form – New Connection (High Tension / Extra High-Tension Service)",

@@ -14,8 +14,9 @@ const api = axios.create({ baseURL: LOCAL_BASE_URL})
 
 
 export default boot(({ app,router,store }) => {
+  console.log('booting api token');
   // for use inside Vue files (Options API) through this.$axios and this.$api
-  let token = LocalStorage.getItem('token');
+  let token = localStorage.getItem('token');
   api.defaults.headers['Authorization'] = `Bearer ${token}`;
   // api.defaults.withCredentials=true;
 // api.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -37,7 +38,7 @@ export default boot(({ app,router,store }) => {
       localStorage.removeItem('token');
       store.dispatch('authData/setCurrentUser', null);
       store.dispatch('authData/setToken', null);
-      window.location.replace('/')
+      // window.location.replace('/')
     }
 
     return Promise.reject(error,);

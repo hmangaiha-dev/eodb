@@ -37,7 +37,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth:sanctum'], function (
 });
 
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/login', [AuthController::class, 'investorLogin']);
     Route::post('staff-login', [StaffAuthController::class, 'login']);
     Route::post('logout', [StaffAuthController::class, 'logout'])->middleware('auth:sanctum');
 });
@@ -92,6 +92,7 @@ Route::group(['prefix' => 'process-flows', 'middleware' => ['auth:sanctum','staf
 });
 
 Route::group(['prefix' => 'application-profiles'],function(){
+    // Route::get('', [ApplicationProfileController::class, 'index']);
     Route::get('index', [ApplicationProfileController::class, 'index']);
     Route::get('flows', [ApplicationProfileController::class, 'applicationFlows']);
     Route::put('{model}/toggle', [ApplicationProfileController::class, 'toggle']);
@@ -118,5 +119,6 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
 
 Route::post('applications/submit', [ApplicationController::class, 'submitApplication']);
 
-base_path('routes/rj/index.php');
+// base_path('routes/rj/index.php');
+
 

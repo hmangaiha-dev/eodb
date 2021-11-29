@@ -10,14 +10,15 @@ use Laravel\Sanctum\HasApiTokens;
 class Investor extends Authenticatable
 {
     const RULES = [
-        'fullname' => 'required',
+        'full_name' => 'required',
         'password' => 'required:confirmed',
         'email' => 'required',
-        'regn_no'=>'required'
+        'phone' => 'required'
+        // 'regn_no'=>'required'
     ];
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $fillable = ['email', 'mobile', 'fullname', 'password'];
+    protected $fillable = ['email', 'phone', 'full_name', 'password'];
     protected $hidden = ['password'];
 
 

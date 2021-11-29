@@ -1,163 +1,101 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-xs-12 zsubtitle">Firm details</div>
+    <div class="col-12">
+      <label class="zlabel" for="name"
+        >1. Date And Time Of Accident <span class="asterisk"> *</span></label
+      >
 
-    <div class="col-xs-12 col-md-3">
+      <div class="row justify q-col-gutter-md q-ml-md">
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+            A) Date Of Accident
+            <span class="asterisk"> *</span></label
+          >
+          <q-input dense outlined v-model="formData.applicant_name" />
+        </div>
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">B) Time Of Accident</label>
+          <q-input dense outlined v-model="formData.applicant_name" />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="name">
-        Name of Proprietor / Managing Director*
+        2. Type Of Accident
         <span class="asterisk"> *</span></label
       >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="text" type="text" />
+      <q-input dense outlined v-model="formData.applicant_name" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="dob" type="date"> Designation* </label>
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input dense outlined v-model="text" type="text" />
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender"
-        >Name of Enterprise* <span class="asterisk">*</span></label
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="name">
+        3. Sequence Of Events Leading To Accident
+        <span class="asterisk"> *</span></label
       >
+      <q-input dense outlined v-model="formData.applicant_name" />
     </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input outlined v-model="formData.birth_place" />
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="pob">
-        Number of Directors/Proprietor/MD/CEO*</label
+
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="name">
+        4. Has The Authority Been Informed Immediately
+        <span class="asterisk"> *</span></label
       >
+      <q-input dense outlined v-model="formData.applicant_name" />
     </div>
 
-    <div class="col-xs-12 col-md-3">
-      <q-select
-        dense
-        dropdown-icon="expand_more"
-        outlined
-        v-model="model"
-        :options="options"
-      />
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender"
-        >Number of Directors/Proprietor/MD/CEO*
-        <span class="asterisk">*</span></label
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="name">
+        5. The Type Of Waste Involved In Accident
+        <span class="asterisk"> *</span></label
       >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.applicant_name" />
     </div>
 
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender">
-        PAN Number <span class="asterisk">*</span></label
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="name">
+        6. Assessment Of The Effects Of The Accidents On Human Health And The
+        Environment
+        <span class="asterisk"> *</span></label
       >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.applicant_name" />
     </div>
 
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender">
-        PAN Card Attachment* ( Maximum size : 4 MB Format : PDF )
-        <span class="asterisk">*</span></label
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="name">
+        7. Emergency Measures Taken
+        <span class="asterisk"> *</span></label
       >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.applicant_name" />
     </div>
 
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender">
-        AADHAR Number
-        <span class="asterisk">*</span></label
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="name">
+        8. Steps Taken To Alleviate The Effects Of Accidents
+        <span class="asterisk"> *</span></label
       >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.applicant_name" />
     </div>
 
-    <div class="col-12">
-      I hereby state that i have no objection in authenticating myself with
-      Aadhaar based authentication system and consent to providing my Aadhaar
-      number, biometric and/or One Time Pin(OTP) data for Aadhaar based
-      authentication to availing services under Ease of Doing Business(EODB) of
-      Department of Commerce & Industries
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender">
-        Passport Number
-        <span class="asterisk">*</span></label
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="name">
+        10. Does Your Facility Have An Emergency Control Policy? If Yes Give
+        Details
+        <span class="asterisk"> *</span></label
       >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.applicant_name" />
     </div>
 
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender">
-        Applicant is NRI
-        <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
+    <div class="col-12 text-center">
+      I do hereby affirm that the informations furnished above are true and the
+      documents attached herewith are genuine.
     </div>
 
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender">
-        TIN/VAT/GSTIN Number
-        <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
-    </div>
+      <q-space />
 
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender">
-        Attach TIN/VAT/GSTIN Certificate* ( Maximum size : 4 MB Format : PDF )
-        <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender">
-        CST Number
-        <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender">
-        Attach CST Certifiacte * ( Maximum size : 4 MB Format : PDF )
-        <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender">
-        Udyog Aadhaar Memorandum(For Existing Enterprise Only)
-        <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.birth_place" />
+    <div class="col-md-6 col-xs-10 ">
+      <label class="zlabel" for="name"> Signature Of The Operator </label>
+      <q-input type="file" dense outlined />
     </div>
 
     <div class="col-xs-12" />

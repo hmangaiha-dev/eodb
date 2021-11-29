@@ -3,16 +3,13 @@
     <div class="col-12 text-h6 q-pb-none text-center">Form-B</div>
     <p class="col-12 text-caption q-py-none text-center">(See Rule 20(1))</p>
     <div class="col-12 ztitle text-center">
-     APPLICATION FOR DIVERSION OF USE OF LAND
-
+      Application form – New Connection (Low Tension Service)
     </div>
     <q-form @submit.prevent="" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />
         </div>
-
-       
       </div>
 
       <div class="text-center q-mt-md col-12">
@@ -27,11 +24,9 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
-import { ref } from 'vue'
+import { ref } from "vue";
 
 import Form from "./Form.vue";
-import Part2 from "./Part2.vue";
-import Document from "./Document.vue";
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -39,11 +34,9 @@ const emailRegex =
 export default {
   components: {
     Form,
-    Part2,
-    Document,
   },
   setup(props, context) {
-     const applicantRef = ref(null);
+    const applicantRef = ref(null);
     // const FirmRef = ref(null);
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
@@ -90,9 +83,7 @@ export default {
       epic_holder: "",
       constituency: "",
     });
-    onMounted(() => {
-     
-    });
+    onMounted(() => {});
     return {
       applicantRef,
       formData,

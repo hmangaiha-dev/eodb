@@ -43,21 +43,29 @@
       </div>
     </div>
 
-    <div class="row q-mt-lg justify-center q-col-gutter-md">
+    <div class="row q-mt-lg justify-start q-col-gutter-md">
       <div
         v-for="dept in depts"
         :key="dept.serial"
         class="col-lg-3 col-sm-6 col-xs-10"
       >
-        <q-list class="tile cursor-pointer" clickable bordered padding>
-          <q-item class="text" clickable v-ripple>
-            <q-item-section class="tile-content" avatar> {{ dept.serial }} </q-item-section>
+        <!-- <q-list class="tile cursor-pointer" clickable bordered padding> -->
+          <q-item
+            :to="{ name: 'common:show', params: { deptname: `${dept?.link}` } }"
+           class="tile cursor-pointer"
+            clickable
+            
+            v-ripple
+          >
+            <q-item-section class="tile-content" avatar>
+              {{ dept.serial }}
+            </q-item-section>
 
             <q-item-section class="text-center tile-content">{{
               dept.title
             }}</q-item-section>
           </q-item>
-        </q-list>
+        <!-- </q-list> -->
       </div>
     </div>
 
@@ -141,10 +149,8 @@
         <q-list class="q-p-none contact-us">
           <q-item class="q-pb-none">
             <q-item-section avatar>
-
               <!-- <img src="~assets/question.png" /> -->
-              <q-icon  name="fmd_good" />
-
+              <q-icon name="fmd_good" />
             </q-item-section>
 
             <q-item-section>
@@ -159,9 +165,7 @@
         <q-list class="q-pt-none contact-us">
           <q-item class="q-pb-none">
             <q-item-section avatar>
-
-                <q-icon  name="call" />
-
+              <q-icon name="call" />
             </q-item-section>
 
             <q-item-section>
@@ -330,73 +334,92 @@ export default defineComponent({
     const depts = [
       {
         serial: "01",
-        title: "Aizawl Municipal Corporation",
+        title: "Land Revenue & Settle Department",
+        link: "land-revenue",
       },
 
       {
         serial: "02",
         title: "Commerce & Industrial Department",
+        link: "commerce-and-industries",
       },
 
       {
         serial: "03",
         title: "Environment, Forest & Climate Change Department",
+        link: "environment-forest-and-climate-change",
       },
       {
         serial: "04",
-        title: "Excise & Narcotics Department",
+        title: "Mizoram Pollution Control Board",
+        link: "pollution-control-board",
       },
       {
         serial: "05",
         title: "Fire & Emergency Services",
+        link: "fire-and-emergency-services",
       },
       {
         serial: "06",
         title: "Food & Drug Administration, H&FW Department",
+        link: "food-and-drug-administration/",
       },
       {
         serial: "07",
         title: "Labour, Skill Developement & Entrepreneurship",
+        link: "labour-skill-development-and-enterprise",
       },
       {
         serial: "08",
-        title: "Land Revenue & Settle Department",
+        title: "Aizawl Municipal Corporation",
+        link: "aizawl-municipal-corporation",
       },
+
       {
         serial: "09",
         title: "Law & Judicial Department",
+        link: "law-and-judicial",
       },
       {
         serial: "10",
         title: "Legal Metrology",
+        link: "legal-metrology",
       },
       {
         serial: "11",
-        title: "Mizoram Pollution Control Board",
+        title: "Excise & Narcotics Department",
+        link: "excise-and-narcotics",
       },
+
       {
         serial: "12",
         title: "Power & Electricity Department",
+        link: "power-and-electricity",
       },
       {
         serial: "13",
         title: "Public Health Engineering Department",
+        link: "public-health-engineering",
       },
       {
         serial: "14",
         title: "Public Works Department",
+        link: "public-work-department",
       },
       {
         serial: "15",
         title: "Taxation Department",
+        link: "taxation",
       },
       {
         serial: "16",
         title: "Urban Developement & Poverty Allievation",
+        link: "urban-development-and-proverty-alleviation",
       },
       {
         serial: "17",
         title: "Labour Employment, Skill Developement & Entrepreneurship",
+        link: "labour-skill-development-and-enterprise",
       },
     ];
 
@@ -407,7 +430,7 @@ export default defineComponent({
 });
 </script>
 
-<style >
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins&display=swap");
 .col1 {
   color: aqua !important;
@@ -457,7 +480,6 @@ export default defineComponent({
   height: 139px;
   margin: 0 14px 0 0;
   object-fit: contain;
-
 }
 
 .logo:hover {
@@ -549,12 +571,13 @@ export default defineComponent({
   width: 398px;
   /* height: 100px; */
   margin: 0 16px 0px 12px;
-  padding: 20px 0px 20px 0px;
+  padding: 30px;
   border-radius: 10px;
   background-color: #fff;
 }
 
-.btn-dropdown, .tile-content {
+.btn-dropdown,
+.tile-content {
   font-family: "Poppins";
   font-size: 18px;
   font-weight: 600;
@@ -565,16 +588,12 @@ export default defineComponent({
   color: #357c71;
 }
 
-
-
 .track {
   /* width: 1920px; */
   /* height: 392px; */
   padding: 40px;
   background: url("../../assets/group.png");
 }
-
-
 
 .explore_dept {
   /* width: 613px;
@@ -650,7 +669,6 @@ export default defineComponent({
   color: #f5f5f5;
 }
 
-
 .content2 span {
   width: 728px;
   height: 60px;
@@ -665,7 +683,8 @@ export default defineComponent({
   color: #f5f5f5;
 }
 
-.content, .content2 .heading {
+.content,
+.content2 .heading {
   font: 40px Poppins, sans-serif;
   font-weight: 500 !important;
   font-size: 2.5rem;
@@ -676,14 +695,12 @@ export default defineComponent({
     margin-top: 25px !important;
   }
 
-
   .track {
     background: url("../../assets/bag.png");
   }
 
   .developed-by {
     font-size: 12px;
-
   }
 
   .logos {
@@ -703,43 +720,38 @@ export default defineComponent({
   .content2 span {
     font-size: 19px !important;
     font-family: "Hammersmith One";
-  /* font-size: 10px; */
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.6;
-  letter-spacing: normal;
-  text-align: left;
-  color: #f5f5f5;
+    /* font-size: 10px; */
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-align: left;
+    color: #f5f5f5;
     /* color: olive; */
-
-
-
-
   }
 
   .content {
     /* width: 195.5px; */
-  /* height: 36.2px; */
-  width: 60%;
-  margin: 100.6px 148.5px 10.2px 16px;
-  padding: 7.4px 40px 3.8px 10px;
-  background-color: #357c71;
+    /* height: 36.2px; */
+    width: 60%;
+    margin: 100.6px 148.5px 10.2px 16px;
+    padding: 7.4px 40px 3.8px 10px;
+    background-color: #357c71;
   }
 
   .content2 {
-/* width: 328px; */
-width: 90%;
-  /* height: 40px; */
-  margin: 10.2px 16px 50px;
-  padding: 8px 15px 7px 10px;
-  background-color: #357c71;
+    /* width: 328px; */
+    width: 90%;
+    /* height: 40px; */
+    margin: 10.2px 16px 50px;
+    padding: 8px 15px 7px 10px;
+    background-color: #357c71;
   }
 }
 
 @media (min-width: 320px) {
   /* mobile */
-
 
   /* .content2,
   .content {
@@ -762,8 +774,6 @@ width: 90%;
     display: grid;
     grid-template-columns: 6fr 6fr;
   } */
-
-
 
   .group {
     margin: 0px;
@@ -792,8 +802,6 @@ width: 90%;
     color: #357c71;
   }
 
-
-
   .track-form {
     background: #fff;
     margin-bottom: 20px;
@@ -813,28 +821,24 @@ width: 90%;
   }
 
   .content {
-  width: 80% !important;
-  /* height: 80px; */
-  margin-top: 152px;
-  /* margin: 152px 283.1px 25px 0; */
-  padding: 13px 44.9px 7px 24px;
-  background-color: #357c71;
-}
+    width: 80% !important;
+    /* height: 80px; */
+    margin-top: 152px;
+    /* margin: 152px 283.1px 25px 0; */
+    padding: 13px 44.9px 7px 24px;
+    background-color: #357c71;
+  }
 
+  .content2 {
+    /* width: 834.5px; */
 
+    /* margin-top: 152px; */
+    /* height: 80px; */
 
-.content2 {
-  /* width: 834.5px; */
-
-
-  /* margin-top: 152px; */
-  /* height: 80px; */
-
-
-  /* margin: 25px 10.5px 38px 0; */
-  /* padding: 13px 82.5px 7px 24px; */
-  background-color: #357c71;
-}
+    /* margin: 25px 10.5px 38px 0; */
+    /* padding: 13px 82.5px 7px 24px; */
+    background-color: #357c71;
+  }
 
   .series {
     width: 70% !important;

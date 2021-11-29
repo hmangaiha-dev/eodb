@@ -2,7 +2,9 @@
   <q-layout view="lHh Lpr lFf">
     <q-header style="margin: 0 auto" class="bg-white text-grey">
       <q-toolbar class="container bg-white text-dark q-py-none">
-        <img style="width: 80px" src="~assets/eodb-logo.png" />
+        <router-link to="/"
+          ><img style="width: 80px" src="~assets/eodb-logo.png"
+        /></router-link>
 
         <q-toolbar-title class="q-mt-md q-pl-lg q-mb-none"
           ><span class="heading q-pb-none">Ease of Doing Business</span>
@@ -12,39 +14,64 @@
 
         <q-space />
 
+        <q-space />
+
+        <q-btn-dropdown
+          color="primary"
+          v-if="isAuthenticated"
+          outline
+          class="q-pa-xs"
+          icon="account_circle"
+          rounded
+        >
+          <ProfileMenu />
+        </q-btn-dropdown>
+
+        <template v-else>
+          <router-link
+            active-class="activebtn"
+            class="q-mr-md btnhover"
+            to="/login"
+          >
+            Login
+          </router-link>
+          <router-link active-class="activebtn" class="btnhover" to="/register">
+            Register
+          </router-link>
+        </template>
         <!--
         notice shrink property since we are placing it
         as child of QToolbar
       -->
         <div class="flex tabs gt-sm">
           <q-tabs no-caps>
-<!--            <q-route-tab-->
-<!--              class="q-px-none"-->
-<!--              @click="navigate"-->
-<!--              label="Home"-->
-<!--            />-->
-<!--            <q-route-tab-->
-<!--              label="About Us"-->
-<!--              @click="navigate"-->
-<!--            />-->
-<!--            <q-route-tab-->
-<!--              @click="navigate"-->
-<!--              label="Online Services"-->
-<!--            />-->
-<!--            <q-route-tab-->
-<!--              @click="navigate"-->
-<!--              v-scroll-to="'#contact-us'"-->
-<!--              label="Contact Us"-->
-<!--            />-->
-<!--            <q-route-tab-->
-<!--              @click="navigate"-->
-<!--              label="EODB"-->
-<!--            />-->
-<!--            <span class="text-h5">|</span>-->
-<!--            <q-route-tab label="Login" />-->
+            <!--            <q-route-tab-->
+            <!--              class="q-px-none"-->
+            <!--              @click="navigate"-->
+            <!--              label="Home"-->
+            <!--            />-->
+            <!--            <q-route-tab-->
+            <!--              label="About Us"-->
+            <!--              @click="navigate"-->
+            <!--            />-->
+            <!--            <q-route-tab-->
+            <!--              @click="navigate"-->
+            <!--              label="Online Services"-->
+            <!--            />-->
+            <!--            <q-route-tab-->
+            <!--              @click="navigate"-->
+            <!--              v-scroll-to="'#contact-us'"-->
+            <!--              label="Contact Us"-->
+            <!--            />-->
+            <!--            <q-route-tab-->
+            <!--              @click="navigate"-->
+            <!--              label="EODB"-->
+            <!--            />-->
+            <!--            <span class="text-h5">|</span>-->
+            <!--            <q-route-tab label="Login" />-->
 
-<!--            <span class="text-h5">|</span>-->
-<!--            <q-route-tab label="Register" />-->
+            <!--            <span class="text-h5">|</span>-->
+            <!--            <q-route-tab label="Register" />-->
           </q-tabs>
 
           <!-- <q-separator dark vertical /> -->
@@ -75,7 +102,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-page-container>
+    <q-page-container class="bg-grey-2">
       <router-view />
     </q-page-container>
   </q-layout>
@@ -83,6 +110,10 @@
 
 <script>
 import EssentialLink from "components/EssentialLink.vue";
+import ProfileMenu from "components/ProfileMenu.vue";
+import { useStore } from "vuex";
+import {computed} from "vue";
+
 
 const linksList = [
   {
@@ -136,25 +167,17 @@ export default defineComponent({
 
   components: {
     EssentialLink,
+    ProfileMenu,
   },
 
   setup() {
-    const leftDrawerOpen = ref(true);
+    const store = useStore();
 
-    const navigate = (e) => {
-      // return
-      console.log("clicked");
-
-    };
+    
 
     return {
-      tab: ref(""),
       essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-      navigate,
+      isAuthenticated: computed(() => store.getters["investor/isAuthenticated"]),
     };
   },
 });
@@ -164,6 +187,33 @@ export default defineComponent({
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
 
+.btnhover {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+}
+
+.activebtn {
+  border-bottom: 2px solid green;
+  height: 26px;
+}
+
+.btnhover:after {
+  content: "";
+  display: block;
+  /* margin: auto; */
+  height: 2px;
+
+  background: transparent;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+.btnhover:hover:after {
+  width: 100%;
+
+  background: green;
+}
+
 @media (max-width: 600px) {
   .heading {
     font-size: 16px !important;
@@ -172,8 +222,6 @@ export default defineComponent({
   .mizoram {
     font-size: 14px !important;
   }
-
-
 }
 
 .heading {
@@ -218,7 +266,4 @@ export default defineComponent({
 .tabs {
   color: rgba(0, 0, 0, 0.5);
 }
-
-
-
 </style>

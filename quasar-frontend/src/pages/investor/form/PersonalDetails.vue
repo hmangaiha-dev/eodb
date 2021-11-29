@@ -1,18 +1,13 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-xs-12 zsubtitle">Applicant details</div>
+    <div class="col-xs-12 text-bold">Applicant details</div>
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="name"
         >Applicant for <span class="asterisk"> *</span></label
       >
     </div>
     <div class="col-xs-12 col-md-4">
-      <q-select
-        dropdown-icon="expand_more"
-        outlined
-        v-model="model"
-        :options="options"
-      />
+      <q-select dense dropdown-icon="expand_more" outlined :options="options" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -21,7 +16,7 @@
       </label>
     </div>
     <div class="col-xs-12 col-md-4">
-      <q-file outlined v-model="model">
+      <q-file dense outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -34,19 +29,14 @@
       >
     </div>
     <div class="col-xs-12 col-md-4">
-      <q-input outlined v-model="formData.birth_place" />
+      <q-input dense outlined v-model="formData.birth_place" />
     </div>
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="pob">Applicant belongs to</label>
     </div>
 
     <div class="col-xs-12 col-md-4">
-      <q-select
-        dropdown-icon="expand_more"
-        outlined
-        v-model="model"
-        :options="options"
-      />
+      <q-select dense dropdown-icon="expand_more" outlined :options="options" />
     </div>
 
     <div class="col-12">
@@ -207,6 +197,31 @@
 
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="adar">Email id</label>
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <q-input
+        id="adar"
+        v-model="formData.aadhaar_no"
+        dense
+        item-aligned
+        mask="############"
+        :rules="[
+          (val) => {
+            if (val === '') {
+              return true;
+            } else {
+              if (val?.length !== 12) return 'Invalid aadhaar no';
+              else return true;
+            }
+          },
+        ]"
+        outlined
+      />
+    </div>
+
+    <div class="col-xs-12 col-md-2">
+      <label class="zlabel" for="adar"> Alternate Email ID</label>
     </div>
 
     <div class="col-xs-12 col-md-4">

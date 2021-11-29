@@ -3,19 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Investor;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class InvestorController extends Controller
 {
     public function register(Request $request)
     {
+        // return $request->all();
         $data = $request->only((new Investor())->getFillable());
-        $request->validate(Investor::RULES);
-        $investor = Investor::query()
+        $data['password'] = Hash::make($request->password);
+        $request->validate(User::RULES);
+        $investor = User::query()
             ->create($data);
         return response()->json([
             'data' => $investor,
             'message' => 'Registration success'
         ]);
+    }
+
+
+
+    public function logout(Request $request)
+    {
+        Auth::user()->tokens()->delete();
+        return response()->json([
+            'data' => 'tokens deleted'
+        ], 200);
+
+
     }
 }
