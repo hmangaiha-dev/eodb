@@ -57,7 +57,6 @@ export default {
     // const draft = store.getters["applicantData/getCurrentDraft"];
     // const currentUser = store.getters["auth/getCurrentUser"];
 
-
     const formData = reactive({
       title: "Mr",
       name: "dummy name",
@@ -84,27 +83,44 @@ export default {
 
 
     return {
-
       part1Form,
       part2Form,
       documentForm,
 
-
       submit: () => {
-        const formData = {
-          application_code: 'CODE1',
-          department_id: 1,
-          part1: Object.assign({},part1Form.value.formData),
-          part2: Object.assign({},part2Form.value.formData),
-          fields: Object.assign(part1Form.value.formData,part2Form.value.formData),
-          document: Object.assign({},documentForm.value.formData),
+        let formDatas = new FormData();
 
+        // console.log("documents value", formData.document);
+
+        for (let data in documentForm.value.formData) {
+          console.log(
+            "data value of" + data,
+            documentForm.value.formData[data]
+          );
+          formDatas.append(`${data}`, documentForm.value.formData[data]);
         }
-        // return console.log('allFormData',formData);
 
-        api.post('/applications/submit',formData)
-          .then(res => console.log('response value',res.data))
-          .catch(err => console.log('error',err))
+        const formData = {
+          application_code: "CODE1",
+          department_id: 1,
+          fields: Object.assign(
+            part1Form.value.formData,
+            part2Form.value.formData
+          ),
+          // voters_id: documentForm.value.formData.voters_id,
+          // document: Object.assign({}, documentForm.value.formData),
+          document: formDatas,
+        };
+
+        console.log("formdatas document", formData.document);
+        console.log("document only", formDatas);
+
+        // return console.log("allFormData", formDatas.get('voters_id'));
+
+        api
+          .post("/applications/submit", formData)
+          .then((res) => console.log("response value", res.data))
+          .catch((err) => console.log("error", err));
       },
       emailRegex,
 

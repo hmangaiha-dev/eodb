@@ -205,23 +205,23 @@ export default {
     const draft = store.getters["applicantData/getCurrentDraft"];
 
     const formData = reactive({
-      industrial_location_name: "Mr",
+      industrial_location_name: "",
       applicant_name: "",
 
       communication_street: "",
       communication_city : "",
-      communication_pin_no: "Male",
+      communication_pin_no: "",
       communication_house_no: "",
       communication_office_phn: "",
       communication_residence_phn: "",
       communication_mobile_phn: "",
       communication_email: "",
       communication_website: "",
-      communication_district: "Father",
+      communication_district: "",
 
       proposed_street: "",
       proposed_city: "",
-      proposed_pin_no: "Male",
+      proposed_pin_no: "",
       proposed_house_no: "",
       proposed_office_phn: "",
       proposed_residence_phn: "",
@@ -233,42 +233,7 @@ export default {
    
     });
     return {
-      onFathernameBlur: (e) => {
-        if (!formData.adult) {
-          formData.epic_relation?.toLowerCase() === "father" &&
-            (formData.epic_holder = e?.target?.value);
-        }
-        if (formData.relation?.toLowerCase() === "father") {
-          formData.relation_name = e?.target?.value;
-          formData.relation_title = "Mr";
-        }
-      },
-      onMothernameBlur: (e) => {
-        if (!formData.adult) {
-          formData.epic_relation?.value?.toLowerCase() === "father" &&
-            (formData.epic_holder = e?.target?.value);
-        }
-        if (formData.relation?.value?.toLowerCase() === "mother") {
-          formData.relation_name = e?.target?.value;
-          formData.relation_title = "Mrs";
-        }
-      },
-      handleAdult: (e) => {
-        if (e.target?.checked) {
-          formData.epic_relation?.toLowerCase() === "father" &&
-            (formData.epic_holder = formData.father_name);
-          formData.epic_relation?.toLowerCase() === "mother" &&
-            (formData.epic_holder = formData.mother_name);
-        }
-      },
-      handleEpicSelect: () => {
-        if (formData.epic_relation?.value === "Father") {
-          formData.epic_holder = formData.father_name;
-        }
-        if (formData.epic_relation?.value === "Mother") {
-          formData.epic_holder = formData.mother_name;
-        }
-      },
+     
       emailRegex,
      
       formData,
