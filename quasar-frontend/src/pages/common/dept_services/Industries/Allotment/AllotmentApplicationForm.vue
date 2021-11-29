@@ -6,12 +6,6 @@
       APPLICATION FOR ALLOTMENT OF INDUSTRIAL PLOT/SHET AT
     </div>
     <q-form @submit.prevent="submit" class="row">
-      
-
-
-
-
-
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Part1 ref="part1Form" />
@@ -39,7 +33,7 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 import {ref} from 'vue'
- 
+
 import Part1 from "./Part1.vue";
 import Part2 from "./Part2.vue";
 import Document from "./Document.vue";
@@ -62,7 +56,7 @@ export default {
     const store = useStore();
     // const draft = store.getters["applicantData/getCurrentDraft"];
     // const currentUser = store.getters["auth/getCurrentUser"];
- 
+
 
     const formData = reactive({
       title: "Mr",
@@ -85,7 +79,7 @@ export default {
       constituency: "",
     });
     onMounted(() => {
-     
+
     });
 
 
@@ -94,7 +88,7 @@ export default {
       part1Form,
       part2Form,
       documentForm,
-   
+
 
       submit: () => {
         const formData = {
@@ -104,16 +98,16 @@ export default {
           part2: Object.assign({},part2Form.value.formData),
           fields: Object.assign(part1Form.value.formData,part2Form.value.formData),
           document: Object.assign({},documentForm.value.formData),
-          
+
         }
-        // return console.log('allFormData',formData); 
-      
+        // return console.log('allFormData',formData);
+
         api.post('/applications/submit',formData)
           .then(res => console.log('response value',res.data))
           .catch(err => console.log('error',err))
-      }, 
+      },
       emailRegex,
-     
+
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
