@@ -31,8 +31,8 @@
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
-import { date } from "quasar";
-import {ref} from 'vue'
+import { date, format } from "quasar";
+import { ref } from "vue";
 
 import Part1 from "./Part1.vue";
 import Part2 from "./Part2.vue";
@@ -77,10 +77,7 @@ export default {
       epic_holder: "",
       constituency: "",
     });
-    onMounted(() => {
-
-    });
-
+    onMounted(() => {});
 
     return {
       part1Form,
@@ -100,20 +97,38 @@ export default {
           formDatas.append(`${data}`, documentForm.value.formData[data]);
         }
 
-        const formData = {
+        var fields = Object.assign(
+          part1Form.value.formData,
+          part2Form.value.formData
+        );
+
+        var formData = {
           application_code: "CODE1",
           department_id: 1,
-          fields: Object.assign(
-            part1Form.value.formData,
-            part2Form.value.formData
-          ),
+         
+
+          communcation_address: "Address for Communication",
+
+          proposed_or_existing: "Whether Proposed Or Existing Unit If Existing, Detail Address Of The Unit: Proposed/Existing.",
+
+          // fields: Object.assign(
+          //   part1Form.value.formData,
+          //   part2Form.value.formData
+          // ),
+
           // voters_id: documentForm.value.formData.voters_id,
           // document: Object.assign({}, documentForm.value.formData),
           document: formDatas,
         };
 
-        console.log("formdatas document", formData.document);
-        console.log("document only", formDatas);
+        formData = Object.assign(formData, fields);
+
+        // for (const [key, value] of Object.entries(formData.fields)) {
+        //   formData.app
+        // }
+
+        console.log("formdatas document", formData);
+        // console.log("document only", formDatas);
 
         // return console.log("allFormData", formDatas.get('voters_id'));
 
