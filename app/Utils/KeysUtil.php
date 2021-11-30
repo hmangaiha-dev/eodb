@@ -8,11 +8,12 @@ class KeysUtil
         'CODE1' => [
 
             'applicant_name',
+            'industrial_location_name',
 
 
             'communication_address',
             'communication_street',
-            'communication_city ',
+            'communication_city',
             'communication_pin_no',
             'communication_house_no',
             'communication_office_phn',
@@ -27,7 +28,7 @@ class KeysUtil
 
             'proposed_street',
             'proposed_city',
-            'proposed_pin_no',
+
             'proposed_house_no',
             'proposed_office_phn',
             'proposed_residence_phn',
@@ -62,11 +63,13 @@ class KeysUtil
 
 
         'applicant_name' => 'Applicant Name',
+        'industrial_location_name' => 'Name & Location of Industrial Area',
+
 
 
         'communication_address' => 'Address for Communications',
         'communication_street' => 'Steet',
-        'communication_city ' => 'City/Town/Village',
+        'communication_city' => 'City/Town/Village',
         'communication_pin_no' => 'PIN No',
         'communication_house_no' => 'House No',
         'communication_office_phn' => 'Office Phone Number',
@@ -84,13 +87,13 @@ class KeysUtil
 
 
 
-        'proposed_street' => 'Proposed strreet',
-        'proposed_city' => 'Proposed strreet',
-        'proposed_pin_no' => 'Proposed strreet',
-        'proposed_house_no' => 'Proposed strreet',
-        'proposed_office_phn' => 'Proposed strreet',
-        'proposed_residence_phn' => 'Proposed strreet',
-        'proposed_mobile_phn' => 'Proposed strreet',
+        'proposed_street' => 'street',
+        'proposed_city' => 'city',
+
+        'proposed_house_no' => 'House No',
+        'proposed_office_phn' => 'Office No',
+        'proposed_residence_phn' => 'Residence No',
+        'proposed_mobile_phn' => 'Mobile No',
 
 
 

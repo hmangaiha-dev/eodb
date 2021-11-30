@@ -4,6 +4,7 @@ use App\Http\Controllers\ApplicationFormController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\InvestorProfileController;
+use App\Models\Application;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,7 +15,6 @@ Route::group(['prefix' => 'investor/profile', 'middleware' => 'auth:sanctum'], f
 });
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/register', [InvestorController::class, 'register']);
-  
 });
 
 
@@ -24,11 +24,15 @@ Route::group(['prefix' => 'auth/investor'], function () {
 
 
 Route::prefix('/investor')->group(function () {
-    Route::post('/store',[ApplicationFormController::class,'store']);
+    Route::post('/store', [ApplicationFormController::class, 'store']);
 });
 
 
 
-Route::get('/department/{slug}',[DepartmentController::class,'showDepartment']);
+Route::get('/department/{slug}', [DepartmentController::class, 'showDepartment']);
 
+Route::get('attach', function () {
+    // return 3;
+    return Application::with('attachments')->get();
+});
 

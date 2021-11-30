@@ -2,57 +2,104 @@
   <q-page padding>
     <div class="row">
       <div class="col-xs-12 ztitle">
-        {{localData.application?.application_name}}
+        {{ localData.application?.application_name }}
       </div>
     </div>
     <div class="row q-col-gutter-xs q-ma-lg">
-      <div  v-for="(item,i) in localData.fields" :key="i"  class="col-xs-12 row">
-        <div class="col-4 zlabel">{{item.field_label}}</div>
-        <div class="col-4 zvalue">{{item.field_value}}</div>
+      <div
+        :class="[item.field_value != null ? 'q-ml-md' : '']"
+        v-for="(item, i) in localData.fields"
+        :key="i"
+        class="col-xs-12 row"
+      >
+        <div
+          :class="[
+            item.field_value == null ? 'col-12 nofield' : 'col-4 zlabel',
+          ]"
+        >
+          {{ item.field_label }}
+        </div>
+        <div class="col-4 zvalue">{{ item.field_value }}</div>
       </div>
     </div>
-    <q-separator class="q-my-md"/>
+
+    <div v-for="(item, i) in localData.attachments" :key="i" class="row">
+      <div class="zlabel col-4">
+        {{ item.label }}
+      </div>
+
+      <div class="zlabel col-4">
+        {{ item.path }}
+      </div>
+    </div>
+    <q-separator class="q-my-md" />
     <div class="zcard col-xs-12 q-gutter-xs">
-      <q-btn v-for="(action,i) in localData.actions" :name="action.value" :key="i" outline :label="action?.label"/>
+      <q-btn
+        v-for="(action, i) in localData.actions"
+        :name="action.value"
+        :key="i"
+        outline
+        :label="action?.label"
+      />
     </div>
   </q-page>
 </template>
 <script>
-import {onMounted} from "vue";
-import {api} from "boot/axios";
-import {useQuasar} from "quasar";
-import {reactive} from "@vue/reactivity";
-import {useRoute} from "vue-router";
+import { onMounted } from "vue";
+import { api } from "boot/axios";
+import { useQuasar } from "quasar";
+import { reactive } from "@vue/reactivity";
+import { useRoute } from "vue-router";
 
 export default {
   setup(props, context) {
     const route = useRoute();
     const q = useQuasar();
-    const  localData=reactive({
+    const localData = reactive({
       application: {},
-      fields:[],
-      actions:[]
-    })
-    onMounted(()=>{
+      fields: [],
+      actions: [],
+      attachments: [],
+    });
+    onMounted(() => {
       const id = route.params.id;
-      api.get(`applications/${id}`)
-      .then(res=>{
-        const {application_code,application_values,application_name, regn_no,current_state} = res.data.data;
-        localData.actions = res.data.actions;
-        localData.application.regn_no = regn_no;
-        localData.application.application_code = application_code;
-        localData.application.application_name = application_name;
-        localData.application.current_state = current_state;
-        localData.fields = application_values;
-      })
-      .catch(err=>{
-        let message =  err.response?.message || 'Something wrong'
-        q.notify({type: 'negative', message})
-      })
-    })
-    return{
-      localData
-    }
-  }
-}
+      api
+        .get(`applications/${id}`)
+        .then((res) => {
+          // console.log('applicant details',res.data);
+          const {
+            application_code,
+            application_values,
+            application_name,
+            regn_no,
+            current_state,
+            attachments,
+          } = res.data.data;
+          localData.actions = res.data.actions;
+          localData.application.regn_no = regn_no;
+          localData.application.application_code = application_code;
+          localData.application.application_name = application_name;
+          localData.application.current_state = current_state;
+          localData.fields = application_values;
+          localData.attachments = attachments;
+        })
+        .catch((err) => {
+          let message = err.response?.message || "Something wrong";
+          q.notify({ type: "negative", message });
+        });
+    });
+    return {
+      localData,
+    };
+  },
+};
 </script>
+
+<style>
+.nofield {
+  color: rgb(73, 71, 71);
+  font-size: 18px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+}
+</style>

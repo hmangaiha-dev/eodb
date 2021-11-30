@@ -110,7 +110,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.communication_mobile_phn" />
+      <q-input dense outlined v-model="formData.communication_email" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -218,6 +218,10 @@ export default {
       communication_email: "",
       communication_website: "",
       communication_district: "",
+
+
+
+      proposed_or_existing: "",
 
       proposed_street: "",
       proposed_city: "",
