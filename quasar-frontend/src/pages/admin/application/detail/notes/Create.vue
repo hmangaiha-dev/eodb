@@ -1,5 +1,5 @@
 <template>
-  <q-form @submit="submit" class="column q-pa-md q-gutter-sm">
+  <q-form @submit="submit" class="q-ma-md zdetailcard column q-pa-md q-gutter-sm">
     <p class="ztitle">New note</p>
     <p class="zlabel">Title</p>
     <q-input outlined
