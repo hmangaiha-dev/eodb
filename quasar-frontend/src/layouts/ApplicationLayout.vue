@@ -1,10 +1,10 @@
 <template>
-  <q-page class="row  q-ma-none container-lg">
+  <q-page class="row q-col-gutter-md q-ma-none container-lg">
       <div class="col-md-3 bg-grey-1">
         <List :notes="localData.notes"/>
       </div>
       <div class="col-md-9 column q-gutter-md">
-        <div class="bg-grey-1 q-pt-lg row">
+        <div class="zcard bg-grey-1 q-pt-lg row">
           <div class="col-9">
             <div class="zlabel">Application : <span class="zvalue">{{ localData?.profile?.title }}</span></div>
             <div class="zlabel">Regn No : <span class="zvalue">{{ localData?.regn_no }}</span></div>
@@ -14,11 +14,11 @@
             <q-btn :to="{name:'application:detail'}" no-caps color="primary" flat label="View more"/>
           </div>
         </div>
-        <div class="bg-grey-2 q-mt-sm rounded-borders q-pa-md flex justify-between">
+        <div class="zcard q-mt-sm rounded-borders q-pa-md flex justify-between">
           <q-btn outline color="negative" label="Send back"/>
           <q-btn v-if="localData.current_step<localData.last_step" @click="handleForward" outline color="primary" label="Forward"/>
         </div>
-        <router-view @notes="val=>localData.notes=val"/>
+        <router-view  @notes="val=>localData.notes=val"/>
 
       </div>
       <q-btn :to="{name:'note:create',params:{id:$route.params.id}}" fab icon="edit" color="primary"

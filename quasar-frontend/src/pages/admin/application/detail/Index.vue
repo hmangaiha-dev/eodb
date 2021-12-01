@@ -1,18 +1,21 @@
 <template>
   <q-page padding>
-    <div class="row">
-      <div class="col-xs-12 ztitle">
-        {{localData.application?.application_name}}
+    <div class="zdetailcard">
+      <div class="row">
+        <div class="col-xs-12 ztitle">
+          {{localData.application?.application_name}}
+        </div>
+      </div>
+      <div class="row q-col-gutter-xs q-ma-lg">
+        <div  v-for="(item,i) in localData.fields" :key="i"  class="col-xs-12 row">
+          <div class="col-4 zlabel">{{item.field_label}}</div>
+          <div class="col-4 zvalue">{{item.field_value}}</div>
+        </div>
       </div>
     </div>
-    <div class="row q-col-gutter-xs q-ma-lg">
-      <div  v-for="(item,i) in localData.fields" :key="i"  class="col-xs-12 row">
-        <div class="col-4 zlabel">{{item.field_label}}</div>
-        <div class="col-4 zvalue">{{item.field_value}}</div>
-      </div>
-    </div>
+
     <q-separator class="q-my-md"/>
-    <div class="zcard col-xs-12 q-gutter-xs">
+    <div class="zdetailcard col-xs-12 q-gutter-xs">
       <q-btn v-for="(action,i) in localData.actions" :name="action.value" :key="i" outline :label="action?.label"/>
     </div>
   </q-page>

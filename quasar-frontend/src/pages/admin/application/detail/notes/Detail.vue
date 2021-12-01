@@ -1,5 +1,5 @@
 <template>
-  <q-form @submit="submit" class="column q-pa-md q-gutter-sm">
+  <q-form @submit="submit" class="zdetailcard column q-pa-md q-gutter-sm">
     <div class="flex justify-between">
       <p class="zlabel">{{ formData.title }}</p>
       <q-btn @click="handleDelete" :disable="$store.state.authData.currentUser.id!==formData.staff_id" flat
