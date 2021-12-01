@@ -8,9 +8,9 @@ import {LocalStorage,Quasar} from "quasar";
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const BASE_URL = 'http://164.100.124.152/api';
+const BASE_URL = 'http://13.235.104.152/api';
 const LOCAL_BASE_URL = 'http://localhost:8000/api';
-const api = axios.create({ baseURL: LOCAL_BASE_URL})
+const api = axios.create({ baseURL: process.env.DEV?LOCAL_BASE_URL:BASE_URL})
 
 
 export default boot(({ app,router,store }) => {
