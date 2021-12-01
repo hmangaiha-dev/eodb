@@ -12,9 +12,10 @@ export default defineComponent({
   setup() {
     const store = useStore();
     onMounted(()=> {
-      store.dispatch('staffData/fetchData')
-      axios.get('http://localhost:8000/sanctum/csrf-cookie')
-        .then(res => console.log(res)).catch(err => console.log(err))
+      axios.get('http://164.100.124.152/sanctum/csrf-cookie')
+      .then(res=>{
+        store.dispatch('staffData/fetchData')
+      })
     })
   }
 })
