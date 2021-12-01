@@ -15,7 +15,7 @@
     <link rel=icon type=image/png sizes=16x16 href=icons/favicon-16x16.png>
     <link rel=icon type=image/ico href=favicon.ico>
     <script defer src=/js/vendor.beb9c5fb.js></script>
-    <script defer src=/js/app.4c738eea.js></script>
+    <script defer src=/js/app.3aa4c198.js></script>
     <link href=/css/vendor.fe3bfe95.css rel=stylesheet>
     <link href=/css/app.ea71213b.css rel=stylesheet>
 </head>
