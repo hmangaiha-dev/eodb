@@ -53,28 +53,6 @@ class ApplicationController extends Controller
     public function submitApplication(Request $request)
     {
 
-        // Storage::put('tests.jpg', $request->documents['voters_id']);
-        // return $request->documents['voters_id'];
-
-        // return $request->applicant_name;
-        
-        // return $request->file();
-
-        // $test = 'd';
-        // foreach ($request->file() as $key => $file)  {
-        //     $test = $test . $key;
-        // }
-
-        // return $test;
-
-
-
-        // Application::with('attachments')->get();
-        // $file = $request->documents['voters_id'];
-        // $filename = time().'.'.$request->file('voters_id')->getClientOriginalExtension();
-        // return $request->file('voters_id')->getClientOriginalName();
-        // return $request->file('voters_id')->store('uploads');
-        // return $request->fields['area_plot'];
         $this->validate($request, [
             'application_code' => ['required'],
             'department_id' => ['required'],
@@ -96,9 +74,9 @@ class ApplicationController extends Controller
 
 
         foreach ($request->file() as $key => $file) {
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $filename = time() . uniqid() . '.' . $file->getClientOriginalExtension();
 
-            $file->storeAs('public/CODE1', $filename);
+            $path = $file->storeAs('CODE1', $filename);
             //  $request->file('voters_id')->getClientOriginalName();
             // $file->store('tests');
             $application->attachments()->create([
@@ -106,7 +84,7 @@ class ApplicationController extends Controller
                 'mime' => 'jpg',
                 'label' =>  $key,
                 'size' => '2',
-                'path' => 'CODE1/'.$filename
+                'path' => $path
             ]);
         }
 

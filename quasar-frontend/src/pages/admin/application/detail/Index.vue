@@ -1,5 +1,11 @@
 <template>
   <q-page padding>
+    <q-dialog v-model="dialog">
+      <q-card>
+        <embed :src="attachment" width="500" height="500" />
+      </q-card>
+    </q-dialog>
+
     <div class="row">
       <div class="col-xs-12 ztitle">
         {{ localData.application?.application_name }}
@@ -23,13 +29,23 @@
       </div>
     </div>
 
+    <div class="ztitle">Attachments</div>
+
     <div v-for="(item, i) in localData.attachments" :key="i" class="row">
       <div class="zlabel col-4">
         {{ item.label }}
       </div>
 
       <div class="zlabel col-4">
-        {{ item.path }}
+        <!-- <embed :src="pdfFile" width="500" height="500" /> -->
+        <q-btn
+        flat
+          color="primary"
+        
+          label="view"
+          @click="getFile(item.path)"
+        />
+        <!-- {{ item.path }} -->
       </div>
     </div>
     <q-separator class="q-my-md" />
@@ -50,11 +66,15 @@ import { api } from "boot/axios";
 import { useQuasar } from "quasar";
 import { reactive } from "@vue/reactivity";
 import { useRoute } from "vue-router";
+import { ref } from "vue";
 
 export default {
   setup(props, context) {
     const route = useRoute();
     const q = useQuasar();
+    const dialog = ref(false);
+
+    const attachment = ref('');
     const localData = reactive({
       application: {},
       fields: [],
@@ -90,6 +110,13 @@ export default {
     });
     return {
       localData,
+      dialog,
+      attachment,
+      getFile: (path) => {
+        attachment.value = "http://localhost:8000/storage/" + path;
+        dialog.value = true;
+        console.log('attachment',attachment.value);
+      },
     };
   },
 };

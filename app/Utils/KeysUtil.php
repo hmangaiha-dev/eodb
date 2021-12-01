@@ -57,6 +57,10 @@ class KeysUtil
             // 'voters_id'
 
         ],
+
+        'C&E_INTEREST' => [
+
+        ]
     ];
 
     const LABELS = [

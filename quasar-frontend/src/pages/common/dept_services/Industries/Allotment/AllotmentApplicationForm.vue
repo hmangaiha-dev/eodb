@@ -39,6 +39,8 @@ import Part2 from "./Part2.vue";
 import Document from "./Document.vue";
 import { api } from "src/boot/axios";
 
+import { useQuasar } from "quasar";
+
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -53,9 +55,8 @@ export default {
     const part2Form = ref(null);
     const documentForm = ref(null);
 
+    const $q = useQuasar();
     const store = useStore();
-    // const draft = store.getters["applicantData/getCurrentDraft"];
-    // const currentUser = store.getters["auth/getCurrentUser"];
 
     var formData = reactive({
       application_code: "CODE1",
@@ -87,34 +88,15 @@ export default {
           formDatas.append(`${data}`, formData[data]);
         }
 
-        // console.log("formdatas document", formDatas);
-
-        // var formData = {
-        //   application_code: "CODE1",
-        //   department_id: 1,
-
-        //   communcation_address: "Address for Communication",
-
-        //   proposed_or_existing: "",
-
-        // };
-
-        // console.log("formdatas before voter", formDatas.get("voters_id"));
-
-        // formData = Object.assign(formData, formDatas);
-
-        // for (const [key, value] of Object.entries(formData.fields)) {
-        //   formData.app
-        // }
-
-        // return console.log("formdatas document", formDatas);
-        // console.log("document only", formDatas);
-
-        // return console.log("allFormData", formDatas.get('voters_id'));
-
         api
           .post("/applications/submit", formDatas)
-          .then((res) => console.log("response value", res.data))
+          .then((res) => {
+            console.log("response value", res.data);
+            $q.notify({
+              message: 'Application submitted successfully',
+              color: 'green'
+            })
+          })
           .catch((err) => console.log("error", err));
       },
       emailRegex,

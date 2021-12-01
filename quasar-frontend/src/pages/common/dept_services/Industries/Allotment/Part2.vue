@@ -154,15 +154,7 @@
     </div>
 
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="name">
-        Signature Of The Applicant <span class="asterisk"> *</span></label
-      >
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <q-input type="file" dense outlined v-model="formData.applicant_signature" />
-    </div>
+  
 
     <div class="col-xs-12" />
   </div>
@@ -203,7 +195,6 @@ export default {
       no_of_ready_build: "",
       electric_power: "",
       daily_water: "",
-      applicant_signature: null,
      
     });
     onMounted(() => {

@@ -1,204 +1,83 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-10">
+    <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="name"
-        >1.Diltu Hming (Hawrawppuiin ) <span class="asterisk"> *</span></label
+        >1.Name of the Applicant/Organization
+        <span class="asterisk"> *</span></label
       >
       <q-input dense outlined />
     </div>
 
-    <div class="col-10">
-      <label class="zlabel" for="name">
-        2. Address <span class="asterisk"> *</span></label
-      >
-
-      <div class="row justify q-col-gutter-md q-ml-md">
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="name"
-            >A.). House No.<span class="asterisk"> *</span></label
-          >
-          <q-input dense outlined v-model="formData.applicant_name" />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="name">
-            B). Hmun Bik (Street/lane)
-            <span class="asterisk"> *</span></label
-          >
-          <q-input dense outlined v-model="formData.applicant_name" />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="name"
-            >C) Veng <span class="asterisk"> *</span></label
-          >
-          <q-input
-            type="text"
-            dense
-            outlined
-            v-model="formData.applicant_name"
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="name"
-            >D) Khua <span class="asterisk"> *</span></label
-          >
-          <q-input
-            type="text"
-            dense
-            outlined
-            v-model="formData.applicant_name"
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="name"
-            >E) Pin Code <span class="asterisk"> *</span></label
-          >
-          <q-input
-            type="text"
-            dense
-            outlined
-            v-model="formData.applicant_name"
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="name"
-            >F) Dilna Hmun Hriat Awlsamna Tur (Landmark):
-            <span class="asterisk"> *</span></label
-          >
-          <q-input
-            type="text"
-            dense
-            outlined
-            v-model="formData.applicant_name"
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="name"
-            >G) Telephone No.<span class="asterisk"> *</span></label
-          >
-          <q-input
-            type="text"
-            dense
-            outlined
-            v-model="formData.applicant_name"
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="name"
-            >G) Telephone No.<span class="asterisk"> *</span></label
-          >
-          <q-input
-            type="text"
-            dense
-            outlined
-            v-model="formData.applicant_name"
-          />
-        </div>
-      </div>
-    </div>
-
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="dob" type="date"
-        >3.Date Of Establishment Of Workshop/factory<span class="asterisk"
+        >2.Name of Father/ Husband/ Director/ Partner/ Trustee<span
+          class="asterisk"
           >*</span
         >
       </label>
       <q-input dense outlined />
     </div>
 
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender"
-        >4.Current Registration Number <span class="asterisk">*</span></label
-      >
-      <q-input dense outlined />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender"
-        >5.Registration Date <span class="asterisk">*</span></label
-      >
-      <q-input dense outlined />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender"
-        >6.Nature Of Manufacturing Activities At Present
-        <span class="asterisk">*</span></label
-      >
-      <q-input dense outlined />
-    </div>
-
     <div class="col-12">
-      <label class="zlabel" for=""
-        >7.Type Of Weights And Measures Proposed To Be Manufactured :</label
-      >
+      <label for="" class="zlabel">Address for communication</label>
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender"
-            >Weights <span class="asterisk">*</span></label
-          >
-          <q-input  dense outlined />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender"
-            >Measures <span class="asterisk">*</span></label
+          <label class="zlabel" for="gender">
+            House/Plot/Premise No. <span class="asterisk">*</span></label
           >
           <q-input dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
-            >Weighing Instruments <span class="asterisk">*</span></label
+            >Street: <span class="asterisk">*</span></label
           >
           <q-input dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="pob"
-            >Measuring Instruments With Details</label
+          <label class="zlabel" for="gender"
+            >Area/Colony: <span class="asterisk">*</span></label
           >
+          <q-input dense outlined />
+        </div>
+
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="pob">District</label>
           <q-input dense outlined />
         </div>
       </div>
     </div>
 
     <div class="col-12">
-      <label class="zlabel" for=""
-        >8. The Number Of Persons Employed/proposed To Be Employed :</label
-      >
+      <label for="" class="zlabel">
+        Address of where the new connection is applied for/existing connection
+        is required to be shifted
+      </label>
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender"
-            >(i) Skilled <span class="asterisk">*</span></label
-          >
-          <q-input  dense outlined />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender"
-            >(ii) Semi-skilled <span class="asterisk">*</span></label
+          <label class="zlabel" for="gender">
+            House/Plot/Premise No. <span class="asterisk">*</span></label
           >
           <q-input dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
-            >(iii) Unskilled <span class="asterisk">*</span></label
+            >Street: <span class="asterisk">*</span></label
           >
           <q-input dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="pob"
-            >(iv) Specialist Trained In The Lines</label
+          <label class="zlabel" for="gender"
+            >Area/Colony: <span class="asterisk">*</span></label
           >
+          <q-input dense outlined />
+        </div>
+
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="pob">District</label>
           <q-input dense outlined />
         </div>
       </div>
@@ -206,120 +85,114 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
-        >9.Monogram Or Trade Mark Intended To Be Imprinted On Weights And
-        Measures To Be Manufactured <span class="asterisk">*</span></label
+        >4.Category of Supply <span class="asterisk">*</span></label
       >
-      <q-input  dense outlined />
+      <q-input dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
-        >10.Details Of Machinery, Tools Accessories, Owned And Used For
-        Manufacturing Weights Measures Etc.
+        >5.Purpose of Supply <span class="asterisk">*</span></label
+      >
+      <q-input dense outlined />
+    </div>
+
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="gender"
+        >6.Total Contracted Load applied for (in kW)
         <span class="asterisk">*</span></label
       >
-      <q-input  dense outlined />
+      <q-input dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
-        >11.Details Of Foundry/workshop Facilities Arranged.Whether Ownership,
-        Long Term Lease Etc. <span class="asterisk">*</span></label
+        >7.Type of Supply <span class="asterisk">*</span></label
       >
-      <q-input  dense outlined />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender"
-        >12.Facilities Of Steel Casting And Hardness Testing Of Vital Parts Etc
-        Or Other Means. <span class="asterisk">*</span></label
-      >
-      <q-input  dense outlined />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender"
-        >13.Availability Of Electricity <span class="asterisk">*</span></label
-      >
-      <q-input  dense outlined />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender"
-        >14.Details Of Loan Received From Government Or Financial Institution.
-        If So, Give Details <span class="asterisk">*</span></label
-      >
-      <q-input  dense outlined />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender"
-        >15.Name Of Bankers,if Any <span class="asterisk">*</span></label
-      >
-      <q-input  dense outlined />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender"
-        >16.VAT/ Sales Tax Registration Number/CST Number/Professional Tax
-        Registration Number/IT Number <span class="asterisk">*</span></label
-      >
-      <q-input  dense outlined />
+      <q-radio name="supply" v-model="shape" val="line" label="Permanent" />
+      <q-radio
+        name="supply"
+        v-model="shape"
+        val="rectangle"
+        label="Temporary"
+      />
+      <!-- <q-input dense outlined /> -->
     </div>
 
     <div class="col-10">
-      <label class="zlabel" for="gender"
-        >17.Have You Applied Previously For A Manufacturer's Licence? If So,
-        When And With What Results ? <span class="asterisk">*</span></label
-      >
-      <q-input  dense outlined />
-    </div>
+      <q-toggle
+        v-model="value"
+        label=">8.If Temporary supply, specify period of requirement: From (date): To
+        (date)"
+      />
 
-    <div class="col-12">
-      <label class="zlabel" for="gender"
-        >18. <span class="asterisk">*</span></label
-      >
-      <div class="row justify q-col-gutter-md q-ml-md">
-        <div class="col-md-5 col-xs-10">
+      <div class="row items-center q-col-gutter-md">
+        <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
-            >(i)Whether The Item (s) Proposed To Be Manufactured Will Be Sold
-            Within The State Or Out Side The State Or Both
-            <span class="asterisk">*</span></label
+            >From (date) <span class="asterisk">*</span></label
           >
-          <q-input  dense outlined />
-        </div>
-        <div class="col-md-5 col-xs-10">
-          <label class="zlabel" for="gender"
-            >(ii)Details Of Model Approval Received From Government Of India;
-            <span class="asterisk">*</span></label
-          >
-          <q-input  dense outlined />
-        </div>
-
-        <div class="col-md-7 col-xs-10">
-          <label class="zlabel" for="gender"
-            >(iii)When Can You Produce For Inspection Samples Of Your Products
-            For Which Licence Is Desired ?
-            <span class="asterisk">*</span></label
-          >
-          <q-input  dense outlined />
+          <q-input dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
-          <label class="text-weight-bold" for="gender"
-            >I do hereby affirm that the informations furnished above are true
-            and the documents attached herewith are genuine.
-            <span class="asterisk">*</span></label
+          <label class="zlabel" for="gender"
+            >To (date) <span class="asterisk">*</span></label
           >
+          <q-input dense outlined />
         </div>
       </div>
     </div>
 
+    <div class="col-10">
+      <q-toggle
+        v-model="value"
+        label="8.Please indicate whether you want to carry out the works of laying service line and/or dedicated distribution facility
+for the electricity supply requisitioned. "
+      />
+    </div>
+
+    <div class="col-10">
+      <q-toggle
+        v-model="value"
+        label="Please indicate whether you want to install your own CEA approved meter. (Yes/No) "
+      />
+    </div>
+
     <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender"
-        >Signature Of The Applicant <span class="asterisk">*</span></label
-      >
-      <q-input type="file"  dense outlined />
+      <q-input dense outlined v-model="text" type="file" />
+    </div>
+
+    <div class="col-12">
+      <label for="" class="zlabel">
+        <q-radio v-model="shape" val="line" label="For a Person" />
+        <q-radio v-model="shape" val="line" label="For an Organization" />
+      </label>
+
+      <q-input dense v-model="text" type="file" />
+    </div>
+
+    <div class="col-5 text-caption">
+      <span>For a person </span> <br>
+      (i) Electoral identity card; <br />
+      (ii) Passport; (iii) Driving license; <br />
+      (iv) Ration card; <br />
+      (v) Photo identity card issued by Government agency; <br />
+      (vi) PAN card; <br />
+      (viii) Certificate from village Pradhan/ Patwari/ Lekhpal/ village level
+      worker/ village chowkidar/ Primary school teacher/ in-charge of primary
+      health centre etc.
+    </div>
+
+    <div class="col-5 text-caption">
+        <span>For an organization </span> <br>
+      (i) Electoral identity card; <br />
+      (ii) Passport; (iii) Driving license; <br />
+      (iv) Ration card; <br />
+      (v) Photo identity card issued by Government agency; <br />
+      (vi) PAN card; <br />
+      (viii) Certificate from village Pradhan/ Patwari/ Lekhpal/ village level
+      worker/ village chowkidar/ Primary school teacher/ in-charge of primary
+      health centre etc.
     </div>
 
     <div class="col-xs-12" />
@@ -382,11 +255,8 @@ export default {
       epic_holder: "",
       constituency: "",
     });
-    onMounted(() => {
-     
-    });
+    onMounted(() => {});
     return {
-     
       emailRegex,
       localData,
       formData,
