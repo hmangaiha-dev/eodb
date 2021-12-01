@@ -52,6 +52,10 @@ class ApplicationController extends Controller
     public function submitApplication(Request $request)
     {
         // return $request->all();
+        // $filename = time().'.'.$request->file('voters_id')->getClientOriginalExtension();
+        // return $request->file('voters_id')->getClientOriginalName();
+        // return $request->file('voters_id')->storeAs('uploads',$filename);
+        // return $request->fields['area_plot'];
         $this->validate($request, [
             'application_code' => ['required'],
             'department_id' => ['required'],

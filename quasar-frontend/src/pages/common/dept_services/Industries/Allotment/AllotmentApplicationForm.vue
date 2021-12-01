@@ -31,8 +31,8 @@
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
-import { date } from "quasar";
-import {ref} from 'vue'
+import { date, format } from "quasar";
+import { ref } from "vue";
 
 import Part1 from "./Part1.vue";
 import Part2 from "./Part2.vue";
@@ -57,7 +57,6 @@ export default {
     // const draft = store.getters["applicantData/getCurrentDraft"];
     // const currentUser = store.getters["auth/getCurrentUser"];
 
-
     const formData = reactive({
       title: "Mr",
       name: "dummy name",
@@ -78,33 +77,65 @@ export default {
       epic_holder: "",
       constituency: "",
     });
-    onMounted(() => {
-
-    });
-
+    onMounted(() => {});
 
     return {
-
       part1Form,
       part2Form,
       documentForm,
 
-
       submit: () => {
-        const formData = {
-          application_code: 'CODE1',
-          department_id: 1,
-          part1: Object.assign({},part1Form.value.formData),
-          part2: Object.assign({},part2Form.value.formData),
-          fields: Object.assign(part1Form.value.formData,part2Form.value.formData),
-          document: Object.assign({},documentForm.value.formData),
+        let formDatas = new FormData();
 
+        // console.log("documents value", formData.document);
+
+        for (let data in documentForm.value.formData) {
+          console.log(
+            "data value of" + data,
+            documentForm.value.formData[data]
+          );
+          formDatas.append(`${data}`, documentForm.value.formData[data]);
         }
-        // return console.log('allFormData',formData);
 
-        api.post('/applications/submit',formData)
-          .then(res => console.log('response value',res.data))
-          .catch(err => console.log('error',err))
+        var fields = Object.assign(
+          part1Form.value.formData,
+          part2Form.value.formData
+        );
+
+        var formData = {
+          application_code: "CODE1",
+          department_id: 1,
+         
+
+          communcation_address: "Address for Communication",
+
+          proposed_or_existing: "Whether Proposed Or Existing Unit If Existing, Detail Address Of The Unit: Proposed/Existing.",
+
+          // fields: Object.assign(
+          //   part1Form.value.formData,
+          //   part2Form.value.formData
+          // ),
+
+          // voters_id: documentForm.value.formData.voters_id,
+          // document: Object.assign({}, documentForm.value.formData),
+          document: formDatas,
+        };
+
+        formData = Object.assign(formData, fields);
+
+        // for (const [key, value] of Object.entries(formData.fields)) {
+        //   formData.app
+        // }
+
+        console.log("formdatas document", formData);
+        // console.log("document only", formDatas);
+
+        // return console.log("allFormData", formDatas.get('voters_id'));
+
+        api
+          .post("/applications/submit", formData)
+          .then((res) => console.log("response value", res.data))
+          .catch((err) => console.log("error", err));
       },
       emailRegex,
 

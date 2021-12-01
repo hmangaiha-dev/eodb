@@ -79,7 +79,7 @@
             <q-expansion-item
               expand-icon="expand_more"
               group="somegroup"
-              icon="explore"
+              icon=""
               label="Online Services"
               default-opened
               header-class="text-primary"

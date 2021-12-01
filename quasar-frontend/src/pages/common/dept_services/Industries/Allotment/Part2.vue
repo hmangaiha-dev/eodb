@@ -161,7 +161,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.applicant_signature" />
+      <q-input type="file" dense outlined v-model="formData.applicant_signature" />
     </div>
 
     <div class="col-xs-12" />
@@ -182,13 +182,16 @@ export default {
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
+
+
+
    
 
     const formData = reactive({
-      enterprise_name: "Mr",
+      enterprise_name: "",
       enterprise_category: "",
       nature_activity: "",
-      incase_others: "Male",
+      incase_others: "",
       isAncillary: "",
       if_yes: "",
       organization_type: "",
