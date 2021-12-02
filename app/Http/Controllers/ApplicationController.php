@@ -71,22 +71,23 @@ class ApplicationController extends Controller
             'department_id' => $request->get('department_id'),
         ]);
 
+        $count = 0;
 
 
-        foreach ($request->file() as $key => $file) {
-            $filename = time() . uniqid() . '.' . $file->getClientOriginalExtension();
+        // // Keep below code
+        //     foreach ($request->file() as $key => $file) {
+        //         $count = $count + 1;
+        //         $filename = time() . uniqid() . '.' . $file->getClientOriginalExtension();
 
-            $path = $file->storeAs('CODE1', $filename);
-            //  $request->file('voters_id')->getClientOriginalName();
-            // $file->store('tests');
-            $application->attachments()->create([
-                'original_name' => $key,
-                'mime' => 'jpg',
-                'label' =>  $key,
-                'size' => '2',
-                'path' => $path
-            ]);
-        }
+        //         $path = $file->storeAs($request->get('application_code'), $filename);
+        //         $application->attachments()->create([
+        //             'original_name' => $key,
+        //             'mime' => 'jpg',
+        //             'label' =>  $key,
+        //             'size' => '2',
+        //             'path' => $path
+        //         ]);
+        //     }
 
 
         DB::transaction(function ($cb) use ($appProfile, $request, $application) {
@@ -116,7 +117,7 @@ class ApplicationController extends Controller
         });
 
         return response()->json([
-            'message' => 'Application submitted successfully'
+            'message' => 'Application submitted successfully' . $count
         ], 200);
     }
 }

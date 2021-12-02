@@ -50,6 +50,13 @@ export default {
       component: () => import("pages/investor/OnGoingApplications.vue"),
     },
 
+
+    {
+      path: "application/:id",
+      name: "investor:show-applicant",
+      component: () => import("pages/investor/ApplicationDetail.vue"),
+    },
+
     {
       path: "common-application/create",
       name: "common-application",

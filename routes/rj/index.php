@@ -5,6 +5,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\InvestorProfileController;
 use App\Models\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,5 +35,14 @@ Route::get('/department/{slug}', [DepartmentController::class, 'showDepartment']
 Route::get('attach', function () {
     // return 3;
     return Application::with('attachments')->get();
+});
+
+Route::middleware('auth:sanctum')->get('myapp', function () {
+    // return 3;
+    $user =  Auth::user();
+
+    $app = $user->applications()->with('department')->get();
+
+    return $app;
 });
 

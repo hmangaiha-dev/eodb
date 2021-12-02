@@ -5,7 +5,7 @@
     <div class="col-12 ztitle text-center">
       Application form – New Connection (Low Tension Service)
     </div>
-    <q-form @submit.prevent="" class="row">
+    <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />
@@ -25,6 +25,8 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
+import { api } from "src/boot/axios";
+import { useQuasar } from "quasar";
 
 import Form from "./Form.vue";
 
@@ -35,58 +37,45 @@ export default {
   components: {
     Form,
   },
+
   setup(props, context) {
     const applicantRef = ref(null);
-    // const FirmRef = ref(null);
     const store = useStore();
+    const $q = useQuasar();
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
-    const localData = reactive({
-      genders: [
-        { value: "Male", label: "Male" },
-        { value: "Female", label: "Female" },
-        { value: "Other", label: "Other" },
-      ],
-      epic_relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-      ],
-      relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-        { value: "Spouse", label: "Spouse" },
-        { value: "Guardian", label: "Guardian" },
-      ],
-      adults: [
-        { value: true, label: "Applicant is above 18 years" },
-        { value: false, label: "Applicant is below 18 years" },
-      ],
-    });
 
-    const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: currentUser?.email,
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
-    });
-    onMounted(() => {});
+    const submit = () => {
+      var formData = reactive({
+        test: '1'
+      });
+
+      formData = Object.assign(formData,applicantRef.value.formData);
+
+
+      var formDatas = new FormData();
+
+      for (let data in formData) {
+        console.log("data value of" + data, formData[data]);
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+    
+      api
+        .post("/applications/submit", formDatas)
+        .then((res) => {
+          console.log("response value", res.data);
+          $q.notify({
+            message: "Application submitted successfully",
+            color: "green",
+          });
+        })
+        .catch((err) => console.log("error", err));
+    };
+
     return {
       applicantRef,
-      formData,
+      submit,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

@@ -68,4 +68,9 @@ class Application extends Model
         $profile= $this->profile()->first();
         return $profile->processFlows()->orderBy('step','desc')->latest()?->first()?->step;
     }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class,'department_id','id');
+    }
 }

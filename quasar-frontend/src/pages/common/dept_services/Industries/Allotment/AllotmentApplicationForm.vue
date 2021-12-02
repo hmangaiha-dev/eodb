@@ -75,11 +75,16 @@ export default {
           part2Form.value.formData
         );
 
+      //  return console.log("document check file", documentForm.value.formData);
+
+
         console.log("fields", fields);
 
         formData = Object.assign(formData, fields);
 
         formData = Object.assign(formData, documentForm.value.formData);
+
+        // return console.log('form file check',formData);
 
         var formDatas = new FormData();
 
@@ -87,6 +92,7 @@ export default {
           console.log("data value of" + data, formData[data]);
           formDatas.append(`${data}`, formData[data]);
         }
+        // return
 
         api
           .post("/applications/submit", formDatas)

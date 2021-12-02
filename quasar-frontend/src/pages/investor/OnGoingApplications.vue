@@ -1,6 +1,27 @@
 <template>
   <div class="q-pa-md">
-    <q-table
+    <div class="row q-col-gutter-md">
+      <div class="col-sm-3">
+        <q-card class="zcard">
+          <q-card-section>
+            <p class="col-xs-12 col-md-3 zvalue">Application for</p>
+            <div class="text-subtitle2">REGNO-13</div>
+          </q-card-section>
+          <q-card-section>
+            <div class="text-subtitle2">Submitted at :12/23/24</div>
+          </q-card-section>
+          <q-card-actions align="left">
+            <q-btn
+              @click="showApplicantDetail"
+              color="green"
+              outline
+              label="Open"
+            />
+          </q-card-actions>
+        </q-card>
+      </div>
+    </div>
+    <!-- <q-table
       class="my-sticky-header-table"
       title="Ongoing Applicants"
       :rows="rows"
@@ -8,72 +29,80 @@
       row-key="name"
       flat
       bordered
-    />
+    /> -->
   </div>
 </template>
 
 <script>
 const columns = [
   {
-    name: 'name',
+    name: "name",
     required: true,
-    label: 'Name',
-    align: 'left',
-    field: row => row.name,
-    format: val => `${val}`,
-    sortable: true
+    label: "Name",
+    align: "left",
+    field: (row) => row.name,
+    format: (val) => `${val}`,
+    sortable: true,
   },
-  { name: 'department', align: 'center', label: 'Department', field: 'department', sortable: true },
+  {
+    name: "department",
+    align: "center",
+    label: "Department",
+    field: "department",
+    sortable: true,
+  },
 
-  { name: 'calories', align: 'center', label: 'Application Code', field: 'calories', sortable: true },
-  { name: 'fat', label: 'Submitted on', field: 'fat', sortable: true },
-  { name: 'carbs', label: 'Status', field: 'carbs' },
-  { name: 'protein', label: 'Protein (g)', field: 'protein' },
-  
-]
+  {
+    name: "calories",
+    align: "center",
+    label: "Application Code",
+    field: "calories",
+    sortable: true,
+  },
+  { name: "fat", label: "Submitted on", field: "fat", sortable: true },
+  { name: "carbs", label: "Status", field: "carbs" },
+  { name: "protein", label: "Protein (g)", field: "protein" },
+];
 
 const rows = [
   {
-    name: 'Application for Allotment of Industrial Plot',
-    department: 'Aizawl Municipal Corporation',
+    name: "Application for Allotment of Industrial Plot",
+    department: "Aizawl Municipal Corporation",
     calories: 159,
     fat: 6.0,
     carbs: 24,
     protein: 4.0,
-    
   },
   {
-    name: 'Application for Claiming Interest Subsidy',
-    department: 'Commerce and Industries',
+    name: "Application for Claiming Interest Subsidy",
+    department: "Commerce and Industries",
     calories: 237,
     fat: 9.0,
     carbs: 37,
     protein: 4.3,
-    
   },
   {
-    name: 'APPLICATION FOR PERIODIC PATTA (PERIODIC PATTA DILNA)',
-    department: 'Aizawl Municipal Corporation',
+    name: "APPLICATION FOR PERIODIC PATTA (PERIODIC PATTA DILNA)",
+    department: "Aizawl Municipal Corporation",
     calories: 262,
     fat: 16.0,
     carbs: 23,
     protein: 6.0,
-    
   },
-  
-]
+];
 
 export default {
-  setup () {
+  setup() {
     return {
       columns,
-      rows
-    }
-  }
-}
+      rows,
+      showApplicantDetail: () => {
+        console.log("show app detail");
+      },
+    };
+  },
+};
 </script>
-
-
 
 <style lang="sass">
 .my-sticky-header-table
