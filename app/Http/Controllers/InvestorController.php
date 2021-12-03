@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Investor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,6 +25,28 @@ class InvestorController extends Controller
         ]);
     }
 
+    public function getApplications()
+    {
+        // return 'yes';
+
+        $user =  Auth::user();
+
+        $app = $user->applications()->with('department')->get();
+
+        return $app;
+    }
+
+
+
+    public function detail(Request $request,Application $model)
+    {
+        abort_if($model->user_id != Auth::id(),403,'You dont have permission!');
+        $model->load(['profile', 'applicationValues', 'attachments']);
+        return response()->json([
+            'data' => $model,
+        ], 200);
+    }
+
 
 
     public function logout(Request $request)
@@ -32,7 +55,5 @@ class InvestorController extends Controller
         return response()->json([
             'data' => 'tokens deleted'
         ], 200);
-
-
     }
 }

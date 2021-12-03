@@ -117,7 +117,7 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
     Route::delete('{model}/notes/{id}', [NotesheetController::class, 'destroy']);
 });
 
-Route::post('applications/submit', [ApplicationController::class, 'submitApplication']);
+Route::post('applications/submit', [ApplicationController::class, 'submitApplication'])->middleware('auth:sanctum');
 
 // base_path('routes/rj/index.php');
 

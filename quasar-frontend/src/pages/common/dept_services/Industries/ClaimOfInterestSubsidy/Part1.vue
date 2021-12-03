@@ -512,7 +512,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineCexist"
                   />
                 </div>
 
@@ -521,7 +521,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineCexist2"
                   />
                 </div>
               </div>
@@ -543,7 +543,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineDnewUnit"
                   />
                 </div>
               </div>
@@ -559,7 +559,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineDexist1"
                   />
                 </div>
 
@@ -568,7 +568,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineDexist2"
                   />
                 </div>
               </div>
@@ -590,7 +590,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineEnewUnit"
                   />
                 </div>
               </div>
@@ -606,7 +606,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineEexist1"
                   />
                 </div>
 
@@ -615,7 +615,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineEexist2"
                   />
                 </div>
               </div>
@@ -637,7 +637,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineFnewUnit"
                   />
                 </div>
               </div>
@@ -653,7 +653,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineFexist1"
                   />
                 </div>
 
@@ -662,7 +662,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_nineFexist2"
                   />
                 </div>
               </div>
@@ -684,7 +684,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_totalnewUnit"
                   />
                 </div>
               </div>
@@ -700,7 +700,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_totalexist1"
                   />
                 </div>
 
@@ -709,7 +709,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.cne_interest_subsidy_totalexist2"
                   />
                 </div>
               </div>
@@ -723,7 +723,7 @@
       <label class="zlabel" for=""
         >10. Increase In Investment (in Case Of Existing Unit)</label
       >
-      <q-input dense outlined v-model="formData.communication_district" />
+      <q-input dense outlined v-model="formData.cne_interest_subsidy_ten" />
     </div>
 
     <div class="col-12">
@@ -738,7 +738,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.cne_interest_subsidy_elevenA1"
               />
             </div>
           </div>
@@ -756,7 +756,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.cne_interest_subsidy_elevenB1"
               />
             </div>
 
@@ -767,7 +767,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.cne_interest_subsidy_elevenB2"
               />
             </div>
           </div>
@@ -783,14 +783,14 @@
             >A) Names Of The Raw Materials Utilized With Quantity And Value
             During The Claim Period.</label
           >
-          <q-input dense outlined v-model="formData.communication_district" />
+          <q-input dense outlined v-model="formData.cne_interest_subsidy_twelveA" />
         </div>
         <div class="col-5">
           <label for="" class="zlabel"
             >B) Name Of The Finished Product(s) Alongwith Quantity And Value
             During The Claim Period.</label
           >
-          <q-input dense outlined v-model="formData.communication_district" />
+          <q-input dense outlined v-model="formData.cne_interest_subsidy_twelveB" />
         </div>
       </div>
     </div>
@@ -802,14 +802,14 @@
           <label for="" class="zlabel"
             >A) Name Of The Bank Branch Providing Working Capital Loan</label
           >
-          <q-input dense outlined v-model="formData.communication_district" />
+          <q-input dense outlined v-model="formData.cne_interest_subsidy_thirteenA" />
         </div>
         <div class="col-5">
           <label for="" class="zlabel"
             >B) Maximum Limit Of Working Capital Sanctioned Along With Rate Of
             Interest</label
           >
-          <q-input dense outlined v-model="formData.communication_district" />
+          <q-input dense outlined v-model="formData.cne_interest_subsidy_thirteenB" />
         </div>
 
         <div class="col-12">
@@ -820,7 +820,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.cne_interest_subsidy_thirteenC1"
               />
             </div>
 
@@ -829,7 +829,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.cne_interest_subsidy_thirteenC2"
               />
             </div>
           </div>
@@ -838,7 +838,7 @@
 
       <div class="col-12 q-mt-md">
         <label class="zlabel" for="">14. Remarks, If Any.</label>
-        <q-input dense outlined v-model="formData.communication_district" />
+        <q-input dense outlined v-model="formData.cne_interest_subsidy_fourteen" />
       </div>
 
       <div class="col-12">
@@ -846,7 +846,7 @@
           >15. Employment Generation In Various Fields Of Work (Executive,
           Non-executive, Skilled, Un-skilled Etc.)</label
         >
-        <q-input dense outlined v-model="formData.communication_district" />
+        <q-input dense outlined v-model="formData.cne_interest_subsidy_fifteen" />
       </div>
 
       <div class="col-12">
@@ -869,12 +869,17 @@
 
           <div class="col-3">
             <label class="zlabel" for=""> Signature of the Applicant </label>
-            <q-input
-              dense
-              type="file"
-              outlined
-              v-model="formData.communication_district"
-            />
+             <q-file
+                dense
+                label="Secreatriat HOD Name"
+                outlined
+                v-model="formData.cne_interest_subsidy_applicant_signature"
+              >
+                <template v-slot:prepend>
+                  <q-icon name="attach_file" />
+                </template>
+              </q-file>
+            
           </div>
         </div>
       </div>
@@ -1007,6 +1012,9 @@ export default {
       cne_interest_subsidy_totalexist1: "",
       cne_interest_subsidy_totalexist2: "",
 
+
+    cne_interest_subsidy_ten: '',   
+
       cne_interest_subsidy_eleven: '',
       cne_interest_subsidy_elevenA: '',
       cne_interest_subsidy_elevenA1:'',
@@ -1032,7 +1040,7 @@ export default {
 
       cne_interest_subsidy_fifteen: '',
 
-      cne_interest_subsidy_applicant_signature: ''
+      cne_interest_subsidy_applicant_signature: null
 
 
 

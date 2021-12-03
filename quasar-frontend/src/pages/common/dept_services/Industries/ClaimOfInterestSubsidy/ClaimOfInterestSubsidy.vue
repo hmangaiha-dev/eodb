@@ -51,24 +51,7 @@ export default {
  
 
     const formData = reactive({
-      title: "Mr",
-      name: "dummy name",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: "",
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
+      
     });
     onMounted(() => {
      

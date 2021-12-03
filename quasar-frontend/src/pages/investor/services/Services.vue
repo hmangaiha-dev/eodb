@@ -1,5 +1,5 @@
 <template>
- <div style="max-width: 1600px;margin:0 auto" class="row q-mt-md q-gutter-md q-pa-md ">
+ <div style="max-width: 1600px;margin:0 auto" class="row q-mt-md q-col-gutter-md q-pa-sm ">
   <div style="width:100%" class="q-pa-md">
     <q-tabs stretch v-model="tab" class="text-teal">
       <q-tab name="services" icon="mails" label="Online Services" />

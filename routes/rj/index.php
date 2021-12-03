@@ -37,12 +37,8 @@ Route::get('attach', function () {
     return Application::with('attachments')->get();
 });
 
-Route::middleware('auth:sanctum')->get('myapp', function () {
-    // return 3;
-    $user =  Auth::user();
+Route::group(['prefix' => 'investor/applications' ,'middleware' => 'auth:sanctum'], function() {
+    Route::get('',[InvestorController::class,'getApplications']);
+    Route::get('{model}',[InvestorController::class,'detail']);
 
-    $app = $user->applications()->with('department')->get();
-
-    return $app;
 });
-

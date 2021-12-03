@@ -33,6 +33,12 @@ export default {
       name: 'investor:profile',
       component: () => import("pages/investor/ProfileInfo.vue"),
     },
+
+    {
+      path: "unauthorised",
+      name: 'unauthorised',
+      component: () => import("pages/Unauthorised.vue"),
+    },
     {
       path: "profile/update",
       name: "profile:update",

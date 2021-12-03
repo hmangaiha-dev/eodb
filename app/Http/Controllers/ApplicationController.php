@@ -8,6 +8,7 @@ use App\Models\ApplicationProfile;
 use App\Utils\KeysUtil;
 use App\Utils\NumberGenerator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\FileBag;
@@ -67,7 +68,7 @@ class ApplicationController extends Controller
             'application_code' => $request->get('application_code'),
             'regn_no' => NumberGenerator::fakeIdGenerator(),
             'application_profile_id' => $appProfile->id,
-            'user_id' => 1,
+            'user_id' => Auth::id(),
             'department_id' => $request->get('department_id'),
         ]);
 

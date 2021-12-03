@@ -39,6 +39,8 @@ import Part2 from "./Part2.vue";
 import Document from "./Document.vue";
 import { api } from "src/boot/axios";
 
+import { useRouter } from 'vue-router'
+
 import { useQuasar } from "quasar";
 
 const emailRegex =
@@ -54,6 +56,8 @@ export default {
     const part1Form = ref(null);
     const part2Form = ref(null);
     const documentForm = ref(null);
+
+    const router = useRouter()
 
     const $q = useQuasar();
     const store = useStore();
@@ -75,16 +79,12 @@ export default {
           part2Form.value.formData
         );
 
-      //  return console.log("document check file", documentForm.value.formData);
-
-
         console.log("fields", fields);
 
         formData = Object.assign(formData, fields);
 
         formData = Object.assign(formData, documentForm.value.formData);
 
-        // return console.log('form file check',formData);
 
         var formDatas = new FormData();
 
@@ -102,11 +102,13 @@ export default {
               message: 'Application submitted successfully',
               color: 'green'
             })
+            router.push({ name: 'investor:ongoing' })
+
           })
           .catch((err) => console.log("error", err));
       },
       emailRegex,
-
+      router,
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

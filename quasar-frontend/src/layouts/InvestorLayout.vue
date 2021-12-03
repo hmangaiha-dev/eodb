@@ -53,7 +53,7 @@
         <q-page-container>
           <q-drawer
             class="q-px-md q-ml-md"
-            :width="400"
+            :width="$q.screen.gt.md ? '400' : '304'"
             show-if-above
             v-model="leftDrawerOpen"
             side="left"
@@ -81,7 +81,7 @@
               group="somegroup"
               icon=""
               label="Online Services"
-              default-opened
+             
               header-class="text-primary"
             >
               <q-item

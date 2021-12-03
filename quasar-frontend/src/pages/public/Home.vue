@@ -5,11 +5,11 @@
       class="group row justify-evenly"
       style="background-color: #b9d8d4"
     >
-      <div class="col-lg-5 col-sm-10 col-xs-11 q-mb-md col-md-5">
+      <div class="col-lg-5 col-sm-10 col-xs-12 q-mb-md col-md-5">
         <h1 class="heading content q-px-md"><span>Think of Business!</span></h1>
-        <h1 class="content2">
+        <div class="content2">
           <span>There is Ease of Doing Business!</span>
-        </h1>
+        </div>
         <q-btn
           label="Explore Department"
           class="explore text-capitalize"

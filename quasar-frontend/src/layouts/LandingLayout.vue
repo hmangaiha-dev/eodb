@@ -6,7 +6,7 @@
           ><img style="width: 80px" src="~assets/eodb-logo.png"
         /></router-link>
 
-        <q-toolbar-title class="q-mt-md q-pl-lg q-mb-none"
+        <q-toolbar-title class="gt-xs q-mt-md q-pl-lg q-mb-none"
           ><span class="heading q-pb-none">Ease of Doing Business</span>
           <p class="mizoram q-pt-none text-caption">Mizoram</p>
           <!-- <q-btn flat @click="drawer = !drawer" round dense icon="menu" /> -->

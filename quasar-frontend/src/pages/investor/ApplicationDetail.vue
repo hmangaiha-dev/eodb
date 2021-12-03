@@ -49,15 +49,7 @@
       </div>
     </div>
     <q-separator class="q-my-md" />
-    <div class="zcard col-xs-12 q-gutter-xs">
-      <q-btn
-        v-for="(action, i) in localData.actions"
-        :name="action.value"
-        :key="i"
-        outline
-        :label="action?.label"
-      />
-    </div>
+    
   </q-page>
 </template>
 <script>
@@ -66,11 +58,15 @@ import { api } from "boot/axios";
 import { useQuasar } from "quasar";
 import { reactive } from "@vue/reactivity";
 import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
+
 import { ref } from "vue";
 
 export default {
   setup(props, context) {
     const route = useRoute();
+    const router = useRouter();
+
     const q = useQuasar();
     const dialog = ref(false);
 
@@ -78,13 +74,12 @@ export default {
     const localData = reactive({
       application: {},
       fields: [],
-      actions: [],
       attachments: [],
     });
     onMounted(() => {
       const id = route.params.id;
       api
-        .get(`applications/${id}`)
+        .get(`investor/applications/${id}`)
         .then((res) => {
           // console.log('applicant details',res.data);
           const {
@@ -92,25 +87,27 @@ export default {
             application_values,
             application_name,
             regn_no,
-            current_state,
             attachments,
           } = res.data.data;
-          localData.actions = res.data.actions;
           localData.application.regn_no = regn_no;
           localData.application.application_code = application_code;
           localData.application.application_name = application_name;
-          localData.application.current_state = current_state;
           localData.fields = application_values;
           localData.attachments = attachments;
         })
         .catch((err) => {
-          let message = err.response?.message || "Something wrong";
-          q.notify({ type: "negative", message });
+          console.log('permission message',err.response.data.message);
+          router.push({
+            name: 'unauthorised'
+          })
+          q.notify({ type: "negative", icon:'warnings', message:err.response.data.message });
         });
     });
     return {
       localData,
       dialog,
+      route,
+      router,
       attachment,
       getFile: (path) => {
         attachment.value = "http://localhost:8000/storage/" + path;

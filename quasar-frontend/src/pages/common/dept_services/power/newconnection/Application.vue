@@ -27,8 +27,10 @@ import { date } from "quasar";
 import { ref } from "vue";
 import { api } from "src/boot/axios";
 import { useQuasar } from "quasar";
+import { useRouter } from "vue-router";
 
 import Form from "./Form.vue";
+import router from "src/router";
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -42,16 +44,17 @@ export default {
     const applicantRef = ref(null);
     const store = useStore();
     const $q = useQuasar();
+    const router = useRouter();
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
 
     const submit = () => {
+      // return console.log('my router',myRouter);
       var formData = reactive({
-        test: '1'
+        test: "1",
       });
 
-      formData = Object.assign(formData,applicantRef.value.formData);
-
+      formData = Object.assign(formData, applicantRef.value.formData);
 
       var formDatas = new FormData();
 
@@ -60,7 +63,6 @@ export default {
         formDatas.append(`${data}`, formData[data]);
       }
 
-    
       api
         .post("/applications/submit", formDatas)
         .then((res) => {
@@ -69,6 +71,7 @@ export default {
             message: "Application submitted successfully",
             color: "green",
           });
+          router.push({ name: "investor:ongoing" });
         })
         .catch((err) => console.log("error", err));
     };
@@ -76,6 +79,7 @@ export default {
     return {
       applicantRef,
       submit,
+      router,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
