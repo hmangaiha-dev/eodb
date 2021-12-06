@@ -3,7 +3,6 @@
 </template>
 <script>
 import {defineComponent, onMounted} from 'vue';
-import {api} from "boot/axios";
 import axios from "axios";
 import {useStore} from "vuex";
 
@@ -12,9 +11,10 @@ export default defineComponent({
   setup() {
     const store = useStore();
     onMounted(()=> {
-      store.dispatch('staffData/fetchData')
-      axios.get('http://localhost:8000/sanctum/csrf-cookie')
-        .then(res => console.log(res)).catch(err => console.log(err))
+      axios.get('http://13.235.104.152/sanctum/csrf-cookie')
+      .then(res=>{
+        store.dispatch('staffData/fetchData')
+      })
     })
   }
 })

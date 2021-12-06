@@ -14,7 +14,7 @@
 .container-md,
 .container-lg,
 .container-xl {
-  width: 100%;
+  max-width: 1320px;
   margin-right: auto;
   margin-left: auto;
   padding-left: 16px;
@@ -79,44 +79,12 @@
 }
 
 @media (min-width: 718px) {
-  .container,
-  .container-lg,
-  .container-sm{
-    padding: 8px;
-  }
   zcard{
     padding: 8px;
   }
 }
 
-@media (min-width: 1024px) {
-  .container,
-  .container-sm,
-  .container-md,
-  .container-lg{
-    max-width: 1024px;
-  }
 
-}
-
-@media (min-width: 1439px) {
-  .container,
-  .container-sm,
-  .container-md,
-  .container-lg {
-    max-width: 1204px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .container,
-  .container-sm,
-  .container-md,
-  .container-lg,
-  .container-xl {
-    max-width: 1440px;
-  }
-}
 
 .submitted {
   color: #258292;
