@@ -53,7 +53,7 @@
         <q-page-container>
           <q-drawer
             class="q-px-md q-ml-md"
-            :width="$q.screen.gt.md ? '400' : '304'"
+            :width="$q.screen.gt.md ? '400' : '350'"
             show-if-above
             v-model="leftDrawerOpen"
             side="left"
@@ -75,6 +75,19 @@
                 <q-icon color="negative" name="dashboard" />
               </q-item-section>
               <q-item-section> Dashboard </q-item-section>
+            </q-item>
+
+             <q-item
+              exact
+              class="zitem text-primary"
+              active-class="active-item q-px-md"
+              to="/investor/profile"
+              clickable
+            >
+              <q-item-section avatar>
+                <q-icon color="green" name="people" />
+              </q-item-section>
+              <q-item-section> Profile </q-item-section>
             </q-item>
             <q-expansion-item
               expand-icon="expand_more"

@@ -31,7 +31,7 @@ class InvestorController extends Controller
 
         $user =  Auth::user();
 
-        $app = $user->applications()->with('department')->get();
+        $app = $user->applications()->with('department')->orderBy('applications.created_at','desc')->get();
 
         return $app;
     }

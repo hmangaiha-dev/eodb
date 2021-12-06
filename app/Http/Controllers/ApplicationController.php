@@ -72,7 +72,6 @@ class ApplicationController extends Controller
             'department_id' => $request->get('department_id'),
         ]);
 
-        $count = 0;
 
 
         // // Keep below code
@@ -118,7 +117,7 @@ class ApplicationController extends Controller
         });
 
         return response()->json([
-            'message' => 'Application submitted successfully' . $count
+            'message' => 'Application submitted successfully'
         ], 200);
     }
 }

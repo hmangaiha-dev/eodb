@@ -682,7 +682,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "noc-form",
           },
         ],
       },

@@ -18,14 +18,22 @@
             <label class="zlabel" for="name"
               >1) Office Address <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.cne_interest_subsidy_oneB1" />
+            <q-input
+              dense
+              outlined
+              v-model="formData.cne_interest_subsidy_oneB1"
+            />
           </div>
 
           <div class="col-md-6 col-xs-10">
             <label class="zlabel" for="name"
               >2. Mobile Number <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.cne_interest_subsidy_oneB2" />
+            <q-input
+              dense
+              outlined
+              v-model="formData.cne_interest_subsidy_oneB2"
+            />
           </div>
         </div>
       </div>
@@ -37,14 +45,22 @@
             <label class="zlabel" for="name"
               >1) Factory Address <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.cne_interest_subsidy_oneC1" />
+            <q-input
+              dense
+              outlined
+              v-model="formData.cne_interest_subsidy_oneC1"
+            />
           </div>
 
           <div class="col-md-6 col-xs-10">
             <label class="zlabel" for="name"
               >2. Telephone No. <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.cne_interest_subsidy_oneC2" />
+            <q-input
+              dense
+              outlined
+              v-model="formData.cne_interest_subsidy_oneC2"
+            />
           </div>
         </div>
       </div>
@@ -58,14 +74,22 @@
             <label class="zlabel" for="name"
               >1) Factory Address <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.cne_interest_subsidy_oneD1" />
+            <q-input
+              dense
+              outlined
+              v-model="formData.cne_interest_subsidy_oneD1"
+            />
           </div>
 
           <div class="col-md-6 col-xs-10">
             <label class="zlabel" for="name"
               >2. Telephone No. <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.cne_interest_subsidy_oneD2" />
+            <q-input
+              dense
+              outlined
+              v-model="formData.cne_interest_subsidy_oneD2"
+            />
           </div>
         </div>
       </div>
@@ -84,14 +108,22 @@
               <label class="zlabel" for="name"
                 >1) Registration Number <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.cne_interest_subsidy_towA1" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.cne_interest_subsidy_towA1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2. Date <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.cne_interest_subsidy_twoA2" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.cne_interest_subsidy_twoA2"
+              />
             </div>
           </div>
         </div>
@@ -101,7 +133,11 @@
             >B) Any Other Registration Number Required
             Statutorily/mandatorily<span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_twoB" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_twoB"
+          />
         </div>
       </div>
     </div>
@@ -115,14 +151,22 @@
       <div class="row q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="pob">A) Constitution Of The Unit</label>
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_threeA" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_threeA"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="dob" type="date"
             >B) Date<span class="asterisk">*</span>
           </label>
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_threeB" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_threeB"
+          />
         </div>
       </div>
     </div>
@@ -136,14 +180,22 @@
       <div class="row q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="pob">A) Name</label>
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_fourA" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_fourA"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="dob" type="date"
             >B) Address<span class="asterisk">*</span>
           </label>
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_fourB" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_fourB"
+          />
         </div>
       </div>
     </div>
@@ -163,14 +215,22 @@
                 >1) Acknowledgement EM Number
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.cne_interest_subsidy_fiveA1" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.cne_interest_subsidy_fiveA1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2. Date <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.cne_interest_subsidy_fiveA2" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.cne_interest_subsidy_fiveA2"
+              />
             </div>
           </div>
         </div>
@@ -187,14 +247,22 @@
                 >1) Acknowledgement EM Number
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.cne_interest_subsidy_fiveB1" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.cne_interest_subsidy_fiveB1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2. Date <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.cne_interest_subsidy_fiveB2" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.cne_interest_subsidy_fiveB2"
+              />
             </div>
           </div>
         </div>
@@ -211,14 +279,22 @@
                 >1) Acknowledgement EM Number
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.cne_interest_subsidy_fiveC1" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.cne_interest_subsidy_fiveC1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2. Date <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.cne_interest_subsidy_fiveC2" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.cne_interest_subsidy_fiveC2"
+              />
             </div>
           </div>
         </div>
@@ -227,7 +303,11 @@
           <span class="zlabel"
             >D) Permanent Registration No In Case Of Existing Unit</span
           >
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_fiveD" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_fiveD"
+          />
         </div>
       </div>
     </div>
@@ -247,14 +327,22 @@
           <label class="zlabel" for="pob"
             >1) Name Of The Product (for Manufacturing Sector )</label
           >
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_seven1" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_seven1"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="pob"
             >2. Name Of The Activity (for Service Sector)</label
           >
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_seven2" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_seven2"
+          />
         </div>
       </div>
     </div>
@@ -274,7 +362,11 @@
                 >1) Date Of Commencement Of Production (Manufacturing Sector
                 Units) <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.cne_interest_subsidy_eightA1" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.cne_interest_subsidy_eightA1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -282,7 +374,11 @@
                 >2. Date Of Becoming Operational (Service Sector Units)
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.cne_interest_subsidy_eightA2" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.cne_interest_subsidy_eightA2"
+              />
             </div>
           </div>
         </div>
@@ -303,14 +399,22 @@
                     >1) Prior To Expansion
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.cne_interest_subsidy_eightBTitl11" />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.cne_interest_subsidy_eightBTitl11"
+                  />
                 </div>
 
                 <div class="col-md-5 col-xs-10">
                   <label class="zlabel" for="name"
                     >2. After Expansion <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.cne_interest_subsidy_eightBTitl12" />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.cne_interest_subsidy_eightBTitl12"
+                  />
                 </div>
               </div>
             </div>
@@ -323,14 +427,22 @@
                     >1) Prior To Expansion
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.cne_interest_subsidy_eightBTitle21" />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.cne_interest_subsidy_eightBTitle21"
+                  />
                 </div>
 
                 <div class="col-md-5 col-xs-10">
                   <label class="zlabel" for="name"
                     >2. After Expansion <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.cne_interest_subsidy_eightBTitle22" />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.cne_interest_subsidy_eightBTitle22"
+                  />
                 </div>
               </div>
             </div>
@@ -357,7 +469,11 @@
                     >For New Unit (Amount In Rs.)
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.cne_interest_subsidy_nineAnewUnit" />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.cne_interest_subsidy_nineAnewUnit"
+                  />
                 </div>
               </div>
             </div>
@@ -372,14 +488,22 @@
                     >1) Prior To Expansion
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.cne_interest_subsidy_nineAexist1" />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.cne_interest_subsidy_nineAexist1"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"
                     >2. After Expansion <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.cne_interest_subsidy_nineAexist2" />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.cne_interest_subsidy_nineAexist2"
+                  />
                 </div>
               </div>
             </div>
@@ -783,14 +907,22 @@
             >A) Names Of The Raw Materials Utilized With Quantity And Value
             During The Claim Period.</label
           >
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_twelveA" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_twelveA"
+          />
         </div>
         <div class="col-5">
           <label for="" class="zlabel"
             >B) Name Of The Finished Product(s) Alongwith Quantity And Value
             During The Claim Period.</label
           >
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_twelveB" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_twelveB"
+          />
         </div>
       </div>
     </div>
@@ -802,14 +934,22 @@
           <label for="" class="zlabel"
             >A) Name Of The Bank Branch Providing Working Capital Loan</label
           >
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_thirteenA" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_thirteenA"
+          />
         </div>
         <div class="col-5">
           <label for="" class="zlabel"
             >B) Maximum Limit Of Working Capital Sanctioned Along With Rate Of
             Interest</label
           >
-          <q-input dense outlined v-model="formData.cne_interest_subsidy_thirteenB" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.cne_interest_subsidy_thirteenB"
+          />
         </div>
 
         <div class="col-12">
@@ -838,7 +978,11 @@
 
       <div class="col-12 q-mt-md">
         <label class="zlabel" for="">14. Remarks, If Any.</label>
-        <q-input dense outlined v-model="formData.cne_interest_subsidy_fourteen" />
+        <q-input
+          dense
+          outlined
+          v-model="formData.cne_interest_subsidy_fourteen"
+        />
       </div>
 
       <div class="col-12">
@@ -846,7 +990,11 @@
           >15. Employment Generation In Various Fields Of Work (Executive,
           Non-executive, Skilled, Un-skilled Etc.)</label
         >
-        <q-input dense outlined v-model="formData.cne_interest_subsidy_fifteen" />
+        <q-input
+          dense
+          outlined
+          v-model="formData.cne_interest_subsidy_fifteen"
+        />
       </div>
 
       <div class="col-12">
@@ -869,17 +1017,16 @@
 
           <div class="col-3">
             <label class="zlabel" for=""> Signature of the Applicant </label>
-             <q-file
-                dense
-                label="Secreatriat HOD Name"
-                outlined
-                v-model="formData.cne_interest_subsidy_applicant_signature"
-              >
-                <template v-slot:prepend>
-                  <q-icon name="attach_file" />
-                </template>
-              </q-file>
-            
+            <q-file
+              dense
+              label="Secreatriat HOD Name"
+              outlined
+              v-model="formData.cne_interest_subsidy_applicant_signature"
+            >
+              <template v-slot:prepend>
+                <q-icon name="attach_file" />
+              </template>
+            </q-file>
           </div>
         </div>
       </div>
@@ -894,9 +1041,6 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
-
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   setup(props, context) {
@@ -956,7 +1100,7 @@ export default {
       cne_interest_subsidy_eightBTitle1: "",
       cne_interest_subsidy_eightBTitl11: "",
       cne_interest_subsidy_eightBTitl12: "",
-
+      cne_interest_subsidy_eightBTitle2: "",
       cne_interest_subsidy_eightBTitle21: "",
       cne_interest_subsidy_eightBTitle22: "",
 
@@ -1005,90 +1149,44 @@ export default {
       cne_interest_subsidy_nineFexist1: "",
       cne_interest_subsidy_nineFexist2: "",
 
-
       cne_interest_subsidy_total: "",
       cne_interest_subsidy_totalnewUnit: "",
       cne_interest_subsidy_totalexist: "",
       cne_interest_subsidy_totalexist1: "",
       cne_interest_subsidy_totalexist2: "",
 
+      cne_interest_subsidy_ten: "",
 
-    cne_interest_subsidy_ten: '',   
+      cne_interest_subsidy_eleven: "",
+      cne_interest_subsidy_elevenA: "",
+      cne_interest_subsidy_elevenA1: "",
+      cne_interest_subsidy_elevenB: "",
+      cne_interest_subsidy_elevenB1: "",
+      cne_interest_subsidy_elevenB2: "",
 
-      cne_interest_subsidy_eleven: '',
-      cne_interest_subsidy_elevenA: '',
-      cne_interest_subsidy_elevenA1:'',
-      cne_interest_subsidy_elevenB: '',
-      cne_interest_subsidy_elevenB1:'',
-      cne_interest_subsidy_elevenB2: '',
+      cne_interest_subsidy_twelve: "",
+      cne_interest_subsidy_twelveA: "",
+      cne_interest_subsidy_twelveB: "",
 
+      cne_interest_subsidy_thirteen: "",
+      cne_interest_subsidy_thirteenA: "",
+      cne_interest_subsidy_thirteenB: "",
 
-      cne_interest_subsidy_twelve: '',
-      cne_interest_subsidy_twelveA: '',
-      cne_interest_subsidy_twelveB: '',
+      cne_interest_subsidy_thirteenC: "",
+      cne_interest_subsidy_thirteenC1: "",
+      cne_interest_subsidy_thirteenC2: "",
 
-      cne_interest_subsidy_thirteen: '',
-      cne_interest_subsidy_thirteenA: '',
-      cne_interest_subsidy_thirteenB: '',
+      cne_interest_subsidy_fourteen: "",
 
-      cne_interest_subsidy_thirteenC: '',
-      cne_interest_subsidy_thirteenC1: '',
-      cne_interest_subsidy_thirteenC2: '',
+      cne_interest_subsidy_fifteen: "",
 
-
-      cne_interest_subsidy_fourteen: '',
-
-      cne_interest_subsidy_fifteen: '',
-
-      cne_interest_subsidy_applicant_signature: null
-
-
-
-
-
+      cne_interest_subsidy_applicant_signature: null,
 
       // eight
     });
+
     onMounted(() => {});
     return {
-      onFathernameBlur: (e) => {
-        if (!formData.adult) {
-          formData.epic_relation?.toLowerCase() === "father" &&
-            (formData.epic_holder = e?.target?.value);
-        }
-        if (formData.relation?.toLowerCase() === "father") {
-          formData.relation_name = e?.target?.value;
-          formData.relation_title = "Mr";
-        }
-      },
-      onMothernameBlur: (e) => {
-        if (!formData.adult) {
-          formData.epic_relation?.value?.toLowerCase() === "father" &&
-            (formData.epic_holder = e?.target?.value);
-        }
-        if (formData.relation?.value?.toLowerCase() === "mother") {
-          formData.relation_name = e?.target?.value;
-          formData.relation_title = "Mrs";
-        }
-      },
-      handleAdult: (e) => {
-        if (e.target?.checked) {
-          formData.epic_relation?.toLowerCase() === "father" &&
-            (formData.epic_holder = formData.father_name);
-          formData.epic_relation?.toLowerCase() === "mother" &&
-            (formData.epic_holder = formData.mother_name);
-        }
-      },
-      handleEpicSelect: () => {
-        if (formData.epic_relation?.value === "Father") {
-          formData.epic_holder = formData.father_name;
-        }
-        if (formData.epic_relation?.value === "Mother") {
-          formData.epic_holder = formData.mother_name;
-        }
-      },
-      emailRegex,
-
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

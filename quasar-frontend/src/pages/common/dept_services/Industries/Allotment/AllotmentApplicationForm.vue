@@ -63,7 +63,7 @@ export default {
     const store = useStore();
 
     var formData = reactive({
-      application_code: "CODE1",
+      application_code: "C&E_ALLOTMENT_PLOT",
       department_id: 1,
     });
     onMounted(() => {});
