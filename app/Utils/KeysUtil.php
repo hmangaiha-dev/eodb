@@ -199,7 +199,62 @@ class KeysUtil
         ],
 
         'FIRE_NOC' => [
-            
+            "fire_one",
+            "fire_one_a",
+            "fire_one_b",
+            "fire_two",
+            "fire_two_a",
+            "fire_two_b",
+            "fire_three",
+            "fire_four",
+            "fire_five",
+            "fire_six",
+            "fire_seven",
+            "fire_eight",
+            "fire_nine",
+            "fire_ten",
+            "fire_eleven",
+            "fire_twelve",
+            "fire_thirteen",
+            "fire_fourteen",
+            "fire_fifteen",
+            "fire_sixteen",
+            "fire_seventeen",
+            "fire_eighteen",
+            "fire_tick_any",
+            "fire_nineteen",
+            "fire_nineteen_a",
+            "fire_nineteen_b",
+            "fire_nineteen_c",
+            "fire_twenty",
+            "fire_twenty_a",
+            "fire_twenty_b",
+            "fire_twentyone",
+            "fire_twentytwo",
+            "fire_twentythree",
+            "fire_twentyfour",
+            "fire_twentyfive",
+            "fire_twentysix"
+        ],
+
+        'PWD_ROAD_CUTTING' => [
+            "pwd_road_cutting_one",
+            "pwd_road_cutting_two",
+            "pwd_road_cutting_two_a",
+            "pwd_road_cutting_two_b",
+            "pwd_road_cutting_two_c",
+            "pwd_road_cutting_three",
+            "pwd_road_cutting_three_a",
+            "pwd_road_cutting_three_b",
+            "pwd_road_cutting_three_c",
+            "pwd_road_cutting_three_d",
+            "pwd_road_cutting_four",
+            "pwd_road_cutting_four_a",
+            "pwd_road_cutting_four_b",
+            "pwd_road_cutting_four_c",
+            "pwd_road_cutting_four_d",
+            "pwd_road_cutting_five",
+            "pwd_road_cutting_six",
         ]
     ];
 
@@ -401,6 +456,77 @@ class KeysUtil
         "cne_interest_subsidy_thirteenC2" => "2) Sanction Date",
         "cne_interest_subsidy_fourteen" => "14. Remarks, If Any.",
         "cne_interest_subsidy_fifteen" => "15. Employment Generation In Various Fields Of Work (Executive, Non-executive, Skilled, Un-skilled Etc.)",
+
+
+
+
+
+
+        //Fire NOC
+        "fire_one" => "1.Name And Address Of The Firm/company",
+        "fire_one_a" => "(a)Name",
+        "fire_one_b" => "(b)Address",
+        "fire_two" => "2.Name And Contact Number Of Owner",
+        "fire_two_a" => "(a)Name",
+        "fire_two_b" => "(b)Contact Number",
+        "fire_three" => "3.Location Of Building And Type Of Construction",
+        "fire_four" => "4.Type Of Business",
+        "fire_five" => "5.Plot Area",
+        "fire_six" => "6.Covered Area",
+        "fire_seven" => "7.Height Of Building",
+        "fire_eight" => "8.No. Of Floors/storeys",
+        "fire_nine" => "9.Total covered area of the building",
+        "fire_ten" => "10.Expected no of occupants",
+        "fire_eleven" => "11.Mode and type of production/type of occupancy",
+        "fire_twelve" => "12.Electrical wiring system and sanctioned electrical load",
+        "fire_thirteen" => "13.List of raw material(applicable for commercial/business enterprise)",
+        "fire_fourteen" => "14.Name of finished products(applicable for commercial/business enterprise)",
+        "fire_fifteen" => "15.Detail of insurance, if any",
+        "fire_sixteen" => "16.Distance from nearest Fire Station(approx)",
+        "fire_seventeen" => "17.Whether fresh NOC or Renewal",
+        "fire_eighteen" => "18. Details of First Aid Fire Fighting equipment/extinguishers already installed within the premises",
+        "fire_tick_any" => "Fixed Fire Fighting Installation (Tick for whatever is installed with numbers)",
+        "fire_nineteen" => "19 Water supply",
+        "fire_nineteen_a" => "(a) Under Ground Static Water Storage Tank with capacity",
+        "fire_nineteen_b" => "(b) Terrace Tank with capacity",
+        "fire_nineteen_c" => "(c) Water source",
+        "fire_twenty" => "20 Pump capacity in LPM",
+        "fire_twenty_a" => "a) Pump House at Ground level",
+        "fire_twenty_b" => "a) Pump House at Ground level",
+        "fire_twentyone" => "21 Detail of safety equipments, if Suits, Entry Suit , B.A. Set etc",
+        "fire_twentytwo" => "22 Whether the workers / other staff are well conversant with the operation of first aid fire fighting equipments installed in the premises.",
+        "fire_twentythree" => "23 Detail of flammable and hazardous materials alongwith Types and Quantity",
+        "fire_twentyfour" => "24 Whether P. A system is installed",
+        "fire_twentyfive" => "25 Compliance/ recommendation, if any, made in previous inspection",
+        "fire_twentysix" => "26 Other information",
+
+
+
+
+        //PWD Road Cutting
+        "pwd_road_cutting_one" => "1. Name of applicant (in block letter)",
+        "pwd_road_cutting_two" => "2. Contact address",
+        "pwd_road_cutting_two_a" => "a) Landline No",
+        "pwd_road_cutting_two_b" => "b) Mobile No",
+        "pwd_road_cutting_two_c" => "c) Email identity",
+        "pwd_road_cutting_three" => "3. Resident Address",
+        "pwd_road_cutting_three_a" => "a) House No if any",
+        "pwd_road_cutting_three_b" => "b) Locality/Veng",
+        "pwd_road_cutting_three_c" => "c) City/Town/Village",
+        "pwd_road_cutting_three_d" => "d) District",
+        "pwd_road_cutting_four" => "4. Location of proposed land with respect to the road (specify landmark if any)",
+        "pwd_road_cutting_four_a" => "a) House No if any",
+        "pwd_road_cutting_four_b" => "b) Locality/Veng",
+        "pwd_road_cutting_four_c" => "c) City/Town/Village",
+        "pwd_road_cutting_four_d" => "d) District",
+        "pwd_road_cutting_five" => "5. Land pass no (copy of pass shall be produced at the time of spot verification)",
+        "pwd_road_cutting_six" => "6. Purpose of land applied for",
+
+
+
+
+
+
 
 
 

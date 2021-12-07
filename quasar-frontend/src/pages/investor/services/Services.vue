@@ -724,7 +724,7 @@ export default {
             timeline: "link",
             fees: "link",
             form: "link",
-            apply: "link",
+            apply: "road-cutting",
           },
           {
             name: "Issue of No Objection Certificate for Right of Way(Along scheduled Roads under PWD & PWD Land) [(Excluding NH)]",

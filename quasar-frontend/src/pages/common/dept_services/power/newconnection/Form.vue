@@ -5,7 +5,7 @@
         >1.Name of the Applicant/Organization
         <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.power_new_connection_applicant_name" dense outlined />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_applicant_name" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -15,7 +15,7 @@
           >*</span
         >
       </label>
-      <q-input v-model="formData.power_new_connection_father_name" dense outlined />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_father_name" dense outlined />
     </div>
 
     <div class="col-12">
@@ -25,26 +25,26 @@
           <label class="zlabel" for="gender">
             House/Plot/Premise No. <span class="asterisk">*</span></label
           >
-          <q-input v-model="formData.power_new_connection_communication_house" dense outlined />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_communication_house" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >Street: <span class="asterisk">*</span></label
           >
-          <q-input v-model="formData.power_new_connection_communication_street" dense outlined />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_communication_street" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >Area/Colony: <span class="asterisk">*</span></label
           >
-          <q-input v-model="formData.power_new_connection_communication_area" dense outlined />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_communication_area" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="pob">District</label>
-          <q-input v-model="formData.power_new_connection_communication_district" dense outlined />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_communication_district" dense outlined />
         </div>
       </div>
     </div>
@@ -59,26 +59,26 @@
           <label class="zlabel" for="gender">
             House/Plot/Premise No. <span class="asterisk">*</span></label
           >
-          <q-input v-model="formData.power_new_connection_connection_house" dense outlined />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_connection_house" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >Street: <span class="asterisk">*</span></label
           >
-          <q-input v-model="formData.power_new_connection_connection_street" dense outlined />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_connection_street" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >Area/Colony: <span class="asterisk">*</span></label
           >
-          <q-input v-model="formData.power_new_connection_connection_area" dense outlined />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_connection_area" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="pob">District</label>
-          <q-input v-model="formData.power_new_connection_connection_district" dense outlined />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_connection_district" dense outlined />
         </div>
       </div>
     </div>
@@ -87,14 +87,14 @@
       <label class="zlabel" for="gender"
         >4.Category of Supply <span class="asterisk">*</span></label
       >
-      <q-input v-model="formData.power_new_connection_supply_category" dense outlined />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_supply_category" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
         >5.Purpose of Supply <span class="asterisk">*</span></label
       >
-      <q-input v-model="formData.power_new_connection_supply_purpose" dense outlined />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_supply_purpose" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -102,7 +102,7 @@
         >6.Total Contracted Load applied for (in kW)
         <span class="asterisk">*</span></label
       >
-      <q-input v-model="formData.power_new_connection_total_load" dense outlined />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_total_load" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -121,7 +121,7 @@
         val="temporary"
         label="Temporary"
       />
-      <!-- <q-input dense outlined /> -->
+      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined /> -->
     </div>
 
     <div class="col-10">
@@ -136,14 +136,14 @@
           <label class="zlabel" for="gender"
             >From (date) <span class="asterisk">*</span></label
           >
-          <q-input  v-model="formData.power_new_connection_temporay_from" dense outlined />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  v-model="formData.power_new_connection_temporay_from" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >To (date) <span class="asterisk">*</span></label
           >
-          <q-input  v-model="formData.power_new_connection_temporay_to" dense outlined />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  v-model="formData.power_new_connection_temporay_to" dense outlined />
         </div>
       </div>
     </div>
@@ -172,7 +172,7 @@ for the electricity supply requisitioned. "
           <q-icon name="attach_file" />
         </template>
       </q-file>
-      <!-- <q-input dense outlined  v-model="formData.power_new_connection_photo" type="file" /> -->
+      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined  v-model="formData.power_new_connection_photo" type="file" /> -->
     </div>
 
     <div class="col-12">
@@ -187,7 +187,7 @@ for the electricity supply requisitioned. "
         </template>
       </q-file>
 
-      <!-- <q-input dense v-model="formData.power_new_connection_identity_proof" type="file" /> -->
+      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense v-model="formData.power_new_connection_identity_proof" type="file" /> -->
     </div>
 
     <div class="col-5 text-caption">

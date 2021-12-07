@@ -1,8 +1,7 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-12 ztitle text-center">
-    APPLICATION FORM FOR OBTAINING N.O.C. FROM FIRE & EMERGENCY
-SERVICES DEPARTMENT, MIZORAM
+    APPLICATION FORM FOR GRANTING ROAD CUTTING WITHIN MIZORAM
     </div>
     <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
@@ -21,7 +20,6 @@ SERVICES DEPARTMENT, MIZORAM
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 import { api } from "src/boot/axios";
@@ -29,10 +27,6 @@ import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 
 import Form from "./Form.vue";
-import router from "src/router";
-
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   components: {
@@ -66,7 +60,6 @@ export default {
       api
         .post("/applications/submit", formDatas)
         .then((res) => {
-          console.log("response value", res.data);
           $q.notify({
             message: "Application submitted successfully",
             color: "green",

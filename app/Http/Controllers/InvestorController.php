@@ -38,12 +38,12 @@ class InvestorController extends Controller
 
 
 
-    public function detail(Request $request,Application $model)
+    public function detail(Request $request,Application $application)
     {
-        abort_if($model->user_id != Auth::id(),403,'You dont have permission!');
-        $model->load(['profile', 'applicationValues', 'attachments']);
+        abort_if($application->user_id != Auth::id(),403,'You dont have permission!');
+        $application->load(['profile', 'applicationValues', 'attachments']);
         return response()->json([
-            'data' => $model,
+            'data' => $application,
         ], 200);
     }
 

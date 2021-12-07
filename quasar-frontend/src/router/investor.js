@@ -1,28 +1,30 @@
 import { api } from "src/boot/axios";
 
-export const checkAuth = async(to, from, next) => {
-  console.log('auth check');
+export const checkAuth = async (to, from, next) => {
+  console.log("auth check");
   await api
     .get("/user")
     .then((res) => {
-      console.log('auth user',res.data);
-     next();
+      next();
     })
     .catch((err) => {
-      console.log('unauthenticated');
+      console.log("unauthenticated");
       next({
-        name: 'investor:login'
-      })
+        name: "investor:login",
+      });
     });
 };
 
 export default {
-  
   path: "/investor",
   component: () => import("layouts/InvestorLayout.vue"),
   beforeEnter: checkAuth,
   children: [
-    { path: "", name:'investor:dashboard', component: () => import("pages/investor/Dashboard.vue") },
+    {
+      path: "",
+      name: "investor:dashboard",
+      component: () => import("pages/investor/Dashboard.vue"),
+    },
     // {
     //   path: "register",
     //   component: () => import("pages/investor/Register.vue"),
@@ -30,13 +32,13 @@ export default {
     // { path: "profile", component: () => import("pages/investor/Profile.vue") },
     {
       path: "profile",
-      name: 'investor:profile',
+      name: "investor:profile",
       component: () => import("pages/investor/ProfileInfo.vue"),
     },
 
     {
       path: "unauthorised",
-      name: 'unauthorised',
+      name: "unauthorised",
       component: () => import("pages/Unauthorised.vue"),
     },
     {
@@ -55,7 +57,6 @@ export default {
       name: "investor:ongoing",
       component: () => import("pages/investor/OnGoingApplications.vue"),
     },
-
 
     {
       path: "application/:id",
@@ -232,8 +233,6 @@ export default {
       ],
     },
 
-
-
     {
       path: "power-and-electricity",
       component: () => import("layouts/DummyLayout.vue"),
@@ -247,7 +246,6 @@ export default {
               "pages/common/dept_services/power/newconnection/Application.vue"
             ),
         },
-      
 
         // claiming-central-capital-investment-subsidy-scheme
       ],
@@ -262,26 +260,28 @@ export default {
           path: "noc-form",
           name: "fire:noc",
           component: () =>
-            import(
-              "pages/common/dept_services/Fire/noc/Application.vue"
-            ),
+            import("pages/common/dept_services/Fire/noc/Application.vue"),
         },
-      
+
+        // claiming-central-capital-investment-subsidy-scheme
+      ],
+    },
+
+    {
+      path: "public-work-department",
+      component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
+      children: [
+        {
+          path: "road-cutting",
+          name: "pwd:road-cuttting",
+          component: () =>
+            import("pages/common/dept_services/pwd/roadcutting/Application.vue"),
+        },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },
   ],
-
-
-  
-
-
-  
-
-  
- 
-
-  
 };

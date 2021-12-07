@@ -12,6 +12,9 @@ class ApplicationProfileSeeder extends Seeder
         ['code'=>'C&E_INTEREST_SUBSIDY', 'title'=>'APPLICATION FORM FOR CLAIMING CENTRAL INTEREST SUBSIDY SCHEME', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
         ['code'=>'POWER_NEW_CONNECTION', 'title'=>'Application for – New Connection (Low Tension Service)', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
         ['code'=>'CODE3', 'title'=>'Application three', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
+        ['code'=>'FIRE_NOC', 'title'=>'APPLICATION FORM FOR OBTAINING N.O.C. FROM FIRE & EMERGENCY SERVICES DEPARTMENT, MIZORAM', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
+        ['code'=>'PWD_ROAD_CUTTING', 'title'=>'APPLICATION FORM FOR GRANTING ROAD CUTTING WITHIN MIZORAM', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
+  
     ];
     public function run()
     {

@@ -10,7 +10,10 @@
             (a)Name <span class="asterisk">*</span></label
           >
           <q-input
-            v-model="formData.power_new_connection_communication_house"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.fire_one_a"
             dense
             outlined
           />
@@ -21,7 +24,10 @@
             >(b)Address <span class="asterisk">*</span></label
           >
           <q-input
-            v-model="formData.power_new_connection_communication_street"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.fire_one_b"
             dense
             outlined
           />
@@ -37,7 +43,10 @@
             (a)Name <span class="asterisk">*</span></label
           >
           <q-input
-            v-model="formData.power_new_connection_communication_house"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.fire_two_a"
             dense
             outlined
           />
@@ -48,7 +57,10 @@
             (b)Contact Number <span class="asterisk">*</span></label
           >
           <q-input
-            v-model="formData.power_new_connection_communication_street"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.fire_two_b"
             dense
             outlined
           />
@@ -62,7 +74,8 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_three"
         dense
         outlined
       />
@@ -73,7 +86,8 @@
         4.Type Of Business <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_four"
         dense
         outlined
       />
@@ -84,7 +98,8 @@
         5.Plot Area <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_five"
         dense
         outlined
       />
@@ -95,7 +110,8 @@
         6.Covered Area <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_six"
         dense
         outlined
       />
@@ -106,7 +122,8 @@
         7.Height Of Building <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_seven"
         dense
         outlined
       />
@@ -117,7 +134,8 @@
         8.No. Of Floors/storeys <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_eight"
         dense
         outlined
       />
@@ -129,7 +147,8 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_nine"
         dense
         outlined
       />
@@ -140,7 +159,8 @@
         10.Expected no of occupants <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_ten"
         dense
         outlined
       />
@@ -152,7 +172,8 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_eleven"
         dense
         outlined
       />
@@ -164,7 +185,8 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_twelve"
         dense
         outlined
       />
@@ -176,7 +198,8 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_thirteen"
         dense
         outlined
       />
@@ -189,7 +212,8 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_fourteen"
         dense
         outlined
       />
@@ -201,7 +225,8 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_fifteen"
         dense
         outlined
       />
@@ -213,7 +238,8 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_sixteen"
         dense
         outlined
       />
@@ -225,7 +251,8 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        v-model="formData.power_new_connection_communication_street"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_seventeen"
         dense
         outlined
       />
@@ -265,113 +292,299 @@
           <tr>
             <td>1.</td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
 
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
           </tr>
 
           <tr>
             <td>2.</td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
 
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
           </tr>
 
           <tr>
             <td>3.</td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
 
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
           </tr>
 
           <tr>
             <td>4.</td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
 
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                dense
+                outlined
+              />
             </td>
             <td>
               <q-input dense outlined />
@@ -415,7 +628,11 @@
         >Fixed Fire Fighting Installation (Tick for whatever is installed with
         numbers):-</label
       >
-      <q-option-group :options="options" type="checkbox" v-model="group" />
+      <q-option-group
+        :options="options"
+        type="checkbox"
+        v-model="formData.fire_tick_any"
+      />
     </div>
 
     <div class="col-12">
@@ -426,11 +643,7 @@
             (a) Under Ground Static Water Storage Tank with capacity.
             <span class="asterisk">*</span></label
           >
-          <q-input
-            v-model="formData.power_new_connection_communication_house"
-            dense
-            outlined
-          />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_nineteen_a" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -438,22 +651,14 @@
             >(b) Terrace Tank with capacity
             <span class="asterisk">*</span></label
           >
-          <q-input
-            v-model="formData.power_new_connection_communication_street"
-            dense
-            outlined
-          />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_nineteen_b" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >(c) Water source <span class="asterisk">*</span></label
           >
-          <q-input
-            v-model="formData.power_new_connection_communication_street"
-            dense
-            outlined
-          />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_nineteen_c" dense outlined />
         </div>
       </div>
     </div>
@@ -466,11 +671,7 @@
             a) Pump House at Ground level
             <span class="asterisk">*</span></label
           >
-          <q-input
-            v-model="formData.power_new_connection_communication_house"
-            dense
-            outlined
-          />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twenty_a" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -478,11 +679,7 @@
             >a) Pump House at Ground level
             <span class="asterisk">*</span></label
           >
-          <q-input
-            v-model="formData.power_new_connection_communication_street"
-            dense
-            outlined
-          />
+          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twenty_b" dense outlined />
         </div>
       </div>
     </div>
@@ -492,11 +689,7 @@
         >21 Detail of safety equipments, if Suits, Entry Suit , B.A. Set etc
         <span class="asterisk">*</span></label
       >
-      <q-input
-        v-model="formData.power_new_connection_communication_street"
-        dense
-        outlined
-      />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentyone" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -505,11 +698,7 @@
         operation of first aid fire fighting equipments installed in the
         premises. <span class="asterisk">*</span></label
       >
-      <q-input
-        v-model="formData.power_new_connection_communication_street"
-        dense
-        outlined
-      />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentytwo" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -517,11 +706,7 @@
         >23 Detail of flammable and hazardous materials alongwith Types and
         Quantity <span class="asterisk">*</span></label
       >
-      <q-input
-        v-model="formData.power_new_connection_communication_street"
-        dense
-        outlined
-      />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentythree" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -529,11 +714,7 @@
         >24 Whether P. A system is installed
         <span class="asterisk">*</span></label
       >
-      <q-input
-        v-model="formData.power_new_connection_communication_street"
-        dense
-        outlined
-      />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentyfour" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -541,22 +722,14 @@
         >25 Compliance/ recommendation, if any, made in previous inspection
         <span class="asterisk">*</span></label
       >
-      <q-input
-        v-model="formData.power_new_connection_communication_street"
-        dense
-        outlined
-      />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentyfive" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
         >26 Other information <span class="asterisk">*</span></label
       >
-      <q-input
-        v-model="formData.power_new_connection_communication_street"
-        dense
-        outlined
-      />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentysix" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -564,7 +737,7 @@
         >27.Attach approved drawings of the building from AMC/Others
         <span class="asterisk">*</span></label
       >
-      <q-file outlined>
+      <q-file v-model="formData.fire_twentyseven" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -604,98 +777,81 @@ export default {
       application_code: "FIRE_NOC",
       department_id: 5,
 
-
-      fire_one: '',
-      fire_one_a: '',
-      fire_one_b: '',
-      fire_two: '',
-      fire_two_a: '',
-      fire_two_b: '',
-
-      fire_three: '',
-
-      fire_four: '',
-
-      fire_five: '',
-
-
-      fire_six: '',
-
-      fire_seven: '',
-
-      fire_eight: '',
-      fire_nine: '',
-      fire_ten: '',
-      fire_eleven: '',
-      fire_twelve: '',
-      fire_thirteen: '',
-      fire_fourteen: '',
-      fire_fifteen: '',
-
-      fire_sixteen: '',
-
-      fire_seventeen: '',
-
-      fire_eighteen: '',
-
-
-
-
+      fire_one: "",
+      fire_one_a: "",
+      fire_one_b: "",
+      fire_two: "",
+      fire_two_a: "",
+      fire_two_b: "",
+      fire_three: "",
+      fire_four: "",
+      fire_five: "",
+      fire_six: "",
+      fire_seven: "",
+      fire_eight: "",
+      fire_nine: "",
+      fire_ten: "",
+      fire_eleven: "",
+      fire_twelve: "",
+      fire_thirteen: "",
+      fire_fourteen: "",
+      fire_fifteen: "",
+      fire_sixteen: "",
+      fire_seventeen: "",
+      fire_eighteen: "",
       fire_tick_any: [],
-      
-      fire_nineteen: '',
-
-      fire_nineteen_a: '',
-
-      fire_nineteen_b: '',
-
-      fire_nineteen_c: '',
-
-      fire_twenty: '',
-
-      fire_twenty_a: '',
-
-      fire_twenty_b: '',
-
-      fire_twentyone: '',
-
-      fire_twentytwo: '',
-
-      fire_twenty_three: '',
-
-      fire_twentyfour: '',
-
-      fire_twentyfive: '',
-
-      fire_twentysix: '',
-
-      fire_twenty_seven: null,
-
-
-     
+      fire_nineteen: "",
+      fire_nineteen_a: "",
+      fire_nineteen_b: "",
+      fire_nineteen_c: "",
+      fire_twenty: "",
+      fire_twenty_a: "",
+      fire_twenty_b: "",
+      fire_twentyone: "",
+      fire_twentytwo: "",
+      fire_twentythree: "",
+      fire_twentyfour: "",
+      fire_twentyfive: "",
+      fire_twentysix: "",
+      fire_twentyseven: null,
     });
     onMounted(() => {});
     return {
       group: ref([]),
       options: [
-        { label: "a) Yard Hydrants/Landing Valve", value: "a" },
-        { label: "b) Riser", value: "b" },
+        {
+          label: "a) Yard Hydrants/Landing Valve",
+          value: "a) Yard Hydrants/Landing Valve",
+        },
+        { label: "b) Riser", value: "b) Riser" },
 
-        { label: "c) Down Comer", value: "c" },
+        { label: "c) Down Comer", value: "c) Down Comer" },
 
-        { label: "d) Hose Reel", value: "d" },
+        { label: "d) Hose Reel", value: "d) Hose Reel" },
 
-        { label: "e) Automatic Sprinkler system", value: "e" },
+        {
+          label: "e) Automatic Sprinkler system",
+          value: "e) Automatic Sprinkler system",
+        },
 
-        { label: "f) Automatic Detection and Alarm System", value: "f" },
+        {
+          label: "f) Automatic Detection and Alarm System",
+          value: "f) Automatic Detection and Alarm System",
+        },
 
         {
           label: "g) Manually Operated Electric Fire Alarm System",
-          value: "g",
+          value: "g) Manually Operated Electric Fire Alarm System",
         },
-        { label: "h) Deluge valves & Monitors etc.", value: "h" },
-        { label: "i) Delivery Hoses", value: "i" },
-        { label: "j) Emergency Branch etc.", value: "j" },
+        {
+          label: "h) Deluge valves & Monitors etc.",
+          value: "h) Deluge valves & Monitors etc.",
+        },
+        { label: "i) Delivery Hoses", value: "i) Delivery Hoses" },
+        {
+          label: "j) Emergency Branch etc.",
+          value: "j) Emergency Branch etc.",
+        },
       ],
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

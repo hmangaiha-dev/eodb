@@ -1,12 +1,12 @@
 <template>
-  <div class="fullscreen bg-red-5 text-white text-center q-pa-md flex flex-center">
+  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
     <div>
       <div style="font-size: 30vh">
-        403
+        404
       </div>
 
       <div class="text-h2" style="opacity:.4">
-       You don't have permission !
+        Oops. Nothing here...
       </div>
 
       <q-btn

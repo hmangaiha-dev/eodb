@@ -6,7 +6,12 @@
         <label class="zlabel" for="name"
           >A) Name Of The Unit <span class="asterisk"> *</span></label
         >
-        <q-input dense outlined v-model="formData.cne_interest_subsidy_one" />
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          dense
+          outlined
+          v-model="formData.cne_interest_subsidy_one"
+        />
       </div>
 
       <div class="col-12 zlabel">
@@ -19,6 +24,9 @@
               >1) Office Address <span class="asterisk"> *</span></label
             >
             <q-input
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
               dense
               outlined
               v-model="formData.cne_interest_subsidy_oneB1"
@@ -30,6 +38,9 @@
               >2. Mobile Number <span class="asterisk"> *</span></label
             >
             <q-input
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
               dense
               outlined
               v-model="formData.cne_interest_subsidy_oneB2"
@@ -46,6 +57,9 @@
               >1) Factory Address <span class="asterisk"> *</span></label
             >
             <q-input
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
               dense
               outlined
               v-model="formData.cne_interest_subsidy_oneC1"
@@ -57,6 +71,9 @@
               >2. Telephone No. <span class="asterisk"> *</span></label
             >
             <q-input
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
               dense
               outlined
               v-model="formData.cne_interest_subsidy_oneC2"
@@ -75,6 +92,9 @@
               >1) Factory Address <span class="asterisk"> *</span></label
             >
             <q-input
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
               dense
               outlined
               v-model="formData.cne_interest_subsidy_oneD1"
@@ -86,6 +106,9 @@
               >2. Telephone No. <span class="asterisk"> *</span></label
             >
             <q-input
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
               dense
               outlined
               v-model="formData.cne_interest_subsidy_oneD2"
@@ -109,6 +132,9 @@
                 >1) Registration Number <span class="asterisk"> *</span></label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_towA1"
@@ -120,6 +146,9 @@
                 >2. Date <span class="asterisk"> *</span></label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_twoA2"
@@ -134,6 +163,9 @@
             Statutorily/mandatorily<span class="asterisk"> *</span></label
           >
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_twoB"
@@ -152,6 +184,9 @@
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="pob">A) Constitution Of The Unit</label>
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_threeA"
@@ -163,6 +198,9 @@
             >B) Date<span class="asterisk">*</span>
           </label>
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_threeB"
@@ -181,6 +219,9 @@
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="pob">A) Name</label>
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_fourA"
@@ -192,6 +233,9 @@
             >B) Address<span class="asterisk">*</span>
           </label>
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_fourB"
@@ -216,6 +260,9 @@
                 <span class="asterisk"> *</span></label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_fiveA1"
@@ -227,6 +274,9 @@
                 >2. Date <span class="asterisk"> *</span></label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_fiveA2"
@@ -248,6 +298,9 @@
                 <span class="asterisk"> *</span></label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_fiveB1"
@@ -259,6 +312,9 @@
                 >2. Date <span class="asterisk"> *</span></label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_fiveB2"
@@ -280,6 +336,9 @@
                 <span class="asterisk"> *</span></label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_fiveC1"
@@ -291,6 +350,9 @@
                 >2. Date <span class="asterisk"> *</span></label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_fiveC2"
@@ -304,6 +366,9 @@
             >D) Permanent Registration No In Case Of Existing Unit</span
           >
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_fiveD"
@@ -317,7 +382,12 @@
         >6. Certificate Of The Unit Having Become Functional/operational (for
         Service Sector From Concerned Department)</label
       >
-      <q-input dense outlined v-model="formData.cne_interest_subsidy_six" />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        dense
+        outlined
+        v-model="formData.cne_interest_subsidy_six"
+      />
     </div>
 
     <div class="col-12 zlabel">
@@ -328,6 +398,9 @@
             >1) Name Of The Product (for Manufacturing Sector )</label
           >
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_seven1"
@@ -339,6 +412,9 @@
             >2. Name Of The Activity (for Service Sector)</label
           >
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_seven2"
@@ -363,6 +439,9 @@
                 Units) <span class="asterisk"> *</span></label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_eightA1"
@@ -375,6 +454,9 @@
                 <span class="asterisk"> *</span></label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_eightA2"
@@ -400,6 +482,10 @@
                     <span class="asterisk"> *</span></label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_eightBTitl11"
@@ -411,6 +497,10 @@
                     >2. After Expansion <span class="asterisk"> *</span></label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_eightBTitl12"
@@ -428,6 +518,10 @@
                     <span class="asterisk"> *</span></label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_eightBTitle21"
@@ -439,6 +533,10 @@
                     >2. After Expansion <span class="asterisk"> *</span></label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_eightBTitle22"
@@ -470,6 +568,10 @@
                     <span class="asterisk"> *</span></label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineAnewUnit"
@@ -489,6 +591,10 @@
                     <span class="asterisk"> *</span></label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineAexist1"
@@ -500,6 +606,10 @@
                     >2. After Expansion <span class="asterisk"> *</span></label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineAexist2"
@@ -523,6 +633,10 @@
                     >For New Unit (Amount In Rs.)</label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineB1newUnit"
@@ -539,6 +653,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">1) Prior To Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineB1exist1"
@@ -548,6 +666,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">2. After Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineB1exist2"
@@ -569,6 +691,10 @@
                     >For New Unit (Amount In Rs.)</label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineB2newUnit"
@@ -585,6 +711,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">1) Prior To Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineB2exist1"
@@ -594,6 +724,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">2. After Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineB2exist2"
@@ -618,6 +752,10 @@
                     >For New Unit (Amount In Rs.)</label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineCnewUnit"
@@ -634,6 +772,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">1) Prior To Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineCexist"
@@ -643,6 +785,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">2. After Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineCexist2"
@@ -665,6 +811,10 @@
                     >For New Unit (Amount In Rs.)</label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineDnewUnit"
@@ -681,6 +831,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">1) Prior To Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineDexist1"
@@ -690,6 +844,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">2. After Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineDexist2"
@@ -712,6 +870,10 @@
                     >For New Unit (Amount In Rs.)</label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineEnewUnit"
@@ -728,6 +890,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">1) Prior To Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineEexist1"
@@ -737,6 +903,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">2. After Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineEexist2"
@@ -759,6 +929,10 @@
                     >For New Unit (Amount In Rs.)</label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineFnewUnit"
@@ -775,6 +949,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">1) Prior To Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineFexist1"
@@ -784,6 +962,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">2. After Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_nineFexist2"
@@ -806,6 +988,10 @@
                     >For New Unit (Amount In Rs.)</label
                   >
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_totalnewUnit"
@@ -822,6 +1008,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">1) Prior To Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_totalexist1"
@@ -831,6 +1021,10 @@
                 <div class="col-5">
                   <label class="zlabel" for="">2. After Expansion</label>
                   <q-input
+                    :rules="[
+                      (val) =>
+                        (val && val.length > 0) || 'Please type something',
+                    ]"
                     dense
                     outlined
                     v-model="formData.cne_interest_subsidy_totalexist2"
@@ -847,7 +1041,12 @@
       <label class="zlabel" for=""
         >10. Increase In Investment (in Case Of Existing Unit)</label
       >
-      <q-input dense outlined v-model="formData.cne_interest_subsidy_ten" />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        dense
+        outlined
+        v-model="formData.cne_interest_subsidy_ten"
+      />
     </div>
 
     <div class="col-12">
@@ -860,6 +1059,9 @@
             <div class="col-10">
               <label class="zlabel" for="">1) For New Unit (in Rs.) )</label>
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_elevenA1"
@@ -878,6 +1080,9 @@
                 >1) Annual Turnover Before Expansion (in Rs)</label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_elevenB1"
@@ -889,6 +1094,9 @@
                 >2) Annual Turnover After Expansion (in Rs.)</label
               >
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_elevenB2"
@@ -908,6 +1116,9 @@
             During The Claim Period.</label
           >
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_twelveA"
@@ -919,6 +1130,9 @@
             During The Claim Period.</label
           >
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_twelveB"
@@ -935,6 +1149,9 @@
             >A) Name Of The Bank Branch Providing Working Capital Loan</label
           >
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_thirteenA"
@@ -946,6 +1163,9 @@
             Interest</label
           >
           <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.cne_interest_subsidy_thirteenB"
@@ -958,6 +1178,9 @@
             <div class="q-ml-md col-5">
               <label class="zlabel" for="">1) Sanction No.</label>
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_thirteenC1"
@@ -967,6 +1190,9 @@
             <div class="q-ml-md col-5">
               <label class="zlabel" for="">2) Sanction Date</label>
               <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
                 dense
                 outlined
                 v-model="formData.cne_interest_subsidy_thirteenC2"
@@ -979,6 +1205,7 @@
       <div class="col-12 q-mt-md">
         <label class="zlabel" for="">14. Remarks, If Any.</label>
         <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
           dense
           outlined
           v-model="formData.cne_interest_subsidy_fourteen"
@@ -991,6 +1218,7 @@
           Non-executive, Skilled, Un-skilled Etc.)</label
         >
         <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
           dense
           outlined
           v-model="formData.cne_interest_subsidy_fifteen"

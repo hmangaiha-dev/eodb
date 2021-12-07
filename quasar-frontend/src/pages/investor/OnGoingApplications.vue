@@ -44,7 +44,6 @@ export default {
     const localData = ref([]);
     const router = useRouter();
     onMounted(() => {
-      console.log("mounted hook");
       api
         .get("investor/applications")
         .then((res) => {
