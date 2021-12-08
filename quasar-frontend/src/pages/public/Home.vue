@@ -278,49 +278,7 @@
       </q-list> -->
     </div>
 
-    <section>
-      <div class="footer q-mt-md row justify-center">
-        <!-- <div class="col-lg-5 col-xs-5 col-sm-5 line"></div> -->
-
-        <div
-          style="display: flex"
-          class="q-mt-lg col-lg-6 col-sm-12 col-xs-10 col-md-12"
-        >
-          <hr style="width: 60%; margin: auto" />
-          <img
-            class="text-center chakra"
-            style="width: 51px; height: 51px; margin-top: 32px"
-            src="~assets/chakra.svg"
-          />
-          <hr style="width: 60%; margin: auto" />
-        </div>
-
-        <!-- <div style="width: 0px !important" class="col-lg-2 col-sm-2">
-          <img src="~assets/chakra.png" />
-        </div> -->
-
-        <!-- <div class="col-lg-12 chakra">
-           <img src="~assets/chakra.png" />
-        </div> -->
-
-        <!-- <div class="col-lg-5 col-sm-5 line2"></div> -->
-
-        <div
-          class="col-lg-12 col-sm-12 col-xs-10 col-md-12 full-width text-center"
-        >
-          <span class="developed-by">
-            Developed by
-
-            <span class="msegs">Mizoram State e-Governance Society (MSeGS)</span
-            >,
-            <span class="text-style-3"></span>
-            hosted by
-            <!-- <span class="text-style-4"></span> -->
-            <span class="ict">Department of ICT</span>, Government of Mizoram
-          </span>
-        </div>
-      </div>
-    </section>
+   
   </div>
 </template>
 

@@ -105,6 +105,9 @@
     <q-page-container class="bg-grey-2">
       <router-view />
     </q-page-container>
+
+    <MsegsFooter />
+    
   </q-layout>
 </template>
 
@@ -112,8 +115,8 @@
 import EssentialLink from "components/EssentialLink.vue";
 import ProfileMenu from "components/ProfileMenu.vue";
 import { useStore } from "vuex";
-import {computed} from "vue";
-
+import { computed } from "vue";
+import MsegsFooter from "components/MsegsFooter";
 
 const linksList = [
   {
@@ -168,16 +171,17 @@ export default defineComponent({
   components: {
     EssentialLink,
     ProfileMenu,
+    MsegsFooter,
   },
 
   setup() {
     const store = useStore();
 
-    
-
     return {
       essentialLinks: linksList,
-      isAuthenticated: computed(() => store.getters["investor/isAuthenticated"]),
+      isAuthenticated: computed(
+        () => store.getters["investor/isAuthenticated"]
+      ),
     };
   },
 });

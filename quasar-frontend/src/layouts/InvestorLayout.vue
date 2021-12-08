@@ -1,5 +1,5 @@
 <template>
-  <div class="my-layout q-ma-lg">
+  <div class="my-layout">
     <q-layout view="hHh Lpr lff">
       <div class="my-layout">
         <q-header elevated class="bg-primary text-white" height-hint="98">
@@ -77,7 +77,7 @@
               <q-item-section> Dashboard </q-item-section>
             </q-item>
 
-             <q-item
+            <q-item
               exact
               class="zitem text-primary"
               active-class="active-item q-px-md"
@@ -92,9 +92,7 @@
             <q-expansion-item
               expand-icon="expand_more"
               group="somegroup"
-              icon=""
               label="Online Services"
-             
               header-class="text-primary"
             >
               <q-item
@@ -156,6 +154,8 @@
           </q-drawer>
           <router-view />
         </q-page-container>
+
+        
       </div>
     </q-layout>
   </div>
@@ -163,6 +163,8 @@
 
 <script>
 import { ref } from "vue";
+import MsegFooter from "components/MsegFooter";
+
 import ProfileMenu from "components/ProfileMenu";
 import { reactive } from "@vue/reactivity";
 import { api } from "src/boot/axios";
@@ -236,7 +238,7 @@ const depts = [
 ];
 
 export default {
-  components: { ProfileMenu },
+  components: { ProfileMenu, MsegFooter },
   setup(props, context) {
     const store = useStore();
 

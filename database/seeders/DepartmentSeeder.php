@@ -14,7 +14,10 @@ class DepartmentSeeder extends Seeder
             'id'    =>  1,
             'dept_name' => 'Commerce & Industries Department',
             'slug' => 'commerce-and-industries-department',
-            'dept_code' => 'C&E'
+            'dept_code' => 'C&E',
+            'sect_name' => 'P. Jawahar',
+            'dict_name' => 'J. Hmingthanmawia'
+
         ],
         [
             'id'    =>  2,

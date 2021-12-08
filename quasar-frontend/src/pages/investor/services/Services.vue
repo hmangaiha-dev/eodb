@@ -1,83 +1,114 @@
 <template>
- <div style="max-width: 1600px;margin:0 auto" class="row q-mt-md q-col-gutter-md q-pa-sm ">
-  <div style="width:100%" class="q-pa-md">
-    <q-tabs stretch v-model="tab" class="text-teal">
-      <q-tab name="services" icon="mails" label="Online Services" />
-      <q-tab name="about" icon="alarm" label="About Us" />
-      <q-tab name="actrules" icon="movie" label="Act & Rules" />
-      <q-tab name="noti" icon="movie" label="Noftifications" />
-      <q-tab name="other" icon="movie" label="Other Infomations" />
-    </q-tabs>
-    <div v-if="tab == 'services'" class="text-h5 q-my-md">Online services</div>
-    <q-table
-      
-      wrap-cells
-      flat
-      v-if="tab == 'services'"
-      :columns="columns"
-      :rows="rows"
-      row-key="name"
+  <q-page>
+    
+    <div class="full-width banner-dept">
+      <div class="row q-px-md q-pt-xl justify-between q-col-gutter-md" style="max-width: 1400px; margin: 0 auto">
+        <div class="text-h4 text-center full-width text-white bg-grey-8 q-pa-xl">
+          {{ dept_name }}
+        </div>
+        <br />
+        <div class="col-4">
+          <q-card flat>
+            <q-card-section>
+              <div class="text-h6">P. Jawahar</div>
+            </q-card-section>
+            <q-card-section>
+              <div>Secretary</div>
+              <div>Commerce & Industries Department</div>
+            </q-card-section>
+          </q-card>
+        </div>
+        <div class="col-4">
+          <q-card flat>
+            <q-card-section>
+              <div class="text-h6">J. Hmingthanmawia</div>
+            </q-card-section>
+            <q-card-section>
+              <div>Director</div>
+              <div>Commerce & Industries Department</div>
+            </q-card-section>
+          </q-card>
+        </div>
+      </div>
+    </div>
+    <div
+      style="max-width: 1600px; margin: 0 auto"
+      class="row q-mt-md q-col-gutter-md q-pa-sm"
     >
-      <template v-slot:body="props">
-        <q-tr :props="props">
-          <q-td key="name" :props="props">
-            {{ props.row.name }}
-          </q-td>
-          <q-td key="who" :props="props">
-            <q-btn color="blue-6" flat label="View" />
-          </q-td>
-          <q-td key="how" :props="props">
-            <q-btn color="blue-6" flat label="View procedure" />
-          </q-td>
+      <div style="width: 100%" class="q-pa-md">
+        <q-tabs stretch v-model="tab" class="text-teal">
+          <q-tab name="services" icon="mails" label="Online Services" />
+          <q-tab name="about" icon="alarm" label="About Us" />
+          <q-tab name="actrules" icon="movie" label="Act & Rules" />
+          <q-tab name="noti" icon="movie" label="Noftifications" />
+          <q-tab name="other" icon="movie" label="Other Infomations" />
+        </q-tabs>
+        <div v-if="tab == 'services'" class="text-h5 q-my-md">
+          Online services
+        </div>
+        <q-table
+        bordered
+          wrap-cells
+          flat
+          v-if="tab == 'services'"
+          :columns="columns"
+          :rows="rows"
+          row-key="name"
+        >
+          <template v-slot:body="props">
+            <q-tr :props="props">
+              <q-td key="name" :props="props">
+                {{ props.row.name }}
+              </q-td>
+              <q-td key="who" :props="props">
+                <q-btn color="blue-6" flat label="View" />
+              </q-td>
+              <q-td key="how" :props="props">
+                <q-btn color="blue-6" flat label="View procedure" />
+              </q-td>
+              <q-td key="document" :props="props">
+                <q-btn color="blue-6" flat label="View" />
+              </q-td>
+              <q-td key="timeline" :props="props">
+                <q-btn color="blue-6" flat label="View fees" />
+              </q-td>
+              <q-td key="fees" :props="props">
+                <q-btn color="blue-6" flat label="Download" />
+              </q-td>
+              <q-td key="form" :props="props">
+                <q-btn color="blue-6" flat label="Download" />
+              </q-td>
+              <q-td key="apply" :props="props">
+                <q-btn
+                  :to="`/investor/${route.params.deptname}/${props.row.apply}`"
+                  color="blue-6"
+                  label="Apply"
+                />
+              </q-td>
+            </q-tr>
+            <!-- <q-tr :props="props"> -->
+            <!-- </q-tr> -->
+          </template>
+        </q-table>
+        <q-tab-panels class="full-width" v-model="tab" animated>
+          <q-tab-panel name="about">
+            <AboutUs />
+          </q-tab-panel>
+          <q-tab-panel name="actrules">
+            <ActRules />
+          </q-tab-panel>
+          <q-tab-panel name="noti">
+            <Notifications />
+          </q-tab-panel>
+          <q-tab-panel name="other">
+            <OtherInfo />
+          </q-tab-panel>
+        </q-tab-panels>
+      </div>
+    </div>
 
-          <q-td key="document" :props="props">
-            <q-btn color="blue-6" flat label="View" />
-          </q-td>
 
-          <q-td key="timeline" :props="props">
-            <q-btn color="blue-6" flat label="View fees" />
-          </q-td>
-
-          <q-td key="fees" :props="props">
-            <q-btn color="blue-6" flat label="Download" />
-          </q-td>
-
-          <q-td key="form" :props="props">
-            <q-btn color="blue-6" flat label="Download" />
-          </q-td>
-
-          <q-td key="apply" :props="props">
-            <q-btn
-             :to="`/investor/${route.params.deptname}/${props.row.apply}`"
-             
-              color="blue-6"
-              label="Apply"
-            />
-          </q-td>
-        </q-tr>
-        <!-- <q-tr :props="props"> -->
-
-        <!-- </q-tr> -->
-      </template>
-    </q-table>
-
-    <q-tab-panels class="full-width" v-model="tab" animated>
-      <q-tab-panel name="about">
-        <AboutUs />
-      </q-tab-panel>
-      <q-tab-panel name="actrules">
-        <ActRules />
-      </q-tab-panel>
-      <q-tab-panel name="noti">
-        <Notifications />
-      </q-tab-panel>
-      <q-tab-panel name="other">
-        <OtherInfo />
-      </q-tab-panel>
-    </q-tab-panels>
-   
-  </div>
-  </div>
+  </q-page>
 </template>
 
 <script>
@@ -87,6 +118,7 @@ import ActRules from "./ActRules.vue";
 import ApplyService from "./ApplyService.vue";
 import Notifications from "./Notifications.vue";
 // import Notifications from "./Notifications.vue";
+import MsegsFooter from "components/MsegsFooter.vue";
 import { ref, onMounted, toRefs, toRef, watch } from "vue";
 import OtherInfo from "./OtherInfo.vue";
 import routes from "src/router/routes";
@@ -103,27 +135,25 @@ export default {
     Notifications,
     Notifications,
     OtherInfo,
+    MsegsFooter
   },
   setup(props, context) {
     const route = useRoute();
 
     const router = useRouter();
 
-    watch(
+    const dept_name = ref("");
 
-      
+    watch(
       () => route.params.deptname,
       () => {
+        if (route.name != "common:create") return;
 
-        if(route.name != "common:create")
-          return
+        console.log("route name", route.name);
 
-        console.log('route name',route.name);
-        
         console.log("route changed investor");
 
-        refresh()
-
+        refresh();
       }
     );
 
@@ -132,8 +162,9 @@ export default {
         return dept.slug == route.params.deptname;
       });
 
+      dept_name.value = result[0].name;
 
-      !result.length && router.push({ name:'invalid' })
+      !result.length && router.push({ name: "invalid" });
 
       rows.value = result[0]?.services;
     };
@@ -180,7 +211,7 @@ export default {
         label: "Apply Online",
         align: "center",
         field: "apply",
-        
+
         sortable: true,
       },
     ]);
@@ -201,6 +232,7 @@ export default {
     const deptServices = [
       {
         slug: "commerce-and-industries",
+        name: "Commerce & Industries Department",
         services: [
           {
             name: "Application for Allotment of Industrial Plot",
@@ -319,6 +351,7 @@ export default {
       },
       {
         slug: "land-revenue",
+        name: "Land Revenue & Settlement Department",
         services: [
           {
             name: "APPLICATION FOR PERIODIC PATTA (PERIODIC PATTA DILNA)",
@@ -407,6 +440,7 @@ export default {
       },
       {
         slug: "environment-forest-and-climate-change",
+        name: "Environment, Forest & Climate Change Department",
         services: [
           {
             name: "Application for Bamboo plantation in Non-forest Area",
@@ -432,6 +466,7 @@ export default {
       },
       {
         slug: "pollution-control-board",
+        name: "Pollution Control Board Department",
         services: [
           {
             name: "Application For Consent To Establishment Industries Etc.",
@@ -673,6 +708,7 @@ export default {
       },
       {
         slug: "fire-and-emergency-services",
+        namne: "Fire & Emergency Services Department",
         services: [
           {
             name: "Fire NOC",
@@ -689,6 +725,7 @@ export default {
 
       {
         slug: "taxation",
+        name: "Taxation Department",
         services: [
           {
             name: "GST Registration",
@@ -715,6 +752,7 @@ export default {
 
       {
         slug: "public-work-department",
+        name: "Public Work Department",
         services: [
           {
             name: "Issue of Road Cutting Permission on (Scheduled Roads Under PWD)",
@@ -741,6 +779,7 @@ export default {
 
       {
         slug: "aizawl-municipal-corporation",
+        name: "Aizawl Municipal Corporation",
         services: [
           {
             name: "Approval - Inspection - Payments	",
@@ -766,6 +805,7 @@ export default {
       },
       {
         slug: "law-and-judicial",
+        name: "Law & Judicial Department",
         services: [
           {
             name: "No data",
@@ -782,6 +822,7 @@ export default {
 
       {
         slug: "legal-metrology",
+        name: "Legal Metrology",
         services: [
           {
             name: "Licensing of Manufacturer of Weights & Measures",
@@ -900,6 +941,7 @@ export default {
 
       {
         slug: "excise-and-narcotics",
+        name: "Excise and Narcotics Department",
         services: [
           {
             name: "to be filled",
@@ -926,6 +968,7 @@ export default {
 
       {
         slug: "power-and-electricity",
+        name: "Power & Electricity Department",
         services: [
           {
             name: "Application form – New Connection (Low Tension Service)",
@@ -1023,6 +1066,7 @@ export default {
 
       {
         slug: "public-health-and-engineering",
+        name: "Public Health & Engineering Department",
         services: [
           {
             name: "Application for New Water Connection (Domestic)",
@@ -1088,6 +1132,7 @@ export default {
       },
       {
         slug: "geology-and-mineral-resource",
+        name: "Geology & Mineral Resources Department",
         services: [
           {
             name: "Mining lease/Composite License/ Non-exclusive Reconnaissance Permit",
@@ -1104,6 +1149,7 @@ export default {
 
       {
         slug: "food-and-drug-administration",
+        name: "Food & Drug Administration, H&FW Department",
         services: [
           {
             name: "Application for General (Retail) Licence Form 19",
@@ -1160,6 +1206,7 @@ export default {
 
       {
         slug: "urban-development-and-proverty-alleviation",
+        name: "Urban Development & Proverty Alleviation",
         services: [
           {
             name: "Application for General (Retail) Licence Form 19",
@@ -1176,6 +1223,7 @@ export default {
 
       {
         slug: "labour-skill-development-and-enterprise",
+        name: "Labour Employment, Skill Development & Entreprenuership",
         services: [
           {
             name: "Application for Certificate of Registration under Shops & Establishment",
@@ -1253,7 +1301,6 @@ export default {
 
     onMounted(() => {
       refresh();
-
     });
 
     console.log("layouts is".Layouts);
@@ -1262,6 +1309,7 @@ export default {
       columns,
       route,
       router,
+      dept_name,
       tab: ref("services"),
       deptServices,
       refresh,
@@ -1269,3 +1317,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.banner-dept {
+  background-image: url("https://eodbmizoram.gov.in/images/commerce/departmentbackground.png");
+  width: 100%;
+  height: 400px;
+}
+</style>
