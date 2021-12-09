@@ -155,6 +155,8 @@
           <router-view />
         </q-page-container>
 
+        <!-- <MsegsFooter /> -->
+
         
       </div>
     </q-layout>
@@ -172,6 +174,7 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 import { computed } from "vue";
+import MsegsFooter from "src/components/MsegsFooter.vue";
 
 const depts = [
   {
@@ -238,7 +241,7 @@ const depts = [
 ];
 
 export default {
-  components: { ProfileMenu, MsegFooter },
+  components: { ProfileMenu, MsegFooter, MsegsFooter },
   setup(props, context) {
     const store = useStore();
 

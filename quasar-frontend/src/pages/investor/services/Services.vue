@@ -14,7 +14,7 @@
             </q-card-section>
             <q-card-section>
               <div>Secretary</div>
-              <div>Commerce & Industries Department</div>
+              <div>  {{ dept_name }} </div>
             </q-card-section>
           </q-card>
         </div>
@@ -25,7 +25,7 @@
             </q-card-section>
             <q-card-section>
               <div>Director</div>
-              <div>Commerce & Industries Department</div>
+              <div>  {{ dept_name }} </div>
             </q-card-section>
           </q-card>
         </div>
