@@ -1,0 +1,170 @@
+<template>
+  <div class="zcard row items-center q-col-gutter-md">
+    <div class="col-12 zsubtitle">
+      6. Project Details
+      <div class="row justify-start q-col-gutter-md q-ml-md">
+        <div class="col-xs-12 col-md-5">
+          <label class="zlabel" for="gender"> 6.1 Sector * </label>
+        </div>
+        <div class="col-xs-12 col-md-5">
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            dense
+            outlined
+            v-model="formData.proposed_total_proposed_area"
+          />
+        </div>
+
+        <div class="col-xs-12 col-md-5">
+          <label class="zlabel" for="gender"> 6.2 Project Purpose </label>
+        </div>
+        <div class="col-xs-12 col-md-5">
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            dense
+            outlined
+            v-model="formData.proposed_total_proposed_area"
+          />
+        </div>
+
+        <div class="col-xs-12 col-md-5">
+          <label class="zlabel" for="gender">
+            6.3 Size of industry * (Includes both manufacturing and Service
+            Sector)
+          </label>
+        </div>
+        <div class="col-xs-12 col-md-5">
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            dense
+            outlined
+            v-model="formData.proposed_total_proposed_area"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="name">
+        Plot Requirement in Industrial Area*
+        <span class="asterisk"> *</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <q-radio
+        v-model="formData.proposed_plot_requirement"
+        val="applicable"
+        label="Applicable"
+      />
+      <q-radio
+        v-model="formData.proposed_plot_requirement"
+        val="not applicable"
+        label="Not Applicable"
+      />
+    </div>
+
+    <div class="col-xs-12 col-md-2">
+      <label class="zlabel" for="dob" type="date"> Industrial Area* </label>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <q-select
+        dense
+        dropdown-icon="expand_more"
+        outlined
+        v-model="formData.proposed_industrial_area"
+        :options="industrial_areas"
+      />
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender"
+        >Total Proposed Project Area(Sq. meter)*
+        <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        dense
+        outlined
+        v-model="formData.proposed_total_proposed_area"
+      />
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="pob"> Total Built-up Area(Sq. meter)* </label>
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        dense
+        outlined
+        v-model="formData.proposed_total_built_area"
+      />
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+      <label class="zlabel" for="gender">
+        City/Town* <span class="asterisk">*</span></label
+      >
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        dense
+        outlined
+        v-model="formData.proposed_city_town"
+      />
+    </div>
+
+    <div class="col-xs-12" />
+  </div>
+</template>
+
+<script>
+import { reactive } from "@vue/reactivity";
+import { useStore } from "vuex";
+import { onMounted } from "vue";
+import { date } from "quasar";
+
+const emailRegex =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+export default {
+  setup(props, context) {
+    const store = useStore();
+    const draft = store.getters["applicantData/getCurrentDraft"];
+    const currentUser = store.getters["auth/getCurrentUser"];
+
+    const formData = reactive({
+      proposed_industrial_area: "",
+      proposed_plot_requirement: "",
+      proposed_total_proposed_area: "",
+      proposed_total_built_area: "",
+      proposed_city_town: "",
+    });
+    onMounted(() => {});
+    return {
+      formData,
+      industrial_areas: [
+        "Industrial Growth Centre, Luangmual",
+        "Industrial Estate, Zuangtui",
+        "Export Promotion Industrial Park, Lengte",
+      ],
+      maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
+    };
+  },
+};
+</script>

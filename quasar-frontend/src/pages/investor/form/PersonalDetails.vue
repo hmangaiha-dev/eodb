@@ -7,7 +7,13 @@
       >
     </div>
     <div class="col-xs-12 col-md-4">
-      <q-select dense dropdown-icon="expand_more" outlined :options="options" />
+      <q-select
+        v-model="formData.application_type"
+        dense
+        dropdown-icon="expand_more"
+        outlined
+        :options="application_types"
+      />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -16,7 +22,7 @@
       </label>
     </div>
     <div class="col-xs-12 col-md-4">
-      <q-file dense outlined>
+      <q-file v-model="formData.application_photo" dense outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -29,14 +35,25 @@
       >
     </div>
     <div class="col-xs-12 col-md-4">
-      <q-input dense outlined v-model="formData.birth_place" />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        dense
+        outlined
+        v-model="formData.applicant_name"
+      />
     </div>
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="pob">Applicant belongs to</label>
     </div>
 
     <div class="col-xs-12 col-md-4">
-      <q-select dense dropdown-icon="expand_more" outlined :options="options" />
+      <q-select
+        dense
+        v-model="formData.applicant_caste"
+        dropdown-icon="expand_more"
+        outlined
+        :options="castes"
+      />
     </div>
 
     <div class="col-12">
@@ -50,13 +67,12 @@
     </div>
     <div class="col-xs-12 col-md-4">
       <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         id="fname"
-        v-model="formData.father_name"
-        :rules="[(val) => !!val?.trim() || 'Fathers name is required ']"
+        v-model="formData.country"
         dense
         item-aligned
         outlined
-        @blur="onFathernameBlur"
       />
     </div>
     <div class="col-xs-12 col-md-2">
@@ -64,13 +80,12 @@
     </div>
     <div class="col-xs-12 col-md-4">
       <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         id="mname"
-        v-model="formData.mother_name"
-        :rules="[]"
+        v-model="formData.state"
         dense
         item-aligned
         outlined
-        @blur="onMothernameBlur"
       />
     </div>
     <div class="col-xs-12 col-md-2">
@@ -80,15 +95,10 @@
     </div>
     <div class="col-xs-12 col-md-4">
       <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         id="mobile"
-        v-model="formData.phone_no"
-        mask="##########"
-        :rules="[
-          (val) => !!val?.trim() || 'Mobile no is required ',
-          (val) => val.match(/^\d{10}$/) || 'Mobile no must be 10 digit no ',
-        ]"
+        v-model="formData.city_town"
         dense
-        item-aligned
         outlined
       />
     </div>
@@ -98,22 +108,10 @@
     </div>
     <div class="col-xs-12 col-md-4">
       <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         id="email"
-        v-model="formData.email"
+        v-model="formData.pincode"
         dense
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (emailRegex.test(val)) {
-                return true;
-              } else {
-                return 'Invalid email format';
-              }
-            }
-          },
-        ]"
         item-aligned
         outlined
       />
@@ -126,21 +124,12 @@
 
     <div class="col-xs-12 col-md-4">
       <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         id="adar"
-        v-model="formData.aadhaar_no"
+        v-model="formData.address"
         dense
         item-aligned
         mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
         outlined
       />
     </div>
@@ -151,21 +140,12 @@
 
     <div class="col-xs-12 col-md-4">
       <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         id="adar"
-        v-model="formData.aadhaar_no"
+        v-model="formData.phone_no"
         dense
         item-aligned
         mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
         outlined
       />
     </div>
@@ -176,21 +156,12 @@
 
     <div class="col-xs-12 col-md-4">
       <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         id="adar"
-        v-model="formData.aadhaar_no"
+        v-model="formData.fax_no"
         dense
         item-aligned
         mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
         outlined
       />
     </div>
@@ -201,21 +172,12 @@
 
     <div class="col-xs-12 col-md-4">
       <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         id="adar"
-        v-model="formData.aadhaar_no"
+        v-model="formData.email"
         dense
         item-aligned
         mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
         outlined
       />
     </div>
@@ -226,21 +188,12 @@
 
     <div class="col-xs-12 col-md-4">
       <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         id="adar"
-        v-model="formData.aadhaar_no"
+        v-model="formData.alt_email"
         dense
         item-aligned
         mask="############"
-        :rules="[
-          (val) => {
-            if (val === '') {
-              return true;
-            } else {
-              if (val?.length !== 12) return 'Invalid aadhaar no';
-              else return true;
-            }
-          },
-        ]"
         outlined
       />
     </div>
@@ -262,109 +215,61 @@ export default {
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
-    const localData = reactive({
-      genders: [
-        { value: "Male", label: "Male" },
-        { value: "Female", label: "Female" },
-        { value: "Other", label: "Other" },
-      ],
-      epic_relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-      ],
-      relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-        { value: "Spouse", label: "Spouse" },
-        { value: "Guardian", label: "Guardian" },
-      ],
-      adults: [
-        { value: true, label: "Applicant is above 18 years" },
-        { value: false, label: "Applicant is below 18 years" },
-      ],
-    });
 
     const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
+      application_type: "",
+      application_photo: null,
+      applicant_name: "",
+      applicant_caste: "",
+      country: "",
+      state: "",
+
+      city_town: "",
+      pincode: "",
+      address: "",
       phone_no: "",
-      email: currentUser?.email,
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
+      mobile_no: "",
+      fax_no: "",
+      email: "",
+      alt_email: "",
+
+      // prop_name: '',
+      // designation: '',
+
+      // enterprise_name: '',
+
+      // total_directors: '',
+
+      // pan_no: '',
+
+      // pan_card: null,
+
+      // aadhaar_no: '',
+
+      // passport_no: '',
+
+      // is_applicant_nri: '',
+
+      // cst_no: '',
+
+      // cst_cert: '',
+
+      // udyog_no: ''
     });
-    onMounted(() => {
-      if (draft?.applicant) {
-        formData.title = draft?.applicant?.title;
-        formData.name = draft?.applicant?.name;
-        formData.dob = draft?.applicant?.dob;
-        formData.gender = draft?.applicant?.gender;
-        formData.father_name = draft?.applicant?.father_name;
-        formData.mother_name = draft?.applicant?.mother_name;
-        formData.birth_place = draft?.applicant?.birth_place;
-        formData.phone_no = draft?.applicant?.phone_no;
-        formData.email = draft?.applicant?.email;
-        formData.aadhaar_no = draft?.applicant?.aadhaar_no;
-        formData.relation = draft?.applicant?.relation;
-        formData.relation_name = draft?.applicant?.relation_name;
-        formData.relation_title = draft?.applicant?.title;
-        formData.adult = draft?.applicant?.adult;
-        formData.epic_no = draft?.applicant?.epic_no;
-        formData.epic_relation = draft?.applicant?.epic_relation;
-        formData.epic_holder = draft?.applicant?.epic_holder;
-        formData.constituency = draft?.applicant?.constituency;
-      }
-    });
+    onMounted(() => {});
     return {
-      onFathernameBlur: (e) => {
-        if (!formData.adult) {
-          formData.epic_relation?.toLowerCase() === "father" &&
-            (formData.epic_holder = e?.target?.value);
-        }
-        if (formData.relation?.toLowerCase() === "father") {
-          formData.relation_name = e?.target?.value;
-          formData.relation_title = "Mr";
-        }
-      },
-      onMothernameBlur: (e) => {
-        if (!formData.adult) {
-          formData.epic_relation?.value?.toLowerCase() === "father" &&
-            (formData.epic_holder = e?.target?.value);
-        }
-        if (formData.relation?.value?.toLowerCase() === "mother") {
-          formData.relation_name = e?.target?.value;
-          formData.relation_title = "Mrs";
-        }
-      },
-      handleAdult: (e) => {
-        if (e.target?.checked) {
-          formData.epic_relation?.toLowerCase() === "father" &&
-            (formData.epic_holder = formData.father_name);
-          formData.epic_relation?.toLowerCase() === "mother" &&
-            (formData.epic_holder = formData.mother_name);
-        }
-      },
-      handleEpicSelect: () => {
-        if (formData.epic_relation?.value === "Father") {
-          formData.epic_holder = formData.father_name;
-        }
-        if (formData.epic_relation?.value === "Mother") {
-          formData.epic_holder = formData.mother_name;
-        }
-      },
-      emailRegex,
-      localData,
+      application_types: [
+        "New Enterprise",
+        "Expansion of Enterprise",
+        "Under Special Schemes",
+      ],
+      castes: [
+        "General",
+        "SC/ST",
+        "OBC/MOBC",
+        "Physically Challenged",
+        "Women Entrepreneur",
+      ],
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
