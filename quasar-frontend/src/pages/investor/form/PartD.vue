@@ -8,13 +8,12 @@
         </div>
         <div class="col-xs-12 col-md-5">
           <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          <q-select
+            dropdown-icon="expand_more"
+            v-model="formData.proposed_sector"
+            :options="proposed_sectors"
             dense
             outlined
-            v-model="formData.proposed_total_proposed_area"
           />
         </div>
 
@@ -40,93 +39,139 @@
           </label>
         </div>
         <div class="col-xs-12 col-md-5">
-          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          <q-select
+            dropdown-icon="expand_more"
+            v-model="formData.proposed_industry_size"
+            :options="proposed_industries"
             dense
             outlined
-            v-model="formData.proposed_total_proposed_area"
           />
         </div>
       </div>
     </div>
 
-    <div class="col-xs-12 col-md-3">
+    <div class="col-12 text-caption">
+      The limit investment in plan and machinery / equipment for manufacturing /
+      service enterprises, as notified vide S.O. 1642(E) dtd.29-09-2006 of MSME
+      are as under
+    </div>
+
+    <div class="col-12 text-center">
+      <q-markup-table>
+        <thead>
+          <tr>
+            <th>Enterprises</th>
+            <th>Investment in plant &amp; machinery</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Micro Enterprises</td>
+            <td>Does not exceed twenty-five lakh rupees</td>
+          </tr>
+          <tr>
+            <td>Small Enterprises</td>
+            <td>
+              More than twenty-five lakh rupees but does not exceed five crore
+              rupees
+            </td>
+          </tr>
+          <tr>
+            <td>Medium Enterprises</td>
+            <td>
+              More than five crore rupees but does not exceed ten crore rupees
+            </td>
+          </tr>
+        </tbody>
+      </q-markup-table>
+    </div>
+
+    <div class="col-12 text-center">
+      <q-markup-table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Enterprises</th>
+            <th>Investment in equipment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Micro Enterprises</td>
+            <td>Does not exceed ten lakh rupees</td>
+          </tr>
+          <tr>
+            <td>Small Enterprises</td>
+            <td>
+              More than ten lakh rupees but does not exceed two crore rupees
+            </td>
+          </tr>
+          <tr>
+            <td>Medium Enterprises</td>
+            <td>
+              More than two crore rupees but does not exceed five crore rupees
+            </td>
+          </tr>
+        </tbody>
+      </q-markup-table>
+    </div>
+
+    <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="name">
-        Plot Requirement in Industrial Area*
+        6.4 Project type *
         <span class="asterisk"> *</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-3">
+    <div style="display: grid" class="col-xs-12 col-md-10">
       <q-radio
-        v-model="formData.proposed_plot_requirement"
-        val="applicable"
-        label="Applicable"
+        v-model="formData.project_type"
+        val="Construction Project(Civil Engineering, Construction, Petrochemical,Mining and Quarring)"
+        label="Construction Project(Civil Engineering, Construction, Petrochemical,Mining and Quarring)"
       />
       <q-radio
-        v-model="formData.proposed_plot_requirement"
-        val="not applicable"
-        label="Not Applicable"
+        v-model="formData.project_type"
+        val="Manufacturing Project"
+        label="Manufacturing Project"
+      />
+      <q-radio
+        v-model="formData.project_type"
+        val="Service(Automobile and other repairs, Real Estate and Renting Activities, ITES, Insurance, Financial Services, Hostels and Restaurants, transportation, Warehouse and Cold Storage Service, Health Care and diagnostic centres etc."
+        label="Service(Automobile and other repairs, Real Estate and Renting Activities, ITES, Insurance, Financial Services, Hostels and Restaurants, transportation, Warehouse and Cold Storage Service, Health Care and diagnostic centres etc."
       />
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="dob" type="date"> Industrial Area* </label>
+      <label class="zlabel" for="dob" type="date">
+        6.5 Category of project *
+      </label>
     </div>
     <div class="col-xs-12 col-md-4">
-      <q-select
-        dense
-        dropdown-icon="expand_more"
-        outlined
-        v-model="formData.proposed_industrial_area"
-        :options="industrial_areas"
-      />
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="gender"
-        >Total Proposed Project Area(Sq. meter)*
-        <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        dense
-        outlined
-        v-model="formData.proposed_total_proposed_area"
-      />
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="pob"> Total Built-up Area(Sq. meter)* </label>
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        dense
-        outlined
-        v-model="formData.proposed_total_built_area"
-      />
+      <q-radio v-model="formData.project_category" val="yes" label="Yes" />
+      <q-radio v-model="formData.project_category" val="no" label="No" />
     </div>
 
     <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender">
-        City/Town* <span class="asterisk">*</span></label
+        6.7 Detailed Project Report (DPR) / Concept Note* ( Maximum size : 4 MB
+        Format : PDF )
+        <span class="asterisk">*</span></label
       >
     </div>
     <div class="col-xs-12 col-md-3">
-      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        dense
-        outlined
-        v-model="formData.proposed_city_town"
-      />
+      <q-file v-model="formData.project_report" dense outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+    </div>
+
+    <div class="col-12 text-caption">
+      NOTE <br />
+      a) DPR Should also contain applicable manufacturing/service process flow
+      chart, list of machineries, list of products/services; list of raw
+      materials <br />
+      OR <br />
+      b) Standard Concept Note format as prescribed by Department of Commerce &
+      Industries to be submitted
     </div>
 
     <div class="col-xs-12" />
@@ -139,21 +184,25 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   setup(props, context) {
     const store = useStore();
-    const draft = store.getters["applicantData/getCurrentDraft"];
-    const currentUser = store.getters["auth/getCurrentUser"];
+    
 
     const formData = reactive({
-      proposed_industrial_area: "",
-      proposed_plot_requirement: "",
-      proposed_total_proposed_area: "",
-      proposed_total_built_area: "",
-      proposed_city_town: "",
+      proposed_sector: "",
+      proposed_project_purpose: "",
+
+      proposed_industry_size: "",
+
+      project_type: "",
+
+      project_category: "",
+
+      foreign_colab: "",
+
+      project_report: null,
     });
     onMounted(() => {});
     return {
@@ -163,6 +212,9 @@ export default {
         "Industrial Estate, Zuangtui",
         "Export Promotion Industrial Park, Lengte",
       ],
+      proposed_sectors: ["Manufacturing", "Service"],
+      proposed_industries: ["Micro", "Small", "Medium", "Large"],
+      project_categories: ["Greenfield", "Brownfield"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

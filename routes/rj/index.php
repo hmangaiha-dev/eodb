@@ -42,3 +42,12 @@ Route::group(['prefix' => 'investor/applications' ,'middleware' => 'auth:sanctum
     Route::get('{application}',[InvestorController::class,'detail'])->where('application','[0-9]+');
 
 });
+
+
+
+
+Route::group(['prefix' => 'investor/caf' ,'middleware' => 'auth:sanctum'], function() {
+    Route::post('store',[InvestorController::class,'store']);
+    Route::get('{application}',[InvestorController::class,'detail'])->where('application','[0-9]+');
+
+});
