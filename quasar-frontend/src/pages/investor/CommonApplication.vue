@@ -33,7 +33,7 @@
             <q-item-section class="text-green text-subtitle1"
               >3.Project Details</q-item-section
             >
-             <q-item-section avatar class="text-green text-caption"
+            <q-item-section avatar class="text-green text-caption"
               >Completed</q-item-section
             >
           </q-item>
@@ -55,22 +55,25 @@
         <q-tab name="b" label="Part-B" />
         <q-tab name="c" label="Part-C" />
         <q-tab name="d" label="Part-D" />
+        <q-tab name="e" label="Part-E" />
       </q-tabs>
       <q-form class="row">
         <q-tab-panels v-model="tab" animated>
           <q-tab-panel name="a">
-            <div class="row q-col-gutter-lg">
-              <div class="col-xs-12">
-                <PersonalDetails ref="applicantRef" />
+            <q-form>
+              <div class="row q-col-gutter-lg">
+                <div class="col-xs-12">
+                  <PersonalDetails ref="applicantRef" />
+                </div>
+                <div class="col-xs-12">
+                  <FirmDetails ref="FirmRef" />
+                </div>
               </div>
-              <div class="col-xs-12">
-                <FirmDetails ref="FirmRef" />
-              </div>
-            </div>
 
-            <div class="col-12 q-mt-md">
-              <q-btn color="green-6" type="submit" label="Save & Next" />
-            </div>
+              <div class="col-12 q-mt-md">
+                <q-btn color="green-6" type="submit" label="Save & Next" />
+              </div>
+            </q-form>
           </q-tab-panel>
 
           <q-tab-panel name="b">
@@ -85,9 +88,7 @@
             </div>
           </q-tab-panel>
 
-
-
-           <q-tab-panel name="c">
+          <q-tab-panel name="c">
             <div class="row q-col-gutter-lg">
               <div class="col-xs-12">
                 <PartC ref="partCRef" />
@@ -99,11 +100,22 @@
             </div>
           </q-tab-panel>
 
-
-           <q-tab-panel name="d">
+          <q-tab-panel name="d">
             <div class="row q-col-gutter-lg">
               <div class="col-xs-12">
-                <PartD ref="partCRef" />
+                <PartD ref="partDRef" />
+              </div>
+            </div>
+
+            <div class="col-12 q-mt-md">
+              <q-btn color="green-6" type="submit" label="Save & Next" />
+            </div>
+          </q-tab-panel>
+
+          <q-tab-panel name="e">
+            <div class="row q-col-gutter-lg">
+              <div class="col-xs-12">
+                <PartE ref="partERef" />
               </div>
             </div>
 
@@ -128,7 +140,7 @@ import FirmDetails from "./form/FirmDetails.vue";
 import ProposedDetails from "./form/ProposedDetails.vue";
 import PartC from "./form/PartC.vue";
 import PartD from "./form/PartD.vue";
-
+import PartE from "./form/PartE.vue";
 
 export default {
   components: {
@@ -136,14 +148,16 @@ export default {
     FirmDetails,
     ProposedDetails,
     PartC,
-    PartD
+    PartD,
+    PartE,
   },
   setup(props, context) {
     const applicantRef = ref(null);
     const FirmRef = ref(null);
     const proposedRef = ref(null);
     const partCRef = ref(null);
-
+    const partDRef = ref(null);
+    const partERef = ref(null);
 
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
@@ -176,6 +190,8 @@ export default {
       FirmRef,
       proposedRef,
       partCRef,
+      partDRef,
+      partERef,
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

@@ -92,6 +92,12 @@ export default {
       name: "investor:approved",
       component: () => import("pages/investor/CompletedApplications.vue"),
     },
+
+    {
+      path: "application/track",
+      name: "investor:application-track",
+      component: () => import("pages/investor/TrackApplication.vue"),
+    },
     // {
     //   path: "commerce-and-industries/allotment-of-industrial-plot",
     //   name: "industries:allotment",

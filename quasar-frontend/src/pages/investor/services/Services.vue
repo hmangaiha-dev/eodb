@@ -1,9 +1,13 @@
 <template>
   <q-page>
-    
     <div class="full-width banner-dept">
-      <div class="row q-px-md q-pt-xl justify-between q-col-gutter-md" style="max-width: 1400px; margin: 0 auto">
-        <div class="text-h4 text-center full-width text-white bg-grey-8 q-pa-xl">
+      <div
+        class="row q-px-md q-pt-xl justify-between q-col-gutter-md"
+        style="max-width: 1400px; margin: 0 auto"
+      >
+        <div
+          class="text-h4 text-center full-width text-white bg-grey-8 q-pa-xl"
+        >
           {{ dept_name }}
         </div>
         <br />
@@ -14,7 +18,7 @@
             </q-card-section>
             <q-card-section>
               <div>Secretary</div>
-              <div>  {{ dept_name }} </div>
+              <div>{{ dept_name }}</div>
             </q-card-section>
           </q-card>
         </div>
@@ -25,7 +29,7 @@
             </q-card-section>
             <q-card-section>
               <div>Director</div>
-              <div>  {{ dept_name }} </div>
+              <div>{{ dept_name }}</div>
             </q-card-section>
           </q-card>
         </div>
@@ -35,7 +39,7 @@
       style="max-width: 1600px; margin: 0 auto"
       class="row q-mt-md q-col-gutter-md q-pa-sm"
     >
-      <div style="width: 100%" class="q-pa-md">
+      <div style="width: 100%" class="col-12 q-pa-md">
         <q-tabs stretch v-model="tab" class="text-teal">
           <q-tab name="services" icon="mails" label="Online Services" />
           <q-tab name="about" icon="alarm" label="About Us" />
@@ -43,54 +47,71 @@
           <q-tab name="noti" icon="movie" label="Noftifications" />
           <q-tab name="other" icon="movie" label="Other Infomations" />
         </q-tabs>
-        <div v-if="tab == 'services'" class="text-h5 q-my-md">
-          Online services
+
+        <div class="row q-my-lg q-ml-md">
+          <div class="col-4">
+            <q-select
+              dense
+              dropdown-icon="expand_more"
+              v-model="localData.category"
+              :options="categories"
+              label="Select category"
+              emit-value
+            />
+          </div>
+
+          <div class="col-3 q-ml-md">
+            <q-btn color="blue" label="Filter" @click="getSelectedCategory" />
+          </div>
         </div>
-        <q-table
-        bordered
-          wrap-cells
-          flat
-          v-if="tab == 'services'"
-          :columns="columns"
-          :rows="rows"
-          row-key="name"
-        >
-          <template v-slot:body="props">
-            <q-tr :props="props">
-              <q-td key="name" :props="props">
-                {{ props.row.name }}
-              </q-td>
-              <q-td key="who" :props="props">
-                <q-btn color="blue-6" flat label="View" />
-              </q-td>
-              <q-td key="how" :props="props">
-                <q-btn color="blue-6" flat label="View procedure" />
-              </q-td>
-              <q-td key="document" :props="props">
-                <q-btn color="blue-6" flat label="View" />
-              </q-td>
-              <q-td key="timeline" :props="props">
-                <q-btn color="blue-6" flat label="View fees" />
-              </q-td>
-              <q-td key="fees" :props="props">
-                <q-btn color="blue-6" flat label="Download" />
-              </q-td>
-              <q-td key="form" :props="props">
-                <q-btn color="blue-6" flat label="Download" />
-              </q-td>
-              <q-td key="apply" :props="props">
-                <q-btn
-                  :to="`/investor/${route.params.deptname}/${props.row.apply}`"
-                  color="blue-6"
-                  label="Apply"
-                />
-              </q-td>
-            </q-tr>
-            <!-- <q-tr :props="props"> -->
-            <!-- </q-tr> -->
-          </template>
-        </q-table>
+
         <q-tab-panels class="full-width" v-model="tab" animated>
+          <q-tab-panel name="services">
+            <q-table
+              bordered
+              wrap-cells
+              flat
+              title="Online Services"
+              :columns="columns"
+              :rows="rows"
+              row-key="name"
+            >
+              <template v-slot:body="props">
+                <q-tr :props="props">
+                  <q-td key="name" :props="props">
+                    {{ props.row.name }}
+                  </q-td>
+                  <q-td key="who" :props="props">
+                    <q-btn color="blue-6" flat label="View" />
+                  </q-td>
+                  <q-td key="how" :props="props">
+                    <q-btn color="blue-6" flat label="View procedure" />
+                  </q-td>
+                  <q-td key="document" :props="props">
+                    <q-btn color="blue-6" flat label="View" />
+                  </q-td>
+                  <q-td key="timeline" :props="props">
+                    <q-btn color="blue-6" flat label="View fees" />
+                  </q-td>
+                  <q-td key="fees" :props="props">
+                    <q-btn color="blue-6" flat label="Download" />
+                  </q-td>
+                  <q-td key="form" :props="props">
+                    <q-btn color="blue-6" flat label="Download" />
+                  </q-td>
+                  <q-td key="apply" :props="props">
+                    <q-btn
+                      :to="`/investor/${route.params.deptname}/${props.row.apply}`"
+                      color="blue-6"
+                      label="Apply"
+                    />
+                  </q-td>
+                </q-tr>
+                <!-- <q-tr :props="props"> -->
+                <!-- </q-tr> -->
+              </template>
+            </q-table>
+          </q-tab-panel>
           <q-tab-panel name="about">
             <AboutUs />
           </q-tab-panel>
@@ -106,8 +127,6 @@
         </q-tab-panels>
       </div>
     </div>
-
-
   </q-page>
 </template>
 
@@ -119,7 +138,7 @@ import ApplyService from "./ApplyService.vue";
 import Notifications from "./Notifications.vue";
 // import Notifications from "./Notifications.vue";
 import MsegsFooter from "components/MsegsFooter.vue";
-import { ref, onMounted, toRefs, toRef, watch } from "vue";
+import { ref, onMounted, watch,reactive } from "vue";
 import OtherInfo from "./OtherInfo.vue";
 import routes from "src/router/routes";
 import router from "src/router";
@@ -135,7 +154,7 @@ export default {
     Notifications,
     Notifications,
     OtherInfo,
-    MsegsFooter
+    MsegsFooter,
   },
   setup(props, context) {
     const route = useRoute();
@@ -143,6 +162,10 @@ export default {
     const router = useRouter();
 
     const dept_name = ref("");
+
+    const localData = reactive({
+      category: "",
+    });
 
     watch(
       () => route.params.deptname,
@@ -167,6 +190,10 @@ export default {
       !result.length && router.push({ name: "invalid" });
 
       rows.value = result[0]?.services;
+    };
+
+    function getSelectedCategory(e)  {
+      console.log("selected target", localData.category);
     };
 
     const columns = ref([
@@ -1303,16 +1330,25 @@ export default {
       refresh();
     });
 
-    console.log("layouts is".Layouts);
+    // console.log("layouts is".Layouts);
     return {
       rows,
       columns,
       route,
       router,
       dept_name,
+      localData,
       tab: ref("services"),
       deptServices,
+      categories: [
+        "PRE-ESTABLISHMENT",
+        "POST-ESTABLISHMENT",
+        "POST-COMMENCEMENT",
+        "PRE-OPERATION",
+        "POST-OPERATION",
+      ],
       refresh,
+      getSelectedCategory,
     };
   },
 };

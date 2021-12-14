@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class OnlineService extends Model
 {
     use HasFactory;
+
+
+
+    public function category()
+    {
+        return $this->belongsTo(ServiceCategory::class,'catergoy_id','id');
+    }
 }
+
+

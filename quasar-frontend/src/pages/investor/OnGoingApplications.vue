@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-lg">
     <div class="row q-col-gutter-md">
       <div v-if="!localData.length" class="zlabel">
         No Applications so far

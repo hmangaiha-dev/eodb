@@ -123,7 +123,7 @@
                 clickable
               >
                 <q-item-section avatar>
-                  <q-icon color="yellow" name="description" />
+                  <q-icon color="yellow-7" name="hourglass_empty" />
                 </q-item-section>
                 <q-item-section> Ongoing Applications </q-item-section>
               </q-item>
@@ -134,9 +134,21 @@
                 clickable
               >
                 <q-item-section avatar>
-                  <q-icon color="yellow" name="description" />
+                  <q-icon color="green-4" name="check_circle" />
                 </q-item-section>
                 <q-item-section> Approved Applications </q-item-section>
+              </q-item>
+
+                <q-item
+                active-class="active-item q-px-md"
+                class="q-ml-md zitem"
+                :to="{ name: 'investor:application-track' }"
+                clickable
+              >
+                <q-item-section avatar>
+                  <q-icon color="green" name="trending_up" />
+                </q-item-section>
+                <q-item-section> Track Application </q-item-section>
               </q-item>
             </q-expansion-item>
             <q-separator />
