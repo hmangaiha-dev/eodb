@@ -11,8 +11,13 @@ class OnlineServiceSeeder extends Seeder
      *
      * @return void
      */
+
+    const services = [
+        [
+            
+        ]
+    ];
     public function run()
     {
-        //
     }
 }
