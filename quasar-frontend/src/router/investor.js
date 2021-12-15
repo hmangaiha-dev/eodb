@@ -75,16 +75,16 @@ export default {
       name: "common:create",
       component: () => import("pages/investor/services/Services.vue"),
     },
-    {
-      path: "amc/online-services",
-      name: "amc:services",
-      component: () => import("pages/investor/services/Services.vue"),
-    },
-    {
-      path: "land-revenue-settlement/online-services",
-      name: "amc:services",
-      component: () => import("pages/investor/services/Services.vue"),
-    },
+    // {
+    //   path: "amc/online-services",
+    //   name: "amc:services",
+    //   component: () => import("pages/investor/services/Services.vue"),
+    // },
+    // {
+    //   path: "land-revenue-settlement/online-services",
+    //   name: "amc:services",
+    //   component: () => import("pages/investor/services/Services.vue"),
+    // },
     // { path: "commerce-and-industries/online-services", name:"amc:services", component: () => import("pages/investor/services/Services.vue") },
 
     {

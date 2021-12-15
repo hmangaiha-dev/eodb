@@ -12,9 +12,9 @@ class Department extends Model
 
 
 
-    public function applications()
+    public function services()
     {
-        return $this->hasMany(Application::class);
+        return $this->hasMany(DepartmentService::class);
     }
 }
 

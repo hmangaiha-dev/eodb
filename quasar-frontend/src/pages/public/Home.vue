@@ -320,7 +320,7 @@ export default defineComponent({
       {
         serial: "06",
         title: "Food & Drug Administration, H&FW Department",
-        link: "food-and-drug-administration/",
+        link: "food-and-drug-administration",
       },
       {
         serial: "07",

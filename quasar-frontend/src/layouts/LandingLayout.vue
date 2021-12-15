@@ -103,11 +103,12 @@
     </q-header>
 
     <q-page-container class="bg-grey-2">
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </q-page-container>
 
     <MsegsFooter />
-    
   </q-layout>
 </template>
 
@@ -115,8 +116,9 @@
 import EssentialLink from "components/EssentialLink.vue";
 import ProfileMenu from "components/ProfileMenu.vue";
 import { useStore } from "vuex";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import MsegsFooter from "components/MsegsFooter";
+// import { useStore } from "vuex";
 
 const linksList = [
   {
@@ -176,6 +178,13 @@ export default defineComponent({
 
   setup() {
     const store = useStore();
+    // console.log("dsfsf");
+
+    onMounted(() => {
+      // console.log("dsfsf");
+      // store.dispatch("globalData/fetchDeptServices");
+      // console.log("investor service", store.state.globalData);
+    });
 
     return {
       essentialLinks: linksList,

@@ -139,7 +139,7 @@
                 <q-item-section> Approved Applications </q-item-section>
               </q-item>
 
-                <q-item
+              <q-item
                 active-class="active-item q-px-md"
                 class="q-ml-md zitem"
                 :to="{ name: 'investor:application-track' }"
@@ -164,19 +164,19 @@
               <q-item-section> Common Application </q-item-section>
             </q-item>
           </q-drawer>
-          <router-view />
+          <!-- <keep-alive> -->
+            <router-view />
+          <!-- </keep-alive> -->
         </q-page-container>
 
         <!-- <MsegsFooter /> -->
-
-        
       </div>
     </q-layout>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import MsegFooter from "components/MsegFooter";
 
 import ProfileMenu from "components/ProfileMenu";
@@ -261,6 +261,14 @@ export default {
     const leftDrawerOpen = ref(false);
     const rightDrawerOpen = ref(false);
     const menuItems = reactive([{}]);
+
+    onMounted(() => {
+      console.log('dsfsf');
+       store.dispatch("globalData/fetchDeptServices");
+
+
+      console.log('investor service',store.state.globalData);
+    });
 
     return {
       depts,

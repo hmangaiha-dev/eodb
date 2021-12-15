@@ -78,16 +78,16 @@
             >
               <template v-slot:body="props">
                 <q-tr :props="props">
-                  <q-td key="name" :props="props">
-                    {{ props.row.name }}
+                  <q-td key="service_name" :props="props">
+                    {{ props.row.service_name }}
                   </q-td>
-                  <q-td key="who" :props="props">
+                  <q-td key="who_should_apply" :props="props">
                     <q-btn color="blue-6" flat label="View" />
                   </q-td>
-                  <q-td key="how" :props="props">
+                  <q-td key="how_to_apply" :props="props">
                     <q-btn color="blue-6" flat label="View procedure" />
                   </q-td>
-                  <q-td key="document" :props="props">
+                  <q-td key="document_to_submit" :props="props">
                     <q-btn color="blue-6" flat label="View" />
                   </q-td>
                   <q-td key="timeline" :props="props">
@@ -96,12 +96,12 @@
                   <q-td key="fees" :props="props">
                     <q-btn color="blue-6" flat label="Download" />
                   </q-td>
-                  <q-td key="form" :props="props">
+                  <q-td key="sample_form" :props="props">
                     <q-btn color="blue-6" flat label="Download" />
                   </q-td>
-                  <q-td key="apply" :props="props">
+                  <q-td key="path" :props="props">
                     <q-btn
-                      :to="`/investor/${route.params.deptname}/${props.row.apply}`"
+                      :to="`/investor/${route.params.deptname}/${props.row.path}`"
                       color="blue-6"
                       label="Apply"
                     />
@@ -138,11 +138,10 @@ import ApplyService from "./ApplyService.vue";
 import Notifications from "./Notifications.vue";
 // import Notifications from "./Notifications.vue";
 import MsegsFooter from "components/MsegsFooter.vue";
-import { ref, onMounted, watch,reactive } from "vue";
+import { ref, onMounted, watch, reactive } from "vue";
+import { api } from "src/boot/axios";
 import OtherInfo from "./OtherInfo.vue";
-import routes from "src/router/routes";
-import router from "src/router";
-
+import { useStore } from 'vuex'
 // import { ref } from "vue";
 
 console.log("declare");
@@ -159,12 +158,31 @@ export default {
   setup(props, context) {
     const route = useRoute();
 
+    const store = useStore();
+
+    // store.dispatch('globalData/fetchDeptServices');
+
+    
     const router = useRouter();
 
     const dept_name = ref("");
-
+ 
     const localData = reactive({
       category: "",
+    });
+
+    onMounted(async() => {
+      console.log('service mounted');
+      // refresh();
+      await api
+        .get("department/services")
+        .then((res) => {
+          deptServices = res.data
+        })
+        .catch((err) => console.log("error", err));
+
+
+        refresh();
     });
 
     watch(
@@ -182,47 +200,49 @@ export default {
 
     const refresh = () => {
       const result = deptServices.filter((dept) => {
+        // console.log('dept value',dept.slug);
         return dept.slug == route.params.deptname;
       });
 
-      dept_name.value = result[0].name;
+
+      dept_name.value = result[0].dept_name;
 
       !result.length && router.push({ name: "invalid" });
 
       rows.value = result[0]?.services;
     };
 
-    function getSelectedCategory(e)  {
+    function getSelectedCategory(e) {
       console.log("selected target", localData.category);
-    };
+    }
 
     const columns = ref([
       {
-        name: "name",
+        name: "service_name",
         align: "center",
         label: "Name of services",
-        field: "name",
+        field: "service_name",
         sortable: true,
       },
 
       {
-        name: "how",
+        name: "how_to_apply",
         align: "center",
         label: "How to apply",
-        field: "how",
+        field: "how_to_apply",
       },
       {
-        name: "who",
+        name: "who_should_apply",
         align: "center",
         label: "Who should apply?",
         field: "who",
         sortable: true,
       },
       {
-        name: "document",
+        name: "document_to_submit",
         align: "center",
         label: "Document to be submitted",
-        field: "document",
+        field: "document_to_submit",
       },
       {
         name: "timeline",
@@ -231,13 +251,13 @@ export default {
         field: "timeline",
       },
       { name: "fees", align: "center", label: "Fees", field: "fees" },
-      { name: "form", align: "center", label: "Download Form", field: "form" },
+      { name: "sample_form", align: "center", label: "Download Form", field: "sample_form" },
       {
-        name: "apply",
+        name: "path",
         required: true,
         label: "Apply Online",
         align: "center",
-        field: "apply",
+        field: "path",
 
         sortable: true,
       },
@@ -252,1083 +272,14 @@ export default {
         timeline: 4.0,
         fees: 87,
         form: "14%",
-        apply: "1%",
+        path: "1%",
       },
     ]);
 
-    const deptServices = [
-      {
-        slug: "commerce-and-industries",
-        name: "Commerce & Industries Department",
-        services: [
-          {
-            name: "Application for Allotment of Industrial Plot",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "allotment-of-industrial-plot",
-          },
-          {
-            name: "Application for Claiming Interest Subsidy",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "claiming-central-interest-subsidy-scheme",
-          },
-          {
-            name: "Application form for Claiming Central Capital Investment Subsidy Scheme",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "claiming-central-capital-investment-subsidy-scheme",
-          },
-
-          {
-            name: "Application for Claim Of Subsidy On Rent Of Factory Shed",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Claiming Power Subsidy",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Application For Subsidy On Power Generating Set",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application For Subsidy On Power Line	",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application For Subsidy On Cost Of Project Report",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Application For Claim Of Interest Subsidy",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application For State Transportation Subsidy on Plant & Machineries",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application For Grant Of Land Subsidy",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-      {
-        slug: "land-revenue",
-        name: "Land Revenue & Settlement Department",
-        services: [
-          {
-            name: "APPLICATION FOR PERIODIC PATTA (PERIODIC PATTA DILNA)",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "periodic-patta",
-          },
-          {
-            name: "APPLICATION FOR ALLOTMENT OF LAND FOR HOUSE SITE",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "APPLICATION FOR ALLOTMENT OF LAND FOR SHOP/STALL",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "APPLICATION FOR RESIDENTIAL LAND SETTLEMENT CERTIFICATE INHMUN/LAND SETTLEMENT CERTIFICATE TURA DILNA",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Diversion Of Land Use/Change Of Land",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "APPLICATION FOR TRANSFER OF OWNERSHIP OF LAND HOLDING",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "APPLICATION FOR PARTITION OF LSC",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application For The Allotment Of Land To The Government Department/Corporation/Boards etc. On Land Lease/Limited Lease	",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-      {
-        slug: "environment-forest-and-climate-change",
-        name: "Environment, Forest & Climate Change Department",
-        services: [
-          {
-            name: "Application for Bamboo plantation in Non-forest Area",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "bamboo-plantions",
-          },
-          {
-            name: "Application for Permission to fell tress/ tree plantation in in non-forest area",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "permission-to-fell-trees",
-          },
-        ],
-      },
-      {
-        slug: "pollution-control-board",
-        name: "Pollution Control Board Department",
-        services: [
-          {
-            name: "Application For Consent To Establishment Industries Etc.",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "consent-to-establishment-industries",
-          },
-          {
-            name: "Accident Reporting for Bio-Medical Wastes",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "accident-reporting-bio-medical-waste",
-          },
-          {
-            name: "Submission of Annual report for Bio-Medical Wastes.",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "submission-anual-report-bio-medical-wastes",
-          },
-          {
-            name: "Accident Reporting for Bio-Medical Wastes",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Submission of Annual Report for Hazardous Waste.",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Accident Report Due To Solid Waste",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Application For Authorisation Under Solid Waste Management Rules For Processing/Recycling/Treatment And Disposal Of Solid Waste",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Format Of Annual Report To Be Submitted By The Operator Of Facility To The Local Body.",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for renewal of authorisation under Solid Waste Management",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Application For Registration As Producers Or Brand Owners Under Plastic Waste Management",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application For Registration of Units Engaged in Processing or Recycling of Plastic Waste.",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application For Registration For Manufacturers Of Plastic Raw Materials",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Submission Of Annual Report By Operator Of Plastic Waste Processing Or Recycling Facility To The Local Body",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Submission For Annual Report On Plastic Waste Management To Be Submitted By The Local Body.",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application Form For Registration Of Batteries Dealers",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Application For Registration Of Importer Of New Lead Acid Batteries / Primary Lead Under Batteries Management & Handling Waste",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Application For Obtaining Authorization Under Construction & Demolition Waste",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Form For Filing Returns By Auctioneer Of Used Batteries Under Batteries (Management & Handling) Waste.",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application For Obtaining Authorisation For Generation Or Storage Or Treatment Or Disposal Of E-Waste By Manufacturer Or Refurbisher Under e-Waste(Management) Rules",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Application For Authorisation Of Facilities Possessing Environmentally Sound Management Practice For Dismantling Or Recycling Of E-Waste",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Authorization (Bio Medical Waste).",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Authorization (e-Waste Management)",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Approval & Notification of sites",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-      {
-        slug: "fire-and-emergency-services",
-        namne: "Fire & Emergency Services Department",
-        services: [
-          {
-            name: "Fire NOC",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "noc-form",
-          },
-        ],
-      },
-
-      {
-        slug: "taxation",
-        name: "Taxation Department",
-        services: [
-          {
-            name: "GST Registration",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Registration of A Society",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-
-      {
-        slug: "public-work-department",
-        name: "Public Work Department",
-        services: [
-          {
-            name: "Issue of Road Cutting Permission on (Scheduled Roads Under PWD)",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "road-cutting",
-          },
-          {
-            name: "Issue of No Objection Certificate for Right of Way(Along scheduled Roads under PWD & PWD Land) [(Excluding NH)]",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-
-      {
-        slug: "aizawl-municipal-corporation",
-        name: "Aizawl Municipal Corporation",
-        services: [
-          {
-            name: "Approval - Inspection - Payments	",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Licensing",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-      {
-        slug: "law-and-judicial",
-        name: "Law & Judicial Department",
-        services: [
-          {
-            name: "No data",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-
-      {
-        slug: "legal-metrology",
-        name: "Legal Metrology",
-        services: [
-          {
-            name: "Licensing of Manufacturer of Weights & Measures",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Renewal of Manufacturer of Weights & Measures",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Renewal of Dealer in Weight & Measures ",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Licence of Repairer of Weights & Measures",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Licence of Dealers in Weights & Measures	",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Registration of Manufacturer/Packer",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Registration of Importer/Packer ",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Renewal of Licence of Repairer of Weights & Measures",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Licence of Importers of Weights & Measures",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Verification of Weights & Measures",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Re-verification of Weights & Measures",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-
-      {
-        slug: "excise-and-narcotics",
-        name: "Excise and Narcotics Department",
-        services: [
-          {
-            name: "to be filled",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "to be filled",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-
-      {
-        slug: "power-and-electricity",
-        name: "Power & Electricity Department",
-        services: [
-          {
-            name: "Application form – New Connection (Low Tension Service)",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "new-connection",
-          },
-          {
-            name: "Application Form – New Connection (High Tension / Extra High-Tension Service)",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application For Changing The Name of Registered Consumer",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Transfer of Ownership to Legal Heir",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Conversion of Services / Change of Consumer Category / Shifting of Connection",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Load Enhancement / Load Reduction",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-
-          {
-            name: "Procedure for Determination of Connected Load",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Meter Related Complaints / Request for Testing of Meter",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Request for Permanent Disconnection & Termination of Agreement",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-
-      {
-        slug: "public-health-and-engineering",
-        name: "Public Health & Engineering Department",
-        services: [
-          {
-            name: "Application for New Water Connection (Domestic)",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for New Water Connection (Commercial)",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Transfer Of House Water Connection",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Change of Ownership of Consumer",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Re-Connection of Temporary Disconnected Water Connection",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Disconnection of Water Connection",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-      {
-        slug: "geology-and-mineral-resource",
-        name: "Geology & Mineral Resources Department",
-        services: [
-          {
-            name: "Mining lease/Composite License/ Non-exclusive Reconnaissance Permit",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-
-      {
-        slug: "food-and-drug-administration",
-        name: "Food & Drug Administration, H&FW Department",
-        services: [
-          {
-            name: "Application for General (Retail) Licence Form 19",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Restricted (Retail) Licence Form 19A",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Wholesale Licence Form 19",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Licence to sell drugs by wholesale or distribute from motor vehicle Form 19AA",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Homoeopathic Retail Licence Form 19B",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-
-      {
-        slug: "urban-development-and-proverty-alleviation",
-        name: "Urban Development & Proverty Alleviation",
-        services: [
-          {
-            name: "Application for General (Retail) Licence Form 19",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-
-      {
-        slug: "labour-skill-development-and-enterprise",
-        name: "Labour Employment, Skill Development & Entreprenuership",
-        services: [
-          {
-            name: "Application for Certificate of Registration under Shops & Establishment",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for registration of license for the year and notice of occupation specified in section 6&7 of the Factories Act, 1948",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Licence for Engaging Contract Labour under The Mizoram Contract Labour (R & A) Rules 2004",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Registration of establishment Employing Migrant Workmen (Interstate Migrant Workers Principal Employer Registration)",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for permission to Construct, Extend or take into use any building as a factory under Factories Act, 1948",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Renewal of Licence for engaging Contract Labour under The Mizoram Contract Labour (R & A) Rules 2004",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-          {
-            name: "Application for Registration of establishments employing building workers under The Mizoram Building & Other Construction Workers (RE&CS) Rules 2015",
-            who: "link",
-            how: "link",
-            document: "link",
-            timeline: "link",
-            fees: "link",
-            form: "link",
-            apply: "link",
-          },
-        ],
-      },
-    ];
-
-    onMounted(() => {
-      refresh();
-    });
+    var deptServices = [];
+    // onMounted(() => {
+    //   refresh();
+    // });
 
     // console.log("layouts is".Layouts);
     return {
