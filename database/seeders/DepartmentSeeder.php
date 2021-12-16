@@ -52,7 +52,7 @@ class DepartmentSeeder extends Seeder
         [
             'id'    =>  7,
             'dept_name' => 'Labour, Skill Development & Entreprenuership',
-            'slug' => 'labour-skill-development-and-entreprise',
+            'slug' => 'labour-skill-development-and-enterprise',
             'dept_code' => 'LABOUR'
         ],
         [

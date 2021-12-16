@@ -41,16 +41,31 @@
     >
       <div style="width: 100%" class="col-12 q-pa-md">
         <q-tabs stretch v-model="tab" class="text-teal">
-          <q-tab name="services" icon="mails" label="Online Services" />
-          <q-tab name="about" icon="alarm" label="About Us" />
-          <q-tab name="actrules" icon="movie" label="Act & Rules" />
-          <q-tab name="noti" icon="movie" label="Noftifications" />
-          <q-tab name="other" icon="movie" label="Other Infomations" />
+          <q-tab name="services" label="Online Services" />
+          <q-tab name="about" label="About Us" />
+          <q-tab name="actrules" label="Act & Rules" />
+          <q-tab name="noti" label="Noftifications" />
+          <q-tab name="other" label="Other Infomations" />
         </q-tabs>
 
-        <div class="row q-my-lg q-ml-md">
+        <q-tabs
+          v-if="tab == 'services'"
+          stretch
+          v-model="tabCategory"
+          class="bg-grey-3 q-mt-md text-grey-8"
+        >
+          <q-tab name="ALL-CATEGORIES" label="All Categories" />
+          <q-tab name="PRE-ESTABLISHMENT" label="PRE-ESTABLISHMENT" />
+          <q-tab name="POST-ESTABLISHMENT" label="POST-ESTABLISHMENT" />
+          <q-tab name="POST-COMMENCEMENT" label="POST-COMMENCEMENT" />
+          <q-tab name="PRE-OPERATION" label="PRE-OPERATION" />
+          <q-tabs name="POST-OPERATION" label="POST-OPERATION" />
+        </q-tabs>
+
+        <!-- <div class="row q-my-lg q-ml-md">
           <div class="col-4">
             <q-select
+            @update:model-value="test"
               dense
               dropdown-icon="expand_more"
               v-model="localData.category"
@@ -61,14 +76,16 @@
           </div>
 
           <div class="col-3 q-ml-md">
-            <q-btn color="blue" label="Filter" @click="getSelectedCategory" />
+            <q-btn color="blue" label="Filter" @click="filterCategory" />
           </div>
-        </div>
+        </div> -->
 
         <q-tab-panels class="full-width" v-model="tab" animated>
           <q-tab-panel name="services">
             <q-table
+              v-model:pagination="pagination"
               bordered
+              @request="onRequest"
               wrap-cells
               flat
               title="Online Services"
@@ -141,7 +158,7 @@ import MsegsFooter from "components/MsegsFooter.vue";
 import { ref, onMounted, watch, reactive } from "vue";
 import { api } from "src/boot/axios";
 import OtherInfo from "./OtherInfo.vue";
-import { useStore } from 'vuex'
+import { useStore } from "vuex";
 // import { ref } from "vue";
 
 console.log("declare");
@@ -156,34 +173,78 @@ export default {
     MsegsFooter,
   },
   setup(props, context) {
+    const rows = ref([
+      {
+        name: "Application For Allotment Of Industrial Plot",
+        who: 159,
+        how: 6.0,
+        document: 24,
+        timeline: 4.0,
+        fees: 87,
+        form: "14%",
+        path: "1%",
+      },
+    ]);
+    // console.log('rows',rows.value);
+    const pagination = ref({
+      sortBy: "desc",
+      descending: false,
+      page: 1,
+      rowsPerPage: 3,
+      rowsNumber: 11,
+      // rowsNumber: 10
+    });
     const route = useRoute();
 
     const store = useStore();
 
-    // store.dispatch('globalData/fetchDeptServices');
-
-    
     const router = useRouter();
 
+    const tabCategory = ref("ALL-CATEGORIES");
+
     const dept_name = ref("");
- 
+
     const localData = reactive({
-      category: "",
+      category: "ALL-CATEGORIES",
     });
 
-    onMounted(async() => {
-      console.log('service mounted');
-      // refresh();
+    onMounted(async () => {
       await api
         .get("department/services")
         .then((res) => {
-          deptServices = res.data
+          deptServices = res.data;
         })
         .catch((err) => console.log("error", err));
 
+      refresh();
 
-        refresh();
+      onRequest();
     });
+
+    function onRequest(props) {
+      pagination.value.rowsPerPage = rows.value.length
+    }
+
+    watch(
+      () => tabCategory.value,
+      (newvalue, oldValue) => {
+        refresh();
+
+        if (newvalue === "ALL-CATEGORIES") return;
+
+        const finalResult = rows.value.filter((service) => {
+          return service?.category_type == newvalue;
+        });
+
+        console.log("final gg", finalResult);
+
+        rows.value = finalResult;
+
+        pagination.rowsPerPage = rows.value.length;
+
+        console.log("rows length", pagination.value);
+      }
+    );
 
     watch(
       () => route.params.deptname,
@@ -204,16 +265,32 @@ export default {
         return dept.slug == route.params.deptname;
       });
 
-
       dept_name.value = result[0].dept_name;
 
       !result.length && router.push({ name: "invalid" });
 
       rows.value = result[0]?.services;
+
+      pagination.rowsPerPage = rows.value.length;
+
+      console.log("rows per page", pagination.rowsPerPage);
     };
 
-    function getSelectedCategory(e) {
-      console.log("selected target", localData.category);
+    function filterCategory(e) {
+      refresh();
+
+      if (localData.category === "ALL-CATEGORIES") return;
+
+      const finalResult = rows.value.filter((service) => {
+        return service?.category_type == localData.category;
+      });
+
+      rows.value = finalResult;
+      // console.log("final", finalResult);
+      // });
+
+      // array.forEach((element) => {});
+      console.log("selected target", finalResult);
     }
 
     const columns = ref([
@@ -251,7 +328,12 @@ export default {
         field: "timeline",
       },
       { name: "fees", align: "center", label: "Fees", field: "fees" },
-      { name: "sample_form", align: "center", label: "Download Form", field: "sample_form" },
+      {
+        name: "sample_form",
+        align: "center",
+        label: "Download Form",
+        field: "sample_form",
+      },
       {
         name: "path",
         required: true,
@@ -263,35 +345,22 @@ export default {
       },
     ]);
 
-    const rows = ref([
-      {
-        name: "Application For Allotment Of Industrial Plot",
-        who: 159,
-        how: 6.0,
-        document: 24,
-        timeline: 4.0,
-        fees: 87,
-        form: "14%",
-        path: "1%",
-      },
-    ]);
-
     var deptServices = [];
-    // onMounted(() => {
-    //   refresh();
-    // });
 
-    // console.log("layouts is".Layouts);
     return {
       rows,
       columns,
+      pagination,
       route,
       router,
       dept_name,
       localData,
+      onRequest,
       tab: ref("services"),
+      tabCategory,
       deptServices,
       categories: [
+        "ALL-CATEGORIES",
         "PRE-ESTABLISHMENT",
         "POST-ESTABLISHMENT",
         "POST-COMMENCEMENT",
@@ -299,7 +368,10 @@ export default {
         "POST-OPERATION",
       ],
       refresh,
-      getSelectedCategory,
+      filterCategory,
+      test: (value) => {
+        console.log("dfdf", value);
+      },
     };
   },
 };
