@@ -6,9 +6,9 @@
       APPLICATION FOR REGISTRATION OF PRIVATE BAMBOO PLANTATION IN NON-FOREST
       AREA
     </div>
-    <q-form @submit.prevent="" class="row">
+    <q-form @submit.prevent="" class="full-width">
       <div class="row q-col-gutter-lg">
-        <div class="col-xs-12">
+        <div class="col-12">
           <Form ref="applicantRef" />
         </div>
       </div>

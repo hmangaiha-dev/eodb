@@ -1,9 +1,9 @@
 <template>
   <q-page>
     <div class="row q-mt-lg justify-center">
-      <div class="col-sm-10 col-xs-10 col-md-3">
-        <q-form @submit="submit" @reset="reset">
-          <q-card flat bordered>
+      <div class="col-md-6 col-xs-10 col-sm-8 col-lg-3 col-md-3">
+        <q-form class="bg-green" @submit="submit" @reset="reset">
+          <q-card  flat bordered>
             <p class="text-h6 text-weight-regular q-mt-md text-center">Login</p>
             <q-card-section>
               <q-input

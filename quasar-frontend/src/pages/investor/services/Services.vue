@@ -59,7 +59,7 @@
           <q-tab name="POST-ESTABLISHMENT" label="POST-ESTABLISHMENT" />
           <q-tab name="POST-COMMENCEMENT" label="POST-COMMENCEMENT" />
           <q-tab name="PRE-OPERATION" label="PRE-OPERATION" />
-          <q-tabs name="POST-OPERATION" label="POST-OPERATION" />
+          <q-tab name="POST-OPERATION" label="POST-OPERATION" />
         </q-tabs>
 
         <!-- <div class="row q-my-lg q-ml-md">
@@ -173,25 +173,14 @@ export default {
     MsegsFooter,
   },
   setup(props, context) {
-    const rows = ref([
-      {
-        name: "Application For Allotment Of Industrial Plot",
-        who: 159,
-        how: 6.0,
-        document: 24,
-        timeline: 4.0,
-        fees: 87,
-        form: "14%",
-        path: "1%",
-      },
-    ]);
+    const rows = ref([]);
     // console.log('rows',rows.value);
     const pagination = ref({
       sortBy: "desc",
       descending: false,
       page: 1,
       rowsPerPage: 3,
-      rowsNumber: 11,
+      // rowsNumber: 11,
       // rowsNumber: 10
     });
     const route = useRoute();
@@ -222,7 +211,7 @@ export default {
     });
 
     function onRequest(props) {
-      pagination.value.rowsPerPage = rows.value.length
+      pagination.value.rowsPerPage = rows.value.length;
     }
 
     watch(
@@ -236,13 +225,11 @@ export default {
           return service?.category_type == newvalue;
         });
 
-        console.log("final gg", finalResult);
 
         rows.value = finalResult;
 
         pagination.rowsPerPage = rows.value.length;
 
-        console.log("rows length", pagination.value);
       }
     );
 
@@ -250,10 +237,6 @@ export default {
       () => route.params.deptname,
       () => {
         if (route.name != "common:create") return;
-
-        console.log("route name", route.name);
-
-        console.log("route changed investor");
 
         refresh();
       }
@@ -273,25 +256,21 @@ export default {
 
       pagination.rowsPerPage = rows.value.length;
 
-      console.log("rows per page", pagination.rowsPerPage);
     };
 
-    function filterCategory(e) {
-      refresh();
+    // function filterCategory(e) {
+    //   refresh();
 
-      if (localData.category === "ALL-CATEGORIES") return;
+    //   if (localData.category === "ALL-CATEGORIES") return;
 
-      const finalResult = rows.value.filter((service) => {
-        return service?.category_type == localData.category;
-      });
+    //   const finalResult = rows.value.filter((service) => {
+    //     return service?.category_type == localData.category;
+    //   });
 
-      rows.value = finalResult;
-      // console.log("final", finalResult);
-      // });
+    //   rows.value = finalResult;
 
-      // array.forEach((element) => {});
-      console.log("selected target", finalResult);
-    }
+    //   console.log("selected target", finalResult);
+    // }
 
     const columns = ref([
       {
@@ -368,7 +347,7 @@ export default {
         "POST-OPERATION",
       ],
       refresh,
-      filterCategory,
+      // filterCategory,
       test: (value) => {
         console.log("dfdf", value);
       },

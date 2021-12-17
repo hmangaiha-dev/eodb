@@ -288,6 +288,23 @@ export default {
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
+
+
+    {
+      path: "public-health-engineering",
+      component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
+      children: [
+        {
+          path: "new-water-connection",
+          name: "phe:new-connection",
+          component: () =>
+            import("pages/common/dept_services/phe/newconnection/Application.vue"),
+        },
+
+        // claiming-central-capital-investment-subsidy-scheme
+      ],
+    },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },
   ],
 };

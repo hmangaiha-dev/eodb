@@ -238,6 +238,12 @@ const depts = [
     slug: "excise-and-narcotics",
   },
 
+
+  {
+    name: "Public Health Engineering Department",
+    slug: "public-health-engineering",
+  },
+
   {
     name: "Food & Drug Administration, H&FW Department",
     slug: "food-and-drug-administration",

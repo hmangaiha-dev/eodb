@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-center q-mt-lg">
-    <div class="col-sm-10 col-xs-10 col-md-6">
+    <div class="col-md-10 col-xs-10 col-sm-8 col-lg-6">
       <q-form
         class="q-col-gutter-md"
         @submit="handleSubmit"
@@ -115,7 +115,7 @@ export default {
             position: "top",
 
             color: "green-4",
-            message: 'Successfully registered !',
+            message: "Successfully registered !",
           });
           router.push({ name: "investor:login" });
 
