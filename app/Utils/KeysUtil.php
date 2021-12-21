@@ -255,6 +255,32 @@ class KeysUtil
             "pwd_road_cutting_four_d",
             "pwd_road_cutting_five",
             "pwd_road_cutting_six",
+        ],
+        'PHE_WATER_CONNECTION' => [
+            'phe_water_connection_one',
+            'phe_water_connection_two',
+            'phe_water_connection_three',
+            'phe_water_connection_four',
+            'phe_water_connection_five',
+            'phe_water_connection_five_a',
+            'phe_water_connection_five_b',
+            'phe_water_connection_five_c',
+            'phe_water_connection_five_d',
+            'phe_water_connection_five_e',
+            'phe_water_connection_five_f',
+            'phe_water_connection_five_g',
+            'phe_water_connection_six',
+            'phe_water_connection_seven',
+            'phe_water_connection_eight',
+            'phe_water_connection_nine',
+            'phe_water_connection_ten',
+            'phe_water_connection_eleven',
+            'phe_water_connection_twelve',
+            'phe_water_connection_thirteen',
+            'phe_water_connection_fourteen',
+            'phe_water_connection_fourteen_a',
+            'phe_water_connection_fourteen_b',
+            'phe_water_connection_fifteen',
         ]
     ];
 
@@ -521,6 +547,37 @@ class KeysUtil
         "pwd_road_cutting_four_d" => "d) District",
         "pwd_road_cutting_five" => "5. Land pass no (copy of pass shall be produced at the time of spot verification)",
         "pwd_road_cutting_six" => "6. Purpose of land applied for",
+
+
+
+
+
+
+        //PHE New Water Connection
+        'phe_water_connection_one' => "1. Applicant’s Name (Diltu hming)",
+        'phe_water_connection_two' => "2. Father's Name (Pa hming)",
+        'phe_water_connection_three' => "3. Occupation (Diltu hnathawh)",
+        'phe_water_connection_four' => "4. Occupant (In luahtu)",
+        'phe_water_connection_five' => "5. Address",
+        'phe_water_connection_five_a' => "A). House No",
+        'phe_water_connection_five_b' => "B) Locality (Veng)",
+        'phe_water_connection_five_c' => "C) Street/lane",
+        'phe_water_connection_five_d' => "D) City/Town",
+        'phe_water_connection_five_e' => "E) Landmark",
+        'phe_water_connection_five_f' => "F) Pin Code",
+        'phe_water_connection_five_g' => "G) Phone no",
+        'phe_water_connection_six' => "6. Email",
+        'phe_water_connection_seven' => "7. Section",
+        'phe_water_connection_eight' => "8. Connection Type",
+        'phe_water_connection_nine' => "9. Category",
+        'phe_water_connection_ten' => "10. Sub-Category",
+        'phe_water_connection_eleven' => "11. No. of existing connection(s) (Dilna in-a connection awm tawh zat)",
+        'phe_water_connection_twelve' => "12. No. of family (Dilna in-a chhungkaw cheng zat)",
+        'phe_water_connection_thirteen' => "13. LSC/Land Pass/Relevant document (Attested Photocopy)",
+        'phe_water_connection_fourteen' => "14. Pipe leh a zawmna bungrua",
+        'phe_water_connection_fourteen_a' => "a)Department atanga lei",
+        'phe_water_connection_fourteen_b' => "b)Mahni in tum",
+        'phe_water_connection_fifteen' => "15.Signature Of The Applicant",
 
 
 

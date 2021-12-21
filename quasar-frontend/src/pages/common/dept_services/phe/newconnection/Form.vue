@@ -2,11 +2,12 @@
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
-        >1. Diltu Hming (hawrawppuiin) <span class="asterisk">*</span></label
+        >1. Applicant’s Name (Diltu hming)*
+        <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.fire_one_b"
+        v-model="formData.phe_water_connection_one"
         dense
         outlined
       />
@@ -14,11 +15,11 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        2. Pa Hming <span class="asterisk">*</span></label
+        2. Father's Name (Pa hming)* <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.fire_one_b"
+        v-model="formData.phe_water_connection_twelve"
         dense
         outlined
       />
@@ -26,17 +27,29 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
-        >3. In Luahtu <span class="asterisk">*</span></label
+        >3. Occupation (Diltu hnathawh)* <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.fire_one_b"
+        v-model="formData.phe_water_connection_three"
+        dense
+        outlined
+      />
+    </div>
+
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="gender"
+        >4. Occupant (In luahtu)* <span class="asterisk">*</span></label
+      >
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.phe_water_connection_four"
         dense
         outlined
       />
     </div>
     <div class="col-12">
-      <label for="" class="zlabel">4. Address</label>
+      <label for="" class="zlabel">5. Address</label>
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
@@ -46,7 +59,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.fire_one_a"
+            v-model="formData.phe_water_connection_five_a"
             dense
             outlined
           />
@@ -54,13 +67,13 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            B). Hmun Bik (Street/lane) <span class="asterisk">*</span></label
+            B) Locality (Veng) <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.fire_one_b"
+            v-model="formData.phe_water_connection_five_b"
             dense
             outlined
           />
@@ -68,13 +81,13 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            C) Veng <span class="asterisk">*</span></label
+            C) Street/lane <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.fire_one_b"
+            v-model="formData.phe_water_connection_five_c"
             dense
             outlined
           />
@@ -82,13 +95,13 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            D) Khua <span class="asterisk">*</span></label
+            D) City/Town <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.fire_one_b"
+            v-model="formData.phe_water_connection_five_d"
             dense
             outlined
           />
@@ -96,13 +109,13 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            E) Pin Code <span class="asterisk">*</span></label
+            E) Landmark <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.fire_one_b"
+            v-model="formData.phe_water_connection_five_e"
             dense
             outlined
           />
@@ -110,44 +123,28 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            F) Dilna Hmun Hriat Awlsamna Tur (Landmark):
+            F) Pin Code <span class="asterisk">*</span></label
+          >
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.phe_water_connection_five_f"
+            dense
+            outlined
+          />
+        </div>
+
+        <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="gender">
+            G) Phone no
             <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.fire_one_b"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            G) Telephone No.
-            <span class="asterisk">*</span></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.fire_one_b"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            H) Email ID
-            <span class="asterisk">*</span></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.fire_one_b"
+            v-model="formData.phe_water_connection_five_g"
             dense
             outlined
           />
@@ -157,12 +154,12 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        5. Diltu Hnathawh
+        6. Email:
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.fire_one_b"
+        v-model="formData.phe_water_connection_six"
         dense
         outlined
       />
@@ -170,12 +167,12 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        6. Dilna In-a Connection Awm Tawh Zat
+        7. Section*
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.fire_one_b"
+        v-model="formData.phe_water_connection_seven"
         dense
         outlined
       />
@@ -183,12 +180,12 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        7. Dilna In-a Chhungkaw Cheng Zat
+        8. Connection Type*
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.fire_one_b"
+        v-model="formData.phe_water_connection_eight"
         dense
         outlined
       />
@@ -196,15 +193,76 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        8. LSC/Land Pass/Relevant Document (Attested Photocopy).
+        9. Category
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.fire_one_b"
+        v-model="formData.phe_water_connection_nine"
         dense
         outlined
       />
+    </div>
+
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="gender">
+        10. Sub-Category*
+        <span class="asterisk">*</span></label
+      >
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.phe_water_connection_ten"
+        dense
+        outlined
+      />
+    </div>
+
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="gender">
+        11. No. of existing connection(s) (Dilna in-a connection awm tawh zat)*:
+        <span class="asterisk">*</span></label
+      >
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.phe_water_connection_eleven"
+        dense
+        outlined
+      />
+    </div>
+
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="gender">
+        12. No. of family (Dilna in-a chhungkaw cheng zat)*:
+        <span class="asterisk">*</span></label
+      >
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.phe_water_connection_twelve"
+        dense
+        outlined
+      />
+    </div>
+
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="gender">
+        13. LSC/Land Pass/Relevant document (Attested Photocopy)*:
+        <span class="asterisk">*</span></label
+      >
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.phe_water_connection_thirteen"
+        dense
+        outlined
+      />
+    </div>
+
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="gender">
+        14. Pipe leh a zawmna bungrua*
+        <span class="asterisk">*</span></label
+      >
+      <q-checkbox v-model="formData.phe_water_connection_fourteen_a" label="a)Department atanga lei" />
+      <q-checkbox v-model="formData.phe_water_connection_fourteen_b" label="b)Mahni in tum" />
     </div>
 
     <div class="col-12 text-caption">
@@ -214,12 +272,12 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        Signature Of The Applicant
+        15.Signature Of The Applicant
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.fire_one_b"
+        v-model="formData.phe_water_connection_fifteen"
         dense
         outlined
       />
@@ -236,95 +294,45 @@ import { onMounted } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   setup(props, context) {
     const store = useStore();
-    const draft = store.getters["applicantData/getCurrentDraft"];
-    const currentUser = store.getters["auth/getCurrentUser"];
-
+    
     const formData = reactive({
-      application_code: "FIRE_NOC",
-      department_id: 5,
 
-      fire_one: "",
-      fire_one_a: "",
-      fire_one_b: "",
-      fire_two: "",
-      fire_two_a: "",
-      fire_two_b: "",
-      fire_three: "",
-      fire_four: "",
-      fire_five: "",
-      fire_six: "",
-      fire_seven: "",
-      fire_eight: "",
-      fire_nine: "",
-      fire_ten: "",
-      fire_eleven: "",
-      fire_twelve: "",
-      fire_thirteen: "",
-      fire_fourteen: "",
-      fire_fifteen: "",
-      fire_sixteen: "",
-      fire_seventeen: "",
-      fire_eighteen: "",
-      fire_tick_any: [],
-      fire_nineteen: "",
-      fire_nineteen_a: "",
-      fire_nineteen_b: "",
-      fire_nineteen_c: "",
-      fire_twenty: "",
-      fire_twenty_a: "",
-      fire_twenty_b: "",
-      fire_twentyone: "",
-      fire_twentytwo: "",
-      fire_twentythree: "",
-      fire_twentyfour: "",
-      fire_twentyfive: "",
-      fire_twentysix: "",
-      fire_twentyseven: null,
+      application_code: "PHE_WATER_CONNECTION",
+      department_id: 13,
+      phe_water_connection_one: '',
+      phe_water_connection_two: '',
+      phe_water_connection_three: '',
+      phe_water_connection_four: '',
+      phe_water_connection_five: '',
+      phe_water_connection_five_a: '',
+      phe_water_connection_five_b: '',
+      phe_water_connection_five_c: '',
+      phe_water_connection_five_d: '',
+      phe_water_connection_five_e: '',
+      phe_water_connection_five_f: '',
+      phe_water_connection_five_g: '',
+      phe_water_connection_six: '',
+      phe_water_connection_seven: '',
+      phe_water_connection_eight: '',
+      phe_water_connection_nine: '',
+      phe_water_connection_ten: '',
+      phe_water_connection_eleven: '',
+      phe_water_connection_twelve: '',
+      phe_water_connection_thirteen: '',
+      phe_water_connection_fourteen: '',
+      phe_water_connection_fourteen_a: true,
+      phe_water_connection_fourteen_b: false,
+      phe_water_connection_fifteen: '',
+
     });
     onMounted(() => {});
     return {
       group: ref([]),
-      options: [
-        {
-          label: "a) Yard Hydrants/Landing Valve",
-          value: "a) Yard Hydrants/Landing Valve",
-        },
-        { label: "b) Riser", value: "b) Riser" },
-
-        { label: "c) Down Comer", value: "c) Down Comer" },
-
-        { label: "d) Hose Reel", value: "d) Hose Reel" },
-
-        {
-          label: "e) Automatic Sprinkler system",
-          value: "e) Automatic Sprinkler system",
-        },
-
-        {
-          label: "f) Automatic Detection and Alarm System",
-          value: "f) Automatic Detection and Alarm System",
-        },
-
-        {
-          label: "g) Manually Operated Electric Fire Alarm System",
-          value: "g) Manually Operated Electric Fire Alarm System",
-        },
-        {
-          label: "h) Deluge valves & Monitors etc.",
-          value: "h) Deluge valves & Monitors etc.",
-        },
-        { label: "i) Delivery Hoses", value: "i) Delivery Hoses" },
-        {
-          label: "j) Emergency Branch etc.",
-          value: "j) Emergency Branch etc.",
-        },
-      ],
+    
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

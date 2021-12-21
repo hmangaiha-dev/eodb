@@ -1,11 +1,9 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-12 ztitle text-center">
-      APPLICATION FORM FOR DOMESTIC CONSUMER
+      Application form for Domestic House Water Connection
 
-      <p class="col-12 text-caption q-py-none text-center">
-        (See Section 3 & 4 of Act and Rules 3,7)
-      </p>
+     
     </div>
     <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
