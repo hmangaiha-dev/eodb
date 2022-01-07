@@ -32,7 +32,7 @@ module.exports = configure(function (ctx) {
     extras: [
       'material-icons', // optional, you are not bound to it
       'roboto-font', // optional, you are not bound to it
-      'material-icons-outlined',
+      // 'material-icons-outlined',
     ],
 
     // Full list of options: https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
@@ -71,7 +71,7 @@ module.exports = configure(function (ctx) {
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
-      iconSet: 'mdi-v5',
+      // iconSet: 'mdi-v5',
       config: {
         brand: {
           primary: '#357c71',

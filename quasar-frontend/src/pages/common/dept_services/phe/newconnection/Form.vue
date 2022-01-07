@@ -261,8 +261,14 @@
         14. Pipe leh a zawmna bungrua*
         <span class="asterisk">*</span></label
       >
-      <q-checkbox v-model="formData.phe_water_connection_fourteen_a" label="a)Department atanga lei" />
-      <q-checkbox v-model="formData.phe_water_connection_fourteen_b" label="b)Mahni in tum" />
+      <q-checkbox
+        v-model="formData.phe_water_connection_fourteen_a"
+        label="a)Department atanga lei"
+      />
+      <q-checkbox
+        v-model="formData.phe_water_connection_fourteen_b"
+        label="b)Mahni in tum"
+      />
     </div>
 
     <div class="col-12 text-caption">
@@ -275,12 +281,12 @@
         15.Signature Of The Applicant
         <span class="asterisk">*</span></label
       >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.phe_water_connection_fifteen"
-        dense
-        outlined
-      />
+
+      <q-file v-model="formData.phe_water_connection_fifteen" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-xs-12" />
@@ -294,45 +300,42 @@ import { onMounted } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
-
 export default {
   setup(props, context) {
     const store = useStore();
-    
-    const formData = reactive({
 
+    const formData = reactive({
       application_code: "PHE_WATER_CONNECTION",
       department_id: 13,
-      phe_water_connection_one: '',
-      phe_water_connection_two: '',
-      phe_water_connection_three: '',
-      phe_water_connection_four: '',
-      phe_water_connection_five: '',
-      phe_water_connection_five_a: '',
-      phe_water_connection_five_b: '',
-      phe_water_connection_five_c: '',
-      phe_water_connection_five_d: '',
-      phe_water_connection_five_e: '',
-      phe_water_connection_five_f: '',
-      phe_water_connection_five_g: '',
-      phe_water_connection_six: '',
-      phe_water_connection_seven: '',
-      phe_water_connection_eight: '',
-      phe_water_connection_nine: '',
-      phe_water_connection_ten: '',
-      phe_water_connection_eleven: '',
-      phe_water_connection_twelve: '',
-      phe_water_connection_thirteen: '',
-      phe_water_connection_fourteen: '',
+      phe_water_connection_one: "",
+      phe_water_connection_two: "",
+      phe_water_connection_three: "",
+      phe_water_connection_four: "",
+      phe_water_connection_five: "",
+      phe_water_connection_five_a: "",
+      phe_water_connection_five_b: "",
+      phe_water_connection_five_c: "",
+      phe_water_connection_five_d: "",
+      phe_water_connection_five_e: "",
+      phe_water_connection_five_f: "",
+      phe_water_connection_five_g: "",
+      phe_water_connection_six: "",
+      phe_water_connection_seven: "",
+      phe_water_connection_eight: "",
+      phe_water_connection_nine: "",
+      phe_water_connection_ten: "",
+      phe_water_connection_eleven: "",
+      phe_water_connection_twelve: "",
+      phe_water_connection_thirteen: "",
+      phe_water_connection_fourteen: "",
       phe_water_connection_fourteen_a: true,
       phe_water_connection_fourteen_b: false,
-      phe_water_connection_fifteen: '',
-
+      phe_water_connection_fifteen: null,
     });
     onMounted(() => {});
     return {
       group: ref([]),
-    
+
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

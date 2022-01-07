@@ -437,7 +437,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "allotment-of-house-land",
                 'sample_form' => $faker->sentence
             ],
 
@@ -451,7 +451,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "allotment-of-land-shop",
                 'sample_form' => $faker->sentence
             ],
 

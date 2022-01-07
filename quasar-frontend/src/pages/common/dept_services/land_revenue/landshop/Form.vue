@@ -388,7 +388,7 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "LAND_REVENUE_LAND_HOUSE",
+      application_code: "LAND_REVENUE_LAND_SHOP",
       department_id: 8,
       land_revenue_land_house_one: "",
       land_revenue_land_house_two: "",

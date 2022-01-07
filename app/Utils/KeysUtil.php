@@ -280,8 +280,68 @@ class KeysUtil
             'phe_water_connection_fourteen',
             'phe_water_connection_fourteen_a',
             'phe_water_connection_fourteen_b',
-            'phe_water_connection_fifteen',
+            // 'phe_water_connection_fifteen',
+        ],
+        'LAND_REVENUE_LAND_HOUSE' => [
+            'land_revenue_land_house_one',
+            'land_revenue_land_house_two',
+            'land_revenue_land_house_two_a',
+            'land_revenue_land_house_two_b',
+            'land_revenue_land_house_two_c',
+            'land_revenue_land_house_two_d',
+            'land_revenue_land_house_three',
+            'land_revenue_land_house_four',
+            'land_revenue_land_house_five',
+            'land_revenue_land_house_five_a',
+            'land_revenue_land_house_five_b',
+            'land_revenue_land_house_six',
+            'land_revenue_land_house_seven',
+            'land_revenue_land_house_eight',
+            'land_revenue_land_house_eight_a',
+            'land_revenue_land_house_eight_b',
+            'land_revenue_land_house_nine',
+            'land_revenue_land_house_ten',
+            'land_revenue_land_house_ten_a',
+            'land_revenue_land_house_ten_b',
+            'land_revenue_land_house_ten_c',
+            'land_revenue_land_house_ten_d',
+            'land_revenue_land_house_eleven',
+            'land_revenue_land_house_twelve',
+            'land_revenue_land_house_thirteen',
+            'land_revenue_land_house_thirteen_a',
+            'land_revenue_land_house_thirteen_b',
+        ],
+        'LAND_REVENUE_LAND_SHOP' => [
+            'land_revenue_land_house_one',
+            'land_revenue_land_house_two',
+            'land_revenue_land_house_two_a',
+            'land_revenue_land_house_two_b',
+            'land_revenue_land_house_two_c',
+            'land_revenue_land_house_two_d',
+            'land_revenue_land_house_three',
+            'land_revenue_land_house_four',
+            'land_revenue_land_house_five',
+            'land_revenue_land_house_five_a',
+            'land_revenue_land_house_five_b',
+            'land_revenue_land_house_six',
+            'land_revenue_land_house_seven',
+            'land_revenue_land_house_eight',
+            'land_revenue_land_house_eight_a',
+            'land_revenue_land_house_eight_b',
+            'land_revenue_land_house_nine',
+            'land_revenue_land_house_ten',
+            'land_revenue_land_house_ten_a',
+            'land_revenue_land_house_ten_b',
+            'land_revenue_land_house_ten_c',
+            'land_revenue_land_house_ten_d',
+            'land_revenue_land_house_eleven',
+            'land_revenue_land_house_twelve',
+            'land_revenue_land_house_thirteen',
+            'land_revenue_land_house_thirteen_a',
+            'land_revenue_land_house_thirteen_b',
         ]
+
+        
     ];
 
     const LABELS = [
@@ -289,7 +349,6 @@ class KeysUtil
 
         'applicant_name' => 'Applicant Name',
         'industrial_location_name' => 'Name & Location of Industrial Area',
-
         'communication_address' => 'Address for Communications',
         'communication_street' => 'Steet',
         'communication_city' => 'City/Town/Village',
@@ -578,6 +637,45 @@ class KeysUtil
         'phe_water_connection_fourteen_a' => "a)Department atanga lei",
         'phe_water_connection_fourteen_b' => "b)Mahni in tum",
         'phe_water_connection_fifteen' => "15.Signature Of The Applicant",
+
+
+
+
+
+
+        //lAND REVENUE - LAND HOUSE & LAND SHOP/STALL
+
+        'land_revenue_land_house_one' => '1.Name in capital (as appeared in EPIC or UID or PAN)',
+        'land_revenue_land_house_two' => '2',
+        'land_revenue_land_house_two_a' => '(a) Date Of Birth',
+        'land_revenue_land_house_two_b' => '(b)Present Age',
+        'land_revenue_land_house_two_c' => '(c) Place Of Birth',
+        'land_revenue_land_house_two_d' => '(d)District',
+        'land_revenue_land_house_three' => '3.Present Address',
+        'land_revenue_land_house_four' => '4.Permanent Address',
+        'land_revenue_land_house_five' => '5',
+        'land_revenue_land_house_five_a' => '(a)Name Of Father',
+        'land_revenue_land_house_five_b' => '(b)Name Of Mother',
+        'land_revenue_land_house_six' => '6.Whether Applicant Belongs To A Tribal (Mizo) As Specified In Sub-section (45) Of Section 2 Of The Act',
+        'land_revenue_land_house_seven' => '7.If Not Born In Mizoram, Do You Enclose Domicile Certificate Issued By Home Department?',
+        'land_revenue_land_house_eight' => '8.Exact Location',
+        'land_revenue_land_house_eight_a' => '(a)Area/Veng',
+        'land_revenue_land_house_eight_b' => '(b) Indicate Category:Shop Or Stall',
+        'land_revenue_land_house_nine' => '9.Name Of Village Council',
+        'land_revenue_land_house_ten' => '10.Clearly Indicate Name(s) & Addresse(s) Of Immediate Neighbour',
+        'land_revenue_land_house_ten_a' => '(a) South ( Chhim Lam )',
+        'land_revenue_land_house_ten_b' => '(b) North ( Hmar Lam )',
+        'land_revenue_land_house_ten_c' => '(c) West ( Khawthlang Lam )',
+        'land_revenue_land_house_ten_d' => '(d) East ( Khawchhak Lam )',
+        'land_revenue_land_house_eleven' => '11.Whether The Area Is Properly Cleared For Easy Movement Of Surveyors?',
+        'land_revenue_land_house_twelve' => '12.Whether 4(four) Boundary Pillars As Prescribed By Revenue Department Are Provided For Fixing On The Day Of Survey Operation?',
+        'land_revenue_land_house_thirteen' => '13.Other Contact Details',
+        'land_revenue_land_house_thirteen_a' => '(a)Telephone Number',
+        'land_revenue_land_house_thirteen_b' => '(b)Email ID',
+
+
+
+
 
 
 

@@ -90,7 +90,6 @@
               <q-item-section> Profile </q-item-section>
             </q-item>
             <q-expansion-item
-              expand-icon="expand_more"
               group="somegroup"
               label="Online Services"
               header-class="text-primary"

@@ -115,7 +115,7 @@ export default {
           name: "industries:claimin",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/ClaimOfInterestSubsidy/ClaimOfInterestSubsidy.vue"
+              "pages/common/dept_services/Industries/ClaimOfInterestSubsidy/Application.vue"
             ),
         },
         {
@@ -123,7 +123,7 @@ export default {
           name: "industries:allotment",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue"
+              "pages/common/dept_services/Industries/Allotment/Application.vue"
             ),
         },
         {
@@ -131,7 +131,7 @@ export default {
           name: "industries:central-captial",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/ClaimOfCentralCapital/ClaimOfCentralCapital.vue"
+              "pages/common/dept_services/Industries/ClaimOfCentralCapital/Application.vue"
             ),
         },
 
@@ -146,27 +146,27 @@ export default {
       children: [
         {
           path: "periodic-patta",
-          name: "periodic-patta",
+          name: "land:periodic-patta",
           component: () =>
             import(
               "pages/common/dept_services/land_revenue/periodicpata/Application.vue"
             ),
         },
         {
-          path: "mnkn",
-          name: "industdries:allotment",
+          path: "allotment-of-house-land",
+          name: "land:house-land",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue"
+              "pages/common/dept_services/land_revenue/landhousesite/Application.vue"
             ),
         },
         {
-          path: "claiming-central-capital-investment-subsidy-scheme",
-          name: "indudsdstries:central-captial",
+          path: "allotment-of-land-shop",
+          name: "land:house-land-shop",
           component: () =>
-            import(
-              "pages/common/dept_services/Industries/ClaimOfCentralCapital/ClaimOfCentralCapital.vue"
-            ),
+          import(
+            "pages/common/dept_services/land_revenue/landshop/Application.vue"
+          ),
         },
 
         // claiming-central-capital-investment-subsidy-scheme
@@ -197,7 +197,7 @@ export default {
           name: "indudsdsfsftries:central-captial",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/ClaimOfCentralCapital/ClaimOfCentralCapital.vue"
+              "pages/common/dept_services/Industries/ClaimOfCentralCapital/Application.vue"
             ),
         },
 
