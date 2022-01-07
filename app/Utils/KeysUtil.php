@@ -339,9 +339,44 @@ class KeysUtil
             'land_revenue_land_house_thirteen',
             'land_revenue_land_house_thirteen_a',
             'land_revenue_land_house_thirteen_b',
+        ],
+        'LAND_REVENUE_LAND_SETTLEMENT' => [
+            'land_revenue_land_settlement_one',
+            'land_revenue_land_settlement_two',
+            'land_revenue_land_settlement_two_a',
+            'land_revenue_land_settlement_two_b',
+            'land_revenue_land_settlement_two_c',
+            'land_revenue_land_settlement_two_d',
+            'land_revenue_land_settlement_three',
+            'land_revenue_land_settlement_four',
+            'land_revenue_land_settlement_five',
+            'land_revenue_land_settlement_six',
+            'land_revenue_land_settlement_six_a',
+            'land_revenue_land_settlement_six_b',
+            'land_revenue_land_settlement_seven',
+            'land_revenue_land_settlement_eight',
+            'land_revenue_land_settlement_nine',
+            'land_revenue_land_settlement_ten',
+            'land_revenue_land_settlement_eleven',
+            'land_revenue_land_settlement_twelve',
+            'land_revenue_land_settlement_twelve_a',
+            'land_revenue_land_settlement_twelve_b',
+            'land_revenue_land_settlement_twelve_c',
+            'land_revenue_land_settlement_twelve_d',
+            'land_revenue_land_settlement_thirteen',
+            'land_revenue_land_settlement_fourteen',
+            'land_revenue_land_settlement_fifteen',
+            'land_revenue_land_settlement_fifteen_a',
+            'land_revenue_land_settlement_fifteen_b',
+            'land_revenue_land_settlement_sixteen',
+            'land_revenue_land_settlement_sixteen_a',
+            'land_revenue_land_settlement_sixteen_b',
+        ],
+        'LAND_REVENUE_LAND_DIVERSION' => [
+            
         ]
 
-        
+
     ];
 
     const LABELS = [
@@ -672,6 +707,40 @@ class KeysUtil
         'land_revenue_land_house_thirteen' => '13.Other Contact Details',
         'land_revenue_land_house_thirteen_a' => '(a)Telephone Number',
         'land_revenue_land_house_thirteen_b' => '(b)Email ID',
+
+
+        //lAND REVENUE - LAND SETTLEMENT
+
+        'land_revenue_land_settlement_one' => '1.Name in capital (as appeared in EPIC or UID or PAN)',
+        'land_revenue_land_settlement_two' => '2.',
+        'land_revenue_land_settlement_two_a' => '(a) Date Of Birth',
+        'land_revenue_land_settlement_two_b' => '(b)Present Age',
+        'land_revenue_land_settlement_two_c' => '(c) Place Of Birth',
+        'land_revenue_land_settlement_two_d' => '(d)District',
+        'land_revenue_land_settlement_three' => '3.Whether Married?If Married,name Of Husband Or Wife(In Capital Letters)',
+        'land_revenue_land_settlement_four' => '4.Present Address',
+        'land_revenue_land_settlement_five' => '5.Permanent Address',
+        'land_revenue_land_settlement_six' => '6.',
+        'land_revenue_land_settlement_six_a' => '(a)Name Of Father',
+        'land_revenue_land_settlement_six_b' => '(b)Name Of Mother',
+        'land_revenue_land_settlement_seven' => '7.Whether Applicant Belongs To A Tribal (Mizo) As Specified In Sub-section (45) Of Section 2 Of The Act',
+        'land_revenue_land_settlement_eight' => '8.If Not Born In Mizoram, Do You Enclose Domicile Certificate Issued By Home Department?',
+        'land_revenue_land_settlement_nine' => '9.House Pass Number And Year',
+        'land_revenue_land_settlement_ten' => '10.Exact Location/area/Veng',
+        'land_revenue_land_settlement_eleven' => '11.Name Of Village Council',
+        'land_revenue_land_settlement_twelve' => '12.Clearly Indicate Name(s) & Addresse(s) Of Immediate Neighbour',
+        'land_revenue_land_settlement_twelve_a' => '(a) South ( Chhim Lam )',
+        'land_revenue_land_settlement_twelve_b' => '(b) North ( Hmar Lam )',
+        'land_revenue_land_settlement_twelve_c' => '(c) West ( Khawthlang Lam )',
+        'land_revenue_land_settlement_twelve_d' => '(d) East ( Khawchhak Lam )',
+        'land_revenue_land_settlement_thirteen' => '13.Whether The Area Is Properly Cleared For Easy Movement Of Surveyors?',
+        'land_revenue_land_settlement_fourteen' => '14.Whether 6(six) Boundary Pillars As Prescribed By Revenue Department Are Provided For Fixing On The Day Of Survey Operation?',
+        'land_revenue_land_settlement_fifteen' => '15.Checklist Whether The Following Documents Are Kept Ready For Inspection?',
+        'land_revenue_land_settlement_fifteen_a' => '(a) House Pass Certificate',
+        'land_revenue_land_settlement_fifteen_b' => '(b) Tax Clearance Certificate',
+        'land_revenue_land_settlement_sixteen' => '16.Other Contact Details',
+        'land_revenue_land_settlement_sixteen_a' => '(a)Telephone Number',
+        'land_revenue_land_settlement_sixteen_b' => '(b)Email ID',
 
 
 

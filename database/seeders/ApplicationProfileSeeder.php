@@ -17,7 +17,7 @@ class ApplicationProfileSeeder extends Seeder
         ['code'=>'PHE_WATER_CONNECTION', 'title'=>'Application form for Domestic House Water Connection', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
         ['code'=>'LAND_REVENUE_LAND_HOUSE', 'title'=>' APPLICATION FOR ALLOTMENT OF LAND FOR HOUSE SITE', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
         ['code'=>'LAND_REVENUE_LAND_SHOP', 'title'=>' APPLICATION FOR ALLOTMENT OF LAND FOR SHOP/STALL', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
-
+        ['code'=>'LAND_REVENUE_LAND_SETTLEMENT', 'title'=>' APPLICATION FOR RESIDENTIAL LAND SETTLEMENT CERTIFICATE INHMUN/LAND SETTLEMENT CERTIFICATE TURA DILNA', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
 
   
     ];

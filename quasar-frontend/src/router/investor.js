@@ -139,6 +139,8 @@ export default {
       ],
     },
 
+    //LAND REVENEUE
+
     {
       path: "land-revenue",
       component: () => import("layouts/DummyLayout.vue"),
@@ -166,6 +168,22 @@ export default {
           component: () =>
           import(
             "pages/common/dept_services/land_revenue/landshop/Application.vue"
+          ),
+        },
+        {
+          path: "land-settlement",
+          name: "land:land-settlement",
+          component: () =>
+          import(
+            "pages/common/dept_services/land_revenue/landsettlement/Application.vue"
+          ),
+        },
+        {
+          path: "land-diversion",
+          name: "land:land-diversion",
+          component: () =>
+          import(
+            "pages/common/dept_services/land_revenue/landdiversion/Application.vue"
           ),
         },
 
