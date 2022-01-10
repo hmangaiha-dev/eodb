@@ -1,28 +1,35 @@
 import { api } from "src/boot/axios";
+import { Notify } from "quasar";
 
-export const checkAuth = async(to, from, next) => {
-  console.log('auth check');
+export const checkAuth = async (to, from, next) => {
   await api
     .get("/user")
     .then((res) => {
-      console.log('auth user',res.data);
-     next();
+      next();
     })
     .catch((err) => {
-      console.log('unauthenticated');
+      Notify.create({
+        message: "Please login to continue",
+        color: "primary",
+        position: "top",
+        icon: "warnings",
+      });
       next({
-        name: 'investor:login'
-      })
+        name: "investor:login",
+      });
     });
 };
 
 export default {
-  
   path: "/investor",
   component: () => import("layouts/InvestorLayout.vue"),
   beforeEnter: checkAuth,
   children: [
-    { path: "", name:'investor:dashboard', component: () => import("pages/investor/Dashboard.vue") },
+    {
+      path: "",
+      name: "investor:dashboard",
+      component: () => import("pages/investor/Dashboard.vue"),
+    },
     // {
     //   path: "register",
     //   component: () => import("pages/investor/Register.vue"),
@@ -30,8 +37,14 @@ export default {
     // { path: "profile", component: () => import("pages/investor/Profile.vue") },
     {
       path: "profile",
-      name: 'investor:profile',
+      name: "investor:profile",
       component: () => import("pages/investor/ProfileInfo.vue"),
+    },
+
+    {
+      path: "unauthorised",
+      name: "unauthorised",
+      component: () => import("pages/Unauthorised.vue"),
     },
     {
       path: "profile/update",
@@ -51,6 +64,12 @@ export default {
     },
 
     {
+      path: "application/:id",
+      name: "investor:show-applicant",
+      component: () => import("pages/investor/ApplicationDetail.vue"),
+    },
+
+    {
       path: "common-application/create",
       name: "common-application",
       component: () => import("pages/investor/CommonApplication.vue"),
@@ -61,16 +80,16 @@ export default {
       name: "common:create",
       component: () => import("pages/investor/services/Services.vue"),
     },
-    {
-      path: "amc/online-services",
-      name: "amc:services",
-      component: () => import("pages/investor/services/Services.vue"),
-    },
-    {
-      path: "land-revenue-settlement/online-services",
-      name: "amc:services",
-      component: () => import("pages/investor/services/Services.vue"),
-    },
+    // {
+    //   path: "amc/online-services",
+    //   name: "amc:services",
+    //   component: () => import("pages/investor/services/Services.vue"),
+    // },
+    // {
+    //   path: "land-revenue-settlement/online-services",
+    //   name: "amc:services",
+    //   component: () => import("pages/investor/services/Services.vue"),
+    // },
     // { path: "commerce-and-industries/online-services", name:"amc:services", component: () => import("pages/investor/services/Services.vue") },
 
     {
@@ -78,14 +97,15 @@ export default {
       name: "investor:approved",
       component: () => import("pages/investor/CompletedApplications.vue"),
     },
-    // {
-    //   path: "commerce-and-industries/allotment-of-industrial-plot",
-    //   name: "industries:allotment",
-    //   component: () =>
-    //     import(
-    //       "pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue"
-    //     ),
-    // },
+
+    {
+      path: "application/track",
+      name: "investor:application-track",
+      component: () => import("pages/investor/TrackApplication.vue"),
+    },
+
+    //COMMERCE AND INDUSTRIES
+
     {
       path: "commerce-and-industries",
       component: () => import("layouts/DummyLayout.vue"),
@@ -95,7 +115,7 @@ export default {
           name: "industries:claimin",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/ClaimOfInterestSubsidy/ClaimOfInterestSubsidy.vue"
+              "pages/common/dept_services/Industries/ClaimOfInterestSubsidy/Application.vue"
             ),
         },
         {
@@ -103,7 +123,7 @@ export default {
           name: "industries:allotment",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue"
+              "pages/common/dept_services/Industries/Allotment/Application.vue"
             ),
         },
         {
@@ -111,13 +131,22 @@ export default {
           name: "industries:central-captial",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/ClaimOfCentralCapital/ClaimOfCentralCapital.vue"
+              "pages/common/dept_services/Industries/ClaimOfCentralCapital/Application.vue"
             ),
         },
 
-        // claiming-central-capital-investment-subsidy-scheme
+        {
+          path: "claiming-power-subsidy",
+          name: "industries:power-sibsidy",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/powersubsidy/Application.vue"
+            ),
+        },
       ],
     },
+
+    //LAND REVENEUE
 
     {
       path: "land-revenue",
@@ -126,30 +155,45 @@ export default {
       children: [
         {
           path: "periodic-patta",
-          name: "periodic-patta",
+          name: "land:periodic-patta",
           component: () =>
             import(
               "pages/common/dept_services/land_revenue/periodicpata/Application.vue"
             ),
         },
         {
-          path: "mnkn",
-          name: "industdries:allotment",
+          path: "allotment-of-house-land",
+          name: "land:house-land",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue"
+              "pages/common/dept_services/land_revenue/landhousesite/Application.vue"
             ),
         },
         {
-          path: "claiming-central-capital-investment-subsidy-scheme",
-          name: "indudsdstries:central-captial",
+          path: "allotment-of-land-shop",
+          name: "land:house-land-shop",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/ClaimOfCentralCapital/ClaimOfCentralCapital.vue"
+              "pages/common/dept_services/land_revenue/landshop/Application.vue"
+            ),
+        },
+        {
+          path: "land-settlement",
+          name: "land:land-settlement",
+          component: () =>
+            import(
+              "pages/common/dept_services/land_revenue/landsettlement/Application.vue"
             ),
         },
 
-        // claiming-central-capital-investment-subsidy-scheme
+        {
+          path: "transfer-of-land-ownership",
+          name: "land:land-transfer",
+          component: () =>
+            import(
+              "pages/common/dept_services/land_revenue/landtransfer/Application.vue"
+            ),
+        },
       ],
     },
 
@@ -177,7 +221,7 @@ export default {
           name: "indudsdsfsftries:central-captial",
           component: () =>
             import(
-              "pages/common/dept_services/Industries/ClaimOfCentralCapital/ClaimOfCentralCapital.vue"
+              "pages/common/dept_services/Industries/ClaimOfCentralCapital/Application.vue"
             ),
         },
 
@@ -219,8 +263,6 @@ export default {
       ],
     },
 
-
-
     {
       path: "power-and-electricity",
       component: () => import("layouts/DummyLayout.vue"),
@@ -234,22 +276,62 @@ export default {
               "pages/common/dept_services/power/newconnection/Application.vue"
             ),
         },
-      
+
+        // claiming-central-capital-investment-subsidy-scheme
+      ],
+    },
+
+    {
+      path: "fire-and-emergency-services",
+      component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
+      children: [
+        {
+          path: "noc-form",
+          name: "fire:noc",
+          component: () =>
+            import("pages/common/dept_services/Fire/noc/Application.vue"),
+        },
+
+        // claiming-central-capital-investment-subsidy-scheme
+      ],
+    },
+
+    {
+      path: "public-work-department",
+      component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
+      children: [
+        {
+          path: "road-cutting",
+          name: "pwd:road-cuttting",
+          component: () =>
+            import(
+              "pages/common/dept_services/pwd/roadcutting/Application.vue"
+            ),
+        },
+
+        // claiming-central-capital-investment-subsidy-scheme
+      ],
+    },
+
+    {
+      path: "public-health-engineering",
+      component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
+      children: [
+        {
+          path: "new-water-connection",
+          name: "phe:new-connection",
+          component: () =>
+            import(
+              "pages/common/dept_services/phe/newconnection/Application.vue"
+            ),
+        },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },
   ],
-
-
-  
-
-
-  
-
-  
- 
-
-  
 };

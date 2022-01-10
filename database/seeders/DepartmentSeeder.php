@@ -13,8 +13,11 @@ class DepartmentSeeder extends Seeder
         [
             'id'    =>  1,
             'dept_name' => 'Commerce & Industries Department',
-            'slug' => 'commerce-and-industries-department',
-            'dept_code' => 'C&E'
+            'slug' => 'commerce-and-industries',
+            'dept_code' => 'C&E',
+            'sect_name' => 'P. Jawahar',
+            'dict_name' => 'J. Hmingthanmawia'
+
         ],
         [
             'id'    =>  2,
@@ -25,13 +28,13 @@ class DepartmentSeeder extends Seeder
         [
             'id'    =>  3,
             'dept_name' => 'Environment, Forest & Climate Change Department',
-            'slug' => 'environment-forest-and-climate-change-department',
+            'slug' => 'environment-forest-and-climate-change',
             'dept_code' => 'ENV'
         ],
         [
             'id'    =>  4,
             'dept_name' => 'Excise & Narcotics Department',
-            'slug' => 'excise-and-narcotics-department',
+            'slug' => 'excise-and-narcotics',
             'dept_code' => 'EXCISE'
         ],
         [
@@ -43,25 +46,25 @@ class DepartmentSeeder extends Seeder
         [
             'id'    =>  6,
             'dept_name' => 'Food & Drug Administration, H&FW Department',
-            'slug' => 'food-and-drug-administration-handfw-department',
+            'slug' => 'food-and-drug-administration',
             'dept_code' => 'FOOD'
         ],
         [
             'id'    =>  7,
             'dept_name' => 'Labour, Skill Development & Entreprenuership',
-            'slug' => 'labour-skill-development-and-entreprenuership',
+            'slug' => 'labour-skill-development-and-enterprise',
             'dept_code' => 'LABOUR'
         ],
         [
             'id'    =>  8,
             'dept_name' => 'Land Revenue & Settlement Department',
-            'slug' => 'land-revenue-and-settlement-department',
+            'slug' => 'land-revenue',
             'dept_code' => 'LAND'
         ],
         [
             'id'    =>  9,
             'dept_name' => 'Law & Judicial Department',
-            'slug' => 'law-and-judicial-department',
+            'slug' => 'law-and-judicial',
             'dept_code' => 'LAW'
         ],
         [
@@ -73,19 +76,19 @@ class DepartmentSeeder extends Seeder
         [
             'id'    =>  11,
             'dept_name' => 'Mizoram Pollution Control Board',
-            'slug' => 'mizoram-pollution-control-board',
+            'slug' => 'pollution-control-board',
             'dept_code' => 'MPCB'
         ],
         [
             'id'    =>  12,
             'dept_name' => 'Power & Electricity Department',
-            'slug' => 'power-and-electricity-department',
+            'slug' => 'power-and-electricity',
             'dept_code' => 'PED'
         ],
         [
             'id'    =>  13,
             'dept_name' => 'Public Health Engineering Department',
-            'slug' => 'public-health-engineering-department',
+            'slug' => 'public-health-engineering',
             'dept_code' => 'PHED'
         ],
         [
@@ -97,7 +100,7 @@ class DepartmentSeeder extends Seeder
         [
             'id'    =>  15,
             'dept_name' => 'Taxation Department',
-            'slug' => 'taxation-department',
+            'slug' => 'taxation',
             'dept_code' => 'TAX'
         ],
         [

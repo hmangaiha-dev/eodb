@@ -1,79 +1,80 @@
 <template>
-  <div class="q-pa-md">
-    <q-table
-      class="my-sticky-header-table"
-      title="Ongoing Applicants"
-      :rows="rows"
-      :columns="columns"
-      row-key="name"
-      flat
-      bordered
-    />
+  <div class="q-pa-lg">
+    <div class="row q-col-gutter-md">
+      <div v-if="!localData.length" class="zlabel">
+        No Applications so far
+      </div>
+      <div v-else v-for="item in localData" :key="item.id" class="col-md-3 col-xs-12 col-sm-4">
+        <q-card class="zcard">
+          <q-card-section>
+            <p class="col-xs-12 col-md-3 zvalue ellipsis">
+              {{ item.application_name }}
+            </p>
+            <div class="text-subtitle2">{{ item.regn_no }}</div>
+            <div class="text-subtitle2">{{ item.department.dept_name }}</div>
+          </q-card-section>
+          <q-card-section>
+            <div class="text-subtitle2">
+              Submitted at {{ dateFilter(item.created_at) }}
+            </div>
+          </q-card-section>
+          <q-card-actions align="left">
+            <q-btn
+              @click="showApplicantDetail(item.id)"
+              color="green"
+              outline
+              label="Open"
+            />
+          </q-card-actions>
+        </q-card>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-const columns = [
-  {
-    name: 'name',
-    required: true,
-    label: 'Name',
-    align: 'left',
-    field: row => row.name,
-    format: val => `${val}`,
-    sortable: true
-  },
-  { name: 'department', align: 'center', label: 'Department', field: 'department', sortable: true },
-
-  { name: 'calories', align: 'center', label: 'Application Code', field: 'calories', sortable: true },
-  { name: 'fat', label: 'Submitted on', field: 'fat', sortable: true },
-  { name: 'carbs', label: 'Status', field: 'carbs' },
-  { name: 'protein', label: 'Protein (g)', field: 'protein' },
-  
-]
-
-const rows = [
-  {
-    name: 'Application for Allotment of Industrial Plot',
-    department: 'Aizawl Municipal Corporation',
-    calories: 159,
-    fat: 6.0,
-    carbs: 24,
-    protein: 4.0,
-    
-  },
-  {
-    name: 'Application for Claiming Interest Subsidy',
-    department: 'Commerce and Industries',
-    calories: 237,
-    fat: 9.0,
-    carbs: 37,
-    protein: 4.3,
-    
-  },
-  {
-    name: 'APPLICATION FOR PERIODIC PATTA (PERIODIC PATTA DILNA)',
-    department: 'Aizawl Municipal Corporation',
-    calories: 262,
-    fat: 16.0,
-    carbs: 23,
-    protein: 6.0,
-    
-  },
-  
-]
+import { api } from "src/boot/axios";
+import { onMounted } from "vue";
+import { ref, computed } from "vue";
+import { date } from "quasar";
+import { useRouter } from "vue-router";
 
 export default {
-  setup () {
+  setup() {
+    const localData = ref([]);
+    const router = useRouter();
+    onMounted(() => {
+      api
+        .get("investor/applications")
+        .then((res) => {
+          localData.value = res.data;
+        })
+        .catch((err) => {
+          console.log("error response", err.message);
+        });
+    });
+
+    const dateFilter = (dt) => {
+      return date.formatDate(new Date(dt), "DD/MM/YYYY hh:mm a");
+    };
     return {
-      columns,
-      rows
-    }
-  }
-}
+      localData,
+      router,
+      date,
+      dateFilter,
+      showApplicantDetail: (id) => {
+        // return console.log("show app detail",id);
+        router.push({
+          name: "investor:show-applicant",
+          params: {
+            id: id,
+          },
+        });
+      },
+    };
+  },
+};
 </script>
-
-
 
 <style lang="sass">
 .my-sticky-header-table

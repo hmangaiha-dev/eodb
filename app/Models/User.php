@@ -90,4 +90,11 @@ class User extends Authenticatable
         }
         return $sameDepartment && $canAction;
     }
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class,'user_id','id');
+    }
+
+    
 }

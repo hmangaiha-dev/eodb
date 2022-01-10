@@ -14,7 +14,7 @@
     <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
-          <Part1 ref="part1Form" />
+          <Form ref="part1Form" />
         </div>
 
       </div>
@@ -32,7 +32,7 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 import {ref} from 'vue'
-import Part1 from "./Part1.vue";
+import Form from "./Form.vue";
  
 
 import { api } from "src/boot/axios";
@@ -43,7 +43,7 @@ const emailRegex =
 export default {
 
   components: {
-    Part1
+    Form
   },
  
   setup(props, context) {

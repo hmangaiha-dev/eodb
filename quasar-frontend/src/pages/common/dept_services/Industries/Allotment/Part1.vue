@@ -9,7 +9,7 @@
     </div>
 
     <div class="col-6">
-      <q-input dense outlined v-model="formData.industrial_location_name" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.industrial_location_name" />
     </div>
 
 
@@ -41,7 +41,7 @@
     </div>
 
     <div class="col-xs-12 col-md-4">
-      <q-input dense outlined v-model="formData.applicant_name" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.applicant_name" />
     </div>
 
     <div class="col-xs-12 zlabel">2.Address for communication</div>
@@ -52,7 +52,7 @@
       </label>
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.communication_street" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_street" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -61,7 +61,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.communication_city" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_city" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -70,7 +70,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.communication_pin_no" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_pin_no" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -79,7 +79,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.communication_house_no" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_house_no" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -88,11 +88,11 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined v-model="formData.communication_office_phn" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Office" dense outlined v-model="formData.communication_office_phn" />
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <q-input
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         label="Residence"
         dense
         outlined
@@ -101,7 +101,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input label="Mobile" dense outlined v-model="formData.communication_mobile_phn" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Mobile" dense outlined v-model="formData.communication_mobile_phn" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -110,7 +110,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.communication_mobile_phn" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_email" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -119,7 +119,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.communication_website" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_website" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -127,7 +127,7 @@
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.communication_district" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_district" />
     </div>
 
     <div class="col-xs-12 zlabel">
@@ -141,7 +141,7 @@
       </label>
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.proposed_street" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.proposed_street" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -150,7 +150,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined v-model="formData.proposed_city" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.proposed_city" />
     </div>
 
    
@@ -161,7 +161,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-3">
-      <q-input dense outlined v-model="formData.proposed_house_no" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.proposed_house_no" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -170,11 +170,11 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined v-model="formData.proposed_office_phn" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Office" dense outlined v-model="formData.proposed_office_phn" />
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <q-input
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         label="Residence"
         dense
         outlined
@@ -183,7 +183,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input label="Mobile" dense outlined v-model="formData.proposed_mobile_phn" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Mobile" dense outlined v-model="formData.proposed_mobile_phn" />
     </div>
 
     <div class="col-xs-12" />
@@ -218,6 +218,10 @@ export default {
       communication_email: "",
       communication_website: "",
       communication_district: "",
+
+
+
+      proposed_or_existing: "",
 
       proposed_street: "",
       proposed_city: "",

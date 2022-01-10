@@ -6,7 +6,7 @@
           ><img style="width: 80px" src="~assets/eodb-logo.png"
         /></router-link>
 
-        <q-toolbar-title class="q-mt-md q-pl-lg q-mb-none"
+        <q-toolbar-title class="gt-xs q-mt-md q-pl-lg q-mb-none"
           ><span class="heading q-pb-none">Ease of Doing Business</span>
           <p class="mizoram q-pt-none text-caption">Mizoram</p>
           <!-- <q-btn flat @click="drawer = !drawer" round dense icon="menu" /> -->
@@ -103,8 +103,12 @@
     </q-header>
 
     <q-page-container class="bg-grey-2">
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </q-page-container>
+
+    <MsegsFooter />
   </q-layout>
 </template>
 
@@ -112,8 +116,9 @@
 import EssentialLink from "components/EssentialLink.vue";
 import ProfileMenu from "components/ProfileMenu.vue";
 import { useStore } from "vuex";
-import {computed} from "vue";
-
+import { computed, onMounted } from "vue";
+import MsegsFooter from "components/MsegsFooter";
+// import { useStore } from "vuex";
 
 const linksList = [
   {
@@ -168,16 +173,24 @@ export default defineComponent({
   components: {
     EssentialLink,
     ProfileMenu,
+    MsegsFooter,
   },
 
   setup() {
     const store = useStore();
+    // console.log("dsfsf");
 
-    
+    onMounted(() => {
+      // console.log("dsfsf");
+      // store.dispatch("globalData/fetchDeptServices");
+      // console.log("investor service", store.state.globalData);
+    });
 
     return {
       essentialLinks: linksList,
-      isAuthenticated: computed(() => store.getters["investor/isAuthenticated"]),
+      isAuthenticated: computed(
+        () => store.getters["investor/isAuthenticated"]
+      ),
     };
   },
 });

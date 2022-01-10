@@ -2,31 +2,44 @@
   <div class="zcard row items-center q-gutter-md q-col-gutter-md">
     <div class="col-12 text-h6 q-pb-none text-center">Attach Document</div>
 
-
-
-     <div class="col-xs-12 col-md-5">
+    <div class="col-xs-12 col-md-5">
       <label class="zlabel" for="name">
-        Attested Photo Copy Of Memorandum/Registration Certificate <span class="asterisk"> *</span></label
+        Signature of the applicant <span class="asterisk"> *</span></label
       >
     </div>
 
     <div class="col-xs-12 col-md-4">
-      <q-file v-model="formData.reg_certificate" outlined >
+      <q-file v-model="formData.applicant_signature" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
       </q-file>
     </div>
 
-
-     <div class="col-xs-12 col-md-5">
+    <div class="col-xs-12 col-md-5">
       <label class="zlabel" for="name">
-        Attested Photo Copy Of Voters ID Or Family Ration Card <span class="asterisk"> *</span></label
+        Attested Photo Copy Of Memorandum/Registration Certificate
+        <span class="asterisk"> *</span></label
       >
     </div>
 
     <div class="col-xs-12 col-md-4">
-      <q-file v-model="formData.voters_id" outlined >
+      <q-file v-model="formData.reg_certificate" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+    </div>
+
+    <div class="col-xs-12 col-md-5">
+      <label class="zlabel" for="name">
+        Attested Photo Copy Of Voters ID Or Family Ration Card
+        <span class="asterisk"> *</span></label
+      >
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <q-file v-model="formData.voters_id" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -50,18 +63,15 @@ export default {
   setup(props, context) {
     const store = useStore();
 
-
     const formData = reactive({
+      applicant_signature: null,
       reg_certificate: null,
-      voters_id: null
+      voters_id: null,
     });
-    onMounted(() => {
-    
-    });
+    onMounted(() => {});
     return {
-     
       emailRegex,
-    
+
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

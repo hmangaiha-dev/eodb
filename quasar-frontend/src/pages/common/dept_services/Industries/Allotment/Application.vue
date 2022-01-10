@@ -39,6 +39,10 @@ import Part2 from "./Part2.vue";
 import Document from "./Document.vue";
 import { api } from "src/boot/axios";
 
+import { useRouter } from 'vue-router'
+
+import { useQuasar } from "quasar";
+
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -53,29 +57,14 @@ export default {
     const part2Form = ref(null);
     const documentForm = ref(null);
 
-    const store = useStore();
-    // const draft = store.getters["applicantData/getCurrentDraft"];
-    // const currentUser = store.getters["auth/getCurrentUser"];
+    const router = useRouter()
 
-    const formData = reactive({
-      title: "Mr",
-      name: "dummy name",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: "",
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
+    const $q = useQuasar();
+    const store = useStore();
+
+    var formData = reactive({
+      application_code: "C&E_ALLOTMENT_PLOT",
+      department_id: 1,
     });
     onMounted(() => {});
 
@@ -85,60 +74,41 @@ export default {
       documentForm,
 
       submit: () => {
-        let formDatas = new FormData();
-
-        // console.log("documents value", formData.document);
-
-        for (let data in documentForm.value.formData) {
-          console.log(
-            "data value of" + data,
-            documentForm.value.formData[data]
-          );
-          formDatas.append(`${data}`, documentForm.value.formData[data]);
-        }
-
         var fields = Object.assign(
           part1Form.value.formData,
           part2Form.value.formData
         );
 
-        var formData = {
-          application_code: "CODE1",
-          department_id: 1,
-         
-
-          communcation_address: "Address for Communication",
-
-          proposed_or_existing: "Whether Proposed Or Existing Unit If Existing, Detail Address Of The Unit: Proposed/Existing.",
-
-          // fields: Object.assign(
-          //   part1Form.value.formData,
-          //   part2Form.value.formData
-          // ),
-
-          // voters_id: documentForm.value.formData.voters_id,
-          // document: Object.assign({}, documentForm.value.formData),
-          document: formDatas,
-        };
+        console.log("fields", fields);
 
         formData = Object.assign(formData, fields);
 
-        // for (const [key, value] of Object.entries(formData.fields)) {
-        //   formData.app
-        // }
+        formData = Object.assign(formData, documentForm.value.formData);
 
-        console.log("formdatas document", formData);
-        // console.log("document only", formDatas);
 
-        // return console.log("allFormData", formDatas.get('voters_id'));
+        var formDatas = new FormData();
+
+        for (let data in formData) {
+          console.log("data value of" + data, formData[data]);
+          formDatas.append(`${data}`, formData[data]);
+        }
+        // return
 
         api
-          .post("/applications/submit", formData)
-          .then((res) => console.log("response value", res.data))
+          .post("/applications/submit", formDatas)
+          .then((res) => {
+            console.log("response value", res.data);
+            $q.notify({
+              message: 'Application submitted successfully',
+              color: 'green'
+            })
+            router.push({ name: 'investor:ongoing' })
+
+          })
           .catch((err) => console.log("error", err));
       },
       emailRegex,
-
+      router,
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

@@ -16,7 +16,7 @@
         </div>
         <div class="zcard q-mt-sm rounded-borders q-pa-md flex justify-between">
           <q-btn outline color="negative" label="Send back"/>
-          <q-btn v-if="localData.current_step<localData.last_step" @click="handleForward" outline color="primary" label="Forward"/>
+          <q-btn @click="handleForward" outline color="primary" label="Forward"/>
         </div>
         <router-view  @notes="val=>localData.notes=val"/>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="my-layout q-ma-lg">
+  <div class="my-layout">
     <q-layout view="hHh Lpr lff">
       <div class="my-layout">
         <q-header elevated class="bg-primary text-white" height-hint="98">
@@ -53,7 +53,7 @@
         <q-page-container>
           <q-drawer
             class="q-px-md q-ml-md"
-            :width="400"
+            :width="$q.screen.gt.md ? 400 : 350"
             show-if-above
             v-model="leftDrawerOpen"
             side="left"
@@ -76,12 +76,22 @@
               </q-item-section>
               <q-item-section> Dashboard </q-item-section>
             </q-item>
+
+            <q-item
+              exact
+              class="zitem text-primary"
+              active-class="active-item q-px-md"
+              to="/investor/profile"
+              clickable
+            >
+              <q-item-section avatar>
+                <q-icon color="green" name="people" />
+              </q-item-section>
+              <q-item-section> Profile </q-item-section>
+            </q-item>
             <q-expansion-item
-              expand-icon="expand_more"
               group="somegroup"
-              icon=""
               label="Online Services"
-              default-opened
               header-class="text-primary"
             >
               <q-item
@@ -112,7 +122,7 @@
                 clickable
               >
                 <q-item-section avatar>
-                  <q-icon color="yellow" name="description" />
+                  <q-icon color="yellow-7" name="hourglass_empty" />
                 </q-item-section>
                 <q-item-section> Ongoing Applications </q-item-section>
               </q-item>
@@ -123,9 +133,21 @@
                 clickable
               >
                 <q-item-section avatar>
-                  <q-icon color="yellow" name="description" />
+                  <q-icon color="green-4" name="check_circle" />
                 </q-item-section>
                 <q-item-section> Approved Applications </q-item-section>
+              </q-item>
+
+              <q-item
+                active-class="active-item q-px-md"
+                class="q-ml-md zitem"
+                :to="{ name: 'investor:application-track' }"
+                clickable
+              >
+                <q-item-section avatar>
+                  <q-icon color="green" name="trending_up" />
+                </q-item-section>
+                <q-item-section> Track Application </q-item-section>
               </q-item>
             </q-expansion-item>
             <q-separator />
@@ -141,15 +163,21 @@
               <q-item-section> Common Application </q-item-section>
             </q-item>
           </q-drawer>
-          <router-view />
+          <!-- <keep-alive> -->
+            <router-view />
+          <!-- </keep-alive> -->
         </q-page-container>
+
+        <!-- <MsegsFooter /> -->
       </div>
     </q-layout>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import MsegFooter from "components/MsegFooter";
+
 import ProfileMenu from "components/ProfileMenu";
 import { reactive } from "@vue/reactivity";
 import { api } from "src/boot/axios";
@@ -157,6 +185,7 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 import { computed } from "vue";
+import MsegsFooter from "src/components/MsegsFooter.vue";
 
 const depts = [
   {
@@ -208,6 +237,12 @@ const depts = [
     slug: "excise-and-narcotics",
   },
 
+
+  {
+    name: "Public Health Engineering Department",
+    slug: "public-health-engineering",
+  },
+
   {
     name: "Food & Drug Administration, H&FW Department",
     slug: "food-and-drug-administration",
@@ -223,7 +258,7 @@ const depts = [
 ];
 
 export default {
-  components: { ProfileMenu },
+  components: { ProfileMenu, MsegFooter, MsegsFooter },
   setup(props, context) {
     const store = useStore();
 
@@ -231,6 +266,14 @@ export default {
     const leftDrawerOpen = ref(false);
     const rightDrawerOpen = ref(false);
     const menuItems = reactive([{}]);
+
+    onMounted(() => {
+      console.log('dsfsf');
+       store.dispatch("globalData/fetchDeptServices");
+
+
+      console.log('investor service',store.state.globalData);
+    });
 
     return {
       depts,

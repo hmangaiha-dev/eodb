@@ -14,7 +14,6 @@ const api = axios.create({ baseURL: process.env.DEV?LOCAL_BASE_URL:BASE_URL})
 
 
 export default boot(({ app,router,store }) => {
-  console.log('booting api token');
   // for use inside Vue files (Options API) through this.$axios and this.$api
   let token = localStorage.getItem('token');
   api.defaults.headers['Authorization'] = `Bearer ${token}`;

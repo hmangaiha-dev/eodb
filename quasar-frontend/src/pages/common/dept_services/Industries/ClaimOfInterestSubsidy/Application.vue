@@ -10,7 +10,6 @@
         <div class="col-xs-12">
           <Part1 ref="part1Form" />
         </div>
-
       </div>
 
       <div class="text-center q-mt-md col-12">
@@ -25,9 +24,12 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
-import {ref} from 'vue'
+import { ref } from "vue";
 import Part1 from "./Part1.vue";
- 
+import { useRouter } from 'vue-router'
+import { useQuasar } from "quasar";
+
+
 
 import { api } from "src/boot/axios";
 
@@ -35,68 +37,61 @@ const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
-
   components: {
-    Part1
+    Part1,
   },
- 
+
   setup(props, context) {
     const part1Form = ref(null);
-    const part2Form = ref(null);
-    const documentForm = ref(null);
+    const router = useRouter()
+    const $q = useQuasar();
+
+
 
     const store = useStore();
     // const draft = store.getters["applicantData/getCurrentDraft"];
     // const currentUser = store.getters["auth/getCurrentUser"];
- 
 
-    const formData = reactive({
-      title: "Mr",
-      name: "dummy name",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: "",
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
-    });
-    onMounted(() => {
-     
-    });
+    const formData = reactive({});
+    onMounted(() => {});
 
+    const submit = () => {
+      // return console.log('my router',myRouter);
+      var formData = reactive({
+        application_code: "C&E_INTEREST_SUBSIDY",
+        department_id: 1,
+      });
+
+      formData = Object.assign(formData, part1Form.value.formData);
+
+      var formDatas = new FormData();
+
+      for (let data in formData) {
+        // console.log("data value of" + data, formData[data]);
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+      // console.log("formData: ", formData);
+
+      // return console.log("formDatas", formDatas);
+
+      api
+        .post("/applications/submit", formDatas)
+        .then((res) => {
+          console.log("response value", res.data);
+          $q.notify({
+            message: "Application submitted successfully",
+            color: "green",
+          });
+          router.push({ name: "investor:ongoing" });
+        })
+        .catch((err) => console.log("error", err));
+    };
 
     return {
-
       part1Form,
-      part2Form,
-      documentForm,
-   
+      submit,
 
-      submit: () => {
-        const formData = {
-          part1: Object.assign({},part1Form.value.formData),
-          part2: Object.assign({},part2Form.value.formData),
-          document: Object.assign({},documentForm.value.formData)
-
-        }
-        // return console.log('allFormData',formData); 
-      
-        api.post('/investor/store',formData)
-          .then(res => console.log('response value',res.data))
-          .catch(err => console.log('error',err))
-      }, 
-      emailRegex,
-     
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

@@ -143,7 +143,7 @@
           <div class="row q-col-gutter-md q-ml-md">
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
-                >1) EM – Part-II , Number
+                >1) EM - part-II , No & date
                 <span class="asterisk"> *</span></label
               >
               <q-input dense outlined v-model="formData.applicant_name" />
@@ -151,21 +151,7 @@
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
-                >2) EM – Part-II , Date <span class="asterisk"> *</span></label
-              >
-              <q-input dense outlined v-model="formData.applicant_name" />
-            </div>
-
-            <div class="col-md-6 col-xs-10">
-              <label class="zlabel" for="name"
-                >4. IEM Number <span class="asterisk"> *</span></label
-              >
-              <q-input dense outlined v-model="formData.applicant_name" />
-            </div>
-
-            <div class="col-md-6 col-xs-10">
-              <label class="zlabel" for="name"
-                >4. IEM Date <span class="asterisk"> *</span></label
+                >2) IEM No & date<span class="asterisk"> *</span></label
               >
               <q-input dense outlined v-model="formData.applicant_name" />
             </div>
@@ -705,7 +691,7 @@
       </div>
     </div>
 
-    <div class="text-red col-12">dsfjsk jj</div>
+    <!-- <div class="text-red col-12">dsfjsk jj</div> -->
 
     <div class="col-12">
       <span class="zlabel">7.</span>
@@ -811,26 +797,19 @@
           </div>
         </div>
 
-
-
-
         <div class="col-12">
-          <span class="zlabel"
-            >C) Details Of Equity (if Any)</span
-          >
+          <span class="zlabel">C) Details Of Equity (if Any)</span>
 
           <div class="row q-col-gutter-md q-ml-md">
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
-                >1) Name
-                <span class="asterisk"> *</span></label
+                >1) Name <span class="asterisk"> *</span></label
               >
               <q-input dense outlined v-model="formData.applicant_name" />
             </div>
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
-                >2) Amount
-                <span class="asterisk"> *</span></label
+                >2) Amount <span class="asterisk"> *</span></label
               >
               <q-input dense outlined v-model="formData.applicant_name" />
             </div>
@@ -848,30 +827,191 @@
               >
               <q-input dense outlined v-model="formData.applicant_name" />
             </div>
+          </div>
+        </div>
 
-         
+        <div class="col-12">
+          <span class="zlabel">D) Details Of Unsecured Loan (if Any)</span>
+
+          <div class="row q-col-gutter-md q-ml-md">
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >1) Name <span class="asterisk"> *</span></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >2) Amount <span class="asterisk"> *</span></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+
+            <div class="col-md-5 col-xs-10">
+              <label class="zlabel" for="name"
+                >3) PAN No. <span class="asterisk"> *</span></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+
+            <div class="col-md-5 col-xs-10">
+              <label class="zlabel" for="name"
+                >4) Mode Of Payment <span class="asterisk"> *</span></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zlabel">[Details As Per Form:1C(F)]</div>
+
+    <div class="col-12">
+      <span class="zlabel">8. Power</span>
+      <div class="row q-col-gutter-md q-ml-md">
+        <div class="col-12">
+          <span class="zlabel">A) In Case Of New Units</span>
+
+          <div class="row q-col-gutter-md q-ml-md">
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >1) Sanctioned Load <span class="asterisk"> *</span></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >2) Connected Load<span class="asterisk"> *</span></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >3) Capacity Of Captive Power Plant (if Any)<span
+                  class="asterisk"
+                >
+                  *</span
+                ></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <span class="zlabel"
+            >B) In Case Of Existing Units Undergoing Expansion</span
+          >
+
+          <div class="row q-col-gutter-md q-ml-md">
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >1) Sanctioned Load Prior To Expansion
+                <span class="asterisk"> *</span></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >2) Connected Load Prior To Expansion<span class="asterisk">
+                  *</span
+                ></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >3) Sanction Of Additional Load For Expansion<span
+                  class="asterisk"
+                >
+                  *</span
+                ></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >4) Additional Connected Load For Expansion<span
+                  class="asterisk"
+                >
+                  *</span
+                ></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
+
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="name"
+                >5) Capacity Of Captive Power Plant (if Any)<span
+                  class="asterisk"
+                >
+                  *</span
+                ></label
+              >
+              <q-input dense outlined v-model="formData.applicant_name" />
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="col-12">
-      <span class="zlabel"
-        >9. Capital Investment [to Be Supported By CA Certificate As Per
-        Form-1D(A)(i)/Form:1D(A)(ii)] For Existing Unit</span
-      >
+      <span class="zlabel">9. Details Of Land And Building</span>
       <div class="row q-col-gutter-md q-ml-md">
         <div class="col-12">
-          <span class="zlabel">A) Land & Site Development</span>
+          <span class="zlabel">A) Land</span>
 
           <div class="row q-col-gutter-md q-ml-md">
             <div class="col-12">
-              <span class="zlabel">For New Unit (Amount In Rs.)</span>
+              <span class="zlabel">(a) Own Land</span>
               <div class="row q-col-gutter-md q-ml-md">
-                <div class="col-10">
+                <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"
-                    >1) Prior To Expansion
+                    >(i) Land Area <span class="asterisk"> *</span></label
+                  >
+                  <q-input dense outlined v-model="formData.applicant_name" />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name"
+                    >(ii) Revenue Village
                     <span class="asterisk"> *</span></label
+                  >
+                  <q-input dense outlined v-model="formData.applicant_name" />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name"
+                    >(iii) Dag No. <span class="asterisk"> *</span></label
+                  >
+                  <q-input dense outlined v-model="formData.applicant_name" />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name"
+                    >(iv) Patta No <span class="asterisk"> *</span></label
+                  >
+                  <q-input dense outlined v-model="formData.applicant_name" />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name"
+                    >(v) Date Of Purchase<span class="asterisk"> *</span></label
+                  >
+                  <q-input dense outlined v-model="formData.applicant_name" />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name"
+                    >(vi) Date Of Registration<span class="asterisk">
+                      *</span
+                    ></label
                   >
                   <q-input dense outlined v-model="formData.applicant_name" />
                 </div>
@@ -880,12 +1020,12 @@
 
             <div class="col-12">
               <span class="zlabel"
-                >For Existing Unit Undergoing Expansion (Amount In Rs.)</span
+                >(b) Land Allotted By Government/Government Agency</span
               >
               <div class="row q-col-gutter-md q-ml-md">
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"
-                    >1) Prior To Expansion
+                    >(i) Date Of Allotment/agreement
                     <span class="asterisk"> *</span></label
                   >
                   <q-input dense outlined v-model="formData.applicant_name" />
@@ -893,7 +1033,30 @@
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"
-                    >2. After Expansion <span class="asterisk"> *</span></label
+                    >(ii) Date Of Taking Over Possession
+                    <span class="asterisk"> *</span></label
+                  >
+                  <q-input dense outlined v-model="formData.applicant_name" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <span class="zlabel">(c) Lease Hold Land</span>
+              <div class="row q-col-gutter-md q-ml-md">
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name"
+                    >(i) Date Of Lease Of Land<span class="asterisk">
+                      *</span
+                    ></label
+                  >
+                  <q-input dense outlined v-model="formData.applicant_name" />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="name"
+                    >(ii) Period Of Lease
+                    <span class="asterisk"> *</span></label
                   >
                   <q-input dense outlined v-model="formData.applicant_name" />
                 </div>
@@ -906,28 +1069,14 @@
           <span class="zlabel">B) Building</span>
 
           <div class="row q-ml-md">
-            <span class="col-12 zlabel">1) Office Building</span>
+            <!-- <span class="col-12 zlabel">1) Office Building</span> -->
             <div class="col-12">
-              <span class="zlabel">For New Unit (Amount In Rs.)</span>
+              <!-- <span class="zlabel">For New Unit (Amount In Rs.)</span> -->
               <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-10">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">
-                For Existing Unit Undergoing Expansion (Amount In Rs.)
-              </span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-5">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for=""
+                    >(i) Own Building/rented Building</label
+                  >
                   <q-input
                     dense
                     outlined
@@ -935,279 +1084,10 @@
                   />
                 </div>
 
-                <div class="col-5">
-                  <label class="zlabel" for="">2. After Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <div class="row q-ml-md">
-            <span class="col-12 zlabel">2) Factory Building</span>
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">For New Unit (Amount In Rs.)</span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-10">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">
-                For Existing Unit Undergoing Expansion (Amount In Rs.)
-              </span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-5">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-
-                <div class="col-5">
-                  <label class="zlabel" for="">2. After Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <span class="zlabel"
-            >C) Plant And Machinery /components/essential Items</span
-          >
-
-          <div class="row q-ml-md">
-            <div class="col-10 q-ml-md">
-              <span class="zlabel">For New Unit (Amount In Rs.)</span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-12">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">
-                For Existing Unit Undergoing Expansion (Amount In Rs.)
-              </span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-5">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-
-                <div class="col-5">
-                  <label class="zlabel" for="">2. After Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <span class="zlabel">D) Accessories</span>
-
-          <div class="row q-ml-md">
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">For New Unit (Amount In Rs.)</span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-10">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">
-                For Existing Unit Undergoing Expansion (Amount In Rs.)
-              </span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-5">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-
-                <div class="col-5">
-                  <label class="zlabel" for="">2. After Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <span class="zlabel">E) Miscellaneous Fixed Assets</span>
-
-          <div class="row q-ml-md">
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">For New Unit (Amount In Rs.)</span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-10">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">
-                For Existing Unit Undergoing Expansion (Amount In Rs.)
-              </span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-5">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-
-                <div class="col-5">
-                  <label class="zlabel" for="">2. After Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <span class="zlabel">F) Preliminary And Preoperative Expanses</span>
-
-          <div class="row q-ml-md">
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">For New Unit (Amount In Rs.)</span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-10">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">
-                For Existing Unit Undergoing Expansion (Amount In Rs.)
-              </span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-5">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-
-                <div class="col-5">
-                  <label class="zlabel" for="">2. After Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <span class="zlabel">Total</span>
-
-          <div class="row q-ml-md">
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">For New Unit (Amount In Rs.)</span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-10">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 q-ml-md">
-              <span class="zlabel">
-                For Existing Unit Undergoing Expansion (Amount In Rs.)
-              </span>
-              <div class="row q-ml-md q-col-gutter-md">
-                <div class="col-5">
-                  <label class="zlabel" for="">1) Prior To Expansion</label>
-                  <q-input
-                    dense
-                    outlined
-                    v-model="formData.communication_district"
-                  />
-                </div>
-
-                <div class="col-5">
-                  <label class="zlabel" for="">2. After Expansion</label>
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for=""
+                    >(ii) In Case Of Own Building, Built Up Area</label
+                  >
                   <q-input
                     dense
                     outlined
@@ -1223,20 +1103,83 @@
 
     <div class="col-10">
       <label class="zlabel" for=""
-        >10. Increase In Investment (in Case Of Existing Unit)</label
+        >10. Statement Of Investment In Plant & Machinery As Per
+        Form:1C(A)</label
       >
       <q-input dense outlined v-model="formData.communication_district" />
     </div>
 
+    <div class="col-10">
+      <hr />
+    </div>
+
     <div class="col-12">
-      <span class="zlabel">11</span>
+      <span class="zlabel">11. Details Of Production Of The Unit</span>
 
       <div class="row q-ml-md">
         <div class="col-12">
-          <span class="zlabel">A) Annual Turnover Of The Unit</span>
+          <span class="zlabel">A) For New Unit</span>
           <div class="row q-ml-md q-col-gutter-md">
-            <div class="col-10">
-              <label class="zlabel" for="">1) For New Unit (in Rs.) )</label>
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="">1) Name (s) Of The Product(s)</label>
+              <q-input
+                dense
+                outlined
+                v-model="formData.communication_district"
+              />
+            </div>
+
+            <div class="col-12">
+              <span class="zlabel">2) Annual Installed Capacity</span>
+              <div class="row q-ml-md q-col-gutter-md">
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">1) Quantity</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">2) Value (in Rs)</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <span class="zlabel"
+                >3) Actual Production During Last Year/ From The Date Of
+                Commercial Production Till Date (if Any)</span
+              >
+              <div class="row q-ml-md q-col-gutter-md">
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">1) Quantity</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">2) Value (in Rs)</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <span class="zlabel">4) Remarks</span>
               <q-input
                 dense
                 outlined
@@ -1244,81 +1187,13 @@
               />
             </div>
           </div>
-        </div>
-
-        <div class="col-12 q-ml-md">
-          <span class="zlabel">
-            B) For Existing Unit Undergoing Expansion
-          </span>
-          <div class="row q-ml-md q-col-gutter-md">
-            <div class="col-5">
-              <label class="zlabel" for=""
-                >1) Annual Turnover Before Expansion (in Rs)</label
-              >
-              <q-input
-                dense
-                outlined
-                v-model="formData.communication_district"
-              />
-            </div>
-
-            <div class="col-5">
-              <label class="zlabel" for=""
-                >2) Annual Turnover After Expansion (in Rs.)</label
-              >
-              <q-input
-                dense
-                outlined
-                v-model="formData.communication_district"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12">
-      <span class="zlabel">12</span>
-      <div class="row q-ml-md q-col-gutter-md">
-        <div class="col-5">
-          <label for="" class="zlabel"
-            >A) Names Of The Raw Materials Utilized With Quantity And Value
-            During The Claim Period.</label
-          >
-          <q-input dense outlined v-model="formData.communication_district" />
-        </div>
-        <div class="col-5">
-          <label for="" class="zlabel"
-            >B) Name Of The Finished Product(s) Alongwith Quantity And Value
-            During The Claim Period.</label
-          >
-          <q-input dense outlined v-model="formData.communication_district" />
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12">
-      <span class="zlabel">13</span>
-      <div class="row q-ml-md q-col-gutter-md">
-        <div class="col-5">
-          <label for="" class="zlabel"
-            >A) Name Of The Bank Branch Providing Working Capital Loan</label
-          >
-          <q-input dense outlined v-model="formData.communication_district" />
-        </div>
-        <div class="col-5">
-          <label for="" class="zlabel"
-            >B) Maximum Limit Of Working Capital Sanctioned Along With Rate Of
-            Interest</label
-          >
-          <q-input dense outlined v-model="formData.communication_district" />
         </div>
 
         <div class="col-12">
-          <span class="zlabel">C) Sanction No. & Date</span>
-          <div class="row q-col-gutter-md">
-            <div class="q-ml-md col-5">
-              <label class="zlabel" for="">1) Sanction No.</label>
+          <span class="zlabel">B) For Existing Units Undergoing Expansion</span>
+          <div class="row q-ml-md q-col-gutter-md">
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="">1) Name (s) Of The Product(s)</label>
               <q-input
                 dense
                 outlined
@@ -1326,8 +1201,57 @@
               />
             </div>
 
-            <div class="q-ml-md col-5">
-              <label class="zlabel" for="">2) Sanction Date</label>
+            <div class="col-12">
+              <span class="zlabel">2) Annual Installed Capacity</span>
+              <div class="row q-ml-md q-col-gutter-md">
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">1) Quantity</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">2) Value (in Rs)</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <span class="zlabel"
+                >3) Actual Production During Last Year/ From The Date Of
+                Commercial Production Till Date (if Any)</span
+              >
+              <div class="row q-ml-md q-col-gutter-md">
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">1) Quantity</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">2) Value (in Rs)</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <span class="zlabel">4) Remarks</span>
               <q-input
                 dense
                 outlined
@@ -1337,41 +1261,112 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="col-12 q-mt-md">
-        <label class="zlabel" for="">14. Remarks, If Any.</label>
-        <q-input dense outlined v-model="formData.communication_district" />
-      </div>
+    <div class="col-12">
+      <span class="zlabel">12. Raw Materials</span>
 
-      <div class="col-12">
-        <label class="zlabel" for=""
-          >15. Employment Generation In Various Fields Of Work (Executive,
-          Non-executive, Skilled, Un-skilled Etc.)</label
-        >
-        <q-input dense outlined v-model="formData.communication_district" />
-      </div>
+      <div class="row q-ml-md">
+        <div class="col-12">
+          <span class="zlabel">A) For New Unit</span>
+          <div class="row q-ml-md q-col-gutter-md">
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for="">1) Name (s) Of The Product(s)</label>
+              <q-input
+                dense
+                outlined
+                v-model="formData.communication_district"
+              />
+            </div>
 
-      <div class="col-12">
-        <div class="row q-col-gutter-md">
-          <div class="col-9">
-            <span class="zlabel">
-              I /We ………………………….. hereby declare that information furnished in
-              the application for the grant of interest under Central Interest
-              Subsidy Scheme of NEIIPP, 2007 are correct and true to the best of
-              my/our knowledge and belief. If any statement made therein in
-              connection with this claim is found to be false or
-              misrepresentation of facts, the amount of subsidy granted by the
-              Government will be refunded by me/us. Further , it is also
-              affirmed that the Working Capital sanctioned for the period was
-              not diverted/ utilized for any other unit or towards any other
-              activity and has been utilized only for the purpose for which it
-              was sanctioned.
-            </span>
+            <div class="col-12">
+              <span class="zlabel">2) Annual Requirement</span>
+              <div class="row q-ml-md q-col-gutter-md">
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">1) Quantity</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">2) Value (in Rs)</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <div class="col-3">
-            <label class="zlabel" for=""> Signature of the Applicant </label>
-            <q-input dense outlined v-model="formData.communication_district" />
+        <div class="col-12">
+          <span class="zlabel">B) For Existing Units Undergoing Expansion</span>
+          <div class="row q-ml-md q-col-gutter-md">
+            <div class="col-md-6 col-xs-10">
+              <label class="zlabel" for=""
+                >(i) Name/s Of The Raw Materials</label
+              >
+              <q-input
+                dense
+                outlined
+                v-model="formData.communication_district"
+              />
+            </div>
+
+            <div class="col-12">
+              <span class="zlabel"
+                >(ii) Annual Requirement Prior To Expansion</span
+              >
+              <div class="row q-ml-md q-col-gutter-md">
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">1) Quantity</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">2) Value (in Rs)</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <span class="zlabel"
+                >(ii) Annual Requirement after Expansion</span
+              >
+              <div class="row q-ml-md q-col-gutter-md">
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">1) Quantity</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+
+                <div class="col-md-6 col-xs-10">
+                  <label class="zlabel" for="">2) Value (in Rs)</label>
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.communication_district"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

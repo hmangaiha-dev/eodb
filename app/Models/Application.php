@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -67,5 +68,15 @@ class Application extends Model
     {
         $profile= $this->profile()->first();
         return $profile->processFlows()->orderBy('step','desc')->latest()?->first()?->step;
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class,'department_id','id');
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }
