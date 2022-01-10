@@ -1,14 +1,19 @@
 import { api } from "src/boot/axios";
+import { Notify } from "quasar";
 
 export const checkAuth = async (to, from, next) => {
-  console.log("auth check");
   await api
     .get("/user")
     .then((res) => {
       next();
     })
     .catch((err) => {
-      console.log("unauthenticated");
+      Notify.create({
+        message: "Please login to continue",
+        color: "primary",
+        position: "top",
+        icon: "warnings",
+      });
       next({
         name: "investor:login",
       });
@@ -98,14 +103,9 @@ export default {
       name: "investor:application-track",
       component: () => import("pages/investor/TrackApplication.vue"),
     },
-    // {
-    //   path: "commerce-and-industries/allotment-of-industrial-plot",
-    //   name: "industries:allotment",
-    //   component: () =>
-    //     import(
-    //       "pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue"
-    //     ),
-    // },
+
+    //COMMERCE AND INDUSTRIES
+
     {
       path: "commerce-and-industries",
       component: () => import("layouts/DummyLayout.vue"),
@@ -135,7 +135,14 @@ export default {
             ),
         },
 
-        // claiming-central-capital-investment-subsidy-scheme
+        {
+          path: "claiming-power-subsidy",
+          name: "industries:power-sibsidy",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/powersubsidy/Application.vue"
+            ),
+        },
       ],
     },
 
@@ -166,28 +173,27 @@ export default {
           path: "allotment-of-land-shop",
           name: "land:house-land-shop",
           component: () =>
-          import(
-            "pages/common/dept_services/land_revenue/landshop/Application.vue"
-          ),
+            import(
+              "pages/common/dept_services/land_revenue/landshop/Application.vue"
+            ),
         },
         {
           path: "land-settlement",
           name: "land:land-settlement",
           component: () =>
-          import(
-            "pages/common/dept_services/land_revenue/landsettlement/Application.vue"
-          ),
-        },
-        {
-          path: "land-diversion",
-          name: "land:land-diversion",
-          component: () =>
-          import(
-            "pages/common/dept_services/land_revenue/landdiversion/Application.vue"
-          ),
+            import(
+              "pages/common/dept_services/land_revenue/landsettlement/Application.vue"
+            ),
         },
 
-        // claiming-central-capital-investment-subsidy-scheme
+        {
+          path: "transfer-of-land-ownership",
+          name: "land:land-transfer",
+          component: () =>
+            import(
+              "pages/common/dept_services/land_revenue/landtransfer/Application.vue"
+            ),
+        },
       ],
     },
 
@@ -300,13 +306,14 @@ export default {
           path: "road-cutting",
           name: "pwd:road-cuttting",
           component: () =>
-            import("pages/common/dept_services/pwd/roadcutting/Application.vue"),
+            import(
+              "pages/common/dept_services/pwd/roadcutting/Application.vue"
+            ),
         },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
-
 
     {
       path: "public-health-engineering",
@@ -317,7 +324,9 @@ export default {
           path: "new-water-connection",
           name: "phe:new-connection",
           component: () =>
-            import("pages/common/dept_services/phe/newconnection/Application.vue"),
+            import(
+              "pages/common/dept_services/phe/newconnection/Application.vue"
+            ),
         },
 
         // claiming-central-capital-investment-subsidy-scheme

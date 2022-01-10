@@ -77,11 +77,13 @@ import { reactive } from "@vue/reactivity";
 import { api } from "src/boot/axios";
 import { ref } from "vue";
 import { useStore } from "vuex";
-import { useRouter } from "vue-router";
+import { useRouter,useRoute } from "vue-router";
 
 export default {
   setup(props, context) {
     const router = useRouter();
+    const route = useRoute();
+
 
     const store = useStore();
     const q = useQuasar();
@@ -105,8 +107,9 @@ export default {
             store.dispatch("investor/setCurrentUser", currentUser);
             store.dispatch("investor/setToken", token);
             console.log("login response", res.data);
+            router.push(route.redirectedFrom || '/')
 
-            router.push({ name: "home" });
+            // router.push({ name: "home" });
 
             // api.defaults.headers["Authorization"] = `Bearer ${token}`;
           })

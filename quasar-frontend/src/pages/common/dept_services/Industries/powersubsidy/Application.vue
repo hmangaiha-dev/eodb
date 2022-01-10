@@ -1,11 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-12 text-h6 q-pb-none text-center">Form-8</div>
-    <p class="col-12 text-caption q-py-none text-center">[See Rule 20(1)]</p>
+   
     <div class="col-12 ztitle text-center">
-     APPLICATION FOR DIVERSION OF USE OF LAND
+   APPLICATION FORM FOR CLAIMING POWER SUBSIDY
     </div>
-    <q-form @submit.prevent="submit" class="row">
+    <q-form @submit.prevent="submit" class="col">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />

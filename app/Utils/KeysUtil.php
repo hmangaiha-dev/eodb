@@ -373,6 +373,21 @@ class KeysUtil
             'land_revenue_land_settlement_sixteen_b',
         ],
         'LAND_REVENUE_LAND_DIVERSION' => [
+            'land_revenue_land_diversion_one',
+            'land_revenue_land_diversion_two',
+            'land_revenue_land_diversion_three',
+            'land_revenue_land_diversion_four',
+            'land_revenue_land_diversion_five',
+            'land_revenue_land_diversion_five_a',
+            'land_revenue_land_diversion_five_b',
+            'land_revenue_land_diversion_six',
+            'land_revenue_land_diversion_seven',
+            'land_revenue_land_diversion_eight',
+            'land_revenue_land_diversion_nine',
+            'land_revenue_land_diversion_ten',
+            'land_revenue_land_diversion_eleven'
+        ],
+        'LAND_REVENUE_LAND_TRANSFER' => [
             
         ]
 
@@ -741,6 +756,25 @@ class KeysUtil
         'land_revenue_land_settlement_sixteen' => '16.Other Contact Details',
         'land_revenue_land_settlement_sixteen_a' => '(a)Telephone Number',
         'land_revenue_land_settlement_sixteen_b' => '(b)Email ID',
+
+
+
+        //LAND REVENUE - LAND DIVERSION
+
+
+        'land_revenue_land_diversion_one' => '1.Name of Applicant',
+        'land_revenue_land_diversion_two' => "2.Father's Name",
+        'land_revenue_land_diversion_three' => '3.Present Address',
+        'land_revenue_land_diversion_four' => '4.Permanent Address',
+        'land_revenue_land_diversion_five' => '5.',
+        'land_revenue_land_diversion_five_a' => 'a)Registration No. with Year',
+        'land_revenue_land_diversion_five_b' => 'b) Land holding No. with year',
+        'land_revenue_land_diversion_six' => '6. Location of land as per Land Certificate',
+        'land_revenue_land_diversion_seven' => '7. Area of land in Sq.metre',
+        'land_revenue_land_diversion_eight' => '8. Purpose for which land was originally allotted',
+        'land_revenue_land_diversion_nine' => '9. Ground on which diversion of land is applied ( separate sheet may be attached if needed)',
+        'land_revenue_land_diversion_ten' => '10. Purpose for which use of land is to be diverted',
+        'land_revenue_land_diversion_eleven' => '11. Whether up to date receipt of payment of land revenue & taxes are enclosed'
 
 
 
