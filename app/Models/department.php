@@ -8,6 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'id',
+        'dept_code',
+        'dept_name',
+        'dict_name',
+        'sect_name',
+        'slug',
+        'info',
+        'about_us',
+        'act_rules',
+        'other_info',
+
+
+    ];
     // protected $guarded = [];
 
 
@@ -17,5 +31,3 @@ class Department extends Model
         return $this->hasMany(DepartmentService::class);
     }
 }
-
-

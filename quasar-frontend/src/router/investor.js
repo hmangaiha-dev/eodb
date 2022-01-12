@@ -143,6 +143,15 @@ export default {
               "pages/common/dept_services/Industries/powersubsidy/Application.vue"
             ),
         },
+
+        {
+          path: "subsidy-power-generating",
+          name: "industries:power-generating",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/powergenerating/Application.vue"
+            ),
+        },
       ],
     },
 

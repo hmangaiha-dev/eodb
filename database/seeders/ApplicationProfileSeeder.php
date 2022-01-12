@@ -25,6 +25,6 @@ class ApplicationProfileSeeder extends Seeder
     ];
     public function run()
     {
-        ApplicationProfile::query()->updateOrCreate(self::DATA, ['code']);
+        ApplicationProfile::query()->upsert(self::DATA,'code');
     }
 }

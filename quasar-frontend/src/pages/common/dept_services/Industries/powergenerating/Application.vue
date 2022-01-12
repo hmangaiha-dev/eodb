@@ -1,8 +1,7 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-   
     <div class="col-12 ztitle text-center">
-   APPLICATION FORM FOR CLAIM OF SUBSIDY ON POWER GENERATING
+      APPLICATION FORM FOR CLAIM OF SUBSIDY ON POWER GENERATING
     </div>
     <q-form @submit.prevent="submit" class="col">
       <div class="row q-col-gutter-lg">
@@ -46,18 +45,20 @@ export default {
     const applicantRef = ref(null);
 
     const submit = () => {
-      var formData = reactive({});
+      // var formData = reactive({});
 
       // return console.log(q);
 
-      formData = Object.assign(formData, applicantRef.value.formData);
+      const formData = Object.assign({}, applicantRef.value.formData);
 
-      var formDatas = new FormData();
+      const form = new FormData(formData);
 
-      for (let data in formData) {
-        formDatas.append(`${data}`, formData[data]);
-      }
-      // return console.log('formdatas',formData);
+      return console.log("formdatas results", form);
+      const results = Object.fromEntries(form.entries());
+
+      // for (let data in formData) {
+      //   formDatas.append(`${data}`, formData[data]);
+      // }
 
       api
         .post("/applications/submit", formDatas)
