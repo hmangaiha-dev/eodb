@@ -1,10 +1,18 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-12 ztitle text-center">
-      APPLICATION FORM FOR CLAIM OF SUBSIDY ON POWER GENERATING
+    <div class="col-12 text-h6 q-pb-none text-center">Form-19</div>
+    <p class="col-12 text-caption q-py-none text-center">[See Rule 59(2)]</p>
+    <div class="col-12 text-center">
+      <p class="ztitle">
+        Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit
+        Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In
+        Schedule X
+      </p>
+
     </div>
-    <q-form @submit.prevent="submit" class="col">
-      <div class="row q-col-gutter-lg">
+
+    <q-form @submit.prevent="submit">
+      <div class="row">
         <div class="col-12">
           <Form ref="applicantRef" />
         </div>
@@ -21,11 +29,10 @@
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted, ref } from "vue";
-import { useQuasar } from "quasar";
-// import { useQuasar } from "quasar";
-
-import { api } from "src/boot/axios";
+import { date } from "quasar";
 import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
+import { api } from "src/boot/axios";
 
 import Form from "./Form.vue";
 // import Part2 from "./Part2.vue";
@@ -39,6 +46,7 @@ export default {
   },
   setup(props, context) {
     const store = useStore();
+    // const store = useStore();
     const q = useQuasar();
 
     const router = useRouter();
@@ -47,8 +55,7 @@ export default {
     const submit = () => {
       var formData = reactive({});
 
-      // return console.log(q);
-
+      // return console.log("formdatas", applicantRef.value);
       formData = Object.assign(formData, applicantRef.value.formData);
 
       var formDatas = new FormData();
@@ -56,7 +63,6 @@ export default {
       for (let data in formData) {
         formDatas.append(`${data}`, formData[data]);
       }
-      // return console.log('formdatas',formData);
 
       api
         .post("/applications/submit", formDatas)
@@ -71,11 +77,9 @@ export default {
         .catch((err) => console.log("error", err));
     };
 
-    onMounted(() => {});
     return {
-      applicantRef,
-      q,
       submit,
+      applicantRef,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

@@ -152,6 +152,16 @@ export default {
               "pages/common/dept_services/Industries/powergenerating/Application.vue"
             ),
         },
+
+
+        {
+          path: "subsidy-cost-project-report",
+          name: "industries:cost-project",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/costprojectreport/Application.vue"
+            ),
+        },
       ],
     },
 
@@ -253,10 +263,26 @@ export default {
         },
         {
           path: "accident-reporting-bio-medical-waste",
-          name: "pcb:accident-reporting",
+          name: "pcb:accident-reporting-medical",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/accidentreporting/Application.vue"
+              "pages/common/dept_services/pollution/accidentmedicalreporting/Application.vue"
+            ),
+        },
+        {
+          path: "accident-reporting-hazardous-waste",
+          name: "pcb:accident-reporting-hazardous",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/accidenthazardousreporting/Application.vue"
+            ),
+        },
+        {
+          path: "accident-reporting-solid-waste",
+          name: "pcb:accident-reporting-solidwaste",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/accidentsolidwastereporting/Application.vue"
             ),
         },
         {
@@ -300,6 +326,22 @@ export default {
           name: "fire:noc",
           component: () =>
             import("pages/common/dept_services/Fire/noc/Application.vue"),
+        },
+
+        // claiming-central-capital-investment-subsidy-scheme
+      ],
+    },
+
+    {
+      path: "food-and-drug-administration",
+      component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
+      children: [
+        {
+          path: "form19",
+          name: "food:form19",
+          component: () =>
+            import("pages/common/dept_services/food_drug/generalretail/Application.vue"),
         },
 
         // claiming-central-capital-investment-subsidy-scheme
