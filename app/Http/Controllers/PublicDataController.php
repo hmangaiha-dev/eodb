@@ -22,7 +22,7 @@ class PublicDataController extends Controller
             ]),
             'districts' => DataUtil::DISTRICTS,
             'staffs'=>Staff::query()->get(['id as value','full_name as label']),
-            'offices'=>Office::query()->get(['id as value','name as label'])
+            'offices'=>Office::query()->get(['id as value','name as label']),
 
         ], 200);
     }

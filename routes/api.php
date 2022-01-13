@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationMovementHistory;
 use App\Http\Controllers\ApplicationProfileController;
+use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DeskController;
 use App\Http\Controllers\InvestorController;
@@ -119,6 +120,8 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
 
 Route::post('applications/submit', [ApplicationController::class, 'submitApplication'])->middleware('auth:sanctum');
 
+//Public routes
+Route::get('attachment/{code}', [AttachmentController::class, 'getApplicationAttachments']);
 // base_path('routes/rj/index.php');
 
 

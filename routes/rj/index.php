@@ -30,7 +30,7 @@ Route::prefix('/investor')->group(function () {
 });
 
 
-Route::group(['prefix' => 'department','middleware' => 'auth:sanctum'], function () {
+Route::group(['prefix' => 'department'], function () {
     Route::get('services', [DepartmentController::class, 'show']);
     Route::get('{slug}', [DepartmentController::class, 'showDepartment']);
 });
