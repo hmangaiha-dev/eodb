@@ -282,7 +282,7 @@
         <span class="asterisk">*</span></label
       >
 
-      <q-file v-model="formData.phe_water_connection_fifteen" outlined>
+      <q-file v-model="formData.signature_phe_water_connection" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -330,7 +330,7 @@ export default {
       phe_water_connection_fourteen: "",
       phe_water_connection_fourteen_a: true,
       phe_water_connection_fourteen_b: false,
-      phe_water_connection_fifteen: null,
+      signature_phe_water_connection: null,
     });
     onMounted(() => {});
     return {

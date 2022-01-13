@@ -11,9 +11,14 @@ class Attachment extends Model
     use HasFactory;
 
     protected $fillable = ['mime', 'original_name', 'label', 'size', 'path'];
+    protected $appends = ['full_path'];
 
     public function owner(): MorphTo
     {
         return $this->morphTo('owner');
+    }
+    public function getFullPathAttribute()
+    {
+        return $url = url('/storage') . '/' . $this->path;
     }
 }

@@ -85,37 +85,6 @@ import {computed} from "vue";
 export default {
   components: {ProfileMenu, AdminNav, MsegFooter},
   setup(props, context) {
-    const services = ref([
-      {
-        name: 'Industries',
-        to: 'industries'
-      },
-      {
-        name: 'Fire',
-        to: 'fire'
-      },
-      {
-        name: 'AMC',
-        to: 'amc'
-      },
-      {
-        name: 'MPCB',
-        to: 'mpcb'
-      },
-      {
-        name: 'PWD',
-        to: 'pwd'
-      },
-      {
-        name: 'Food & Drug',
-        to: 'food-and-drug'
-      },
-      {
-        name: 'UD & PA',
-        to: 'ud-and-pa'
-      }
-
-    ]);
     const router = useRouter();
     const store = useStore();
     const localData = reactive({

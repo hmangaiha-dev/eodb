@@ -31,9 +31,9 @@ export default {
       menus:[
          {id:'admin',label:'Applications',icon:'description',
           items:[
-            {route_name:'application:create',label:'New application',leftIcon:'label',rightIcon:'navigate_next'},
-            {route_name:'application:read',label:'Active application',leftIcon:'label',rightIcon:'navigate_next'},
-            {route_name:'application:incoming',label:'Incoming (online)',leftIcon:'label',rightIcon:'navigate_next'},
+            // {route_name:'application:create',label:'New application',leftIcon:'label',rightIcon:'navigate_next'},
+            {route_name:'ongoing-applications:read',label:'Ongoing Applications',leftIcon:'label',rightIcon:'navigate_next'},
+            // {route_name:'application:incoming',label:'Incoming (online)',leftIcon:'label',rightIcon:'navigate_next'},
             {route_name:'application:archived',label:'Archived',leftIcon:'label',rightIcon:'navigate_next'},
           ]
         },

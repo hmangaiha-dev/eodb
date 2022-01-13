@@ -3,10 +3,10 @@
 
     <div class="bg-grey-1 col-xs-12 col-md-3">
       <q-list  separator>
-        <q-item :to="{name:'process-flows:read'}" clickable v-ripple>
+        <q-item :focused="$route.name==='process-flows:read'" :to="{name:'process-flows:read'}" clickable v-ripple>
           <q-item-section class="zlabel">Process flows</q-item-section>
         </q-item>
-        <q-item :to="{name:'application-profiles:read'}" clickable v-ripple>
+        <q-item :focused="$route.name==='application-profiles:read'" :to="{name:'application-profiles:read'}" clickable v-ripple>
           <q-item-section class="zlabel">Application profiles</q-item-section>
         </q-item>
       </q-list>

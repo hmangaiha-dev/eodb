@@ -32,14 +32,12 @@ class Office extends Model
     {
         return $this->belongsToMany(Staff::class, table: 'staff_posts')->withTimestamps();
     }
-
     public function bankDetail(): MorphOne
     {
         return $this->morphOne(BankDetail::class, 'owner');
     }
-
-    public function applications()
+    public function applications(): BelongsToMany
     {
-        return $this->hasMany(Application::class);
+        return $this->belongsToMany(Application::class,'office_applications');
     }
 }

@@ -8,7 +8,7 @@ import {api} from "boot/axios";
 
 const state = () => {
   return {
-    currentUser: LocalStorage.getItem('user'),
+    currentUser: localStorage.getItem('user'),
     token: LocalStorage.getItem('token'),
     csrfToken: ''
   }
