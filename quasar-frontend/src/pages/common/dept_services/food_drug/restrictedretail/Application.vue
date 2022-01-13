@@ -1,12 +1,16 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-12 ztitle text-center">
-    APPLICATION FORM FOR OBTAINING N.O.C. FROM FIRE & EMERGENCY
-SERVICES DEPARTMENT, MIZORAM
+    <div class="col-12 text-h6 q-pb-none text-center">Form-19A</div>
+    <div class="col-12 text-center">
+      <p class="ztitle">
+      APPLICATION FOR GRANT OR RENEWAL OF A (LICENCE TO SELL, STOCK, EXHIBIT OR OFFER FOR SALE, OR DISTRIBUTE) HOMOEOPATHIC MEDICINES
+      </p>
+
     </div>
-    <q-form @submit.prevent="submit" class="row">
-      <div class="row q-col-gutter-lg">
-        <div class="col-xs-12">
+
+    <q-form @submit.prevent="submit">
+      <div class="row">
+        <div class="col-12">
           <Form ref="applicantRef" />
         </div>
       </div>
@@ -21,39 +25,34 @@ SERVICES DEPARTMENT, MIZORAM
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { date } from "quasar";
-import { ref } from "vue";
-import { api } from "src/boot/axios";
-import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
+import { api } from "src/boot/axios";
 
 import Form from "./Form.vue";
-import router from "src/router";
-
+// import Part2 from "./Part2.vue";
+// import Document from "./Document.vue";
 
 export default {
   components: {
     Form,
+    // Part2,
+    // Document,
   },
-
   setup(props, context) {
-    const applicantRef = ref(null);
     const store = useStore();
-    const $q = useQuasar();
+    // const store = useStore();
+    const q = useQuasar();
+
     const router = useRouter();
-    const draft = store.getters["applicantData/getCurrentDraft"];
-    const currentUser = store.getters["auth/getCurrentUser"];
+    const applicantRef = ref(null);
 
     const submit = () => {
-      // return console.log('my router',myRouter);
-      var formData = reactive({
-       
-      });
+      var formData = reactive({});
 
       formData = Object.assign(formData, applicantRef.value.formData);
-
-      // return console.log('formData',formData);
 
       var formDatas = new FormData();
 
@@ -61,11 +60,12 @@ export default {
         formDatas.append(`${data}`, formData[data]);
       }
 
+        // return console.log("formdatas", applicantRef.value);
       api
         .post("/applications/submit", formDatas)
         .then((res) => {
-          console.log("response value", res.data);
-          $q.notify({
+          // console.log("response value", res.data);
+          q.notify({
             message: "Application submitted successfully",
             color: "green",
           });
@@ -75,9 +75,8 @@ export default {
     };
 
     return {
-      applicantRef,
       submit,
-      router,
+      applicantRef,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

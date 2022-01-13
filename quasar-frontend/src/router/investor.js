@@ -332,6 +332,8 @@ export default {
       ],
     },
 
+
+    //FOOD AND DRUG
     {
       path: "food-and-drug-administration",
       component: () => import("layouts/DummyLayout.vue"),
@@ -343,8 +345,13 @@ export default {
           component: () =>
             import("pages/common/dept_services/food_drug/generalretail/Application.vue"),
         },
+        {
+          path: "form19-A",
+          name: "food:form19A",
+          component: () =>
+            import("pages/common/dept_services/food_drug/restrictedretail/Application.vue"),
+        },
 
-        // claiming-central-capital-investment-subsidy-scheme
       ],
     },
 

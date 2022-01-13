@@ -403,8 +403,6 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   setup(props, context) {
@@ -435,7 +433,6 @@ export default {
     });
 
     return {
-      emailRegex,
    
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
