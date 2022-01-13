@@ -28,36 +28,37 @@
         <div class="col-6 zvalue">{{ item.field_value }}</div>
       </div>
     </div>
+    <Attachments :attachments="localData.attachments"/>
 
-    <div class="ztitle">Attachments</div>
+<!--    <div class="ztitle">Attachments</div>-->
 
-    <div v-for="(item, i) in localData.attachments" :key="i" class="row">
-      <div class="zlabel col-4">
-        {{ item.label }}
-      </div>
+<!--    <div v-for="(item, i) in localData.attachments" :key="i" class="row">-->
+<!--      <div class="zlabel col-4">-->
+<!--        {{ item.label }}-->
+<!--      </div>-->
 
-      <div class="zlabel col-4">
-        <!-- <embed :src="pdfFile" width="500" height="500" /> -->
-        <q-btn
-        flat
-          color="primary"
-        
-          label="view"
-          @click="getFile(item.path)"
-        />
-        <!-- {{ item.path }} -->
-      </div>
-    </div>
-    <q-separator class="q-my-md" />
-    <div class="zcard col-xs-12 q-gutter-xs">
-      <q-btn
-        v-for="(action, i) in localData.actions"
-        :name="action.value"
-        :key="i"
-        outline
-        :label="action?.label"
-      />
-    </div>
+<!--      <div class="zlabel col-4">-->
+<!--        &lt;!&ndash; <embed :src="pdfFile" width="500" height="500" /> &ndash;&gt;-->
+<!--        <q-btn-->
+<!--        flat-->
+<!--          color="primary"-->
+
+<!--          label="view"-->
+<!--          @click="getFile(item.path)"-->
+<!--        />-->
+<!--        &lt;!&ndash; {{ item.path }} &ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <q-separator class="q-my-md" />-->
+<!--    <div class="zcard col-xs-12 q-gutter-xs">-->
+<!--      <q-btn-->
+<!--        v-for="(action, i) in localData.actions"-->
+<!--        :name="action.value"-->
+<!--        :key="i"-->
+<!--        outline-->
+<!--        :label="action?.label"-->
+<!--      />-->
+<!--    </div>-->
   </q-page>
 </template>
 <script>
@@ -67,8 +68,10 @@ import { useQuasar } from "quasar";
 import { reactive } from "@vue/reactivity";
 import { useRoute } from "vue-router";
 import { ref } from "vue";
+import Attachments from "pages/common/attachments/Attachments";
 
 export default {
+  components: {Attachments},
   setup(props, context) {
     const route = useRoute();
     const q = useQuasar();

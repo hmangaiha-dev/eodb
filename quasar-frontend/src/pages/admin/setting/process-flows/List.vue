@@ -25,7 +25,8 @@
               </q-item-section>
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">
-                  <q-toggle v-model="item.published" left-label @click="publish(item)" label="published?"/>
+<!--                  <q-toggle v-model="item.published" left-label @click="publish(item)" label="published?"/>-->
+                  <q-btn @click="viewDetail(item)" size="12px" outline icon="preview"/>
                   <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>
 
                 </div>
@@ -43,6 +44,12 @@
         </div>
       </div>
 
+      <q-dialog v-model="localData.openFlow">
+        <Detail :application_name="localData.selectedFlow?.title"
+                :flows="localData.selectedFlow?.process_flows"
+        />
+      </q-dialog>
+
     </div>
   </q-page>
 </template>
@@ -53,9 +60,10 @@ import {onMounted} from "@vue/runtime-core";
 import {api} from "boot/axios";
 import {useQuasar} from "quasar";
 import Edit from "pages/admin/staff/Edit";
+import Detail from "pages/admin/setting/process-flows/Detail";
 
 export default {
-  components: {Edit, Create},
+  components: {Detail, Edit, Create},
 
   setup(props, context) {
     const q = useQuasar();
@@ -69,7 +77,9 @@ export default {
         data: [],
         current_page: 1,
         total: 1
-      }
+      },
+      openFlow:false,
+      selectedFlow:{}
     })
 
 
@@ -126,6 +136,11 @@ export default {
         q.notify({type: 'negative', message})
       })
     }
+    const viewDetail=(flow)=>{
+      console.log(flow)
+      localData.openFlow = true;
+      localData.selectedFlow = flow;
+    }
     const fetchStaff = (page) => {
       api.get(`application-profiles/flows?page=${page}`, {params: {search: localData.search}})
         .then(res => {
@@ -149,7 +164,8 @@ export default {
       handleSearch,
       handleEdit,
       publish,
-      handleDelete
+      handleDelete,
+      viewDetail
     }
   }
 }

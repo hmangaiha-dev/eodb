@@ -72,6 +72,11 @@ class ApplicationController extends Controller
             'application_profile_id' => $appProfile->id,
             'user_id' => Auth::id(),
             'department_id' => $request->get('department_id'),
+            'current_state'=>'submitted',
+        ]);
+        $application->states()->create([
+            'name'=>'submitted',
+            'remark'=>'Application submitted at '.now()->toDateString()
         ]);
 
         DB::transaction(function ($cb) use ($appProfile, $request, $application) {
@@ -85,8 +90,6 @@ class ApplicationController extends Controller
                     'field_label' => KeysUtil::getApplicationLabel($key),
                 ]);
             }
-
-
             $flow = $appProfile->processFlows()
                 ->orderBy('step')
                 ->first();
