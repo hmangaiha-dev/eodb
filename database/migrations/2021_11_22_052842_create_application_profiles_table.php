@@ -15,7 +15,7 @@ class CreateApplicationProfilesTable extends Migration
     {
         Schema::create('application_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable();
+            $table->string('code')->unique();
             $table->string('title')->nullable();
             $table->string('remark')->nullable();
             $table->string('operational_type')->nullable();

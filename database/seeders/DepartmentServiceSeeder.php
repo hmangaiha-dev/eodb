@@ -92,7 +92,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "subsidy-power-generating",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -116,7 +116,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "subsidy-cost-project-report",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -265,7 +265,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "form19",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -712,13 +712,13 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'department_id' => 11,
                 'category_id' => rand(1, 5),
-                'service_name' => "Accident Reporting for Bio-Medical Wastes",
+                'service_name' => "Accident Reporting for Hazardous Waste",
                 'who_should_apply' => $faker->sentence,
                 'how_to_apply' => $faker->text,
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "accident-reporting-hazardous-waste",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -742,7 +742,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "accident-reporting-solid-waste",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -1206,6 +1206,8 @@ class DepartmentServiceSeeder extends Seeder
 
 
         ];
+
+        DepartmentService::truncate();
 
         DepartmentService::query()->upsert($services,'department_id');
     }

@@ -6,7 +6,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_one"
+        v-model="formData.commerce_cost_project_one"
         dense
         outlined
       />
@@ -23,7 +23,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.commerce_power_generating_two_a"
+            v-model="formData.commerce_cost_project_two_a"
             dense
             outlined
           />
@@ -37,7 +37,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.commerce_power_generating_two_b"
+            v-model="formData.commerce_cost_project_two_b"
             dense
             outlined
           />
@@ -52,7 +52,7 @@
       >
       <q-select
         dense
-        v-model="formData.commerce_power_generating_three"
+        v-model="formData.commerce_cost_project_three"
         :options="formData.constitution_types"
         outlined
       />
@@ -65,7 +65,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_four"
+        v-model="formData.commerce_cost_project_four"
         dense
         outlined
       />
@@ -73,12 +73,12 @@
 
     <div class="col-md-6 col-lg-6 col-xs-10">
       <label class="zlabel" for="gender">
-        5. Regn. No. And Date Of The Unit
+        5. Registration/License No. of the Unit
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_five"
+        v-model="formData.commerce_cost_project_five"
         dense
         outlined
       />
@@ -86,13 +86,13 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        6. Date Of Commencement Of Production / Taking Effective Steps.
+        6. Date of commencement of Production/ effective steps
         <span class="asterisk">*</span></label
       >
       <q-input
         type="date"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_six"
+        v-model="formData.commerce_cost_project_six"
         dense
         outlined
       />
@@ -105,7 +105,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_seven"
+        v-model="formData.commerce_cost_project_seven"
         dense
         outlined
       />
@@ -118,7 +118,7 @@
       >
       <q-select
         dense
-        v-model="formData.commerce_power_generating_eight"
+        v-model="formData.commerce_cost_project_eight"
         :options="formData.investments"
         outlined
       />
@@ -131,7 +131,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_nine"
+        v-model="formData.commerce_cost_project_nine"
         dense
         outlined
       />
@@ -139,12 +139,12 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        10. Name/Brand of the Power Generating set with power output capacity
+        10. Cost of Project Report (to be supported by original voucher
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_ten"
+        v-model="formData.commerce_cost_project_ten"
         dense
         outlined
       />
@@ -152,12 +152,12 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        11. Name of Supplier with complete Address:
+        11. Name & Address of consultant/Agency
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_eleven"
+        v-model="formData.commerce_cost_project_eleven"
         dense
         outlined
       />
@@ -165,65 +165,12 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        12. Total requirement of power of the Unit (in term of P/K.W)
+        12. Amount of subsidy claimed with percentage
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_twelve"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender">
-        13. Name of the executing the installation of the set
-        <span class="asterisk">*</span></label
-      >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_thirteen"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender">
-        14. Actual cost of the power generating se (to be supported by Original
-        Voucher)
-        <span class="asterisk">*</span></label
-      >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_fourteen"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender">
-        15. Actual installation charge (to be supported by Original voucher)
-        <span class="asterisk">*</span></label
-      >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_fifteen"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender">
-        16. Amount of subsidy claimed with percentage.
-        <span class="asterisk">*</span></label
-      >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.commerce_power_generating_sixteen"
+        v-model="formData.commerce_cost_project_twelve"
         dense
         outlined
       />
@@ -232,10 +179,10 @@
     <div class="col-12 text-caption">
       <q-field
         ref="toggle"
-        :value="formData.commerce_power_generating_agreement"
+        :value="formData.commerce_cost_project_agreement"
         :rules="[
           (val) =>
-            formData.commerce_power_generating_agreement == true ||
+            formData.commerce_cost_project_agreement == true ||
             'Please agree the declaration',
         ]"
         borderless
@@ -244,7 +191,7 @@
         <template v-slot:control>
           <q-checkbox
             class="text-caption"
-            v-model="formData.commerce_power_generating_agreement"
+            v-model="formData.commerce_cost_project_agreement"
             label="I do hereby affirm that the informations furnished above are true and the documents attached herewith are genuine."
           />
         </template>
@@ -258,7 +205,7 @@
       <q-file
         :rules="[(val) => val || 'Signature is required']"
         dense
-        v-model="formData.commerce_power_generating_signature"
+        v-model="formData.commerce_cost_project_signature"
         outlined
       >
         <template v-slot:prepend>
@@ -280,7 +227,7 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "C&E_POWER_GENERATING",
+      application_code: "C&E_COST_PROJECT",
       department_id: 1,
       rows: 2,
       constitution_types: [
@@ -290,26 +237,22 @@ export default {
         "Private Limited",
       ],
       investments: ["Land & Building", "Plant & Machineries", "Others"],
-      commerce_power_generating_one: "",
-      commerce_power_generating_two: "",
-      commerce_power_generating_two_a: "",
-      commerce_power_generating_two_b: "",
-      commerce_power_generating_three: "",
-      commerce_power_generating_four: "",
-      commerce_power_generating_five: "",
-      commerce_power_generating_six: "",
-      commerce_power_generating_seven: "",
-      commerce_power_generating_eight: "",
-      commerce_power_generating_nine: "",
-      commerce_power_generating_ten: "",
-      commerce_power_generating_eleven: "",
-      commerce_power_generating_twelve: "",
-      commerce_power_generating_thirteen: "",
-      commerce_power_generating_fourteen: "",
-      commerce_power_generating_fifteen: "",
-      commerce_power_generating_sixteen: "",
-      commerce_power_generating_signature: null,
-      commerce_power_generating_agreement: false,
+      commerce_cost_project_one: "",
+      commerce_cost_project_two: "",
+      commerce_cost_project_two_a: "",
+      commerce_cost_project_two_b: "",
+      commerce_cost_project_three: "",
+      commerce_cost_project_four: "",
+      commerce_cost_project_five: "",
+      commerce_cost_project_six: "",
+      commerce_cost_project_seven: "",
+      commerce_cost_project_eight: "",
+      commerce_cost_project_nine: "",
+      commerce_cost_project_ten: "",
+      commerce_cost_project_eleven: "",
+      commerce_cost_project_twelve: "",
+      commerce_cost_project_signature: null,
+      commerce_cost_project_agreement: false,
     });
     onMounted(() => {});
     return {

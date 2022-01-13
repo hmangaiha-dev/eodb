@@ -1,7 +1,7 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-12 ztitle text-center">
-      APPLICATION FORM FOR CLAIM OF SUBSIDY ON POWER GENERATING
+      APPLICATION FOR CLAIM SUBSIDY ON COST OF PROJECT REPORT
     </div>
     <q-form @submit.prevent="submit" class="col">
       <div class="row q-col-gutter-lg">

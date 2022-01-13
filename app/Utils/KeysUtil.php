@@ -57,6 +57,43 @@ class KeysUtil
             // 'voters_id'
 
         ],
+        'C&E_POWER_GENERATING' => [
+            'commerce_power_generating_one',
+            'commerce_power_generating_two',
+            'commerce_power_generating_two_a',
+            'commerce_power_generating_two_b',
+            'commerce_power_generating_three',
+            'commerce_power_generating_four',
+            'commerce_power_generating_five',
+            'commerce_power_generating_six',
+            'commerce_power_generating_seven',
+            'commerce_power_generating_eight',
+            'commerce_power_generating_nine',
+            'commerce_power_generating_ten',
+            'commerce_power_generating_eleven',
+            'commerce_power_generating_twelve',
+            'commerce_power_generating_thirteen',
+            'commerce_power_generating_fourteen',
+            'commerce_power_generating_fifteen',
+            'commerce_power_generating_sixteen',
+        ],
+
+        'C&E_COST_PROJECT' => [
+            'commerce_cost_project_one',
+            'commerce_cost_project_two',
+            'commerce_cost_project_two_a',
+            'commerce_cost_project_two_b',
+            'commerce_cost_project_three',
+            'commerce_cost_project_four',
+            'commerce_cost_project_five',
+            'commerce_cost_project_six',
+            'commerce_cost_project_seven',
+            'commerce_cost_project_eight',
+            'commerce_cost_project_nine',
+            'commerce_cost_project_ten',
+            'commerce_cost_project_eleven',
+            'commerce_cost_project_twelve',
+        ],
 
         'C&E_INTEREST_SUBSIDY' => [
             "cne_interest_subsidy_one",
@@ -387,8 +424,52 @@ class KeysUtil
             'land_revenue_land_diversion_ten',
             'land_revenue_land_diversion_eleven'
         ],
-        'LAND_REVENUE_LAND_TRANSFER' => [
-            
+        'LAND_REVENUE_LAND_TRANSFER' => [],
+
+        'POLLUTION_ACCIDENT_MEDICAL' => [
+            'pollution_accident_medical_one',
+            'pollution_accident_medical_one_a',
+            'pollution_accident_medical_one_b',
+            'pollution_accident_medical_two',
+            'pollution_accident_medical_three',
+            'pollution_accident_medical_four',
+            'pollution_accident_medical_five',
+            'pollution_accident_medical_six',
+            'pollution_accident_medical_seven',
+            'pollution_accident_medical_eight',
+            'pollution_accident_medical_nine',
+            'pollution_accident_medical_ten',
+            'pollution_accident_medical_designation',
+        ],
+        'POLLUTION_ACCIDENT_HAZARDOUS' => [
+            'pollution_accident_medical_one',
+            'pollution_accident_medical_one_a',
+            'pollution_accident_medical_one_b',
+            'pollution_accident_medical_two',
+            'pollution_accident_medical_three',
+            'pollution_accident_medical_four',
+            'pollution_accident_medical_five',
+            'pollution_accident_medical_six',
+            'pollution_accident_medical_seven',
+            'pollution_accident_medical_eight',
+            'pollution_accident_medical_nine',
+            'pollution_accident_medical_ten',
+            'pollution_accident_medical_designation',
+        ],
+        'POLLUTION_ACCIDENT_SOLIDWASTE' => [
+            'pollution_accident_medical_one',
+            'pollution_accident_medical_one_a',
+            'pollution_accident_medical_one_b',
+            'pollution_accident_medical_two',
+            'pollution_accident_medical_three',
+            'pollution_accident_medical_four',
+            'pollution_accident_medical_five',
+            'pollution_accident_medical_six',
+            'pollution_accident_medical_seven',
+            'pollution_accident_medical_eight',
+            'pollution_accident_medical_nine',
+            'pollution_accident_medical_ten',
+            'pollution_accident_medical_designation',
         ]
 
 
@@ -396,7 +477,7 @@ class KeysUtil
 
     const LABELS = [
 
-
+        // COMMERCE AND INSUSTRIES - ALLOTMENT PLOT
         'applicant_name' => 'Applicant Name',
         'industrial_location_name' => 'Name & Location of Industrial Area',
         'communication_address' => 'Address for Communications',
@@ -410,16 +491,13 @@ class KeysUtil
         'communication_email' => 'Email Address',
         'communication_website' => 'Website',
         'communication_district' => 'District',
-
         'proposed_or_existing' => 'Whether Proposed Or Existing Unit If Existing, Detail Address Of The Unit: Proposed/Existing.',
-
         'proposed_street' => 'street',
         'proposed_city' => 'city',
         'proposed_house_no' => 'House No',
         'proposed_office_phn' => 'Office No',
         'proposed_residence_phn' => 'Residence No',
         'proposed_mobile_phn' => 'Mobile No',
-
         'enterprise_name' => 'Name of the Enterprise',
         'enterprise_category' => 'Category Of Enterprise ',
         'nature_activity' => 'Nature Of Activity',
@@ -439,49 +517,46 @@ class KeysUtil
 
 
 
+        // COMMERCE AND INSUSTRIES - POWER GENERATING
+        'commerce_power_generating_one' => '1. Name Of The Unit',
+        'commerce_power_generating_two' => '2. Address',
+        'commerce_power_generating_two_a' => 'a)Office',
+        'commerce_power_generating_two_b' => 'b) Factory',
+        'commerce_power_generating_three' => '3. Constitution Proprietorship / Partnership / Co- Operative Society / Private. Limited',
+        'commerce_power_generating_four' => '4. Name And Address Of The Proprietor/Partner/Chairman/Director',
+        'commerce_power_generating_five' => '5. Regn. No. And Date Of The Unit',
+        'commerce_power_generating_six' => '6. Date Of Commencement Of Production / Taking Effective Steps',
+        'commerce_power_generating_seven' => '7. Items Of Manufacture/ To Be Manufacture',
+        'commerce_power_generating_eight' => '8. Investment (Existing/Proposed)',
+        'commerce_power_generating_nine' => '9. Employment (Existing/Proposed)',
+        'commerce_power_generating_ten' => '10. Name/Brand of the Power Generating set with power output capacity',
+        'commerce_power_generating_eleven' => '11. Name of Supplier with complete Address',
+        'commerce_power_generating_twelve' => '12. Total requirement of power of the Unit (in term of P/K.W)',
+        'commerce_power_generating_thirteen' => '13. Name of the executing the installation of the set',
+        'commerce_power_generating_fourteen' => '14. Actual cost of the power generating se (to be supported by Original Voucher)',
+        'commerce_power_generating_fifteen' => '15. Actual installation charge (to be supported by Original voucher)',
+        'commerce_power_generating_sixteen' => '16. Amount of subsidy claimed with percentage',
 
 
 
+        // COMMERCE AND INSUSTRIES -  COST OF PROJECT REPORT
+        'commerce_cost_project_one' => '1. Name of the unit',
+        'commerce_cost_project_two' => '2. Address',
+        'commerce_cost_project_two_a' => 'a) Office',
+        'commerce_cost_project_two_b' => 'b) Factory',
+        'commerce_cost_project_three' => '3. Constitution Proprietorship/Partnership/Co- Operative Society/ Private. Limited',
+        'commerce_cost_project_four' => '4. Name and Address of the Proprietor/Partner /Director',
+        'commerce_cost_project_five' => '5. Registration/License No. of the Unit',
+        'commerce_cost_project_six' => '6. Date of commencement of Production/effective steps',
+        'commerce_cost_project_seven' => '7. Items of manufacture/ to be manufacture',
+        'commerce_cost_project_eight' => '8. Investment (Existing/ Proposed)',
+        'commerce_cost_project_nine' => '9. Employment (Existing/ Proposed)',
+        'commerce_cost_project_ten' => '10. Cost of Project Report (to be supported by original voucher',
+        'commerce_cost_project_eleven' => '11. Name & Address of consultant/Agency',
+        'commerce_cost_project_twelve' => '12. Amount of subsidy claimed with percentage',
 
 
-
-        "power_new_connection_applicant_name" => "1.Name of the Applicant/Organization",
-        "power_new_connection_father_name" => "2.Name of Father/ Husband/ Director/ Partner/ Trustee*",
-        "power_new_connection_communication_address" => "Address for communication",
-        "power_new_connection_communication_house" => "House/Plot/Premise No",
-        "power_new_connection_communication_street" => "Street",
-        "power_new_connection_communication_area" => "Area/Colony",
-        "power_new_connection_communication_district" => "District",
-        "power_new_connection_connection_address" => "Address of where the new connection is applied for/existing connection is required to be shifted",
-        "power_new_connection_connection_house" => "House/Plot/Premise No",
-        "power_new_connection_connection_street" => "Street",
-        "power_new_connection_connection_area" => "Area/Colony",
-        "power_new_connection_connection_district" => "District",
-        "power_new_connection_supply_category" => "4.Category of Supply",
-        "power_new_connection_supply_purpose" => "5.Purpose of Supply",
-        "power_new_connection_total_load" => "6.Total Contracted Load applied for (in kW)",
-        "power_new_connection_supply_type" => "7.Type of Supply",
-        "power_new_connection_is_temporary" => "8.If Temporary supply, specify period of requirement",
-        "power_new_connection_temporay_from" => "From (date)",
-        "power_new_connection_temporay_to" => "To (date)",
-        "power_new_connection_is_laying_service" => "9.Please indicate whether you want to carry out the works of laying service line and/or dedicated distribution facility for the electricity supply requisitioned.",
-        "power_new_connection_own_meter" => "10.Please indicate whether you want to install your own CEA approved meter. (Yes/No)",
-        // "power_new_connection_applicant_type" => "Applicant is",
-        "power_new_connection_for" => "Applicant is",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // COMMERCE AND INSUSTRIES - INTEREST SUBSIDY
         "cne_interest_subsidy_one" => "1.",
         "cne_interest_subsidy_oneA" => "A) Name Of The Unit",
         "cne_interest_subsidy_oneB" => "B) Office Address With Telephone / Mobile No. )",
@@ -591,6 +666,52 @@ class KeysUtil
         "cne_interest_subsidy_thirteenC2" => "2) Sanction Date",
         "cne_interest_subsidy_fourteen" => "14. Remarks, If Any.",
         "cne_interest_subsidy_fifteen" => "15. Employment Generation In Various Fields Of Work (Executive, Non-executive, Skilled, Un-skilled Etc.)",
+
+
+
+
+
+
+
+
+
+
+
+        "power_new_connection_applicant_name" => "1.Name of the Applicant/Organization",
+        "power_new_connection_father_name" => "2.Name of Father/ Husband/ Director/ Partner/ Trustee*",
+        "power_new_connection_communication_address" => "Address for communication",
+        "power_new_connection_communication_house" => "House/Plot/Premise No",
+        "power_new_connection_communication_street" => "Street",
+        "power_new_connection_communication_area" => "Area/Colony",
+        "power_new_connection_communication_district" => "District",
+        "power_new_connection_connection_address" => "Address of where the new connection is applied for/existing connection is required to be shifted",
+        "power_new_connection_connection_house" => "House/Plot/Premise No",
+        "power_new_connection_connection_street" => "Street",
+        "power_new_connection_connection_area" => "Area/Colony",
+        "power_new_connection_connection_district" => "District",
+        "power_new_connection_supply_category" => "4.Category of Supply",
+        "power_new_connection_supply_purpose" => "5.Purpose of Supply",
+        "power_new_connection_total_load" => "6.Total Contracted Load applied for (in kW)",
+        "power_new_connection_supply_type" => "7.Type of Supply",
+        "power_new_connection_is_temporary" => "8.If Temporary supply, specify period of requirement",
+        "power_new_connection_temporay_from" => "From (date)",
+        "power_new_connection_temporay_to" => "To (date)",
+        "power_new_connection_is_laying_service" => "9.Please indicate whether you want to carry out the works of laying service line and/or dedicated distribution facility for the electricity supply requisitioned.",
+        "power_new_connection_own_meter" => "10.Please indicate whether you want to install your own CEA approved meter. (Yes/No)",
+        // "power_new_connection_applicant_type" => "Applicant is",
+        "power_new_connection_for" => "Applicant is",
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -774,10 +895,24 @@ class KeysUtil
         'land_revenue_land_diversion_eight' => '8. Purpose for which land was originally allotted',
         'land_revenue_land_diversion_nine' => '9. Ground on which diversion of land is applied ( separate sheet may be attached if needed)',
         'land_revenue_land_diversion_ten' => '10. Purpose for which use of land is to be diverted',
-        'land_revenue_land_diversion_eleven' => '11. Whether up to date receipt of payment of land revenue & taxes are enclosed'
+        'land_revenue_land_diversion_eleven' => '11. Whether up to date receipt of payment of land revenue & taxes are enclosed',
 
 
 
+        //POLLUTION - ACCIDENT OF BIO-MEDICAL WASTES
+        'pollution_accident_medical_one' => '1. Date And Time Of Accident',
+        'pollution_accident_medical_one_a' => 'A) Date Of Accident',
+        'pollution_accident_medical_one_b' => 'B) Time Of Accident',
+        'pollution_accident_medical_two' => '2. Type Of Accident ',
+        'pollution_accident_medical_three' => '3. Sequence Of Events Leading To Accident',
+        'pollution_accident_medical_four' => '4. Has The Authority Been Informed Immediately',
+        'pollution_accident_medical_five' => '5. The Type Of Waste Involved In Accident',
+        'pollution_accident_medical_six' => '6. Assessment Of The Effects Of The Accidents On Human Health And The Environment',
+        'pollution_accident_medical_seven' => '7. Emergency Measures Taken',
+        'pollution_accident_medical_eight' => '8. Steps Taken To Alleviate The Effects Of Accidents',
+        'pollution_accident_medical_nine' => '9. Steps taken to prevent the recurrence of such an accident',
+        'pollution_accident_medical_ten' => '10. Does Your Facility Have An Emergency Control Policy? If Yes Give Details',
+        'pollution_accident_medical_designation' => 'Designation',
 
 
 

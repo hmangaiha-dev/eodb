@@ -428,8 +428,8 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "LAND_REVENUE_LAND_TRANSFER",
-      department_id: 8,
+      application_code: "C&E_POWER_SUBSIDY",
+      department_id: 1,
 
       rows: 2,
       constitution_types: [
