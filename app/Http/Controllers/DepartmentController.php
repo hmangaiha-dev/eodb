@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
-use App\Models\DepartmentService;
-use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-
 
 
     public function showDepartment($slug)

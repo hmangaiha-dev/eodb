@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\BankDetail;
 use App\Models\Office;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\UnauthorizedException;
@@ -98,5 +100,16 @@ class OfficeController extends Controller
             'list' => Office::query()->get(),
             'message' => 'Office deleted successfully'
         ]);
+    }
+
+    public function onGoingApplications(Request $request)
+    {
+        $staff = auth('sanctum')->user();
+        $office=$staff->currentPost();
+//        $office = new Office();
+        $applications=$office?->applications()
+            ->whereIn('current_state',Application::ONGOING_STATUSES)
+            ->paginate();
+        return response()->json($applications,200);
     }
 }

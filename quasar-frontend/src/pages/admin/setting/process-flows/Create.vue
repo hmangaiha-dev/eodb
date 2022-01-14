@@ -23,15 +23,15 @@
         <q-list separator>
           <q-item class="zdetailcard q-mt-sm" v-for="(item,i) in formData.flows" :key="i">
             <q-item-section>
-              <q-item-label>STEP: {{ i+1 }} : <span class="text-caption">{{ item?.staff?.label }}</span></q-item-label>
-              <q-item-label caption>
-                <q-chip v-for="action in item.actions" :key="action.id" :label="action.label" />
-              </q-item-label>
+              <q-item-label>STEP: {{ i+1 }} Dealing assistant : <span class="zvalue">{{ item?.staff?.label }}</span></q-item-label>
+<!--              <q-item-label caption>-->
+<!--                <q-chip v-for="action in item.actions" :key="action.id" :label="action.label" />-->
+<!--              </q-item-label>-->
             </q-item-section>
             <q-item-section side>
               <div class="flex flex-inline">
-                <q-btn class="q-pa-sm" flat icon="settings"/>
-                <q-btn @click="removeFlow(i)" class="q-pa-sm" flat icon="delete"/>
+<!--                <q-btn class="q-pa-sm" flat icon="settings"/>-->
+                <q-btn round @click="removeFlow(i)" class="q-pa-sm" flat icon="delete"/>
               </div>
             </q-item-section>
           </q-item>

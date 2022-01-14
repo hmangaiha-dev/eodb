@@ -50,7 +50,7 @@ class Staff extends Authenticatable
 
     public function currentPost()
     {
-        return $this->postings()->where('type', PostingStatus::ON_DUTY)
+        return $this->postings()->where('status', PostingStatus::ON_DUTY)
             ->latest()
             ->first();
     }

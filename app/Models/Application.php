@@ -13,12 +13,16 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Application extends Model
 {
     use HasFactory;
+
+    const ONGOING_STATUSES = ['submitted'];
+
     protected $fillable = ['application_code', 'regn_no','application_profile_id','user_id','department_id' ,'current_state', 'remark'];
     protected $appends = ['application_name','current_step','last_step'];
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
+
 
 
     public function applicationValues(): HasMany
@@ -70,9 +74,14 @@ class Application extends Model
         return $profile->processFlows()->orderBy('step','desc')->latest()?->first()?->step;
     }
 
-    public function department()
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class,'department_id','id');
+    }
+
+    public function office(): BelongsToMany
+    {
+        return $this->belongsToMany(Office::class, 'office_applications');
     }
 
     protected function serializeDate(DateTimeInterface $date)

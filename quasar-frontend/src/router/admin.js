@@ -21,13 +21,13 @@ export default {
     { path: 'postings',name:'posting:read', component: () => import('pages/admin/postings/StaffPostings') },
     { path: 'postings/create',name:'posting:create', component: () => import('pages/admin/postings/Posting') },
 
-    { path: 'files',name:'file:read', component: () => import('pages/admin/file/Files') },
-    { path: 'files/create',name:'file:create', component: () => import('pages/admin/file/Create') },
-    { path: 'files/incoming',name:'file:incoming', component: () => import('pages/admin/file/IncomingFiles.vue') },
-    { path: 'files/outgoing',name:'file:outgoing', component: () => import('pages/admin/file/OutgoingFiles.vue') },
-    { path: 'files/archived',name:'file:archived', component: () => import('pages/admin/file/ArchivedFiles.vue') },
+    // { path: 'files',name:'file:read', component: () => import('pages/admin/file/Files') },
+    // { path: 'files/create',name:'file:create', component: () => import('pages/admin/file/Create') },
+    // { path: 'files/incoming',name:'file:incoming', component: () => import('pages/admin/file/IncomingFiles.vue') },
+    // { path: 'files/outgoing',name:'file:outgoing', component: () => import('pages/admin/file/OutgoingFiles.vue') },
+    // { path: 'files/archived',name:'file:archived', component: () => import('pages/admin/file/ArchivedFiles.vue') },
 
-    { path: 'applications',name:'application:read', component: () => import('pages/admin/application/List') },
+    { path: 'ongoing-applications',name:'ongoing-applications:read', component: () => import('pages/admin/application/Ongoing') },
     {
       path: 'applications/:id',
       component: () => import('layouts/ApplicationLayout.vue'),

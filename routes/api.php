@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationMovementHistory;
 use App\Http\Controllers\ApplicationProfileController;
+use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DeskController;
 use App\Http\Controllers\InvestorController;
@@ -64,6 +65,7 @@ Route::group(['prefix' => 'office', 'middleware' => ['auth:sanctum','staff']], f
     Route::get('{id}', [OfficeController::class, 'show']);
     Route::put('{office}', [OfficeController::class, 'update']);
     Route::delete('{office}', [OfficeController::class, 'destroy']);
+    Route::get('applications/ongoing', [OfficeController::class, 'onGoingApplications']);
 });
 Route::group(['prefix' => 'staff', 'middleware' => ['auth:sanctum','staff']], function () {
     Route::get('index', [StaffController::class, 'index']);
@@ -97,13 +99,9 @@ Route::group(['prefix' => 'application-profiles'],function(){
     Route::get('flows', [ApplicationProfileController::class, 'applicationFlows']);
     Route::put('{model}/toggle', [ApplicationProfileController::class, 'toggle']);
     Route::delete('process-flows/{model}', [ApplicationProfileController::class, 'destroyFlow']);
+    Route::delete('{model}', [ApplicationProfileController::class, 'deleteApplicationProfile']);
 });
-Route::group(['prefix' => 'application-profiles'],function(){
-    Route::get('index', [ApplicationProfileController::class, 'index']);
-    Route::get('flows', [ApplicationProfileController::class, 'applicationFlows']);
-    Route::put('{model}/toggle', [ApplicationProfileController::class, 'toggle']);
-    Route::delete('process-flows/{model}', [ApplicationProfileController::class, 'destroyFlow']);
-});
+
 Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], function () {
 //    Route::post('submit', [ApplicationController::class, 'submitApplication']);
     Route::get('me', [DeskController::class, 'myApplication']);
@@ -119,6 +117,8 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
 
 Route::post('applications/submit', [ApplicationController::class, 'submitApplication'])->middleware('auth:sanctum');
 
+//Public routes
+Route::get('attachment/{code}', [AttachmentController::class, 'getApplicationAttachments']);
 // base_path('routes/rj/index.php');
 
 

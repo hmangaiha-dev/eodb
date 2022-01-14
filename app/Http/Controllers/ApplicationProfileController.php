@@ -17,7 +17,7 @@ class ApplicationProfileController extends Controller
     public function applicationFlows(Request $request)
     {
         return response()->json([
-            'list' => ApplicationProfile::query()->whereHas('processFlows')->paginate(),
+            'list' => ApplicationProfile::query()->whereHas('processFlows')->with('processFlows')->paginate(),
             'message' => ''
         ]);
     }
@@ -40,6 +40,17 @@ class ApplicationProfileController extends Controller
             'message' => 'Process flow deleted',
             'list' => ApplicationProfile::query()
                 ->whereHas('processFlows')
+                ->paginate(),
+        ]);
+    }
+
+    public function deleteApplicationProfile(Request $request,ApplicationProfile $model)
+    {
+        $model->processFlows()->delete();
+        $model->delete();
+        return response()->json([
+            'message' => 'Application profile deleted successfully',
+            'list' => ApplicationProfile::query()
                 ->paginate(),
         ]);
     }

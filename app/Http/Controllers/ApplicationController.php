@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use App\Models\ApplicationMovement;
 use App\Models\ApplicationProfile;
+use App\Utils\AttachmentUtils;
 use App\Utils\KeysUtil;
 use App\Utils\NumberGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\FileBag;
 
 class ApplicationController extends Controller
 {
@@ -27,6 +27,7 @@ class ApplicationController extends Controller
             'actions' => json_decode($flow?->actions)
         ], 200);
     }
+
     public function forward(Request $request, Application $model)
     {
         $staff = auth('sanctum')->user();
@@ -51,6 +52,7 @@ class ApplicationController extends Controller
             'message' => 'Application forwarded successfully'
         ], 200);
     }
+
     public function submitApplication(Request $request)
     {
 
@@ -70,28 +72,14 @@ class ApplicationController extends Controller
             'application_profile_id' => $appProfile->id,
             'user_id' => Auth::id(),
             'department_id' => $request->get('department_id'),
+            'current_state'=>'submitted',
+        ]);
+        $application->states()->create([
+            'name'=>'submitted',
+            'remark'=>'Application submitted at '.now()->toDateString()
         ]);
 
-
-
-        // // Keep below code
-        //     foreach ($request->file() as $key => $file) {
-        //         $count = $count + 1;
-        //         $filename = time() . uniqid() . '.' . $file->getClientOriginalExtension();
-
-        //         $path = $file->storeAs($request->get('application_code'), $filename);
-        //         $application->attachments()->create([
-        //             'original_name' => $key,
-        //             'mime' => 'jpg',
-        //             'label' =>  $key,
-        //             'size' => '2',
-        //             'path' => $path
-        //         ]);
-        //     }
-
-
         DB::transaction(function ($cb) use ($appProfile, $request, $application) {
-
             //        $formData=$request->except(['application_code', 'department_id']);
             //        $application = new Application();
             $keysArr = KeysUtil::getApplicationKeys($request->get('application_code'));
@@ -102,8 +90,6 @@ class ApplicationController extends Controller
                     'field_label' => KeysUtil::getApplicationLabel($key),
                 ]);
             }
-
-
             $flow = $appProfile->processFlows()
                 ->orderBy('step')
                 ->first();
@@ -115,6 +101,22 @@ class ApplicationController extends Controller
                 'step' => $flow->step,
             ]);
         });
+        //Attachment upload
+        foreach ($request->file() as $key => $file) {
+            $attachmentProfile = AttachmentUtils::getAttachment($key);
+            if (!blank($attachmentProfile)) {
+                $disk = $attachmentProfile['disk'];
+                $folder = $attachmentProfile['folder'];
+                $path = Storage::disk($disk)->put($folder, $file);
+                $application->attachments()->create([
+                    'original_name' => $file->getClientOriginalName(),
+                    'mime' => $file->getMimeType(),
+                    'label' => $attachmentProfile['label'],
+                    'size' => $file->getSize(),
+                    'path' => $path
+                ]);
+            }
+        }
 
         return response()->json([
             'message' => 'Application submitted successfully'

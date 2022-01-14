@@ -1,10 +1,11 @@
 <template>
   <q-page class="container-lg" padding>
-    <p class="zsubtitle">Application profiles</p>
 
     <div>
       <div class="row q-col-gutter-md">
-        <div class="flex justify-between flex-inline col-12">
+        <div class="flex justify-between items-baseline flex-inline col-12">
+          <p class="zsubtitle">Application profiles</p>
+
           <q-input v-model="localData.search" placeholder="Search" @keyup="handleSearch" outlined dense>
             <template v-slot:append>
               <q-icon name="search"/>
@@ -24,8 +25,8 @@
               </q-item-section>
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">
-                  <q-toggle :model-value="item.published" left-label @click="publish(item)" label="published?"/>
-<!--                  <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>-->
+<!--                  <q-toggle :model-value="item.published" left-label @click="publish(item)" label="published?"/>-->
+                  <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>
 
                 </div>
               </q-item-section>
@@ -72,8 +73,8 @@ export default {
     })
 
 
-    const deleteFlow = id => {
-      api.delete(`application-profiles/process-flows/${id}`)
+    const deleteProfile = id => {
+      api.delete(`application-profiles/${id}`)
         .then(res => {
           localData.listData = res.data.list
           q.notify({type: 'positive', message: res.data?.message})
@@ -94,7 +95,7 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        deleteFlow(item.id)
+        deleteProfile(item.id)
       }).onCancel(() => {
         // console.log('>>>> Cancel')
       }).onDismiss(() => {
@@ -143,7 +144,7 @@ export default {
     return {
       updatePagination,
       pageCount: computed(() => Math.ceil(localData.listData.total / localData.listData.per_page)),
-      deleteFlow,
+      deleteProfile,
       localData,
       handleSearch,
       handleEdit,

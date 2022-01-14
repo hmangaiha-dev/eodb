@@ -10,7 +10,6 @@ class KeysUtil
             'applicant_name',
             'industrial_location_name',
 
-
             'communication_address',
             'communication_street',
             'communication_city',
@@ -23,7 +22,6 @@ class KeysUtil
             'communication_website',
             'communication_district',
 
-
             'proposed_or_existing',
 
             'proposed_street',
@@ -33,8 +31,6 @@ class KeysUtil
             'proposed_office_phn',
             'proposed_residence_phn',
             'proposed_mobile_phn',
-
-
 
             'enterprise_name',
             'enterprise_category',
@@ -557,7 +553,6 @@ class KeysUtil
             'food_drug_restricted_addl_six_ii',
         ]
 
-
     ];
 
     const LABELS = [
@@ -599,9 +594,6 @@ class KeysUtil
         'electric_power' => 'Requirement Of Electric Power',
         'daily_water' => 'Daily Requirement Of Water',
 
-
-
-
         // COMMERCE AND INSUSTRIES - POWER GENERATING
         'commerce_power_generating_one' => '1. Name Of The Unit',
         'commerce_power_generating_two' => '2. Address',
@@ -621,8 +613,6 @@ class KeysUtil
         'commerce_power_generating_fourteen' => '14. Actual cost of the power generating se (to be supported by Original Voucher)',
         'commerce_power_generating_fifteen' => '15. Actual installation charge (to be supported by Original voucher)',
         'commerce_power_generating_sixteen' => '16. Amount of subsidy claimed with percentage',
-
-
 
         // COMMERCE AND INSUSTRIES -  COST OF PROJECT REPORT
         'commerce_cost_project_one' => '1. Name of the unit',
@@ -752,16 +742,6 @@ class KeysUtil
         "cne_interest_subsidy_fourteen" => "14. Remarks, If Any.",
         "cne_interest_subsidy_fifteen" => "15. Employment Generation In Various Fields Of Work (Executive, Non-executive, Skilled, Un-skilled Etc.)",
 
-
-
-
-
-
-
-
-
-
-
         "power_new_connection_applicant_name" => "1.Name of the Applicant/Organization",
         "power_new_connection_father_name" => "2.Name of Father/ Husband/ Director/ Partner/ Trustee*",
         "power_new_connection_communication_address" => "Address for communication",
@@ -785,23 +765,6 @@ class KeysUtil
         "power_new_connection_own_meter" => "10.Please indicate whether you want to install your own CEA approved meter. (Yes/No)",
         // "power_new_connection_applicant_type" => "Applicant is",
         "power_new_connection_for" => "Applicant is",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         //Fire NOC
         "fire_one" => "1.Name And Address Of The Firm/company",
@@ -841,9 +804,6 @@ class KeysUtil
         "fire_twentyfive" => "25 Compliance/ recommendation, if any, made in previous inspection",
         "fire_twentysix" => "26 Other information",
 
-
-
-
         //PWD Road Cutting
         "pwd_road_cutting_one" => "1. Name of applicant (in block letter)",
         "pwd_road_cutting_two" => "2. Contact address",
@@ -862,11 +822,6 @@ class KeysUtil
         "pwd_road_cutting_four_d" => "d) District",
         "pwd_road_cutting_five" => "5. Land pass no (copy of pass shall be produced at the time of spot verification)",
         "pwd_road_cutting_six" => "6. Purpose of land applied for",
-
-
-
-
-
 
         //PHE New Water Connection
         'phe_water_connection_one' => "1. Applicant’s Name (Diltu hming)",
@@ -893,11 +848,6 @@ class KeysUtil
         'phe_water_connection_fourteen_a' => "a)Department atanga lei",
         'phe_water_connection_fourteen_b' => "b)Mahni in tum",
         'phe_water_connection_fifteen' => "15.Signature Of The Applicant",
-
-
-
-
-
 
         //lAND REVENUE - LAND HOUSE & LAND SHOP/STALL
 
@@ -928,7 +878,6 @@ class KeysUtil
         'land_revenue_land_house_thirteen' => '13.Other Contact Details',
         'land_revenue_land_house_thirteen_a' => '(a)Telephone Number',
         'land_revenue_land_house_thirteen_b' => '(b)Email ID',
-
 
         //lAND REVENUE - LAND SETTLEMENT
 
@@ -963,10 +912,7 @@ class KeysUtil
         'land_revenue_land_settlement_sixteen_a' => '(a)Telephone Number',
         'land_revenue_land_settlement_sixteen_b' => '(b)Email ID',
 
-
-
         //LAND REVENUE - LAND DIVERSION
-
 
         'land_revenue_land_diversion_one' => '1.Name of Applicant',
         'land_revenue_land_diversion_two' => "2.Father's Name",
@@ -981,8 +927,6 @@ class KeysUtil
         'land_revenue_land_diversion_nine' => '9. Ground on which diversion of land is applied ( separate sheet may be attached if needed)',
         'land_revenue_land_diversion_ten' => '10. Purpose for which use of land is to be diverted',
         'land_revenue_land_diversion_eleven' => '11. Whether up to date receipt of payment of land revenue & taxes are enclosed',
-
-
 
         //POLLUTION - ACCIDENT OF BIO-MEDICAL WASTES
         'pollution_accident_medical_one' => '1. Date And Time Of Accident',
