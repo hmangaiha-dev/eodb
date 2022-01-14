@@ -22,7 +22,8 @@ class ApplicationSeeder extends Seeder
             [
                 'code' => 'ALLOTMENT_PLOT',
                 'how_to_apply' => 'how to apply',
-                'name' => 'Allotment of Industrial Plot'
+                'name' => 'Allotment of Industrial Plot',
+                ''
             ],
             [
                 'code' => 'CLAIM_INTEREST',

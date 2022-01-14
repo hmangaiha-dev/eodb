@@ -78,6 +78,7 @@ class ApplicationController extends Controller
             'name'=>'submitted',
             'remark'=>'Application submitted at '.now()->toDateString()
         ]);
+        $application->office()->attach($appProfile->office_id);
 
         DB::transaction(function ($cb) use ($appProfile, $request, $application) {
             //        $formData=$request->except(['application_code', 'department_id']);

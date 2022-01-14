@@ -24,11 +24,6 @@ class ApplicationProfileSeeder extends Seeder
         ['code'=>'POLLUTION_ACCIDENT_HAZARDOUS', 'title'=>' ACCIDENT REPORTING FOR HAZARDOUS WASTES', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
         ['code'=>'POLLUTION_ACCIDENT_SOLIDWASTE', 'title'=>' ACCIDENT REPORTING DUE TO SOLID WASTES', 'remark'=>'Remark', 'office_id'=>1,'operational_type'=>'Post processing'],
 
-
-
-
-
-  
     ];
     public function run()
     {

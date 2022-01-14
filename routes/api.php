@@ -66,6 +66,7 @@ Route::group(['prefix' => 'office', 'middleware' => ['auth:sanctum','staff']], f
     Route::put('{office}', [OfficeController::class, 'update']);
     Route::delete('{office}', [OfficeController::class, 'destroy']);
     Route::get('applications/ongoing', [OfficeController::class, 'onGoingApplications']);
+    Route::get('users/{office}', [OfficeController::class, 'officeUsers']);
 });
 Route::group(['prefix' => 'staff', 'middleware' => ['auth:sanctum','staff']], function () {
     Route::get('index', [StaffController::class, 'index']);

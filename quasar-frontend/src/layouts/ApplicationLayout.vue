@@ -18,8 +18,7 @@
           <q-btn outline color="negative" label="Send back"/>
           <q-btn @click="handleForward" outline color="primary" label="Forward"/>
         </div>
-        <router-view  @notes="val=>localData.notes=val"/>
-
+        <router-view class="zcard"  @notes="val=>localData.notes=val"/>
       </div>
       <q-btn :to="{name:'note:create',params:{id:$route.params.id}}" fab icon="edit" color="primary"
              class="absolute-bottom-right q-mr-xl q-mb-xl"/>
