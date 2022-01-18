@@ -32,7 +32,7 @@ class Application extends Model
 
     public function states()
     {
-        return $this->morphMany('owner', State::class);
+        return $this->morphMany(State::class,'owner');
     }
 
     public function profile(): BelongsTo

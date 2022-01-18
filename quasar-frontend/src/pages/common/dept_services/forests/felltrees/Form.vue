@@ -4,14 +4,14 @@
       <label class="zlabel" for="name"
         >1. Name Of The Applicant <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined />
+      <q-input v-model="formData.env_forest_fell_trees_one" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="name"
         >2. Father's name <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined />
+      <q-input v-model="formData.env_forest_fell_trees_two" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -19,7 +19,7 @@
         >3. Address (Village | Town | Station | District )
         <span class="asterisk"> *</span></label
       >
-      <q-input type="textarea" dense outlined />
+      <q-input  v-model="formData.env_forest_fell_trees_three" type="textarea" dense outlined />
     </div>
 
     <div class="col-10">
@@ -33,7 +33,7 @@
           <label class="zlabel" for="name"
             >A) Area<span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input dense outlined v-model="formData.env_forest_fell_trees_four_a" />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -41,7 +41,7 @@
             B) Boundaries
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input dense outlined v-model="formData.env_forest_fell_trees_four_b" />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -49,12 +49,7 @@
             >C) Reference To Patta | License Of The Land
             <span class="asterisk"> *</span></label
           >
-          <q-input
-            type="file"
-            dense
-            outlined
-            v-model="formData.applicant_name"
-          />
+          <q-input dense outlined v-model="formData.env_forest_fell_trees_four_c" />
         </div>
       </div>
     </div>
@@ -64,7 +59,7 @@
         >5. Species of trees/tree plantation
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined />
+      <q-input v-model="formData.env_forest_fell_trees_five" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -72,7 +67,7 @@
         >6. Year of raising the plantation
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined />
+      <q-input v-model="formData.env_forest_fell_trees_six" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -80,7 +75,7 @@
         >7. Reference to registration of the trees/tree plantation (enclosed
         certifies) <span class="asterisk"> *</span></label
       >
-      <q-input type="file" dense outlined />
+      <q-input v-model="formData.env_forest_fell_trees_seven" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -88,7 +83,7 @@
         8. Nature of felling (viz. thinning/final felling)
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined />
+      <q-input v-model="formData.env_forest_fell_trees_eight" dense outlined />
     </div>
 
     <div class="col-12">
@@ -103,7 +98,7 @@
               *</span
             ></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input dense outlined v-model="formData.env_forest_fell_trees_nine_a" />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -111,7 +106,7 @@
             B) For sale within Mizoram
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input dense outlined v-model="formData.env_forest_fell_trees_nine_b" />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -119,7 +114,7 @@
             C) For sale outside Mizoram
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input dense outlined v-model="formData.env_forest_fell_trees_nine_c" />
         </div>
       </div>
     </div>
@@ -129,7 +124,7 @@
         >10. No. of trees purposed to be felled
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.applicant_name" />
+      <q-input dense outlined v-model="formData.env_forest_fell_trees_ten" />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -137,7 +132,7 @@
         >11. The route by which the felled timber will be transported
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.applicant_name" />
+      <q-input dense outlined v-model="formData.env_forest_fell_trees_eleven" />
     </div>
 
     <div class="col-10">
@@ -145,24 +140,45 @@
         >12. Period of operation purposed (Not to exceed one year in any case)
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.applicant_name" />
+      <q-input dense outlined v-model="formData.env_forest_fell_trees_twelve" />
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="name"
-        >Licence Of Land Copy
-        <span class="asterisk"> *</span></label
+        >Licence Of Land Copy <span class="asterisk"> *</span></label
       >
-      <q-input type="file" dense outlined v-model="formData.applicant_name" />
+      <q-file
+        :rules="[(val) => val || 'Please type something']"
+        v-model="formData.env_forest_fell_trees_land_copy_cert"
+        outlined
+      >
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
-
-      <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="name"
-        >Tree Plantation Certificate
-        <span class="asterisk"> *</span></label
+        >Tree Plantation Certificate <span class="asterisk"> *</span></label
       >
-      <q-input type="file" dense outlined v-model="formData.applicant_name" />
+      <q-file
+        :rules="[(val) => val || 'Please type something']"
+        v-model="formData.env_forest_fell_trees_plantation_cert"
+        outlined
+      >
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+    </div>
+
+    <div class="col-12 zlabel">
+      I agreed to pay the necessary amount towards departmental charge/royalty.
+      I also agreed to adobe by the guidelines laid down by the State Government
+      in respect of felling of trees/tree plantation in non-forest areas
+      including the mode of disposal and provisions of penalty. Necessary
+      permission for felling of the trees/tree plantation may be granted.
     </div>
 
     <div class="col-xs-12" />
@@ -175,60 +191,37 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 
-
 export default {
   setup(props, context) {
     const store = useStore();
-    const draft = store.getters["applicantData/getCurrentDraft"];
-    const currentUser = store.getters["auth/getCurrentUser"];
-    const localData = reactive({
-      genders: [
-        { value: "Male", label: "Male" },
-        { value: "Female", label: "Female" },
-        { value: "Other", label: "Other" },
-      ],
-      epic_relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-      ],
-      relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-        { value: "Spouse", label: "Spouse" },
-        { value: "Guardian", label: "Guardian" },
-      ],
-      adults: [
-        { value: true, label: "Applicant is above 18 years" },
-        { value: false, label: "Applicant is below 18 years" },
-      ],
-    });
+  
 
     const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: currentUser?.email,
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
+      application_code: "ENV_FOREST_FELL_TREES",
+      department_id: 3,
+      env_forest_fell_trees_one: "",
+      env_forest_fell_trees_two: "",
+      env_forest_fell_trees_three: "",
+      env_forest_fell_trees_four: "",
+      env_forest_fell_trees_four_a: "",
+      env_forest_fell_trees_four_b: "",
+      env_forest_fell_trees_four_c: "",
+      env_forest_fell_trees_five: "",
+      env_forest_fell_trees_six: "",
+      env_forest_fell_trees_seven: "",
+      env_forest_fell_trees_eight: "",
+      env_forest_fell_trees_nine: "",
+      env_forest_fell_trees_nine_a: "",
+      env_forest_fell_trees_nine_b: "",
+      env_forest_fell_trees_nine_c: "",
+      env_forest_fell_trees_ten: "",
+      env_forest_fell_trees_eleven: "",
+      env_forest_fell_trees_twelve: "",
+      env_forest_fell_trees_land_copy_cert: null,
+      env_forest_fell_trees_plantation_cert: null
     });
-    onMounted(() => {
-     
-    });
+    onMounted(() => {});
     return {
-
-      localData,
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

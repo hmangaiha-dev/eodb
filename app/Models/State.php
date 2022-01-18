@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class State extends Model
 {
+
+
     use HasFactory;
 
-    protected $fillable = ['name', 'remark'];
+    protected $fillable = ['name', 'remark','owner'];
 
     public function owner(): MorphTo
     {

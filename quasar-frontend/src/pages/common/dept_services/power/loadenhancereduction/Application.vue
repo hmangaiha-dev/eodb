@@ -1,12 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-12 text-h6 q-pb-none text-center">Form-2</div>
-    <p class="col-12 text-caption q-py-none text-center">[See Rule 3(1)]</p>
+    <div class="col-12 text-h6 q-pb-none text-center">Annexure 11.7</div>
     <div class="col-12 ztitle text-center">
-      FORM OF APPLICATION FOR PERMISSION TO FELL TREES/TREE PLANTATION IN
-      NON-FOREST AREA
+     Application Form - Load Enhancement / Load Reduction
     </div>
-    <q-form @submit.prevent="submit" class="col">
+    <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />
@@ -23,47 +21,49 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { date } from "quasar";
-import { useRouter } from "vue-router";
-import { useQuasar } from "quasar";
+import { ref } from "vue";
 import { api } from "src/boot/axios";
+import { useQuasar } from "quasar";
+import { useRouter } from "vue-router";
 
 import Form from "./Form.vue";
-// import Part2 from "./Part2.vue";
-// import Document from "./Document.vue";
+import router from "src/router";
 
 export default {
   components: {
     Form,
-    // Part2,
-    // Document,
   },
-  setup(props, context) {
-    const store = useStore();
-    // const store = useStore();
-    const q = useQuasar();
 
-    const router = useRouter();
+  setup(props, context) {
     const applicantRef = ref(null);
+    const store = useStore();
+    const $q = useQuasar();
+    const router = useRouter();
+    const draft = store.getters["applicantData/getCurrentDraft"];
+    const currentUser = store.getters["auth/getCurrentUser"];
 
     const submit = () => {
-      var formData = reactive({});
+      // return console.log('my router',myRouter);
+      var formData = reactive({
+        test: "1",
+      });
 
       formData = Object.assign(formData, applicantRef.value.formData);
 
       var formDatas = new FormData();
 
       for (let data in formData) {
+        console.log("data value of" + data, formData[data]);
         formDatas.append(`${data}`, formData[data]);
       }
 
-      // return console.log("formdatas", applicantRef.value);
       api
         .post("/applications/submit", formDatas)
         .then((res) => {
-          // console.log("response value", res.data);
-          q.notify({
+          console.log("response value", res.data);
+          $q.notify({
             message: "Application submitted successfully",
             color: "green",
           });
@@ -73,8 +73,9 @@ export default {
     };
 
     return {
-      submit,
       applicantRef,
+      submit,
+      router,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

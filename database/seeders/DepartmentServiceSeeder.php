@@ -289,7 +289,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "form19_wholesale",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -301,7 +301,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "form19-AA",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -986,7 +986,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "changing-registered-customer-name",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -998,7 +998,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "transfer-of-owner",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -1010,7 +1010,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "conversion-of-services",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -1022,7 +1022,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "load-enhancement-reduction",
                 'sample_form' => $faker->sentence
             ],
             [

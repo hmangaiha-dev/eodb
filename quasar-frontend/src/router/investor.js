@@ -311,8 +311,39 @@ export default {
               "pages/common/dept_services/power/newconnection/Application.vue"
             ),
         },
+        {
+          path: "changing-registered-customer-name",
+          name: "power:changename",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/changename/Application.vue"
+            ),
+        },
+        {
+          path: "transfer-of-owner",
+          name: "power:owner-tranfer",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/ownershiptransfer/Application.vue"
+            ),
+        },
+        {
+          path: "conversion-of-services",
+          name: "power:conversion-services",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/conversionservice/Application.vue"
+            ),
+        },
+        {
+          path: "load-enhancement-reduction",
+          name: "power:load-enhance-reduce",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/loadenhancereduction/Application.vue"
+            ),
+        },
 
-        // claiming-central-capital-investment-subsidy-scheme
       ],
     },
 
@@ -350,6 +381,18 @@ export default {
           name: "food:form19A",
           component: () =>
             import("pages/common/dept_services/food_drug/restrictedretail/Application.vue"),
+        },
+        {
+          path: "form19_wholesale",
+          name: "food:form19_wholesale",
+          component: () =>
+            import("pages/common/dept_services/food_drug/wholesalelicence/Application.vue"),
+        },
+        {
+          path: "form19-AA",
+          name: "food:form19AA",
+          component: () =>
+            import("pages/common/dept_services/food_drug/wholesaleordistribute/Application.vue"),
         },
 
       ],

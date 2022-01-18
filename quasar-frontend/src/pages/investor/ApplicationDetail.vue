@@ -27,7 +27,7 @@
         >
           
         </div>
-        <div class="col-6 zvalue">{{ item.field_value }}</div>
+        <div style="align-self: flex-end;" class="col-6 zvalue">{{ item.field_value }}</div>
       </div>
     </div>
 

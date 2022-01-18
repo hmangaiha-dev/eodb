@@ -1,14 +1,19 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-12 text-h6 q-pb-none text-center">Form-2</div>
-    <p class="col-12 text-caption q-py-none text-center">[See Rule 3(1)]</p>
-    <div class="col-12 ztitle text-center">
-      FORM OF APPLICATION FOR PERMISSION TO FELL TREES/TREE PLANTATION IN
-      NON-FOREST AREA
+    <div class="col-12 text-h6 q-pb-none text-center">Form-19</div>
+    <p class="col-12 text-caption q-py-none text-center">[See Rule 59(2)]</p>
+    <div class="col-12 text-center">
+      <p class="ztitle">
+        Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit
+        Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In
+        Schedule X
+      </p>
+
     </div>
-    <q-form @submit.prevent="submit" class="col">
-      <div class="row q-col-gutter-lg">
-        <div class="col-xs-12">
+
+    <q-form @submit.prevent="submit">
+      <div class="row">
+        <div class="col-12">
           <Form ref="applicantRef" />
         </div>
       </div>
@@ -50,6 +55,7 @@ export default {
     const submit = () => {
       var formData = reactive({});
 
+      // return console.log("formdatas", applicantRef.value);
       formData = Object.assign(formData, applicantRef.value.formData);
 
       var formDatas = new FormData();
@@ -58,7 +64,6 @@ export default {
         formDatas.append(`${data}`, formData[data]);
       }
 
-      // return console.log("formdatas", applicantRef.value);
       api
         .post("/applications/submit", formDatas)
         .then((res) => {

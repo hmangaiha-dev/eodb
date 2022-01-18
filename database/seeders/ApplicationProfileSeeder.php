@@ -24,11 +24,22 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'POLLUTION_ACCIDENT_HAZARDOUS', 'title' => ' ACCIDENT REPORTING FOR HAZARDOUS WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_ACCIDENT_SOLIDWASTE', 'title' => ' ACCIDENT REPORTING DUE TO SOLID WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'FOOD_DRUG_GENERAL_RETAIL', 'title' => ' Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In Schedule X', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
-
         ['code' => 'FOOD_DRUG_RESTRICTED_RETAIL', 'title' => '  APPLICATION FOR GRANT OR RENEWAL OF A (LICENCE TO SELL, STOCK, EXHIBIT OR OFFER FOR SALE, OR DISTRIBUTE) HOMOEOPATHIC MEDICINES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'FOOD_DRUG_WHOLESALE', 'title' => ' Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In Schedule X', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'FOOD_DRUG_FORM19AA', 'title' => 'APPLICATION FOR GRANT OR RENEWAL OF [LICENCE TO SELL, STOCK OR EXHIBIT OR OFFER FOR SALE BY WHOLESALE OR DISTRIBUTE] DRUGS FROM A MOTOR VEHICLE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'ENV_FOREST_FELL_TREES', 'title' => 'APPLICATION FOR PERMISSION TO FELL TREES/TREE PLANTATION IN NON-FOREST AREA', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POWER_CHANGE_NAME', 'title' => ' Application Form - Change in Name of Registered Consumer', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POWER_OWNERSHIP_TRANSFER', 'title' => 'Application Form - Transfer of Ownership to Legal Heir', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POWER_CONVERSION_SERVICE', 'title' => ' Application form - Conversion of Services / Change of Consumer Category / Shifting of Connection', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POWER_LOAD_ENC_RDC', 'title' => 'Load Enhancement / Load Reduction Form', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
 
 
 
+
+
+
+
+        
 
 
 

@@ -18,8 +18,7 @@ class CreateApplicationValuesTable extends Migration
             $table->id();
             $table->string('field_key')->nullable();
             $table->string('field_value')->nullable();
-            $table->string('field_label')->nullable();
-
+            $table->text('field_label')->nullable();
             $table->foreignIdFor(Application::class, 'application_id');
             $table->timestamps();
         });
