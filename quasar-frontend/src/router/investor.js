@@ -153,7 +153,6 @@ export default {
             ),
         },
 
-
         {
           path: "subsidy-cost-project-report",
           name: "industries:cost-project",
@@ -343,7 +342,22 @@ export default {
               "pages/common/dept_services/power/loadenhancereduction/Application.vue"
             ),
         },
-
+        {
+          path: "meter-complaints-or-request-for-testing",
+          name: "power:meter-complaints",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/metercomplaints/Application.vue"
+            ),
+        },
+        {
+          path: "request-for-disconnection",
+          name: "power:disconnection",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/disconnection/Application.vue"
+            ),
+        },
       ],
     },
 
@@ -363,7 +377,6 @@ export default {
       ],
     },
 
-
     //FOOD AND DRUG
     {
       path: "food-and-drug-administration",
@@ -374,27 +387,34 @@ export default {
           path: "form19",
           name: "food:form19",
           component: () =>
-            import("pages/common/dept_services/food_drug/generalretail/Application.vue"),
+            import(
+              "pages/common/dept_services/food_drug/generalretail/Application.vue"
+            ),
         },
         {
           path: "form19-A",
           name: "food:form19A",
           component: () =>
-            import("pages/common/dept_services/food_drug/restrictedretail/Application.vue"),
+            import(
+              "pages/common/dept_services/food_drug/restrictedretail/Application.vue"
+            ),
         },
         {
           path: "form19_wholesale",
           name: "food:form19_wholesale",
           component: () =>
-            import("pages/common/dept_services/food_drug/wholesalelicence/Application.vue"),
+            import(
+              "pages/common/dept_services/food_drug/wholesalelicence/Application.vue"
+            ),
         },
         {
           path: "form19-AA",
           name: "food:form19AA",
           component: () =>
-            import("pages/common/dept_services/food_drug/wholesaleordistribute/Application.vue"),
+            import(
+              "pages/common/dept_services/food_drug/wholesaleordistribute/Application.vue"
+            ),
         },
-
       ],
     },
 
@@ -427,6 +447,64 @@ export default {
           component: () =>
             import(
               "pages/common/dept_services/phe/newconnection/Application.vue"
+            ),
+        },
+        {
+          path: "transfer-of-house-water-connection",
+          name: "phe:transfer-connection",
+          component: () =>
+            import(
+              "pages/common/dept_services/phe/transferconnection/Application.vue"
+            ),
+        },
+        {
+          path: "changing-of-name-ownership-of-consumer",
+          name: "phe:change-name",
+          component: () =>
+            import(
+              "pages/common/dept_services/phe/changeownership/Application.vue"
+            ),
+        },
+        {
+          path: "reconnection-of-temporary-disconnected-water-connection",
+          name: "phe:reconnection",
+          component: () =>
+            import(
+              "pages/common/dept_services/phe/reconnection/Application.vue"
+            ),
+        },
+        {
+          path: "disconnection-of-water-connection",
+          name: "phe:disconnection",
+          component: () =>
+            import(
+              "pages/common/dept_services/phe/disconnection/Application.vue"
+            ),
+        },
+      ],
+    },
+
+
+    //Labour and Employment
+    {
+      path: "labour-skill-development-and-enterprise",
+      component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
+      children: [
+        {
+          path: "registration-of-establishment-employing-contract-labour",
+          name: "labour:contract-employ",
+          component: () =>
+            import(
+              "pages/common/dept_services/labour/employcontractlabour/Application.vue"
+            ),
+        },
+        {
+          path: "contract-labour-licence",
+          name: "labour:contract-licence",
+          component: () =>
+            import(
+              "pages/common/dept_services/labour/engagecontractlabour/Application.vue"
             ),
         },
 

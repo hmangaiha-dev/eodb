@@ -349,13 +349,26 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'department_id' => 7,
                 'category_id' => rand(1, 5),
+                'service_name' =>  "Application for Registration of Establishment Employing Contract Labour (Contract labour Act Principal Employer Registration)",
+                'who_should_apply' => $faker->sentence,
+                'how_to_apply' => $faker->text,
+                'document_to_submit' => $faker->word,
+                'timeline' => $faker->sentence,
+                'fees' => $faker->randomNumber(3),
+                'path' => "registration-of-establishment-employing-contract-labour",
+                'sample_form' => $faker->sentence
+            ],
+
+            [
+                'department_id' => 7,
+                'category_id' => rand(1, 5),
                 'service_name' =>  "Application for Licence for Engaging Contract Labour under The Mizoram Contract Labour (R & A) Rules 2004",
                 'who_should_apply' => $faker->sentence,
                 'how_to_apply' => $faker->text,
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "contract-labour-licence",
                 'sample_form' => $faker->sentence
             ],
 
@@ -1046,7 +1059,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "meter-complaints-or-request-for-testing",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -1058,7 +1071,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "request-for-disconnection",
                 'sample_form' => $faker->sentence
             ],
 
@@ -1097,7 +1110,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "transfer-of-house-water-connection",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -1109,7 +1122,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "changing-of-name-ownership-of-consumer",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -1121,7 +1134,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "reconnection-of-temporary-disconnected-water-connection",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -1133,7 +1146,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "disconnection-of-water-connection",
                 'sample_form' => $faker->sentence
             ],
 

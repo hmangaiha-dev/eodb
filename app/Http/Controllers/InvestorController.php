@@ -46,7 +46,7 @@ class InvestorController extends Controller
                 'original_name' => $key,
                 'mime' => 'jpg',
                 'label' =>  $key,
-                'size' => '2',
+                'size' => '2',   
                 'path' => $path
             ]);
         }
