@@ -43,8 +43,6 @@ import { useRouter } from 'vue-router'
 
 import { useQuasar } from "quasar";
 
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   components: {
@@ -107,7 +105,6 @@ export default {
           })
           .catch((err) => console.log("error", err));
       },
-      emailRegex,
       router,
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],

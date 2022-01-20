@@ -54,7 +54,6 @@
           <q-drawer
             class="q-px-md q-ml-md"
             :width="$q.screen.gt.md ? 400 : 350"
-            show-if-above
             v-model="leftDrawerOpen"
             side="left"
             bordered

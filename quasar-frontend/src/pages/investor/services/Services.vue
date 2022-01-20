@@ -62,24 +62,6 @@
           <q-tab name="POST-OPERATION" label="POST-OPERATION" />
         </q-tabs>
 
-        <!-- <div class="row q-my-lg q-ml-md">
-          <div class="col-4">
-            <q-select
-            @update:model-value="test"
-              dense
-              dropdown-icon="expand_more"
-              v-model="localData.category"
-              :options="categories"
-              label="Select category"
-              emit-value
-            />
-          </div>
-
-          <div class="col-3 q-ml-md">
-            <q-btn color="blue" label="Filter" @click="filterCategory" />
-          </div>
-        </div> -->
-
         <q-tab-panels class="full-width" v-model="tab" animated>
           <q-tab-panel name="services">
             <q-table
@@ -99,25 +81,73 @@
                     {{ props.row.service_name }}
                   </q-td>
                   <q-td key="who_should_apply" :props="props">
-                    <q-btn color="blue-6" flat label="View" />
+                    <q-btn
+                      @click="
+                        showDialog(
+                          props.row.who_should_apply,
+                          'Who should apply'
+                        )
+                      "
+                      class="text-weight-regular"
+                      color="blue-6"
+                      flat
+                      label="View"
+                    />
                   </q-td>
                   <q-td key="how_to_apply" :props="props">
-                    <q-btn color="blue-6" flat label="View procedure" />
+                    <q-btn
+                      @click="
+                        showDialog(props.row.how_to_apply, 'How to apply')
+                      "
+                      class="text-weight-regular"
+                      color="blue-6"
+                      flat
+                      label="View procedure"
+                    />
                   </q-td>
                   <q-td key="document_to_submit" :props="props">
-                    <q-btn color="blue-6" flat label="View" />
+                    <q-btn
+                      @click="
+                        showDialog(
+                          props.row.document_to_submit,
+                          'Document to be submitted'
+                        )
+                      "
+                      class="text-weight-regular"
+                      color="blue-6"
+                      flat
+                      label="View"
+                    />
                   </q-td>
                   <q-td key="timeline" :props="props">
-                    <q-btn color="blue-6" flat label="View fees" />
+                    <q-btn
+                      @click="showDialog(props.row.timeline, 'Timeline')"
+                      class="text-weight-regular"
+                      color="blue-6"
+                      flat
+                      label="View"
+                    />
                   </q-td>
                   <q-td key="fees" :props="props">
-                    <q-btn color="blue-6" flat label="Download" />
+                    <q-btn
+                      @click="showDialog(props.row.fees, 'Fees')"
+                      class="text-weight-regular"
+                      color="blue-6"
+                      flat
+                      label="View fees"
+                    />
                   </q-td>
                   <q-td key="sample_form" :props="props">
-                    <q-btn color="blue-6" flat label="Download" />
+                    <q-btn
+                      class="text-weight-regular"
+                      color="blue-6"
+                      flat
+                      label="Download"
+                    />
                   </q-td>
                   <q-td key="path" :props="props">
                     <q-btn
+                      class="text-weight-regular"
                       :to="`/investor/${route.params.deptname}/${props.row.path}`"
                       color="blue-6"
                       label="Apply"
@@ -144,6 +174,20 @@
         </q-tab-panels>
       </div>
     </div>
+
+    <q-dialog v-model="dialog">
+      <q-card style="min-width: 20%">
+        <q-card-section>
+          <div class="text-h6">{{ dialogKey }}</div>
+        </q-card-section>
+
+        <q-card-section v-html="dialogContent" />
+
+        <q-card-actions align="right">
+          <q-btn flat label="OK" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -174,6 +218,9 @@ export default {
   },
   setup(props, context) {
     const rows = ref([]);
+    const dialog = ref(false);
+    const dialogKey = ref("");
+    const dialogContent = ref("");
     // console.log('rows',rows.value);
     const pagination = ref({
       sortBy: "desc",
@@ -225,11 +272,9 @@ export default {
           return service?.category_type == newvalue;
         });
 
-
         rows.value = finalResult;
 
         pagination.rowsPerPage = rows.value.length;
-
       }
     );
 
@@ -255,27 +300,19 @@ export default {
       rows.value = result[0]?.services;
 
       pagination.rowsPerPage = rows.value.length;
-
     };
 
-    // function filterCategory(e) {
-    //   refresh();
-
-    //   if (localData.category === "ALL-CATEGORIES") return;
-
-    //   const finalResult = rows.value.filter((service) => {
-    //     return service?.category_type == localData.category;
-    //   });
-
-    //   rows.value = finalResult;
-
-    //   console.log("selected target", finalResult);
-    // }
+    const showDialog = (value, key) => {
+      // console.log("id and key", value,key);
+      dialogKey.value = key;
+      dialogContent.value = value;
+      dialog.value = true;
+    };
 
     const columns = ref([
       {
         name: "service_name",
-        align: "center",
+        align: "left",
         label: "Name of services",
         field: "service_name",
         sortable: true,
@@ -347,6 +384,10 @@ export default {
         "POST-OPERATION",
       ],
       refresh,
+      dialog,
+      dialogKey,
+      dialogContent,
+      showDialog,
       // filterCategory,
       test: (value) => {
         console.log("dfdf", value);

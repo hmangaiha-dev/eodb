@@ -46,7 +46,7 @@ class InvestorController extends Controller
                 'original_name' => $key,
                 'mime' => 'jpg',
                 'label' =>  $key,
-                'size' => '2',
+                'size' => '2',   
                 'path' => $path
             ]);
         }
@@ -67,7 +67,7 @@ class InvestorController extends Controller
 
     public function detail(Application $application)
     {
-        abort_if($application->user_id != Auth::id(), 403, 'You dont have permission!');
+        abort_if($application->user_id != Auth::id(), 403, 'You dont have a permission!');
         $application->load(['profile', 'applicationValues', 'attachments']);
         return response()->json([
             'data' => $application,

@@ -1382,8 +1382,6 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   setup(props, context) {
@@ -1415,43 +1413,7 @@ export default {
     });
     onMounted(() => {});
     return {
-      onFathernameBlur: (e) => {
-        if (!formData.adult) {
-          formData.epic_relation?.toLowerCase() === "father" &&
-            (formData.epic_holder = e?.target?.value);
-        }
-        if (formData.relation?.toLowerCase() === "father") {
-          formData.relation_name = e?.target?.value;
-          formData.relation_title = "Mr";
-        }
-      },
-      onMothernameBlur: (e) => {
-        if (!formData.adult) {
-          formData.epic_relation?.value?.toLowerCase() === "father" &&
-            (formData.epic_holder = e?.target?.value);
-        }
-        if (formData.relation?.value?.toLowerCase() === "mother") {
-          formData.relation_name = e?.target?.value;
-          formData.relation_title = "Mrs";
-        }
-      },
-      handleAdult: (e) => {
-        if (e.target?.checked) {
-          formData.epic_relation?.toLowerCase() === "father" &&
-            (formData.epic_holder = formData.father_name);
-          formData.epic_relation?.toLowerCase() === "mother" &&
-            (formData.epic_holder = formData.mother_name);
-        }
-      },
-      handleEpicSelect: () => {
-        if (formData.epic_relation?.value === "Father") {
-          formData.epic_holder = formData.father_name;
-        }
-        if (formData.epic_relation?.value === "Mother") {
-          formData.epic_holder = formData.mother_name;
-        }
-      },
-      emailRegex,
+     
 
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
