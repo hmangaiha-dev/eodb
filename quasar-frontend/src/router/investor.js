@@ -507,6 +507,14 @@ export default {
               "pages/common/dept_services/labour/engagecontractlabour/Application.vue"
             ),
         },
+        {
+          path: "registration-of-establishment-employing-migrant-workmen",
+          name: "labour:migrant-worker",
+          component: () =>
+            import(
+              "pages/common/dept_services/labour/migrantworkmen/Application.vue"
+            ),
+        },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],
