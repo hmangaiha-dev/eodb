@@ -395,7 +395,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "permission_to_construct_extend_take_any_building_as_factory",
                 'sample_form' => $faker->sentence
             ],
 

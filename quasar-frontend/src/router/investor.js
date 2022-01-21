@@ -515,6 +515,14 @@ export default {
               "pages/common/dept_services/labour/migrantworkmen/Application.vue"
             ),
         },
+        {
+          path: "permission_to_construct_extend_take_any_building_as_factory",
+          name: "labour:construct-permission",
+          component: () =>
+            import(
+              "pages/common/dept_services/labour/constructpermission/Application.vue"
+            ),
+        },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],
