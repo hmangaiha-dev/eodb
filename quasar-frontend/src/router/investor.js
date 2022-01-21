@@ -547,7 +547,7 @@ export default {
               "pages/common/dept_services/labour/licenceregistration/Application.vue"
             ),
         },
-
+        //chnanges
         // claiming-central-capital-investment-subsidy-scheme
       ],
     },
