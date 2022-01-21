@@ -1,12 +1,12 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-12 text-h6 q-pb-none text-center">FORM NO - 4</div>
+    <div class="col-12 text-h6 q-pb-none text-center">FORM NO - 5</div>
 
     <div class="col-12 ztitle text-center">
-      APPLICATION FOR PERMISSION TO CONSTRUCT, EXTEND OR TAKE INTO USE ANY BUILDING AS A FACTORY
+    APPLICATION FOR REGISTRATION AND GRANT OR RENEWAL OF LICENSE FOR THE YEAR AND NOTICE OF OCCUPATION SPECIFIED IN SECTIONS 6 & 7 OF THE ACT
     </div>
 
-    <div class="col-12 text-center">(Prescribe under Rule 5)</div>
+    <div class="col-12 text-center">(Prescribed under Rule 6)</div>
     <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">

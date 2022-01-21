@@ -1,12 +1,12 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-12 text-h6 q-pb-none text-center">FORM NO - 4</div>
+    <div class="col-12 text-h6 q-pb-none text-center">FORM - VII</div>
 
     <div class="col-12 ztitle text-center">
-      APPLICATION FOR PERMISSION TO CONSTRUCT, EXTEND OR TAKE INTO USE ANY BUILDING AS A FACTORY
+   APPLICATION FOR RENEWAL OF CONTRACT LABOUR LICENCE
     </div>
 
-    <div class="col-12 text-center">(Prescribe under Rule 5)</div>
+    <div class="col-12 text-center">(See rule 29 (2))</div>
     <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">

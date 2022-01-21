@@ -839,6 +839,38 @@ class KeysUtil
             'labour_migant_work_seven_c',
             'labour_migant_work_seven_d',
             'labour_migant_work_seven_e',
+        ],
+        'LABOUR_CONSTRUCT_PERMISSION' => [
+            'labour_construct_perm_one',
+            'labour_construct_perm_two',
+            'labour_construct_perm_three',
+            'labour_construct_perm_four',
+            'labour_construct_perm_five',
+            'labour_construct_perm_six',
+            'labour_construct_perm_seven',
+            'labour_construct_perm_eight',
+            // 'labour_construct_perm_signature',
+        ],
+        'LABOUR_CONTRACT_RENEWAL' => [
+            'labour_contract_renew_one',
+            'labour_contract_renew_two',
+            'labour_contract_renew_three',
+            'labour_contract_renew_four',
+            'labour_contract_renew_four_a',
+            'labour_contract_renew_four_b',
+            'labour_contract_renew_four_c',
+            'labour_contract_renew_four_d',
+            'labour_contract_renew_five',
+        ],
+        'LABOUR_EMPLOY_WORKERS' => [
+            'labour_employ_work_one',
+            'labour_employ_work_two',
+            'labour_employ_work_three',
+            'labour_employ_work_four',
+            'labour_employ_work_five',
+            'labour_employ_work_six',
+            'labour_employ_work_seven',
+            'labour_employ_work_eight',
         ]
 
 
@@ -1571,22 +1603,54 @@ class KeysUtil
         'labour_migant_work_seven_d' => "d) Date and commencement of work under each contractor",
         'labour_migant_work_seven_e' => "e) Estimated date of termination of employment of migrant workmen under each contractor",
 
+        //LABOUR EMPLOYMNET - PERMISSION TO CONSTRUCT, EXTEND OR TAKE INTO USE ANY BUILDING AS A FACTORY
+        'labour_construct_perm_one' => "1. Applicant Name",
+        'labour_construct_perm_two' => "2. Contact No",
+        'labour_construct_perm_three' => "3. Address",
+        'labour_construct_perm_four' => "4. Full name and address of factory location",
+        'labour_construct_perm_five' => "5. District",
+        'labour_construct_perm_six' => "6. Town/Village",
+        'labour_construct_perm_seven' => "7. Nearest Police Station",
+        'labour_construct_perm_eight' => "8. Particulars of plant to be installed",
+        // 'labour_construct_perm_signature' => "",
+
+        //LABOUR EMPLOYMNET - RENEWAL OF CONTRACT LABOUR LICENCE
+        'labour_contract_renew_one' => "1. Name and address of the contractor",
+        'labour_contract_renew_two' => "2. Number and date of the licence",
+        'labour_contract_renew_three' => "3. Date of expiry of the previous licence",
+        'labour_contract_renew_four' => "4. Particulars of contract labour",
+        'labour_contract_renew_four_a' => "a) Nature of work in which contract labour is to be employed in the establishment",
+        'labour_contract_renew_four_b' => "b) Name and address of the Agent or Manager of Contractor of the work site",
+        'labour_contract_renew_four_c' => "c) Duration of the proposed contract work (give particular of proposed date of commencing and ending)",
+        'labour_contract_renew_four_d' => "d) Maximum number of contract labour proposed to be employed in the tablishment on any dat",
+        'labour_contract_renew_five' => "5. Whether the Licence of the contractor was suspended or revoked",
+
+        //LABOUR EMPLOYMNET - REGISTRATION OF ESTABLISHMENT EMPLOYING BUILDING WORKERS
+        'labour_employ_work_one' => "1. Name and location of the Establishment where building or other construction work is to be carried on",
+        'labour_employ_work_two' => "2. Postal address of the Establishment",
+        'labour_employ_work_three' => "3. Full name and permanent address of the Establishment (if any)",
+        'labour_employ_work_four' => "4. Full names and address of the Manager or person responsible for the supervision and control of the establishment",
+        'labour_employ_work_five' => "5. Nature of building or other construction work carried/ is to be carried on in the Establishment",
+        'labour_employ_work_six' => "6. Maximum number of building workers to be employed on any day. Names and addresses of contractors",
+        'labour_employ_work_seven' => "7. Estimated date of commencement of building or other construction work",
+        'labour_employ_work_eight' => "8. Estimated date of completion of the building or other construction work",
+
 
 
         // ...$labels
     ];
-    
 
-    public static function getApplicationKeys($applicationCode) : array
+
+    public static function getApplicationKeys($applicationCode): array
     {
-        $applications = array_merge(self::APPLICATIONS,HmangaihaUtil::APPLICATIONS); 
+        $applications = array_merge(self::APPLICATIONS, HmangaihaUtil::APPLICATIONS);
         return $applications[$applicationCode];
         // return array_merge(self::APPLICATIONS,HmangaihaUtil::APPLICATIONS);
     }
 
     public static function getApplicationLabel(string $key): string
     {
-        $labels = array_merge(self::LABELS,HmangaihaUtil::LABELS); 
+        $labels = array_merge(self::LABELS, HmangaihaUtil::LABELS);
         return $labels[$key];
     }
 }

@@ -45,6 +45,11 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'LABOUR_EMPLOYMENT_CONTRACT', 'title' => 'REGISTRATION OF ESTABLISHMENT EMPLOYING CONTRACT LABOUR', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LABOUR_CONTRACT_LICENCE', 'title' => 'APPLICATION FOR CONTRACT LABOUR LICENCE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LABOUR_MIGRANT_WORKMEN', 'title' => 'APPLICATION FOR REGISTRATION OF ESTABLISHMENT EMPLOYING MIGRANT WORKMEN', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'LABOUR_CONSTRUCT_PERMISSION', 'title' => 'APPLICATION FOR PERMISSION TO CONSTRUCT, EXTEND OR TAKE INTO USE ANY BUILDING AS A FACTORY', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'LABOUR_CONTRACT_RENEWAL', 'title' => ' APPLICATION FOR RENEWAL OF CONTRACT LABOUR LICENCE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'LABOUR_EMPLOY_WORKERS', 'title' => 'APPLICATION FOR REGISTRATION OF ESTABLISHMENT EMPLOYING BUILDING WORKERS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+
+
         // +$var,
        
     ];

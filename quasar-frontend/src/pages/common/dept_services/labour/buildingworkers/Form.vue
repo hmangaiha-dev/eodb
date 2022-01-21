@@ -2,39 +2,14 @@
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-lg-6 col-sm-10 col-xs-12">
       <label class="zlabel" for="gender">
-        1. Applicant Name
-        <span class="asterisk">*</span></label
-      >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_construct_perm_one"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-lg-6 col-sm-10 col-xs-12">
-      <label class="zlabel" for="gender">
-        2. Contact No
-        <span class="asterisk">*</span></label
-      >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_construct_perm_two"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-lg-6 col-sm-10 col-xs-12">
-      <label class="zlabel" for="gender">
-        3. Address:
+        1. Name and location of the Establishment where building or other
+        construction work is to be carried on:
         <span class="asterisk">*</span></label
       >
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_construct_perm_three"
+        v-model="formData.labour_employ_work_one"
         dense
         outlined
       />
@@ -42,13 +17,13 @@
 
     <div class="col-lg-6 col-sm-10 col-xs-12">
       <label class="zlabel" for="gender">
-        4. Full name and address of factory location
+        2. Postal address of the Establishment:
         <span class="asterisk">*</span></label
       >
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_construct_perm_four"
+        v-model="formData.labour_employ_work_two"
         dense
         outlined
       />
@@ -56,12 +31,12 @@
 
     <div class="col-lg-6 col-sm-10 col-xs-12">
       <label class="zlabel" for="gender">
-        5. District
+        3. Full name and permanent address of the Establishment (if any):
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_construct_perm_five"
+        v-model="formData.labour_employ_work_three"
         dense
         outlined
       />
@@ -69,13 +44,13 @@
 
     <div class="col-lg-6 col-sm-10 col-xs-12">
       <label class="zlabel" for="gender">
-        6. Town/Village
+        4. Full names and address of the Manager or person responsible for the
+        supervision and control of the establishment:
         <span class="asterisk">*</span></label
       >
       <q-input
-        type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_construct_perm_six"
+        v-model="formData.labour_employ_work_four"
         dense
         outlined
       />
@@ -83,40 +58,71 @@
 
     <div class="col-lg-6 col-sm-10 col-xs-12">
       <label class="zlabel" for="gender">
-        7. Nearest Police Station
-        <span class="asterisk">*</span></label
-      >
-      <q-input
-        type="textarea"
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_construct_perm_seven"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-lg-6 col-sm-10 col-xs-12">
-      <label class="zlabel" for="gender">
-        8. Particulars of plant to be installed
-
+        5. Nature of building or other construction work carried/ is to be
+        carried on in the Establishment:
         <span class="asterisk">*</span></label
       >
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_construct_perm_eight"
+        v-model="formData.labour_employ_work_five"
         dense
         outlined
       />
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-lg-6 col-sm-10 col-xs-12">
       <label class="zlabel" for="gender">
-        Signature of Applicant
+        6. Maximum number of building workers to be employed on any day. Names
+        and addresses of contractors:
         <span class="asterisk">*</span></label
       >
+      <q-input
+        type="textarea"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.labour_employ_work_six"
+        dense
+        outlined
+      />
+    </div>
 
-      <q-file v-model="formData.labour_construct_perm_signature" outlined>
+    <div class="col-lg-6 col-sm-10 col-xs-12">
+      <label class="zlabel" for="gender">
+        7. Estimated date of commencement of building or other construction
+        work:
+        <span class="asterisk">*</span></label
+      >
+      <q-input
+        type="date"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.labour_employ_work_seven"
+        dense
+        outlined
+      />
+    </div>
+
+    <div class="col-lg-6 col-sm-10 col-xs-12">
+      <label class="zlabel" for="gender">
+        8. Estimated date of completion of the building or other construction
+        work:
+        <span class="asterisk">*</span></label
+      >
+      <q-input
+        type="date"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.labour_employ_work_eight"
+        dense
+        outlined
+      />
+    </div>
+
+    <div class="col-lg-6 col-sm-10 col-xs-12">
+      <label class="zlabel" for="gender">
+        9. Particulars of demand draft, enclosed (name of the Bank amount,
+        demand draft No. and date):
+        <span class="asterisk">*</span></label
+      >
+      <q-file v-model="formData.labour_employ_work_nine" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -124,53 +130,12 @@
     </div>
 
     <div class="col-12 zlabel">
-      Note: This application shall be accompanied by the following documents:
-    </div>
-
-    <div class="col-md-10 col-xs-10">
-      <label class="zlabel" for="gender">
-        1. A flow chart of the manufacturing process supplemented by a brief
-        description of the process in its various stages
-        <span class="asterisk">*</span></label
-      >
-
-      <q-file v-model="formData.labour_construct_perm_flow_chart" outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
-    </div>
-
-    <div class="col-md-10 col-xs-10">
-      <label class="zlabel" for="gender">
-        2. Plans in duplicate drawn to scale showing: <br />
-        a) The site of the factory and immediate surroundings including adjacent
-        buildings and other structures, roads, drains, etc. and <br />
-        b) The plan elevation and necessary cross-sections of various buildings,
-        indicating all relevant details relating to natural lighting,
-        ventilation and means of escape in case of fire. The plans shall also
-        clearly indicate the position of the plant and machinery aisles and
-        passage ways <span class="asterisk">*</span></label
-      >
-
-      <q-file v-model="formData.labour_construct_perm_plans" outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
-    </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label class="zlabel" for="gender">
-        3. Such other particulars as the Chief Inspector may require
-        <span class="asterisk">*</span></label
-      >
-
-      <q-file v-model="formData.labour_construct_perm_other" outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
+      <span class="text-weight-bold">Declaration by the employer.</span> <br />
+      1. I hereby declare that the particulars given above are true to the best
+      of my knowledge and belief. <br />
+      2. I undertake to abide by the previsions of the Building and Other
+      Construction Workers (Regulation and Conditions Service) Act, 1996 and the
+      Rules made thereunder.
     </div>
 
     <div class="col-xs-12" />
@@ -189,22 +154,18 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "LABOUR_CONSTRUCT_PERMISSION",
+      application_code: "LABOUR_EMPLOY_WORKERS",
       department_id: 7,
-      labour_construct_perm_one: "",
-      labour_construct_perm_two: "",
-      labour_construct_perm_three: "",
-      labour_construct_perm_four: "",
-      labour_construct_perm_five: "",
-      labour_construct_perm_six: "",
-      labour_construct_perm_seven: "",
-      labour_construct_perm_eight: "",
-      labour_construct_perm_signature: null,
-      labour_construct_perm_flow_chart: null,
-      labour_construct_perm_plans: null,
-      labour_construct_perm_other: null,
-
-
+      labour_employ_work_one: "",
+      labour_employ_work_two: "",
+      labour_employ_work_three: "",
+      labour_employ_work_four: "",
+      labour_employ_work_five: "",
+      labour_employ_work_six: "",
+      labour_employ_work_seven: "",
+      labour_employ_work_eight: "",
+      labour_employ_work_nine: null,
+     
     });
     onMounted(() => {});
     return {
