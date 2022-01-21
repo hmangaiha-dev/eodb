@@ -2,16 +2,11 @@
 
 namespace App\Utils;
 
-use App\Utils\HmangaihaUtil as UtilsHmangaihaUtil;
-use HmangaihaUtil;
-
-// include 'HmangaihaUtil.php';
 class KeysUtil
 {
 
-
     const APPLICATIONS = [
-        ...UtilsHmangaihaUtil::APPLICATIONS,
+        // ...HmangaihaUtil::APPLICATIONS,
         'C&E_ALLOTMENT_PLOT' => [
 
             'applicant_name',
@@ -851,8 +846,7 @@ class KeysUtil
 
 
     const LABELS = [
-
-        ...UtilsHmangaihaUtil::LABELS,
+        // ...HmangaihaUtil::LABELS,
         // COMMERCE AND INSUSTRIES - ALLOTMENT PLOT
         'applicant_name' => 'Applicant Name',
         'industrial_location_name' => 'Name & Location of Industrial Area',
@@ -1581,25 +1575,18 @@ class KeysUtil
 
         // ...$labels
     ];
-
-
-    // public function includeUtil()
-    // {
-    //     include 'HmangaihaUtil.php';
-    //     $applications = [...$applications, self::APPLICATIONS];
-    //     $labels = [...$labels, self::LABELS];
-    // }
-
-
-
-    public static function getApplicationKeys($applicationCode): array
-    {
     
-        return self::APPLICATIONS[$applicationCode];
+
+    public static function getApplicationKeys($applicationCode) : array
+    {
+        $applications = array_merge(self::APPLICATIONS,HmangaihaUtil::APPLICATIONS); 
+        return $applications[$applicationCode];
+        // return array_merge(self::APPLICATIONS,HmangaihaUtil::APPLICATIONS);
     }
 
     public static function getApplicationLabel(string $key): string
     {
-        return self::LABELS[$key];
+        $labels = array_merge(self::LABELS,HmangaihaUtil::LABELS); 
+        return $labels[$key];
     }
 }

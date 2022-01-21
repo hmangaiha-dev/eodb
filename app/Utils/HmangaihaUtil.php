@@ -2,14 +2,15 @@
 namespace App\Utils;
 class HmangaihaUtil
 {
-     const APPLICATIONS = [
+     public const APPLICATIONS = [
         'TEST' => [
             'test'
         ]
+       
     ];
 
 
-     const LABELS = [
+     public const LABELS = [
       'test' => 'test mai mai'
     ];
 }
