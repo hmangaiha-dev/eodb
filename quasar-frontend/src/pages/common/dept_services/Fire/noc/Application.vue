@@ -81,6 +81,7 @@ export default {
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
+    //test
   },
 };
 </script>
