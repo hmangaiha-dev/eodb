@@ -7,7 +7,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_one"
+        v-model="formData.labour_migant_work_one"
         dense
         outlined
       />
@@ -21,7 +21,7 @@
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_two"
+        v-model="formData.labour_migant_work_two"
         dense
         outlined
       />
@@ -36,7 +36,7 @@
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_three"
+        v-model="formData.labour_migant_work_three"
         dense
         outlined
       />
@@ -51,7 +51,7 @@
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_three"
+        v-model="formData.labour_migant_work_four"
         dense
         outlined
       />
@@ -66,7 +66,7 @@
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_three"
+        v-model="formData.labour_migant_work_five"
         dense
         outlined
       />
@@ -80,7 +80,7 @@
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_three"
+        v-model="formData.labour_migant_work_six"
         dense
         outlined
       />
@@ -101,7 +101,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_contract_lic_four_a"
+            v-model="formData.labour_migant_work_seven_a"
             dense
             outlined
           />
@@ -118,7 +118,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_contract_lic_four_b"
+            v-model="formData.labour_migant_work_seven_b"
             dense
             outlined
           />
@@ -134,7 +134,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_contract_lic_four_c"
+            v-model="formData.labour_migant_work_seven_c"
             dense
             outlined
           />
@@ -149,7 +149,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_contract_lic_four_d"
+            v-model="formData.labour_migant_work_seven_d"
             dense
             outlined
           />
@@ -165,175 +165,27 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_contract_lic_four_d"
+            v-model="formData.labour_migant_work_seven_e"
             dense
             outlined
           />
         </div>
       </div>
-    </div>
-
-
-
-    
-
-    <div class="col-12">
-      <label for="" class="zlabel"> 5. Particulars of contract labour: </label>
-      <div class="row justify q-col-gutter-md q-ml-md">
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            a) Nature of work in which contract labour is employed or is to be
-            employed in the establishment:
-            <span class="asterisk">*</span></label
-          >
-          <q-input
-            type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.labour_contract_lic_five_a"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            b) Duration of the proposed contract work (given particulars of
-            proposed date of commencing and ending):
-            <span class="asterisk">*</span></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.labour_contract_lic_five_b"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            c) Name and address of the agent or manager of contractor at the
-            worksite:
-            <span class="asterisk">*</span></label
-          >
-          <q-input
-            type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.labour_contract_lic_five_c"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            d) Maximum no. of contract labour proposed to be employed in the
-            establishment on any date:
-            <span class="asterisk">*</span></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.labour_contract_lic_five_d"
-            dense
-            outlined
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-6 col-sm-10 col-xs-12">
-      <label class="zlabel" for="gender"
-        >6. Whether the contractor was convicted of any offence within the
-        preceding five years. If so, give detail:
-        <span class="asterisk">*</span></label
-      >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_six"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-lg-6 col-sm-10 col-xs-12">
-      <label class="zlabel" for="gender"
-        >7. Whether there was any order against the contractor revoking or
-        suspending licence or forfeiting security deposit in respect of an
-        earlier contract, if so, the date of such order:
-        <span class="asterisk">*</span></label
-      >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_seven"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-lg-6 col-sm-10 col-xs-12">
-      <label class="zlabel" for="gender"
-        >8. Whether the contractor has worked in any other establishment within
-        the past five years. If so, given details of the Principal employer in
-        Form-V is enclosed: <span class="asterisk">*</span></label
-      >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_eight"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-lg-6 col-sm-10 col-xs-12">
-      <label class="zlabel" for="gender"
-        >9. Amount of Licence fee paid, No. of treasury Challan and date
-        <span class="asterisk">*</span></label
-      >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_nine"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-lg-6 col-sm-10 col-xs-12">
-      <label class="zlabel" for="gender"
-        >10. Amount of security deposit, Treasury Receipt No. and date:<span
-          class="asterisk"
-          >*</span
-        ></label
-      >
-      <q-input
-        type="textarea"
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_contract_lic_ten"
-        dense
-        outlined
-      />
     </div>
 
     <div class="col-12 zlabel">
-      Note: The application should be accompanied by a Treasury Receipt for the
-      appropriate amount and a certificate in Form-V from the Principal
-      Employer. (To be filled in the office of the Licensing Officer). Date and
-      receipt of the application with Challan for fees/Security deposit
+      I hereby declare that particulars given above are true to the best of my
+      knowledge and belief
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        Signature of the applicant
+        8. Original copy of the Treasury challan depositing the requisite fees
+        enclosed.
         <span class="asterisk">*</span></label
       >
 
-      <q-file v-model="formData.labour_contract_lic_signature" outlined>
+      <q-file v-model="formData.labour_migant_work_eight" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -356,27 +208,22 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "LABOUR_CONTRACT_LICENCE",
+      application_code: "LABOUR_MIGRANT_WORKMEN",
       department_id: 7,
-      labour_contract_lic_one: "",
-      labour_contract_lic_two: "",
-      labour_contract_lic_three: "",
-      labour_contract_lic_four: "",
-      labour_contract_lic_four_a: "",
-      labour_contract_lic_four_b: "",
-      labour_contract_lic_four_c: "",
-      labour_contract_lic_four_d: "",
-      labour_contract_lic_five: "",
-      labour_contract_lic_five_a: "",
-      labour_contract_lic_five_b: "",
-      labour_contract_lic_five_c: "",
-      labour_contract_lic_five_d: "",
-      labour_contract_lic_six: "",
-      labour_contract_lic_seven: "",
-      labour_contract_lic_eight: "",
-      labour_contract_lic_nine: "",
-      labour_contract_lic_ten: "",
-      labour_contract_lic_signature: null,
+      labour_migant_work_one: "",
+      labour_migant_work_two: "",
+      labour_migant_work_three: "",
+      labour_migant_work_four: "",
+      labour_migant_work_five: "",
+      labour_migant_work_six: "",
+      labour_migant_work_seven: "",
+      labour_migant_work_seven_a: "",
+      labour_migant_work_seven_b: "",
+      labour_migant_work_seven_c: "",
+      labour_migant_work_seven_d: "",
+      labour_migant_work_seven_e: "",
+      labour_migant_work_eight: null
+  
     });
     onMounted(() => {});
     return {

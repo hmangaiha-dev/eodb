@@ -2,9 +2,16 @@
 
 namespace App\Utils;
 
+use App\Utils\HmangaihaUtil as UtilsHmangaihaUtil;
+use HmangaihaUtil;
+
+// include 'HmangaihaUtil.php';
 class KeysUtil
 {
+
+
     const APPLICATIONS = [
+        ...UtilsHmangaihaUtil::APPLICATIONS,
         'C&E_ALLOTMENT_PLOT' => [
 
             'applicant_name',
@@ -798,7 +805,7 @@ class KeysUtil
             'labour_emp_contract_four_c',
             'labour_emp_contract_five',
             'labour_emp_contract_six',
-             'labour_emp_contract_seven',
+            'labour_emp_contract_seven',
             'labour_emp_contract_seven_a',
             'labour_emp_contract_seven_b',
             'labour_emp_contract_seven_c',
@@ -823,13 +830,29 @@ class KeysUtil
             'labour_contract_lic_eight',
             'labour_contract_lic_nine',
             'labour_contract_lic_ten',
+        ],
+        'LABOUR_MIGRANT_WORKMEN' => [
+            'labour_migant_work_one',
+            'labour_migant_work_two',
+            'labour_migant_work_three',
+            'labour_migant_work_four',
+            'labour_migant_work_five',
+            'labour_migant_work_six',
+            'labour_migant_work_seven',
+            'labour_migant_work_seven_a',
+            'labour_migant_work_seven_b',
+            'labour_migant_work_seven_c',
+            'labour_migant_work_seven_d',
+            'labour_migant_work_seven_e',
         ]
 
 
     ];
 
+
     const LABELS = [
 
+        ...UtilsHmangaihaUtil::LABELS,
         // COMMERCE AND INSUSTRIES - ALLOTMENT PLOT
         'applicant_name' => 'Applicant Name',
         'industrial_location_name' => 'Name & Location of Industrial Area',
@@ -1514,7 +1537,7 @@ class KeysUtil
         'labour_emp_contract_four_c' => "c)OR person responsible for the supervision and control of the establishment",
         'labour_emp_contract_five' => "5. Nature of work carried on in the establishment",
         'labour_emp_contract_six' => "6. Total number of workmen directly employed",
-         'labour_emp_contract_seven' => "7. Particulars of contractors and contract labour:",
+        'labour_emp_contract_seven' => "7. Particulars of contractors and contract labour:",
         'labour_emp_contract_seven_a' => "a) Name and address of Contractor",
         'labour_emp_contract_seven_b' => "b) Nature of work in which contract labour is employed or is to be employed",
         'labour_emp_contract_seven_c' => "c) Maximum number of contract labour to be employed on any day through each contractor",
@@ -1540,10 +1563,38 @@ class KeysUtil
         'labour_contract_lic_nine' => "9. Amount of Licence fee paid, No. of treasury Challan and date",
         'labour_contract_lic_ten' => "10. Amount of security deposit, Treasury Receipt No. and date",
 
+        //LABOUR EMPLOYMNET - APPLICATION FOR REGISTRATION OF ESTABLISHMENT EMPLOYING MIGRANT WORKMEN
+        'labour_migant_work_one' => "1. Name and location of the establishment",
+        'labour_migant_work_two' => "2. Postal address of the establishment",
+        'labour_migant_work_three' => "3. Full name and address of the principal employer (furnish father's/ Husband's name in the case of individuals)",
+        'labour_migant_work_four' => "4. Names and address of the directors/particulars of partners (in case of companies and firms)",
+        'labour_migant_work_five' => "5. Full name and address of the Manager or person responsible for the supervision and control of the establishment",
+        'labour_migant_work_six' => "6. Nature of work carried on in the establishment",
+        'labour_migant_work_seven' => "7. Particulars of contractors and migrant workmen",
+        'labour_migant_work_seven_a' => "a) Names and addresses of contractors",
+        'labour_migant_work_seven_b' => "b) Nature of work for which, migrant workmen are to be recruited or are employed",
+        'labour_migant_work_seven_c' => "c) Maximum number of migrant workmen to be employed on any day through each contractor",
+        'labour_migant_work_seven_d' => "d) Date and commencement of work under each contractor",
+        'labour_migant_work_seven_e' => "e) Estimated date of termination of employment of migrant workmen under each contractor",
+
+
+
+        // ...$labels
     ];
+
+
+    // public function includeUtil()
+    // {
+    //     include 'HmangaihaUtil.php';
+    //     $applications = [...$applications, self::APPLICATIONS];
+    //     $labels = [...$labels, self::LABELS];
+    // }
+
+
 
     public static function getApplicationKeys($applicationCode): array
     {
+    
         return self::APPLICATIONS[$applicationCode];
     }
 

@@ -3,11 +3,15 @@
 namespace Database\Seeders;
 
 use App\Models\ApplicationProfile;
+// use HmangaihaSeeder;
+// use HmangaihaSeeder;
 use Illuminate\Database\Seeder;
+
 
 class ApplicationProfileSeeder extends Seeder
 {
     const DATA = [
+        ...HmangaihaSeeder::DATA,
         ['code' => 'C&E_ALLOTMENT_PLOT', 'title' => 'APPLICATION FOR ALLOTMENT OF INDUSTRIAL PLOT/SHET AT', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'C&E_INTEREST_SUBSIDY', 'title' => 'APPLICATION FORM FOR CLAIMING CENTRAL INTEREST SUBSIDY SCHEME', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'C&E_POWER_GENERATING', 'title' => 'APPLICATION FORM FOR CLAIM OF SUBSIDY ON POWER GENERATING', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
@@ -40,26 +44,15 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'POWER_DISCONNECTION', 'title' => 'Request for Permanent Disconnection & Termination of Agreement', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LABOUR_EMPLOYMENT_CONTRACT', 'title' => 'REGISTRATION OF ESTABLISHMENT EMPLOYING CONTRACT LABOUR', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LABOUR_CONTRACT_LICENCE', 'title' => 'APPLICATION FOR CONTRACT LABOUR LICENCE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
-
-
-        
-        
-
-
-
-
-
-
-
-        
-
-
-
-
-
+        ['code' => 'LABOUR_MIGRANT_WORKMEN', 'title' => 'APPLICATION FOR REGISTRATION OF ESTABLISHMENT EMPLOYING MIGRANT WORKMEN', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        // +$var,
+       
     ];
     public function run()
     {
+        // include 'HmangaihaArray.php';
+        // $data = [$var,...self::DATA];
+        // dd( [...HmangaihaSeed::DATA]);
         ApplicationProfile::query()->upsert(self::DATA, 'code');
     }
 }
