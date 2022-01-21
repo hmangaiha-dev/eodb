@@ -33,10 +33,19 @@ export default {
             children: [
                 {
                     path: "licensing-of-manufacturer-of-weights&measures-1",
-                    name: "legal:license-manufacturing",
+                    name: "legal:license-manufacturer",
                     component: () =>
                         import(
-                            "pages/common/dept_services/legal_metrology/lincenseManuf/Application.vue"
+                            "pages/common/dept_services/legal_metrology/licenceManuf/Application.vue"
+                        ),
+                },
+
+                {
+                    path: "licensing-of-manufacturer-of-weights&measures-2",
+                    name: "legal:license-renewal",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/renewalManuf/Application.vue"
                         ),
                 },
                 
