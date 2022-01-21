@@ -342,7 +342,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-and-grant-or-renewal-of-license-and-notice-of-occupation",
                 'sample_form' => $faker->sentence
             ],
 
@@ -395,7 +395,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "permission-to-construct-extend-take-any-building-factory",
                 'sample_form' => $faker->sentence
             ],
 
@@ -408,7 +408,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "renewal-of-contract-labour-licence",
                 'sample_form' => $faker->sentence
             ],
 
@@ -421,7 +421,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-of-establishments-employing-building-workers",
                 'sample_form' => $faker->sentence
             ],
 

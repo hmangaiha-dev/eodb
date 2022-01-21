@@ -1,5 +1,6 @@
 import admin from "src/router/admin";
 import investor from "src/router/investor";
+import dev from "src/router/dev";
 import {checkAuth} from './investor'
 import { api } from "src/boot/axios";
 
@@ -45,6 +46,7 @@ const routes = [
 
   {...admin},
   {...investor},
+  {...dev},
 
 
   // Always leave this as last one,

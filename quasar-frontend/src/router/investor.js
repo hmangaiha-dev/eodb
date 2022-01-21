@@ -515,6 +515,38 @@ export default {
               "pages/common/dept_services/labour/migrantworkmen/Application.vue"
             ),
         },
+        {
+          path: "permission-to-construct-extend-take-any-building-factory",
+          name: "labour:construct-permission",
+          component: () =>
+            import(
+              "pages/common/dept_services/labour/constructpermission/Application.vue"
+            ),
+        },
+        {
+          path: "renewal-of-contract-labour-licence",
+          name: "labour:contract-renewal",
+          component: () =>
+            import(
+              "pages/common/dept_services/labour/renewalcontract/Application.vue"
+            ),
+        },
+        {
+          path: "registration-of-establishments-employing-building-workers",
+          name: "labour:building-workers",
+          component: () =>
+            import(
+              "pages/common/dept_services/labour/buildingworkers/Application.vue"
+            ),
+        },
+        {
+          path: "registration-and-grant-or-renewal-of-license-and-notice-of-occupation",
+          name: "labour:grant-renewal",
+          component: () =>
+            import(
+              "pages/common/dept_services/labour/licenceregistration/Application.vue"
+            ),
+        },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],
