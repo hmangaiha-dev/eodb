@@ -8,7 +8,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_migant_work_one"
+        v-model="formData.labour_lic_reg_one"
         dense
         outlined
       />
@@ -27,7 +27,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_a"
+            v-model="formData.labour_lic_reg_two_a"
             dense
             outlined
           />
@@ -44,7 +44,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_two_b"
             dense
             outlined
           />
@@ -68,7 +68,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_a"
+            v-model="formData.labour_lic_reg_three_a"
             dense
             outlined
           />
@@ -85,7 +85,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_three_b"
             dense
             outlined
           />
@@ -102,7 +102,7 @@
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_migant_work_seven_b"
+        v-model="formData.labour_lic_reg_four"
         dense
         outlined
       />
@@ -122,7 +122,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_a"
+            v-model="formData.labour_lic_reg_five_a"
             dense
             outlined
           />
@@ -139,12 +139,12 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_five_b"
             dense
             outlined
           />
         </div>
-        \
+        
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
@@ -156,7 +156,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_five_c"
             dense
             outlined
           />
@@ -178,7 +178,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_a"
+            v-model="formData.labour_lic_reg_six_a"
             dense
             outlined
           />
@@ -194,7 +194,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_six_b"
             dense
             outlined
           />
@@ -211,7 +211,7 @@
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_migant_work_two"
+        v-model="formData.labour_lic_reg_seven"
         dense
         outlined
       />
@@ -233,7 +233,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_a"
+            v-model="formData.labour_lic_reg_eight_a"
             dense
             outlined
           />
@@ -249,7 +249,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_eight_b"
             dense
             outlined
           />
@@ -266,7 +266,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_eight_c"
             dense
             outlined
           />
@@ -284,7 +284,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_eight_d"
             dense
             outlined
           />
@@ -302,7 +302,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_eight_e"
             dense
             outlined
           />
@@ -319,7 +319,7 @@
       <q-input
         type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.labour_migant_work_three"
+        v-model="formData.labour_lic_reg_nine"
         dense
         outlined
       />
@@ -343,7 +343,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_a"
+            v-model="formData.labour_lic_reg_ten_a"
             dense
             outlined
           />
@@ -361,7 +361,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_ten_b"
             dense
             outlined
           />
@@ -381,7 +381,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_a"
+            v-model="formData.labour_lic_reg_eleven_a"
             dense
             outlined
           />
@@ -397,7 +397,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_eleven_b"
             dense
             outlined
           />
@@ -412,7 +412,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.labour_migant_work_seven_b"
+            v-model="formData.labour_lic_reg_eleven_c"
             dense
             outlined
           />
@@ -426,7 +426,7 @@
         <span class="asterisk">*</span></label
       >
 
-      <q-file v-model="formData.labour_migant_work_eight" outlined>
+      <q-file v-model="formData.labour_lic_reg_eleven_signature" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -449,21 +449,39 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "LABOUR_MIGRANT_WORKMEN",
+      application_code: "LABOUR_LICENCE_REGISTRATION",
       department_id: 7,
-      labour_migant_work_one: "",
-      labour_migant_work_two: "",
-      labour_migant_work_three: "",
-      labour_migant_work_four: "",
-      labour_migant_work_five: "",
-      labour_migant_work_six: "",
-      labour_migant_work_seven: "",
-      labour_migant_work_seven_a: "",
-      labour_migant_work_seven_b: "",
-      labour_migant_work_seven_c: "",
-      labour_migant_work_seven_d: "",
-      labour_migant_work_seven_e: "",
-      labour_migant_work_eight: null,
+      labour_lic_reg_one: "",
+      labour_lic_reg_two: "",
+      labour_lic_reg_two_a: "",
+      labour_lic_reg_two_b: "",
+      labour_lic_reg_three: "",
+      labour_lic_reg_three_a: "",
+      labour_lic_reg_three_b: "",
+      labour_lic_reg_four: "",
+      labour_lic_reg_five: "",
+      labour_lic_reg_five_a: "",
+      labour_lic_reg_five_b: "",
+      labour_lic_reg_five_c: "",
+      labour_lic_reg_six: "",
+      labour_lic_reg_six_a: "",
+      labour_lic_reg_six_b: "",
+      labour_lic_reg_seven: "",
+      labour_lic_reg_eight: "",
+      labour_lic_reg_eight_a: "",
+      labour_lic_reg_eight_b: "",
+      labour_lic_reg_eight_c: "",
+      labour_lic_reg_eight_d: "",
+      labour_lic_reg_eight_e: "",
+      labour_lic_reg_nine: "",
+      labour_lic_reg_ten: "",
+      labour_lic_reg_ten_a: "",
+      labour_lic_reg_ten_b: "",
+      labour_lic_reg_eleven: "",
+      labour_lic_reg_eleven_a: "",
+      labour_lic_reg_eleven_b: "",
+      labour_lic_reg_eleven_c: "",
+      labour_lic_reg_eleven_signature: null,
     });
     onMounted(() => {});
     return {

@@ -48,6 +48,8 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'LABOUR_CONSTRUCT_PERMISSION', 'title' => 'APPLICATION FOR PERMISSION TO CONSTRUCT, EXTEND OR TAKE INTO USE ANY BUILDING AS A FACTORY', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LABOUR_CONTRACT_RENEWAL', 'title' => ' APPLICATION FOR RENEWAL OF CONTRACT LABOUR LICENCE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LABOUR_EMPLOY_WORKERS', 'title' => 'APPLICATION FOR REGISTRATION OF ESTABLISHMENT EMPLOYING BUILDING WORKERS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'LABOUR_LICENCE_REGISTRATION', 'title' => 'APPLICATION FOR REGISTRATION AND GRANT OR RENEWAL OF LICENSE FOR THE YEAR AND NOTICE OF OCCUPATION SPECIFIED IN SECTIONS 6 & 7 OF THE ACT', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+
 
 
         // +$var,
