@@ -311,6 +311,14 @@ export default {
             ),
         },
         {
+          path: "new-connection-high-tension",
+          name: "power:newconnection2",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/newconnection2/Application.vue"
+            ),
+        },
+        {
           path: "changing-registered-customer-name",
           name: "power:changename",
           component: () =>
@@ -413,6 +421,14 @@ export default {
           component: () =>
             import(
               "pages/common/dept_services/food_drug/wholesaleordistribute/Application.vue"
+            ),
+        },
+        {
+          path: "form19-B",
+          name: "food:form19B",
+          component: () =>
+            import(
+              "pages/common/dept_services/food_drug/homoeopathic/Application.vue"
             ),
         },
       ],
@@ -547,8 +563,15 @@ export default {
               "pages/common/dept_services/labour/licenceregistration/Application.vue"
             ),
         },
-        //chnanges
-        // claiming-central-capital-investment-subsidy-scheme
+        {
+          path: "certificate-of-registration-of-establishments",
+          name: "labour:cert-establishment",
+          component: () =>
+            import(
+              "pages/common/dept_services/labour/certificateregistration/Application.vue"
+            ),
+        },
+       
       ],
     },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },

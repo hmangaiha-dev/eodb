@@ -313,7 +313,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "form19-B",
                 'sample_form' => $faker->sentence
             ],
 
@@ -328,7 +328,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "certificate-of-registration-of-establishments",
                 'sample_form' => $faker->sentence
             ],
 
@@ -987,7 +987,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "new-connection-high-tension",
                 'sample_form' => $faker->sentence
             ],
             [
