@@ -1,13 +1,14 @@
 	<template>
 	  <div class="zcard row items-center q-col-gutter-md">
-	    <div class="col-12 text-h6 q-pb-none text-center">Form LD-2</div>
-	    <p class="col-12 text-caption q-py-none text-center">SCHEDULE IIB
-[See rule 11 (2)]</p>
+	    <div class="col-12 text-h6 q-pb-none text-center">See Rule 27 
+</div>
+	    <p class="col-12 text-caption q-py-none text-center">
+ [LM(PC) Rules, 2011]</p>
 	    <div class="col-12 ztitle text-center">
-	    Application for renewal Licence as Dealer in Weights & Measures under the
-Legal Metrology Act 2009
+	   CERTIFICATE OF REGISTRATION
+(MANUFACTURER AND PACKER)
 	    </div>
-	      <q-form @submit.prevent="submit" class="row">
+	     <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />
