@@ -7,91 +7,84 @@
 	     Application for licence as repairers of Weights & Measures under the Legal
 Metrology Act, 2009
 	    </div>
-	    <q-form @submit.prevent="" class="row">
-	      <div class="row q-col-gutter-lg">
-		<div class="col-xs-12">
-		  <Form ref="applicantRef" />
-		</div>
-	      </div>
+	      <q-form @submit.prevent="submit" class="row">
+      <div class="row q-col-gutter-lg">
+        <div class="col-xs-12">
+          <Form ref="applicantRef" />
+        </div>
+      </div>
 
-	      <div class="text-center q-mt-md col-12">
-		<q-btn type="submit" color="green-5" label="Submit" />
-		<q-btn class="q-mx-md" color="red-4" label="Reset" />
-	      </div>
-	    </q-form>
-	  </div>
-	</template>
-	<script>
-	import { reactive } from "@vue/reactivity";
-	import { useStore } from "vuex";
-	import { onMounted } from "vue";
-	import { date } from "quasar";
-	import { ref } from "vue";
+      <div class="text-center q-mt-md col-12">
+        <q-btn type="submit" color="green-5" label="Submit" />
+        <q-btn class="q-mx-md" color="red-4" label="Reset" />
+      </div>
+    </q-form>
+  </div>
+</template>
+<script>
+import { reactive } from "@vue/reactivity";
+import { useStore } from "vuex";
+import { onMounted } from "vue";
+import { date } from "quasar";
+import { ref } from "vue";
+import { api } from "src/boot/axios";
+import { useQuasar } from "quasar";
+import { useRouter } from "vue-router";
 
-	import Form from "./Form.vue";
-	// import Part2 from "./Part2.vue";
-	// import Document from "./Document.vue";
+import Form from "./Form.vue";
+import router from "src/router";
 
 
-	export default {
-	  components: {
-	    Form,
-	    // Part2,
-	    // Document,
-	  },
-	  setup(props, context) {
-	    const applicantRef = ref(null);
-	    // const FirmRef = ref(null);
-	    const store = useStore();
-	    const localData = reactive({
-	      genders: [
-		{ value: "Male", label: "Male" },
-		{ value: "Female", label: "Female" },
-		{ value: "Other", label: "Other" },
-	      ],
-	      epic_relations: [
-		{ value: "Father", label: "Father" },
-		{ value: "Mother", label: "Mother" },
-	      ],
-	      relations: [
-		{ value: "Father", label: "Father" },
-		{ value: "Mother", label: "Mother" },
-		{ value: "Spouse", label: "Spouse" },
-		{ value: "Guardian", label: "Guardian" },
-	      ],
-	      adults: [
-		{ value: true, label: "Applicant is above 18 years" },
-		{ value: false, label: "Applicant is below 18 years" },
-	      ],
-	    });
+export default {
+  components: {
+    Form,
+  },
 
-	    const formData = reactive({
-	      title: "Mr",
-	      name: "",
-	      dob: "",
-	      gender: "Male",
-	      father_name: "",
-	      mother_name: "",
-	      birth_place: "",
-	      phone_no: "",
-	      // email: currentUser?.email,
-	      aadhaar_no: "",
-	      relation: "Father",
-	      relation_name: "",
-	      relation_title: "Mr",
-	      adult: true,
-	      epic_no: "",
-	      epic_relation: "Father",
-	      epic_holder: "",
-	      constituency: "",
-	    });
-	    onMounted(() => {});
-	    return {
-	      applicantRef,
-	      formData,
-	      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
-	      maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
-	    };
-	  },
-	};
-	</script>
+  setup(props, context) {
+    const applicantRef = ref(null);
+    const store = useStore();
+    const $q = useQuasar();
+    const router = useRouter();
+    const draft = store.getters["applicantData/getCurrentDraft"];
+    const currentUser = store.getters["auth/getCurrentUser"];
+
+    const submit = () => {
+      // return console.log('my router',myRouter);
+      var formData = reactive({
+       
+      });
+
+      formData = Object.assign(formData, applicantRef.value.formData);
+
+      // return console.log('formData',formData);
+
+      var formDatas = new FormData();
+
+      for (let data in formData) {
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+      api
+        .post("/applications/submit", formDatas)
+        .then((res) => {
+          console.log("response value", res.data);
+          $q.notify({
+            message: "Application submitted successfully",
+            color: "green",
+          });
+          router.push({ name: "investor:ongoing" });
+        })
+        .catch((err) => console.log("error", err));
+    };
+
+    return {
+      applicantRef,
+      submit,
+      router,
+      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
+      maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
+    };
+    //test
+  },
+};
+</script>

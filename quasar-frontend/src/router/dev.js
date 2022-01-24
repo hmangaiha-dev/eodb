@@ -50,10 +50,10 @@ export default {
                 },
                 {
                     path: "licensing-of-repairer-of-weights&measures-3",
-                    name: "legal:license-repair",
+                    name: "legal:dealer-renewal",
                     component: () =>
                         import(
-                            "pages/common/dept_services/legal_metrology/renewalDealer/Application.vue"
+                            "pages/common/dept_services/legal_metrology/licenceRepair/Application.vue"
                         ),
                 },
                 {
