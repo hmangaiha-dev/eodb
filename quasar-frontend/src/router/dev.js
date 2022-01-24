@@ -48,6 +48,30 @@ export default {
                             "pages/common/dept_services/legal_metrology/renewalManuf/Application.vue"
                         ),
                 },
+                {
+                    path: "licensing-of-repairer-of-weights&measures-3",
+                    name: "legal:license-repair",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/renewalDealer/Application.vue"
+                        ),
+                },
+                {
+                    path: "licensing-of-repairer-of-weights&measures-4",
+                    name: "legal:license-repair",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/licenceRepair/Application.vue"
+                        ),
+                },
+                {
+                    path: "licensing-of-dealers-in-weights&measures-5",
+                    name: "legal:license-dealer",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/licenceDealer/Application.vue"
+                        ),
+                },
                 
 
                 // claiming-central-capital-investment-subsidy-scheme
