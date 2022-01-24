@@ -1,11 +1,11 @@
 	<template>
 	  <div class="zcard row items-center q-col-gutter-md">
-	    <div class="col-12 text-h6 q-pb-none text-center">Form LM-2</div>
+	    <div class="col-12 text-h6 q-pb-none text-center">Form LD-2</div>
 	    <p class="col-12 text-caption q-py-none text-center">SCHEDULE IIB
 [See rule 11 (2)]</p>
 	    <div class="col-12 ztitle text-center">
-	    Application for renewal Licence as Manufacturer of Weights & Measures under the
-Legal Metrology Act, 2009
+	    Application for renewal Licence as Dealer in Weights & Measures under the
+Legal Metrology Act 2009
 	    </div>
 	    <q-form @submit.prevent="" class="row">
 	      <div class="row q-col-gutter-lg">

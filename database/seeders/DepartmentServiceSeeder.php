@@ -560,7 +560,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "licensing-of-manufacturer-of-weights&measures-1",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -572,7 +572,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "licensing-of-manufacturer-of-weights&measures-2",
                 'sample_form' => $faker->sentence
             ],
             [

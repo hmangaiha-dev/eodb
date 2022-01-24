@@ -10,14 +10,15 @@
     </div> -->
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-       1. Name and complete address of the manufacturing concern for which renewal of licence is desired.<span
+     1. Name of the establishment/shop/person seeking the renewal of licence
+       <span
           class="asterisk"
           >*</span
         ></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_renewal_one"
+        v-model="formData.legal_dealer_renewal_one"
         dense
         outlined
       />
@@ -25,76 +26,39 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-    2. Manufacturing Licence No.
+    2. Dealer's Licence Number.
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_renewal_two"
+        v-model="formData.legal_dealer_renewal_two"
         dense
         outlined
       />
     </div>
     <div class="col-lg-6 col-sm-10 col-xs-12">
       <label class="zlabel" for="gender"
-        >3. Name (s) and address (s) along with their father's/husband's name of proprietor (s) and/or Partners and Managing Director (s) in the case of Limited company
+        >3. Date of establishment.
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_renewal_three"
+        v-model="formData.legal_dealer_renewal_three"
         dense
         outlined
       />
     </div>
 
 
-      <div class="col-12">
-      <label for="" class="zlabel"
-        >4. 
-        :</label
-      >
-      <div class="row justify q-col-gutter-md q-ml-md">
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            (a) Type of weights and measures which are manufactured as per licence granted.<span class="asterisk">*</span></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.legal_renewal_four_a"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-           (b) Do you propose any change.<span class="asterisk">*</span></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.legal_renewal_four_b"
-            dense
-            outlined
-          />
-        </div>
-      
-      </div>
-    </div>
-
 
     <div class="col-12">
       <div class="col-md-6 col-xs-10">
         <label class="zlabel" for="gender">
-      5. The monogram or trade marks used on weights and measures manufactured by you<span class="asterisk">*</span></label
+   4. Name (s) and address (s) along with their father's/ husband's name of proprietor (s) and/or Partners and Managing Director (s) in the case of Limited company<span class="asterisk">*</span></label
         >
         <q-input
           :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-          v-model="formData.legal_renewal_five"
+          v-model="formData.legal_dealer_renewal_four"
           dense
           outlined
         />
@@ -102,12 +66,12 @@
 
       <div class="col-md-6 col-xs-10">
         <label class="zlabel" for="gender">
-        6. Details of workshop facilities available. 
+      5. Registration Number and date of shop/establishment/ current Municipal Trade Licence.
           <span class="asterisk">*</span></label
         >
         <q-input
           :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-          v-model="formData.legal_renewal_five"
+          v-model="formData.legal_dealer_renewal_five"
           dense
           outlined
         />
@@ -115,10 +79,10 @@
 
       <div class="col-md-6 col-xs-10">
         <label class="zlabel" for="gender">
-         7. Details of production and sales in the last 5 years.</label
+         6. Categories of weights and measures sold at present</label
         >
         <q-input
-          v-model="formData.legal_renewal_seven"
+          v-model="formData.legal_dealer_renewal_six"
           dense
           outlined
         />
@@ -129,12 +93,12 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        8. Number and date of shop/establishment Registration Number.
+      7. Registration Number of VAT/ CST/Sales Tax/Professional Tax/Income Tax.
         <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_renewal_eight"
+        v-model="formData.legal_dealer_renewal_seven"
         dense
         outlined
       />
@@ -142,13 +106,17 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
-        >9. Registration Number of VAT/Sales Tax/CST/Professional Tax/Income Tax.<span class="asterisk"
+        >8. Are you intending to import weights and measures etc.
+from places outside the State/Country? If so, indicate
+sources of supply from the State (s)/Country (s).
+(Give details of manufacturer's trade mark/ monogram
+and his licence number.)<span class="asterisk"
           >*</span
         ></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_renewal_nine"
+        v-model="formData.legal_dealer_renewal_eight"
         dense
         outlined
       />
@@ -203,18 +171,17 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "LEGAL_LICENCE_RENEWAL",
+      application_code: "LEGAL_DEALER_RENEWAL",
       department_id: 10,
-      legal_renewal_one: "",
-      legal_renewal_two: "",
-      legal_renewal_three: "",
-      legal_renewal_four_a: "",
-      legal_renewal_four_b: "",
-      legal_renewal_five: "",
-      legal_renewal_six: "",
-      legal_renewal_seven: "",
-      legal_renewal_eight: "",
-      legal_renewal_nine: "",
+      legal_dealer_renewal_one: "",
+      legal_dealer_renewal_two: "",
+      legal_dealer_renewal_three: "",
+      legal_dealer_renewal_four: "",
+      legal_dealer_renewal_five: "",
+      legal_dealer_renewal_six: "",
+      legal_dealer_renewal_seven: "",
+      legal_dealer_renewal_eight: "",
+  
  
 
     
