@@ -332,6 +332,7 @@ export default {
       legal_licence_repair_seven:'',
       legal_licence_repair_eight:'',
       legal_licence_repair_nine:'',
+      legal_licence_repair_ten:"10. Number of skilled staff employed or proposed to be employed:",
       legal_licence_repair_ten_1:'',
       legal_licence_repair_ten_2:'',
       legal_licence_repair_ten_3:'',

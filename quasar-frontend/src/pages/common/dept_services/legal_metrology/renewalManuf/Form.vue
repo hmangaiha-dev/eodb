@@ -10,14 +10,14 @@
     </div> -->
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-       1. Name and complete address of the manufacturing concern for which renewal of licence is desired.<span
+       1. Name and complete address of the manufacturing concern for which renewal_manufacturer of licence is desired.<span
           class="asterisk"
           >*</span
         ></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_renewal_one"
+        v-model="formData.legal_renewal_manufacturer_one"
         dense
         outlined
       />
@@ -30,7 +30,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_renewal_two"
+        v-model="formData.legal_renewal_manufacturer_two"
         dense
         outlined
       />
@@ -42,7 +42,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_renewal_three"
+        v-model="formData.legal_renewal_manufacturer_three"
         dense
         outlined
       />
@@ -63,7 +63,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.legal_renewal_four_a"
+            v-model="formData.legal_renewal_manufacturer_four_a"
             dense
             outlined
           />
@@ -77,7 +77,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.legal_renewal_four_b"
+            v-model="formData.legal_renewal_manufacturer_four_b"
             dense
             outlined
           />
@@ -94,7 +94,7 @@
         >
         <q-input
           :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-          v-model="formData.legal_renewal_five"
+          v-model="formData.legal_renewal_manufacturer_five"
           dense
           outlined
         />
@@ -107,7 +107,7 @@
         >
         <q-input
           :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-          v-model="formData.legal_renewal_five"
+          v-model="formData.legal_renewal_manufacturer_five"
           dense
           outlined
         />
@@ -118,7 +118,7 @@
          7. Details of production and sales in the last 5 years.</label
         >
         <q-input
-          v-model="formData.legal_renewal_seven"
+          v-model="formData.legal_renewal_manufacturer_seven"
           dense
           outlined
         />
@@ -134,7 +134,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_renewal_eight"
+        v-model="formData.legal_renewal_manufacturer_eight"
         dense
         outlined
       />
@@ -148,7 +148,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_renewal_nine"
+        v-model="formData.legal_renewal_manufacturer_nine"
         dense
         outlined
       />
@@ -203,18 +203,18 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "LEGAL_LICENCE_RENEWAL",
+      application_code: "LEGAL_LICENCE_RENEWAL_MANUFACTURER",
       department_id: 10,
-      legal_renewal_one: "",
-      legal_renewal_two: "",
-      legal_renewal_three: "",
-      legal_renewal_four_a: "",
-      legal_renewal_four_b: "",
-      legal_renewal_five: "",
-      legal_renewal_six: "",
-      legal_renewal_seven: "",
-      legal_renewal_eight: "",
-      legal_renewal_nine: "",
+      legal_renewal_manufacturer_one: "",
+      legal_renewal_manufacturer_two: "",
+      legal_renewal_manufacturer_three: "",
+      legal_renewal_manufacturer_four_a: "",
+      legal_renewal_manufacturer_four_b: "",
+      legal_renewal_manufacturer_five: "",
+      legal_renewal_manufacturer_six: "",
+      legal_renewal_manufacturer_seven: "",
+      legal_renewal_manufacturer_eight: "",
+      legal_renewal_manufacturer_nine: "",
  
 
     
