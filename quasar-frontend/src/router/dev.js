@@ -104,6 +104,22 @@ export default {
                             "pages/common/dept_services/legal_metrology/licenceImporter/Application.vue"
                         ),
                 },
+                {
+                    path: "verification-of-weightsandmeasures-10",
+                    name: "legal:verification",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/verification/Application.vue"
+                        ),
+                },
+                {
+                    path: "re-verification-of-weights&measures-11",
+                    name: "legal:re-verification",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/reverification/Application.vue"
+                        ),
+                },
                 
 
                 // claiming-central-capital-investment-subsidy-scheme
