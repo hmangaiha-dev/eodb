@@ -239,7 +239,7 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "LEGAL_REGISTRATION_MANUFACTURER",
+      application_code: "LEGAL_REGISTRATION_MANUFACTURER_PACKER",
       department_id: 10,
       legal_registration_manufacturer_one: "",
       legal_registration_manufacturer_two: "",
@@ -248,6 +248,9 @@ export default {
       legal_registration_manufacturer_five: "",
       legal_registration_manufacturer_six: "",
       legal_registration_manufacturer_seven: "",
+      
+      legal_registration_manufacturer_eight: "8. This Registration is valid",
+
       legal_registration_manufacturer_eight_from: "",
       legal_registration_manufacturer_eight_to: "",
       legal_registration_manufacturer_registration_no: "",

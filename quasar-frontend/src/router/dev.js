@@ -72,6 +72,14 @@ export default {
                             "pages/common/dept_services/legal_metrology/licenceDealer/Application.vue"
                         ),
                 },
+                {
+                    path: "licensing-of-dealers-in-weights&measures-5",
+                    name: "legal:license-dealer",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/licenceDealer/Application.vue"
+                        ),
+                },
                 
 
                 // claiming-central-capital-investment-subsidy-scheme

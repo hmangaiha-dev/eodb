@@ -88,7 +88,40 @@ class HmangaihaUtil
             'legal_licence_dealer_eight_a',
             'legal_licence_dealer_eight_b',
             'legal_licence_dealer_nine',
+        ],
+        'LEGAL_REGISTRATION_MANUFACTURER_PACKER' => [
+
+            'legal_registration_manufacturer_one',
+            'legal_registration_manufacturer_two',
+            'legal_registration_manufacturer_three',
+            'legal_registration_manufacturer_four',
+            'legal_registration_manufacturer_five',
+            'legal_registration_manufacturer_six',
+            'legal_registration_manufacturer_seven',
+            'legal_registration_manufacturer_eight_from',
+            'legal_registration_manufacturer_eight_to',
+            'legal_registration_manufacturer_registration_no',
+            'legal_registration_manufacturer_registration_year',
+
+        ],
+        'LEGAL_REGISTRATION_IMPORTER_PACKER'=>[
+            'legal_registration_importer_two',
+            'legal_registration_importer_three',
+            'legal_registration_importer_four',
+            'legal_registration_importer_one',
+            'legal_registration_importer_five',
+            'legal_registration_importer_six',
+            'legal_registration_importer_seven',
+            'legal_registration_importer_eight',
+            'legal_registration_importer_nine',
+
+            'legal_registration_importer_nine_from',
+            'legal_registration_importer_nine_to',
+            'legal_registration_importer_registration_no',
+            'legal_registration_importer_registration_year',
+    
         ]
+
 
     ];
 
@@ -200,7 +233,34 @@ class HmangaihaUtil
         'legal_licence_dealer_eight_b' => "(b) Approval of model imported into India by Central Government",
         'legal_licence_dealer_nine' => "9. Have you applied previously for a dealer's licence,either in this State or elsewhere ? If so give details ?",
 
+        //Legal registration Manufacturer and PACKER
+        'legal_registration_manufacturer_one'=>"1. Name",
+        'legal_registration_manufacturer_two'=>"2. Complete Address",
+        'legal_registration_manufacturer_three'=>"3. Aadhaar number",
+        'legal_registration_manufacturer_four'=>"4. Address of warehouse",
+        'legal_registration_manufacturer_five'=>"5. Type of Commodities to be manufactured or packed",
+        'legal_registration_manufacturer_six'=>"6. Area of Operation",
+        'legal_registration_manufacturer_seven'=>"7. Date of Registration",
+        'legal_registration_manufacturer_eight'=> "8. This Registration is valid",
+        'legal_registration_manufacturer_eight_from'=>"From",
+        'legal_registration_manufacturer_eight_to'=>"to",
+        'legal_registration_manufacturer_registration_no'=>"Registration no.",
+        'legal_registration_manufacturer_registration_year'=>"of Year",
 
+        //Legal Registration Manufacturer and Importer
+        'legal_registration_importer_one'=>"1. Name",
+        'legal_registration_importer_two'=>"2. Complete Address ",
+        'legal_registration_importer_three'=>"3. Aadhaar number",
+        'legal_registration_importer_four'=>"4. Address of warehouse",
+        'legal_registration_importer_five'=>"5. Type of Commodities to be packed or to imported",
+        'legal_registration_importer_six'=>"6. No. of IEC / Licence with date",
+        'legal_registration_importer_seven'=>"7. Area of Operation",
+        'legal_registration_importer_eight'=>"8. Date of Registration",
+        'legal_registration_importer_nine'=>"9. This Registration is valid",
+        'legal_registration_importer_nine_from'=>"From",
+        'legal_registration_importer_nine_to'=>"to",
+        'legal_registration_importer_registration_no'=>" Registration no.",
+        'legal_registration_importer_registration_year'=>"Year",
 
 
     ];
