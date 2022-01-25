@@ -668,7 +668,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "verification-of-weightsandmeasures-10",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -680,7 +680,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "re-verification-of-weights&measures-11",
                 'sample_form' => $faker->sentence
             ],
 
