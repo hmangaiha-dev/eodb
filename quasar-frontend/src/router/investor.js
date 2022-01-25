@@ -315,6 +315,14 @@ export default {
               "pages/common/dept_services/pollution/authorisationundersolidwaste/Application.vue"
             ),
         },
+        {
+          path: "anual-report-to-be-submitted-by-operator-of-facility-localbody",
+          name: "pcb:authorisation-solidwaste",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/formatofannualreport/Application.vue"
+            ),
+        },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],
