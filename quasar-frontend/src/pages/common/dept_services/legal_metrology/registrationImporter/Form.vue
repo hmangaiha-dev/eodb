@@ -186,10 +186,11 @@ to be packed or to imported
       </div>
     </div>
 
-    <div class="col-md-6 col-xs-10">
+   <div class="col-md-6 col-xs-10">
 
-      <h2>1. The person / firm in whose favour this Registration Certificate is issued shall: -</h2>
-      <ol>
+      <h5>The person / firm in whose favour this Registration Certificate is issued shall: -</h5>
+      <div style="padding:1rem">
+<ol>
         <li>Comply with all relevant provisions of the Legal Metrology Act and Rules for the time being in force.</li>
         <li>Report without delay to the Registering authority any infringement that come to his notice.</li>
         <li>Exhibit this Certificate in some conspicuous part of the premises to which it relates</li>
@@ -201,8 +202,9 @@ for the time being in force</li>
 
 
       </ol>
+      </div>
+      
     </div>
-   
 
     <div class="col-12 zlabel">
       I hereby declare that the particulars given above are true to the best of

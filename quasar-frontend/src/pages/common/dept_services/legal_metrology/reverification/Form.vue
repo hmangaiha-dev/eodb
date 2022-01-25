@@ -324,7 +324,7 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "LEGAL_REreverification",
+      application_code: "LEGAL_REVERIFICATION",
       department_id: 10,
       legal_reverifcation_officer_name:'',
       legal_reverification_no:'',
