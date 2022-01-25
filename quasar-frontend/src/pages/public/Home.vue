@@ -22,8 +22,18 @@
         />
       </div>
 
-      <div class="gt-sm q-ml-lg col-lg-5 col-md-5">
-        <img class="map" src="~assets/mzr.png" />
+      <div class="gt-sm q-ml-lg col-lg-5 col-md-5 col-sm-5">
+        <!-- <img class="map" src="~assets/mzr.png" /> -->
+        <q-img
+        fit="contain"
+        class="map"
+         src="~assets/mzr.png"
+         width="80%"
+          spinner-color="primary"
+          spinner-size="82px"
+        />
+
+       
       </div>
 
       <!-- <div class="col">
@@ -598,8 +608,8 @@ export default defineComponent({
 }
 
 .map {
-  width: 600px;
-  height: 672px;
+  /* width: 600px;
+  height: 672px; */
   margin: 100px 0 0 52px;
   object-fit: contain;
 }

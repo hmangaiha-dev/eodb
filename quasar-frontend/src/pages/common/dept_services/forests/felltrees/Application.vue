@@ -6,7 +6,7 @@
       FORM OF APPLICATION FOR PERMISSION TO FELL TREES/TREE PLANTATION IN
       NON-FOREST AREA
     </div>
-    <q-form @submit.prevent="" class="row">
+    <q-form @submit.prevent="submit" class="col">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />
@@ -23,16 +23,15 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { date } from "quasar";
-import { ref } from 'vue'
+import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
+import { api } from "src/boot/axios";
 
 import Form from "./Form.vue";
 // import Part2 from "./Part2.vue";
 // import Document from "./Document.vue";
-
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   components: {
@@ -41,38 +40,43 @@ export default {
     // Document,
   },
   setup(props, context) {
-    const applicantRef = ref(null);
-    const FirmRef = ref(null);
     const store = useStore();
-    // const draft = store.getters["applicantData/getCurrentDraft"];
-    // const currentUser = store.getters["auth/getCurrentUser"];
+    // const store = useStore();
+    const q = useQuasar();
 
-    const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: "",
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
-    });
+    const router = useRouter();
+    const applicantRef = ref(null);
+
+    const submit = () => {
+      var formData = reactive({});
+
+      formData = Object.assign(formData, applicantRef.value.formData);
+
+      var formDatas = new FormData();
+
+      for (let data in formData) {
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+      // return console.log("formdatas", applicantRef.value);
+      api
+        .post("/applications/submit", formDatas)
+        .then((res) => {
+          // console.log("response value", res.data);
+          q.notify({
+            message: "Application submitted successfully",
+            color: "green",
+          });
+          router.push({ name: "investor:ongoing" });
+        })
+        .catch((err) => console.log("error", err));
+    };
 
     return {
+      submit,
+      applicantRef,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
-      applicantRef,
-      FirmRef,
     };
   },
 };

@@ -103,9 +103,9 @@
     </q-header>
 
     <q-page-container class="bg-grey-2">
-      <keep-alive>
+      <!-- <keep-alive> -->
         <router-view />
-      </keep-alive>
+      <!-- </keep-alive> -->
     </q-page-container>
 
     <MsegsFooter />

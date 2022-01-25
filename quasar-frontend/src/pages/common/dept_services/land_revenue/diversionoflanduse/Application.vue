@@ -33,8 +33,6 @@ import Form from "./Form.vue";
 import Part2 from "./Part2.vue";
 import Document from "./Document.vue";
 
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   components: {
@@ -48,27 +46,7 @@ export default {
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
-    const localData = reactive({
-      genders: [
-        { value: "Male", label: "Male" },
-        { value: "Female", label: "Female" },
-        { value: "Other", label: "Other" },
-      ],
-      epic_relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-      ],
-      relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-        { value: "Spouse", label: "Spouse" },
-        { value: "Guardian", label: "Guardian" },
-      ],
-      adults: [
-        { value: true, label: "Applicant is above 18 years" },
-        { value: false, label: "Applicant is below 18 years" },
-      ],
-    });
+   
 
     const formData = reactive({
       title: "Mr",

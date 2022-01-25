@@ -9,7 +9,7 @@ import {api} from "boot/axios";
 const state = () => {
   return {
     currentUser: localStorage.getItem('user'),
-    token: LocalStorage.getItem('token'),
+    token: localStorage.getItem('token'),
     csrfToken: ''
   }
 }
@@ -26,12 +26,12 @@ const mutations = {
 const actions = {
   setToken: (context, token) => {
     if (Boolean(token)) {
-      LocalStorage.set('token', token);
+      localStorage.setItem('token', token);
       context.commit('setToken', token);
       api.defaults.headers['Authorization'] = `Bearer ${token}`;
     } else {
-      LocalStorage.remove('token');
-      LocalStorage.remove('user');
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
       context.commit('setCurrentUser', null);
       context.commit('setToken', null);
       api.defaults.headers['Authorization'] = ``;
@@ -41,7 +41,7 @@ const actions = {
     context.commit('setCsrfToken', token);
   },
   setCurrentUser: (context, data) => {
-    LocalStorage.set('user', (data));
+    localStorage.setItem('user', (data));
     context.commit('setCurrentUser', data);
   }
 }

@@ -107,6 +107,8 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
 //    Route::post('submit', [ApplicationController::class, 'submitApplication']);
     Route::get('me', [DeskController::class, 'myApplication']);
     Route::get('{model}', [ApplicationController::class, 'detail']);
+    Route::post('{model}/states', [ApplicationController::class, 'createState']);
+    Route::get('{model}/states', [ApplicationController::class, 'getStates']);
     Route::post('{model}/forward', [ApplicationController::class, 'forward']);
     Route::get('{model}/notes', [NotesheetController::class, 'notes']);
     Route::get('{model}/movements', [ApplicationMovementHistory::class, 'movements']);
