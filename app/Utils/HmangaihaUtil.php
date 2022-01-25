@@ -88,7 +88,71 @@ class HmangaihaUtil
             'legal_licence_dealer_eight_a',
             'legal_licence_dealer_eight_b',
             'legal_licence_dealer_nine',
+        ],
+        'LEGAL_REGISTRATION_MANUFACTURER_PACKER' => [
+
+            'legal_registration_manufacturer_one',
+            'legal_registration_manufacturer_two',
+            'legal_registration_manufacturer_three',
+            'legal_registration_manufacturer_four',
+            'legal_registration_manufacturer_five',
+            'legal_registration_manufacturer_six',
+            'legal_registration_manufacturer_seven',
+            'legal_registration_manufacturer_eight_from',
+            'legal_registration_manufacturer_eight_to',
+            'legal_registration_manufacturer_registration_no',
+            'legal_registration_manufacturer_registration_year',
+
+        ],
+        'LEGAL_REGISTRATION_IMPORTER_PACKER'=>[
+            'legal_registration_importer_two',
+            'legal_registration_importer_three',
+            'legal_registration_importer_four',
+            'legal_registration_importer_one',
+            'legal_registration_importer_five',
+            'legal_registration_importer_six',
+            'legal_registration_importer_seven',
+            'legal_registration_importer_eight',
+            'legal_registration_importer_nine',
+
+            'legal_registration_importer_nine_from',
+            'legal_registration_importer_nine_to',
+            'legal_registration_importer_registration_no',
+            'legal_registration_importer_registration_year',
+    
+        ],
+        'LEGAL_LICENCE_RENEWAL_REPAIRER'=>[
+            'legal_license_renewal_repairer_two',
+            'legal_license_renewal_repairer_one',
+            'legal_license_renewal_repairer_three',
+            'legal_license_renewal_repairer_four',
+            'legal_license_renewal_repairer_five',
+            'legal_license_renewal_repairer_six_a',
+            'legal_license_renewal_repairer_six_b',
+            'legal_license_renewal_repairer_seven',
+            'legal_license_renewal_repairer_eight',
+            'legal_license_renewal_repairer_nine',
+      
+        ],
+        'LEGAL_LICENCE_REGISTRATION_IMPORTER'=>[
+            'legal_licence_registration_importer_one',
+            'legal_licence_registration_importer_two',
+            'legal_licence_registration_importer_three',
+            'legal_licence_registration_importer_four',
+            'legal_licence_registration_importer_five',
+            'legal_licence_registration_importer_five_a',
+            'legal_licence_registration_importer_five_b',
+            'legal_licence_registration_importer_six',
+            'legal_licence_registration_importer_seven',
+            'legal_licence_registration_importer_eight',
+            'legal_licence_registration_importer_nine',
+            'legal_licence_registration_importer_registration_fee',
+            'legal_licence_registration_importer_registration_place',
+            'legal_licence_registration_importer_registration_chalan_no',
+            'legal_licence_registration_importer_registration_dated',
+      
         ]
+
 
     ];
 
@@ -200,8 +264,64 @@ class HmangaihaUtil
         'legal_licence_dealer_eight_b' => "(b) Approval of model imported into India by Central Government",
         'legal_licence_dealer_nine' => "9. Have you applied previously for a dealer's licence,either in this State or elsewhere ? If so give details ?",
 
+        //Legal registration Manufacturer and PACKER
+        'legal_registration_manufacturer_one'=>"1. Name",
+        'legal_registration_manufacturer_two'=>"2. Complete Address",
+        'legal_registration_manufacturer_three'=>"3. Aadhaar number",
+        'legal_registration_manufacturer_four'=>"4. Address of warehouse",
+        'legal_registration_manufacturer_five'=>"5. Type of Commodities to be manufactured or packed",
+        'legal_registration_manufacturer_six'=>"6. Area of Operation",
+        'legal_registration_manufacturer_seven'=>"7. Date of Registration",
+        'legal_registration_manufacturer_eight'=> "8. This Registration is valid",
+        'legal_registration_manufacturer_eight_from'=>"From",
+        'legal_registration_manufacturer_eight_to'=>"to",
+        'legal_registration_manufacturer_registration_no'=>"Registration no.",
+        'legal_registration_manufacturer_registration_year'=>"of Year",
 
+        //Legal Registration Manufacturer and Importer
+        'legal_registration_importer_one'=>"1. Name",
+        'legal_registration_importer_two'=>"2. Complete Address ",
+        'legal_registration_importer_three'=>"3. Aadhaar number",
+        'legal_registration_importer_four'=>"4. Address of warehouse",
+        'legal_registration_importer_five'=>"5. Type of Commodities to be packed or to imported",
+        'legal_registration_importer_six'=>"6. No. of IEC / Licence with date",
+        'legal_registration_importer_seven'=>"7. Area of Operation",
+        'legal_registration_importer_eight'=>"8. Date of Registration",
+        'legal_registration_importer_nine'=>"9. This Registration is valid",
+        'legal_registration_importer_nine_from'=>"From",
+        'legal_registration_importer_nine_to'=>"to",
+        'legal_registration_importer_registration_no'=>" Registration no.",
+        'legal_registration_importer_registration_year'=>"Year",
+        
+        // legal licence renewal repair
+        'legal_license_renewal_repairer_two'=>"1. Name and complete address of the repairing concern/ person seeking  renewal of the licence .",
+        'legal_license_renewal_repairer_one'=>"2. Repairer's Licence Number.",
+        'legal_license_renewal_repairer_three'=>"3. Name (s) and address (s) along with their father's/ husband's name of proprietor (s) and/or Partners and Managing Director (s) in the case of Limited company.",
+        'legal_license_renewal_repairer_four'=>"4. Registration Number and date of current shop/ establishment/Municipal Trade Licence.",
+        'legal_license_renewal_repairer_five'=>" 5. Registration Number of VAT/ Sales Tax/CST/Professional Tax/Income Tax",
+        'legal_license_renewal_repairer_six_a'=>"(a) The Type of weights and measures repaired as per licence granted",
+        'legal_license_renewal_repairer_six_b'=>"(b) Do you propose any change?",
+        'legal_license_renewal_repairer_seven'=>"7. Area in which you are operating.",
+        'legal_license_renewal_repairer_eight'=>"8. Have you sufficient stock of loan/test weights, etc.?",
+        'legal_license_renewal_repairer_nine'=>"9. Please give details with particulars of stamping.",
 
+        // LEGAL_LICENCE_REGISTRATION_IMPORTER
+        'legal_licence_registration_importer_one'=>"1. Name and full address",
+        'legal_licence_registration_importer_two'=>"2. Whether individual/undivided Hindu family/registered firm",
+        'legal_licence_registration_importer_three'=>"3.Income-tax registration No( If any)",
+        'legal_licence_registration_importer_four'=>"4.Date of registration as manufacturer/dealer;registration No. and name of  registry authority",
+        'legal_licence_registration_importer_five'=>"5.Date & No. of licence to carry on the business of weights and measures;the name of authority by whom the licence was issued/renewed",
+        'legal_licence_registration_importer_five_a'=>"(a)buying and selling ,or",
+        'legal_licence_registration_importer_five_b'=>"(b) manufacturing",
+        'legal_licence_registration_importer_six'=>"6.Item(s) of weights and measures in relation to which the applicant has been registered as manufacturer and/or dealer",
+        'legal_licence_registration_importer_seven'=>"7.Items of weights and measures for which the applicant is being made for registration as importer",
+        'legal_licence_registration_importer_eight'=>"8.Items,if any,imported during the period of two years immediately preceding the year in which the application is made:",
+        'legal_licence_registration_importer_nine'=>"9.Remarks",
+        'legal_licence_registration_importer_registration_fee'=>"Registration fee",
+        'legal_licence_registration_importer_registration_place'=>"Paid in the treasury at",
+        'legal_licence_registration_importer_registration_chalan_no'=>"Chalan No.",
+        'legal_licence_registration_importer_registration_dated'=>"Dated",
+  
 
     ];
 }

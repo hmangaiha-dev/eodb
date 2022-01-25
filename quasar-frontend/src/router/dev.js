@@ -72,6 +72,38 @@ export default {
                             "pages/common/dept_services/legal_metrology/licenceDealer/Application.vue"
                         ),
                 },
+                {
+                    path: "certificate_of_registration_manufacturer_packer_6",
+                    name: "legal:registration-manufacturer",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/registrationManuf/Application.vue"
+                        ),
+                },
+                {
+                    path: "certificate_of_registration_importer_packer_7",
+                    name: "legal:registration-importer",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/registrationImporter/Application.vue"
+                        ),
+                },
+                {
+                    path: "renewal-of-licence-repair-weightandmeasures-8",
+                    name: "legal:license-renewal-repair",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/renewalLicenseRepair8/Application.vue"
+                        ),
+                },
+                {
+                    path: "licence-of-importers-wieghtsandmearures-9",
+                    name: "legal:license-importer",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/legal_metrology/licenceImporter/Application.vue"
+                        ),
+                },
                 
 
                 // claiming-central-capital-investment-subsidy-scheme

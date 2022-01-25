@@ -620,7 +620,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "certificate_of_registration_manufacturer_packer_6",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -632,7 +632,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "certificate_of_registration_importer_packer_7",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -644,7 +644,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "renewal-of-licence-repair-weightandmeasures-8",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -656,7 +656,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "licence-of-importers-wieghtsandmearures-9",
                 'sample_form' => $faker->sentence
             ],
             [

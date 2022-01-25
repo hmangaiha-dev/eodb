@@ -251,7 +251,7 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      application_code: "LEGAL_REGISTRATION_IMPORTER",
+      application_code: "LEGAL_REGISTRATION_IMPORTER_PACKER",
       department_id: 10,
       legal_registration_importer_two: "",
       legal_registration_importer_three: "",
@@ -261,6 +261,7 @@ export default {
       legal_registration_importer_six: "",
       legal_registration_importer_seven: "",
       legal_registration_importer_eight: "",
+      legal_registration_importer_nine: "9. This Registration is valid",
 
       legal_registration_importer_nine_from: "",
       legal_registration_importer_nine_to: "",
