@@ -66,7 +66,6 @@
           <q-tab-panel name="services">
             <q-table
               v-model:pagination="pagination"
-              bordered
               @request="onRequest"
               wrap-cells
               flat

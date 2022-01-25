@@ -29,9 +29,14 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'LAND_REVENUE_LAND_SHOP', 'title' => 'APPLICATION FOR ALLOTMENT OF LAND FOR SHOP/STALL', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LAND_REVENUE_LAND_SETTLEMENT', 'title' => 'APPLICATION FOR RESIDENTIAL LAND SETTLEMENT CERTIFICATE INHMUN/LAND SETTLEMENT CERTIFICATE TURA DILNA', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LAND_REVENUE_LAND_DIVERSION', 'title' => 'APPLICATION FOR DIVERSION OF USE OF LAND', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'LAND_REVENUE_LAND_TRANSFER', 'title' => 'APPLICATION FOR TRANSFER OF OWNERSHIP OF LAND HOLDING', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'LAND_REVENUE_ALLOTMENT_GOVERNMENT', 'title' => 'APPLICATION FOR THE ALLOTMENT OF LAND TO THE GOVERNMENT DEPARTMENT/CORPORATION/BOARDS ETC. ON LAND LEASE/LIMITED LEASE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+
         ['code' => 'POLLUTION_ACCIDENT_MEDICAL', 'title' => 'ACCIDENT REPORTING FOR BIO-MEDICAL WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_ACCIDENT_HAZARDOUS', 'title' => 'ACCIDENT REPORTING FOR HAZARDOUS WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_ACCIDENT_SOLIDWASTE', 'title' => 'ACCIDENT REPORTING DUE TO SOLID WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_AUTHORISE_SOLID_WASTE', 'title' => 'APPLICATION FOR OBTAINING AUTHORISATION UNDER SOLID WASTE MANAGEMENT RULES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+
         ['code' => 'FOOD_DRUG_GENERAL_RETAIL', 'title' => 'Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In Schedule X', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'FOOD_DRUG_RESTRICTED_RETAIL', 'title' => 'APPLICATION FOR GRANT OR RENEWAL OF A (LICENCE TO SELL, STOCK, EXHIBIT OR OFFER FOR SALE, OR DISTRIBUTE) HOMOEOPATHIC MEDICINES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'FOOD_DRUG_WHOLESALE', 'title' => 'Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In Schedule X', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],

@@ -517,7 +517,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "partition-of-lsc",
                 'sample_form' => $faker->sentence
             ],
 
@@ -530,7 +530,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "allotment-of-land-to-the-government",
                 'sample_form' => $faker->sentence
             ],
 
@@ -743,7 +743,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "submission-anual-report-hazardous-wastes",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -767,7 +767,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "authorisation-under-solid-waste-management-rules-for-processing-recycling-treatment",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -1222,6 +1222,6 @@ class DepartmentServiceSeeder extends Seeder
 
         DepartmentService::truncate();
 
-        DepartmentService::query()->upsert($services,'department_id');
+        DepartmentService::query()->upsert($services, 'department_id');
     }
 }

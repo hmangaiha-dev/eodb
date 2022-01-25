@@ -203,13 +203,28 @@ export default {
               "pages/common/dept_services/land_revenue/landsettlement/Application.vue"
             ),
         },
-
         {
           path: "transfer-of-land-ownership",
           name: "land:land-transfer",
           component: () =>
             import(
               "pages/common/dept_services/land_revenue/landtransfer/Application.vue"
+            ),
+        },
+        {
+          path: "partition-of-lsc",
+          name: "land:land-partition",
+          component: () =>
+            import(
+              "pages/common/dept_services/land_revenue/partitionlsc/Application.vue"
+            ),
+        },
+        {
+          path: "allotment-of-land-to-the-government",
+          name: "land:allotment-govt",
+          component: () =>
+            import(
+              "pages/common/dept_services/land_revenue/allotmentlandtogovt/Application.vue"
             ),
         },
       ],
@@ -285,11 +300,19 @@ export default {
             ),
         },
         {
-          path: "submission-anual-report-bio-medical-wastes",
-          name: "indudsdsfsftries:central-captial",
+          path: "submission-anual-report-hazardous-wastes",
+          name: "pcb:annual-report",
           component: () =>
             import(
               "pages/common/dept_services/pollution/annualreport/Application.vue"
+            ),
+        },
+        {
+          path: "authorisation-under-solid-waste-management-rules-for-processing-recycling-treatment",
+          name: "pcb:authorisation-solidwaste",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/authorisationundersolidwaste/Application.vue"
             ),
         },
 
