@@ -11,10 +11,10 @@ export default defineComponent({
   setup() {
     const store = useStore();
     onMounted(()=> {
-      axios.get('http://13.235.104.152/sanctum/csrf-cookie')
-      .then(res=>{
-        store.dispatch('staffData/fetchData')
-      })
+      // axios.get('http://13.235.104.152/sanctum/csrf-cookie')
+      // .then(res=>{
+      //   store.dispatch('staffData/fetchData')
+      // })
     })
   }
 })

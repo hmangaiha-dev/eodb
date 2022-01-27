@@ -1,5 +1,5 @@
 <template>
-  <q-page class="container-lg" padding>
+  <q-page class="container-lg zcard q-my-md" padding>
     <h1 class="ztitle">Offices</h1>
 
     <div class="zdetailcard">

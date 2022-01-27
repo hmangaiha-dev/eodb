@@ -26,6 +26,7 @@
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">
 <!--                  <q-toggle :model-value="item.published" left-label @click="publish(item)" label="published?"/>-->
+                  <q-btn :to="{name:'print-template:create',params:{id:item.id}}" size="12px" outline icon="printer"/>
                   <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>
 
                 </div>

@@ -15,7 +15,7 @@ class AttachmentUtils{
     ];
 
     const ATTACHMENTS = [
-        'signature_phe_water_connection'=>self::SIGNATURE_PHE_WATER_CONNECTION
+        'signature_phe_water_connection'=>self::SIGNATURE_PHE_WATER_CONNECTION,
     ];
 
     static function getAttachment(string $key)

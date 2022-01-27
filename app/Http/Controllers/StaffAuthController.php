@@ -16,7 +16,7 @@ class StaffAuthController extends Controller
         ]);
 
         if (!$authenticate) {
-            throw new \Exception("Invalid credential", 500);
+            return response()->json(['message'=>"Invalid credential"], 400);
         }
 
         $user = Auth::guard('staff')->user();
@@ -32,7 +32,8 @@ class StaffAuthController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::user()->tokens()->delete();
+        Auth::user()?->tokens()->delete();
+        Auth::guard('staff')->logout();
         return response()->json([
             'data' => null
         ], 200);

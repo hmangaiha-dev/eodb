@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="container-lg">
+  <q-page padding class="container-lg zcard q-my-md">
     <div class="flex flex-inline items-center">
       <h1 class='ztitle'>New post</h1>
       <q-space/>

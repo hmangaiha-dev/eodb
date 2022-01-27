@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ApplicationProfile;
+use App\Models\PrintTemplate;
 use Illuminate\Http\Request;
 
 class ApplicationProfileController extends Controller
@@ -52,6 +53,16 @@ class ApplicationProfileController extends Controller
             'message' => 'Application profile deleted successfully',
             'list' => ApplicationProfile::query()
                 ->paginate(),
+        ]);
+    }
+
+    public function createPrintTemplate(Request $request, ApplicationProfile $model)
+    {
+        $template=$model->printTemplate()->create($request->only((new PrintTemplate())->getFillable()));
+
+        return response()->json([
+            'message' => 'Application print template created successfully',
+            'data'=>$template
         ]);
     }
 }

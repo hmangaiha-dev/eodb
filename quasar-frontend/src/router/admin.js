@@ -1,6 +1,9 @@
 export default {
   path: '/admin',
   component: () => import('layouts/MainLayout.vue'),
+  meta: {
+    protected: true
+  },
   children: [
     { path: '',name:'staff:dashboard', component: () => import('pages/admin/Dashboard.vue') },
 
@@ -28,6 +31,7 @@ export default {
     // { path: 'files/archived',name:'file:archived', component: () => import('pages/admin/file/ArchivedFiles.vue') },
 
     { path: 'ongoing-applications',name:'ongoing-applications:read', component: () => import('pages/admin/application/Ongoing') },
+    { path: 'ongoing-applications/:id',name:'ongoing-applications:detail', component: () => import('pages/common/ApplicationDetail.vue') },
     {
       path: 'applications/:id',
       component: () => import('layouts/ApplicationLayout.vue'),
@@ -59,6 +63,8 @@ export default {
       children: [
         {path: 'process-flows', name: 'process-flows:read', component: () => import('pages/admin/setting/process-flows/List.vue')},
         {path: 'application_profiles', name: 'application-profiles:read', component: () => import('pages/admin/setting/application-profiles/List.vue')},
+        {path: 'application_profiles/:id/print-template', name: 'print-template:create', component: () => import('pages/admin/setting/print-template/Create.vue')},
+        {path: 'application_profiles/:id/print-template/:template_id/edit', name: 'print-template:edit', component: () => import('pages/admin/setting/print-template/Create.vue')},
         {path: 'process-flows/create', name: 'process-flows:create', component: () => import('pages/admin/setting/process-flows/Create.vue')},
       ]
     },

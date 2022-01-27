@@ -25,40 +25,39 @@ export default route(function ({store, ssrContext}) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
-  // Router.beforeEach((to, from, next) => {
-  //   const loggedIn = store.getters['auth/isAuthenticated'];
-  //   console.log('loggedin',loggedIn)
-  //   let userType = store.getters['auth/getUserType']
-  //   // let loginRoute = userType==='user' ? {name: 'home'} : {name: 'staff:login'};
-  //   // if (to.matched.some(r => r.meta?.protected)) {
-  //   //   if (!loggedIn) {
-  //   //     next("/")
-  //   //   }else{
-  //   //     next()
-  //   //   }
-  //   // }
-  //   // next()
-  //   if (to.matched.some(route => route.meta.protected)) {
-  //     if (!loggedIn) {
-  //       next({
-  //         name: "home",
-  //         query: { redirect: to.fullPath }
-  //       });
-  //     } else {
-  //       if (userType==='staff') {
-  //         next();
-  //       }else if (to.meta?.user==='user' && userType==='user'){
-  //         console.log("to meta" ,to.meta)
-  //         next()
-  //       }else{
-  //         next({name:'access-denied'})
-  //       }
-  //     }
-  //   } else {
-  //     next();
-  //   }
-  //
-  // })
+  Router.beforeEach((to, from, next) => {
+    const loggedIn = store.getters['authData/isAuthenticated'];
+    let userType = store.getters['authData/getUserType']
+    // let loginRoute = userType==='user' ? {name: 'home'} : {name: 'staff:login'};
+    // if (to.matched.some(r => r.meta?.protected)) {
+    //   if (!loggedIn) {
+    //     next("/")
+    //   }else{
+    //     next()
+    //   }
+    // }
+    // next()
+    if (to.matched.some(route => route.meta.protected)) {
+      if (!loggedIn) {
+        next({
+          name: "home",
+          query: { redirect: to.fullPath }
+        });
+      } else {
+        if (userType==='staff') {
+          next();
+        }else if (to.meta?.user==='user' && userType==='user'){
+          console.log("to meta" ,to.meta)
+          next()
+        }else{
+          next({name:'access-denied'})
+        }
+      }
+    } else {
+      next();
+    }
+
+  })
 
 
   return Router
