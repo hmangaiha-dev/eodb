@@ -1,24 +1,23 @@
 <template>
-  <div class="zcard row items-center">
+  <div class="zcard row items-center q-col-gutter-md">
     <!-- <div class="col-12 text-h6 q-pb-none text-center">Form-2</div>
     <p class="col-12 text-caption q-py-none text-center">[See Rule 3(1)]</p> -->
     <div class="col-12 text-center">
       <span class=""> FORM - III </span>
 
-      <p class="ztitle col-12 text-center">
-        FORMAT OF ANNUAL REPORT TO BE SUBMITTED BY THE OPERATOR OF FACILITY TO
-        THE LOCAL BODY
+      <p class="ztitle">
+        APPLICATION FOR REGISTRATION FOR MANUFACTURERS OF PLASTIC RAW MATERIALS
       </p>
 
-      <p>[SEE RULE 19 (6), 24 (1)]</p>
+      <p>[SEE RULES 13(4)]</p>
     </div>
 
-    <q-form @submit.prevent="submit">
-      <!-- <div class="row">
-        <div class="col-12"> -->
-      <Form ref="applicantRef" />
-      <!-- </div>
-      </div> -->
+    <q-form @submit.prevent="submit" class="col">
+      <div class="row q-col-gutter-lg">
+        <div class="col-12">
+          <Form ref="applicantRef" />
+        </div>
+      </div>
 
       <div class="text-center q-mt-md col-12">
         <q-btn type="submit" color="green-5" label="Submit" />

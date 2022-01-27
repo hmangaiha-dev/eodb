@@ -803,7 +803,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-as-producer-brand-owners-under-plastic-waste-management",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -815,7 +815,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-units-engaged-processing-recycling-plastic-waste",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -827,7 +827,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-manufacturers-plastic-raw-material",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -839,7 +839,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "submission-anualreportby-operatorofplasticwasteprocessing-or-recyclingfacility-to-localbody",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -851,7 +851,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "anual-report-plastic-waste-management-submitted-by-local-body",
                 'sample_form' => $faker->sentence
             ],
             [

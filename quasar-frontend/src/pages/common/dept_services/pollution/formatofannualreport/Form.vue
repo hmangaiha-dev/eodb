@@ -57,10 +57,22 @@
             v-model="formData.pollution_authorise_solidwaste_two_i"
           />
         </div>
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name"
+            >II) Name & Address of the local body<span class="asterisk">
+              *</span
+            ></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_i"
+          />
+        </div>
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            II) Telephone No.
+            III) Telephone No.
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -72,7 +84,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name"
-            >III) Fax No <span class="asterisk"> *</span></label
+            >IV) Fax No <span class="asterisk"> *</span></label
           >
           <q-input
             dense
@@ -83,7 +95,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name"
-            >E-mail: <span class="asterisk"> *</span></label
+            >V)E-mail: <span class="asterisk"> *</span></label
           >
           <q-input
             dense
@@ -115,7 +127,21 @@
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name"
-            >I) Phone No<span class="asterisk"> *</span></label
+            >I) Name & Address of the local body<span class="asterisk">
+              *</span
+            ></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_i"
+          />
+        </div>
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name"
+            >II) Name & Address of the local body<span class="asterisk">
+              *</span
+            ></label
           >
           <q-input
             dense
@@ -126,7 +152,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            II) Fax No
+            III) Telephone No.
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -138,7 +164,18 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name"
-            >III) E-mail: <span class="asterisk"> *</span></label
+            >IV) Fax No <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name"
+            >V)E-mail: <span class="asterisk"> *</span></label
           >
           <q-input
             dense
@@ -149,28 +186,29 @@
       </div>
     </div>
 
+    <div class="col-lg-10 col-xs-12">
+      <label class="zlabel" for="name">
+        7 Number of households in the city/town , Number of non-residential
+        premises in the city Number of election/ administrative wards in the
+        city/town
+        <span class="asterisk"> *</span></label
+      >
+      <q-input
+        dense
+        outlined
+        v-model="formData.pollution_authorise_solidwaste_two_iii"
+      />
+    </div>
+
     <div class="col-12">
       <label class="zlabel" for="name"
-        >7.<span class="asterisk"> *</span></label
+        >8.<span class="asterisk"> *</span></label
       >
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            I) Number of households in the city/town , Number of non-residential
-            premises in the city Number of election/ administrative wards in the
-            city/town<span class="asterisk"> *</span></label
-          >
-          <q-input
-            dense
-            outlined
-            v-model="formData.pollution_authorise_solidwaste_two_iii"
-          />
-        </div>
-
-        <div class="col-md-4 col-xs-10">
-          <label class="zlabel" for="name">
-            II) Quantity of Solid waste
+            I) Quantity of Solid waste
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -182,7 +220,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name"
-            >III) Estimated Quantity of solid waste generated in the local body
+            >II) Estimated Quantity of solid waste generated in the local body
             area per day in metric tones (in tpd)
             <span class="asterisk"> *</span></label
           >
@@ -192,18 +230,9 @@
             v-model="formData.pollution_authorise_solidwaste_two_iii"
           />
         </div>
-      </div>
-    </div>
-
-    <div class="col-12">
-      <label class="zlabel" for="name"
-        >8.<span class="asterisk"> *</span></label
-      >
-
-      <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            I) Quantity of solid waste collected per day in tpd<span
+            III) Quantity of solid waste collected per day in tpd<span
               class="asterisk"
             >
               *</span
@@ -218,7 +247,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            II) Per capita waste collected per day in gm/day
+            IV) Per capita waste collected per day in gm/day
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -230,7 +259,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name"
-            >III) Quantity of solid waste processed in tpd
+            >V) Quantity of solid waste processed in tpd
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -242,19 +271,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name"
-            >IV) Quantity of solid waste disposed at landfill in tpd
-            <span class="asterisk"> *</span></label
-          >
-          <q-input
-            dense
-            outlined
-            v-model="formData.pollution_authorise_solidwaste_two_iii"
-          />
-        </div>
-
-        <div class="col-md-4 col-xs-10">
-          <label class="zlabel" for="name"
-            >V) Status of Solid Waste Management (SWM) service
+            >VI) Quantity of solid waste disposed at landfill in tpd
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -370,7 +387,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name"
-            >VII)Door to Door Collection of solid waste<span class="asterisk">
+            >VIII)Door to Door Collection of solid waste<span class="asterisk">
               *</span
             ></label
           >
@@ -431,23 +448,11 @@
           />
         </div>
 
-        <div class="col-md-4 col-xs-10">
-          <label class="zlabel" for="name">
-            13 No. of non-residential premises including commercial
-            establishments, hotels, restaurants educational institutions/
-            offices etc covered
-            <span class="asterisk"> *</span></label
-          >
-          <q-input
-            dense
-            outlined
-            v-model="formData.pollution_authorise_solidwaste_two_iii"
-          />
-        </div>
+  
 
         <div class="col-12">
           <label class="zlabel" for=""
-            >Percentage of residential and non-residential premises covered in
+            >13.Percentage of residential and non-residential premises covered in
             door to door collection through:</label
           >
           <div class="row q-col-gutter-md q-ml-md">
@@ -602,7 +607,7 @@
 
         <div class="zlabel col-12">Secondary Waste Storage facilities</div>
 
-        <div class="col-md-4 col-xs-10">
+        <div class="col-sm-10 col-xs-12">
           <label class="zlabel" for="name">
             23.No. and type of waste storage depots in the city/town Open waste
             storage sites Masonry bins Cement concrete cylinder bins
@@ -637,12 +642,12 @@
         </div>
 
         <div class="zlabel col-12">
-          Ward wise details of waste storage depots (attach):
+          25.Ward wise details of waste storage depots (attach):
         </div>
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            Ward no
+            a)Ward no
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -654,7 +659,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            Area
+            b)Area
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -666,7 +671,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            Population
+            c)Population
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -678,7 +683,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            No. of bins placed
+            d)No. of bins placed
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -690,7 +695,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            Total volume of bins placed
+            e)Total volume of bins placed
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -702,7 +707,7 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            25. Total storage capacity of waste storage facilities in cubic
+            26. Total storage capacity of waste storage facilities in cubic
             meters
             <span class="asterisk"> *</span></label
           >
@@ -715,7 +720,722 @@
 
         <div class="col-md-4 col-xs-10">
           <label class="zlabel" for="name">
-            26. Total waste actually stored at the waste storage depots daily
+            27. Total waste actually stored at the waste storage depots daily
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-12">
+          <label class="zlabel" for="name"
+            >28. Give frequency of collection of waste from the depots Number of
+            bins cleared<span class="asterisk"> *</span></label
+          >
+
+          <div class="row justify q-col-gutter-md q-ml-md">
+            <div class="col-md-4 col-xs-10">
+              <label class="zlabel" for="name">
+                a)No of bins daily<span class="asterisk"> *</span></label
+              >
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_authorise_solidwaste_two_iii"
+              />
+            </div>
+
+            <div class="col-md-4 col-xs-10">
+              <label class="zlabel" for="name">
+                b) No of bins daily alternate day
+                <span class="asterisk"> *</span></label
+              >
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_authorise_solidwaste_two_iii"
+              />
+            </div>
+
+            <div class="col-md-4 col-xs-10">
+              <label class="zlabel" for="name"
+                >c) No of bins twice a week
+                <span class="asterisk"> *</span></label
+              >
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_authorise_solidwaste_two_iii"
+              />
+            </div>
+
+            <div class="col-md-4 col-xs-10">
+              <label class="zlabel" for="name"
+                >d) No of bins once a week
+                <span class="asterisk"> *</span></label
+              >
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_authorise_solidwaste_two_iii"
+              />
+            </div>
+
+            <div class="col-md-4 col-xs-10">
+              <label class="zlabel" for="name"
+                >e) No of bins Occasionally
+                <span class="asterisk"> *</span></label
+              >
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_authorise_solidwaste_two_iii"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            29. Whether storage depots have facility for storage of segregated
+            waste in green, blue and black bins Yes/ No (if yes, add details)
+            No. of green bins: No of blue bins: No. of black bins:
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            30.Whether lifting of solid waste from storage depots is manual or
+            mechanical. Give percentage
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            31.If mechanical - specify the method used front-end loaders/ Top
+            loaders
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            32. Whether solid waste is lifted from door to door and transported
+            to treatment plant directly in a segregated form Yes/ No (if yes,
+            specify)
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            33.Waste Transportation per day Type and Number of vehicles used (pl
+            tick or add)
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            34. Animal cart Tractors No. Trips made waste transported Non
+            tipping Truck Tipping Truck Dumper Placers Refuse collectors
+            Compactors Others JCB/loader
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            35. Frequency of transportation of waste (Frequency (%) of waste
+            transported Daily Alternate day Twice a week Once a week
+            Occasionally)
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            36. Quantity of waste transported each day in tpd
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            37. Percentage of total waste transported daily %
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            38 Waste Treatment Technologies used
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            39 Whether solid waste is processed Yes/No
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            40 If yes, Quantity of waste processed daily in tpd
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            41. Land(s) available with the local body for waste processing (in
+            Hectares)
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            42. Land currently utilized for waste processing
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            43. Solid waste processing facilities in operation
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            44 Solid waste processing facilities under construction
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            45. Distance of processing facilities from city/town boundary
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            46.Details of technologies adopted
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            47. Composting, Qty. raw material processed Qty. fina product
+            produced Qty. sold Qty. of residual waste landfilled
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            48 Vermi composting Qty. raw material processed Qty. final product
+            produced Qty. sold Quantity of residual waste landfilled
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            49 Bio-methanation Qty. raw material processed Qty. final product
+            produced Qty. sold Quantity of residual waste landfilled
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            50. Refuse Derived Fuel Qty. raw material processed Qty. final
+            product produced Qty. sold Quantity of residual waste landfilled
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            51. Waste to Energy technology such as incineration, gasification,
+            pyrolysis or any other technology (give detail) Qty. raw material
+            processed Qty. final product produced Qty. sold Quantity of residual
+            waste landfilled
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            52. Co-processing Qty. raw material processed
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            53. Combustible waste supplied to cement plant
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            54. Combustible waste supplied to solid waste-based power plants
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            55. Others (Qty)
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            56.Solid waste disposal facilities
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            57. No. of dumpsites sites available with the local body
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            58. No. of sanitary landfill sites available with the local body
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            59. Area of each such sites available for waste disposal
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            60. Area of land currently used for waste disposal
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            61. Distance of dumpsite/landfill facility from city/town kms
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            62. Distance from the nearest habitation kms
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            63. Distance from water body kms
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            64. Distance from state/national highway kms
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            65. Distance from Airport kms
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            66. Distance from important religious places or historical monument
+            kms
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            67. Whether it falls in flood prone area Yes/No
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            68 Whether it falls in earthquake fault line area Yes/No
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            69. Quantity of waste landfilled each day tpd
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            70.Whether landfill site is fenced Yes / No
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            71. Whether Lighting facility is available on site Yes / No
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            72. Whether Weigh bridge facility available Yes / No
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            73. Vehicles and equipments used at landfill (specify) Bulldozer,
+            Compacters etc. available <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            74. Manpower deployed at landfill site Y es/No (if yes, attach
+            details) <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            75. Whether covering is done on daily basis Yes/No
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            76. If not, Frequency of covering the waste deposited at the
+            landfill
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            77. Cover material used
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            78. Whether adequate covering material is available Yes/No
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            79. Provisions for gas venting provided Yes/No, (if yes, attach
+            technical data sheet)
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            80. Provision for leachate collection Yes/No, (if yes, attach technical
+            data sheet)
             <span class="asterisk"> *</span></label
           >
           <q-input
@@ -725,6 +1445,131 @@
           />
         </div>
       </div>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+      <label class="zlabel" for="name">
+        10 Whether an Action Plan has been prepared for improving solid waste
+        management practices in the city Yes/No (if Yes attach Action Plan
+        details)
+      </label>
+      <q-file
+        v-model="formData.pollution_authorise_solidwaste_signature"
+        outlined
+      >
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+    </div>
+
+    <div class="col-12">
+      <label class="zlabel" for="name">11<span class="asterisk"> </span></label>
+
+      <div class="row justify q-col-gutter-md q-ml-md">
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            I) What separate provisions are made for: Dairy related activities:
+            city/town<span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name">
+            II) Slaughter houses waste: Yes/No
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-10">
+          <label class="zlabel" for="name"
+            >III) C&D waste (construction debris): Yes/No
+            <span class="asterisk"> *</span></label
+          >
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_authorise_solidwaste_two_iii"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+      <label class="zlabel" for="name">
+        12 Details of Post Closure Plan Attach Plan
+      </label>
+      <q-file
+        v-model="formData.pollution_authorise_solidwaste_signature"
+        outlined
+      >
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+      <label class="zlabel" for="name">
+        13.How many slums are identified and whether these are provided with
+        Solid Waste Management facilities: Yes/ No(if Yes, attach details)
+      </label>
+      <q-file
+        v-model="formData.pollution_authorise_solidwaste_signature"
+        outlined
+      >
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+      <label class="zlabel" for="name">
+        14 Give details of manpower deployed for collection including street
+        sweeping, secondary storage, transportation, processing and disposal of
+        waste
+      </label>
+      <q-input
+        dense
+        outlined
+        v-model="formData.pollution_authorise_solidwaste_two_iii"
+      />
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+      <label class="zlabel" for="name">
+        15 Mention briefly, the difficulties being experienced by the local body
+        in complying with provisions of these rules
+      </label>
+      <q-input
+        dense
+        outlined
+        v-model="formData.pollution_authorise_solidwaste_two_iii"
+      />
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+      <label class="zlabel" for="name">
+        16 Mention briefly, if any innovative idea is implemented to tackle a
+        problem related to solid waste, which could be replicated by other local
+        bodies.
+      </label>
+      <q-input
+        dense
+        outlined
+        v-model="formData.pollution_authorise_solidwaste_two_iii"
+      />
     </div>
 
     <div class="col-md-6 col-xs-12">

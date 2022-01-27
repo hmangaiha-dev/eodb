@@ -36,6 +36,11 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'POLLUTION_ACCIDENT_HAZARDOUS', 'title' => 'ACCIDENT REPORTING FOR HAZARDOUS WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_ACCIDENT_SOLIDWASTE', 'title' => 'ACCIDENT REPORTING DUE TO SOLID WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_AUTHORISE_SOLID_WASTE', 'title' => 'APPLICATION FOR OBTAINING AUTHORISATION UNDER SOLID WASTE MANAGEMENT RULES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_PRODUCER_BRAND', 'title' => 'APPLICATION FOR REGISTRATION FOR PRODUCERS or BRAND OWNERS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_11', 'title' => 'Application Form for Registration of Units Engaged in Processing or Recycling of Plastic Waste', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_12', 'title' => 'APPLICATION FOR REGISTRATION FOR MANUFACTURERS OF PLASTIC RAW MATERIALS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_13', 'title' => 'FORMAT OF ANNUAL REPORT BY OPERATOR OF PLASTIC WASTE PROCESSING OR RECYCLING FACILITY TO THE LOCAL BODY', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+
 
         ['code' => 'FOOD_DRUG_GENERAL_RETAIL', 'title' => 'Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In Schedule X', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'FOOD_DRUG_RESTRICTED_RETAIL', 'title' => 'APPLICATION FOR GRANT OR RENEWAL OF A (LICENCE TO SELL, STOCK, EXHIBIT OR OFFER FOR SALE, OR DISTRIBUTE) HOMOEOPATHIC MEDICINES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],

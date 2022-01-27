@@ -323,6 +323,46 @@ export default {
               "pages/common/dept_services/pollution/formatofannualreport/Application.vue"
             ),
         },
+        {
+          path: "registration-as-producer-brand-owners-under-plastic-waste-management",
+          name: "pcb:brand-owners",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/10/Application.vue"
+            ),
+        },
+        {
+          path: "registration-units-engaged-processing-recycling-plastic-waste",
+          name: "pcb:units-enganed",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/11/Application.vue"
+            ),
+        },
+        {
+          path: "registration-manufacturers-plastic-raw-material",
+          name: "pcb:plastic-manufacture",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/12/Application.vue"
+            ),
+        },
+        {
+          path: "submission-anualreportby-operatorofplasticwasteprocessing-or-recyclingfacility-to-localbody",
+          name: "pcb:plastic-local-body",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/13/Application.vue"
+            ),
+        },
+        {
+          path: "anual-report-plastic-waste-management-submitted-by-local-body",
+          name: "pcb:plastic-waste-management",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/14/Application.vue"
+            ),
+        },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],
