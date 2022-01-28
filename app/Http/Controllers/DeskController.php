@@ -13,6 +13,7 @@ class DeskController extends Controller
 
         return $staff->myApplication()
             ->where('status', 'dealing')
+            ->where('applications.archived',false)
             ->paginate();
     }
 }

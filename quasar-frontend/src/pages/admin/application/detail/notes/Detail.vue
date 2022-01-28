@@ -3,7 +3,7 @@
     <div class="flex justify-between">
       <p class="zlabel">{{ formData.title }}</p>
       <q-btn @click="handleDelete" :disable="$store.state.authData.currentUser.id!==formData.staff_id" flat
-             color="negative" label="Delete ?"/>
+             color="negative" label="Delete" no-caps/>
     </div>
     <q-input outlined
              dense

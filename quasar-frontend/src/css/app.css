@@ -424,7 +424,11 @@
   border-radius: 14px;
   background: #F1F1F1;
 }
-
+.selected-menu{
+  background: #b9d8d4;
+  opacity: 0.8;
+  color: #85193f;
+}
 @media (max-width: 600px) {
   .govt-logo {
     width: 100% !important;

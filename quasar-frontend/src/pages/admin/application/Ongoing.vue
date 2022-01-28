@@ -1,6 +1,5 @@
 <template>
   <q-page class="container-lg zcard q-my-md" padding>
-    <h1 class="ztitle">Ongoing Applications</h1>
     <div class="row ">
       <div class="col-xs-12">
         <q-table
@@ -8,14 +7,14 @@
           :loading="localData.loading"
           @request="onRequest"
           flat
-          card-class="zdetailcard"
+          title="Ongoing Applications"
           :rows="tableData.data"
           :columns="columns"
           row-key="fullname"
           binary-state-sort
           :rows-per-page-options="[7,15,30,50]"
         >
-          <template v-slot:top>
+          <template v-slot:top-right>
             <q-input outlined
                      dense
                      v-model="localData.search"

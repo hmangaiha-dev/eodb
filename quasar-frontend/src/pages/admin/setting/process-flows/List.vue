@@ -1,5 +1,5 @@
 <template>
-  <q-page class="container-lg" padding>
+  <q-page class="container-lg zcard" padding>
     <p class="zsubtitle">Process flows</p>
 
     <div>

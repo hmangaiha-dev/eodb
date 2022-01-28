@@ -22,7 +22,11 @@
            </q-item-label>
          </q-item-section>
           <q-item-section side>
-            <q-btn @click="downloadCert(certificate)" round icon="cloud_download"/>
+            <div class="flex-inline">
+              <q-btn @click="downloadCert(certificate)" round flat size="md" icon="cloud_download"/>
+              <q-btn @click="deleteCert(certificate)" round flat size="md" icon="delete"/>
+            </div>
+
           </q-item-section>
         </q-item>
       </q-list>
@@ -59,6 +63,14 @@ export default {
       localState.certificates = list;
       localState.openUpload=false
     }
+    const deleteCert=cert=>{
+      api.delete(`applications/${route.params.id}/${cert.id}/certificate`)
+      .then(res=>{
+        localState.certificates = res.data.list;
+        q.notify({type:'positive',message:res.data.message})
+      })
+      .catch(err=>q.notify({type:'negative',message:err.response?.message || err.toString()}))
+    }
     const downloadCert=certificate=>{
       let a=document.createElement('a');
       a.href = certificate.full_path;
@@ -82,6 +94,7 @@ export default {
     return{
       downloadCert,
       onUploaded,
+      deleteCert,
       localState
     }
   }

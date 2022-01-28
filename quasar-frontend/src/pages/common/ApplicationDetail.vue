@@ -1,77 +1,27 @@
 <template>
-  <q-page padding>
+  <q-page padding class="container-lg">
     <q-dialog v-model="dialog">
       <q-card>
-        <embed :src="attachment" width="500" height="500" />
+        <embed :src="attachment" width="500" height="500"/>
       </q-card>
     </q-dialog>
 
-    <div class="container-lg zcard">
-
-      <div class="row">
-        <div class="col-xs-12 ztitle">
-          {{ localData.application?.application_name }}
-        </div>
-      </div>
-      <div class="row q-col-gutter-xs q-ma-lg">
-        <div
-          :class="[item.field_value != null ? 'q-ml-md' : '']"
-          v-for="(item, i) in localData.fields"
-          :key="i"
-          class="col-12 row"
-        >
-          <div
-            :class="[
-            item.field_value == null ? 'col-12 nofield' : 'col-6 zlabel',
-          ]"
-          >
-            {{ item.field_label }}
-          </div>
-          <div class="col-6 zvalue">{{ item.field_value }}</div>
-        </div>
-      </div>
-      <Attachments :attachments="localData.attachments"/>
-
-      <!--    <div class="ztitle">Attachments</div>-->
-
-      <!--    <div v-for="(item, i) in localData.attachments" :key="i" class="row">-->
-      <!--      <div class="zlabel col-4">-->
-      <!--        {{ item.label }}-->
-      <!--      </div>-->
-
-      <!--      <div class="zlabel col-4">-->
-      <!--        &lt;!&ndash; <embed :src="pdfFile" width="500" height="500" /> &ndash;&gt;-->
-      <!--        <q-btn-->
-      <!--        flat-->
-      <!--          color="primary"-->
-
-      <!--          label="view"-->
-      <!--          @click="getFile(item.path)"-->
-      <!--        />-->
-      <!--        &lt;!&ndash; {{ item.path }} &ndash;&gt;-->
-      <!--      </div>-->
-      <!--    </div>-->
-      <!--    <q-separator class="q-my-md" />-->
-      <!--    <div class="zcard col-xs-12 q-gutter-xs">-->
-      <!--      <q-btn-->
-      <!--        v-for="(action, i) in localData.actions"-->
-      <!--        :name="action.value"-->
-      <!--        :key="i"-->
-      <!--        outline-->
-      <!--        :label="action?.label"-->
-      <!--      />-->
-      <!--    </div>-->
+    <h6 class="zsubtitle">{{localData.application?.application_name || ''}}</h6>
+    <br/>
+    <br/>
+      <div v-html="localData.template"/>
+    <Attachments :attachments="localData.attachments"/>
+    <div class="col-12">
+      <q-btn @click="printApplication" label="Print"/>
     </div>
-
   </q-page>
 </template>
 <script>
-import { onMounted } from "vue";
-import { api } from "boot/axios";
-import { useQuasar } from "quasar";
-import { reactive } from "@vue/reactivity";
-import { useRoute } from "vue-router";
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
+import {api} from "boot/axios";
+import {useQuasar} from "quasar";
+import {reactive} from "@vue/reactivity";
+import {useRoute} from "vue-router";
 import Attachments from "pages/common/attachments/Attachments";
 
 export default {
@@ -84,45 +34,32 @@ export default {
     const attachment = ref('');
     const localData = reactive({
       application: {},
-      fields: [],
-      actions: [],
+      template: 'test',
       attachments: [],
     });
+
+    const getPrint = (id) => {
+      api.get(`applications/${id}/print`)
+        .then(res => {
+          const {template, application} = res.data;
+          localData.template = template;
+          localData.application = application;
+        })
+        .catch(err => q.notify({type: "negative", message: err.response?.message || ''}))
+    }
     onMounted(() => {
       const id = route.params.id;
-      api
-        .get(`applications/${id}`)
-        .then((res) => {
-          // console.log('applicant details',res.data);
-          const {
-            application_code,
-            application_values,
-            application_name,
-            regn_no,
-            current_state,
-            attachments,
-          } = res.data.data;
-          localData.actions = res.data.actions;
-          localData.application.regn_no = regn_no;
-          localData.application.application_code = application_code;
-          localData.application.application_name = application_name;
-          localData.application.current_state = current_state;
-          localData.fields = application_values;
-          localData.attachments = attachments;
-        })
-        .catch((err) => {
-          let message = err.response?.message || "Something wrong";
-          q.notify({ type: "negative", message });
-        });
+      getPrint(id);
     });
     return {
       localData,
       dialog,
       attachment,
+      printApplication: () => window.print(),
       getFile: (path) => {
         attachment.value = "http://localhost:8000/storage/" + path;
         dialog.value = true;
-        console.log('attachment',attachment.value);
+        console.log('attachment', attachment.value);
       },
     };
   },

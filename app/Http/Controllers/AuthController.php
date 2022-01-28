@@ -40,14 +40,14 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required:confirmed'
         ]);
-        $authenticated = Auth::attempt([
+        $authenticated = Auth::guard('user')->attempt([
             'email' => $request->get('email'),
             'password' => $request->get('password'),
         ]);
         if (!$authenticated) {
             throw new \Exception('Invalid credential', 402);
         }
-        $user = Auth::user();
+        $user = Auth::guard('user')->user();
 
         $personalToken = $user->createToken('personal_token')->plainTextToken;
         return response()->json([
@@ -59,7 +59,8 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::user()?->tokens()->delete();
+        Auth::guard('user')->logout();
         return response()->json([
             'currentUser' => null,
             'message' => 'Logout successfully'

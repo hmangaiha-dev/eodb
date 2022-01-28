@@ -66,6 +66,7 @@ Route::group(['prefix' => 'office', 'middleware' => ['auth:sanctum','staff']], f
     Route::put('{office}', [OfficeController::class, 'update']);
     Route::delete('{office}', [OfficeController::class, 'destroy']);
     Route::get('applications/ongoing', [OfficeController::class, 'onGoingApplications']);
+    Route::get('applications/archived', [OfficeController::class, 'archivedApplications']);
     Route::get('users/{office}', [OfficeController::class, 'officeUsers']);
 });
 Route::group(['prefix' => 'staff', 'middleware' => ['auth:sanctum','staff']], function () {
@@ -96,13 +97,16 @@ Route::group(['prefix' => 'process-flows', 'middleware' => ['auth:sanctum','staf
 
 Route::group(['prefix' => 'application-profiles','middleware' => ['auth:sanctum','staff']],function(){
     // Route::get('', [ApplicationProfileController::class, 'index']);
-    Route::post('{model}/print-template', [ApplicationProfileController::class, 'createPrintTemplate']);
+
 
     Route::get('index', [ApplicationProfileController::class, 'index']);
     Route::get('flows', [ApplicationProfileController::class, 'applicationFlows']);
     Route::put('{model}/toggle', [ApplicationProfileController::class, 'toggle']);
     Route::delete('process-flows/{model}', [ApplicationProfileController::class, 'destroyFlow']);
     Route::delete('{model}', [ApplicationProfileController::class, 'deleteApplicationProfile']);
+
+    Route::post('{model}/print-template', [ApplicationProfileController::class, 'createPrintTemplate']);
+    Route::get('{model}/print-template', [ApplicationProfileController::class, 'detail']);
 });
 
 Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], function () {
@@ -125,10 +129,11 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
 
     Route::get('{model}/movements', [ApplicationMovementHistory::class, 'movements']);
     Route::post('{model}/certificate', [ApplicationController::class, 'createCertificate']);
-    Route::delete('{model}/certificate', [ApplicationController::class, 'deleteCertificate']);
+    Route::delete('{model}/{id}/certificate', [ApplicationController::class, 'deleteCertificate']);
     Route::get('{model}/certificates', [ApplicationController::class, 'getCertificates']);
 
     Route::post('{model}/close', [ApplicationController::class, 'close']);
+    Route::get('{model}/print', [ApplicationController::class, 'getPrint']);
 
 });
 

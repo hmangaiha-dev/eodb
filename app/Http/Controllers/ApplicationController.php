@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Stringable;
 use Illuminate\Validation\ValidationException;
 
 class ApplicationController extends Controller
@@ -200,8 +201,10 @@ class ApplicationController extends Controller
         $certificate = $model->certificates()->save(new Certificate($request->only((new Certificate())->getFillable())));
 
         if ($request->hasFile('attachment')) {
-            $path = Storage::disk(Certificate::DISK)->put($model->getCertificateFolder(), $request->file('attachment'));
-            $certificate->update(['path' => $path]);
+            $path = Storage::disk(Certificate::DISK)
+                ->put($model->getCertificateFolder(), $request->file('attachment'));
+            $certificate->path = $path;
+            $certificate->save();
         }
 
         return response()->json([
@@ -210,13 +213,36 @@ class ApplicationController extends Controller
         ], 200);
     }
 
-    public function deleteCertificate(Request $request, Application $model)
+    public function deleteCertificate(Request $request, Application $model,$id)
     {
-
-
+        $model->certificates()->find($id)->delete();
         return response()->json([
             'list' => $model->certificates()->get(),
-            'message' => 'Certificate upload successfully'
+            'message' => 'Certificate deleted successfully'
         ], 200);
+    }
+
+
+    public function getPrint(Request $request, Application $model)
+    {
+        $appProfile=$model->profile()->first();
+//        $appProfile = new ApplicationProfile();
+        $template=$appProfile?->printTemplate()->first()->content ?? '';
+
+        $vars = $model->applicationValues()->get()->flatMap(fn($item) => [
+            "$$item->field_key" => $item->field_value
+        ])->toArray();
+
+        $result=$this->replaceTemplate($template, $vars);
+
+        return response()->json([
+            'template'=>$result,
+            'application'=>$model
+        ], 200);
+    }
+    private function replaceTemplate($str,$replace_vars){
+        $keys = array_keys($replace_vars);
+        $values = array_values($replace_vars);
+        return str_replace($keys, $values, $str);
     }
 }

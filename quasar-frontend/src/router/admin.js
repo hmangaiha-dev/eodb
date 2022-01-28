@@ -36,7 +36,8 @@ export default {
       path: 'applications/:id',
       component: () => import('layouts/ApplicationLayout.vue'),
       children: [
-        {path: '', name: 'application:detail', component: () => import('pages/admin/application/detail/Index.vue')},
+        // {path: '', name: 'application:detail', component: () => import('pages/admin/application/detail/Index.vue')},
+        {path: '', name: 'application:detail', component: () => import('pages/common/ApplicationDetail.vue')},
         {path: 'notes/create', name: 'note:create', component: () => import('pages/admin/application/detail/notes/Create.vue')},
         {path: 'notes/:note', name: 'note:detail', component: () => import('pages/admin/application/detail/notes/Detail.vue')},
       ]
