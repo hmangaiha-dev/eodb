@@ -3,13 +3,17 @@
     <!-- <div class="col-12 text-h6 q-pb-none text-center">Form-2</div>
     <p class="col-12 text-caption q-py-none text-center">[See Rule 3(1)]</p> -->
     <div class="col-12 text-center">
-      <span class=""> FORM - V </span>
+      <span class=""> FORM - II </span>
 
       <p class="ztitle q-my-none">
-        FORMAT FOR ANNUAL REPORT ON PLASTIC WASTE MANAGEMENT TO BE SUBMITTED BY THE LOCAL BODY
+        FORM FOR REGISTRATION OF IMPORTER OF NEW LEAD ACID BATTERIES / PRIMARY LEAD <br />
+        <span class="text-center">
+          {To be submitted in triplicate to the Ministry of Environment and
+          Forests}
+        </span>
       </p>
 
-      <p>[SEE RULES 17 (2)]</p>
+      <p>[See Rules 4 and 7 (vii)]</p>
     </div>
 
     <q-form @submit.prevent="submit" class="col">

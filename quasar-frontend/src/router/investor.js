@@ -327,41 +327,61 @@ export default {
           path: "registration-as-producer-brand-owners-under-plastic-waste-management",
           name: "pcb:brand-owners",
           component: () =>
-            import(
-              "pages/common/dept_services/pollution/10/Application.vue"
-            ),
+            import("pages/common/dept_services/pollution/10/Application.vue"),
         },
         {
           path: "registration-units-engaged-processing-recycling-plastic-waste",
           name: "pcb:units-enganed",
           component: () =>
-            import(
-              "pages/common/dept_services/pollution/11/Application.vue"
-            ),
+            import("pages/common/dept_services/pollution/11/Application.vue"),
         },
         {
           path: "registration-manufacturers-plastic-raw-material",
           name: "pcb:plastic-manufacture",
           component: () =>
-            import(
-              "pages/common/dept_services/pollution/12/Application.vue"
-            ),
+            import("pages/common/dept_services/pollution/12/Application.vue"),
         },
         {
           path: "submission-anualreportby-operatorofplasticwasteprocessing-or-recyclingfacility-to-localbody",
           name: "pcb:plastic-local-body",
           component: () =>
-            import(
-              "pages/common/dept_services/pollution/13/Application.vue"
-            ),
+            import("pages/common/dept_services/pollution/13/Application.vue"),
         },
         {
           path: "anual-report-plastic-waste-management-submitted-by-local-body",
           name: "pcb:plastic-waste-management",
           component: () =>
-            import(
-              "pages/common/dept_services/pollution/14/Application.vue"
-            ),
+            import("pages/common/dept_services/pollution/14/Application.vue"),
+        },
+        {
+          path: "registration-batteries-dealers",
+          name: "pcb:plastic-batteries-dealers",
+          component: () =>
+            import("pages/common/dept_services/pollution/15/Application.vue"),
+        },
+        {
+          path: "registration-importer-new-lead-acid-batteries",
+          name: "pcb:acid-batteries",
+          component: () =>
+            import("pages/common/dept_services/pollution/16/Application.vue"),
+        },
+        {
+          path: "application-obtaining-authorization-under-construction-demolition-waste",
+          name: "pcb:demolition-waste",
+          component: () =>
+            import("pages/common/dept_services/pollution/17/Application.vue"),
+        },
+        {
+          path: "filing-returns-by-auctioneer-used-batteries",
+          name: "pcb:auctioner",
+          component: () =>
+            import("pages/common/dept_services/pollution/18/Application.vue"),
+        },
+        {
+          path: "application-authorization-hazardous-other-wastes",
+          name: "pcb:other-waste",
+          component: () =>
+            import("pages/common/dept_services/pollution/19/Application.vue"),
         },
 
         // claiming-central-capital-investment-subsidy-scheme
@@ -571,7 +591,6 @@ export default {
       ],
     },
 
-
     //Labour and Employment
     {
       path: "labour-skill-development-and-enterprise",
@@ -642,7 +661,6 @@ export default {
               "pages/common/dept_services/labour/certificateregistration/Application.vue"
             ),
         },
-       
       ],
     },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },

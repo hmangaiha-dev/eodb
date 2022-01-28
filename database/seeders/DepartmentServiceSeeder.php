@@ -863,7 +863,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-batteries-dealers",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -875,7 +875,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-importer-new-lead-acid-batteries",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -887,7 +887,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "application-obtaining-authorization-under-construction-demolition-waste",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -899,7 +899,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "filing-returns-by-auctioneer-used-batteries",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -911,7 +911,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "application-authorization-hazardous-other-wastes",
                 'sample_form' => $faker->sentence
             ],
             [

@@ -3,21 +3,21 @@
     <!-- <div class="col-12 text-h6 q-pb-none text-center">Form-2</div>
     <p class="col-12 text-caption q-py-none text-center">[See Rule 3(1)]</p> -->
     <div class="col-12 text-center">
-      <span class=""> FORM - V </span>
+      <span class="ztitle"> FORM - I </span>
 
       <p class="ztitle q-my-none">
-        FORMAT FOR ANNUAL REPORT ON PLASTIC WASTE MANAGEMENT TO BE SUBMITTED BY THE LOCAL BODY
+        APPLICATION REQUIRED FOR GRANT/RENEWAL OF AUTHORISATION FOR GENERATION OR COLLECTION OR STORAGE OR TRANSPORT OR RECEPTION OR RECYCLING OR REUSEOR RECOVERY OR PRE-PROCESSING OR CO-PROCESSING OR UTILISATION OR TREATMENT OR DISPOSAL OF HAZARDOUS AND OTHER WASTE
       </p>
 
-      <p>[SEE RULES 17 (2)]</p>
+      <p>[SEE RULES 6 (1)]</p>
     </div>
 
     <q-form @submit.prevent="submit" class="col">
-      <div class="row q-col-gutter-lg">
-        <div class="col-12">
+      <!-- <div class="row">
+        <div class="col-12"> -->
           <Form ref="applicantRef" />
-        </div>
-      </div>
+        <!-- </div>
+      </div> -->
 
       <div class="text-center q-mt-md col-12">
         <q-btn type="submit" color="green-5" label="Submit" />

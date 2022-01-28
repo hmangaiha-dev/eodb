@@ -40,6 +40,15 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'POLLUTION_FORM_11', 'title' => 'Application Form for Registration of Units Engaged in Processing or Recycling of Plastic Waste', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_12', 'title' => 'APPLICATION FOR REGISTRATION FOR MANUFACTURERS OF PLASTIC RAW MATERIALS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_13', 'title' => 'FORMAT OF ANNUAL REPORT BY OPERATOR OF PLASTIC WASTE PROCESSING OR RECYCLING FACILITY TO THE LOCAL BODY', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_14', 'title' => 'FORMAT FOR ANNUAL REPORT ON PLASTIC WASTE MANAGEMENT TO BE SUBMITTED BY THE LOCAL BODY', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_15', 'title' => 'FORM FOR REGISTRATION OF DEALERS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_16', 'title' => 'FORM FOR REGISTRATION OF IMPORTER OF NEW LEAD ACID BATTERIES / PRIMARY LEAD', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_17', 'title' => 'Application For Obtaining Authorization Under Construction & Demolition Waste', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_18', 'title' => 'FORM FOR FILING RETURNS BY AUCTIONEER OF USED BATTERIES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+
+
+
+
 
 
         ['code' => 'FOOD_DRUG_GENERAL_RETAIL', 'title' => 'Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In Schedule X', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],

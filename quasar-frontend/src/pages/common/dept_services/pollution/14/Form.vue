@@ -225,7 +225,7 @@
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"
-            >ii) Address with Telephone Number or Mobil</label
+            >ii) Address with Telephone Number or Mobile</label
           >
           <q-input
             dense
@@ -279,7 +279,7 @@
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"
-            >ii) Address with Telephone Number or Mobil</label
+            >ii) Address with Telephone Number or Mobile</label
           >
           <q-input
             dense
@@ -381,7 +381,7 @@
       />
     </div>
 
-    <!-- <div class="col-lg-4 col-sm-6">
+     <!-- <div class="col-lg-4 col-sm-6">
       <div class="row justify-end q-col-gutter-md"> -->
 
     <div class="col-xs-12" />

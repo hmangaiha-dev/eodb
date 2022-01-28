@@ -72,12 +72,25 @@
               title="Online Services"
               :columns="columns"
               :rows="rows"
-              row-key="name"
+              row-key="id"
             >
               <template v-slot:body="props">
                 <q-tr :props="props">
+                  <q-td key="id" :props="props"> {{ props.row.id }}. </q-td>
                   <q-td key="service_name" :props="props">
                     {{ props.row.service_name }}
+                  </q-td>
+
+                  <q-td key="how_to_apply" :props="props">
+                    <q-btn
+                      @click="
+                        showDialog(props.row.how_to_apply, 'How to apply')
+                      "
+                      class="text-weight-regular"
+                      color="blue-6"
+                      flat
+                      label="View procedure"
+                    />
                   </q-td>
                   <q-td key="who_should_apply" :props="props">
                     <q-btn
@@ -91,17 +104,6 @@
                       color="blue-6"
                       flat
                       label="View"
-                    />
-                  </q-td>
-                  <q-td key="how_to_apply" :props="props">
-                    <q-btn
-                      @click="
-                        showDialog(props.row.how_to_apply, 'How to apply')
-                      "
-                      class="text-weight-regular"
-                      color="blue-6"
-                      flat
-                      label="View procedure"
                     />
                   </q-td>
                   <q-td key="document_to_submit" :props="props">
@@ -205,6 +207,7 @@ import { useStore } from "vuex";
 // import { ref } from "vue";
 
 console.log("declare");
+
 export default {
   components: {
     AboutUs,
@@ -215,6 +218,7 @@ export default {
     OtherInfo,
     MsegsFooter,
   },
+
   setup(props, context) {
     const rows = ref([]);
     const dialog = ref(false);
@@ -229,6 +233,7 @@ export default {
       // rowsNumber: 11,
       // rowsNumber: 10
     });
+
     const route = useRoute();
 
     const store = useStore();
@@ -287,8 +292,8 @@ export default {
     );
 
     const refresh = () => {
-      const result = deptServices.filter((dept) => {
-        // console.log('dept value',dept.slug);
+      const result = deptServices.filter((dept, index) => {
+        // console.log('dept value and index',dept.slug,index);
         return dept.slug == route.params.deptname;
       });
 
@@ -299,6 +304,11 @@ export default {
       rows.value = result[0]?.services;
 
       pagination.rowsPerPage = rows.value.length;
+
+      rows.value.forEach((row, index) => {
+        row.id = index + 1;
+        // console.log("row and index", row, index);
+      });
     };
 
     const showDialog = (value, key) => {
@@ -309,6 +319,13 @@ export default {
     };
 
     const columns = ref([
+      {
+        name: "id",
+        align: "center",
+        label: "#",
+        field: "id",
+        sortable: true,
+      },
       {
         name: "service_name",
         align: "left",

@@ -3,13 +3,16 @@
     <!-- <div class="col-12 text-h6 q-pb-none text-center">Form-2</div>
     <p class="col-12 text-caption q-py-none text-center">[See Rule 3(1)]</p> -->
     <div class="col-12 text-center">
-      <span class=""> FORM - V </span>
+      <span class=""> FORM - IX </span>
 
       <p class="ztitle q-my-none">
-        FORMAT FOR ANNUAL REPORT ON PLASTIC WASTE MANAGEMENT TO BE SUBMITTED BY THE LOCAL BODY
+        FORM FOR FILING RETURNS BY AUCTIONEER OF USED BATTERIES <br />
+        <span class="text-center">
+          (To be submitted by the auctioneer to State Board by 30th June and 31st December of every year)
+        </span>
       </p>
 
-      <p>[SEE RULES 17 (2)]</p>
+      <p>[see rule 11 (ii)]</p>
     </div>
 
     <q-form @submit.prevent="submit" class="col">
