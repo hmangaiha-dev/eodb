@@ -158,11 +158,11 @@ export default {
                         ),
                 },
                 {
-                    path: "application-for-approval-&-Notification-of-sites",
-                    name: "pcb:25",
+                    path: "authorization-bio-medical-waste",
+                    name: "pcb:23",
                     component: () =>
                         import(
-                            "pages/common/dept_services/pollution/authorizationGenerationorStorage/Application.vue"
+                            "pages/common/dept_services/pollution/authorizationBioMedicalWaste/Application.vue"
                         ),
                 },
 

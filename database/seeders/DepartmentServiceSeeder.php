@@ -925,7 +925,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "filing-returns-of-sale-new-batteries-collection-old-batteries",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -937,7 +937,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "application-authorization-hazardous-other-wastes",
+                'path' => "authorisation-generating-storage-treatment-dispostal-eWaste_manufacturer",
                 'sample_form' => $faker->sentence
             ],
             [
