@@ -120,6 +120,77 @@ export default {
                             "pages/common/dept_services/legal_metrology/reverification/Application.vue"
                         ),
                 },
+
+
+                // pollution
+                {
+                    path: "filing-returns-of-sale-new-batteries-collection-old-batteries",
+                    name: "pcb:20",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/pollution/fillingReturnsSaleBattery/Application.vue"
+                        ),
+                },
+                
+
+                // claiming-central-capital-investment-subsidy-scheme
+            ],
+
+            path: "pollution-control-board",
+            component: () => import("layouts/DummyLayout.vue"),
+            beforeEnter: checkAuth,
+            children: [
+                                // pollution
+                {
+                    path: "filing-returns-of-sale-new-batteries-collection-old-batteries",
+                    name: "pcb:20",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/pollution/fillingReturnsSaleBattery/Application.vue"
+                        ),
+                },
+                {
+                    path: "authorisation-generating-storage-treatment-dispostal-eWaste_manufacturer",
+                    name: "pcb:21",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/pollution/authorizationGenerationorStorage/Application.vue"
+                        ),
+                },
+                {
+                    path: "application-for-approval-&-Notification-of-sites",
+                    name: "pcb:25",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/pollution/authorizationGenerationorStorage/Application.vue"
+                        ),
+                },
+
+                
+                {
+                    path: "authorization-facilities-processing-environmentally-sound-management-practice-recycling-ewaste",
+                    name: "pcb:22",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/pollution/authorizationFacilities/Application.vue"
+                        ),
+                },
+                {
+                    path: "authorization-e-waste-management",
+                    name: "pcb:24",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/pollution/authorizationeWaste/Application.vue"
+                        ),
+                },
+                {
+                    path: "application-for-approval-&-Notification-of-sites",
+                    name: "pcb:25",
+                    component: () =>
+                        import(
+                            "pages/common/dept_services/pollution/approvalNotification/Application.vue"
+                        ),
+                },
                 
 
                 // claiming-central-capital-investment-subsidy-scheme
