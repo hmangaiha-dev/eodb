@@ -57,6 +57,7 @@ class ApplicationController extends Controller
 
     public function submitApplication(Request $request)
     {
+        
 
         $this->validate($request, [
             'application_code' => ['required'],
