@@ -14,6 +14,13 @@
           >
           <q-input dense outlined v-model="formData.applicant_name" />
         </div>
+         <div class="col-md-6 col-xs-10">
+          <label class="zlabel" for="name">
+           (ii) Name of HCF or CBMWTF
+            <span class="asterisk"> *</span></label
+          >
+          <q-input dense outlined v-model="formData.applicant_name" />
+        </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"
             >(iii) Address For Correspondence</label
@@ -706,7 +713,6 @@ export default {
       mother_name: "",
       birth_place: "",
       phone_no: "",
-      email: currentUser?.email,
       aadhaar_no: "",
       relation: "Father",
       relation_name: "",

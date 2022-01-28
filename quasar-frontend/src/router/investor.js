@@ -203,13 +203,28 @@ export default {
               "pages/common/dept_services/land_revenue/landsettlement/Application.vue"
             ),
         },
-
         {
           path: "transfer-of-land-ownership",
           name: "land:land-transfer",
           component: () =>
             import(
               "pages/common/dept_services/land_revenue/landtransfer/Application.vue"
+            ),
+        },
+        {
+          path: "partition-of-lsc",
+          name: "land:land-partition",
+          component: () =>
+            import(
+              "pages/common/dept_services/land_revenue/partitionlsc/Application.vue"
+            ),
+        },
+        {
+          path: "allotment-of-land-to-the-government",
+          name: "land:allotment-govt",
+          component: () =>
+            import(
+              "pages/common/dept_services/land_revenue/allotmentlandtogovt/Application.vue"
             ),
         },
       ],
@@ -285,12 +300,88 @@ export default {
             ),
         },
         {
-          path: "submission-anual-report-bio-medical-wastes",
-          name: "indudsdsfsftries:central-captial",
+          path: "submission-anual-report-hazardous-wastes",
+          name: "pcb:annual-report",
           component: () =>
             import(
               "pages/common/dept_services/pollution/annualreport/Application.vue"
             ),
+        },
+        {
+          path: "authorisation-under-solid-waste-management-rules-for-processing-recycling-treatment",
+          name: "pcb:authorisation-solidwaste",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/authorisationundersolidwaste/Application.vue"
+            ),
+        },
+        {
+          path: "anual-report-to-be-submitted-by-operator-of-facility-localbody",
+          name: "pcb:authorisation-solidwaste",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/formatofannualreport/Application.vue"
+            ),
+        },
+        {
+          path: "registration-as-producer-brand-owners-under-plastic-waste-management",
+          name: "pcb:brand-owners",
+          component: () =>
+            import("pages/common/dept_services/pollution/10/Application.vue"),
+        },
+        {
+          path: "registration-units-engaged-processing-recycling-plastic-waste",
+          name: "pcb:units-enganed",
+          component: () =>
+            import("pages/common/dept_services/pollution/11/Application.vue"),
+        },
+        {
+          path: "registration-manufacturers-plastic-raw-material",
+          name: "pcb:plastic-manufacture",
+          component: () =>
+            import("pages/common/dept_services/pollution/12/Application.vue"),
+        },
+        {
+          path: "submission-anualreportby-operatorofplasticwasteprocessing-or-recyclingfacility-to-localbody",
+          name: "pcb:plastic-local-body",
+          component: () =>
+            import("pages/common/dept_services/pollution/13/Application.vue"),
+        },
+        {
+          path: "anual-report-plastic-waste-management-submitted-by-local-body",
+          name: "pcb:plastic-waste-management",
+          component: () =>
+            import("pages/common/dept_services/pollution/14/Application.vue"),
+        },
+        {
+          path: "registration-batteries-dealers",
+          name: "pcb:plastic-batteries-dealers",
+          component: () =>
+            import("pages/common/dept_services/pollution/15/Application.vue"),
+        },
+        {
+          path: "registration-importer-new-lead-acid-batteries",
+          name: "pcb:acid-batteries",
+          component: () =>
+            import("pages/common/dept_services/pollution/16/Application.vue"),
+        },
+        {
+          path: "application-obtaining-authorization-under-construction-demolition-waste",
+          name: "pcb:demolition-waste",
+          component: () =>
+            import("pages/common/dept_services/pollution/17/Application.vue"),
+        },
+        {
+          path: "filing-returns-by-auctioneer-used-batteries",
+          name: "pcb:auctioner",
+          component: () =>
+            import("pages/common/dept_services/pollution/18/Application.vue"),
+        },
+        {
+          path: "application-authorization-hazardous-other-wastes",
+          name: "pcb:other-waste",
+          component: () =>
+            import("pages/common/dept_services/pollution/19/Application.vue"),
         },
 
         // claiming-central-capital-investment-subsidy-scheme
@@ -308,6 +399,14 @@ export default {
           component: () =>
             import(
               "pages/common/dept_services/power/newconnection/Application.vue"
+            ),
+        },
+        {
+          path: "new-connection-high-tension",
+          name: "power:newconnection2",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/newconnection2/Application.vue"
             ),
         },
         {
@@ -415,6 +514,14 @@ export default {
               "pages/common/dept_services/food_drug/wholesaleordistribute/Application.vue"
             ),
         },
+        {
+          path: "form19-B",
+          name: "food:form19B",
+          component: () =>
+            import(
+              "pages/common/dept_services/food_drug/homoeopathic/Application.vue"
+            ),
+        },
       ],
     },
 
@@ -484,7 +591,6 @@ export default {
       ],
     },
 
-
     //Labour and Employment
     {
       path: "labour-skill-development-and-enterprise",
@@ -547,8 +653,14 @@ export default {
               "pages/common/dept_services/labour/licenceregistration/Application.vue"
             ),
         },
-
-        // claiming-central-capital-investment-subsidy-scheme
+        {
+          path: "certificate-of-registration-of-establishments",
+          name: "labour:cert-establishment",
+          component: () =>
+            import(
+              "pages/common/dept_services/labour/certificateregistration/Application.vue"
+            ),
+        },
       ],
     },
     // { path: 'amc/allotment-of-industrial-plot',name:'industries:allotment', component: () => import('pages/common/dept_services/Industries/Allotment/AllotmentApplicationForm.vue') },

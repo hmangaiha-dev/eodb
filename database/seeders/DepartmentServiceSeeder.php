@@ -313,7 +313,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "form19-B",
                 'sample_form' => $faker->sentence
             ],
 
@@ -328,7 +328,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "certificate-of-registration-of-establishments",
                 'sample_form' => $faker->sentence
             ],
 
@@ -517,7 +517,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "partition-of-lsc",
                 'sample_form' => $faker->sentence
             ],
 
@@ -530,7 +530,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "allotment-of-land-to-the-government",
                 'sample_form' => $faker->sentence
             ],
 
@@ -743,7 +743,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "submission-anual-report-hazardous-wastes",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -767,7 +767,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "authorisation-under-solid-waste-management-rules-for-processing-recycling-treatment",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -779,7 +779,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "anual-report-to-be-submitted-by-operator-of-facility-localbody",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -803,7 +803,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-as-producer-brand-owners-under-plastic-waste-management",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -815,7 +815,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-units-engaged-processing-recycling-plastic-waste",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -827,7 +827,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-manufacturers-plastic-raw-material",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -839,7 +839,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "submission-anualreportby-operatorofplasticwasteprocessing-or-recyclingfacility-to-localbody",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -851,7 +851,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "anual-report-plastic-waste-management-submitted-by-local-body",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -863,7 +863,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-batteries-dealers",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -875,7 +875,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "registration-importer-new-lead-acid-batteries",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -887,7 +887,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "application-obtaining-authorization-under-construction-demolition-waste",
                 'sample_form' => $faker->sentence
             ],
 
@@ -901,7 +901,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "filing-returns-of-sale-new-batteries-collection-old-batteries",
+                'path' => "filing-returns-by-auctioneer-used-batteries",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -913,7 +913,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "authorisation-generating-storage-treatment-dispostal-eWaste_manufacturer",
+                'path' => "application-authorization-hazardous-other-wastes",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -991,7 +991,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "new-connection-high-tension",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -1226,6 +1226,6 @@ class DepartmentServiceSeeder extends Seeder
 
         DepartmentService::truncate();
 
-        DepartmentService::query()->upsert($services,'department_id');
+        DepartmentService::query()->upsert($services, 'department_id');
     }
 }

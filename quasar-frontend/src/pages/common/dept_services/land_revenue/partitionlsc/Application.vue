@@ -28,15 +28,15 @@ import { onMounted } from "vue";
 import { date } from "quasar";
 
 import Form from "./Form.vue";
-import Part2 from "./Part2.vue";
-import Document from "./Document.vue";
+// import Part2 from "./Part2.vue";
+// import Document from "./Document.vue";
 
 
 export default {
   components: {
     Form,
-    Part2,
-    Document,
+    // Part2,
+    // Document,
   },
   setup(props, context) {
     const store = useStore();
@@ -51,7 +51,6 @@ export default {
       mother_name: "",
       birth_place: "",
       phone_no: "",
-      email: currentUser?.email,
       aadhaar_no: "",
       relation: "Father",
       relation_name: "",
