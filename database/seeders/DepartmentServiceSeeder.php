@@ -890,6 +890,8 @@ class DepartmentServiceSeeder extends Seeder
                 'path' => "application-obtaining-authorization-under-construction-demolition-waste",
                 'sample_form' => $faker->sentence
             ],
+
+            // hmangaiha
             [
                 'department_id' => 11,
                 'category_id' => rand(1, 5),
@@ -923,7 +925,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "authorization-facilities-processing-environmentally-sound-management-practice-recycling-ewaste",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -935,7 +937,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "authorization-bio-medical-waste",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -947,7 +949,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "authorization-e-waste-management",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -959,9 +961,11 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "application-for-approval-&-Notification-of-sites",
                 'sample_form' => $faker->sentence
             ],
+
+        
 
 
             //Power & Electricity

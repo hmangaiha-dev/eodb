@@ -10,6 +10,7 @@ class Attachment extends Model
 {
     use HasFactory;
 
+    const DISK = 'public';
     protected $fillable = ['mime', 'original_name', 'label', 'size', 'path'];
     protected $appends = ['full_path'];
 

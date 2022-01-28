@@ -66,6 +66,7 @@ Route::group(['prefix' => 'office', 'middleware' => ['auth:sanctum','staff']], f
     Route::put('{office}', [OfficeController::class, 'update']);
     Route::delete('{office}', [OfficeController::class, 'destroy']);
     Route::get('applications/ongoing', [OfficeController::class, 'onGoingApplications']);
+    Route::get('users/{office}', [OfficeController::class, 'officeUsers']);
 });
 Route::group(['prefix' => 'staff', 'middleware' => ['auth:sanctum','staff']], function () {
     Route::get('index', [StaffController::class, 'index']);
@@ -106,6 +107,8 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
 //    Route::post('submit', [ApplicationController::class, 'submitApplication']);
     Route::get('me', [DeskController::class, 'myApplication']);
     Route::get('{model}', [ApplicationController::class, 'detail']);
+    Route::post('{model}/states', [ApplicationController::class, 'createState']);
+    Route::get('{model}/states', [ApplicationController::class, 'getStates']);
     Route::post('{model}/forward', [ApplicationController::class, 'forward']);
     Route::get('{model}/notes', [NotesheetController::class, 'notes']);
     Route::get('{model}/movements', [ApplicationMovementHistory::class, 'movements']);
