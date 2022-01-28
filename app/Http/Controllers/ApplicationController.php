@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use App\Models\ApplicationMovement;
 use App\Models\ApplicationProfile;
+use App\Models\Attachment;
+use App\Models\State;
 use App\Utils\AttachmentUtils;
 use App\Utils\KeysUtil;
 use App\Utils\NumberGenerator;
@@ -78,6 +80,7 @@ class ApplicationController extends Controller
             'name'=>'submitted',
             'remark'=>'Application submitted at '.now()->toDateString()
         ]);
+        $application->office()->attach($appProfile->office_id);
 
         DB::transaction(function ($cb) use ($appProfile, $request, $application) {
             //        $formData=$request->except(['application_code', 'department_id']);
@@ -121,5 +124,31 @@ class ApplicationController extends Controller
         return response()->json([
             'message' => 'Application submitted successfully'
         ], 200);
+    }
+
+    public function getStates(Request $request,Application $model)
+    {
+        $states=$model?->states()?->get();
+        return response()->json($states, 200);
+    }
+
+    public function createState(Request $request,Application $model)
+    {
+        $state=$model->states()->create($request->only(['name', 'remark']));
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $path=Storage::disk(Attachment::DISK)->put('states', $file);
+            $state->attachment()->create([
+                'original_name' => $file->getClientOriginalName(),
+                'mime' => $file->getMimeType(),
+                'label' => '',
+                'size' => $file->getSize(),
+                'path' => $path
+            ]);
+        }
+        return response()->json([
+            'list' => $model->states()->get(),
+            'message' => 'Application state created successfully'
+        ],200);
     }
 }

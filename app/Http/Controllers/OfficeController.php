@@ -112,4 +112,11 @@ class OfficeController extends Controller
             ->paginate();
         return response()->json($applications,200);
     }
+
+    public function officeUsers(Request $request,Office $office)
+    {
+        $staffs=$office->staffs()->where('status', 'on-duty')
+            ->get();
+        return response()->json($staffs,200);
+    }
 }

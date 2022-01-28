@@ -11,8 +11,13 @@ class ApplicationProfile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['code', 'title','application_id', 'operational_type','remark','published'];
+    protected $fillable = ['code', 'title','application_id', 'operational_type','remark','published','office_id'];
     protected $appends = ['last_step','actions'];
+
+    public function application(): BelongsTo
+    {
+        return $this->belongsTo(Application::class);
+    }
     public function office(): BelongsTo
     {
         return $this->belongsTo(Office::class);

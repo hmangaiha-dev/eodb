@@ -18,6 +18,7 @@ class CreateOfficeApplicationsTable extends Migration
 
             $table->unsignedInteger('office_id');
             $table->unsignedInteger('application_id');
+            $table->string('movement')->default('in');
 
             $table->timestamps();
         });

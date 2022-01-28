@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunkquasar_frontend"]=self["webpackChunkquasar_frontend"]||[]).push([[1835],{1835:(e,n,r)=>{r.r(n),r.d(n,{default:()=>a});var u=r(3673);function t(e,n,r,t,s,a){const c=(0,u.up)("router-view");return(0,u.wg)(),(0,u.j4)("div",null,[(0,u.Wm)(c)])}const s={setup(){return{}}};s.render=t;const a=s}}]);
