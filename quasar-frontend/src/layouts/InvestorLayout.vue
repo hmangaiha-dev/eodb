@@ -163,7 +163,7 @@
             </q-item>
           </q-drawer>
           <!-- <keep-alive> -->
-            <router-view />
+            <router-view class="container-lg "/>
           <!-- </keep-alive> -->
         </q-page-container>
 
