@@ -907,6 +907,30 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'department_id' => 11,
                 'category_id' => rand(1, 5),
+                'service_name' => "Application for Authorization (Hazardous and Other Wastes)",
+                'who_should_apply' => $faker->sentence,
+                'how_to_apply' => $faker->text,
+                'document_to_submit' => $faker->word,
+                'timeline' => $faker->sentence,
+                'fees' => $faker->randomNumber(3),
+                'path' => "link",
+                'sample_form' => $faker->sentence
+            ],
+            [
+                'department_id' => 11,
+                'category_id' => rand(1, 5),
+                'service_name' => "Form For Filing Returns Of Sale Of New Batteries And Collection Of Old Batteries Under Batteries (Management & Handling) Rules",
+                'who_should_apply' => $faker->sentence,
+                'how_to_apply' => $faker->text,
+                'document_to_submit' => $faker->word,
+                'timeline' => $faker->sentence,
+                'fees' => $faker->randomNumber(3),
+                'path' => "link",
+                'sample_form' => $faker->sentence
+            ],
+            [
+                'department_id' => 11,
+                'category_id' => rand(1, 5),
                 'service_name' => "Application For Obtaining Authorisation For Generation Or Storage Or Treatment Or Disposal Of E-Waste By Manufacturer Or Refurbisher Under e-Waste(Management) Rules",
                 'who_should_apply' => $faker->sentence,
                 'how_to_apply' => $faker->text,
