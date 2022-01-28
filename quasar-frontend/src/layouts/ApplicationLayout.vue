@@ -1,37 +1,45 @@
 <template>
   <q-page class="row q-col-gutter-md q-ma-none container-lg">
-    <div class="col-md-3 bg-grey-1">
+    <div class="col-sm-3 bg-grey-1 print-hide">
       <List :notes="localData.notes"/>
     </div>
-    <div class="col-md-9 column q-gutter-md">
+    <div class="col-sm-9 column q-gutter-md">
+
       <div class="zcard q-mt-sm rounded-borders q-pa-md flex justify-between">
-        <q-btn outline color="negative" label="Send back"/>
         <q-btn @click="closeFile"  color="negative" label="Close"/>
-          <q-btn @click="handleForward" outline color="primary" label="Forward"/>
+        <div class="flex flex-inline q-gutter-sm">
+          <q-btn :disable="localData.current_step<=0" @click="handleBack" outline color="negative" label="Send back"/>
+          <q-btn v-if="localData.current_step!=localData.last_step" @click="handleForward" outline color="primary" label="Forward"/>
+        </div>
       </div>
-      <div class="zcard bg-grey-1 q-pt-lg row">
-        <div class="col-9">
-          <div class="zlabel">Application : <span class="zvalue">{{ localData?.profile?.title }}</span></div>
+
+      <div class="zcard bg-grey-1 q-py-md row">
+        <div class="col-9 print-hide">
+          <div class="zlabel">Application : <span class="zvalue">{{ localData?.application_code }}</span></div>
           <div class="zlabel">Regn No : <span class="zvalue">{{ localData?.regn_no }}</span></div>
           <div class="zlabel">Submitted At : <span class="zvalue">{{ localData?.regn_no }}</span></div>
         </div>
-        <div class="col-3 flex justify-end">
+        <div class="col-3 flex justify-end print-hide">
           <q-btn @click="localData.openHistory=!localData.openHistory;fetchMovements()" no-caps outline flat
                  label="Movement History"/>
-          <q-btn @click="localData.openHistory=!localData.openHistory;fetchMovements()" no-caps outline flat
-                 label="Applicant Actions"/>
           <q-btn :to="{name:'application:detail'}" no-caps color="primary" flat label="View Application"/>
         </div>
-        <div class="col-12 zdetailcard">
-            <states :states="localData.states">
-              <template v-slot:header>
-                <p class="zsubtitle">Application statuses</p>
-                <q-btn @click="localData.createStatus=true" outline label="Create new status"/>
-              </template>
-            </states>
+<!--        <div class="col-12 zdetailcard">-->
+<!--            <states :states="localData.states">-->
+<!--              <template v-slot:header>-->
+<!--                <p class="zsubtitle">Application statuses</p>-->
+<!--                <q-btn @click="localData.createStatus=true" outline label="Create new status"/>-->
+<!--              </template>-->
+<!--            </states>-->
+<!--        </div>-->
+        <div class="col-12 zdetailcard  q-my-md print-hide">
+          <certificates :id="$route.params.id"/>
         </div>
+        <div class="col-12 zdetailcard q-my-md">
+          <router-view @notes="val=>localData.notes=val"/>
+        </div>
+
       </div>
-      <router-view class="zcard" @notes="val=>localData.notes=val"/>
     </div>
     <q-btn :to="{name:'note:create',params:{id:$route.params.id}}" fab icon="edit" color="primary"
            class="absolute-bottom-right q-mr-xl q-mb-xl"/>
@@ -61,9 +69,10 @@ import {useQuasar} from "quasar";
 import Movement from "pages/admin/application/detail/Movement";
 import States from "pages/common/state/List";
 import CreateState from "pages/common/state/Create";
+import Certificates from "pages/admin/application/certificate/List";
 
 export default {
-  components: {CreateState, States, Movement, List},
+  components: {Certificates, CreateState, States, Movement, List},
   setup() {
     const leftDrawerOpen = ref(true)
     const route = useRoute();
@@ -74,7 +83,7 @@ export default {
       notes: [],
       states: [],
       openHistory: false,
-      movements: []
+      movements: [],
     })
 
     const fetchMovements = () => {
@@ -95,13 +104,14 @@ export default {
     const fetchApplication = id => {
       api.get(`applications/${id}`)
         .then(res => {
-          const {regn_no, application_code, current_step, last_step, id, profile} = res.data;
+          const {regn_no, application_code, current_step, last_step, id,created_at, profile} = res.data;
           localData.id = id;
           localData.current_step = current_step;
           localData.last_step = last_step;
           localData.regn_no = regn_no;
           localData.application_code = application_code;
           localData.profile = profile;
+          localData.createdAt = created_at;
         })
         .catch(err => {
           let message = err.response?.message || err.toString()
@@ -111,7 +121,7 @@ export default {
     const fetchNotes = (id) => {
       api.get(`applications/${id}/notes`)
         .then(res => [
-          localData.states = res.data.list
+          localData.notes = res.data.list
         ])
         .catch(err => {
           let message = err.response?.message || err.toString()
@@ -143,11 +153,35 @@ export default {
       localData.createStatus = true;
     }
     const closeFile = () => {
-
+      const {id} = route.params;
+      api.post(`applications/${id}/close`)
+        .then(res => {
+          q.notify({type: 'positive', message: res.data.message})
+          setTimeout(() => {
+            router.replace({name: 'staff:dashboard'});
+          }, 1000)
+        })
+        .catch(err => {
+          q.notify({type: 'negative', message: err.response?.message || err.toString()})
+        });
+    }
+    const handleBack=()=>{
+      const id = route.params.id;
+      api.post(`applications/${id}/backward`)
+        .then(res => {
+          const {message, list, data} = res.data;
+          q.notify({type: 'positive', message})
+          router.replace({name: 'staff:dashboard'})
+        })
+        .catch(err => {
+          let message = err.response?.message || err.toString()
+          q.notify({type: 'negative', message})
+        })
     }
 
     return {
       fetchMovements,
+      handleBack,
       leftDrawerOpen,
       localData,
       handleAdd,

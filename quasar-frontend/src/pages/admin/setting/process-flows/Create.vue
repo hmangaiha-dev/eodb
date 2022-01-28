@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="container-lg">
+  <q-page padding class="container-lg zcard">
     <p class="zsubtitle">Create flow</p>
     <div class="">
       <div class="zdetailcard flex items-center justify-between">

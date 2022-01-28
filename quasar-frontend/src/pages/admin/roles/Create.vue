@@ -1,5 +1,5 @@
 <template>
-  <q-page class="container-lg">
+  <q-page class="container-lg zcard q-my-md">
     <div class="flex flex-inline items-center">
       <h1 class='ztitle'>New role</h1>
       <q-space/>

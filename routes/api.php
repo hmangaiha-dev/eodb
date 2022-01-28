@@ -66,6 +66,7 @@ Route::group(['prefix' => 'office', 'middleware' => ['auth:sanctum','staff']], f
     Route::put('{office}', [OfficeController::class, 'update']);
     Route::delete('{office}', [OfficeController::class, 'destroy']);
     Route::get('applications/ongoing', [OfficeController::class, 'onGoingApplications']);
+    Route::get('applications/archived', [OfficeController::class, 'archivedApplications']);
     Route::get('users/{office}', [OfficeController::class, 'officeUsers']);
 });
 Route::group(['prefix' => 'staff', 'middleware' => ['auth:sanctum','staff']], function () {
@@ -94,28 +95,46 @@ Route::group(['prefix' => 'process-flows', 'middleware' => ['auth:sanctum','staf
     Route::delete('{id}/destroy', [ProcessFlowController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'application-profiles'],function(){
+Route::group(['prefix' => 'application-profiles','middleware' => ['auth:sanctum','staff']],function(){
     // Route::get('', [ApplicationProfileController::class, 'index']);
+
+
     Route::get('index', [ApplicationProfileController::class, 'index']);
     Route::get('flows', [ApplicationProfileController::class, 'applicationFlows']);
     Route::put('{model}/toggle', [ApplicationProfileController::class, 'toggle']);
     Route::delete('process-flows/{model}', [ApplicationProfileController::class, 'destroyFlow']);
     Route::delete('{model}', [ApplicationProfileController::class, 'deleteApplicationProfile']);
+
+    Route::post('{model}/print-template', [ApplicationProfileController::class, 'createPrintTemplate']);
+    Route::get('{model}/print-template', [ApplicationProfileController::class, 'detail']);
 });
 
 Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], function () {
 //    Route::post('submit', [ApplicationController::class, 'submitApplication']);
     Route::get('me', [DeskController::class, 'myApplication']);
     Route::get('{model}', [ApplicationController::class, 'detail']);
+
     Route::post('{model}/states', [ApplicationController::class, 'createState']);
     Route::get('{model}/states', [ApplicationController::class, 'getStates']);
+
     Route::post('{model}/forward', [ApplicationController::class, 'forward']);
+    Route::post('{model}/backward', [ApplicationController::class, 'backward']);
+
     Route::get('{model}/notes', [NotesheetController::class, 'notes']);
-    Route::get('{model}/movements', [ApplicationMovementHistory::class, 'movements']);
-    Route::post('{model}/notes/create', [NotesheetController::class, 'create']);
     Route::get('{model}/notes/{id}', [NotesheetController::class, 'detail']);
     Route::put('{model}/notes/{id}', [NotesheetController::class, 'update']);
+    Route::post('{model}/notes/create', [NotesheetController::class, 'create']);
     Route::delete('{model}/notes/{id}', [NotesheetController::class, 'destroy']);
+
+
+    Route::get('{model}/movements', [ApplicationMovementHistory::class, 'movements']);
+    Route::post('{model}/certificate', [ApplicationController::class, 'createCertificate']);
+    Route::delete('{model}/{id}/certificate', [ApplicationController::class, 'deleteCertificate']);
+    Route::get('{model}/certificates', [ApplicationController::class, 'getCertificates']);
+
+    Route::post('{model}/close', [ApplicationController::class, 'close']);
+    Route::get('{model}/print', [ApplicationController::class, 'getPrint']);
+
 });
 
 Route::post('applications/submit', [ApplicationController::class, 'submitApplication'])->middleware('auth:sanctum');

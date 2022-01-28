@@ -1,8 +1,8 @@
 <template>
-  <q-page class="container-lg">
+  <q-page class="container-lg zcard q-my-md">
     <h1 class="ztitle">Edit profile</h1>
     <br/>
-    <q-form @submit="submit" @reset="reset" class="zdetailcard row q-col-gutter-md">
+    <q-form @submit="submit" @reset="reset" class=" row q-col-gutter-md">
       <div class="col-xs-12 zsubtitle">Profile details</div>
       <div class="col-xs-3">Full name</div>
       <div class="col-xs-9">

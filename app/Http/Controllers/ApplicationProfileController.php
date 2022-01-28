@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\ApplicationProfile;
+use App\Models\PrintTemplate;
 use Illuminate\Http\Request;
 
 class ApplicationProfileController extends Controller
 {
     public function index(Request $request)
     {
+        $search = $request->get('search');
+        $list = ApplicationProfile::query()
+            ->when($search,fn($q)=>$q->where('title','LIKE',"%$search%"))
+            ->paginate();
         return response()->json([
-            'list' =>ApplicationProfile::query()->paginate(),
+            'list' =>$list
         ]);
     }
 
@@ -54,4 +59,22 @@ class ApplicationProfileController extends Controller
                 ->paginate(),
         ]);
     }
+
+    public function createPrintTemplate(Request $request, ApplicationProfile $model)
+    {
+        $template=$model->printTemplate()->updateOrCreate(
+            ['application_profile_id'=>$model->id],
+            $request->only((new PrintTemplate())->getFillable()));
+
+        return response()->json([
+            'message' => 'Application print template created successfully',
+            'data'=>$template
+        ]);
+    }
+
+    public function detail(Request $request, ApplicationProfile $model)
+    {
+        return response()->json($model->load('printTemplate'),200);
+    }
+
 }

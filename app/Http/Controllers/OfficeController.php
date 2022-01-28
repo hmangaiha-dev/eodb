@@ -108,7 +108,17 @@ class OfficeController extends Controller
         $office=$staff->currentPost();
 //        $office = new Office();
         $applications=$office?->applications()
-            ->whereIn('current_state',Application::ONGOING_STATUSES)
+            ->paginate();
+        return response()->json($applications,200);
+    }
+
+    public function archivedApplications(Request $request)
+    {
+        $staff = auth('sanctum')->user();
+        $office=$staff->currentPost();
+//        $office = new Office();
+        $applications=$office?->applications()
+            ->where('archived',true)
             ->paginate();
         return response()->json($applications,200);
     }

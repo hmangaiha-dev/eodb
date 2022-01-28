@@ -144,7 +144,7 @@ class DepartmentSeeder extends Seeder
 
     /**
      * Run the database seeds.
-     * 
+     *
      *
      * @return void
      */
@@ -153,6 +153,6 @@ class DepartmentSeeder extends Seeder
         // Department::truncate();
 
 
-        DB::table('departments')->insert($this->depts);
+        DB::table('departments')->upsert($this->depts,'id');
     }
 }

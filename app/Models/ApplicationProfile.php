@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ApplicationProfile extends Model
 {
@@ -14,6 +15,10 @@ class ApplicationProfile extends Model
     protected $fillable = ['code', 'title','application_id', 'operational_type','remark','published','office_id'];
     protected $appends = ['last_step','actions'];
 
+    public function printTemplate(): HasOne
+    {
+        return $this->hasOne(PrintTemplate::class);
+    }
     public function application(): BelongsTo
     {
         return $this->belongsTo(Application::class);

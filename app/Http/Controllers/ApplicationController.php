@@ -6,14 +6,17 @@ use App\Models\Application;
 use App\Models\ApplicationMovement;
 use App\Models\ApplicationProfile;
 use App\Models\Attachment;
-use App\Models\State;
+use App\Models\Certificate;
 use App\Utils\AttachmentUtils;
 use App\Utils\KeysUtil;
 use App\Utils\NumberGenerator;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Stringable;
+use Illuminate\Validation\ValidationException;
 
 class ApplicationController extends Controller
 {
@@ -37,7 +40,7 @@ class ApplicationController extends Controller
         $appProfile = $model->profile()->first();
 
         if ($currentMovement->step >= $appProfile->last_step) {
-            throw new \Exception('Process finish exception');
+            throw new Exception('Process finish exception');
         }
         $flow = $appProfile->processFlows()->where('step', $currentMovement->step + 1)?->first();
 
@@ -52,6 +55,31 @@ class ApplicationController extends Controller
 
         return response()->json([
             'message' => 'Application forwarded successfully'
+        ], 200);
+    }
+    public function backward(Request $request, Application $model)
+    {
+        $staff = auth('sanctum')->user();
+
+        $currentMovement = $model->movements()->latest()->first();
+        $appProfile = $model->profile()->first();
+
+        if ($currentMovement->step <= 1) {
+            throw new ValidationException('Process finish exception');
+        }
+        $flow = $appProfile->processFlows()->where('step', $currentMovement->step - 1)?->first();
+
+        $currentMovement->status = 'detached';
+        $currentMovement->save();
+        $movement = ApplicationMovement::query()->create([
+            'application_id' => $model->id,
+            'staff_id' => $flow->staff_id,
+            'status' => 'dealing',
+            'step' => $flow->step,
+        ]);
+
+        return response()->json([
+            'message' => 'Application sent back successfully'
         ], 200);
     }
 
@@ -74,11 +102,11 @@ class ApplicationController extends Controller
             'application_profile_id' => $appProfile->id,
             'user_id' => Auth::id(),
             'department_id' => $request->get('department_id'),
-            'current_state'=>'submitted',
+            'current_state' => 'submitted',
         ]);
         $application->states()->create([
-            'name'=>'submitted',
-            'remark'=>'Application submitted at '.now()->toDateString()
+            'name' => 'submitted',
+            'remark' => 'Application submitted at ' . now()->toDateString()
         ]);
         $application->office()->attach($appProfile->office_id);
 
@@ -126,18 +154,18 @@ class ApplicationController extends Controller
         ], 200);
     }
 
-    public function getStates(Request $request,Application $model)
+    public function getStates(Request $request, Application $model)
     {
-        $states=$model?->states()?->get();
+        $states = $model?->states()?->get();
         return response()->json($states, 200);
     }
 
-    public function createState(Request $request,Application $model)
+    public function createState(Request $request, Application $model)
     {
-        $state=$model->states()->create($request->only(['name', 'remark']));
+        $state = $model->states()->create($request->only(['name', 'remark']));
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
-            $path=Storage::disk(Attachment::DISK)->put('states', $file);
+            $path = Storage::disk(Attachment::DISK)->put('states', $file);
             $state->attachment()->create([
                 'original_name' => $file->getClientOriginalName(),
                 'mime' => $file->getMimeType(),
@@ -149,6 +177,72 @@ class ApplicationController extends Controller
         return response()->json([
             'list' => $model->states()->get(),
             'message' => 'Application state created successfully'
+        ], 200);
+    }
+
+    public function close(Request $request, Application $model)
+    {
+        $model->archived = true;
+        $model->save();
+        return response()->json([
+            'list' => Application::query()->paginate(),
+            'message' => 'Application closed/archived successfully'
+        ], 200);
+    }
+
+    public function getCertificates(Request $request, Application $model)
+    {
+        return response()->json([
+            'list'=>$model->certificates()->get()
         ],200);
+    }
+    public function createCertificate(Request $request, Application $model)
+    {
+        $certificate = $model->certificates()->save(new Certificate($request->only((new Certificate())->getFillable())));
+
+        if ($request->hasFile('attachment')) {
+            $path = Storage::disk(Certificate::DISK)
+                ->put($model->getCertificateFolder(), $request->file('attachment'));
+            $certificate->path = $path;
+            $certificate->save();
+        }
+
+        return response()->json([
+            'list' => $model->certificates()->get(),
+            'message' => 'Certificate upload successfully'
+        ], 200);
+    }
+
+    public function deleteCertificate(Request $request, Application $model,$id)
+    {
+        $model->certificates()->find($id)->delete();
+        return response()->json([
+            'list' => $model->certificates()->get(),
+            'message' => 'Certificate deleted successfully'
+        ], 200);
+    }
+
+
+    public function getPrint(Request $request, Application $model)
+    {
+        $appProfile=$model->profile()->first();
+//        $appProfile = new ApplicationProfile();
+        $template=$appProfile?->printTemplate()->first()->content ?? '';
+
+        $vars = $model->applicationValues()->get()->flatMap(fn($item) => [
+            "$$item->field_key" => $item->field_value
+        ])->toArray();
+
+        $result=$this->replaceTemplate($template, $vars);
+
+        return response()->json([
+            'template'=>$result,
+            'application'=>$model
+        ], 200);
+    }
+    private function replaceTemplate($str,$replace_vars){
+        $keys = array_keys($replace_vars);
+        $values = array_values($replace_vars);
+        return str_replace($keys, $values, $str);
     }
 }

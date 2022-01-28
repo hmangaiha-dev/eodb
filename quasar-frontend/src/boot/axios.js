@@ -17,6 +17,7 @@ export default boot(({ app,router,store }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
   let token = localStorage.getItem('token');
   api.defaults.headers['Authorization'] = `Bearer ${token}`;
+
   // api.defaults.withCredentials=true;
 // api.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 

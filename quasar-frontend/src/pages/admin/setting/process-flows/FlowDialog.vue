@@ -21,16 +21,6 @@
                @blur="delete errors['duration']"
       />
 
-      <q-select
-        outlined
-        item-aligned
-        multiple
-        dropdown-icon="arrow_drop_down"
-        v-model="formData.actions"
-        :options="actions"
-        use-chips
-        label="Select actions"
-      />
       <q-input
         outlined
         item-aligned

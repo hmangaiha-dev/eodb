@@ -16,13 +16,17 @@ class Application extends Model
 
     const ONGOING_STATUSES = ['submitted'];
 
-    protected $fillable = ['application_code', 'regn_no','application_profile_id','user_id','department_id' ,'current_state', 'remark'];
+    protected $fillable = ['application_code', 'regn_no','application_profile_id','user_id','department_id' ,'current_state','archived', 'remark'];
     protected $appends = ['application_name','current_step','last_step'];
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
 
+    public function certificates(): MorphMany
+    {
+        return $this->morphMany(Certificate::class,'owner');
+    }
     public function applicationValues(): HasMany
     {
         return $this->hasMany(ApplicationValue::class);
@@ -82,7 +86,12 @@ class Application extends Model
         return $this->belongsToMany(Office::class, 'office_applications');
     }
 
-    protected function serializeDate(DateTimeInterface $date)
+    public function getCertificateFolder(): string
+    {
+        return $this->department()->first()?->dept_code . '/' . $this->application_code;
+    }
+
+    protected function serializeDate(DateTimeInterface $date): string
     {
         return $date->format('Y-m-d H:i:s');
     }
