@@ -9,7 +9,7 @@
         <q-btn @click="closeFile"  color="negative" label="Close"/>
         <div class="flex flex-inline q-gutter-sm">
           <q-btn :disable="localData.current_step<=0" @click="handleBack" outline color="negative" label="Send back"/>
-          <q-btn v-if="localData.current_step!=localData.last_step" @click="handleForward" outline color="primary" label="Forward"/>
+          <q-btn @click="handleForward" outline color="primary" label="Forward"/>
         </div>
       </div>
 

@@ -21,10 +21,10 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'FIRE_NOC', 'title' => 'APPLICATION FORM FOR OBTAINING N.O.C. FROM FIRE & EMERGENCY SERVICES DEPARTMENT, MIZORAM', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'PWD_ROAD_CUTTING', 'title' => 'APPLICATION FORM FOR GRANTING ROAD CUTTING WITHIN MIZORAM', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'PHE_WATER_CONNECTION', 'title' => 'Application form for Domestic House Water Connection', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
-        ['code' => 'PHE_WATER_TRANSFER', 'title' => 'APPLICATION FOR TRANSFER OF HOUSE WATER CONNECTION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],        
-        ['code' => 'PHE_CHANGE_NAME', 'title' => 'APPLICATION FORM FOR CHANGING OF NAME/OWNERSHIP OF CONSUMER', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],        
-        ['code' => 'PHE_RECONNECTION', 'title' => 'APPLICATION FORM FOR RE-CONNECTION OF TEMPORARY DISCONNECTED WATER CONNECTION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],        
-        ['code' => 'PHE_DISCONNECTION', 'title' => 'APPLICATION FORM FOR DISCONNECTION OF WATER CONNECTION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],        
+        ['code' => 'PHE_WATER_TRANSFER', 'title' => 'APPLICATION FOR TRANSFER OF HOUSE WATER CONNECTION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'PHE_CHANGE_NAME', 'title' => 'APPLICATION FORM FOR CHANGING OF NAME/OWNERSHIP OF CONSUMER', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'PHE_RECONNECTION', 'title' => 'APPLICATION FORM FOR RE-CONNECTION OF TEMPORARY DISCONNECTED WATER CONNECTION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'PHE_DISCONNECTION', 'title' => 'APPLICATION FORM FOR DISCONNECTION OF WATER CONNECTION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LAND_REVENUE_LAND_HOUSE', 'title' => 'APPLICATION FOR ALLOTMENT OF LAND FOR HOUSE SITE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LAND_REVENUE_LAND_SHOP', 'title' => 'APPLICATION FOR ALLOTMENT OF LAND FOR SHOP/STALL', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LAND_REVENUE_LAND_SETTLEMENT', 'title' => 'APPLICATION FOR RESIDENTIAL LAND SETTLEMENT CERTIFICATE INHMUN/LAND SETTLEMENT CERTIFICATE TURA DILNA', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
@@ -76,7 +76,7 @@ class ApplicationProfileSeeder extends Seeder
 
 
         // +$var,
-       
+
     ];
     public function run()
     {
