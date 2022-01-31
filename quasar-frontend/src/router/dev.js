@@ -20,6 +20,7 @@ export const checkAuth = async (to, from, next) => {
         });
 };
 
+
 export default {
     path: "/investor",
     component: () => import("layouts/InvestorLayout.vue"),
@@ -33,7 +34,7 @@ export default {
             children: [
                 {
                     path: "licensing-of-manufacturer-of-weights&measures-1",
-                    name: "legal:license-manufacturer",
+                    name: "legal:1",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/licenceManuf/Application.vue"
@@ -42,7 +43,7 @@ export default {
 
                 {
                     path: "licensing-of-manufacturer-of-weights&measures-2",
-                    name: "legal:license-renewal",
+                    name: "legal:2",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/renewalManuf/Application.vue"
@@ -50,7 +51,7 @@ export default {
                 },
                 {
                     path: "licensing-of-repairer-of-weights&measures-3",
-                    name: "legal:dealer-renewal",
+                    name: "legal:3",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/licenceRepair/Application.vue"
@@ -58,7 +59,7 @@ export default {
                 },
                 {
                     path: "licensing-of-repairer-of-weights&measures-4",
-                    name: "legal:license-repair",
+                    name: "legal:4",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/licenceRepair/Application.vue"
@@ -66,7 +67,7 @@ export default {
                 },
                 {
                     path: "licensing-of-dealers-in-weights&measures-5",
-                    name: "legal:license-dealer",
+                    name: "legal:5",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/licenceDealer/Application.vue"
@@ -74,7 +75,7 @@ export default {
                 },
                 {
                     path: "certificate_of_registration_manufacturer_packer_6",
-                    name: "legal:registration-manufacturer",
+                    name: "legal:6",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/registrationManuf/Application.vue"
@@ -82,7 +83,7 @@ export default {
                 },
                 {
                     path: "certificate_of_registration_importer_packer_7",
-                    name: "legal:registration-importer",
+                    name: "legal:7",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/registrationImporter/Application.vue"
@@ -90,7 +91,7 @@ export default {
                 },
                 {
                     path: "renewal-of-licence-repair-weightandmeasures-8",
-                    name: "legal:license-renewal-repair",
+                    name: "legal:8",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/renewalLicenseRepair8/Application.vue"
@@ -98,7 +99,7 @@ export default {
                 },
                 {
                     path: "licence-of-importers-wieghtsandmearures-9",
-                    name: "legal:license-importer",
+                    name: "legal:9",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/licenceImporter/Application.vue"
@@ -106,7 +107,7 @@ export default {
                 },
                 {
                     path: "verification-of-weightsandmeasures-10",
-                    name: "legal:verification",
+                    name: "legal:10",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/verification/Application.vue"
@@ -114,33 +115,35 @@ export default {
                 },
                 {
                     path: "re-verification-of-weights&measures-11",
-                    name: "legal:re-verification",
+                    name: "legal:11",
                     component: () =>
                         import(
                             "pages/common/dept_services/legal_metrology/reverification/Application.vue"
                         ),
                 },
 
-
-                // pollution
-                {
-                    path: "filing-returns-of-sale-new-batteries-collection-old-batteries",
-                    name: "pcb:20",
-                    component: () =>
-                        import(
-                            "pages/common/dept_services/pollution/fillingReturnsSaleBattery/Application.vue"
-                        ),
-                },
-                
-
-                // claiming-central-capital-investment-subsidy-scheme
             ],
+        },
+        // pollution
+        // {
+        //     path: "filing-returns-of-sale-new-batteries-collection-old-batteries",
+        //     name: "pcb:20",
+        //     component: () =>
+        //         import(
+        //             "pages/common/dept_services/pollution/fillingReturnsSaleBattery/Application.vue"
+        //         ),
+        // },
 
+
+        // claiming-central-capital-investment-subsidy-scheme
+
+
+        {
             path: "pollution-control-board",
             component: () => import("layouts/DummyLayout.vue"),
             beforeEnter: checkAuth,
             children: [
-                                // pollution
+                // pollution
                 {
                     path: "filing-returns-of-sale-new-batteries-collection-old-batteries",
                     name: "pcb:20",
@@ -166,7 +169,7 @@ export default {
                         ),
                 },
 
-                
+
                 {
                     path: "authorization-facilities-processing-environmentally-sound-management-practice-recycling-ewaste",
                     name: "pcb:22",
@@ -191,15 +194,13 @@ export default {
                             "pages/common/dept_services/pollution/approvalNotification/Application.vue"
                         ),
                 },
-                
+
 
                 // claiming-central-capital-investment-subsidy-scheme
             ],
-        },
+        }
+    ]
+}
 
-        
-
-    ],
-};
 
 
