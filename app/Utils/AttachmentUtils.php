@@ -13,9 +13,29 @@ class AttachmentUtils{
         'disk'=>'public',
         'folder'=>'phe/water/attachments'
     ];
+    const LABOUR_CERTIFICATE_REGISTRATION_SIGNATURE=[
+        'size'=>2048,
+        'mime'=>'images/*',
+        'application_code'=>'LABOUR_CERTIFICATE_REGISTRATION',
+        'key'=>'labour_cert_reg_signature',
+        'label'=>'Signature of applicant',
+        'disk'=>'public',
+        'folder'=>'labour/1/attachments'
+    ];
+    const LABOUR_EMPLOYMENT_CONTRACT_SIGNATURE=[
+        'size'=>2048,
+        'mime'=>'images/*',
+        'application_code'=>'LABOUR_CERTIFICATE_REGISTRATION',
+        'key'=>'labour_lic_reg_eleven_signature',
+        'label'=>'Signature of the occupter',
+        'disk'=>'public',
+        'folder'=>'labour/2/attachments'
+    ];
 
     const ATTACHMENTS = [
-        'signature_phe_water_connection'=>self::SIGNATURE_PHE_WATER_CONNECTION
+        'labour_cert_reg_signature'=>self::LABOUR_CERTIFICATE_REGISTRATION_SIGNATURE,
+        'labour_lic_reg_eleven_signature'=>self::LABOUR_EMPLOYMENT_CONTRACT_SIGNATURE
+
     ];
 
     static function getAttachment(string $key)
