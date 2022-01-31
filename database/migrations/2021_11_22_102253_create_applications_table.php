@@ -19,7 +19,7 @@ class CreateApplicationsTable extends Migration
             $table->string('regn_no')->unique();
             $table->string('current_state')->default('submitted');
             $table->string('remark')->nullable();
-            $table->boolean('archived')->default(false);
+//            $table->boolean('archived')->default(false);
 //            $table->json('fields')->nullable();
 
             $table->unsignedInteger('application_profile_id')->nullable();
