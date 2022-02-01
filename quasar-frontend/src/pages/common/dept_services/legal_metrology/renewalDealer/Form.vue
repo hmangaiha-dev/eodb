@@ -135,7 +135,7 @@ and his licence number.)<span class="asterisk"
         <span class="asterisk">*</span></label
       >
 
-      <q-file v-model="formData.legal_signature_designation" outlined>
+      <q-file v-model="formData.legal_dealer_renewal_signature_designation" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -181,12 +181,9 @@ export default {
       legal_dealer_renewal_six: "",
       legal_dealer_renewal_seven: "",
       legal_dealer_renewal_eight: "",
-  
- 
+      
 
-    
-
-      legal_signature_designation: null,
+      legal_dealer_renewal_signature_designation: null,
     });
     onMounted(() => {});
     return {

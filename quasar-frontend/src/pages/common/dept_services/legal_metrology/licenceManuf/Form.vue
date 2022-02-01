@@ -385,7 +385,7 @@
         <span class="asterisk">*</span></label
       >
 
-      <q-file v-model="formData.legal_signature_designation" outlined>
+      <q-file v-model="formData.legal_licence_manuf_signature_designation" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -453,7 +453,7 @@ export default {
       legal_item_proposed_selling: "",
       legal_model_approved_details: "",
 
-      legal_signature_designation: null,
+      legal_licence_manuf_signature_designation: null,
     });
     onMounted(() => {});
     return {
