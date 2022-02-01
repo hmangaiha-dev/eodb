@@ -3,7 +3,7 @@
     <q-layout view="hHh Lpr lff">
       <div class="my-layout">
         <q-header elevated class="bg-primary text-white" height-hint="98">
-          <q-toolbar class="container bg-white text-dark q-py-none">
+          <q-toolbar class=" bg-white text-dark q-py-none">
             <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
             <router-link to="/"
               ><img style="width: 80px" src="~assets/eodb-logo.png"

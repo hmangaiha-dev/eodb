@@ -59,7 +59,7 @@
           </q-card>
         </q-form>
         <!-- <q-btn color="primary" icon="check" label="Get User" @click="getUser" />
-        
+
         <q-btn
           class="float-right"
           color="red-4"
@@ -101,10 +101,10 @@ export default {
         api
           .post("/auth/login", loginData)
           .then((res) => {
-            const { token, currentUser } = res.data;
+            const { token, user } = res.data;
 
-            console.log("current user", currentUser);
-            store.dispatch("investor/setCurrentUser", currentUser);
+            console.log("current user", user);
+            store.dispatch("investor/setCurrentUser", user);
             store.dispatch("investor/setToken", token);
             console.log("login response", res.data);
             router.push(route.redirectedFrom || '/')
