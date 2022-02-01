@@ -23,7 +23,6 @@ export const checkAuth = async (to, from, next) => {
 export default {
   path: "/investor",
   component: () => import("layouts/InvestorLayout.vue"),
-  beforeEnter: checkAuth,
   children: [
     {
       path: "",

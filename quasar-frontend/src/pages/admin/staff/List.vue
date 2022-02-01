@@ -1,8 +1,8 @@
 <template>
-  <q-page class="container-lg zcard q-my-md" padding>
+  <q-page class="container-lg q-my-md" padding>
     <h1 class="ztitle">Staffs</h1>
 
-    <div class="zdetailcard">
+    <div class="zcard">
       <div class="row q-col-gutter-md">
         <div class="flex justify-between flex-inline col-12">
           <q-btn @click="localData.openCreate=true" outline label="New staff" color="primary"/>

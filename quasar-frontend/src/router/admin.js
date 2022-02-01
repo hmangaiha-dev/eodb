@@ -1,6 +1,22 @@
+import {useStore} from "vuex";
+import {Notify} from "quasar";
+
 export default {
   path: '/admin',
   component: () => import('layouts/MainLayout.vue'),
+  beforeRouteEnter: (to,from,next) => {
+    const store = useStore();
+    const loggedIn = store.getters['authData/isAuthenticated'];
+    let userType = store.getters['authData/getUserType']
+    if (!loggedIn || userType!=='staff') {
+      Notify.create({
+        message: "Access Denied",
+        color: "negative",
+        position: "top",
+      });
+    }
+    next();
+  },
   meta: {
     protected: true
   },

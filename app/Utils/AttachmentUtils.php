@@ -1,6 +1,7 @@
 <?php
 namespace App\Utils;
 
+use Composer\Exception\NoSslException;
 use Illuminate\Support\Str;
 
 class AttachmentUtils{
@@ -25,7 +26,9 @@ class AttachmentUtils{
 
     static function getAttachmentsByApplicationCode(string $application_code): array
     {
-        return collect([...self::SIGNATURE_PHE_WATER_CONNECTION])
+        return collect([
+            ...self::SIGNATURE_PHE_WATER_CONNECTION,
+            ])
             ->filter(fn($attachment) => Str::lower($attachment['application_code']) == Str::lower($application_code))
             ->toArray();
     }

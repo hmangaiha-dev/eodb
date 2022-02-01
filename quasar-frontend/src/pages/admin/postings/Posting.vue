@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="container-lg zcard q-my-md">
+  <q-page padding class="container-lg  q-my-md">
     <div class="flex flex-inline items-center">
       <h1 class='ztitle'>New post</h1>
       <q-space/>
@@ -8,7 +8,7 @@
         <q-breadcrumbs-el label="New post" />
       </q-breadcrumbs>
     </div>
-    <div class="zdetailcard">
+    <div class="zcard">
       <q-form ref="formRef" @reset="reset" @submit="submit">
         <div class="row q-col-gutter-md">
           <div class="col-xs-12 col-md-6">
