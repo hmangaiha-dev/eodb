@@ -10,7 +10,7 @@
         type="textarea"
         dense
         outlined
-        v-model="formData.pollution_form15_one"
+        v-model="formData.pollution_form16_one"
       />
     </div>
 
@@ -23,7 +23,7 @@
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         dense
         outlined
-        v-model="formData.pollution_form15_two"
+        v-model="formData.pollution_form16_two"
       />
     </div>
 
@@ -37,13 +37,13 @@
         type="textarea"
         dense
         outlined
-        v-model="formData.pollution_form15_two"
+        v-model="formData.pollution_form16_two"
       />
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="name"> Signature of the Importer </label>
-      <q-file v-model="formData.pollution_form15_signature" outlined>
+      <q-file v-model="formData.pollution_form16_signature" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -73,7 +73,7 @@ export default {
       pollution_form16_one: "",
       pollution_form16_two: "",
       pollution_form16_three: "",
-      pollution_form16_signature: "",
+      pollution_form16_signature: null,
     });
     onMounted(() => {});
     return {

@@ -538,6 +538,14 @@ export default {
               "pages/common/dept_services/pwd/roadcutting/Application.vue"
             ),
         },
+        {
+          path: "noc",
+          name: "pwd:noc",
+          component: () =>
+            import(
+              "pages/common/dept_services/pwd/noc/Application.vue"
+            ),
+        },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],

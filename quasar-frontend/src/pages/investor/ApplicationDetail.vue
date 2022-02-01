@@ -38,7 +38,7 @@
         <!-- {{ item.label }} -->
       <!-- </div> -->
 
-      <div class="zlabel col-4">
+      <div style="align-self: flex-end;" class="zlabel col-4">
         <!-- <embed :src="pdfFile" width="500" height="500" /> -->
         <q-btn flat color="primary" label="view" @click="getFile(item.path)" />
         <!-- {{ item.path }} -->

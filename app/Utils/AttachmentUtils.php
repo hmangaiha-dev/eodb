@@ -1010,11 +1010,108 @@ class AttachmentUtils
         'disk' => 'public',
         'folder' => 'pollution/15/attachments'
     ];
+    const POLLUTION_FORM_16_SIGNATURE = [
+        'mime' => 'images/*',
+        'application_code' => 'POLLUTION_FORM_16',
+        'key' => 'pollution_form16_signature',
+        'label' => "Signature of the Importer",
+        'disk' => 'public',
+        'folder' => 'pollution/16/attachments'
+    ];
+
+    const POLLUTION_FORM_17_ERP = [
+        'mime' => 'images/*',
+        'application_code' => 'POLLUTION_FORM_17',
+        'key' => 'pollution_form17_partA_four',
+        'label' => "
+        <label class='zlabel'>
+        4. Provide copy of the Emergency Response Plan (ERP) which should
+        address proceduresfor dealing with emergency situations (viz. Spillage
+        or release or fire) as specified in the guidelines of Central Pollution
+        Control Board. Such ERP shall comprise the following but not limited to:
+        <br />
+        <div class='q-ml-md'>
+          * Containing and controlling incidents so as to minimize the effects
+          and to limit danger to the persons, environment and property; <br />
+
+          * Implementing the measures necessary to protect persons and the
+          environment; <br />
+
+          * Description of the actions which should be taken to control the
+          conditions at events and to limit their consequences, including a
+          description of the safety equipment and resources available; <br />
+
+          * Arrangements for training staff in the duties which they are
+          expected to perform; <br />
+
+          *Arrangements for informing concerned authorities and emergency
+          services; and Arrangements for providing assistance with off-site
+          mitigatory action
+        </div>
+   </label>",
+        'disk' => 'public',
+        'folder' => 'pollution/17/attachments'
+    ];
+    const POLLUTION_FORM_17_PROCESS_FLOW = [
+        'mime' => 'images/*',
+        'application_code' => 'POLLUTION_FORM_17',
+        'key' => 'pollution_form17_partB_one_b',
+        'label' => "1.(b) Process description including process flow sheet indicating inputs and outputs (raw materials, chemicals, products, by-products, wastes, emissions, waste water etc.)",
+        'disk' => 'public',
+        'folder' => 'pollution/17/attachments'
+    ];
+    const POLLUTION_FORM_17_ENV_CLEARANCE = [
+        'mime' => 'images/*',
+        'application_code' => 'POLLUTION_FORM_17',
+        'key' => 'pollution_form17_partC_three',
+        'label' => "3. Attach a copy of prior Environmental Clearance.",
+        'disk' => 'public',
+        'folder' => 'pollution/17/attachments'
+    ];
+    const POLLUTION_FORM_17_SIGNATURE = [
+        'mime' => 'images/*',
+        'application_code' => 'POLLUTION_FORM_17',
+        'key' => 'pollution_form17_signature',
+        'label' => "Signature of the Applicant",
+        'disk' => 'public',
+        'folder' => 'pollution/17/attachments'
+    ];
+
+    const POLLUTION_FORM_18_LIST = [
+        'mime' => 'images/*',
+        'application_code' => 'POLLUTION_FORM_18',
+        'key' => 'pollution_form18_enclose',
+        'label' => "Enclose a list.",
+        'disk' => 'public',
+        'folder' => 'pollution/18/attachments'
+    ];
 
 
-
-
-
+    const POLLUTION_FORM_19_ATTACH_MAP = [
+        'mime' => 'images/*',
+        'application_code' => 'POLLUTION_FORM_19',
+        'key' => 'pollution_form19_five_attach',
+        'label' => "Attach Map A Map With GPS Locations Of CBMWTF And Area Of Coverage).",
+        'disk' => 'public',
+        'folder' => 'pollution/19/attachments'
+    ];
+    const POLLUTION_FORM_19_CONTINGENCY_PLAN = [
+        'mime' => 'images/*',
+        'application_code' => 'POLLUTION_FORM_19',
+        'key' => 'pollution_form19_seven_ii',
+        'label' => "7. ii) Contingency Plan Of Common Bio-medical Waste Treatment Facility (CBWTF)(attach Documents",
+        'disk' => 'public',
+        'folder' => 'pollution/19/attachments'
+    ];
+    
+    const POLLUTION_FORM_19_SIGNATURE = [
+        'mime' => 'images/*',
+        'application_code' => 'POLLUTION_FORM_19',
+        'key' => 'pollution_form19_signature',
+        'label' => "Signature of the Applicant ",
+        'disk' => 'public',
+        'folder' => 'pollution/19/attachments'
+    ];
 
 
 
@@ -1150,17 +1247,37 @@ class AttachmentUtils
         'pollution_form14_twenty_two' => self::POLLUTION_FORM_14_ACTION_PLAN,
 
         'pollution_form15_signature' => self::POLLUTION_FORM_15_SIGNATURE,
+        'pollution_form16_signature' => self::POLLUTION_FORM_16_SIGNATURE,
 
+        'pollution_form17_partA_four' => self::POLLUTION_FORM_17_ERP,
+        'pollution_form17_partB_one_b' => self::POLLUTION_FORM_17_PROCESS_FLOW,
+        'pollution_form17_partC_three' => self::POLLUTION_FORM_17_ENV_CLEARANCE,
+        'pollution_form17_signature' => self::POLLUTION_FORM_17_SIGNATURE,
 
+        'pollution_form18_enclose' => self::POLLUTION_FORM_18_LIST,
 
-
-
-
-
-
+        'pollution_form19_five_attach' => self::POLLUTION_FORM_19_ATTACH_MAP,
+        'pollution_form19_seven_ii' => self::POLLUTION_FORM_19_CONTINGENCY_PLAN,
+        'pollution_form19_signature' => self::POLLUTION_FORM_19_SIGNATURE,
 
 
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

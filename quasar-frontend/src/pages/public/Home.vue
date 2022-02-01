@@ -536,7 +536,7 @@ export default defineComponent({
   padding: 0px 0px 25px 0px !important;
 }
 .tile {
-  width: 398px;
+  /* width: 398px; */
   /* height: 100px; */
   margin: 0 16px 0px 12px;
   padding: 30px;

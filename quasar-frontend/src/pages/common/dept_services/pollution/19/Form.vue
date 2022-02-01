@@ -20,11 +20,7 @@
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"> (ii) Name Of HCF Or CBMWTF </label>
-          <q-input
-            dense
-            outlined
-            v-model="formData.pollution_form19_one_ii"
-          />
+          <q-input dense outlined v-model="formData.pollution_form19_one_ii" />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -92,11 +88,7 @@
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"> (ii) Generation, Segregation</label>
-          <q-input
-            dense
-            outlined
-            v-model="formData.pollution_form19_two_ii"
-          />
+          <q-input dense outlined v-model="formData.pollution_form19_two_ii" />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -229,7 +221,12 @@
             <span class="asterisk"> *</span></label
           >
 
-          <q-select class="zlabel" v-model="formData.pollution_form19_three_i" :options="['fresh', 'renewal']" outlined />
+          <q-select
+            class="zlabel"
+            v-model="formData.pollution_form19_three_i"
+            :options="['fresh', 'renewal']"
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -817,11 +814,7 @@
             <span class="asterisk"> *</span></label
           >
 
-          <q-input
-            dense
-            outlined
-            v-model="formData.pollution_form19_six_i"
-          />
+          <q-input dense outlined v-model="formData.pollution_form19_six_i" />
         </div>
 
         <div class="col-12">
@@ -1015,11 +1008,12 @@
         Period Of Earlier Authorization
         <span class="asterisk"> *</span></label
       >
-      <q-file v-model="formData.pollution_form19_eight" outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
+      <q-input
+        type="textarea"
+        dense
+        outlined
+        v-model="formData.pollution_form19_eight"
+      />
     </div>
 
     <div class="col-12 zlabel">
@@ -1177,11 +1171,6 @@ export default {
       pollution_form19_eight: "",
       pollution_form19_signature: null,
       pollution_form19_designation: "",
-
-
-
-
-
     });
     onMounted(() => {});
     return {
