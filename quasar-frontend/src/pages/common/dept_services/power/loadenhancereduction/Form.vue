@@ -170,7 +170,7 @@
       >
 
       <q-file
-        v-model="formData.signature"
+        v-model="formData.power_load_enc_rdc_signature"
         outlined
       >
         <template v-slot:prepend>
@@ -190,7 +190,7 @@
         Contractor, if the consumer's installation has been altered</label
       >
       <q-file
-        v-model="formData.completion_cert"
+        v-model="formData.power_load_enc_rdc_completion_cert"
         outlined
       >
         <template v-slot:prepend>
@@ -203,7 +203,7 @@
       <label for="" class="zlabel"
         >2. Resolution for authorised signatory</label
       >
-      <q-file v-model="formData.authorised_sign" outlined>
+      <q-file v-model="formData.power_load_enc_rdc_authorised_sign" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -246,9 +246,9 @@ export default {
       power_load_enc_rdc_nine_b: false,
       power_load_enc_rdc_nine_c: false,
       power_load_enc_rdc_nine_d: "",
-      signature: null,
-      completion_cert: null,
-      authorised_sign: null
+      power_load_enc_rdc_signature: null,
+      power_load_enc_rdc_completion_cert: null,
+      power_load_enc_rdc_authorised_sign: null
      
     });
     onMounted(() => {});

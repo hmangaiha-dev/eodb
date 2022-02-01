@@ -317,7 +317,7 @@ export default {
         },
         {
           path: "anual-report-to-be-submitted-by-operator-of-facility-localbody",
-          name: "pcb:authorisation-solidwaste",
+          name: "pcb:anual-solidwaste",
           component: () =>
             import(
               "pages/common/dept_services/pollution/formatofannualreport/Application.vue"
@@ -536,6 +536,14 @@ export default {
           component: () =>
             import(
               "pages/common/dept_services/pwd/roadcutting/Application.vue"
+            ),
+        },
+        {
+          path: "noc",
+          name: "pwd:noc",
+          component: () =>
+            import(
+              "pages/common/dept_services/pwd/noc/Application.vue"
             ),
         },
 

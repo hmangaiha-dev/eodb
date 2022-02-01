@@ -19,7 +19,8 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'POWER_NEW_CONNECTION', 'title' => 'Application for - New Connection (Low Tension Service)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POWER_NEW_CONNECTION2', 'title' => 'New Connection (High Tension / Extra High-Tension Service)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'FIRE_NOC', 'title' => 'APPLICATION FORM FOR OBTAINING N.O.C. FROM FIRE & EMERGENCY SERVICES DEPARTMENT, MIZORAM', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
-        ['code' => 'PWD_ROAD_CUTTING', 'title' => 'APPLICATION FORM FOR GRANTING ROAD CUTTING WITHIN MIZORAM', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'PWD_ROAD_CUTTING', 'title' => 'GRANTING ROAD CUTTING WITHIN MIZORAM', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'PWD_NOC', 'title' => 'ISSUE OF NOC ALONG ROW WITHIN MIZORAM', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'PHE_WATER_CONNECTION', 'title' => 'Application form for Domestic House Water Connection', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'PHE_WATER_TRANSFER', 'title' => 'APPLICATION FOR TRANSFER OF HOUSE WATER CONNECTION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'PHE_CHANGE_NAME', 'title' => 'APPLICATION FORM FOR CHANGING OF NAME/OWNERSHIP OF CONSUMER', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
@@ -45,6 +46,8 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'POLLUTION_FORM_16', 'title' => 'FORM FOR REGISTRATION OF IMPORTER OF NEW LEAD ACID BATTERIES / PRIMARY LEAD', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_17', 'title' => 'Application For Obtaining Authorization Under Construction & Demolition Waste', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_18', 'title' => 'FORM FOR FILING RETURNS BY AUCTIONEER OF USED BATTERIES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_19', 'title' => 'APPLICATION FOR AUTHORISATION OR RENEWAL OF AUTHORISATION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+
 
 
 

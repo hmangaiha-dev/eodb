@@ -3,9 +3,10 @@
     <div class="col-12 text-h6 q-pb-none text-center">Form-19A</div>
     <div class="col-12 text-center">
       <p class="ztitle">
-      APPLICATION FOR GRANT OR RENEWAL OF A (LICENCE TO SELL, STOCK, EXHIBIT OR OFFER FOR SALE, OR DISTRIBUTE) HOMOEOPATHIC MEDICINES
+        Application For The Grant Or Renewal Of A Restricted Licence To Sell,
+        Stock Or Exhibit ( Or Offer) For Sale, Or Distribute Drugs By Retail By
+        Dealers Who Do Not Engage The Service Of A Qualified Person.
       </p>
-
     </div>
 
     <q-form @submit.prevent="submit">
@@ -60,7 +61,7 @@ export default {
         formDatas.append(`${data}`, formData[data]);
       }
 
-        // return console.log("formdatas", applicantRef.value);
+      // return console.log("formdatas", applicantRef.value);
       api
         .post("/applications/submit", formDatas)
         .then((res) => {

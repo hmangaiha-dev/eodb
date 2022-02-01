@@ -62,12 +62,36 @@
         applicable) <span class="asterisk">*</span></label
       >
       <br />
-      <q-checkbox v-model="formData.power_new_conn2_five_a" label="a)11 kV" filled />
-      <q-checkbox v-model="formData.power_new_conn2_five_b" label="b)33 kV" filled />
-      <q-checkbox v-model="formData.power_new_conn2_five_c" label="c)66kV" filled />
-      <q-checkbox v-model="formData.power_new_conn2_five_d" label="d)110 kV" filled />
-      <q-checkbox v-model="formData.power_new_conn2_five_e" label="e)132 kV" filled />
-      <q-checkbox v-model="formData.power_new_conn2_five_f" label="f)220 kV" filled />
+      <q-checkbox
+        v-model="formData.power_new_conn2_five_a"
+        label="a)11 kV"
+        filled
+      />
+      <q-checkbox
+        v-model="formData.power_new_conn2_five_b"
+        label="b)33 kV"
+        filled
+      />
+      <q-checkbox
+        v-model="formData.power_new_conn2_five_c"
+        label="c)66kV"
+        filled
+      />
+      <q-checkbox
+        v-model="formData.power_new_conn2_five_d"
+        label="d)110 kV"
+        filled
+      />
+      <q-checkbox
+        v-model="formData.power_new_conn2_five_e"
+        label="e)132 kV"
+        filled
+      />
+      <q-checkbox
+        v-model="formData.power_new_conn2_five_f"
+        label="f)220 kV"
+        filled
+      />
     </div>
 
     <div class="col-md-10">
@@ -276,9 +300,21 @@
         ></label
       >
       <br />
-      <q-checkbox left-label v-model="formData.power_new_conn2_thirteen_a" label="a)SSI" />
-      <q-checkbox left-label v-model="formData.power_new_conn2_thirteen_b" label="b)MSI" />
-      <q-checkbox left-label v-model="formData.power_new_conn2_thirteen_c" label="c)LSI" />
+      <q-checkbox
+        left-label
+        v-model="formData.power_new_conn2_thirteen_a"
+        label="a)SSI"
+      />
+      <q-checkbox
+        left-label
+        v-model="formData.power_new_conn2_thirteen_b"
+        label="b)MSI"
+      />
+      <q-checkbox
+        left-label
+        v-model="formData.power_new_conn2_thirteen_c"
+        label="c)LSI"
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -320,15 +356,11 @@
             >(a) Possession Letter or No-Objection Certificate
             <span class="asterisk">*</span></label
           >
-          <q-input
-            type="file"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.power_new_conn2_fifteen_a"
-            dense
-            outlined
-          />
+          <q-file v-model="formData.power_new_conn2_fifteen_a" outlined>
+            <template v-slot:prepend>
+              <q-icon name="attach_file" />
+            </template>
+          </q-file>
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -336,15 +368,11 @@
             >(b) Issued by the Institution (attach a copy)
             <span class="asterisk">*</span></label
           >
-          <q-input
-            type="file"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.power_new_conn2_fifteen_b"
-            dense
-            outlined
-          />
+          <q-file v-model="formData.power_new_conn2_fifteen_b" outlined>
+            <template v-slot:prepend>
+              <q-icon name="attach_file" />
+            </template>
+          </q-file>
         </div>
       </div>
     </div>
@@ -581,13 +609,11 @@
           >*</span
         ></label
       >
-      <q-input
-        type="file"
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.power_new_conn2_signature"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_signature" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-12 zlabel text-center">
@@ -604,12 +630,11 @@
           >*</span
         ></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_one"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_one" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -618,12 +643,11 @@
         point where supply is required. The map should normally be of the scale
         of 1 cm representing 1200 cm.<span class="asterisk">*</span></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_two"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_two" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -632,12 +656,11 @@
         by the applicant that his connection does not fall under the requirement
         of NOC under any statute<span class="asterisk">*</span></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_three"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_three" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -648,12 +671,11 @@
           >*</span
         ></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_four"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_four" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -662,12 +684,11 @@
           >*</span
         ></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_five"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_five" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -675,12 +696,11 @@
         >6. In case of Limited Company, Memorandum and Articles of Association
         and Certificate of Incorporation.<span class="asterisk">*</span></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_six"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_six" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -692,12 +712,11 @@
           >*</span
         ></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_seven"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_seven" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -705,12 +724,11 @@
         >8. Letter of intent for production/ enhancement in production may be
         furnished<span class="asterisk">*</span></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_eight"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_eight" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -718,12 +736,11 @@
         >9. List of equipments proposed to be installed along with the expected
         load.<span class="asterisk">*</span></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_nine"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_nine" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -732,12 +749,11 @@
           >*</span
         ></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_ten"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_ten" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -746,12 +762,11 @@
           >*</span
         ></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_eleven"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_eleven" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -761,12 +776,11 @@
           >*</span
         ></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_twelve"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_twelve" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -776,12 +790,11 @@
         signed by him. This will be appended with the agreement after completion
         of formalities.<span class="asterisk">*</span></label
       >
-      <q-input
-        type="file"
-        v-model="formData.power_new_conn2_doc_thirteen"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.power_new_conn2_doc_thirteen" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
   </div>
 </template>

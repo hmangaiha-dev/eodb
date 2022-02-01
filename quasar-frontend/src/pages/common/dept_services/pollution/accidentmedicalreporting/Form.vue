@@ -141,12 +141,14 @@
       <div class="row justify-end q-col-gutter-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"> Signature of The Applicant </label>
-          <q-input
-            type="file"
+          <q-file
             v-model="formData.pollution_accident_medical_signature"
-            dense
             outlined
-          />
+          >
+            <template v-slot:prepend>
+              <q-icon name="attach_file" />
+            </template>
+          </q-file>
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"> Designation </label>

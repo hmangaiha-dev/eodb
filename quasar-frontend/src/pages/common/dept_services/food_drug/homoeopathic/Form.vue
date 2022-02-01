@@ -151,13 +151,11 @@
             I) Signature
             <span class="asterisk"> *</span></label
           >
-          <q-input
-            type="file"
-            :rules="[(val) => val || 'Please type something']"
-            dense
-            outlined
-            v-model="formData.food_drug_19B_five_i"
-          />
+          <q-file v-model="formData.food_drug_19B_five_i" outlined>
+            <template v-slot:prepend>
+              <q-icon name="attach_file" />
+            </template>
+          </q-file>
         </div>
 
         <div class="col-md-6 col-xs-12 col-xs-12">

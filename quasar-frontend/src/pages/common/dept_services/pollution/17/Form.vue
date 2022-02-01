@@ -114,7 +114,7 @@
               />
               <q-checkbox
                 left-label
-                v-model="formData.pollution_form17_partA_one_c_xii"
+                v-model="formData.pollution_form17_partA_one_c_xiv"
                 label="(xiv) Incineration"
               />
             </div>

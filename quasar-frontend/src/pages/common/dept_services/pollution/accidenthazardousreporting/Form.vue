@@ -83,7 +83,7 @@
         Environment
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.six" />
+      <q-input dense outlined v-model="formData.pollution_accident_medical_six" />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -141,12 +141,14 @@
       <div class="row justify-end q-col-gutter-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"> Signature of The Applicant </label>
-          <q-input
-            type="file"
-            v-model="formData.pollution_accident_medical_signature"
-            dense
+          <q-file
+            v-model="formData.pollution_accident_hazardous_signature"
             outlined
-          />
+          >
+            <template v-slot:prepend>
+              <q-icon name="attach_file" />
+            </template>
+          </q-file>
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"> Designation </label>
@@ -188,7 +190,7 @@ export default {
       pollution_accident_medical_eight: "",
       pollution_accident_medical_nine: "",
       pollution_accident_medical_ten: "",
-      pollution_accident_medical_signature: null,
+      pollution_accident_hazardous_signature: null,
       pollution_accident_medical_designation: "",
     });
     onMounted(() => {});
