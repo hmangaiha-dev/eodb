@@ -332,7 +332,7 @@
         <span class="asterisk">*</span></label
       >
 
-      <q-file v-model="formData.legal_signature_designation" outlined>
+      <q-file v-model="formData.pollution_authorization_bio_waste_signature_designation" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -413,7 +413,7 @@ export default {
 
 
 
-      legal_signature_designation: null,
+      pollution_authorization_bio_waste_signature_designation: null,
     });
     onMounted(() => {});
     return {
