@@ -364,7 +364,7 @@
       >
       <q-file
         :rules="[(val) => val || 'Please type something']"
-        v-model="formData.land_revenue_land_house_signature"
+        v-model="formData.land_revenue_land_shop_signature"
         outlined
       >
         <template v-slot:prepend>
@@ -418,7 +418,7 @@ export default {
       land_revenue_land_house_thirteen_a: "",
       land_revenue_land_house_thirteen_b: "",
       land_revenue_land_house_agreement: false,
-      land_revenue_land_house_signature: "",
+      land_revenue_land_shop_signature: null,
     });
     onMounted(() => {});
     return {
