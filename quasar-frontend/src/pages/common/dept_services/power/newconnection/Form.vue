@@ -5,7 +5,12 @@
         >1.Name of the Applicant/Organization
         <span class="asterisk"> *</span></label
       >
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_applicant_name" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.power_new_connection_applicant_name"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -15,7 +20,12 @@
           >*</span
         >
       </label>
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_father_name" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.power_new_connection_father_name"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-12">
@@ -25,26 +35,54 @@
           <label class="zlabel" for="gender">
             House/Plot/Premise No. <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_communication_house" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.power_new_connection_communication_house"
+            dense
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >Street: <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_communication_street" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.power_new_connection_communication_street"
+            dense
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >Area/Colony: <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_communication_area" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.power_new_connection_communication_area"
+            dense
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="pob">District</label>
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_communication_district" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.power_new_connection_communication_district"
+            dense
+            outlined
+          />
         </div>
       </div>
     </div>
@@ -59,26 +97,54 @@
           <label class="zlabel" for="gender">
             House/Plot/Premise No. <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_connection_house" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.power_new_connection_connection_house"
+            dense
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >Street: <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_connection_street" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.power_new_connection_connection_street"
+            dense
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >Area/Colony: <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_connection_area" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.power_new_connection_connection_area"
+            dense
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="pob">District</label>
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_connection_district" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.power_new_connection_connection_district"
+            dense
+            outlined
+          />
         </div>
       </div>
     </div>
@@ -87,14 +153,24 @@
       <label class="zlabel" for="gender"
         >4.Category of Supply <span class="asterisk">*</span></label
       >
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_supply_category" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.power_new_connection_supply_category"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
         >5.Purpose of Supply <span class="asterisk">*</span></label
       >
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_supply_purpose" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.power_new_connection_supply_purpose"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -102,7 +178,12 @@
         >6.Total Contracted Load applied for (in kW)
         <span class="asterisk">*</span></label
       >
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.power_new_connection_total_load" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.power_new_connection_total_load"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -136,14 +217,28 @@
           <label class="zlabel" for="gender"
             >From (date) <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  v-model="formData.power_new_connection_temporay_from" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.power_new_connection_temporay_from"
+            dense
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >To (date) <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  v-model="formData.power_new_connection_temporay_to" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.power_new_connection_temporay_to"
+            dense
+            outlined
+          />
         </div>
       </div>
     </div>
@@ -162,56 +257,74 @@ for the electricity supply requisitioned. "
         label="10.Please indicate whether you want to install your own CEA approved meter. (Yes/No) "
       />
     </div>
-
-    <div class="col-md-6 col-xs-10">
-      <label for="" class="zlabel"
-        >11.Photograph to be affixed on application form</label
-      >
-      <q-file v-model="formData.power_new_connection_photo" outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
-      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined  v-model="formData.power_new_connection_photo" type="file" /> -->
-    </div>
+    ;
 
     <div class="col-12">
-      <label for="" class="zlabel">
-        <q-radio  v-model="formData.power_new_connection_for" val="person" label="For a Person" />
-        <q-radio v-model="formData.power_new_connection_for" val="organization" label="For an Organization" />
-      </label>
+      <label for="" class="zlabel">11.</label>
+      <div class="row justify q-col-gutter-md q-ml-md">
+        <div class="col-12">
+          <label for="" class="zlabel"
+            >a)Photograph to be affixed on application form</label
+          >
+          <q-file v-model="formData.power_new_connection_photo" outlined>
+            <template v-slot:prepend>
+              <q-icon name="attach_file" />
+            </template>
+          </q-file>
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined  v-model="formData.power_new_connection_photo" type="file" /> -->
+        </div>
 
-       <q-file v-model="formData.power_new_connection_identity_proof" outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
+        <div class="col-12">
+          <label for="" class="zlabel">
+            (b) Identity Proof duly certified submitted along with this application form: <br>
+            <q-radio
+              v-model="formData.power_new_connection_for"
+              val="person"
+              label="For a Person"
+            />
+            <q-radio
+              v-model="formData.power_new_connection_for"
+              val="organization"
+              label="For an Organization"
+            />
+          </label>
 
-      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense v-model="formData.power_new_connection_identity_proof" type="file" /> -->
-    </div>
+          <q-file
+            v-model="formData.power_new_connection_identity_proof"
+            outlined
+          >
+            <template v-slot:prepend>
+              <q-icon name="attach_file" />
+            </template>
+          </q-file>
 
-    <div class="col-5 text-caption">
-      <span>For a person </span> <br />
-      (i) Electoral identity card; <br />
-      (ii) Passport; (iii) Driving license; <br />
-      (iv) Ration card; <br />
-      (v) Photo identity card issued by Government agency; <br />
-      (vi) PAN card; <br />
-      (viii) Certificate from village Pradhan/ Patwari/ Lekhpal/ village level
-      worker/ village chowkidar/ Primary school teacher/ in-charge of primary
-      health centre etc.
-    </div>
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense v-model="formData.power_new_connection_identity_proof" type="file" /> -->
+        </div>
 
-    <div class="col-5 text-caption">
-      <span>For an organization </span> <br />
-      (i) Electoral identity card; <br />
-      (ii) Passport; (iii) Driving license; <br />
-      (iv) Ration card; <br />
-      (v) Photo identity card issued by Government agency; <br />
-      (vi) PAN card; <br />
-      (viii) Certificate from village Pradhan/ Patwari/ Lekhpal/ village level
-      worker/ village chowkidar/ Primary school teacher/ in-charge of primary
-      health centre etc.
+        <div class="col-5 zlabel text-caption">
+          <span>For a person </span> <br />
+          (i) Electoral identity card; <br />
+          (ii) Passport; (iii) Driving license; <br />
+          (iv) Ration card; <br />
+          (v) Photo identity card issued by Government agency; <br />
+          (vi) PAN card; <br />
+          (viii) Certificate from village Pradhan/ Patwari/ Lekhpal/ village
+          level worker/ village chowkidar/ Primary school teacher/ in-charge of
+          primary health centre etc.
+        </div>
+
+        <div class="col-5 zlabel text-caption">
+          <span>For an organization </span> <br />
+          (i) Electoral identity card; <br />
+          (ii) Passport; (iii) Driving license; <br />
+          (iv) Ration card; <br />
+          (v) Photo identity card issued by Government agency; <br />
+          (vi) PAN card; <br />
+          (viii) Certificate from village Pradhan/ Patwari/ Lekhpal/ village
+          level worker/ village chowkidar/ Primary school teacher/ in-charge of
+          primary health centre etc.
+        </div>
+      </div>
     </div>
 
     <div class="col-xs-12" />
@@ -223,7 +336,6 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
-
 
 export default {
   setup(props, context) {
@@ -264,13 +376,9 @@ export default {
 
       power_new_connection_photo: null,
 
-      
-
       power_new_connection_for: "person",
 
-      power_new_connection_identity_proof: null
-
-
+      power_new_connection_identity_proof: null,
     });
     onMounted(() => {});
     return {

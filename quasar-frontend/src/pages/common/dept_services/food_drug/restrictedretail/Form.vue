@@ -107,7 +107,9 @@
             <span class="asterisk"> *</span></label
           >
           <q-input
-             :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
             dense
             outlined
             v-model="formData.food_drug_restricted_five_i"
@@ -141,7 +143,8 @@
 
     <div class="col-12">
       <label class="zlabel" for="name">
-        6. A Fee Rs ______ has been credited to the Government under the head of account 104 (1).
+        6. A Fee Rs ______ has been credited to the Government under the head of
+        account 104 (1).
         <span>
           <q-input
             :rules="[
@@ -153,8 +156,6 @@
             v-model="formData.food_drug_restricted_six"
           />
         </span>
-
-        
       </label>
       <div class="row justify q-col-gutter-sm q-ml-md">
         <div class="col-md-6 col-xs-12 col-xs-12">
@@ -532,90 +533,93 @@
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">1. Fee pekna challan copy 2.</label>
-      <q-input
-        type="file"
-        dense
-        outlined
-        v-model="formData.food_drug_restricted_doc_one"
-      />
+      <q-file v-model="formData.food_drug_restricted_doc_one" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"
         >2. Educational qualification certificate.</label
       >
-      <q-input
-        type="file"
-        dense
-        outlined
-        v-model="formData.food_drug_restricted_doc_two"
-      />
+      <q-file v-model="formData.food_drug_restricted_doc_two" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"
         >3. Venchhung mi ngei tih hriattirna LC/VC lehkha</label
       >
-      <q-input
-        type="file"
-        dense
-        outlined
-        v-model="formData.food_drug_restricted_doc_three"
-      />
+      <q-file v-model="formData.food_drug_restricted_doc_three" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"
         >4. Supervision Agreement letter for Form 19</label
       >
-      <q-input
-        type="file"
-        dense
-        outlined
-        v-model="formData.food_drug_restricted_doc_four"
-      />
+      <q-file v-model="formData.food_drug_restricted_doc_four" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">5. Plan layout of drug store</label>
-      <q-input
-        type="file"
-        dense
-        outlined
-        v-model="formData.food_drug_restricted_doc_five"
-      />
+      <q-file v-model="formData.food_drug_restricted_doc_five" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+      <label class="zlabel" for="name"
+        >6. Mi dawr luah tur tan in neitu remtihna lehkha.</label
+      >
+      <q-file v-model="formData.food_drug_restricted_doc_six" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"
         >7. Diltu passport thlalak (6 copies)</label
       >
-      <q-input
-        type="file"
-        dense
-        outlined
-        v-model="formData.food_drug_restricted_doc_seven"
-      />
+      <q-file v-model="formData.food_drug_restricted_doc_seven" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">8. Voter ID/Aadhar Card</label>
-      <q-input
-        type="file"
-        dense
-        outlined
-        v-model="formData.food_drug_restricted_doc_eight"
-      />
+      <q-file v-model="formData.food_drug_restricted_doc_eight" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
-    <div class="col-md-6 col-xs-12">
+     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">9. Signature</label>
-      <q-input
-        type="file"
-        dense
-        outlined
-        v-model="formData.food_drug_restricted_doc_eight"
-      />
+      <q-file v-model="formData.food_drug_restricted_doc_nine" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-xs-12" />
@@ -687,7 +691,6 @@ export default {
       food_drug_restricted_doc_seven: null,
       food_drug_restricted_doc_eight: null,
       food_drug_restricted_doc_nine: null,
-
     });
     onMounted(() => {});
     return {
