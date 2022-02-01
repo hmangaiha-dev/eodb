@@ -39,7 +39,7 @@
 
         <AdminNav/>
         <q-space/>
-        <q-btn-dropdown rounded icon="manage_accounts" dropdown-icon="arrow_drop_down" no-caps :label="user?.full_name" outline color="primary">
+        <q-btn-dropdown  rounded icon="manage_accounts" dropdown-icon="arrow_drop_down" no-caps :label="user?.full_name" outline color="primary">
           <ProfileMenu/>
         </q-btn-dropdown>
         <q-btn v-if="localData.onTop" flat icon="settings"/>

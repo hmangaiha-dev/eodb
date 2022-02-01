@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             DepartmentServiceSeeder::class,
             ApplicationProfileSeeder::class,
             ServiceCategorySeeder::class,
-            InvestorSeeder::class
+            InvestorSeeder::class,
+            OfficeSeeder::class
         ]);
 
 

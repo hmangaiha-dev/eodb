@@ -1,5 +1,5 @@
 <template>
-  <q-page class="container-lg zcard q-my-md">
+  <q-page class="container-lg  q-my-md">
     <div class="flex col items-center justify-between">
       <h1 class='ztitle'>Edit role</h1>
       <q-breadcrumbs>
@@ -7,7 +7,7 @@
         <q-breadcrumbs-el label="Edit Role"  />
       </q-breadcrumbs>
     </div>
-      <q-form class="column zdetailcard" @reset="resetForm" @submit="handleSubmit">
+      <q-form class="column zcard" @reset="resetForm" @submit="handleSubmit">
 
         <q-input v-model="formData.name"
                  outlined
