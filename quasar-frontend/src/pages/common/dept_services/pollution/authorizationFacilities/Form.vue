@@ -176,12 +176,11 @@
 
         <span class="asterisk">*</span></label
       >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.pollution_authorization_facilities_six"
-        dense
-        outlined
-      />
+      <q-file v-model="formData.pollution_authorization_facilities_seven_file" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
 
@@ -385,12 +384,12 @@
 14. Upload Of Agreement With Collection Centre
         <span class="asterisk">*</span></label
       >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.pollution_authorization_facilities_fourteen"
-        dense
-        outlined
-      />
+
+      <q-file v-model="formData.pollution_authorization_facilities_fourteen_file" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
 
@@ -399,12 +398,11 @@
 15. Upload Agreement With Producer
         <span class="asterisk">*</span></label
       >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.pollution_authorization_facilities_fifteen"
-        dense
-        outlined
-      />
+     <q-file v-model="formData.pollution_authorization_facilities_fifteen_file" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
       <div class="col-md-6 col-xs-10">
@@ -424,12 +422,11 @@
 17. Upload Of Agreement With Recycler
         <span class="asterisk">*</span></label
       >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.pollution_authorization_facilities_seventeen"
-        dense
-        outlined
-      />
+  <q-file v-model="formData.pollution_authorization_facilities_seventeen_file" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
 <div class="col-md-6 col-xs-10">
@@ -450,12 +447,11 @@
 19. Upload Of Agreement With Collection Centre
         <span class="asterisk">*</span></label
       >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.pollution_authorization_facilities_nineteen"
-        dense
-        outlined
-      />
+  <q-file v-model="formData.pollution_authorization_facilities_nineteen_file" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
 <div class="col-md-6 col-xs-10">
@@ -463,12 +459,11 @@
 20. Upload Agreement With Producer
         <span class="asterisk">*</span></label
       >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.pollution_authorization_facilities_twenty"
-        dense
-        outlined
-      />
+     <q-file v-model="formData.pollution_authorization_facilities_twenty_file" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
 <div class="col-md-6 col-xs-10">
@@ -498,7 +493,7 @@
         <span class="asterisk">*</span></label
       >
 
-      <q-file v-model="formData.legal_signature_designation" outlined>
+      <q-file v-model="formData.population_authorization_facilities_signature_designation" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -545,7 +540,7 @@ export default {
       pollution_authorization_facilities_five_i:'',
       pollution_authorization_facilities_five_ii:'',
       pollution_authorization_facilities_six:'',
-      pollution_authorization_facilities_seven:'',
+      pollution_authorization_facilities_seven_file:'',
       pollution_authorization_facilities_eight_i:'',
       pollution_authorization_facilities_eight_ii:'',
       pollution_authorization_facilities_nine_i:'',
@@ -557,13 +552,13 @@ export default {
       pollution_authorization_facilities_eleven:'',
       pollution_authorization_facilities_twelve:'',
       pollution_authorization_facilities_thirteen:'',
-      pollution_authorization_facilities_fourteen:'',
-      pollution_authorization_facilities_fifteen:'',
+      pollution_authorization_facilities_fourteen_file:'',
+      pollution_authorization_facilities_fifteen_file:'',
       pollution_authorization_facilities_sixteen:'',
-      pollution_authorization_facilities_seventeen:'',
+      pollution_authorization_facilities_seventeen_file:'',
       pollution_authorization_facilities_eighteen:'',
-      pollution_authorization_facilities_nineteen:'',
-      pollution_authorization_facilities_twenty:'',
+      pollution_authorization_facilities_nineteen_file:'',
+      pollution_authorization_facilities_twenty_file:'',
       pollution_authorization_facilities_twentyone:'',
 
 
@@ -579,7 +574,7 @@ export default {
 
      
 
-      legal_signature_designation: null,
+      population_authorization_facilities_signature_designation: null,
     });
     onMounted(() => {});
     return {

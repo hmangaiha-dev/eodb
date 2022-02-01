@@ -8,14 +8,14 @@ import {api} from "boot/axios";
 
 const state = () => {
   return {
-    currentUser: localStorage.getItem('user'),
-    token: localStorage.getItem('token'),
+    currentUser: LocalStorage.getItem('user'),
+    token: LocalStorage.getItem('token'),
     csrfToken: ''
   }
 }
 const getters = {
   isAuthenticated: (state) => Boolean(state.currentUser) && Boolean(state.token),
-  getUserType: (state) => state.currentUser?.userType,
+  getUserType: (state) => state.currentUser?.type,
   getCurrentUser: (state) => state.currentUser
 }
 const mutations = {
@@ -26,12 +26,12 @@ const mutations = {
 const actions = {
   setToken: (context, token) => {
     if (Boolean(token)) {
-      localStorage.setItem('token', token);
+      LocalStorage.set('token', token);
       context.commit('setToken', token);
       api.defaults.headers['Authorization'] = `Bearer ${token}`;
     } else {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      LocalStorage.remove('token');
+      LocalStorage.remove('user');
       context.commit('setCurrentUser', null);
       context.commit('setToken', null);
       api.defaults.headers['Authorization'] = ``;
@@ -41,7 +41,7 @@ const actions = {
     context.commit('setCsrfToken', token);
   },
   setCurrentUser: (context, data) => {
-    localStorage.setItem('user', (data));
+    LocalStorage.set('user', (data));
     context.commit('setCurrentUser', data);
   }
 }

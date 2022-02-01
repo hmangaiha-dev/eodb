@@ -15,10 +15,10 @@ class InvestorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('users')->upsert([
             'full_name' => 'IamInvestor',
             'email' => 'investor@email.com',
             'password' => Hash::make('password')
-        ]);
+        ],'email');
     }
 }

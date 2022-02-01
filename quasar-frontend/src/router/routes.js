@@ -13,7 +13,7 @@ export const checkAlreadyLoggedIn = async(to, from, next) => {
   await api
     .get("/user")
     .then((res) => {
-     
+
      next({
        name: 'home'
      });
@@ -52,6 +52,10 @@ const routes = [
   // Always leave this as last one,
   // but you can also remove it
   {
+    path: '/403',
+    name: 'access-denied',
+    component: () => import('pages/common/error/AccessDenied.vue')
+  } ,{
     path: '/:catchAll(.*)*',
     name: 'invalid',
     component: () => import('pages/Error404.vue')

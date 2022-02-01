@@ -22,7 +22,14 @@ class Staff extends Authenticatable
 
     protected $table = 'staffs';
     protected $fillable = ['full_name','designation', 'email', 'phone', 'password','joined_at'];
-    protected $appends = ['presentAddress', 'permanentAddress','current_post'];
+    protected $appends = ['presentAddress', 'permanentAddress','current_post','type'];
+
+    protected $hidden = ['password'];
+
+    public function getTypeAttribute()
+    {
+        return 'staff';
+    }
 
     public function getPresentAddressAttribute()
     {
@@ -50,7 +57,8 @@ class Staff extends Authenticatable
 
     public function currentPost()
     {
-        return $this->postings()->where('status', PostingStatus::ON_DUTY)
+        return $this->postings()
+            ->where('status', PostingStatus::ON_DUTY)
             ->latest()
             ->first();
     }

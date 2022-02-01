@@ -18,7 +18,7 @@
       </q-toolbar>
       <q-separator/>
       <q-toolbar class="scroll-y xs-hide container-lg q-pa-xs q-gutter-sm">
-        <q-btn :to="{name:'staff:dashboard'}" :class="$route.name==='staff:dashboard' ?'selected-btn':'' "
+        <q-btn  :to="{name:'staff:dashboard'}" :class="$route.name==='staff:dashboard' ?'selected-menu':'' "
                flat outline label="My desk" color="primary" icon="dashboard"/>
 <!--        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Certificate">-->
 <!--          <q-list>-->
@@ -57,7 +57,7 @@
       <router-view />
     </q-page-container>
 
-    <q-footer elevated class="bg-grey-8 text-white">
+    <q-footer elevated class="print-hide bg-grey-8 text-white">
       <!-- <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
@@ -110,9 +110,5 @@ export default {
 }
 </script>
 <style scoped>
-.selected-btn {
-  background: #ffffff;
-  opacity: 0.8;
-  color: #94d222;
-}
+
 </style>

@@ -1,9 +1,9 @@
 <template>
-  <q-form @submit="submit" class="zdetailcard column q-pa-md q-gutter-sm">
+  <q-form @submit="submit" class=" column  q-gutter-sm">
     <div class="flex justify-between">
       <p class="zlabel">{{ formData.title }}</p>
       <q-btn @click="handleDelete" :disable="$store.state.authData.currentUser.id!==formData.staff_id" flat
-             color="negative" label="Delete ?"/>
+             color="negative" label="Delete" no-caps/>
     </div>
     <q-input outlined
              dense
@@ -103,7 +103,7 @@ export default {
 
     onMounted(() => fetch())
     watch(() => route.params.note, (val, old) => {
-      if (val !== old) {
+      if (!!val && !!route.params.note && val !== old) {
         fetch();
       }
     }, {immediate: true})

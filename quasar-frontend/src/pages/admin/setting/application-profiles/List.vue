@@ -1,5 +1,5 @@
 <template>
-  <q-page class="container-lg" padding>
+  <q-page class="container-lg zcard" padding>
 
     <div>
       <div class="row q-col-gutter-md">
@@ -26,6 +26,7 @@
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">
 <!--                  <q-toggle :model-value="item.published" left-label @click="publish(item)" label="published?"/>-->
+                  <q-btn :to="{name:'print-template:create',params:{id:item.id}}" outline icon="print"/>
                   <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>
 
                 </div>
@@ -38,7 +39,6 @@
             @update:model-value="updatePagination"
             v-model="localData.listData.current_page"
             :max="pageCount"
-            input
           />
         </div>
       </div>
