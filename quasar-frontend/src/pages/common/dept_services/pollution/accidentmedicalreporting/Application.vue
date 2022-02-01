@@ -5,7 +5,7 @@
     <div class="col-12 text-center">
       <span class=""> FORM - I </span>
 
-      <p class="ztitle">ACCIDENT REPORTING FOR BIO-MEDICAL WASTES</p>
+      <p class="ztitle">ACCIDENT REPORTING FOR BIO-MEDICAL WASTES</p> 
 
       <p>[ (See rule 4(o), 5(i) and 15 (2)]</p>
     </div>

@@ -34,9 +34,9 @@
     <div class="ztitle">Attachments</div>
 
     <div v-for="(item, i) in localData.attachments" :key="i" class="row">
-      <div class="zlabel col-4">
-        {{ item.label }}
-      </div>
+      <div v-html="item.label" class="zlabel col-4" />
+        <!-- {{ item.label }} -->
+      <!-- </div> -->
 
       <div class="zlabel col-4">
         <!-- <embed :src="pdfFile" width="500" height="500" /> -->

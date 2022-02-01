@@ -65,7 +65,7 @@ export default {
       department_id: 11,
       pollution_form15_one: "",
       pollution_form15_two: "",
-      pollution_form15_signature: "",
+      pollution_form15_signature: null,
      
     });
     onMounted(() => {});

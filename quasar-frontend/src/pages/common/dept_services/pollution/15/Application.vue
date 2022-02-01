@@ -61,7 +61,7 @@ export default {
       var formData = reactive({});
 
       // return console.log("formdatas", applicantRef.value);
-      formData = Object.assign(formData, applicantRef.value.formData);
+      formData = Object.assign({}, applicantRef.value.formData);
 
       var formDatas = new FormData();
 

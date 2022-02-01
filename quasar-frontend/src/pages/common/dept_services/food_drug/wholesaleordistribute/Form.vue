@@ -88,8 +88,6 @@
         specified in Schedules C and C (1) on the vehicle referred to above.
       </label>
       <div class="row justify q-col-gutter-sm q-ml-md">
-    
-
         <div class="col-md-6 col-xs-12 col-xs-12">
           <label class="zlabel" for="name">
             I) Name
@@ -364,13 +362,14 @@
             I) Signature
             <span class="asterisk"> *</span></label
           >
-          <q-input
-            type="file"
-            :rules="[(val) => val || 'Please type something']"
-            dense
-            outlined
+          <q-file
             v-model="formData.food_drug_form19AA_addl_statement_i"
-          />
+            outlined
+          >
+            <template v-slot:prepend>
+              <q-icon name="attach_file" />
+            </template>
+          </q-file>
         </div>
 
         <div class="col-md-6 col-xs-12 col-xs-12">
@@ -439,8 +438,8 @@ export default {
       department_id: 6,
       food_drug_form19AA_one: "",
       food_drug_form19AA_one_i_we: "",
-      food_drug_form19AA_one_of: "",    
-      food_drug_form19AA_one_reg_no: "",    
+      food_drug_form19AA_one_of: "",
+      food_drug_form19AA_one_reg_no: "",
       food_drug_form19AA_two: "",
       food_drug_form19AA_three: "",
       food_drug_form19AA_four: "",
@@ -471,7 +470,6 @@ export default {
       food_drug_form19AA_addl_statement_ii: "",
       food_drug_form19AA_addl_statement_iii: "",
       food_drug_form19AA_addl_statement_iv: "",
-     
     });
     onMounted(() => {});
     return {

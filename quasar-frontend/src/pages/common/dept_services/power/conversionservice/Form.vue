@@ -203,6 +203,17 @@
       </q-file>
     </div>
 
+     <div class="col-md-6 col-xs-10">
+      <label for="" class="zlabel"
+        >Signature of the consumer</label
+      >
+      <q-file v-model="formData.power_conversion_service_signature" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+    </div>
+
     <div class="col-xs-12" />
   </div>
 </template>
@@ -242,7 +253,9 @@ export default {
       power_conversion_service_eight_iii: '',
       power_conversion_service_nine: '',
       power_conversion_service_inspection_report: null,
-      power_conversion_service_other_doc: null
+      power_conversion_service_other_doc: null,
+      power_conversion_service_signature: null
+
     });
     onMounted(() => {});
     return {
