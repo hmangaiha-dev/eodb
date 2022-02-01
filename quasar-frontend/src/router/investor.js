@@ -203,6 +203,14 @@ export default {
             ),
         },
         {
+          path: "land-diversion",
+          name: "land:land-diversion",
+          component: () =>
+            import(
+              "pages/common/dept_services/land_revenue/landdiversion/Application.vue"
+            ),
+        },
+        {
           path: "transfer-of-land-ownership",
           name: "land:land-transfer",
           component: () =>
