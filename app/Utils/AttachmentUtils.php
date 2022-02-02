@@ -1125,7 +1125,7 @@ class AttachmentUtils
 const SIGN_LEGAL_LICENCE_MANUFACTURING=[
     'size'=>2048,
     'mime'=>'images/*',
-    'application_code'=>'PHE_WATER_CONNECTION',
+    'application_code'=>'LEGAL_LICENCE_MANUFACTURING',
     'key'=>'legal_licence_manuf_signature_designation',
     'label'=>'Signature of applicant',
     'disk'=>'public',
@@ -1503,7 +1503,7 @@ const CE_COST_PROJECT=[
         'legal_licence_registration_importer_signature_designation'=>self::SIGN_LEGAL_LICENCE_REGISTRATION_IMPORTER,
         'legal_verification_signature_designation'=>self::SIGN_LEGAL_VERIFICATION,
         'legal_reverification_signature_designation'=>self::SIGN_LEGAL_REVERIFICATION,
-
+            
         // POLLUTION
         'pollution_return_sale_battery_signature_designation'=>self::SIGN_POLLUTION_RETURN_SALE_BATTERY,
         'pollution_authorization_generation_signature_designation'=>self::SIGN_POLLUTION_AUTHORIZATION_GENERATION_OR_STORAGE,
