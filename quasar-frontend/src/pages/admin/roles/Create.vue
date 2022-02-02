@@ -1,5 +1,5 @@
 <template>
-  <q-page class="container-lg zcard q-my-md">
+  <q-page class="container-lg  q-my-md">
     <div class="flex flex-inline items-center">
       <h1 class='ztitle'>New role</h1>
       <q-space/>
@@ -8,7 +8,7 @@
         <q-breadcrumbs-el label="New role" />
       </q-breadcrumbs>
     </div>
-      <q-form class="column zdetailcard" ref="formRef" @reset="resetForm" @submit="handleSubmit">
+      <q-form class="column zcard" ref="formRef" @reset="resetForm" @submit="handleSubmit">
         <q-input v-model="formData.name"
                  outlined
                  autofocus

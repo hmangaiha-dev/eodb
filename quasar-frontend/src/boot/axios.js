@@ -1,6 +1,6 @@
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
-import {LocalStorage,Quasar} from "quasar";
+import {LocalStorage, Notify, Quasar} from "quasar";
 
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
@@ -15,29 +15,39 @@ const api = axios.create({ baseURL: process.env.DEV?LOCAL_BASE_URL:BASE_URL})
 
 export default boot(({ app,router,store }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
-  let token = localStorage.getItem('token');
+  let token = LocalStorage.getItem('token');
+  let user = LocalStorage.getItem('user');
+  store.dispatch('authData/setCurrentUser', user);
+  store.dispatch('authData/setToken', token);
   api.defaults.headers['Authorization'] = `Bearer ${token}`;
 
-  // api.defaults.withCredentials=true;
+  api.defaults.withCredentials=true;
 // api.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
   api.interceptors.response.use((response) => {
-    if(response?.status === 401) {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      store.dispatch('authData/setCurrentUser', null);
-      store.dispatch('authData/setToken', null);
-    }
+    // if(response?.status === 401) {
+    //   LocalStorage.remove('user');
+    //   LocalStorage.remove('token');
+    //   store.dispatch('authData/setCurrentUser', null);
+    //   store.dispatch('authData/setToken', null);
+    //   router.replace({name:'home'})
+    //   Notify.create({
+    //     message: "Session/Token expired",
+    //     position: "top",
+    //     icon: "warnings",
+    //   });
+    // }
     if (response?.status === 500) {
     }
     return response;
   }, (error) => {
 
     if (error?.response?.status === 401) {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      store.dispatch('authData/setCurrentUser', null);
-      store.dispatch('authData/setToken', null);
+      // LocalStorage.remove('user');
+      // LocalStorage.remove('token');
+      // store.dispatch('authData/setCurrentUser', null);
+      // store.dispatch('authData/setToken', null)
+      // router.replace({name:"home"});
       // window.location.replace('/')
     }
 
@@ -45,6 +55,7 @@ export default boot(({ app,router,store }) => {
   });
   api.interceptors.request.use(
     function(successfulReq) {
+      successfulReq.headers['Authorization']=`Bearer ${token}`;
       return successfulReq;
     },
     function(error) {

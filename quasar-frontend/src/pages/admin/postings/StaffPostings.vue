@@ -1,13 +1,13 @@
 <template>
-  <q-page class="container-lg zcard q-my-md" padding>
-    <h1 class="ztitle">Staff postings</h1>
-    <div class="row zdetailcard">
+  <q-page class="container-lg  q-my-md" padding>
+    <h1 class="ztitle">Staff posting</h1>
       <div class="col-xs-12">
         <q-table
+          title="Staff posting"
           v-model:pagination="tableData.pagination"
           :loading="localData.loading"
           @request="onRequest"
-          flat
+          card-class="zcard"
           :rows="tableData.data"
           :columns="columns"
           row-key="fullname"
@@ -41,7 +41,6 @@
           </template>
 
         </q-table>
-      </div>
     </div>
   </q-page>
 </template>

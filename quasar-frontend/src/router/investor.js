@@ -23,7 +23,6 @@ export const checkAuth = async (to, from, next) => {
 export default {
   path: "/investor",
   component: () => import("layouts/InvestorLayout.vue"),
-  beforeEnter: checkAuth,
   children: [
     {
       path: "",
@@ -201,6 +200,14 @@ export default {
           component: () =>
             import(
               "pages/common/dept_services/land_revenue/landsettlement/Application.vue"
+            ),
+        },
+        {
+          path: "land-diversion",
+          name: "land:land-diversion",
+          component: () =>
+            import(
+              "pages/common/dept_services/land_revenue/landdiversion/Application.vue"
             ),
         },
         {

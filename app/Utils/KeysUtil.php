@@ -471,8 +471,8 @@ class KeysUtil
             'land_revenue_land_house_thirteen_b',
         ],
         'LAND_REVENUE_LAND_SHOP' => [
-            'land_revenue_land_house_one',
             'land_revenue_land_house_two',
+            'land_revenue_land_house_one',
             'land_revenue_land_house_two_a',
             'land_revenue_land_house_two_b',
             'land_revenue_land_house_two_c',

@@ -3,6 +3,7 @@
 namespace App\Utils;
 use App\Utils\AttachmentUtilsRj;
 
+use Composer\Exception\NoSslException;
 use Illuminate\Support\Str;
 
 class AttachmentUtils extends AttachmentUtilsRj
@@ -238,7 +239,7 @@ const SIGN_LAND_REVENUE_LAND_SHOP=[
     'size'=>2048,
     'mime'=>'images/*',
     'application_code'=>'LAND_REVENUE_LAND_SHOP',
-    'key'=>'land_revenue_land_house_signature',
+    'key'=>'land_revenue_land_shop_signature',
     'label'=>'Signature of applicant',
     'disk'=>'public',
     'folder'=>'land/3/attachments'
@@ -417,7 +418,7 @@ const CE_COST_PROJECT=[
         // LAND REVENUE
         // 'pollution_authorization_ewaste_signature_designation'=>self::SIGN_POLLUTION_AUTHORIZATION_EWASTE,
         'land_revenue_land_house_signature'=>self::SIGN_LAND_REVENUE_LAND_HOUSE,
-        'land_revenue_land_house_signature'=>self::SIGN_LAND_REVENUE_LAND_SHOP,
+        'land_revenue_land_shop_signature'=>self::SIGN_LAND_REVENUE_LAND_SHOP,
         'land_revenue_land_settlement_signature'=>self::SIGN_LAND_REVENUE_LAND_SETTLEMENT,
         'land_revenue_land_diversion_signature'=>self::SIGN_LAND_REVENUE_LAND_DIVERSION,
         'land_revenue_land_transfer_signature'=>self::SIGN_LAND_REVENUE_LAND_TRANSFER,

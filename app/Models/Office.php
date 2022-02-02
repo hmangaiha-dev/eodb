@@ -17,7 +17,7 @@ class Office extends Model
     ];
     use HasFactory;
 
-    protected $fillable = ['code', 'name', 'description','contact'];
+    protected $fillable = ['id','code', 'name', 'description','contact'];
 
     public function roles(): MorphToMany
     {
