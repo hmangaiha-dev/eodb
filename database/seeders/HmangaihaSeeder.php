@@ -24,7 +24,11 @@ class HmangaihaSeeder {
         ['code' => 'POLLUTION_AUTHORIZATION_BIO_WASTE', 'title' => 'Authorisation for operating a facility for generation, collection, reception, treatment, storage, transport and disposal of biomedical wastes', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_AUTHORIZATION_EWASTE', 'title' => 'Application For Obtaining Authorisation E-Waste ', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_APPROVAL_NOTIFICATION', 'title' => 'Application For Approval & Notification of sites', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
-        
+       
+
+        //COMMERCE AND INDUSTRIES
+        ['code' => 'CE_GRANT_OF_SUBSIDY', 'title' => ' Application For Grant Of Land Subsidy', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+
         
     ];
 

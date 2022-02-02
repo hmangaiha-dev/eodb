@@ -160,6 +160,17 @@ export default {
               "pages/common/dept_services/Industries/costprojectreport/Application.vue"
             ),
         },
+
+
+        // 11
+        {
+          path: "application-form-for-grant-of-land-subsidy",
+          name: "industries:11",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/11/Application.vue"
+            ),
+        },
       ],
     },
 

@@ -374,7 +374,16 @@ const CE_COST_PROJECT=[
     'disk'=>'public',
     'folder'=>'ce/8/attachments'
 ];
-
+// 11
+const SIGN_CE_GRANT_OF_SUBSIDY=[
+    'size'=>2048,
+    'mime'=>'images/*',
+    'application_code'=>'CE_GRANT_OF_SUBSIDY',
+    'key'=>'ce_grant_of_subsidy_signature_designation',
+    'label'=>'Signature of applicant',
+    'disk'=>'public',
+    'folder'=>'ce/11/attachments'
+];
 
 
 
@@ -443,6 +452,9 @@ const CE_COST_PROJECT=[
         'commerce_power_generating_signature'=>self::CE_POWER_GENERATING,
             //  8
         'commerce_cost_project_signature'=>self::CE_COST_PROJECT,
+// 11
+        'ce_grant_of_subsidy_signature_designation'=>self::SIGN_CE_GRANT_OF_SUBSIDY,
+
         'labour_cert_reg_signature' => self::LABOUR_CERTIFICATE_REGISTRATION_SIGNATURE,
         'labour_lic_reg_eleven_signature' => self::LABOUR_LICENCE_REGISTRATION_SIGNATURE,
         'labour_emp_contract_eight' => self::LABOUR_EMPLOYMENT_CONTRACT_RECEIPT,
