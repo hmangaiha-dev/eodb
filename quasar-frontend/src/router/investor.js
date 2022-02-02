@@ -108,6 +108,7 @@ export default {
     {
       path: "commerce-and-industries",
       component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
       children: [
         {
           path: "claiming-central-interest-subsidy-scheme",
@@ -158,6 +159,22 @@ export default {
           component: () =>
             import(
               "pages/common/dept_services/Industries/costprojectreport/Application.vue"
+            ),
+        },
+        {
+          path: "claim-under-central-comprehensive-insurance-subsidy-scheme",
+          name: "industries:comprehensive",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/factoryshed/Application.vue"
+            ),
+        },
+        {
+          path: "subsidy-power-line",
+          name: "industries:comprehensive",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/powerline/Application.vue"
             ),
         },
       ],

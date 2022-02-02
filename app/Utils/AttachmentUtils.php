@@ -590,6 +590,9 @@ const CE_COST_PROJECT=[
         'pollution_form19_seven_ii' => self::POLLUTION_FORM_19_CONTINGENCY_PLAN,
         'pollution_form19_signature' => self::POLLUTION_FORM_19_SIGNATURE,
 
+        'commerce_factory_shed_signature' => self::INDUSTRIES_FACTORY_SHED_SIGNATURE,
+
+
 
         
 

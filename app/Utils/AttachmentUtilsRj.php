@@ -1142,6 +1142,14 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'pollution/19/attachments'
     ];
+    const INDUSTRIES_FACTORY_SHED_SIGNATURE = [
+        'mime' => 'images/*',
+        'application_code' => 'C&E_FACTORY_SHED',
+        'key' => 'commerce_factory_shed_signature',
+        'label' => "Signature of the Applicant ",
+        'disk' => 'public',
+        'folder' => 'industries/4/attachments'
+    ];
 
 
 
