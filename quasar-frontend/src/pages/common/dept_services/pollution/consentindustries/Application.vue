@@ -11,18 +11,18 @@
         Under Section 25/26 of The Water (Prevention & Control of Pollution)
         Act, 1974
       </p>
-      
+
       <p>
         & Section 21 of The Air (Prevention & Control of Pollution) Act, 1981
       </p>
     </div>
 
-    <q-form @submit.prevent="" class="row">
-      <div class="row q-col-gutter-lg">
-        <div class="col-xs-12">
+    <q-form @submit.prevent="submit">
+      <!-- <div class="row q-col-gutter-lg">
+        <div class="col-xs-12"> -->
           <Form ref="applicantRef" />
-        </div>
-      </div>
+        <!-- </div>
+      </div> -->
 
       <div class="text-center q-mt-md col-12">
         <q-btn type="submit" color="green-5" label="Submit" />
@@ -34,8 +34,11 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
 import { date } from "quasar";
+import { ref } from "vue";
+import { api } from "src/boot/axios";
+import { useQuasar } from "quasar";
+import { useRouter } from "vue-router";
 
 import Form from "./Form.vue";
 // import Part2 from "./Part2.vue";
@@ -49,31 +52,40 @@ export default {
   },
   setup(props, context) {
     const store = useStore();
-    // const draft = store.getters["applicantData/getCurrentDraft"];
-    // const currentUser = store.getters["auth/getCurrentUser"];
+    // const store = useStore();
+    const q = useQuasar();
 
-    const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: "",
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
-    });
+    const router = useRouter();
+    const applicantRef = ref(null);
+
+    const submit = () => {
+      var formData = reactive({});
+
+      // return console.log("formdatas", applicantRef.value);
+      formData = Object.assign(formData, applicantRef.value.formData);
+
+      var formDatas = new FormData();
+
+      for (let data in formData) {
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+      api
+        .post("/applications/submit", formDatas)
+        .then((res) => {
+          // console.log("response value", res.data);
+          q.notify({
+            message: "Application submitted successfully",
+            color: "green",
+          });
+          router.push({ name: "investor:ongoing" });
+        })
+        .catch((err) => console.log("error", err));
+    };
 
     return {
+      submit,
+      applicantRef,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

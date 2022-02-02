@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Utils;
+use App\Utils\AttachmentUtilsRj;
 
 use Illuminate\Support\Str;
 
-class AttachmentUtils
+class AttachmentUtils extends AttachmentUtilsRj
 {
+    
+    
     const PHE_WATER_CONNECTION_SIGNATURE = [
         'size' => 2048,
         'mime' => 'images/*',
@@ -1488,7 +1491,12 @@ const CE_COST_PROJECT=[
 
 
 
+
+
+
+
     const ATTACHMENTS = [
+        // ...AttachmentUtilsRj::ATTACHMENTS,
         'signature_phe_water_connection'=>self::PHE_WATER_CONNECTION_SIGNATURE,
         // LEGAL METROLOGY
         'legal_licence_manuf_signature_designation'=>self::SIGN_LEGAL_LICENCE_MANUFACTURING,
@@ -1637,7 +1645,12 @@ const CE_COST_PROJECT=[
 
         'food_drug_19B_five_i' => self::FOOD_DRUG_FORM19B_SIGNATURE,
 
+        'pollution_consent_general_ev_3_1_2_a' => self::POLLUTION_CONSENT_INDUSTRIES_MAP,
+        'pollution_consent_signature' => self::POLLUTION_CONSENT_INDUSTRIES_SIGNATURE,
+
         'pollution_accident_medical_signature' => self::POLLUTION_ACCIDENT_MEDICAL_SIGNATURE,
+
+        'pollution_form_5_signature' => self::POLLUTION_FORM_5_SIGNATURE,
 
         'pollution_accident_hazardous_signature' => self::POLLUTION_ACCIDENT_HAZARDOUS_SIGNATURE,
 
@@ -1692,94 +1705,6 @@ const CE_COST_PROJECT=[
 
 
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
