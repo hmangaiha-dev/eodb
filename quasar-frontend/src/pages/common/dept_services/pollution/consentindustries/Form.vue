@@ -1,7 +1,7 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-10">
-      <label class="zlabel" for="name"
+      <label class="text-h5" for="name"
         >1. General <span class="asterisk"> *</span></label
       >
 
@@ -11,7 +11,11 @@
             1.1 Name Of The Industry
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_general_1_1"
+          />
         </div>
         <div class="col-12">
           <label class="zlabel" for="name"
@@ -25,7 +29,11 @@
               <label class="zlabel" for="name"
                 >I) Phone<span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_1_2_I"
+              />
             </div>
 
             <div class="col-md-4 col-xs-10">
@@ -33,14 +41,22 @@
                 II) Fax
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_1_2_II"
+              />
             </div>
 
             <div class="col-md-4 col-xs-10">
               <label class="zlabel" for="name"
                 >III) E-mail <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_1_2_II"
+              />
             </div>
           </div>
         </div>
@@ -51,7 +67,11 @@
             <span class="asterisk"> *</span></label
           >
 
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_general_1_3"
+          />
         </div>
 
         <div class="col-md-4 col-xs-10">
@@ -59,7 +79,11 @@
             >1.4 Name And Address Of Consultant Appointed (if Any):
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_general_1_4"
+          />
         </div>
 
         <div class="col-md-10">
@@ -67,13 +91,17 @@
             >1.5 Total Investment Of Proposed Industry:
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_general_1_5"
+          />
         </div>
       </div>
     </div>
 
     <div class="col-12">
-      <label class="zlabel" for="name"
+      <label class="text-h5" for="name"
         >2. PROCESS DETAIL <span class="asterisk"> *</span></label
       >
 
@@ -87,7 +115,11 @@
                 2.1. List Of Main Products Proposed To Be Produced With Designed
                 Daily Production Capacity
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -96,7 +128,11 @@
                 Capacity
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_2"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -104,7 +140,11 @@
                 2.3. Time Phasing For Achieving Full Pro-duction Capacity
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_3"
+              />
             </div>
           </div>
         </div>
@@ -120,16 +160,24 @@
                 2.2.1 List Of All Raw Materials With Daily Consumption At Full
                 Production Capacity
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_2_raw_2_2_1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
-                2.2..2 List Of All Process Chemicals/materials Consumed With
+                2.2.2 List Of All Process Chemicals/materials Consumed With
                 Appropriate Quantities
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_2_raw_2_2_2"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -139,7 +187,11 @@
                 Specify Quantities And Source
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_2_raw_2_2_4"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -149,7 +201,11 @@
                 Details Of Quantities And Probable Use
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_2_raw_2_2_4"
+              />
             </div>
           </div>
         </div>
@@ -163,7 +219,11 @@
                 2.3.1. Source Of Process Knowhow (In-house/National
                 Laboratory/Foreign/Other (specify))
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_3_manuf_2_3_1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -171,7 +231,11 @@
                 2.3.2. Have You Considered Less Polluting Process Alternatives?
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_3_manuf_2_3_2"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -180,7 +244,11 @@
                 Utilized With A Flow Chart
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_3_manuf_2_3_3"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -188,7 +256,11 @@
                 2.3.4 Have You Any Foreign Collaboration
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_3_manuf_2_3_4"
+              />
             </div>
           </div>
         </div>
@@ -201,7 +273,11 @@
               <label class="zlabel" for="name">
                 2.4.1 a) Source Of Energy, In-plant Generation
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_4_energy_2_4_1_a"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -209,7 +285,11 @@
                 2.4.1 b) Source Of Energy, Public Supply
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_process_2_4_energy_2_4_1_b"
+              />
             </div>
 
             <div class="col-12">
@@ -224,7 +304,13 @@
                   <label class="zlabel" for="name">
                     A) Daily Consumption In Tones/units , Coal
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_process_2_4_energy_2_4_2_A
+                    "
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -232,7 +318,13 @@
                     B) Daily Consumption In Tones/units , Fuel Oil
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_process_2_4_energy_2_4_2_B
+                    "
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -240,7 +332,13 @@
                     C) Daily Consumption In Tones/units , Diesel
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_process_2_4_energy_2_4_2_C
+                    "
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -248,7 +346,13 @@
                     D) Daily Consumption In Tones/units , Natural Gas
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_process_2_4_energy_2_4_2_D
+                    "
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -256,7 +360,13 @@
                     E) Daily Consumption In Tones/units , Wood
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_process_2_4_energy_2_4_2_E
+                    "
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -264,7 +374,13 @@
                     F) Daily Consumption In Tones/units , Electricity
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_process_2_4_energy_2_4_2_F
+                    "
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -272,7 +388,13 @@
                     G) Daily Consumption In Tones/units , Other (Specify)
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_process_2_4_energy_2_4_2_G
+                    "
+                  />
                 </div>
               </div>
             </div>
@@ -282,7 +404,7 @@
     </div>
 
     <div class="col-12">
-      <label class="zlabel" for="name"
+      <label class="text-h5" for="name"
         >3. GENERAL ENVIRONMENT (Site, Climate, Settlement)
       </label>
       <div class="row justify q-col-gutter-md q-ml-md">
@@ -295,47 +417,78 @@
                 3.1.1 Where Is The Plant Proposed To Be Sited?Attached Map
                 Showing Topographical Features Of The Area
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
                 3.1.2 a) Attached Map Showing Topographical Features Of The Area
               </label>
-              <q-input type="file" dense outlined />
+              <q-file
+                v-model="formData.pollution_consent_general_ev_3_1_2_a"
+                outlined
+              >
+                <template v-slot:prepend>
+                  <q-icon name="attach_file" />
+                </template>
+              </q-file>
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"> 3.1.2 Area Of Land </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_2"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
                 3.1.3 Area Proposed To Be Built Up Or Developed
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_3"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
                 3.1.4. Present Use Of Land
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_4"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
                 3.1.5. Indicate The Nature Of Topography Near The Site
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_5"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
                 3.1.6 Specify Site Character
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_6"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -343,7 +496,11 @@
                 3.1.7 Is The Land Situated Within Any Municipal Or Corporation
                 Jurisdiction? If Not, How Far From It (please Specify)
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_7"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -351,7 +508,11 @@
                 3.1.8. Nature And Details About Other Industries Located Within
                 5 Km From The Proposed Site
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_8"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -359,7 +520,11 @@
                 3.1.9 Is The Land Situated In An Approved Industrial Zone Or
                 Estate? How Far From The Nearest Town Or Human Settlement?
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_9"
+              />
             </div>
 
             <div class="col-12">
@@ -372,49 +537,77 @@
                   <label class="zlabel" for="name">
                     1) Human Settlements (specify Number Of Houses)
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_general_ev_3_1_10_1"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name">
                     2) Agriculture land (specify crops):
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_general_ev_3_1_10_2"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name">
                     3) Grazing Lad (specify Area)
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_general_ev_3_1_10_3"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name">
                     4) Fisheries (specify Annual Catch)
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_general_ev_3_1_10_4"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name">
                     5) Forest/sanctuary/natural Part
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_general_ev_3_1_10_5"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name">
                     6) Ponds/lakes/Dams (specify Name)
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_general_ev_3_1_10_6"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name">
                     7) Streams/Rivers (specify Name)
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_general_ev_3_1_10_7"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -423,7 +616,11 @@
                     Scientific/ Institutions/ Hospitals/ Sanctuaries/ Religious/
                     Tourist/ Defence Importance (specify Name And Significance)
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_general_ev_3_1_10_8"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -431,7 +628,11 @@
                     9) Other Industries, Specify (name, Major Industries, Number
                     Of Industrial Workers)
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_general_ev_3_1_10_9"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -439,7 +640,11 @@
                     10) Any Sensitive Industries Located Nearby Or Prohibited
                     Zone (limits Prescribed By Any Authority)
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_general_ev_3_1_10_10"
+                  />
                 </div>
               </div>
             </div>
@@ -449,14 +654,22 @@
                 3.1.11. Type Of Flora And Fauna, Especially Wildlife And
                 Endangered Species (specify By Name And Importance)
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_11"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
                 3.1.12. Present Employment Or Occupational Pattern
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_12"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -464,14 +677,22 @@
                 3.1.13 Prominent Endemic Diseases (Fluorosis, Malaria, Filaria,
                 Malnutrition Etc.)
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_13"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
                 3.1.14. Any Other Observation Regarding The State Of Environment
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_1_14"
+              />
             </div>
           </div>
         </div>
@@ -484,7 +705,11 @@
               <label class="zlabel" for="name">
                 3.2.1 Total Number Of Persons Proposed To Be Employed
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_2_1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -492,7 +717,11 @@
                 3.2.1 a) Total Number Of Persons Proposed To Be Employed, During
                 Construction
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_2_1_a"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -500,7 +729,11 @@
                 3.2.1 b) Total Number Of Persons Proposed To Be Employed, After
                 Completion
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_2_1_b"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -508,28 +741,44 @@
                 3.2.2 Do You Proposed To Build A Township Housing Quarters For
                 Your Employees?
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_2_2"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >3.2.3 Area Allocated For Above
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_2_3"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
                 3.2.4 Population To Be Accommodated
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_2_4"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
                 3.2.5 Distance From Township To Plant Site
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_general_ev_3_2_5"
+              />
             </div>
           </div>
         </div>
@@ -537,14 +786,18 @@
     </div>
 
     <div class="col-12">
-      <label class="zlabel" for="">4. WATER REQUIREMENTS</label>
+      <label class="text-h5" for="">4. WATER REQUIREMENTS</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             4.1. What Treatment Is Given Before Use (if Any)
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_water_4_1"
+          />
         </div>
 
         <div class="col-12">
@@ -555,22 +808,38 @@
           <div class="row justify q-col-gutter-md q-ml-md">
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"> I) Process And Wash </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_water_4_2_I"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"> II) Cooling </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_water_4_2_II"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"> III) Sanitary </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_water_4_2_III"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"> IV) Total </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_water_4_2_IV"
+              />
             </div>
           </div>
         </div>
@@ -578,7 +847,7 @@
     </div>
 
     <div class="col-12">
-      <label class="zlabel" for="">5. WASTE WATER DISCHARGES</label>
+      <label class="text-h5" for="">5. WASTE WATER DISCHARGES</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
@@ -586,7 +855,11 @@
             5.1 Total Quantity Of Waste Water Discharged From The Industry Per
             Day
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_water_5_1"
+          />
         </div>
 
         <div class="col-12">
@@ -599,22 +872,38 @@
               <label class="zlabel" for="name">
                 I) Process And Wash (with Break Up, If Possible)
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_water_5_2_I"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"> II) Cooling </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_water_5_2_II"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"> III) Sanitary </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_water_5_2_III"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"> IV) Total </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_water_5_2_IV"
+              />
             </div>
           </div>
         </div>
@@ -629,14 +918,22 @@
               <label class="zlabel" for="name">
                 I) Separate Streams/combined
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_water_5_3_I"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >II) Continuous/intermittent
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_water_5_3_II"
+              />
             </div>
           </div>
         </div>
@@ -646,14 +943,22 @@
             5.4 Type Of Treatment Proposed To Be Adopted. Give Details And Flow
             Chart
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_water_5_4"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             5.5 Mode Of Final Discharge (open Channel/pipeline/covered Drains)
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_water_5_5"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -661,14 +966,22 @@
             5.6. Point Of Final Discharge- Low Land/ Agricultural
             Land/sewer/river/lake. Details Of Outfall Design
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_water_5_6"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             5.7. Is Any Portion Of The Waste Water Pro-posed To Be Recycled?
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_water_5_7"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -676,34 +989,50 @@
             5.8. What Method Do You Propose To Adopt For Handling And Disposal
             Of Sludge For Treatment Plants
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_water_5_8"
+          />
         </div>
       </div>
     </div>
 
     <div class="col-12">
-      <label class="zlabel" for="">6. SOLID WASTES</label>
+      <label class="text-h5" for="">6. SOLID WASTES</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             6.1 Total Quantity Of Solid Waste In Tones Per Day
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_solid_6_1"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             6.2. Nature Of Waste- Lump/Granules/Dust/ Slurry Sludge
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_solid_6_2"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             6.3 Type Of Wastes (organic, Inorganic, Ash, Glass, Metal, Etc)
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_solid_6_3"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -711,7 +1040,11 @@
             6.4 Method Proposed For Disposal, Including Treatment Plant Sludge
             (please Give Details)
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_solid_6_4"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -719,14 +1052,22 @@
             6.5 If Landfill, Possibility Of Leaching Of Toxic Compounds Into
             Soil, Ground Water Or Surface Water
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_solid_6_5"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             6.6 If Incinerated, Details Of Incineration Plant And Procedures
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_solid_6_6"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -734,7 +1075,11 @@
             6.7 Do You Anticipate Any Problems Regarding Collection, Handling
             And Transport Of Solid Wastes? If Yes, Specify
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_solid_6_7"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -744,32 +1089,48 @@
             Please Explain Indicating Method Proposed For Prevention Of Such
             Pollution)
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_solid_6_8"
+          />
         </div>
       </div>
     </div>
 
     <div class="col-12">
-      <label class="zlabel" for="">7. ATMOSPHERIC EMISSIONS</label>
+      <label class="text-h5" for="">7. ATMOSPHERIC EMISSIONS</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             7.1 Emission From Fuel Burning
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_atmos_seven_7_1"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             7.2 Anticipated Quantity Of Stack Emissions
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_atmos_seven_7_2"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"> 7.3 Temperature Of Emission </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_atmos_seven_7_3"
+          />
         </div>
 
         <div class="col-12">
@@ -780,7 +1141,11 @@
               <label class="zlabel" for="name">
                 a) Particulates And Smoke, Nature And Quantity
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_seven_7_4_a"
+              />
             </div>
 
             <div class="col-12">
@@ -789,32 +1154,56 @@
               <div class="row justify q-col-gutter-md q-ml-md">
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"> i) Sulphur Dioxide </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_atmos_seven_7_4_b_i"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"> ii) Nitrogen Oxide </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_atmos_seven_7_4_b_ii"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"> iii) Hydrocarbons </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_atmos_seven_7_4_b_iii"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"> iv) Carbon Monoxide </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_atmos_seven_7_4_b_iv"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"> v) Moisture </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_atmos_seven_7_4_b_v"
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"> vi) Other Specify </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="formData.pollution_consent_atmos_seven_7_4_b_vi"
+                  />
                 </div>
               </div>
             </div>
@@ -828,16 +1217,24 @@
               <label class="zlabel" for="name">
                 7.2.1 Anticipated emissions quantity:
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_2_1"
+              />
             </div>
 
             <div class="col-12">
               <label class="zlabel" for="name"> 7.2.2 Temperature: </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_2_2"
+              />
             </div>
             <div class="col-12">
               <label class="zlabel" for="name">
-                7.4 Composition Of Emission
+                7.2.3 Composition Of Emission
               </label>
 
               <div class="row justify q-col-gutter-md q-ml-md">
@@ -845,7 +1242,13 @@
                   <label class="zlabel" for="name">
                     a) Particulates And Smoke, Nature And Quantity
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_atmos_emission_seven_7_2_3_a
+                    "
+                  />
                 </div>
 
                 <div class="col-12">
@@ -856,40 +1259,76 @@
                       <label class="zlabel" for="name">
                         i) Sulphur Dioxide
                       </label>
-                      <q-input dense outlined />
+                      <q-input
+                        dense
+                        outlined
+                        v-model="
+                          formData.pollution_consent_atmos_emission_seven_7_2_3_b_i
+                        "
+                      />
                     </div>
 
                     <div class="col-md-6 col-xs-10">
                       <label class="zlabel" for="name">
                         ii) Nitrogen Oxide
                       </label>
-                      <q-input dense outlined />
+                      <q-input
+                        dense
+                        outlined
+                        v-model="
+                          formData.pollution_consent_atmos_emission_seven_7_2_3_b_ii
+                        "
+                      />
                     </div>
 
                     <div class="col-md-6 col-xs-10">
                       <label class="zlabel" for="name">
                         iii) Hydrocarbons
                       </label>
-                      <q-input dense outlined />
+                      <q-input
+                        dense
+                        outlined
+                        v-model="
+                          formData.pollution_consent_atmos_emission_seven_7_2_3_b_iii
+                        "
+                      />
                     </div>
 
                     <div class="col-md-6 col-xs-10">
                       <label class="zlabel" for="name">
                         iv) Carbon Monoxide
                       </label>
-                      <q-input dense outlined />
+                      <q-input
+                        dense
+                        outlined
+                        v-model="
+                          formData.pollution_consent_atmos_emission_seven_7_2_3_b_iv
+                        "
+                      />
                     </div>
 
                     <div class="col-md-6 col-xs-10">
                       <label class="zlabel" for="name"> v) Moisture </label>
-                      <q-input dense outlined />
+                      <q-input
+                        dense
+                        outlined
+                        v-model="
+                          formData.pollution_consent_atmos_emission_seven_7_2_3_b_v
+                        "
+                      />
                     </div>
 
                     <div class="col-md-6 col-xs-10">
                       <label class="zlabel" for="name">
                         vi) Other Specify
                       </label>
-                      <q-input dense outlined />
+                      <q-input
+                        dense
+                        outlined
+                        v-model="
+                          formData.pollution_consent_atmos_emission_seven_7_2_3_b_vi
+                        "
+                      />
                     </div>
                   </div>
                 </div>
@@ -908,26 +1347,46 @@
               <label class="zlabel" for="name"
                 >a) Name and type of stacks:</label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_3_a"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">b) Inter Stack Distance</label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_3_b"
+              />
             </div>
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">c) Height Of Each Stack</label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_3_c"
+              />
             </div>
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >d) Internal Diameter Of Each Stack At The Base And Top</label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_3_d"
+              />
             </div>
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">e) Exist Gas Velocity</label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_3_e"
+              />
             </div>
 
             <div class="col-12">
@@ -938,29 +1397,59 @@
               <div class="row justify q-col-gutter-md q-ml-md">
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"> i) Volume </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_atmos_emission_seven_7_3_f_i
+                    "
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name">ii) Temperature </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_atmos_emission_seven_7_3_f_ii
+                    "
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"> iii) Density </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_atmos_emission_seven_7_3_f_iii
+                    "
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name">
                     iv) Size Distributions Of Particulars
                   </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_atmos_emission_seven_7_3_f_iv
+                    "
+                  />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"> v) Gas Composition </label>
-                  <q-input dense outlined />
+                  <q-input
+                    dense
+                    outlined
+                    v-model="
+                      formData.pollution_consent_atmos_emission_seven_7_3_f_v
+                    "
+                  />
                 </div>
               </div>
             </div>
@@ -975,14 +1464,22 @@
               <label class="zlabel" for="name"
                 >a) What Kind Of Stack Emission Monitoring Is Proposed?</label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_4_a"
+              />
             </div>
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >b) What Equipment Is Proposed To Be Acquired For This
                 Purpose?</label
               >
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_4_b"
+              />
             </div>
           </div>
         </div>
@@ -992,7 +1489,11 @@
             >7.5 Give Details Of Air Pollution Control Equipment You Proposed To
             Install</label
           >
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_atmos_emission_seven_7_5"
+          />
         </div>
 
         <div class="col-12">
@@ -1004,12 +1505,20 @@
           <div class="row justify q-col-gutter-md q-ml-md">
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"> a) Function Normally </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_6_a"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"> b) Not Functioning </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_atmos_emission_seven_7_6_b"
+              />
             </div>
           </div>
         </div>
@@ -1020,7 +1529,11 @@
             Pollution Control During Periods When Emission Exceeds Prescribed
             Limits For Any Reason Including Malfunctioning Of Equipment?</label
           >
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_atmos_emission_seven_7_7"
+          />
         </div>
 
         <div class="col-md-5 col-xs-10">
@@ -1028,41 +1541,61 @@
             >7.8 Are Any Standards Of Emission Prescribed For Or Adopt By Your
             Industry? If Yes, Please Specify</label
           >
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_atmos_emission_seven_7_8"
+          />
         </div>
       </div>
     </div>
 
     <div class="col-12">
-      <label for="" class="zlabel">8. OTHER TYPES OF POLLUTION</label>
+      <label for="" class="text-h5">8. OTHER TYPES OF POLLUTION</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             8.1 Is Your Industry Likely To Cause Noise Pollution?
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_others_eight_8_1"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             8.2 Is Your Industry Likely To Cause Odour Pollution?
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_others_eight_8_2"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             8.3 Is Your Industry Likely To Cause Any Thermal Pollution?
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_others_eight_8_3"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             8.4 Is Your Industry Likely Tp Cause Radio- Active Pollution?
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_others_eight_8_4"
+          />
         </div>
 
         <div class="col-12">
@@ -1076,7 +1609,11 @@
                 8.5.1 What major health safety hazards are likely in the working
                 environment in your factory?
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_others_eight_8_5_1"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -1084,21 +1621,23 @@
                 8.5.2 Describe the industrial hygiene Measures you propose to
                 adopt
               </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_others_eight_8_5_2"
+              />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name">
-                8.3 Is Your Industry Likely To Cause Any Thermal Pollution?
+                8.5.3 What provision you have made to conform to health and
+                safety requirements as per Factories Act.
               </label>
-              <q-input dense outlined />
-            </div>
-
-            <div class="col-md-6 col-xs-10">
-              <label class="zlabel" for="name">
-                8.5.3 What provision you have made to conform to health and safety requirements as per Factories Act.
-              </label>
-              <q-input dense outlined />
+              <q-input
+                dense
+                outlined
+                v-model="formData.pollution_consent_others_eight_8_5_3"
+              />
             </div>
           </div>
         </div>
@@ -1106,15 +1645,19 @@
     </div>
 
     <div class="col-12">
-      <label for="" class="zlabel">9. MANAGEMENT OF POLLUTION CONTROL</label>
+      <label for="" class="text-h5">9. MANAGEMENT OF POLLUTION CONTROL</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
-            9.1) Give Details Of The Organizational Set Up You Propose To Have For
-            Pollution Control
+            9.1) Give Details Of The Organizational Set Up You Propose To Have
+            For Pollution Control
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_manage_eight_9_1"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -1122,43 +1665,65 @@
             9.2) What Is The Level Of Expertise Of The Person Incharge Of
             Pollution Control?
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_manage_eight_9_2"
+          />
         </div>
 
-         <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
-           9.3. Do you propose to monitor the pollution from your industry? If yes give details?
+            9.3. Do you propose to monitor the pollution from your industry? If
+            yes give details?
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_manage_eight_9_3"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
             9.4) What Laboratories Facilities You Propose To Have For The Above?
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_manage_eight_9_4"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
-            9.5) Give Details Of Operation & Maintenance Facilities You Propose To
-            Have Treatment Plants And Pollution Level Monitoring And Control
+            9.5) Give Details Of Operation & Maintenance Facilities You Propose
+            To Have Treatment Plants And Pollution Level Monitoring And Control
             Equipments
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_manage_eight_9_5"
+          />
         </div>
       </div>
     </div>
 
     <div class="col-12">
-      <label for="" class="zlabel">10. COST OF POLLUTION CONTROL</label>
+      <label for="" class="text-h5">10. COST OF POLLUTION CONTROL</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
-            10.1) Total Expenditure Proposed For Pollution Monitoring And Control
+            10.1) Total Expenditure Proposed For Pollution Monitoring And
+            Control
           </label>
-          <q-input dense outlined />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_consent_cost_ten_10_1"
+          />
         </div>
       </div>
     </div>
@@ -1170,7 +1735,11 @@
         Provided In Consultation With The Appropriate Central/state
         Authorities.)
       </label>
-      <q-input dense outlined />
+      <q-input
+        dense
+        outlined
+        v-model="formData.pollution_consent_cost_ten_10_11"
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -1178,7 +1747,11 @@
         12. Any Other Additional Information And Summary Statement About
         Environmental Impacts For Your Industry
       </label>
-      <q-input dense outlined />
+      <q-input
+        dense
+        outlined
+        v-model="formData.pollution_consent_cost_ten_10_12"
+      />
     </div>
 
     <div class="col-12 text-center">
@@ -1190,7 +1763,11 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="name"> Signature Of The Operator </label>
-      <q-input type="file" dense outlined />
+      <q-file v-model="formData.pollution_consent_signature" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
 
     <div class="col-xs-12" />
@@ -1208,41 +1785,174 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      one: "",
-      one_a: "",
-      one_b: "",
-      one_b_i: "",
-      one_b_ii: "",
-      one_b_iii: "",
-      one_c: "",
-      one_d: "",
-      one_e: "",
-      two: "",
-      two_a: "",
-      two_a_i: "",
-      two_a_ii: "",
-      two_a_iii: "",
-      two_b: "",
-      two_b_i: "",
-      two_b_ii: "",
-      two_b_iii: "",
-      two_b_iv: "",
-      two_c: "",
-      two_c_i: "",
-      two_c_ii: "",
-      two_c_iii: "",
-      two_c_iv: "",
-      two_d: "",
-      two_d_i: "",
-      two_d_ii: "",
-      two_d_iii: "",
-      two_d_iii_a: "",
-      two_d_iii_b: "",
-      two_d_iii_c: "",
-      two_d_iii_d: "",
-      two_d_iii_e: "",
-      two_d_iii_f: "",
-      two_d_iii_g: "",
+      application_code: "POLLUTION_CONSENT_INDUSTRIES",
+      department_id: 11,
+      pollution_consent_general: "",
+      pollution_consent_general_1_1: "",
+      pollution_consent_general_1_2: "",
+      pollution_consent_general_1_2_I: "",
+      pollution_consent_general_1_2_II: "",
+      pollution_consent_general_1_2_III: "",
+      pollution_consent_general_1_3: "",
+      pollution_consent_general_1_4: "",
+      pollution_consent_general_1_5: "",
+      pollution_consent_process: "",
+      pollution_consent_process_2_1: "",
+      pollution_consent_process_2_2: "",
+      pollution_consent_process_2_3: "",
+      pollution_consent_process_2_2_raw: "",
+      pollution_consent_process_2_2_raw_2_2_1: "",
+      pollution_consent_process_2_2_raw_2_2_2: "",
+      pollution_consent_process_2_2_raw_2_2_3: "",
+      pollution_consent_process_2_2_raw_2_2_4: "",
+      pollution_consent_process_2_3_manuf: "",
+      pollution_consent_process_2_3_manuf_2_3_1: "",
+      pollution_consent_process_2_3_manuf_2_3_2: "",
+      pollution_consent_process_2_3_manuf_2_3_3: "",
+      pollution_consent_process_2_3_manuf_2_3_4: "",
+      pollution_consent_process_2_4_energy: "",
+      pollution_consent_process_2_4_energy_2_4_1_a: "",
+      pollution_consent_process_2_4_energy_2_4_1_b: "",
+      pollution_consent_process_2_4_energy_2_4_2: "",
+      pollution_consent_process_2_4_energy_2_4_2_A: "",
+      pollution_consent_process_2_4_energy_2_4_2_B: "",
+      pollution_consent_process_2_4_energy_2_4_2_C: "",
+      pollution_consent_process_2_4_energy_2_4_2_D: "",
+      pollution_consent_process_2_4_energy_2_4_2_E: "",
+      pollution_consent_process_2_4_energy_2_4_2_F: "",
+      pollution_consent_process_2_4_energy_2_4_2_G: "",
+      pollution_consent_general_ev: "",
+      pollution_consent_general_ev_3_1_1: "",
+      pollution_consent_general_ev_3_1_2_a: null,
+      pollution_consent_general_ev_3_1_2: "",
+      pollution_consent_general_ev_3_1_3: "",
+      pollution_consent_general_ev_3_1_4: "",
+      pollution_consent_general_ev_3_1_5: "",
+      pollution_consent_general_ev_3_1_6: "",
+      pollution_consent_general_ev_3_1_7: "",
+      pollution_consent_general_ev_3_1_8: "",
+      pollution_consent_general_ev_3_1_9: "",
+      pollution_consent_general_ev_3_1_10: "",
+      pollution_consent_general_ev_3_1_10_1: "",
+      pollution_consent_general_ev_3_1_10_2: "",
+      pollution_consent_general_ev_3_1_10_3: "",
+      pollution_consent_general_ev_3_1_10_4: "",
+      pollution_consent_general_ev_3_1_10_5: "",
+      pollution_consent_general_ev_3_1_10_6: "",
+      pollution_consent_general_ev_3_1_10_7: "",
+      pollution_consent_general_ev_3_1_10_8: "",
+      pollution_consent_general_ev_3_1_10_9: "",
+      pollution_consent_general_ev_3_1_10_10: "",
+      pollution_consent_general_ev_3_1_11: "",
+      pollution_consent_general_ev_3_1_12: "",
+      pollution_consent_general_ev_3_1_13: "",
+      pollution_consent_general_ev_3_1_14: "",
+      pollution_consent_general_ev_3_2: "",
+      pollution_consent_general_ev_3_2_1: "",
+      pollution_consent_general_ev_3_2_1_a: "",
+      pollution_consent_general_ev_3_2_1_b: "",
+      pollution_consent_general_ev_3_2_2: "",
+      pollution_consent_general_ev_3_2_3: "",
+      pollution_consent_general_ev_3_2_4: "",
+      pollution_consent_general_ev_3_2_5: "",
+      pollution_consent_water: "",
+      pollution_consent_water_4_1: "",
+      pollution_consent_water_4_2: "",
+      pollution_consent_water_4_2_I: "",
+      pollution_consent_water_4_2_II: "",
+      pollution_consent_water_4_2_III: "",
+      pollution_consent_water_4_2_IV: "",
+      pollution_consent_water_5_2_IV: "",
+      pollution_consent_waste_water: "",
+      pollution_consent_water_5_1: "",
+      pollution_consent_water_5_2: "",
+      pollution_consent_water_5_2_I: "",
+      pollution_consent_water_5_2_II: "",
+      pollution_consent_water_5_2_III: "",
+      pollution_consent_water_5_2_IV: "",
+      pollution_consent_water_5_3: "",
+      pollution_consent_water_5_3_I: "",
+      pollution_consent_water_5_3_II: "",
+      pollution_consent_water_5_4: "",
+      pollution_consent_water_5_5: "",
+      pollution_consent_water_5_6: "",
+      pollution_consent_water_5_7: "",
+      pollution_consent_water_5_8: "",
+      pollution_consent_solid: "",
+      pollution_consent_solid_6_1: "",
+      pollution_consent_solid_6_2: "",
+      pollution_consent_solid_6_3: "",
+      pollution_consent_solid_6_4: "",
+      pollution_consent_solid_6_5: "",
+      pollution_consent_solid_6_6: "",
+      pollution_consent_solid_6_7: "",
+      pollution_consent_solid_6_8: "",
+      pollution_consent_atmos_seven: "",
+      pollution_consent_atmos_seven_7_1: "",
+      pollution_consent_atmos_seven_7_2: "",
+      pollution_consent_atmos_seven_7_3: "",
+      pollution_consent_atmos_seven_7_4: "",
+      pollution_consent_atmos_seven_7_4_a: "",
+      pollution_consent_atmos_seven_7_4_b: "",
+      pollution_consent_atmos_seven_7_4_b_i: "",
+      pollution_consent_atmos_seven_7_4_b_ii: "",
+      pollution_consent_atmos_seven_7_4_b_iii: "",
+      pollution_consent_atmos_seven_7_4_b_iv: "",
+      pollution_consent_atmos_seven_7_4_b_v: "",
+      pollution_consent_atmos_seven_7_4_b_vi: "",
+      pollution_consent_atmos_emission_seven_7_2: "",
+      pollution_consent_atmos_emission_seven_7_2_1: "",
+      pollution_consent_atmos_emission_seven_7_2_2: "",
+      pollution_consent_atmos_emission_seven_7_2_3: "",
+      pollution_consent_atmos_emission_seven_7_2_3_a: "",
+      pollution_consent_atmos_emission_seven_7_2_3_b: "",
+      pollution_consent_atmos_emission_seven_7_2_3_b_i: "",
+      pollution_consent_atmos_emission_seven_7_2_3_b_ii: "",
+      pollution_consent_atmos_emission_seven_7_2_3_b_iii: "",
+      pollution_consent_atmos_emission_seven_7_2_3_b_iv: "",
+      pollution_consent_atmos_emission_seven_7_2_3_b_v: "",
+      pollution_consent_atmos_emission_seven_7_2_3_b_vi: "",
+      pollution_consent_atmos_emission_seven_7_3: "",
+      pollution_consent_atmos_emission_seven_7_3_a: "",
+      pollution_consent_atmos_emission_seven_7_3_b: "",
+      pollution_consent_atmos_emission_seven_7_3_c: "",
+      pollution_consent_atmos_emission_seven_7_3_d: "",
+      pollution_consent_atmos_emission_seven_7_3_e: "",
+      pollution_consent_atmos_emission_seven_7_3_f: "",
+      pollution_consent_atmos_emission_seven_7_3_f_i: "",
+      pollution_consent_atmos_emission_seven_7_3_f_ii: "",
+      pollution_consent_atmos_emission_seven_7_3_f_iii: "",
+      pollution_consent_atmos_emission_seven_7_3_f_iv: "",
+      pollution_consent_atmos_emission_seven_7_3_f_v: "",
+      pollution_consent_atmos_emission_seven_7_4: "",
+      pollution_consent_atmos_emission_seven_7_4_a: "",
+      pollution_consent_atmos_emission_seven_7_4_b: "",
+      pollution_consent_atmos_emission_seven_7_5: "",
+      pollution_consent_atmos_emission_seven_7_6: "",
+      pollution_consent_atmos_emission_seven_7_6_a: "",
+      pollution_consent_atmos_emission_seven_7_6_b: "",
+      pollution_consent_atmos_emission_seven_7_7: "",
+      pollution_consent_atmos_emission_seven_7_8: "",
+      pollution_consent_others_eight: "",
+      pollution_consent_others_eight_8_1: "",
+      pollution_consent_others_eight_8_2: "",
+      pollution_consent_others_eight_8_3: "",
+      pollution_consent_others_eight_8_4: "",
+      pollution_consent_others_eight_8_5: "",
+      pollution_consent_others_eight_8_5_1: "",
+      pollution_consent_others_eight_8_5_2: "",
+      pollution_consent_others_eight_8_5_3: "",
+      pollution_consent_manage_eight: "",
+      pollution_consent_manage_eight_9_1: "",
+      pollution_consent_manage_eight_9_2: "",
+      pollution_consent_manage_eight_9_3: "",
+      pollution_consent_manage_eight_9_4: "",
+      pollution_consent_manage_eight_9_5: "",
+      pollution_consent_cost_ten: "",
+      pollution_consent_cost_ten_10_1: "",
+      pollution_consent_cost_ten_10_11: "",
+      pollution_consent_cost_ten_10_12: "",
+      pollution_consent_signature: null,
     });
     onMounted(() => {});
     return {

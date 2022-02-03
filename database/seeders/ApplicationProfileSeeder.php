@@ -33,11 +33,13 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'LAND_REVENUE_LAND_TRANSFER', 'title' => 'APPLICATION FOR TRANSFER OF OWNERSHIP OF LAND HOLDING', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LAND_REVENUE_ALLOTMENT_GOVERNMENT', 'title' => 'APPLICATION FOR THE ALLOTMENT OF LAND TO THE GOVERNMENT DEPARTMENT/CORPORATION/BOARDS ETC. ON LAND LEASE/LIMITED LEASE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
 
+        ['code' => 'POLLUTION_CONSENT_INDUSTRIES', 'title' => 'CONSENT FOR ESTABLISHMENT OF INDUSTRIES ETC', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_ACCIDENT_MEDICAL', 'title' => 'ACCIDENT REPORTING FOR BIO-MEDICAL WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_ACCIDENT_HAZARDOUS', 'title' => 'ACCIDENT REPORTING FOR HAZARDOUS WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_ACCIDENT_SOLIDWASTE', 'title' => 'ACCIDENT REPORTING DUE TO SOLID WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_AUTHORISE_SOLID_WASTE', 'title' => 'APPLICATION FOR OBTAINING AUTHORISATION UNDER SOLID WASTE MANAGEMENT RULES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_PRODUCER_BRAND', 'title' => 'APPLICATION FOR REGISTRATION FOR PRODUCERS or BRAND OWNERS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_5', 'title' => ' ANNUAL REPORT (Pollution Control Board)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_11', 'title' => 'Application Form for Registration of Units Engaged in Processing or Recycling of Plastic Waste', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_12', 'title' => 'APPLICATION FOR REGISTRATION FOR MANUFACTURERS OF PLASTIC RAW MATERIALS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_13', 'title' => 'FORMAT OF ANNUAL REPORT BY OPERATOR OF PLASTIC WASTE PROCESSING OR RECYCLING FACILITY TO THE LOCAL BODY', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],

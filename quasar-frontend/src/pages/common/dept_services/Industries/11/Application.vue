@@ -1,28 +1,16 @@
-<template>
-  <div class="zcard row items-center q-col-gutter-md">
-    <!-- <div class="col-12 text-h6 q-pb-none text-center">Form-2</div>
-    <p class="col-12 text-caption q-py-none text-center">[See Rule 3(1)]</p> -->
-    <div class="col-12 text-center">
-      <span class="">
-       Form - IV
-       
-      </span>
-
-      <p class="ztitle">
-       ANNUAL REPORT
-      </p>
-      
-      <p>
-      (See rule 13)
-      </p>
-    </div>
-
-    <q-form @submit.prevent="submit">
-      <!-- <div class="row q-col-gutter-lg">
-        <div class="col-12"> -->
+	<template>
+	  <div class="zcard row items-center q-col-gutter-md">
+	    <div class="col-12 text-h6 q-pb-none text-center"></div>
+	    <p class="col-12 text-caption q-py-none text-center"></p>
+	    <div class="col-12 ztitle text-center">
+	     APPLICATION FORM FOR GRANT OF LAND SUBSIDY 
+	    </div>
+	    <q-form @submit.prevent="submit" class="row">
+      <div class="row q-col-gutter-lg">
+        <div class="col-xs-12">
           <Form ref="applicantRef" />
-        <!-- </div>
-      </div> -->
+        </div>
+      </div>
 
       <div class="text-center q-mt-md col-12">
         <q-btn type="submit" color="green-5" label="Submit" />
@@ -31,40 +19,42 @@
     </q-form>
   </div>
 </template>
-
-
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { date } from "quasar";
-import { useRouter } from "vue-router";
-import { useQuasar } from "quasar";
+import { ref } from "vue";
 import { api } from "src/boot/axios";
+import { useQuasar } from "quasar";
+import { useRouter } from "vue-router";
 
 import Form from "./Form.vue";
-// import Part2 from "./Part2.vue";
-// import Document from "./Document.vue";
+import router from "src/router";
+
 
 export default {
   components: {
     Form,
-    // Part2,
-    // Document,
   },
-  setup(props, context) {
-    const store = useStore();
-    // const store = useStore();
-    const q = useQuasar();
 
-    const router = useRouter();
+  setup(props, context) {
     const applicantRef = ref(null);
+    const store = useStore();
+    const $q = useQuasar();
+    const router = useRouter();
+    const draft = store.getters["applicantData/getCurrentDraft"];
+    const currentUser = store.getters["auth/getCurrentUser"];
 
     const submit = () => {
-      var formData = reactive({});
+      // return console.log('my router',myRouter);
+      var formData = reactive({
+       
+      });
 
-      // return console.log("formdatas", applicantRef.value);
       formData = Object.assign(formData, applicantRef.value.formData);
+
+      // return console.log('formData',formData);
 
       var formDatas = new FormData();
 
@@ -75,8 +65,8 @@ export default {
       api
         .post("/applications/submit", formDatas)
         .then((res) => {
-          // console.log("response value", res.data);
-          q.notify({
+          console.log("response value", res.data);
+          $q.notify({
             message: "Application submitted successfully",
             color: "green",
           });
@@ -86,11 +76,13 @@ export default {
     };
 
     return {
-      submit,
       applicantRef,
+      submit,
+      router,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
+    //test
   },
 };
 </script>

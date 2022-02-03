@@ -160,6 +160,25 @@ export default {
               "pages/common/dept_services/Industries/costprojectreport/Application.vue"
             ),
         },
+        // 10
+        {
+          path: "state-transportation-subsidy-platn&machineries",
+          name: "industries:10",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/10/Application.vue"
+            ),
+        },
+
+        // 11
+        {
+          path: "application-form-for-grant-of-land-subsidy",
+          name: "industries:11",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/11/Application.vue"
+            ),
+        },
       ],
     },
 
