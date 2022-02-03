@@ -1244,6 +1244,18 @@ class DepartmentServiceSeeder extends Seeder
                 'path' => "link",
                 'sample_form' => $faker->sentence
             ],
+            [
+                'department_id' => 17,
+                'category_id' => rand(1, 5),
+                'service_name' => "Mining lease/Composite License/ Non-exclusive Reconnaissance Permit",
+                'who_should_apply' => $faker->sentence,
+                'how_to_apply' => $faker->text,
+                'document_to_submit' => $faker->word,
+                'timeline' => $faker->sentence,
+                'fees' => $faker->randomNumber(3),
+                'path' => "mining-lease",
+                'sample_form' => $faker->sentence
+            ],
 
 
         ];

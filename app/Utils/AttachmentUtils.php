@@ -619,6 +619,15 @@ const SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES=[
         'commerce_power_line_signature' => self::INDUSTRIES_POWER_LINE,
 
 
+        'mining_documents' => self::GEO_MINING_DOCUMENTS,
+        'private_certificate' => self::GEO_MINING_PVT_REGD,
+        'public_certificate' => self::GEO_MINING_PUBLIC_REGD,
+        'cooperative_certificate' => self::GEO_MINING_COOPERATE_REGD,
+        'sketch_plan' => self::GEO_MINING_SKETCH,
+        'other_particulars' => self::GEO_MINING_OTHER,
+        'signature' => self::GEO_MINING_SIGNATURE,
+
+
 
 
         

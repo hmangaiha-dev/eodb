@@ -1166,6 +1166,62 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'industries/7/attachments'
     ];
+    const GEO_MINING_DOCUMENTS = [
+        'mime' => 'images/*',
+        'application_code' => 'GEOLOGY_MINING',
+        'key' => 'mining_documents',
+        'label' => "Particulars of documents appended",
+        'disk' => 'public',
+        'folder' => 'geology/1/attachments'
+    ];
+    const GEO_MINING_PVT_REGD = [
+        'mime' => 'images/*',
+        'application_code' => 'GEOLOGY_MINING',
+        'key' => 'private_certificate',
+        'label' => "Copy of registration(Private)",
+        'disk' => 'public',
+        'folder' => 'geology/1/attachments'
+    ];
+    const GEO_MINING_PUBLIC_REGD = [
+        'mime' => 'images/*',
+        'application_code' => 'GEOLOGY_MINING',
+        'key' => 'public_certificate',
+        'label' => "Copy of certificate of incorporation(Public)",
+        'disk' => 'public',
+        'folder' => 'geology/1/attachments'
+    ];
+    const GEO_MINING_COOPERATE_REGD = [
+        'mime' => 'images/*',
+        'application_code' => 'GEOLOGY_MINING',
+        'key' => 'cooperative_certificate',
+        'label' => "Copy of certificate of incorporation(Co-operative)",
+        'disk' => 'public',
+        'folder' => 'geology/1/attachments'
+    ];
+    const GEO_MINING_SKETCH = [
+        'mime' => 'images/*',
+        'application_code' => 'GEOLOGY_MINING',
+        'key' => 'sketch_plan',
+        'label' => "Sketch plan",
+        'disk' => 'public',
+        'folder' => 'geology/1/attachments'
+    ];
+    const GEO_MINING_OTHER = [
+        'mime' => 'images/*',
+        'application_code' => 'GEOLOGY_MINING',
+        'key' => 'other_particulars',
+        'label' => "Any other particulars which the applicant wishes to furnish",
+        'disk' => 'public',
+        'folder' => 'geology/1/attachments'
+    ];
+    const GEO_MINING_SIGNATURE = [
+        'mime' => 'images/*',
+        'application_code' => 'GEOLOGY_MINING',
+        'key' => 'signature',
+        'label' => "Signature",
+        'disk' => 'public',
+        'folder' => 'geology/1/attachments'
+    ];
 
 
 
