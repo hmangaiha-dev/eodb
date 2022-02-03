@@ -386,8 +386,8 @@ export default defineComponent({
       },
       {
         serial: "17",
-        title: "Labour Employment, Skill Developement & Entrepreneurship",
-        link: "labour-skill-development-and-enterprise",
+        title: "Geology & Mineral Resources",
+        link: "geology-and-mineral-resources",
       },
     ];
 

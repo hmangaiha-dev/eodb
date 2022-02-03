@@ -79,6 +79,7 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'LABOUR_EMPLOY_WORKERS', 'title' => 'APPLICATION FOR REGISTRATION OF ESTABLISHMENT EMPLOYING BUILDING WORKERS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LABOUR_LICENCE_REGISTRATION', 'title' => 'APPLICATION FOR REGISTRATION AND GRANT OR RENEWAL OF LICENSE FOR THE YEAR AND NOTICE OF OCCUPATION SPECIFIED IN SECTIONS 6 & 7 OF THE ACT', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LABOUR_CERTIFICATE_REGISTRATION', 'title' => 'APPLICATION FOR CERTIFICATE REGISTRATION OF ESTABLISHMENTS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'GEOLOGY_MINING', 'title' => 'APPLICATION FOR MINING LEASE(Geology)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
 
 
 

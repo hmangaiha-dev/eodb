@@ -138,6 +138,14 @@ class DepartmentSeeder extends Seeder
             'dept_code' => 'URBAN',
             'sect_name' => 'P. Jawahar',
             'dict_name' => 'J. Hmingthanmawia'
+        ],
+        [
+            'id'    =>  17,
+            'dept_name' => 'Geology & Mineral Resources',
+            'slug' => 'geology-and-mineral-resources',
+            'dept_code' => 'URBAN',
+            'sect_name' => 'P. Jawahar',
+            'dict_name' => 'J. Hmingthanmawia'
         ]
 
     ];
@@ -150,7 +158,7 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        // Department::truncate();
+        Department::truncate();
 
 
         DB::table('departments')->upsert($this->depts,'id');
