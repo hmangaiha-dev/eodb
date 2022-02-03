@@ -189,7 +189,7 @@ export default defineComponent({
     return {
       essentialLinks: linksList,
       isAuthenticated: computed(
-        () => store.getters["investor/isAuthenticated"]
+        () => store.getters["authData/isAuthenticated"]
       ),
     };
   },

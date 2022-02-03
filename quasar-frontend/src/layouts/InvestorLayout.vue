@@ -15,7 +15,6 @@
             </q-toolbar-title>
 
             <q-space />
-
             <q-space />
 
             <q-btn-dropdown
@@ -279,7 +278,7 @@ export default {
       leftDrawerOpen,
 
       isAuthenticated: computed(
-        () => store.getters["investor/isAuthenticated"]
+        () => store.getters["authData/isAuthenticated"]
       ),
 
       handleProfileMenu: (menuitem) => {

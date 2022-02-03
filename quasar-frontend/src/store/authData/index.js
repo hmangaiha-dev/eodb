@@ -16,7 +16,8 @@ const state = () => {
 const getters = {
   isAuthenticated: (state) => Boolean(state.currentUser) && Boolean(state.token),
   getUserType: (state) => state.currentUser?.type,
-  getCurrentUser: (state) => state.currentUser
+  getCurrentUser: (state) => state.currentUser,
+  getToken: (state) => state.token
 }
 const mutations = {
   setToken: (state, token) => state.token = token,
@@ -31,8 +32,6 @@ const actions = {
       api.defaults.headers['Authorization'] = `Bearer ${token}`;
     } else {
       LocalStorage.remove('token');
-      LocalStorage.remove('user');
-      context.commit('setCurrentUser', null);
       context.commit('setToken', null);
       api.defaults.headers['Authorization'] = ``;
     }
@@ -41,8 +40,14 @@ const actions = {
     context.commit('setCsrfToken', token);
   },
   setCurrentUser: (context, data) => {
-    LocalStorage.set('user', (data));
-    context.commit('setCurrentUser', data);
+    if (Boolean(data)) {
+      LocalStorage.set('user', (data));
+      context.commit('setCurrentUser', data);
+    }else{
+      LocalStorage.remove('user');
+      context.commit('setCurrentUser', null);
+    }
+
   }
 }
 export default {
