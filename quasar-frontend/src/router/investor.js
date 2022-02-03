@@ -108,6 +108,7 @@ export default {
     {
       path: "commerce-and-industries",
       component: () => import("layouts/DummyLayout.vue"),
+      beforeEnter: checkAuth,
       children: [
         {
           path: "claiming-central-interest-subsidy-scheme",
@@ -160,14 +161,34 @@ export default {
               "pages/common/dept_services/Industries/costprojectreport/Application.vue"
             ),
         },
+        {
+          path: "claim-under-central-comprehensive-insurance-subsidy-scheme",
+          name: "industries:comprehensive",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/factoryshed/Application.vue"
+            ),
+        },
+        {
+          path: "subsidy-power-line",
+          name: "industries:comprehensive",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/powerline/Application.vue"
+            ),
+        },
+        {
+          path: "interest-subsidy",
+          name: "industries:form9",
+          component: () =>
+            import("pages/common/dept_services/Industries/9/Application.vue"),
+        },
         // 10
         {
           path: "state-transportation-subsidy-platn&machineries",
           name: "industries:10",
           component: () =>
-            import(
-              "pages/common/dept_services/Industries/10/Application.vue"
-            ),
+            import("pages/common/dept_services/Industries/10/Application.vue"),
         },
 
         // 11
@@ -175,9 +196,7 @@ export default {
           path: "application-form-for-grant-of-land-subsidy",
           name: "industries:11",
           component: () =>
-            import(
-              "pages/common/dept_services/Industries/11/Application.vue"
-            ),
+            import("pages/common/dept_services/Industries/11/Application.vue"),
         },
       ],
     },
@@ -568,9 +587,7 @@ export default {
           path: "noc",
           name: "pwd:noc",
           component: () =>
-            import(
-              "pages/common/dept_services/pwd/noc/Application.vue"
-            ),
+            import("pages/common/dept_services/pwd/noc/Application.vue"),
         },
 
         // claiming-central-capital-investment-subsidy-scheme

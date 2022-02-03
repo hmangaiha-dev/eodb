@@ -68,7 +68,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "claim-under-central-comprehensive-insurance-subsidy-scheme",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -104,7 +104,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "subsidy-power-line",
                 'sample_form' => $faker->sentence
             ],
             [
@@ -128,7 +128,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "interest-subsidy",
                 'sample_form' => $faker->sentence
             ],
             [

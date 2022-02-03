@@ -612,6 +612,14 @@ const SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES=[
         'pollution_form19_seven_ii' => self::POLLUTION_FORM_19_CONTINGENCY_PLAN,
         'pollution_form19_signature' => self::POLLUTION_FORM_19_SIGNATURE,
 
+        'commerce_factory_shed_signature' => self::INDUSTRIES_FACTORY_SHED_SIGNATURE,
+
+        'commerce_form9_signature' => self::INDUSTRIES_FORM_9_SIGNATURE,
+
+        'commerce_power_line_signature' => self::INDUSTRIES_POWER_LINE,
+
+
+
 
         
 
