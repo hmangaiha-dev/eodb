@@ -15,7 +15,7 @@ class AttachmentUtils extends AttachmentUtilsRj
 const SIGN_LEGAL_LICENCE_MANUFACTURING=[
     'size'=>2048,
     'mime'=>'images/*',
-    'application_code'=>'PHE_WATER_CONNECTION',
+    'application_code'=>'LEGAL_LICENCE_MANUFACTURING',
     'key'=>'legal_licence_manuf_signature_designation',
     'label'=>'Signature of applicant',
     'disk'=>'public',
@@ -374,10 +374,26 @@ const CE_COST_PROJECT=[
     'disk'=>'public',
     'folder'=>'ce/8/attachments'
 ];
-
-
-
-
+// 11
+const SIGN_CE_GRANT_OF_SUBSIDY=[
+    'size'=>2048,
+    'mime'=>'images/*',
+    'application_code'=>'CE_GRANT_OF_SUBSIDY',
+    'key'=>'ce_grant_of_subsidy_signature_designation',
+    'label'=>'Signature of applicant',
+    'disk'=>'public',
+    'folder'=>'ce/11/attachments'
+];
+// 10
+const SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES=[
+    'size'=>2048,
+    'mime'=>'images/*',
+    'application_code'=>'C&E_SUBSIDY_COST_TRANSPORTATION_MACHINERIES',
+    'key'=>'commerce_subsidy_cost_transportation_signature',
+    'label'=>'Signature of applicant',
+    'disk'=>'public',
+    'folder'=>'ce/10/attachments'
+];
 
 
 
@@ -397,7 +413,7 @@ const CE_COST_PROJECT=[
         'legal_licence_registration_importer_signature_designation'=>self::SIGN_LEGAL_LICENCE_REGISTRATION_IMPORTER,
         'legal_verification_signature_designation'=>self::SIGN_LEGAL_VERIFICATION,
         'legal_reverification_signature_designation'=>self::SIGN_LEGAL_REVERIFICATION,
-
+            
         // POLLUTION
         'pollution_return_sale_battery_signature_designation'=>self::SIGN_POLLUTION_RETURN_SALE_BATTERY,
         'pollution_authorization_generation_signature_designation'=>self::SIGN_POLLUTION_AUTHORIZATION_GENERATION_OR_STORAGE,
@@ -443,6 +459,12 @@ const CE_COST_PROJECT=[
         'commerce_power_generating_signature'=>self::CE_POWER_GENERATING,
             //  8
         'commerce_cost_project_signature'=>self::CE_COST_PROJECT,
+// 11
+        'ce_grant_of_subsidy_signature_designation'=>self::SIGN_CE_GRANT_OF_SUBSIDY,
+// 10
+        'commerce_subsidy_cost_transportation_signature'=>self::SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES,
+
+
         'labour_cert_reg_signature' => self::LABOUR_CERTIFICATE_REGISTRATION_SIGNATURE,
         'labour_lic_reg_eleven_signature' => self::LABOUR_LICENCE_REGISTRATION_SIGNATURE,
         'labour_emp_contract_eight' => self::LABOUR_EMPLOYMENT_CONTRACT_RECEIPT,
