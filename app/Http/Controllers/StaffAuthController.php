@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Staff;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class StaffAuthController extends Controller
@@ -22,7 +21,7 @@ class StaffAuthController extends Controller
             return response()->json(['message'=>"Invalid credential"], 400);
         }
 
-        \auth()->login($staff);
+        \auth('staff')->login($staff);
 
         $abilities=$staff->getPermissionsName();
         $token=$staff->createToken('personal_access_token', $abilities)->plainTextToken;
@@ -34,7 +33,10 @@ class StaffAuthController extends Controller
 
     public function logout(Request $request)
     {
-        \auth()->user()?->tokens()->delete();
+
+        $user=$request->user();
+        $user?->tokens()->delete();
+        auth('web')?->logout();
         return response()->json([
             'data' => null
         ], 200);

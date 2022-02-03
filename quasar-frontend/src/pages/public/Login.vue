@@ -99,15 +99,12 @@ export default {
 
       submit: () => {
         api
-          .post("/auth/login", loginData)
+          .post("auth/login", loginData)
           .then((res) => {
             const { token, user } = res.data;
-
-            console.log("current user", user);
-            store.dispatch("investor/setCurrentUser", user);
-            store.dispatch("investor/setToken", token);
-            console.log("login response", res.data);
-            router.push(route.redirectedFrom || '/')
+            store.dispatch("authData/setCurrentUser", user);
+            store.dispatch("authData/setToken", token);
+            router.push({name:'investor:dashboard'})
 
             // router.push({ name: "home" });
 

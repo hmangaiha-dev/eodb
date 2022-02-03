@@ -25,7 +25,7 @@ class AuthController extends Controller
             return response()->json(['message'=>"Invalid credential"], 400);
         }
 
-        \auth()->login($staff);
+        \auth('user')->login($staff);
 
         $token=$staff->createToken('personal_access_token', [])->plainTextToken;
         return response()->json([

@@ -56,10 +56,10 @@ export default {
 
       handleLogout: (e) => {
         api
-          .post("auth/investor/logout")
+          .post("auth/logout")
           .then((res) => {
-            store.dispatch("investor/setToken", null);
-            store.dispatch("investor/setCurrentUser", null);
+            store.dispatch("authData/setToken", null);
+            store.dispatch("authData/setCurrentUser", null);
             router.push({ name: "home" });
           })
           .catch((err) => console.log(err));
