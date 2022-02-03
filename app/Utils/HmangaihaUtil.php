@@ -317,6 +317,7 @@ class HmangaihaUtil
         ],
 
         // COMMERCE and INDUSTRIES
+        // 11
         'CE_GRANT_OF_SUBSIDY' => [
             'ce_grant_of_subsidy_one',
             'ce_grant_of_subsidy_two',
@@ -333,7 +334,30 @@ class HmangaihaUtil
             'ce_grant_of_subsidy_eleven',
             'ce_grant_of_subsidy_twelve',
         ],
-
+        // 10
+        'C&E_SUBSIDY_COST_TRANSPORTATION_MACHINERIES' => [
+            'commerce_subsidy_cost_transportation_one',
+            'commerce_subsidy_cost_transportation_two',
+            'commerce_subsidy_cost_transportation_two_a',
+            'commerce_subsidy_cost_transportation_two_b',
+            'commerce_subsidy_cost_transportation_three',
+            'commerce_subsidy_cost_transportation_four',
+            'commerce_subsidy_cost_transportation_five',
+            'commerce_subsidy_cost_transportation_six',
+            'commerce_subsidy_cost_transportation_seven',
+            'commerce_subsidy_cost_transportation_eight',
+            'commerce_subsidy_cost_transportation_eight_a',
+            'commerce_subsidy_cost_transportation_eight_b',
+            'commerce_subsidy_cost_transportation_eight_c',
+            'commerce_subsidy_cost_transportation_nine',
+            'commerce_subsidy_cost_transportation_nine_a',
+            'commerce_subsidy_cost_transportation_nine_b',
+            'commerce_subsidy_cost_transportation_ten',
+            'commerce_subsidy_cost_transportation_ten_a',
+            'commerce_subsidy_cost_transportation_ten_b',
+            'commerce_subsidy_cost_transportation_ten_c',
+            'commerce_subsidy_cost_transportation_eleven',
+        ]
 
 
 
@@ -674,23 +698,46 @@ class HmangaihaUtil
         'pollution_authorization_facilities_twentyone' => "21. Details Of Storage For Raw Materials And Recovered Materials",
 
 
-          // COMMERCE and INDUSTRIES
-          
-            'ce_grant_of_subsidy_one'=>"1. Name and Address of Industrial unit",
-            'ce_grant_of_subsidy_two'=>"2. Detail address stating Plot no./Land No. ",
-            'ce_grant_of_subsidy_three'=>"3. Registration No. ",
-            'ce_grant_of_subsidy_four'=>"4. Total space area of land alloted with order No. & date ",
-            'ce_grant_of_subsidy_five_a'=>"a) Total value of lease charge of the land ",
-            'ce_grant_of_subsidy_five_b'=>"b) Total cost of development of land",
-            'ce_grant_of_subsidy_six'=>"6. Name of agency executing development of land",
-            'ce_grant_of_subsidy_seven'=>"7. Amount already paid(to be supported by APR).",
-            'ce_grant_of_subsidy_eight'=>"8. Subsidy already received ",
-            'ce_grant_of_subsidy_nine'=>"9. Present claim amount",
-            'ce_grant_of_subsidy_ten_a'=>"(a) Technical ",
-            'ce_grant_of_subsidy_ten_b'=>"(b) Non- Technical",
-            'ce_grant_of_subsidy_eleven'=>"11. Item of production ",
-            'ce_grant_of_subsidy_twelve'=>"12. Value of production during the last 1 year",
-        
+        // COMMERCE and INDUSTRIES
+
+        'ce_grant_of_subsidy_one' => "1. Name and Address of Industrial unit",
+        'ce_grant_of_subsidy_two' => "2. Detail address stating Plot no./Land No. ",
+        'ce_grant_of_subsidy_three' => "3. Registration No. ",
+        'ce_grant_of_subsidy_four' => "4. Total space area of land alloted with order No. & date ",
+        'ce_grant_of_subsidy_five_a' => "a) Total value of lease charge of the land ",
+        'ce_grant_of_subsidy_five_b' => "b) Total cost of development of land",
+        'ce_grant_of_subsidy_six' => "6. Name of agency executing development of land",
+        'ce_grant_of_subsidy_seven' => "7. Amount already paid(to be supported by APR).",
+        'ce_grant_of_subsidy_eight' => "8. Subsidy already received ",
+        'ce_grant_of_subsidy_nine' => "9. Present claim amount",
+        'ce_grant_of_subsidy_ten_a' => "(a) Technical ",
+        'ce_grant_of_subsidy_ten_b' => "(b) Non- Technical",
+        'ce_grant_of_subsidy_eleven' => "11. Item of production ",
+        'ce_grant_of_subsidy_twelve' => "12. Value of production during the last 1 year",
+
+
+        // 10
+        'commerce_subsidy_cost_transportation_one'=>"1. Name Of The Unit ",
+        'commerce_subsidy_cost_transportation_two'=>"2. Address ",
+        'commerce_subsidy_cost_transportation_two_a'=>"a)Office ",
+        'commerce_subsidy_cost_transportation_two_b'=>"b) Factory ",
+        'commerce_subsidy_cost_transportation_three'=>"3. Constitution Proprietorship / Partnership / Co- Operative Society / Private. Limited ",
+        'commerce_subsidy_cost_transportation_four'=>"4. Name And Address Of The Proprietor/ Partner / Chairman / Director ",
+        'commerce_subsidy_cost_transportation_five'=>"5. Regn. No. And Date Of The Unit ",
+        'commerce_subsidy_cost_transportation_six'=>"6. Date Of Commencement Of Production / Taking Effective Steps. ",
+        'commerce_subsidy_cost_transportation_seven'=>"7. Items Of Manufacture/ To Be Manufacture ",
+        'commerce_subsidy_cost_transportation_eight'=>"8. Investment (Existing/Proposed) ",
+        'commerce_subsidy_cost_transportation_eight_a'=>" a) Land & Building ",
+        'commerce_subsidy_cost_transportation_eight_b'=>"b) Plant & Machineries  ",
+        'commerce_subsidy_cost_transportation_eight_c'=>"c) Others  ",
+        'commerce_subsidy_cost_transportation_nine'=>"9. Employment (Existing/ Proposed) ",
+        'commerce_subsidy_cost_transportation_nine_a'=>" a) Technical ",
+        'commerce_subsidy_cost_transportation_nine_b'=>"b) Non-Technical  ",
+        'commerce_subsidy_cost_transportation_ten'=>"10. Particulars of Plants & Machineries Transported (Annexure-I) ",
+        'commerce_subsidy_cost_transportation_ten_a'=>"a) Quantity/ Weight ",
+        'commerce_subsidy_cost_transportation_ten_b'=>"b) Values ",
+        'commerce_subsidy_cost_transportation_ten_c'=>"c) Transportation charge (To be supported by original voucher) ",
+        'commerce_subsidy_cost_transportation_eleven'=>"11. Amount of Subsidy claimed with Percentage. ",
 
 
     ];
