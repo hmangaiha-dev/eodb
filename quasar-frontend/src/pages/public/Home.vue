@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <div class="row q-mt-lg justify-start q-col-gutter-md">
+    <div :class="[ $q.screen.gt.xs ? 'justify-start' : 'justify-center' ]" class="row q-mt-lg q-col-gutter-md">
       <div
         v-for="dept in depts"
         :key="dept.serial"
@@ -62,7 +62,7 @@
         <!-- <q-list class="tile cursor-pointer" clickable bordered padding> -->
           <q-item
             :to="{ name: 'common:show', params: { deptname: `${dept?.link}` } }"
-           class="tile cursor-pointer"
+           class="tile cursor-pointer full-width"
             clickable
             
             v-ripple
@@ -536,8 +536,8 @@ export default defineComponent({
   padding: 0px 0px 25px 0px !important;
 }
 .tile {
-  /* width: 398px; */
-  /* height: 100px; */
+  /* width: 398px;
+  height: 100px; */
   margin: 0 16px 0px 12px;
   padding: 30px;
   border-radius: 10px;
