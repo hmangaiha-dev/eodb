@@ -384,9 +384,16 @@ const SIGN_CE_GRANT_OF_SUBSIDY=[
     'disk'=>'public',
     'folder'=>'ce/11/attachments'
 ];
-
-
-
+// 10
+const SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES=[
+    'size'=>2048,
+    'mime'=>'images/*',
+    'application_code'=>'C&E_SUBSIDY_COST_TRANSPORTATION_MACHINERIES',
+    'key'=>'commerce_subsidy_cost_transportation_signature',
+    'label'=>'Signature of applicant',
+    'disk'=>'public',
+    'folder'=>'ce/10/attachments'
+];
 
 
 
@@ -454,6 +461,9 @@ const SIGN_CE_GRANT_OF_SUBSIDY=[
         'commerce_cost_project_signature'=>self::CE_COST_PROJECT,
 // 11
         'ce_grant_of_subsidy_signature_designation'=>self::SIGN_CE_GRANT_OF_SUBSIDY,
+// 10
+        'commerce_subsidy_cost_transportation_signature'=>self::SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES,
+
 
         'labour_cert_reg_signature' => self::LABOUR_CERTIFICATE_REGISTRATION_SIGNATURE,
         'labour_lic_reg_eleven_signature' => self::LABOUR_LICENCE_REGISTRATION_SIGNATURE,
