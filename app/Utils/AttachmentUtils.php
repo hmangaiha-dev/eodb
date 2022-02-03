@@ -592,6 +592,11 @@ const CE_COST_PROJECT=[
 
         'commerce_factory_shed_signature' => self::INDUSTRIES_FACTORY_SHED_SIGNATURE,
 
+        'commerce_form9_signature' => self::INDUSTRIES_FORM_9_SIGNATURE,
+
+        'commerce_power_line_signature' => self::INDUSTRIES_POWER_LINE,
+
+
 
 
         

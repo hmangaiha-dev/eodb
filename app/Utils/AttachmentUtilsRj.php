@@ -1150,6 +1150,23 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'industries/4/attachments'
     ];
+    const INDUSTRIES_FORM_9_SIGNATURE = [
+        'mime' => 'images/*',
+        'application_code' => 'C&E_FORM_9',
+        'key' => 'commerce_form9_signature',
+        'label' => "Signature of the Applicant ",
+        'disk' => 'public',
+        'folder' => 'industries/9/attachments'
+    ];
+    const INDUSTRIES_POWER_LINE = [
+        'mime' => 'images/*',
+        'application_code' => 'C&E_POWER_LINE',
+        'key' => 'commerce_power_line_signature',
+        'label' => "Signature of the Applicant ",
+        'disk' => 'public',
+        'folder' => 'industries/7/attachments'
+    ];
+
 
 
 

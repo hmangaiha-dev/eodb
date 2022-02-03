@@ -258,7 +258,7 @@
       <q-file
         :rules="[(val) => val || 'Signature is required']"
         dense
-        v-model="formData.commerce_power_generating_signature"
+        v-model="formData.commerce_power_line_signature"
         outlined
       >
         <template v-slot:prepend>
@@ -308,7 +308,7 @@ export default {
       commerce_power_generating_fourteen: "",
       commerce_power_generating_fifteen: "",
       commerce_power_generating_sixteen: "",
-      commerce_power_generating_signature: null,
+      commerce_power_line_signature: null,
       commerce_power_generating_agreement: false,
     });
     onMounted(() => {});

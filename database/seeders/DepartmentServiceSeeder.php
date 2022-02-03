@@ -128,7 +128,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => $faker->word,
                 'timeline' => $faker->sentence,
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "interest-subsidy",
                 'sample_form' => $faker->sentence
             ],
             [

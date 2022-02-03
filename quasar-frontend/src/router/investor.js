@@ -177,6 +177,14 @@ export default {
               "pages/common/dept_services/Industries/powerline/Application.vue"
             ),
         },
+        {
+          path: "interest-subsidy",
+          name: "industries:form9",
+          component: () =>
+            import(
+              "pages/common/dept_services/Industries/9/Application.vue"
+            ),
+        },
       ],
     },
 

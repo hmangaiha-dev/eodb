@@ -17,6 +17,7 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'C&E_INTEREST_SUBSIDY', 'title' => 'APPLICATION FORM FOR CLAIMING CENTRAL INTEREST SUBSIDY SCHEME', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'C&E_POWER_GENERATING', 'title' => 'APPLICATION FORM FOR CLAIM OF SUBSIDY ON POWER GENERATING', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'C&E_POWER_LINE', 'title' => 'APPLICATION FORM FOR CLAIM OF SUBSIDY ON POWER GENERATING(Line)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'C&E_FORM_9', 'title' => 'APPLICATION FOR CLAIM OF INTEREST SUBSIDY(COMMERCE INDUSTRIES - FORM9)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'C&E_COST_PROJECT', 'title' => 'APPLICATION FOR CLAIM SUBSIDY ON COST OF PROJECT REPORT', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POWER_NEW_CONNECTION', 'title' => 'Application for - New Connection (Low Tension Service)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POWER_NEW_CONNECTION2', 'title' => 'New Connection (High Tension / Extra High-Tension Service)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
