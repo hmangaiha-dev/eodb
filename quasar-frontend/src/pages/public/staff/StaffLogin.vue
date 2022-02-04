@@ -86,7 +86,7 @@ export default {
       api.post('auth/staff-login', formData)
         .then(res => {
           const {token, user} = res.data;
-          console.log("test");
+          console.log("user",user);
           console.log(token);
           store.dispatch('authData/setToken',token)
           store.dispatch('authData/setCurrentUser',user)

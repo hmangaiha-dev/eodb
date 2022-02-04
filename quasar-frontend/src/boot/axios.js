@@ -15,13 +15,6 @@ const api = axios.create({ baseURL: process.env.DEV?LOCAL_BASE_URL:BASE_URL})
 
 export default boot(({ app,router,store }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
-  let token = LocalStorage.getItem('token');
-  let user = LocalStorage.getItem('user');
-  store.dispatch('authData/setCurrentUser', user);
-  store.dispatch('authData/setToken', token);
-  api.defaults.headers['Authorization'] = `Bearer ${token}`;
-
-  api.defaults.withCredentials=true;
 // api.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
   api.interceptors.response.use((response) => {
@@ -43,20 +36,24 @@ export default boot(({ app,router,store }) => {
   }, (error) => {
 
     if (error?.response?.status === 401) {
-      // LocalStorage.remove('user');
-      // LocalStorage.remove('token');
-      // store.dispatch('authData/setCurrentUser', null);
-      // store.dispatch('authData/setToken', null)
-      // router.replace({name:"home"});
-      // window.location.replace('/')
+      LocalStorage.remove('user');
+      LocalStorage.remove('token');
+      store.dispatch('authData/setCurrentUser', null);
+      store.dispatch('authData/setToken', null)
+      router.replace({name:"home"});
+      Notify.create({
+            message: "Session/Token expired",
+            position: "top",
+          });
     }
 
     return Promise.reject(error,);
   });
   api.interceptors.request.use(
-    function(successfulReq) {
-      successfulReq.headers['Authorization']=`Bearer ${token}`;
-      return successfulReq;
+    function(config) {
+      let token=store.getters['authData/getToken'];
+      config.headers['Authorization']=`Bearer ${token}`;
+      return config;
     },
     function(error) {
       return Promise.reject(error);

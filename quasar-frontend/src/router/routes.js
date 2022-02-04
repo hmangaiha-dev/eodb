@@ -32,7 +32,7 @@ const routes = [
     component: () => import('layouts/LandingLayout.vue'),
     children: [
       { path: '', name:'home', component: () => import('pages/public/Home') },
-      { path: 'login', beforeEnter: checkAlreadyLoggedIn, name: 'investor:login', component: () => import('pages/public/Login.vue') },
+      { path: 'login',  name: 'investor:login', component: () => import('pages/public/Login.vue') },
       { path: 'staff-login',name:'staff:login', component: () => import('pages/public/staff/StaffLogin.vue') },
       { path: 'register', beforeEnter: checkAlreadyLoggedIn, component: () => import('pages/public/RegisterContainer.vue') },
       {
