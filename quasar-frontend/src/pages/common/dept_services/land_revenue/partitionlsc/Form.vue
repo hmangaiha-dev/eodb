@@ -5,21 +5,21 @@
         >1.Land Settlement Certificate (LSC) neitu hming
         <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.birth_place" dense outlined />
+      <q-input v-model="formData.lsc_one" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"
         >2 Pa/Pasal hming <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.birth_place" dense outlined />
+      <q-input v-model="formData.lsc_two" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"
         >3 Address <span class="asterisk"> *</span></label
       >
-      <q-input type="textarea" v-model="formData.birth_place" dense outlined />
+      <q-input type="textarea" v-model="formData.lsc_three" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
@@ -27,7 +27,7 @@
         >4 Land Settlement Certificate (LSC) No. Leh kum
         <span class="asterisk"> *</span></label
       >
-      <q-input type="textarea" v-model="formData.birth_place" dense outlined />
+      <q-input type="textarea" v-model="formData.lsc_four" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
@@ -35,7 +35,7 @@
         >5 Land Settlement Certificate awmna ram/veng
         <span class="asterisk"> *</span></label
       >
-      <q-input type="textarea" v-model="formData.birth_place" dense outlined />
+      <q-input type="textarea" v-model="formData.lsc_five" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
@@ -43,7 +43,7 @@
         >6 Land Settlement Certificate zau zawng(area)
         <span class="asterisk"> *</span></label
       >
-      <q-input type="textarea" v-model="formData.birth_place" dense outlined />
+      <q-input type="textarea" v-model="formData.lsc_six" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
@@ -210,7 +210,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+            v-model="formData.lsc_details[i - 1].name"
             dense
             outlined
           />
@@ -222,7 +222,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+            v-model="formData.lsc_details[i - 1].address"
             dense
             outlined
           />
@@ -234,7 +234,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+            v-model="formData.lsc_details[i - 1].kum"
             dense
             outlined
           />
@@ -246,14 +246,14 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+            v-model="formData.lsc_details[i - 1].caste"
             dense
             outlined
           />
         </div>
 
         <div class="q-my-md q-py-none col-12">
-          <hr>
+          <hr />
         </div>
       </div>
 
@@ -286,7 +286,7 @@
       <label class="zlabel" for="gender"
         >Diltu Signature<span class="asterisk">*</span></label
       >
-      <q-file v-model="formData.land_revenue_land_transfer_nine_e" outlined>
+      <q-file v-model="formData.signature" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -313,33 +313,29 @@ import { date } from "quasar";
 export default {
   setup(props, context) {
     const store = useStore();
-
     const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      // email: currentUser?.email,
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
-
+      application_code: "LAND_REVENUE_LSC",
+      department_id: 8,
+      lsc_one: "",
+      lsc_two: "",
+      lsc_three: "",
+      lsc_four: "",
+      lsc_five: "",
+      lsc_six: "",
+      signature:null,
+      lsc_details: [{ name: "", address: "", kum: "", caste: "" }],
       rows: 1,
     });
     onMounted(() => {});
     return {
       formData,
       addRow: () => {
+        formData.lsc_details.push({
+          name: "",
+          address: "",
+          kum: "",
+          caste: "",
+        });
         formData.rows++;
       },
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

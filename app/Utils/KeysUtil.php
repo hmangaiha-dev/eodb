@@ -789,6 +789,10 @@ class KeysUtil
             'land_revenue_allot_govt_ten',
             'land_revenue_allot_govt_eleven',
         ],
+        'LAND_REVENUE_LSC' => [
+            'lsc_one',
+            'lsc_two',
+        ],
 
         'POLLUTION_ACCIDENT_MEDICAL' => [
             'pollution_accident_medical_one',
@@ -2752,6 +2756,10 @@ class KeysUtil
         'land_revenue_allot_govt_eleven' => "11 Remarks of the Secretary of the Department concerned/ organization concerned",
 
 
+        'lsc_one' => "One",
+        'lsc_two' => "Two",
+
+
 
 
 
@@ -3927,7 +3935,7 @@ class KeysUtil
         'captive_use' => "captive use, location of plant and industry",
         'if_sale' => "if for sale, whether if for the mineral will be supplied in raw form or after processing(i.e.crushing/grinding/beneficiation/calcining)",
         'financial_resource' => "Financial resources of the applicant",
-        
+
 
 
 
