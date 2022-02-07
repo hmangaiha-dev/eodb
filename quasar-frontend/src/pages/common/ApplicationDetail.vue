@@ -1,19 +1,22 @@
 <template>
+  <div class="print-only" v-html="localData.template"/>
   <q-page padding class="container-lg">
-    <q-dialog v-model="dialog">
+    <q-dialog class="print-hide" v-model="dialog">
       <q-card>
         <embed :src="attachment" width="500" height="500"/>
       </q-card>
     </q-dialog>
 
-    <h6 class="zsubtitle">{{localData.application?.application_name || ''}}</h6>
-    <br/>
     <br/>
       <div v-html="localData.template"/>
-    <Attachments :attachments="localData.attachments"/>
+    <br/>
+    <q-separator class="q-my-md print-hide"/>
     <div class="col-12">
-      <q-btn @click="printApplication" label="Print"/>
+      <q-btn @click="printApplication" label="Print" outline class="print-hide"/>
     </div>
+    <br/>
+    <Attachments class="print-hide" :attachments="localData.attachments"/>
+
   </q-page>
 </template>
 <script>
@@ -47,9 +50,18 @@ export default {
         })
         .catch(err => q.notify({type: "negative", message: err.response?.message || ''}))
     }
+    const getAttachment = (id) => {
+      api.get(`applications/${id}/attachments`)
+        .then(res => {
+          const {list} = res.data;
+          localData.attachments = list;
+        })
+        .catch(err => q.notify({type: "negative", message: err.response?.message || ''}))
+    }
     onMounted(() => {
       const id = route.params.id;
       getPrint(id);
+      getAttachment(id);
     });
     return {
       localData,
