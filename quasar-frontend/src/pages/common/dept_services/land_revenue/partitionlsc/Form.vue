@@ -5,14 +5,14 @@
         >1.Land Settlement Certificate (LSC) neitu hming
         <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.birth_place" dense outlined />
+      <q-input v-model="formData.land_rev_lsc_one" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"
         >2 Pa/Pasal hming <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.birth_place" dense outlined />
+      <q-input v-model="formData.two" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
@@ -204,13 +204,14 @@
         :key="i"
         class="row justify q-col-gutter-sm q-ml-md"
       >
+      <!-- {{ i }} -->
         <div class="col-sm-3 col-xs-6">
           <q-input
             placeholder="Hming leh Pa/Pasal hming"
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+            v-model="formData.lsc_details[i-1].hming"
             dense
             outlined
           />
@@ -222,7 +223,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+             v-model="formData.lsc_details[i-1].address"
             dense
             outlined
           />
@@ -234,7 +235,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+             v-model="formData.lsc_details[i-1].kum"
             dense
             outlined
           />
@@ -246,14 +247,14 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+             v-model="formData.lsc_details[i-1].caste"
             dense
             outlined
           />
         </div>
 
         <div class="q-my-md q-py-none col-12">
-          <hr>
+          <hr />
         </div>
       </div>
 
@@ -286,7 +287,7 @@
       <label class="zlabel" for="gender"
         >Diltu Signature<span class="asterisk">*</span></label
       >
-      <q-file v-model="formData.land_revenue_land_transfer_nine_e" outlined>
+      <q-file v-model="formData.signature" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -310,36 +311,40 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 
+import {ref} from 'vue'
+ 
 export default {
   setup(props, context) {
     const store = useStore();
 
     const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      // email: currentUser?.email,
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
-
+      application_code: "LAND_REVENUE_LSC_PARTITION",
+      department_id: 8,
       rows: 1,
+      land_rev_lsc_one: '',
+      lsc_details: [{
+        hming: '',
+        address: '',
+        kum: '',
+        caste: ''
+      }],
+      signature: null,
+      land_rev_lsc_two: '',
     });
-    onMounted(() => {});
+    onMounted(() => {
+      console.log('rows',formData.rows);
+    });
     return {
       formData,
       addRow: () => {
+        formData?.lsc_details?.push({
+          name: '',
+          address: '',
+          kum: '',
+          caste: ''
+        })
+
+        console.log('push',formData.lsc_details);
         formData.rows++;
       },
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

@@ -409,6 +409,9 @@ class KeysUtil
             // "power_new_connection_applicant_type",
             // "power_new_connection_photo",
             "power_new_connection_for",
+            'power_new_connection_12',
+            'power_new_connection_13',
+            'power_new_connection_14',
             // "power_new_connection_identity_proof"
         ],
 
@@ -589,7 +592,7 @@ class KeysUtil
             'phe_water_connection_three',
             'phe_water_connection_four',
             'phe_water_connection_five',
-            'phe_water_connection_five_a',
+            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
             'phe_water_connection_five_b',
             'phe_water_connection_five_c',
             'phe_water_connection_five_d',
@@ -829,6 +832,11 @@ class KeysUtil
             'land_revenue_allot_govt_ten',
             'land_revenue_allot_govt_eleven',
         ],
+        'LAND_REVENUE_LSC_PARTITION' => [
+            'land_rev_lsc_one',
+            'land_rev_lsc_two',
+        ],
+
 
         'POLLUTION_ACCIDENT_MEDICAL' => [
             'pollution_accident_medical_one',
@@ -2376,6 +2384,9 @@ class KeysUtil
         "power_new_connection_own_meter" => "10.Please indicate whether you want to install your own CEA approved meter. (Yes/No)",
         // "power_new_connection_applicant_type" => "Applicant is",
         "power_new_connection_for" => "Applicant is",
+        'power_new_connection_12' => "12 Any electricity dues outstanding in licensee's area of operation in consumer's name: Yes/ No",
+        'power_new_connection_13' => "13 Any electricity dues outstanding for the premises for which connection applied for: Yes/ No",
+        'power_new_connection_14' => "14 Any electricity dues outstanding with the licensee against any firm with which the consumer is associated as an Owner, Partner, Director or Managing Director: Yes/ No",
 
 
         //POWER & ELECTRICITY - New Connection(High Tension / Extra High-Tension Service)
@@ -2616,7 +2627,7 @@ class KeysUtil
         'phe_water_connection_three' => "3. Occupation (Diltu hnathawh)",
         'phe_water_connection_four' => "4. Occupant (In luahtu)",
         'phe_water_connection_five' => "5. Address",
-        'phe_water_connection_five_a' => "A). House No",
+        'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' => "A). House No",
         'phe_water_connection_five_b' => "B) Locality (Veng)",
         'phe_water_connection_five_c' => "C) Street/lane",
         'phe_water_connection_five_d' => "D) City/Town",
@@ -2830,6 +2841,12 @@ class KeysUtil
         'land_revenue_allot_govt_nine' => "9 If not, whether the department/ Corporation etc. is willing to pay compensation in respect of the land which is being applied for Land Lease",
         'land_revenue_allot_govt_ten' => "10 If the land applied for land lease is already acquired whether land documents (of the land) so acquired is submitted or not",
         'land_revenue_allot_govt_eleven' => "11 Remarks of the Secretary of the Department concerned/ organization concerned",
+
+
+
+
+        'land_rev_lsc_one' => "Test 1",
+        'land_rev_lsc_two' => "Test 2",
 
 
 

@@ -1,9 +1,8 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-xs-12 text-bold">Applicant details</div>
     <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="name"
-        >Applicant for <span class="asterisk"> *</span></label
+      <label class="text-bold" for="name"
+        >1.Applicant for <span class="asterisk"> *</span></label
       >
     </div>
     <div class="col-xs-12 col-md-4">
@@ -15,187 +14,193 @@
         :options="application_types"
       />
     </div>
+    <div class="col-xs-12 text-bold">2.Applicant details</div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="dob" type="date"
-        >Applicant photo<span class="asterisk">*</span>
-      </label>
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-file v-model="formData.application_photo" dense outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
-    </div>
-
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="gender"
-        >Applicant name <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        dense
-        outlined
-        v-model="formData.applicant_name"
-      />
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="pob">Applicant belongs to</label>
-    </div>
-
-    <div class="col-xs-12 col-md-4">
-      <q-select
-        dense
-        v-model="formData.applicant_caste"
-        dropdown-icon="expand_more"
-        outlined
-        :options="castes"
-      />
+    <div class="q-ml-md col-12">
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="dob" type="date"
+          >2.1 Applicant photo<span class="asterisk">*</span>
+        </label>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-file v-model="formData.application_photo" dense outlined>
+          <template v-slot:prepend>
+            <q-icon name="attach_file" />
+          </template>
+        </q-file>
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="gender"
+          >2.2 Applicant name <span class="asterisk">*</span></label
+        >
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          dense
+          outlined
+          v-model="formData.applicant_name"
+        />
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="pob">2.3 Applicant belongs to</label>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-select
+          dense
+          v-model="formData.applicant_caste"
+          dropdown-icon="expand_more"
+          outlined
+          :options="castes"
+        />
+      </div>
     </div>
 
     <div class="col-12">
-      <label class="text-bold" for="pob">Correspondance Addres</label>
+      <label class="text-bold" for="pob">3.Correspondance Addres</label>
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="fname"
-        >Country<span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        id="fname"
-        v-model="formData.country"
-        dense
-        item-aligned
-        outlined
-      />
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="mname">State</label>
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        id="mname"
-        v-model="formData.state"
-        dense
-        item-aligned
-        outlined
-      />
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="mobile"
-        >City/Town<span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        id="mobile"
-        v-model="formData.city_town"
-        dense
-        outlined
-      />
-    </div>
-
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="email">Postal code/Zip code</label>
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        id="email"
-        v-model="formData.pincode"
-        dense
-        item-aligned
-        outlined
-      />
-    </div>
-
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Address</label>
-    </div>
-    <!--    hint="Adhaar no will be used to match the records of your Digilocker AC"-->
-
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        id="adar"
-        v-model="formData.address"
-        dense
-        item-aligned
-        mask="############"
-        outlined
-      />
-    </div>
-
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Phone number</label>
-    </div>
-
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        id="adar"
-        v-model="formData.phone_no"
-        dense
-        item-aligned
-        mask="############"
-        outlined
-      />
-    </div>
-
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Fax number</label>
-    </div>
-
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        id="adar"
-        v-model="formData.fax_no"
-        dense
-        item-aligned
-        mask="############"
-        outlined
-      />
-    </div>
-
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar">Email id</label>
-    </div>
-
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        id="adar"
-        v-model="formData.email"
-        dense
-        item-aligned
-        mask="############"
-        outlined
-      />
-    </div>
-
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="adar"> Alternate Email ID</label>
-    </div>
-
-    <div class="col-xs-12 col-md-4">
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        id="adar"
-        v-model="formData.alt_email"
-        dense
-        item-aligned
-        mask="############"
-        outlined
-      />
+    <div class="col-12 q-ml-md">
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="fname"
+          >3.1 Country<span class="asterisk">*</span></label
+        >
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          id="fname"
+          v-model="formData.country"
+          dense
+          item-aligned
+          outlined
+        />
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="mname">3.2 State</label>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          id="mname"
+          v-model="formData.state"
+          dense
+          item-aligned
+          outlined
+        />
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="mobile"
+          >3.3 City/Town<span class="asterisk">*</span></label
+        >
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          id="mobile"
+          v-model="formData.city_town"
+          dense
+          outlined
+        />
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="email">3.4 Postal code/Zip code</label>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          id="email"
+          v-model="formData.pincode"
+          dense
+          item-aligned
+          outlined
+        />
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="adar">3.5 Address</label>
+      </div>
+      <!--    hint="Adhaar no will be used to match the records of your Digilocker AC"-->
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          id="adar"
+          v-model="formData.address"
+          dense
+          item-aligned
+          mask="############"
+          outlined
+        />
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="adar">3.6 Phone number</label>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          id="adar"
+          v-model="formData.phone_no"
+          dense
+          item-aligned
+          mask="############"
+          outlined
+        />
+      </div>
+       <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="adar">3.7 Mobile number</label>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          id="adar"
+          v-model="formData.phone_no"
+          dense
+          item-aligned
+          mask="############"
+          outlined
+        />
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="adar">3.8 Fax number</label>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          id="adar"
+          v-model="formData.fax_no"
+          dense
+          item-aligned
+          mask="############"
+          outlined
+        />
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="adar">3.9 Email id</label>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          id="adar"
+          v-model="formData.email"
+          dense
+          item-aligned
+          mask="############"
+          outlined
+        />
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label class="zlabel" for="adar"> 3.10 Alternate Email ID</label>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <q-input
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          id="adar"
+          v-model="formData.alt_email"
+          dense
+          item-aligned
+          mask="############"
+          outlined
+        />
+      </div>
     </div>
     <div class="col-xs-12" />
   </div>
@@ -206,7 +211,6 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
-
 
 export default {
   setup(props, context) {
