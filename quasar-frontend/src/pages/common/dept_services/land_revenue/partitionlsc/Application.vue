@@ -47,44 +47,43 @@ export default {
     const applicantRef = ref(null);
 
     const submit = () => {
-      var formData = reactive({});
+      var formData = {};
 
       // return console.log(q);
 
       formData = Object.assign(formData, applicantRef.value.formData);
 
-// return console.log('file',formData.signature);
-
-      var formDatas = new FormData();
-      formDatas.append('signature',formData.signature)
-
-      formData = Object.assign(formData,{
-        signature: formDatas.get('signature')
-      });
-
-      // return console.log('formdata',formData);
-
       // for (const [key, value] of Object.entries(formData)) {
       //   if (key === "lsc_details") {
-      //     console.log('lsc',key,value);
+      //     console.log("lsc", key, value);
       //     // formDatas.(`${key}`, JSON.stringify(value));
       //   } else {
-      //   console.log(`${key}: ${value}`);
-      //   formDatas.append(`${key}`, value);
+      //     console.log(`${key}: ${value}`);
+      //     formDatas.append(`${key}`, value);
       //   }
-        
-
       // }
 
-      // formDatas.append('lists',formData?.lsc_details)
+      var formDatas = new FormData();
 
-      // for (let data in formData) {
-      //   formDatas.append(`${data}`, formData[data]);
-      // }
-      // return console.log('formdatas',formData);
+      
+
+       for (let data in formData) {
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+
+      formDatas.delete('lsc_details');
+      // return console.log('lsc_details',(formData.lsc_details))
+
+
+      formDatas.append('lsc_details',JSON.stringify(formData.lsc_details))
+
+
+
+      
 
       api
-        .post("/applications/submit", formData)
+        .post("/applications/submit", formDatas)
         .then((res) => {
           // return console.log("response value", res.data);
           q.notify({

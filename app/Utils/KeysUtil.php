@@ -835,6 +835,63 @@ class KeysUtil
         'LAND_REVENUE_LSC' => [
             'lsc_one',
             'lsc_two',
+            'lsc_three',
+            'lsc_four',
+            'lsc_five',
+            'lsc_six',
+            'lsc_seven',
+            'lsc_eight',
+            'lsc_nine',
+            'lsc_nine_1',
+            'lsc_nine_2',
+            'lsc_nine_3',
+            'lsc_nine_4',
+            // 'lsc_ten',
+            'lsc_eleven',
+            // 'lsc_twelve',
+            'lsc_tuna_address',
+            'lsc_phone_no',
+        ],
+        'LAND_REVENUE_PATTA' => [
+            'land_revenue_patta_one',
+            'land_revenue_patta_two',
+            'land_revenue_patta_two_a',
+            'land_revenue_patta_two_b',
+            'land_revenue_patta_two_c',
+            'land_revenue_patta_two_d',
+            'land_revenue_patta_three',
+            'land_revenue_patta_three_if_married',
+            'land_revenue_patta_four',
+            'land_revenue_patta_five',
+            'land_revenue_patta_six',
+            'land_revenue_patta_six_a',
+            'land_revenue_patta_six_b',
+            'land_revenue_patta_seven',
+            'land_revenue_patta_eight',
+            'land_revenue_patta_nine',
+            'land_revenue_patta_ten',
+            'land_revenue_patta_ten_a',
+            'land_revenue_patta_ten_b',
+            'land_revenue_patta_ten_c',
+            'land_revenue_patta_ten_d',
+            'land_revenue_patta_eleven',
+            'land_revenue_patta_twelve',
+            'land_revenue_patta_twelve_a',
+            'land_revenue_patta_twelve_b',
+            'land_revenue_patta_twelve_c',
+            'land_revenue_patta_twelve_d',
+            'land_revenue_patta_thirteen',
+            'land_revenue_patta_fourteen',
+            'land_revenue_patta_fiveteen',
+            'land_revenue_patta_fiveteen_a',
+            'land_revenue_patta_fiveteen_b',
+            'land_revenue_patta_sixteen',
+            'land_revenue_patta_sixteen_a',
+            'land_revenue_patta_sixteen_b',
+            'land_revenue_patta_seventeen',
+            'land_revenue_patta_seventeen_a',
+            'land_revenue_patta_seventeen_b',
+            'land_revenue_patta_nineteen',
         ],
 
         'POLLUTION_ACCIDENT_MEDICAL' => [
@@ -2056,6 +2113,7 @@ class KeysUtil
     const LABELS = [
         // ...HmangaihaUtil::LABELS,
         // COMMERCE AND INSUSTRIES - ALLOTMENT PLOT
+        
         'applicant_name' => 'Applicant Name',
         'industrial_location_name' => 'Name & Location of Industrial Area',
         'communication_address' => 'Address for Communications',
@@ -2553,7 +2611,7 @@ class KeysUtil
         'fire_eighteen_1_explosive' => "",
         'fire_eighteen_1_mfg' => "",
         'fire_eighteen_1_purchase' => "",
-        'fire_eighteen_1_remarks' => "", 
+        'fire_eighteen_1_remarks' => "",
         'fire_eighteen_2_type' => "",
         'fire_eighteen_2_capacity' => "",
         'fire_eighteen_2_qnty' => "",
@@ -2842,8 +2900,24 @@ class KeysUtil
         'land_revenue_allot_govt_eleven' => "11 Remarks of the Secretary of the Department concerned/ organization concerned",
 
 
-        'lsc_one' => "One",
-        'lsc_two' => "Two",
+        'lsc_one' => "1.Land Settlement Certificate (LSC) neitu hming",
+        'lsc_two' => "2 Pa/Pasal hming",
+        'lsc_three' => "3 Address",
+        'lsc_four' => "4 Land Settlement Certificate (LSC) No. Leh kum",
+        'lsc_five' => "5 Land Settlement Certificate awmna ram/veng",
+        'lsc_six' => "6 Land Settlement Certificate zau zawng(area)",
+        'lsc_seven' => "7 Engvanga LSC area chu then duh nge?",
+        'lsc_eight' => "8 LSC thentur cheibawl a ni em? ",
+        'lsc_nine' => "9 A ram thenawm neitute hming leh address",
+        'lsc_nine_1' => "1) South ",
+        'lsc_nine_2' => "2) North",
+        'lsc_nine_3' => "3) West",
+        'lsc_nine_4' => "4) East",
+        // 'lsc_ten' => "",
+        'lsc_eleven' => "11 Hmun a thlawna inpekna ( free gift).Gift Deed non-judicial stamp paper-a siam tur Hmun hralh (transfer by sale/exchange).Non-judicial stamp paper-ah agreement siam tur",
+        'lsc_tuna_address' => "Tuna Address",
+        'lsc_phone_no' => "Phone no",
+        // 'lsc_twelve' => "",
 
 
 
@@ -4053,6 +4127,6 @@ class KeysUtil
     public static function getApplicationLabel(string $key): string
     {
         $labels = array_merge(self::LABELS, HmangaihaUtil::LABELS);
-        return $labels[$key];
+        return isset($labels[$key]) ? $labels[$key] : 'Dummy Label';
     }
 }

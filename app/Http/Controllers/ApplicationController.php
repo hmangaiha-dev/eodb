@@ -85,8 +85,7 @@ class ApplicationController extends Controller
 
     public function submitApplication(Request $request)
     {
-        // return $request->all();
-       
+        //     return $request->file();
 
 
         $this->validate($request, [
@@ -107,14 +106,32 @@ class ApplicationController extends Controller
             'department_id' => $request->get('department_id'),
             'current_state' => 'submitted',
         ]);
+
+
+
+
         $application->states()->create([
             'name' => 'submitted',
             'remark' => 'Application submitted at ' . now()->toDateString()
         ]);
         $application->office()->attach($appProfile->office_id);
+        
+        if ($request->application_code == 'LAND_REVENUE_LSC' || $request->application_code == 'LAND_REVENUE_PATTA' ) {
+            // $application->lscDetails()->createMany($request->lsc_details);
+            $arrs =  (json_decode($request->lsc_details));
 
-        if ($request->application_code == 'LAND_REVENUE_LSC') {
-            $application->lscDetails()->createMany($request->lsc_details);
+            // $application->lscDetails()->createMany(collect($arrs)->toArray());
+
+            foreach ($arrs as $arr) {
+
+                $application->lscDetails()->create(
+                    (array)$arr
+                    // 'name' => $arr->name,
+                    // 'address' => $arr->address,
+                    // 'kum' => $arr->kum,
+                    // 'caste' => $arr->caste,
+                );
+            }
         }
 
 
@@ -243,9 +260,9 @@ class ApplicationController extends Controller
             "{{{$item->field_key}}}" => $item->field_value
         ])->toArray();
 
-        if ($model->application_code == 'LAND_REVENUE_LSC') {
+        if ($model->application_code == 'LAND_REVENUE_LSC' || $model->application_code == 'LAND_REVENUE_PATTA') {
             $details = $model->lscDetails()->get();
-            $views = (string)view('lsc.table', ["details" => $details]);
+            $views = view('lsc.table', ["details" => $details,'code'=> $model->application_code])->render();
             $content = [
                 "{{content}}" => $views
             ];

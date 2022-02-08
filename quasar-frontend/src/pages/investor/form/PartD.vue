@@ -7,12 +7,11 @@
           <label class="zlabel" for="gender"> 6.1 Sector * </label>
         </div>
         <div class="col-xs-12 col-md-5">
-          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"   outlined v-model="formData.designation" type="text" /> -->
           <q-select
             dropdown-icon="expand_more"
             v-model="formData.proposed_sector"
             :options="proposed_sectors"
-            dense
             outlined
           />
         </div>
@@ -21,12 +20,11 @@
           <label class="zlabel" for="gender"> 6.2 Project Purpose </label>
         </div>
         <div class="col-xs-12 col-md-5">
-          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"   outlined v-model="formData.designation" type="text" /> -->
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
             outlined
             v-model="formData.proposed_total_proposed_area"
           />
@@ -43,7 +41,6 @@
             dropdown-icon="expand_more"
             v-model="formData.proposed_industry_size"
             :options="proposed_industries"
-            dense
             outlined
           />
         </div>
@@ -55,6 +52,8 @@
       service enterprises, as notified vide S.O. 1642(E) dtd.29-09-2006 of MSME
       are as under
     </div>
+
+    <div class="col-12 zlabel">#Manufacturing Sector</div>
 
     <div class="col-12 text-center">
       <q-markup-table>
@@ -86,6 +85,8 @@
       </q-markup-table>
     </div>
 
+    <div class="col-12 zlabel">#Service Sector</div>
+
     <div class="col-12 text-center">
       <q-markup-table class="table table-bordered">
         <thead>
@@ -115,56 +116,87 @@
       </q-markup-table>
     </div>
 
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12">
       <label class="zlabel" for="name">
         6.4 Project type *
         <span class="asterisk"> *</span></label
       >
-    </div>
-    <div style="display: grid" class="col-xs-12 col-md-10">
+      <br />
+
       <q-radio
         v-model="formData.project_type"
+        class="zlabel"
         val="Construction Project(Civil Engineering, Construction, Petrochemical,Mining and Quarring)"
         label="Construction Project(Civil Engineering, Construction, Petrochemical,Mining and Quarring)"
       />
+      <br />
       <q-radio
         v-model="formData.project_type"
+        class="zlabel"
         val="Manufacturing Project"
         label="Manufacturing Project"
       />
+      <br />
       <q-radio
         v-model="formData.project_type"
+        class="zlabel"
         val="Service(Automobile and other repairs, Real Estate and Renting Activities, ITES, Insurance, Financial Services, Hostels and Restaurants, transportation, Warehouse and Cold Storage Service, Health Care and diagnostic centres etc."
         label="Service(Automobile and other repairs, Real Estate and Renting Activities, ITES, Insurance, Financial Services, Hostels and Restaurants, transportation, Warehouse and Cold Storage Service, Health Care and diagnostic centres etc."
       />
     </div>
+    <br />
+    <!-- <div class="col-xs-12 col-md-10"> -->
 
-    <div class="col-xs-12 col-md-2">
+    <!-- </div> -->
+
+    <div class="col-xs-12 col-sm-10">
       <label class="zlabel" for="dob" type="date">
         6.5 Category of project *
       </label>
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-radio v-model="formData.project_category" val="yes" label="Yes" />
-      <q-radio v-model="formData.project_category" val="no" label="No" />
+
+      <q-select
+        v-model="model"
+        :options="['Greenfield', 'Brownfield']"
+        outlined
+      />
     </div>
 
-    <div class="col-xs-12 col-md-3">
+    <div class="col-12">
+      <label for="" class="zlabel">
+        6.6 If collaboration with foreign investor / Outside of state investor
+      </label>
+      <div class="row q-ml-md">
+        <div class="col-xs-12 col-sm-10">
+          <label for="" class="zlabel"> a) If yes, Name of the investor </label>
+          <q-input outlined v-model="formData.lsc_tuna_address" />
+        </div>
+        <div class="col-xs-12 col-sm-10">
+          <label for="" class="zlabel">
+            b) Name of the country of origin
+          </label>
+          <q-input outlined v-model="formData.lsc_tuna_address" />
+        </div>
+        <div class="col-xs-12 col-sm-10">
+          <label for="" class="zlabel">c) Address and Contact number </label>
+          <q-input outlined v-model="formData.lsc_tuna_address" />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-10">
       <label class="zlabel" for="gender">
         6.7 Detailed Project Report (DPR) / Concept Note* ( Maximum size : 4 MB
         Format : PDF )
         <span class="asterisk">*</span></label
       >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-file v-model="formData.project_report" dense outlined>
+      <q-file v-model="formData.project_report" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
       </q-file>
     </div>
 
-    <div class="col-12 text-caption">
+    <div class="col-12 zlabel">
       NOTE <br />
       a) DPR Should also contain applicable manufacturing/service process flow
       chart, list of machineries, list of products/services; list of raw
@@ -184,11 +216,9 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 
-
 export default {
   setup(props, context) {
     const store = useStore();
-    
 
     const formData = reactive({
       proposed_sector: "",

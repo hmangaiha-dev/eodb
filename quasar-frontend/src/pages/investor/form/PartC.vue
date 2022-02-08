@@ -1,8 +1,8 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-xs-12 col-md-3">
+    <div class="col-xs-12 col-sm-10">
       <label class="zlabel" for="name">
-        Choose Which Ever Is Applicaple to You <br />
+        5.6 Choose Which Ever Is Applicaple to You <br />
         <span class="text-caption">
           [ Covers additional details(such as ownership details) about project
           site. Investor is required to select at least one option from
@@ -13,7 +13,6 @@
     </div>
     <div class="col-xs-12 col-md-8">
       <q-select
-        dense
         dropdown-icon="expand_more"
         outlined
         v-model="formData.proposed_industrial_area"
@@ -22,15 +21,18 @@
     </div>
 
     <div class="q-ml-md col-12">
-      <div class="row q-col-guter-md">
-        <div class="col-xs-12 col-md-3">
+      <div
+        v-if="
+          formData.proposed_industrial_area ==
+          'i. Certified Copy of freehold ownership'
+        "
+        class="row q-col-guter-md"
+      >
+        <div class="col-xs-12 col-md-6">
           <label class="zlabel" for="">
-            Attach certified copy of ownership*
+            a)Attach certified copy of ownership*
           </label>
-        </div>
-
-        <div class="col-xs-12 col-md-4">
-          <q-file v-model="formData.cst_cert" dense outlined>
+          <q-file v-model="formData.cst_cert" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -38,15 +40,18 @@
         </div>
       </div>
 
-      <div class="row q-mt-md q-col-gutter-md">
-        <div class="col-xs-12 col-md-3">
+      <div
+        v-if="
+          formData.proposed_industrial_area ==
+          'ii. Certified Copy of leasehold ownership'
+        "
+        class="row q-mt-md q-col-gutter-md"
+      >
+        <div class="col-xs-12 col-md-6">
           <label class="zlabel" for="">
-            Attach certified of lease document*
+            a)Attach certified of lease document*
           </label>
-        </div>
-
-        <div class="col-xs-12 col-md-4">
-          <q-file v-model="formData.cst_cert" dense outlined>
+          <q-file v-model="formData.cst_cert" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -54,61 +59,50 @@
         </div>
       </div>
 
-
-
-      <div class="row q-mt-md q-col-gutter-md">
-        <div class="col-xs-12 col-md-3">
+      <div
+        v-if="formData.proposed_industrial_area == 'iii. Rent Deep'"
+        class="row q-mt-md q-col-gutter-md"
+      >
+        <!-- <div class="row col-12 q-col-gutter-md"> -->
+        <div class="col-xs-12 col-md-6">
           <label class="zlabel" for="">
-            Attach certified copy of rent deed*
+            a)Attach certified copy of rent deed*
           </label>
-        </div>
-
-        <div class="col-xs-12 col-md-4">
-          <q-file v-model="formData.cst_cert" dense outlined>
+          <q-file v-model="formData.cst_cert" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
           </q-file>
         </div>
-      </div>
-
-      <div class="row q-mt-md q-col-gutter-md">
-        <div class="col-xs-12 col-md-3">
-          <label class="zlabel" for="">
-           NOC from owner*
-          </label>
-        </div>
-
-        <div class="col-xs-12 col-md-4">
-          <q-file v-model="formData.cst_cert" dense outlined>
+        <!-- </div> -->
+        <!-- <div class="row q-col-gutter-md"> -->
+        <div class="col-xs-12 col-md-6">
+          <label class="zlabel" for=""> b)NOC from owner* </label>
+          <q-file v-model="formData.cst_cert" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
           </q-file>
         </div>
+        <!-- </div> -->
       </div>
-
-
-      
     </div>
 
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-6">
       <label class="zlabel" for="dob" type="date">
         Attach Site/Layout Plan* <br />
         <span class="text-caption">
           [Map showing dimensions & directions of project site with entry/exit]
         </span>
       </label>
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-file v-model="formData.cst_cert" dense outlined>
+      <q-file v-model="formData.cst_cert" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
       </q-file>
     </div>
 
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-6">
       <label class="zlabel" for="dob" type="date">
         Attach Linear Strip Plan* <br />
         <span class="text-caption">
@@ -116,9 +110,7 @@
           connecting NH/SH/SR/Other road]
         </span>
       </label>
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <q-file v-model="formData.cst_cert" dense outlined>
+      <q-file v-model="formData.cst_cert" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>

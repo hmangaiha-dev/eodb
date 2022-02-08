@@ -51,14 +51,14 @@
         >7 Engvanga LSC area chu then duh nge?
         <span class="asterisk">*</span></label
       >
-      <q-input type="textarea" v-model="formData.birth_place" dense outlined />
+      <q-input type="textarea" v-model="formData.lsc_seven" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="gender"
         >8 LSC thentur cheibawl a ni em? <span class="asterisk">*</span></label
       >
-      <q-input v-model="formData.birth_place" dense outlined />
+      <q-input v-model="formData.lsc_eight" dense outlined />
     </div>
 
     <div class="col-12 zlabel">
@@ -71,28 +71,28 @@
           <label class="zlabel" for="name"
             >1) South <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input dense outlined v-model="formData.lsc_nine_1" />
         </div>
 
         <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name"
             >2) North<span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input dense outlined v-model="formData.lsc_nine_2" />
         </div>
 
         <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name"
             >3) West<span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input dense outlined v-model="formData.lsc_nine_3" />
         </div>
 
         <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name"
             >4) East<span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input dense outlined v-model="formData.lsc_nine_4" />
         </div>
       </div>
       <!-- </div> -->
@@ -106,7 +106,7 @@
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel">1) Original Land Settlement Certificate</label>
-          <q-file v-model="formData.land_revenue_land_transfer_nine_a" outlined>
+          <q-file v-model="formData.lsc_ten_1" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -115,7 +115,7 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel">2) Land Valuation Certificate</label>
-          <q-file v-model="formData.land_revenue_land_transfer_nine_b" outlined>
+          <q-file v-model="formData.lsc_ten_2" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -124,7 +124,7 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel">3) No Objection Certificate</label>
-          <q-file v-model="formData.land_revenue_land_transfer_nine_c" outlined>
+          <q-file v-model="formData.lsc_ten_3" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -133,7 +133,7 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel">4) Non Encumbrance Certificate</label>
-          <q-file v-model="formData.land_revenue_land_transfer_nine_d" outlined>
+          <q-file v-model="formData.lsc_ten_4" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -144,7 +144,7 @@
           <label class="zlabel"
             >5) Tax payment receipt/ Tax Clearance Certificate</label
           >
-          <q-file v-model="formData.land_revenue_land_transfer_nine_e" outlined>
+          <q-file v-model="formData.lsc_ten_5" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -155,7 +155,7 @@
           <label class="zlabel"
             >6) LSC neitu leh a neichhawngtu tur te Voter I.D</label
           >
-          <q-file v-model="formData.land_revenue_land_transfer_nine_e" outlined>
+          <q-file v-model="formData.lsc_ten_6" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -190,7 +190,7 @@
         enfiah tir in, clearance certificate a thil tel tur a ni.</label
       >
 
-      <q-file v-model="formData.land_revenue_land_transfer_nine_e" outlined>
+      <q-file v-model="formData.lsc_twelve" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -280,14 +280,14 @@
       <label class="zlabel" for="name"
         >Tuna Address<span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.applicant_name" />
+      <q-input dense outlined v-model="formData.lsc_tuna_address" />
     </div>
 
     <div class="col-5">
       <label class="zlabel" for="gender"
         >Diltu Signature<span class="asterisk">*</span></label
       >
-      <q-file v-model="formData.signature" outlined>
+      <q-file v-model="formData.lsc_signature" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -296,9 +296,9 @@
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"
-        >Tuna Address<span class="asterisk"> *</span></label
+        >Phone no<span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.applicant_name" />
+      <q-input dense outlined v-model="formData.lsc_phone_no" />
     </div>
 
     <div class="col-xs-12" />
@@ -325,18 +325,33 @@ export default {
       lsc_four: "",
       lsc_five: "",
       lsc_six: "",
-      signature:null,
+      lsc_seven: "",
+      lsc_eight: "",
+      lsc_nine: "",
+      lsc_nine_1: "",
+      lsc_nine_2: "",
+      lsc_nine_3: "",
+      lsc_nine_4: "",
+      lsc_ten: "",
+      lsc_ten_1: null,
+      lsc_ten_2: null,
+      lsc_ten_3: null,
+      lsc_ten_4: null,
+      lsc_ten_5: null,
+      lsc_ten_6: null,
+      lsc_eleven: "",
+      lsc_twelve: null,
       lsc_details: [{ name: "", address: "", kum: "", caste: "" }],
+      lsc_signature:null,
       rows: 1,
-      land_rev_lsc_one: '',
       lsc_details: [{
-        hming: '',
+        name: '',
         address: '',
         kum: '',
         caste: ''
       }],
-      signature: null,
-      land_rev_lsc_two: '',
+      lsc_tuna_address: "",
+      lsc_phone_no: "",
     });
     onMounted(() => {
       console.log('rows',formData.rows);

@@ -36,6 +36,7 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'LAND_REVENUE_LAND_TRANSFER', 'title' => 'APPLICATION FOR TRANSFER OF OWNERSHIP OF LAND HOLDING', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LAND_REVENUE_ALLOTMENT_GOVERNMENT', 'title' => 'APPLICATION FOR THE ALLOTMENT OF LAND TO THE GOVERNMENT DEPARTMENT/CORPORATION/BOARDS ETC. ON LAND LEASE/LIMITED LEASE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LAND_REVENUE_LSC', 'title' => 'APPLICATION FOR PARTITION OF LSC', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'LAND_REVENUE_PATTA', 'title' => 'PERIODIC PATTA (PERIODIC PATTA DILNA)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
 
         ['code' => 'POLLUTION_CONSENT_INDUSTRIES', 'title' => 'CONSENT FOR ESTABLISHMENT OF INDUSTRIES ETC', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_ACCIDENT_MEDICAL', 'title' => 'ACCIDENT REPORTING FOR BIO-MEDICAL WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
