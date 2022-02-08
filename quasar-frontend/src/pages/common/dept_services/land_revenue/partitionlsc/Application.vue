@@ -53,18 +53,40 @@ export default {
 
       formData = Object.assign(formData, applicantRef.value.formData);
 
-      var formDatas = new FormData();
+// return console.log('file',formData.signature);
 
-      for (let data in formData) {
-        formDatas.append(`${data}`, formData[data]);
-      }
+      var formDatas = new FormData();
+      formDatas.append('signature',formData.signature)
+
+      formData = Object.assign(formData,{
+        signature: formDatas.get('signature')
+      });
+
+      // return console.log('formdata',formData);
+
+      // for (const [key, value] of Object.entries(formData)) {
+      //   if (key === "lsc_details") {
+      //     console.log('lsc',key,value);
+      //     // formDatas.(`${key}`, JSON.stringify(value));
+      //   } else {
+      //   console.log(`${key}: ${value}`);
+      //   formDatas.append(`${key}`, value);
+      //   }
+        
+
+      // }
+
+      // formDatas.append('lists',formData?.lsc_details)
+
+      // for (let data in formData) {
+      //   formDatas.append(`${data}`, formData[data]);
+      // }
       // return console.log('formdatas',formData);
 
       api
         .post("/applications/submit", formData)
         .then((res) => {
-          return
-          // console.log("response value", res.data);
+          // return console.log("response value", res.data);
           q.notify({
             message: "Application submitted successfully",
             color: "green",

@@ -5,21 +5,21 @@
         >1.Land Settlement Certificate (LSC) neitu hming
         <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.land_rev_lsc_one" dense outlined />
+      <q-input v-model="formData.lsc_one" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"
         >2 Pa/Pasal hming <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.two" dense outlined />
+      <q-input v-model="formData.lsc_two" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"
         >3 Address <span class="asterisk"> *</span></label
       >
-      <q-input type="textarea" v-model="formData.birth_place" dense outlined />
+      <q-input type="textarea" v-model="formData.lsc_three" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
@@ -27,7 +27,7 @@
         >4 Land Settlement Certificate (LSC) No. Leh kum
         <span class="asterisk"> *</span></label
       >
-      <q-input type="textarea" v-model="formData.birth_place" dense outlined />
+      <q-input type="textarea" v-model="formData.lsc_four" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
@@ -35,7 +35,7 @@
         >5 Land Settlement Certificate awmna ram/veng
         <span class="asterisk"> *</span></label
       >
-      <q-input type="textarea" v-model="formData.birth_place" dense outlined />
+      <q-input type="textarea" v-model="formData.lsc_five" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
@@ -43,7 +43,7 @@
         >6 Land Settlement Certificate zau zawng(area)
         <span class="asterisk"> *</span></label
       >
-      <q-input type="textarea" v-model="formData.birth_place" dense outlined />
+      <q-input type="textarea" v-model="formData.lsc_six" dense outlined />
     </div>
 
     <div class="col-md-6 col-xs-12">
@@ -211,7 +211,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.lsc_details[i-1].hming"
+            v-model="formData.lsc_details[i - 1].name"
             dense
             outlined
           />
@@ -223,7 +223,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-             v-model="formData.lsc_details[i-1].address"
+            v-model="formData.lsc_details[i - 1].address"
             dense
             outlined
           />
@@ -235,7 +235,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-             v-model="formData.lsc_details[i-1].kum"
+            v-model="formData.lsc_details[i - 1].kum"
             dense
             outlined
           />
@@ -247,7 +247,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-             v-model="formData.lsc_details[i-1].caste"
+            v-model="formData.lsc_details[i - 1].caste"
             dense
             outlined
           />
@@ -316,10 +316,17 @@ import {ref} from 'vue'
 export default {
   setup(props, context) {
     const store = useStore();
-
     const formData = reactive({
-      application_code: "LAND_REVENUE_LSC_PARTITION",
+      application_code: "LAND_REVENUE_LSC",
       department_id: 8,
+      lsc_one: "",
+      lsc_two: "",
+      lsc_three: "",
+      lsc_four: "",
+      lsc_five: "",
+      lsc_six: "",
+      signature:null,
+      lsc_details: [{ name: "", address: "", kum: "", caste: "" }],
       rows: 1,
       land_rev_lsc_one: '',
       lsc_details: [{
@@ -337,14 +344,12 @@ export default {
     return {
       formData,
       addRow: () => {
-        formData?.lsc_details?.push({
-          name: '',
-          address: '',
-          kum: '',
-          caste: ''
-        })
-
-        console.log('push',formData.lsc_details);
+        formData.lsc_details.push({
+          name: "",
+          address: "",
+          kum: "",
+          caste: "",
+        });
         formData.rows++;
       },
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

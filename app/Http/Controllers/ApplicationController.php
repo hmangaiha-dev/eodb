@@ -85,7 +85,9 @@ class ApplicationController extends Controller
 
     public function submitApplication(Request $request)
     {
-    
+        // return $request->all();
+       
+
 
         $this->validate($request, [
             'application_code' => ['required'],
@@ -111,6 +113,12 @@ class ApplicationController extends Controller
         ]);
         $application->office()->attach($appProfile->office_id);
 
+        if ($request->application_code == 'LAND_REVENUE_LSC') {
+            $application->lscDetails()->createMany($request->lsc_details);
+        }
+
+
+        // return $application;
 
         DB::transaction(function ($cb) use ($appProfile, $request, $application) {
             //        $formData=$request->except(['application_code', 'department_id']);
@@ -235,8 +243,17 @@ class ApplicationController extends Controller
             "{{{$item->field_key}}}" => $item->field_value
         ])->toArray();
 
-        $result = $this->replaceTemplate($template, $vars);
+        if ($model->application_code == 'LAND_REVENUE_LSC') {
+            $details = $model->lscDetails()->get();
+            $views = (string)view('lsc.table', ["details" => $details]);
+            $content = [
+                "{{content}}" => $views
+            ];
 
+            $vars = $vars + $content;
+        }
+
+        $result = $this->replaceTemplate($template, $vars);
 
         return response()->json([
             'template' => $result,

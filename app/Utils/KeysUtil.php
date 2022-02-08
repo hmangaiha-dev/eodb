@@ -832,11 +832,10 @@ class KeysUtil
             'land_revenue_allot_govt_ten',
             'land_revenue_allot_govt_eleven',
         ],
-        'LAND_REVENUE_LSC_PARTITION' => [
-            'land_rev_lsc_one',
-            'land_rev_lsc_two',
+        'LAND_REVENUE_LSC' => [
+            'lsc_one',
+            'lsc_two',
         ],
-
 
         'POLLUTION_ACCIDENT_MEDICAL' => [
             'pollution_accident_medical_one',
@@ -2841,6 +2840,10 @@ class KeysUtil
         'land_revenue_allot_govt_nine' => "9 If not, whether the department/ Corporation etc. is willing to pay compensation in respect of the land which is being applied for Land Lease",
         'land_revenue_allot_govt_ten' => "10 If the land applied for land lease is already acquired whether land documents (of the land) so acquired is submitted or not",
         'land_revenue_allot_govt_eleven' => "11 Remarks of the Secretary of the Department concerned/ organization concerned",
+
+
+        'lsc_one' => "One",
+        'lsc_two' => "Two",
 
 
 

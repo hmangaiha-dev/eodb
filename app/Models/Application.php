@@ -31,6 +31,10 @@ class Application extends Model
     {
         return $this->hasMany(ApplicationValue::class);
     }
+    public function lscDetails(): HasMany
+    {
+        return $this->hasMany(LscPartition::class);
+    }
 
     public function states()
     {
