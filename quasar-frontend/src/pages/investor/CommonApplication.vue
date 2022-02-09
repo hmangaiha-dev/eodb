@@ -56,6 +56,11 @@
         <q-tab name="c" label="Part-C" />
         <q-tab name="d" label="Part-D" />
         <q-tab name="e" label="Part-E" />
+
+        <q-tab name="g" label="Part-G" />
+        <q-tab name="declaration" label="Self-Declaration" />
+
+
       </q-tabs>
       <q-form class="row">
         <q-tab-panels v-model="tab" animated>
@@ -119,10 +124,43 @@
               </div>
             </div>
 
+
             <div class="col-12 q-mt-md">
               <q-btn color="green-6" type="submit" label="Save & Next" />
             </div>
           </q-tab-panel>
+
+
+
+
+
+          <q-tab-panel name="g">
+            <div class="row q-col-gutter-lg">
+              <div class="col-xs-12">
+                <PartG ref="partGRef" />
+              </div>
+            </div>
+             <div class="col-12 q-mt-md">
+              <q-btn color="green-6" type="submit" label="Save & Next" />
+            </div>
+          </q-tab-panel>
+
+
+
+          <q-tab-panel name="declaration">
+            <div class="row q-col-gutter-lg">
+              <div class="col-xs-12">
+                <Declaration ref="DeclarationRef" />
+              </div>
+            </div>
+             <div class="col-12 q-mt-md">
+              <q-btn color="green-6" type="submit" label="Save Application" />
+              <span class="q-mx-md">  </span>
+              <q-btn color="blue-6" type="submit" label="Final Submit" />
+
+            </div>
+          </q-tab-panel>
+          
         </q-tab-panels>
       </q-form>
     </div>
@@ -141,6 +179,10 @@ import ProposedDetails from "./form/ProposedDetails.vue";
 import PartC from "./form/PartC.vue";
 import PartD from "./form/PartD.vue";
 import PartE from "./form/PartE.vue";
+import PartG from "./form/PartG.vue";
+import Declaration from "./form/Declaration.vue";
+
+
 
 export default {
   components: {
@@ -150,6 +192,8 @@ export default {
     PartC,
     PartD,
     PartE,
+    PartG,
+    Declaration,
   },
   setup(props, context) {
     const applicantRef = ref(null);
@@ -158,6 +202,10 @@ export default {
     const partCRef = ref(null);
     const partDRef = ref(null);
     const partERef = ref(null);
+    const partGRef = ref(null);
+    const DeclarationRef = ref(null);
+
+
 
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
@@ -175,6 +223,9 @@ export default {
       partCRef,
       partDRef,
       partERef,
+      partGRef,
+      Declaration,
+
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
