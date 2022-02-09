@@ -104,7 +104,7 @@ export default {
             const { token, user } = res.data;
             store.dispatch("authData/setCurrentUser", user);
             store.dispatch("authData/setToken", token);
-            router.push({name:'investor:dashboard'})
+            router.push(route.redirectedFrom || '/')
 
             // router.push({ name: "home" });
 

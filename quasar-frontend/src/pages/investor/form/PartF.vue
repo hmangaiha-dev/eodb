@@ -15,9 +15,7 @@
         <div class="col-sm-5 col-xs-12">
           <q-input
             label="Raw Material"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             outlined
           />
         </div>
@@ -25,9 +23,7 @@
         <div class="col-sm-5 col-xs-12">
           <q-input
             placeholder="Quantity"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             outlined
           />
         </div>
@@ -35,9 +31,7 @@
         <div class="col-sm-5 col-xs-12">
           <q-input
             placeholder="Units(Ton per day-TDP)"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             outlined
           />
         </div>
@@ -45,27 +39,21 @@
         <div class="col-sm-5 col-xs-12">
           <q-input
             placeholder="Main Product	"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             outlined
           />
         </div>
         <div class="col-sm-5 col-xs-12">
           <q-input
             placeholder="Quantity"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             outlined
           />
         </div>
         <div class="col-sm-5 col-xs-12">
           <q-input
             placeholder="Units(Number per day)"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             outlined
           />
         </div>
@@ -382,9 +370,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 label="Capacity(Ton per hour/KVA)"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -393,9 +379,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Type of Fuel"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -404,9 +388,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Quantity of fuel(in KL per day / Ton per day)"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -415,9 +397,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Stack Height	"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -425,9 +405,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Air Pollution Control Device"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -435,9 +413,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Boiler Rating(Heating Surface) In cubic meter"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -445,9 +421,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Stream Pressure(max) In Kg per Cubic cm"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -455,9 +429,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Capacity in ltrs"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -493,9 +465,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 label="Source of Generation"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -504,9 +474,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Nature/Type"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -515,9 +483,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="	Quantity(Ton per day)"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />
@@ -526,9 +492,7 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Mode of disposal"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
               />

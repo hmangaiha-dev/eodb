@@ -303,9 +303,7 @@
             <div class="col-sm-5 col-xs-12">
               <q-input
                 label="Phase *"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+                
                 
                 outlined
               />
@@ -314,9 +312,7 @@
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Product Category *"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+                
                 
                 outlined
               />
@@ -325,9 +321,7 @@
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="FCI *"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+                
                 
                 outlined
               />
@@ -336,9 +330,7 @@
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Implementation Date"
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+                
                 type="date"
                 
                 outlined

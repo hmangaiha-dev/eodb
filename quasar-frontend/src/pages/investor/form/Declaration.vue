@@ -86,31 +86,41 @@
     </div>
 
     <div class="col-12 zsubtitle">
-  
       <div class="row justify-start q-ml-md">
         <div class="col-xs-12 col-md-5">
-          <label class="zlabel" for="gender">
-    Application Date
-          </label>
+          <label class="zlabel" for="gender"> Application Date </label>
         </div>
         <div class="col-xs-12 col-md-5">
-        
-
-          <div class="q-pa-md" >
-    <q-input filled v-model="formData.declaration_application_date" mask="date" :rules="['date']">
-      <template v-slot:append>
-        <q-icon name="event" class="cursor-pointer">
-          <q-popup-proxy ref="qDateProxy" cover transition-show="scale" transition-hide="scale">
-            <q-date v-model="formData.declaration_application_date">
-              <div class="row items-center justify-end">
-                <q-btn v-close-popup label="Close" color="primary" flat />
-              </div>
-            </q-date>
-          </q-popup-proxy>
-        </q-icon>
-      </template>
-    </q-input>
-  </div>
+          <div class="q-pa-md">
+            <q-input
+              filled
+              v-model="formData.declaration_application_date"
+              mask="date"
+              :rules="['date']"
+            >
+              <template v-slot:append>
+                <q-icon name="event" class="cursor-pointer">
+                  <q-popup-proxy
+                    ref="qDateProxy"
+                    cover
+                    transition-show="scale"
+                    transition-hide="scale"
+                  >
+                    <q-date v-model="formData.declaration_application_date">
+                      <div class="row items-center justify-end">
+                        <q-btn
+                          v-close-popup
+                          label="Close"
+                          color="primary"
+                          flat
+                        />
+                      </div>
+                    </q-date>
+                  </q-popup-proxy>
+                </q-icon>
+              </template>
+            </q-input>
+          </div>
         </div>
 
         <div class="col-xs-12 col-md-5">
@@ -129,9 +139,7 @@
         </div>
 
         <div class="col-xs-12 col-md-5">
-          <label class="zlabel" for="gender">
-            Designation
-          </label>
+          <label class="zlabel" for="gender"> Designation </label>
         </div>
         <div class="col-xs-12 col-md-5">
           <q-input
@@ -145,34 +153,33 @@
         </div>
 
         <div class="col-xs-12 col-md-5">
-          <label class="zlabel" for="gender">
-            Signature
-          </label>
+          <label class="zlabel" for="gender"> Signature </label>
         </div>
-        <div class="col-xs-12 col-md-5">      
+        <div class="col-xs-12 col-md-5">
           <div class="col-xs-12 col-md-5">
-        <q-file v-model="formData.declaration_signature" outlined label="Select file">
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
+            <q-file
+              v-model="formData.declaration_signature"
+              outlined
+              label="Select file"
+            >
+              <template v-slot:prepend>
+                <q-icon name="attach_file" />
+              </template>
+            </q-file>
+          </div>
         </div>
-        </div>
-
-       
       </div>
     </div>
-     <div class="col-xs-12 col-md-5">
-          <label class="zlabel" for="gender">
-           
-          </label>
-           <div class="q-gutter-sm">
-      <q-checkbox v-model="formData.declaration_consent" label="I accept the terms and conditions" color="teal" />
+    <div class="col-xs-12 col-md-5">
+      <label class="zlabel" for="gender"> </label>
+      <div class="q-gutter-sm">
+        <q-checkbox
+          v-model="formData.declaration_consent"
+          label="I accept the terms and conditions"
+          color="teal"
+        />
       </div>
-        </div>
-     
-
-
+    </div>
   </div>
 </template>
 
@@ -187,7 +194,7 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      declaration_signature: "",
+      declaration_signature: null,
       declaration_applicant_name: "",
       declaration_application_date: "",
       declaration_designation: "",
