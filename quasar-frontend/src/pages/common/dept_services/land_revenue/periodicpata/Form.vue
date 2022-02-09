@@ -171,7 +171,7 @@
         <q-radio
           class="zlabel"
           v-model="formData.land_revenue_patta_seven"
-          val="line"
+          val="Yes"
           label="Yes"
         />
         <q-radio
@@ -638,8 +638,8 @@ export default {
       land_revenue_patta_thirteen: "",
       land_revenue_patta_fourteen: "",
       land_revenue_patta_fiveteen: "",
-      land_revenue_patta_fiveteen_a: "",
-      land_revenue_patta_fiveteen_b: "",
+      land_revenue_patta_fiveteen_a: false,
+      land_revenue_patta_fiveteen_b: false,
       land_revenue_patta_sixteen: "",
       land_revenue_patta_sixteen_a: "",
       land_revenue_patta_sixteen_b: "",
