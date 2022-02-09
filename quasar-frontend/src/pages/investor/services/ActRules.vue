@@ -1,12 +1,12 @@
 <template>
   <div style="full-width">
-    <q-table  title-class="text-uppercase" title="Act and Rules" :columns="columns" :rows="rows" row-key="name" >
+    <q-table flat  title-class="text-uppercase" title="Act and Rules" :columns="columns" :rows="rows" row-key="name" >
         <template v-slot:body-cell-download="props">
         <q-td :props="props">
           <div>
             <q-btn color="primary" label="download"  />
           </div>
-         
+
         </q-td>
       </template>
     </q-table>
@@ -49,8 +49,8 @@ const rows = [
     serial: 2,
     actrules: "Mizoram EODB Act, 2021 (Draft)",
     download: "download",
-    
-    
+
+
   },
   {
     serial: "1",

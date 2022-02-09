@@ -6,9 +6,9 @@
         @submit="handleSubmit"
         @reset="handleReset"
       >
-        <q-card>
+        <q-card flat class="zcard">
           <q-card-section>
-            <h6 class="text-h6 q-ma-none">Register as investor</h6>
+            <h6 class="text-h6 q-ma-none">Sign up </h6>
           </q-card-section>
           <q-card-section class="q-pb-none">
             <q-input

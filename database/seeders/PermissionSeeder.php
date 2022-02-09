@@ -33,13 +33,6 @@ class PermissionSeeder extends Seeder
 //        ['name' => 'csc:read'], ['name' => 'csc:create'], ['name' => 'csc:edit'], ['name' => 'csc:delete'],
 //        ['name' => 'public-user:read'],['name' => 'public-user:block'],['name' => 'public-user:unblock']
 //    ];
-    const ACCOUNTING = [
-        ['name' => 'transaction:read'], ['name' => 'transaction:post'], ['name' => 'transaction:check'], ['name' => 'transaction:create'],
-        ['name' => 'ledger:read'], ['name' => 'ledger-account:read'],
-    ];
-    const MASTER_DATA_PERMS = [
-        ['name' => 'master-data:read'], ['name' => 'master-data:create'], ['name' => 'master-data:update'], ['name' => 'master-data:delete']
-    ];
 
     const WEBSITE_PERMS = [
         ['name' => 'website:read'], ['name' => 'website:create'], ['name' => 'website:update'], ['name' => 'website:delete']
@@ -57,8 +50,6 @@ class PermissionSeeder extends Seeder
                 self::STAFF_PERMS,
                 self::ROLE_PERMS,
                 self::POSTINGS,
-                self::ACCOUNTING,
-                self::MASTER_DATA_PERMS,
                 self::WEBSITE_PERMS,
                 self::SETTING_PERMS,
             );

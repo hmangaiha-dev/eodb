@@ -1,8 +1,8 @@
 <?php
 namespace App\Utils;
 class NumberGenerator{
-    public static function fakeIdGenerator(): string
+    public static function fakeIdGenerator($application_code): string
     {
-        return 'FAKE-' . now()->timestamp;
+        return $application_code.'-' . now()->timestamp;
     }
 }

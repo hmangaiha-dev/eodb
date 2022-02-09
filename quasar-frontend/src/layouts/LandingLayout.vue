@@ -1,193 +1,182 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header style="margin: 0 auto" class="bg-white text-grey">
-      <q-toolbar class="container bg-white text-dark q-py-none">
+  <q-layout view="lHh Lpr lff">
+    <q-header elevated class=" bg-white">
+      <q-toolbar  class="container-lg text-dark q-py-none">
+
+        <q-btn @click="openDrawer=!openDrawer" class="lt-md q-mr-md" color="primary"  outline icon="menu"/>
+
         <router-link to="/"
-          ><img style="width: 80px" src="~assets/eodb-logo.png"
+        ><img style="width: 80px" src="~assets/eodb-logo.png"
         /></router-link>
 
         <q-toolbar-title class="gt-xs q-mt-md q-pl-lg q-mb-none"
-          ><span class="heading q-pb-none">Ease of Doing Business</span>
+        ><span class="heading q-pb-none">Ease of Doing Business</span>
           <p class="mizoram q-pt-none text-caption">Mizoram</p>
           <!-- <q-btn flat @click="drawer = !drawer" round dense icon="menu" /> -->
         </q-toolbar-title>
 
         <q-space />
 
-        <q-space />
+        <q-item   clickable class="gt-sm" :focused="selectedMenu==='home'"   @click="handleHome">
+          <q-item-section>
+            <q-item-label class="nav-item">Home</q-item-label>
+          </q-item-section>
+        </q-item>
 
-        <q-btn-dropdown
-          color="primary"
-          v-if="isAuthenticated"
-          outline
-          class="q-pa-xs"
-          icon="account_circle"
-          rounded
-        >
-          <ProfileMenu />
-        </q-btn-dropdown>
+        <q-item class="gt-sm"  v-if="$route.name==='home'" :focused="selectedMenu===item.id" clickable v-for="item in NAV_LINKS" :key="item.id" @click="e=>navigate(item.id)">
+          <q-item-section>
+            <q-item-label class="nav-item">{{item.label}}</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item class="q-ma-none q-pr-xs gt-sm">
+          <q-item-section>
+            <q-btn-dropdown class="nav-item" flat label="EODB">
+              <e-menu/>
+            </q-btn-dropdown>
+          </q-item-section>
+        </q-item>
+        <q-separator vertical class="q-my-lg gt-sm"/>
 
-        <template v-else>
-          <router-link
-            active-class="activebtn"
-            class="q-mr-md btnhover"
-            to="/login"
-          >
-            Login
-          </router-link>
-          <router-link active-class="activebtn" class="btnhover" to="/register">
-            Register
-          </router-link>
-        </template>
-        <!--
-        notice shrink property since we are placing it
-        as child of QToolbar
-      -->
-        <div class="flex tabs gt-sm">
-          <q-tabs no-caps>
-            <!--            <q-route-tab-->
-            <!--              class="q-px-none"-->
-            <!--              @click="navigate"-->
-            <!--              label="Home"-->
-            <!--            />-->
-            <!--            <q-route-tab-->
-            <!--              label="About Us"-->
-            <!--              @click="navigate"-->
-            <!--            />-->
-            <!--            <q-route-tab-->
-            <!--              @click="navigate"-->
-            <!--              label="Online Services"-->
-            <!--            />-->
-            <!--            <q-route-tab-->
-            <!--              @click="navigate"-->
-            <!--              v-scroll-to="'#contact-us'"-->
-            <!--              label="Contact Us"-->
-            <!--            />-->
-            <!--            <q-route-tab-->
-            <!--              @click="navigate"-->
-            <!--              label="EODB"-->
-            <!--            />-->
-            <!--            <span class="text-h5">|</span>-->
-            <!--            <q-route-tab label="Login" />-->
+        <q-item v-if="$route.name!=='investor:login'" clickable class="gt-sm"   @click="e=>$router.push({name:'investor:login'})">
+          <q-item-section>
+            <q-item-label class="nav-item">Login</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable class="gt-sm"   @click="e=>$router.push({name:'register'})">
+          <q-item-section>
+            <q-item-label class="nav-item">Register</q-item-label>
+          </q-item-section>
+        </q-item>
 
-            <!--            <span class="text-h5">|</span>-->
-            <!--            <q-route-tab label="Register" />-->
-          </q-tabs>
-
-          <!-- <q-separator dark vertical /> -->
-
-          <!-- <q-item to="/">sfs</q-item> -->
-        </div>
-
-        <!-- <a href="">dsd</a> -->
-
-        <!-- <q-btn @click="leftDrawerOpen = !leftDrawerOpen" class="q-mr-xl" flat dense round icon="menu" aria-label="Menu" /> -->
-        <q-btn-dropdown class="lt-md" flat icon="menu">
-          <q-list>
-            <q-item
-              to="/h"
-              v-for="link in essentialLinks"
-              :key="link.title"
-              clickable
-              v-close-popup
-            >
-              <q-item-section class="btn-dropdown">
-                <q-item-label style="color: #00000080">{{
-                  link.title
-                }}</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
       </q-toolbar>
     </q-header>
 
+    <q-drawer class="bg-primary text-white" v-model="openDrawer" behavior="mobile">
+      <mobile-menu/>
+    </q-drawer>
+
     <q-page-container class="bg-grey-2">
       <!-- <keep-alive> -->
-        <router-view />
+      <router-view/>
       <!-- </keep-alive> -->
     </q-page-container>
 
-    <MsegsFooter />
+    <q-footer class="bg-white">
+      <div class="row logos justify-center q-col-gutter-md">
+        <q-list style="display: contents" bordered>
+          <q-item clickable v-ripple>
+            <q-item-section
+            ><img class="logo" style="" src="~assets/govt_mizoram.png"
+            /></q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple>
+            <q-item-section
+            ><img class="logo" style="" src="~assets/startup_india.png"
+            /></q-item-section>
+          </q-item>
+
+          <q-item  clickable v-ripple>
+            <q-item-section
+            ><img class="logo" style="" src="~assets/make_in_india.png"
+            /></q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple>
+            <q-item-section
+            ><img
+              class="logo"
+              style=""
+              src="~assets/digital-india-government.png"
+            /></q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple>
+            <q-item-section
+            ><img class="logo" style="" src="~assets/skill_india.png"
+            /></q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple>
+            <q-item-section
+            ><img class="logo" style="" src="~assets/india_gov.png"
+            /></q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple>
+            <q-item-section
+            ><img class="logo" style="" src="~assets/my_gov.png"
+            /></q-item-section>
+          </q-item>
+        </q-list>
+
+      </div>
+      <MsegsFooter/>
+    </q-footer>
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from "components/EssentialLink.vue";
 import ProfileMenu from "components/ProfileMenu.vue";
-import { useStore } from "vuex";
-import { computed, onMounted } from "vue";
+import {useStore} from "vuex";
+import {computed, defineComponent, onMounted, ref} from "vue";
 import MsegsFooter from "components/MsegsFooter";
-// import { useStore } from "vuex";
+import EMenu from "components/EMenu";
+import {useRoute, useRouter} from "vue-router";
+import MobileMenu from "components/MobileMenu";
+import { scroll } from 'quasar'
+const { getScrollTarget, setVerticalScrollPosition } = scroll
 
-const linksList = [
-  {
-    title: "Home",
-    caption: "quasar.dev",
-    icon: "school",
-    link: "https://quasar.dev",
-  },
-  {
-    title: "About",
-    caption: "github.com/quasarframework",
-    icon: "code",
-    link: "https://github.com/quasarframework",
-  },
-  {
-    title: "Online Services",
-    caption: "chat.quasar.dev",
-    icon: "chat",
-    link: "https://chat.quasar.dev",
-  },
-  {
-    title: "Contact Us",
-    caption: "forum.quasar.dev",
-    icon: "record_voice_over",
-    link: "https://forum.quasar.dev",
-  },
-  {
-    title: "EODB",
-    caption: "@quasarframework",
-    icon: "rss_feed",
-    link: "https://twitter.quasar.dev",
-  },
-  {
-    title: "Login",
-    caption: "@QuasarFramework",
-    icon: "public",
-    link: "https://facebook.quasar.dev",
-  },
-  {
-    title: "Register",
-    caption: "Community Quasar projects",
-    icon: "favorite",
-    link: "https://awesome.quasar.dev",
-  },
+
+const NAV_LINKS = [
+  {id:'about-us',label:'About us'},
+  {id:'online-services',label:'Online Service'},
+  {id:'contact-us',label:'Contact Us'},
 ];
-
-import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   name: "MainLayout",
 
   components: {
-    EssentialLink,
+    MobileMenu,
+    EMenu,
     ProfileMenu,
     MsegsFooter,
   },
 
   setup() {
     const store = useStore();
-    // console.log("dsfsf");
-
+    const selectedMenu=ref('home')
+    const openDrawer=ref(false)
+    const route = useRoute();
+    const router = useRouter();
     onMounted(() => {
       // console.log("dsfsf");
       // store.dispatch("globalData/fetchDeptServices");
       // console.log("investor service", store.state.globalData);
     });
 
+    const navigate=(id)=>{
+      selectedMenu.value = id;
+      var el=document.getElementById(id);
+      const target = getScrollTarget(el)
+      const offset = el.offsetTop
+      const duration = 1000
+      setVerticalScrollPosition(target, offset, duration)
+    }
+    const handleHome=e=>{
+      if (route.name !== 'home') {
+        router.push({name:'home'})
+      }
+      navigate('home');
+    }
+
     return {
-      essentialLinks: linksList,
+      navigate,
+      openDrawer,
+      NAV_LINKS,
+      handleHome,
+      selectedMenu,
       isAuthenticated: computed(
         () => store.getters["authData/isAuthenticated"]
       ),
@@ -276,7 +265,9 @@ export default defineComponent({
   color: #393939;
 }
 
-.tabs {
-  color: rgba(0, 0, 0, 0.5);
+.nav-item{
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0,0,0,.5);
 }
 </style>
