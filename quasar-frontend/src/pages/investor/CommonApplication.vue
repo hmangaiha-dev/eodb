@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <div class="zcard row items-center q-col-gutter-md">
+    <div class="q-py-md row items-center q-col-gutter-md">
       <div class="col-sm-4 col-xs-12">
         <q-list class="zlist" bordered>
           <q-item clickable>
@@ -40,27 +40,29 @@
         </q-list>
       </div>
     </div>
-    <div class="zcard row items-center q-col-gutter-md">
+    <div class="row items-center q-col-gutter-md">
       <h1 class="text-h6 col-12">Common Application Form</h1>
       <q-tabs
         v-model="tab"
         dense
-        class="text-grey col-lg-8 col-sm-12 col-xs-12"
+        class="text-grey col-xs-12"
         active-color="primary"
         indicator-color="primary"
         align="justify"
         narrow-indicator
+        @update:tab="watchTab"
       >
         <q-tab name="a" label="Part-A" />
         <q-tab name="b" label="Part-B" />
         <q-tab name="c" label="Part-C" />
         <q-tab name="d" label="Part-D" />
         <q-tab name="e" label="Part-E" />
+        <q-tab name="f" label="Part-F" />
       </q-tabs>
-      <q-form class="row">
-        <q-tab-panels v-model="tab" animated>
+      <!-- <q-form class="row"> -->
+        <q-tab-panels keep-alive v-model="tab" animated>
           <q-tab-panel name="a">
-            <q-form>
+            <q-form @submit.prevent="toggle('b')">
               <div class="row q-col-gutter-lg">
                 <div class="col-xs-12">
                   <PersonalDetails ref="applicantRef" />
@@ -123,8 +125,20 @@
               <q-btn color="green-6" type="submit" label="Save & Next" />
             </div>
           </q-tab-panel>
+
+          <q-tab-panel name="f">
+            <div class="row q-col-gutter-lg">
+              <div class="col-xs-12">
+                <PartF ref="partFRef" />
+              </div>
+            </div>
+
+            <div class="col-12 q-mt-md">
+              <q-btn color="green-6" type="submit" label="Save & Next" />
+            </div>
+          </q-tab-panel>
         </q-tab-panels>
-      </q-form>
+      <!-- </q-form> -->
     </div>
   </q-page>
 </template>
@@ -141,6 +155,7 @@ import ProposedDetails from "./form/ProposedDetails.vue";
 import PartC from "./form/PartC.vue";
 import PartD from "./form/PartD.vue";
 import PartE from "./form/PartE.vue";
+import PartF from "./form/PartF.vue";
 
 export default {
   components: {
@@ -150,6 +165,7 @@ export default {
     PartC,
     PartD,
     PartE,
+    PartF,
   },
   setup(props, context) {
     const applicantRef = ref(null);
@@ -158,17 +174,38 @@ export default {
     const partCRef = ref(null);
     const partDRef = ref(null);
     const partERef = ref(null);
+    const tab = ref("a");
+
+    const toggle = (val) => {
+      tab.value = val;
+      var formData = {};
+
+      // return console.log(q);
+
+      formData = Object.assign({}, applicantRef.value.formData);
+      formData = Object.assign(formData, FirmRef.value.formData);
+
+      return console.log('form values',formData);
+
+      var formDatas = new FormData();
+
+      for (let data in formData) {
+        formDatas.append(`${data}`, formData[data]);
+      }
+    };
+
+    const watchTab = (oldValue,newValue) => {
+      console.log('new and old',oldValue,newValue);
+    }
 
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
 
-    const formData = reactive({
-      
-    });
+    const formData = reactive({});
     onMounted(() => {});
     return {
-      tab: ref("a"),
+      tab,
       applicantRef,
       FirmRef,
       proposedRef,
@@ -176,6 +213,8 @@ export default {
       partDRef,
       partERef,
       formData,
+      toggle,
+      watchTab,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
