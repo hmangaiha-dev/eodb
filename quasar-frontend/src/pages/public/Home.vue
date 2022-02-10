@@ -44,23 +44,21 @@
     </div>
   </div>
 
-  <div
-    :class="[$q.screen.gt.xs ? 'justify-start' : 'justify-center']"
-    class="row q-mt-lg q-col-gutter-md"
-  >
+  <div class="row q-mt-lg container-lg justify-start q-col-gutter-md">
     <div
       v-for="dept in depts"
       :key="dept.serial"
-      class="col-lg-3 col-sm-6 col-xs-10"
+      class="col-sm-6 col-md-3 col-xs-12"
     >
       <!-- <q-list class="tile cursor-pointer" clickable bordered padding> -->
       <q-item
+        style="min-height: 170px"
         :to="{ name: 'common:show', params: { deptname: `${dept?.link}` } }"
-        class="tile cursor-pointer full-width"
+        class="cursor-pointer zcard"
         clickable
         v-ripple
       >
-        <q-item-section class="tile-content" avatar>
+        <q-item-section class="text-primary" style="font-size: 28px" avatar>
           {{ dept.serial }}
         </q-item-section>
 
