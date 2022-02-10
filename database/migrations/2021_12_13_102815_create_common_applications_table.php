@@ -16,7 +16,7 @@ class CreateCommonApplicationsTable extends Migration
     {
         Schema::create('common_applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class,'id');
+            $table->unsignedBigInteger('user_id');
             $table->json('body');
             $table->timestamps();
         });
