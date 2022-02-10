@@ -1,7 +1,10 @@
 <template>
   <div class="row">
     <div class="col-12 zsubtitle">Document upload</div>
-    <div class="col-12 zdetailcard q-pa-md q-ma-md" v-for="attachment in $props.attachments" :key="attachment.key">
+    <div class="col-xs-12">
+      <q-separator class="q-my-md"/>
+    </div>
+    <div class="col-12 zdetailcard q-pa-none q-ma-none" v-for="attachment in $props.attachments" :key="attachment.key">
       <q-item class="flex">
         <q-item-section avatar>
           <q-icon color="grey" v-if="attachment.mime==='application/pdf'" name="picture_as_pdf"/>

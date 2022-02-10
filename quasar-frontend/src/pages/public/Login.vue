@@ -2,8 +2,8 @@
   <q-page>
     <div class="row q-mt-lg justify-center">
       <div class="col-md-6 col-xs-10 col-sm-8 col-lg-3 col-md-3">
-        <q-form class="bg-green" @submit="submit" @reset="reset">
-          <q-card  flat bordered>
+        <q-form  @submit="submit" @reset="reset">
+          <q-card  flat class="zcard">
             <p class="text-h6 text-weight-regular q-mt-md text-center">Login</p>
             <q-card-section>
               <q-input
@@ -104,15 +104,13 @@ export default {
             const { token, user } = res.data;
             store.dispatch("authData/setCurrentUser", user);
             store.dispatch("authData/setToken", token);
-            router.push(route.redirectedFrom || '/')
-
+            router.push(route.redirectedFrom || 'investor')
             // router.push({ name: "home" });
 
             // api.defaults.headers["Authorization"] = `Bearer ${token}`;
           })
           .catch((err) => {
             console.log("error post response", err.response.data.message);
-
 
             err.response.data.message && q.notify({
               type: 'negative',

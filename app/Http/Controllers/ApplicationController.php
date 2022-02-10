@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Stringable;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class ApplicationController extends Controller
@@ -100,7 +100,7 @@ class ApplicationController extends Controller
 
         $application = Application::query()->create([
             'application_code' => $request->get('application_code'),
-            'regn_no' => NumberGenerator::fakeIdGenerator(),
+            'regn_no' => NumberGenerator::fakeIdGenerator($request->get('application_code')),
             'application_profile_id' => $appProfile->id,
             'user_id' => Auth::id(),
             'department_id' => $request->get('department_id'),
@@ -256,7 +256,7 @@ class ApplicationController extends Controller
         //        $appProfile = new ApplicationProfile();
         $template = $appProfile?->printTemplate()->first()->content ?? '';
 
-        $vars = $model->applicationValues()->get()->flatMap(fn ($item) => [
+        $vars = $model->applicationValues()->get()->flatMap(fn($item) => [
             "{{{$item->field_key}}}" => $item->field_value
         ])->toArray();
 
@@ -277,12 +277,19 @@ class ApplicationController extends Controller
             'application' => $model
         ], 200);
     }
-    private function replaceTemplate($str, $replace_vars)
+
+    public function getAttachment(Request $request, Application $model)
     {
+        return response()->json([
+            'list'=>$model->attachments()->get(),
+        ], 200);
+    }
+
+    private function replaceTemplate($str,$replace_vars){
         $keys = array_keys($replace_vars);
         // dd($keys);
         // return $str;
         $values = array_values($replace_vars);
-        return str_replace($keys, $values, $str);
+        return Str::replace($keys,$values,$str);
     }
 }

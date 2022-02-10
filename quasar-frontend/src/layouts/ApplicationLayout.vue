@@ -1,11 +1,11 @@
 <template>
   <q-page class="row q-col-gutter-md q-ma-none container-lg">
-    <div class="col-sm-3 bg-grey-1 print-hide">
+    <div class="print-hide col-sm-3 bg-grey-1 print-hide">
       <List :notes="localData.notes"/>
     </div>
-    <div class="col-sm-9 column q-gutter-md">
+    <div class=" col-sm-9 column q-gutter-md">
 
-      <div class="zcard q-mt-sm rounded-borders q-pa-md flex justify-between">
+      <div class="zcard print-hide q-mt-sm rounded-borders q-pa-md flex justify-between">
         <q-btn @click="closeFile"  color="negative" label="Close"/>
         <div class="flex flex-inline q-gutter-sm">
           <q-btn :disable="localData.current_step<=0" @click="handleBack" outline color="negative" label="Send back"/>
@@ -15,9 +15,9 @@
 
       <div class="zcard bg-grey-1 q-py-md row">
         <div class="col-9 print-hide">
-          <div class="zlabel">Application : <span class="zvalue">{{ localData?.application_code }}</span></div>
+          <div class="zlabel">Application : <span class="zvalue">{{ localData.application_code }}</span></div>
           <div class="zlabel">Regn No : <span class="zvalue">{{ localData?.regn_no }}</span></div>
-          <div class="zlabel">Submitted At : <span class="zvalue">{{ localData?.regn_no }}</span></div>
+          <div class="zlabel">Submitted At : <span class="zvalue">{{ localData?.createdAt }}</span></div>
         </div>
         <div class="col-3 flex justify-end print-hide">
           <q-btn @click="localData.openHistory=!localData.openHistory;fetchMovements()" no-caps outline flat
@@ -42,7 +42,7 @@
       </div>
     </div>
     <q-btn :to="{name:'note:create',params:{id:$route.params.id}}" fab icon="edit" color="primary"
-           class="absolute-bottom-right q-mr-xl q-mb-xl"/>
+           class="absolute-bottom-right q-mr-xl q-mb-xl print-hide"/>
 
     <!--    <q-dialog position="bottom" v-model="localData.openHistory">-->
     <!--      <q-card style="max-width: 750px;width: 700px">hello world</q-card>-->
@@ -65,7 +65,7 @@ import List from "pages/admin/application/detail/notes/List";
 import {api} from "boot/axios";
 import {useRoute, useRouter} from "vue-router";
 import {reactive} from "@vue/reactivity";
-import {useQuasar} from "quasar";
+import {date, useQuasar} from "quasar";
 import Movement from "pages/admin/application/detail/Movement";
 import States from "pages/common/state/List";
 import CreateState from "pages/common/state/Create";
@@ -104,14 +104,15 @@ export default {
     const fetchApplication = id => {
       api.get(`applications/${id}`)
         .then(res => {
-          const {regn_no, application_code, current_step, last_step, id,created_at, profile} = res.data;
+          const {data, action} = res.data;
+          const {regn_no, application_code, current_step, last_step, id,created_at, profile} = data;
           localData.id = id;
           localData.current_step = current_step;
           localData.last_step = last_step;
           localData.regn_no = regn_no;
           localData.application_code = application_code;
           localData.profile = profile;
-          localData.createdAt = created_at;
+          localData.createdAt = date.formatDate(new Date(created_at),'DD-MM-YYYY hh:mm a');
         })
         .catch(err => {
           let message = err.response?.message || err.toString()
