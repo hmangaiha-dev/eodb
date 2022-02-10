@@ -46,7 +46,7 @@
 
   <div
     :class="[$q.screen.gt.xs ? 'justify-start' : 'justify-center']"
-    class="row q-mt-lg q-col-gutter-md"
+    class="row q-mt-lg q-col-gutter-md q-mx-auto"
   >
     <div
       v-for="dept in depts"
