@@ -1,178 +1,204 @@
 <template>
   <q-page>
-    <div class="full-width banner-dept">
-      <div
-        class="row q-px-md q-pt-xl justify-between q-col-gutter-md"
-        style="max-width: 1400px; margin: 0 auto"
-      >
+    <div class="banner-dept">
+      <div class="contain container-lg">
         <div
-          class="text-h4 text-center full-width text-white bg-grey-8 q-pa-xl"
+          class="row q-px-md q-pt-xl justify-between q-col-gutter-md"
+          style="max-width: 1400px; margin: 0 auto"
         >
-          {{ dept_name }}
-        </div>
-        <br />
-        <div class="col-4">
-          <q-card flat>
-            <q-card-section>
-              <div class="text-h6">P. Jawahar</div>
-            </q-card-section>
-            <q-card-section>
-              <div>Secretary</div>
-              <div>{{ dept_name }}</div>
-            </q-card-section>
-          </q-card>
-        </div>
-        <div class="col-4">
-          <q-card flat>
-            <q-card-section>
-              <div class="text-h6">J. Hmingthanmawia</div>
-            </q-card-section>
-            <q-card-section>
-              <div>Director</div>
-              <div>{{ dept_name }}</div>
-            </q-card-section>
-          </q-card>
+          <div
+            class="text-h4 text-center full-width text-white bg-grey-8 q-pa-xl"
+          >
+            {{ dept_name }}
+          </div>
+          <br />
+          <div class="col-4">
+            <q-card flat>
+              <q-card-section>
+                <div class="text-h6">P. Jawahar</div>
+              </q-card-section>
+              <q-card-section>
+                <div>Secretary</div>
+                <div>{{ dept_name }}</div>
+              </q-card-section>
+            </q-card>
+          </div>
+          <div class="col-4">
+            <q-card flat>
+              <q-card-section>
+                <div class="text-h6">J. Hmingthanmawia</div>
+              </q-card-section>
+              <q-card-section>
+                <div>Director</div>
+                <div>{{ dept_name }}</div>
+              </q-card-section>
+            </q-card>
+          </div>
         </div>
       </div>
     </div>
+
     <div
-      style="max-width: 1600px; margin: 0 auto"
-      class="row q-mt-md q-col-gutter-md q-pa-sm"
+      class="row q-col-gutter-md q-pa-sm container-lg"
     >
       <div style="width: 100%" class="col-12 q-pa-md">
-        <q-tabs stretch v-model="tab" class="text-teal">
-          <q-tab name="services" label="Online Services" />
-          <q-tab name="about" label="About Us" />
-          <q-tab name="actrules" label="Act & Rules" />
-          <q-tab name="noti" label="Noftifications" />
-          <q-tab name="other" label="Other Infomations" />
-        </q-tabs>
+        <q-toolbar class="justify-center bg-white shadow-1">
+          <q-item :focused="tab==='services'" clickable @click="tab='services'">
+            <q-item-section>
+              <q-item-label class="nav-item">Online Services</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item  :focused="tab==='about'"   clickable @click="tab='about'">
+            <q-item-section>
+              <q-item-label class="nav-item">About Us</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item :focused="tab==='actrules'"  clickable @click="tab='actrules'">
+            <q-item-section>
+              <q-item-label class="nav-item">Act & Rules</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item :focused="tab==='noti'"  class="nav-item" clickable @click="tab='noti'">
+            <q-item-section>
+              <q-item-label class="nav-item">Notifications</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item :focused="tab==='other'"  class="nav-item" clickable @click="tab='other'">
+            <q-item-section>
+              <q-item-label class="nav-item">Other Information</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-toolbar>
+        <br/>
+        <div class="znhovercard">
+          <q-tabs
+            v-if="tab == 'services'"
+            stretch
+            v-model="tabCategory"
+            class="bg-grey-3 q-mt-md text-grey-8 "
+          >
+            <q-tab name="ALL-CATEGORIES" label="All Categories" />
+            <q-tab name="PRE-ESTABLISHMENT" label="PRE-ESTABLISHMENT" />
+            <q-tab name="POST-ESTABLISHMENT" label="POST-ESTABLISHMENT" />
+            <q-tab name="POST-COMMENCEMENT" label="POST-COMMENCEMENT" />
+            <q-tab name="PRE-OPERATION" label="PRE-OPERATION" />
+            <q-tab name="POST-OPERATION" label="POST-OPERATION" />
+          </q-tabs>
+          <q-tab-panels class="full-width" v-model="tab" animated>
+            <q-tab-panel name="services">
+              <q-table
+                v-model:pagination="pagination"
+                @request="onRequest"
+                wrap-cells
+                flat
+                title="Online Services"
+                :columns="columns"
+                :rows="rows"
+                row-key="id"
+              >
+                <template v-slot:body="props">
+                  <q-tr :props="props">
+                    <q-td key="id" :props="props"> {{ props.row.id }}. </q-td>
+                    <q-td key="service_name" :props="props">
+                      {{ props.row.service_name }}
+                    </q-td>
 
-        <q-tabs
-          v-if="tab == 'services'"
-          stretch
-          v-model="tabCategory"
-          class="bg-grey-3 q-mt-md text-grey-8"
-        >
-          <q-tab name="ALL-CATEGORIES" label="All Categories" />
-          <q-tab name="PRE-ESTABLISHMENT" label="PRE-ESTABLISHMENT" />
-          <q-tab name="POST-ESTABLISHMENT" label="POST-ESTABLISHMENT" />
-          <q-tab name="POST-COMMENCEMENT" label="POST-COMMENCEMENT" />
-          <q-tab name="PRE-OPERATION" label="PRE-OPERATION" />
-          <q-tab name="POST-OPERATION" label="POST-OPERATION" />
-        </q-tabs>
-
-        <q-tab-panels class="full-width" v-model="tab" animated>
-          <q-tab-panel name="services">
-            <q-table
-              v-model:pagination="pagination"
-              @request="onRequest"
-              wrap-cells
-              flat
-              title="Online Services"
-              :columns="columns"
-              :rows="rows"
-              row-key="id"
-            >
-              <template v-slot:body="props">
-                <q-tr :props="props">
-                  <q-td key="id" :props="props"> {{ props.row.id }}. </q-td>
-                  <q-td key="service_name" :props="props">
-                    {{ props.row.service_name }}
-                  </q-td>
-
-                  <q-td key="how_to_apply" :props="props">
-                    <q-btn
-                      @click="
+                    <q-td key="how_to_apply" :props="props">
+                      <q-btn
+                        @click="
                         showDialog(props.row.how_to_apply, 'How to apply')
                       "
-                      class="text-weight-regular"
-                      color="blue-6"
-                      flat
-                      label="View procedure"
-                    />
-                  </q-td>
-                  <q-td key="who_should_apply" :props="props">
-                    <q-btn
-                      @click="
+                        class="text-weight-regular"
+                        color="blue-6"
+                        flat
+                        label="View procedure"
+                      />
+                    </q-td>
+                    <q-td key="who_should_apply" :props="props">
+                      <q-btn
+                        @click="
                         showDialog(
                           props.row.who_should_apply,
                           'Who should apply'
                         )
                       "
-                      class="text-weight-regular"
-                      color="blue-6"
-                      flat
-                      label="View"
-                    />
-                  </q-td>
-                  <q-td key="document_to_submit" :props="props">
-                    <q-btn
-                      @click="
+                        class="text-weight-regular"
+                        color="blue-6"
+                        flat
+                        label="View"
+                      />
+                    </q-td>
+                    <q-td key="document_to_submit" :props="props">
+                      <q-btn
+                        @click="
                         showDialog(
                           props.row.document_to_submit,
                           'Document to be submitted'
                         )
                       "
-                      class="text-weight-regular"
-                      color="blue-6"
-                      flat
-                      label="View"
-                    />
-                  </q-td>
-                  <q-td key="timeline" :props="props">
-                    <q-btn
-                      @click="showDialog(props.row.timeline, 'Timeline')"
-                      class="text-weight-regular"
-                      color="blue-6"
-                      flat
-                      label="View"
-                    />
-                  </q-td>
-                  <q-td key="fees" :props="props">
-                    <q-btn
-                      @click="showDialog(props.row.fees, 'Fees')"
-                      class="text-weight-regular"
-                      color="blue-6"
-                      flat
-                      label="View fees"
-                    />
-                  </q-td>
-                  <q-td key="sample_form" :props="props">
-                    <q-btn
-                      class="text-weight-regular"
-                      color="blue-6"
-                      flat
-                      label="Download"
-                    />
-                  </q-td>
-                  <q-td key="path" :props="props">
-                    <q-btn
-                      class="text-weight-regular"
-                      :to="`/investor/${route.params.deptname}/${props.row.path}`"
-                      color="blue-6"
-                      label="Apply"
-                    />
-                  </q-td>
-                </q-tr>
-                <!-- <q-tr :props="props"> -->
-                <!-- </q-tr> -->
-              </template>
-            </q-table>
-          </q-tab-panel>
-          <q-tab-panel name="about">
-            <AboutUs />
-          </q-tab-panel>
-          <q-tab-panel name="actrules">
-            <ActRules />
-          </q-tab-panel>
-          <q-tab-panel name="noti">
-            <Notifications />
-          </q-tab-panel>
-          <q-tab-panel name="other">
-            <OtherInfo />
-          </q-tab-panel>
-        </q-tab-panels>
+                        class="text-weight-regular"
+                        color="blue-6"
+                        flat
+                        label="View"
+                      />
+                    </q-td>
+                    <q-td key="timeline" :props="props">
+                      <q-btn
+                        @click="showDialog(props.row.timeline, 'Timeline')"
+                        class="text-weight-regular"
+                        color="blue-6"
+                        flat
+                        label="View"
+                      />
+                    </q-td>
+                    <q-td key="fees" :props="props">
+                      <q-btn
+                        @click="showDialog(props.row.fees, 'Fees')"
+                        class="text-weight-regular"
+                        color="blue-6"
+                        flat
+                        label="View fees"
+                      />
+                    </q-td>
+                    <q-td key="sample_form" :props="props">
+                      <q-btn
+                        class="text-weight-regular"
+                        color="blue-6"
+                        flat
+                        label="Download"
+                      />
+                    </q-td>
+                    <q-td key="path" :props="props">
+                      <q-btn
+                        class="text-weight-regular"
+                        :to="`/investor/${route.params.deptname}/${props.row.path}`"
+                        color="blue-6"
+                        label="Apply"
+                      />
+                    </q-td>
+                  </q-tr>
+                  <!-- <q-tr :props="props"> -->
+                  <!-- </q-tr> -->
+                </template>
+              </q-table>
+            </q-tab-panel>
+            <q-tab-panel name="about">
+              <AboutUs />
+            </q-tab-panel>
+            <q-tab-panel name="actrules">
+              <ActRules />
+            </q-tab-panel>
+            <q-tab-panel name="noti">
+              <Notifications />
+            </q-tab-panel>
+            <q-tab-panel name="other">
+              <OtherInfo />
+            </q-tab-panel>
+          </q-tab-panels>
+
+        </div>
+
+
       </div>
     </div>
 
@@ -213,7 +239,6 @@ export default {
     AboutUs,
     ActRules,
     ApplyService,
-    Notifications,
     Notifications,
     OtherInfo,
     MsegsFooter,

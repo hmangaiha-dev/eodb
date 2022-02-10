@@ -1,12 +1,12 @@
 <template>
   <div>
-    <q-table title-class="text-uppercase" title="Other Informations" :columns="columns" :rows="rows" row-key="name" >
+    <q-table flat title-class="text-uppercase" title="Other Informations" :columns="columns" :rows="rows" row-key="name" >
         <template v-slot:body-cell-download="props">
         <q-td :props="props">
           <div>
             <q-btn color="primary" label="download" />
           </div>
-         
+
         </q-td>
       </template>
     </q-table>
@@ -35,7 +35,7 @@ const columns = [
     sortable: true,
   },
 
-  
+
   {
     name: "download",
     required: true,
@@ -53,8 +53,8 @@ const rows = [
     other_info: 'District/Divisional Officers with Office Address',
 
     download: "download",
-    
-    
+
+
   }
 ];
 export default {

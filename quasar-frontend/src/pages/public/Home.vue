@@ -1,132 +1,115 @@
 <template>
-  <div>
-    <div
-      id="home"
-      class="group row justify-evenly"
-      style="background-color: #b9d8d4"
-    >
-      <div class="col-lg-5 col-sm-10 col-xs-12 q-mb-md col-md-5">
+  <div
+    id="home"
+    class="group row justify-evenly"
+    style="background-color: #b9d8d4"
+  >
+    <div class="container-lg flex">
+      <div class=" col-sm-5 col-xs-12 q-mb-md">
         <h1 class="heading content q-px-md"><span>Think of Business!</span></h1>
         <div class="content2">
           <span>There is Ease of Doing Business!</span>
         </div>
         <q-btn
+          @click="e=>navigate('online-services')"
           label="Explore Department"
           class="explore text-capitalize"
           rounded
         />
         <q-btn
+          @click="e=>navigate('track')"
           label="Track Form"
           class="explore q-ml-md text-capitalize"
           rounded
         />
       </div>
+    </div>
 
-      <div class="gt-sm q-ml-lg col-lg-5 col-md-5 col-sm-5">
-        <!-- <img class="map" src="~assets/mzr.png" /> -->
-        <q-img
+    <div class="gt-sm  col-sm-5">
+      <!-- <img class="map" src="~assets/mzr.png" /> -->
+      <q-img
         fit="contain"
         class="map"
-         src="~assets/mzr.png"
-         width="80%"
-          spinner-color="primary"
-          spinner-size="82px"
-        />
-
-       
-      </div>
-
-      <!-- <div class="col">
-      <h1 class=" q-px-md" style="background-color:#357c71;color:whiteof Business!</h1>
-      <h1 class=" q-px-md" style="background-color:#357c71;color:white;">There is Ease of Doing Business!</h1>
-     </div> -->
-
-      <!-- <div class="col-xxl-5">
-      <h1 class="py-3 px-4" style="background-color:#357c71;color:white;width: fit-content">Think of Business!</h1>
-      <h1 class="py-3 pl-4" style="background-color:#357c71;color:white;">There is Ease of Doing Business!</h1>
-     </div> -->
+        src="~assets/mzr.png"
+        width="80%"
+        spinner-color="primary"
+        spinner-size="82px"
+      />
     </div>
+  </div>
 
-    <div id="online-services" class="row q-mt-lg justify-center">
-      <div class="col-lg-12 text-center">
-        <span class="explore_dept">Explore Department</span>
-      </div>
+  <div id="online-services" class="row q-mt-lg justify-center">
+    <div  class="col-lg-12 text-center">
+      <span class="explore_dept">Explore Department</span>
     </div>
+  </div>
 
-    <div class="row q-mt-lg justify-start q-col-gutter-md">
-      <div
-        v-for="dept in depts"
-        :key="dept.serial"
-        class="col-lg-3 col-sm-6 col-xs-10"
+  <div class="row container-lg q-mt-lg justify-start q-col-gutter-md">
+    <div
+      v-for="dept in depts"
+      :key="dept.serial"
+      class="col-xs-12 col-sm-6 col-md-3"
+    >
+      <!-- <q-list class="tile cursor-pointer" clickable bordered padding> -->
+      <q-item
+        :to="{ name: 'common:show', params: { deptname: `${dept?.link}` } }"
+        class="zcard cursor-pointer"
+        clickable
+        style="min-height: 140px"
+        v-ripple
       >
-        <!-- <q-list class="tile cursor-pointer" clickable bordered padding> -->
-          <q-item
-            :to="{ name: 'common:show', params: { deptname: `${dept?.link}` } }"
-           class="tile cursor-pointer"
-            clickable
-            
-            v-ripple
-          >
-            <q-item-section class="tile-content" avatar>
-              {{ dept.serial }}
-            </q-item-section>
+        <q-item-section style="font-size: 26px" class="text-primary"  avatar>
+          {{ dept.serial }}
+        </q-item-section>
 
-            <q-item-section class="text-center tile-content">{{
-              dept.title
-            }}</q-item-section>
-          </q-item>
-        <!-- </q-list> -->
-      </div>
+        <q-item-section class="text-center tile-content">{{
+            dept.title
+          }}
+        </q-item-section>
+      </q-item>
+      <!-- </q-list> -->
     </div>
+  </div>
 
-    <div class="track q-mt-lg row justify-center">
-      <div
-        style="height: 0px !important"
-        class="text-center col-sm-8 track-form col-lg-4 col-xs-12"
-      >
-        <span>Track your EODB form</span>
-      </div>
+  <div class="track q-mt-lg">
+    <div id="track" class="container-lg  row justify-center">
 
-      <div class="col-lg-8 col-xs-12">
+      <p class="text-primary bg-white q-my-lg q-py-sm q-px-xl col-md-5 col-xs-12 text-center"
+           style="font-size: 26px;min-width: 480px">Track your EODB form</p>
+
+      <div class="col-md-8 col-xs-12">
         <q-input
           placeholder="Enter form number"
-          class="long-input"
+          class="long-input zsubtitle"
           standout="bg-white text-white"
           rounded
           outlined
-          v-model="text"
         >
           <template v-slot:append>
             <!-- <q-avatar> -->
-            <q-btn class="btn-track" rounded label="Track" />
+            <q-btn class="btn-track" rounded label="Track"/>
             <!-- </q-avatar> -->
           </template>
         </q-input>
       </div>
     </div>
+  </div>
 
-    <div id="about-us" class="row q-mt-lg justify-center q-col-gutter-md">
-      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+  <div class="bg-white">
+    <div id="about-us" class="container-lg row q-mt-lg justify-center q-col-gutter-lg">
+      <div class="col-xs-12 text-center">
         <span class="explore_dept">About Us</span>
       </div>
 
-      <div class="col-lg-12 gt-xs text-center">
-        <img class="series" style="width: 100%" src="~assets/group.svg" />
-
-        <!-- <svg >
-          <image xlink:href="http://localhost:8080/img/group.svg" src="~assets/group.svg" />
-        </svg> -->
+      <div class="col-sm-12 gt-xs text-center">
+        <img class="series" style="width: 90%" src="~assets/group.svg"/>
       </div>
 
-      <div class="col-lg-12 lt-sm text-center">
-        <img style="width: 100%" src="~assets/about.svg" />
-
-        <!-- <svg >
-          <image xlink:href="http://localhost:8080/img/group.svg" src="~assets/group.svg" />
-        </svg> -->
+      <div class="col-sm-12 lt-sm text-center">
+        <img style="width: 100%" src="~assets/about.svg"/>
       </div>
 
-      <div class="col-lg-5 col-xs-10 text-center">
+      <div class="col-sm-6 col-xs-12 text-center">
         <p class="para">
           Ease of doing business in Mizoram aims to create a platform for
           providing best support towards the prospective and existing business
@@ -137,7 +120,7 @@
         </p>
       </div>
 
-      <div class="col-lg-5 col-xs-10 text-center">
+      <div class="col-sm-6 col-xs-12 text-center">
         <p class="para">
           Ease of Doing Business in Mizoram encourages enconomics to compete
           toward more efficient regulation; It looks at domestic small and
@@ -147,158 +130,114 @@
         </p>
       </div>
     </div>
+  </div>
 
-    <div id="contact-us" class="row q-mt-lg justify-center q-col-gutter-md">
-      <div class="col-lg-12 text-center">
-        <span class="explore_dept">Contact Us</span>
-      </div>
+  <div id="contact-us" class="row q-mt-lg justify-center q-col-gutter-md">
+    <div class="col-lg-12 text-center">
+      <span class="explore_dept">Contact Us</span>
     </div>
+  </div>
 
-    <div class="row q-mt-lg justify-center q-col-gutter-md">
-      <div class="col-lg-5 col-sm-6 text-center">
-        <q-list class="q-p-none contact-us">
-          <q-item class="q-pb-none">
-            <q-item-section avatar>
-              <!-- <img src="~assets/question.png" /> -->
-              <q-icon name="fmd_good" />
-            </q-item-section>
+  <div class="row q-mt-lg justify-end q-col-gutter-md">
+    <div class="col-xs-12 col-md-3 text-center">
+      <q-list class="q-p-none contact-us">
+        <q-item class="q-pb-none">
+          <q-item-section avatar>
+            <!-- <img src="~assets/question.png" /> -->
+            <q-icon color="primary" name="fmd_good"/>
+          </q-item-section>
 
-            <q-item-section>
-              <q-item-label class="office-address">OFFICE ADDRESS</q-item-label>
-              <q-item-label class="commerce"
-                >Directorate of Commerce & Industries Department Khatla, Near
-                Circuit House Aizawl - 796001, Mizoram</q-item-label
-              >
-            </q-item-section>
-          </q-item>
-        </q-list>
-        <q-list class="q-pt-none contact-us">
-          <q-item class="q-pb-none">
-            <q-item-section avatar>
-              <q-icon name="call" />
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label class="office-address">CONTACT NUMBER</q-item-label>
-              <q-item-label caption class="commerce">0389-2325706</q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
-
-        <q-list class="q-pt-none contact-us">
-          <q-item class="q-pb-none">
-            <q-item-section avatar>
-              <!-- <q-avatar > -->
-              <img src="~assets/mail.png" />
-              <!-- </q-avatar> -->
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label class="office-address">EMAIL ID</q-item-label>
-              <q-item-label caption class="commerce"
-                >dirind-mz@gov.in</q-item-label
-              >
-            </q-item-section>
-          </q-item>
-        </q-list>
-
-        <q-list class="q-pt-none contact-us">
-          <q-item class="q-pb-none">
-            <q-item-section avatar>
-              <!-- <q-avatar > -->
-              <img src="~assets/globe.png" />
-              <!-- </q-avatar> -->
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label class="office-address">WEBSITE</q-item-label>
-              <q-item-label caption class="commerce"
-                >Industries.mizoram.gov.in</q-item-label
-              >
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </div>
-
-      <div class="map-cursor col-sm-6 col-lg-5 text-center">
-        <!-- <img src="~assets/map.png"  /> -->
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3652.6998308299926!2d92.717265!3d23.722411!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaf37fb566d152e65!2sDirectorate%20of%20Industries%2C%20Govt.%20of%20Mizoram!5e0!3m2!1sen!2sin!4v1568975073569!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
-          frameborder="0"
-          style="border: 0"
-          allowfullscreen=""
-        ></iframe>
-      </div>
-    </div>
-
-    <div class="row logos justify-center q-col-gutter-md">
-      <q-list style="display: contents" bordered>
-        <q-item clickable v-ripple>
-          <q-item-section
-            ><img class="logo" style="" src="~assets/govt_mizoram.png"
-          /></q-item-section>
+          <q-item-section>
+            <q-item-label class="office-address">OFFICE ADDRESS</q-item-label>
+            <q-item-label class="commerce"
+            >Directorate of Commerce & Industries Department Khatla, Near
+              Circuit House Aizawl - 796001, Mizoram
+            </q-item-label
+            >
+          </q-item-section>
         </q-item>
+      </q-list>
+      <q-list class="q-pt-none contact-us">
+        <q-item class="q-pb-none">
+          <q-item-section avatar>
+            <q-icon color="primary" name="call"/>
+          </q-item-section>
 
-        <q-item clickable v-ripple>
-          <q-item-section
-            ><img class="logo" style="" src="~assets/startup_india.png"
-          /></q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section
-            ><img class="logo" style="" src="~assets/make_in_india.png"
-          /></q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section
-            ><img
-              class="logo"
-              style=""
-              src="~assets/digital-india-government.png"
-          /></q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section
-            ><img class="logo" style="" src="~assets/skill_india.png"
-          /></q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section
-            ><img class="logo" style="" src="~assets/india_gov.png"
-          /></q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section
-            ><img class="logo" style="" src="~assets/my_gov.png"
-          /></q-item-section>
+          <q-item-section>
+            <q-item-label class="office-address">CONTACT NUMBER</q-item-label>
+            <q-item-label caption class="commerce">0389-2325706</q-item-label>
+          </q-item-section>
         </q-item>
       </q-list>
 
-      <!-- <q-list bordered separator>
-        <q-item clickable v-ripple>
-          <q-item-section><img style="" src="~assets/govt_mizoram.png" /></q-item-section>
+      <q-list class="q-pt-none contact-us">
+        <q-item class="q-pb-none">
+          <q-item-section avatar>
+            <!-- <q-avatar > -->
+            <img src="~assets/mail.png"/>
+            <!-- </q-avatar> -->
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label class="office-address">EMAIL ID</q-item-label>
+            <q-item-label caption class="commerce"
+            >dirind-mz@gov.in
+            </q-item-label
+            >
+          </q-item-section>
         </q-item>
-      </q-list> -->
+      </q-list>
+
+      <q-list class="q-pt-none contact-us">
+        <q-item class="q-pb-none">
+          <q-item-section avatar>
+            <!-- <q-avatar > -->
+            <img src="~assets/globe.png"/>
+            <!-- </q-avatar> -->
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label class="office-address">WEBSITE</q-item-label>
+            <q-item-label caption class="commerce"
+            >Industries.mizoram.gov.in
+            </q-item-label
+            >
+          </q-item-section>
+        </q-item>
+      </q-list>
     </div>
 
-   
+    <div class="map-cursor col-xs-12 col-md-7 text-center">
+      <!-- <img src="~assets/map.png"  /> -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3652.6998308299926!2d92.717265!3d23.722411!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaf37fb566d152e65!2sDirectorate%20of%20Industries%2C%20Govt.%20of%20Mizoram!5e0!3m2!1sen!2sin!4v1568975073569!5m2!1sen!2sin"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        style="border: 0"
+        allowfullscreen=""
+      ></iframe>
+    </div>
   </div>
+
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import {defineComponent} from "vue";
+import { scroll } from 'quasar'
+const { getScrollTarget, setVerticalScrollPosition } = scroll
 
 export default defineComponent({
   name: "PageIndex",
 
   setup() {
+    const navigate=(id) => {
+      var el=document.getElementById(id);
+      const target = getScrollTarget(el)
+      const offset = el.offsetTop
+      const duration = 1000
+      setVerticalScrollPosition(target, offset, duration)
+    }
     const depts = [
       {
         serial: "01",
@@ -393,6 +332,7 @@ export default defineComponent({
 
     return {
       depts,
+      navigate
     };
   },
 });
@@ -400,85 +340,8 @@ export default defineComponent({
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins&display=swap");
-.col1 {
-  color: aqua !important;
-}
 
-.logos {
-  /* width: 1640px; */
-  /* height: 187px; */
-  margin: 55px 140px 53px 65.3px;
-  /* padding: 20px 53px 28px 51px; */
-  border: solid 1px #e2e2e2;
-  background-color: #fff;
-}
 
-.footer {
-  /* width: 1920px; */
-  width: 100%;
-  height: 201px;
-  margin: 53px 0 0;
-  /* padding: 52px 204px 43px 204px; */
-  border: solid 1px #707070;
-  background-color: #357c71;
-}
-
-.developed-by {
-  /* width: 1505px;
-  height: 32px; */
-  /* margin: 23px 0 0; */
-  font-family: Poppins;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.88;
-  letter-spacing: normal;
-  text-align: center;
-  color: #fff;
-}
-
-.msegs,
-.ict {
-  color: #5affeb;
-}
-
-.logo {
-  width: 150px;
-  height: 139px;
-  margin: 0 14px 0 0;
-  object-fit: contain;
-}
-
-.logo:hover {
-  -webkit-filter: grayscale(0);
-  filter: none;
-}
-
-.line {
-  /* content: ""; */
-  top: 25px;
-  /* display: inline-block; */
-  /* vertical-align: middle; */
-  color: #d0d3d1;
-  margin-left: -250px;
-  position: relative;
-  width: 50%;
-  border-top-style: solid;
-  border-top-width: 1px;
-}
-
-.line2 {
-  /* content: ""; */
-  top: 25px;
-  /* display: inline-block; */
-  /* vertical-align: middle; */
-  color: #d0d3d1;
-  position: relative;
-  width: 100%;
-  border-top-style: solid;
-  border-top-width: 1px;
-}
 .office-address {
   /* width: 221px;
   height: 32px;
@@ -535,6 +398,7 @@ export default defineComponent({
 .contact-us {
   padding: 0px 0px 25px 0px !important;
 }
+
 .tile {
   /* width: 398px; */
   /* height: 100px; */
@@ -658,32 +522,12 @@ export default defineComponent({
   font-size: 2.5rem;
   /* color: ; */
 }
+
 @media (max-width: 600px) {
-  .chakra {
-    margin-top: 25px !important;
-  }
 
   .track {
     background: url("../../assets/bag.png");
   }
-
-  .developed-by {
-    font-size: 12px;
-  }
-
-  .logos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 0 auto;
-    border: none;
-  }
-
-  .line {
-    width: 40rem !important;
-    /* background: olive !important; */
-    /* padding: 100px; */
-  }
-
   .content span,
   .content2 span {
     font-size: 19px !important;
@@ -720,7 +564,6 @@ export default defineComponent({
 
 @media (min-width: 320px) {
   /* mobile */
-
   /* .content2,
   .content {
     color: brown;
@@ -730,19 +573,16 @@ export default defineComponent({
 
 
   } */
-
   /* .logos {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 0 auto;
     border: none;
   } */
-
   /* .q-item:last-child {
     display: grid;
     grid-template-columns: 6fr 6fr;
   } */
-
   .group {
     margin: 0px;
     padding: 0px;
