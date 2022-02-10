@@ -15,7 +15,7 @@
       <q-select
         dropdown-icon="expand_more"
         outlined
-        v-model="formData.proposed_industrial_area"
+        v-model="formData.choose_applicable"
         :options="choose"
       />
     </div>
@@ -23,7 +23,7 @@
     <div class="q-ml-md col-12">
       <div
         v-if="
-          formData.proposed_industrial_area ==
+          formData.choose_applicable ==
           'i. Certified Copy of freehold ownership'
         "
         class="row q-col-guter-md"
@@ -32,7 +32,7 @@
           <label class="zlabel" for="">
             a)Attach certified copy of ownership*
           </label>
-          <q-file v-model="formData.cst_cert" outlined>
+          <q-file v-model="formData.certified_copy_owner" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -42,7 +42,7 @@
 
       <div
         v-if="
-          formData.proposed_industrial_area ==
+          formData.choose_applicable ==
           'ii. Certified Copy of leasehold ownership'
         "
         class="row q-mt-md q-col-gutter-md"
@@ -51,7 +51,7 @@
           <label class="zlabel" for="">
             a)Attach certified of lease document*
           </label>
-          <q-file v-model="formData.cst_cert" outlined>
+          <q-file v-model="formData.certified_lease_doc" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -60,7 +60,7 @@
       </div>
 
       <div
-        v-if="formData.proposed_industrial_area == 'iii. Rent Deep'"
+        v-if="formData.choose_applicable == 'iii. Rent Deep'"
         class="row q-mt-md q-col-gutter-md"
       >
         <!-- <div class="row col-12 q-col-gutter-md"> -->
@@ -68,7 +68,7 @@
           <label class="zlabel" for="">
             a)Attach certified copy of rent deed*
           </label>
-          <q-file v-model="formData.cst_cert" outlined>
+          <q-file v-model="formData.certified_rent_deed" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -78,7 +78,7 @@
         <!-- <div class="row q-col-gutter-md"> -->
         <div class="col-xs-12 col-md-6">
           <label class="zlabel" for=""> b)NOC from owner* </label>
-          <q-file v-model="formData.cst_cert" outlined>
+          <q-file v-model="formData.noc_owner" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -90,12 +90,12 @@
 
     <div class="col-xs-12 col-md-6">
       <label class="zlabel" for="dob" type="date">
-        Attach Site/Layout Plan* <br />
+        5.7 Attach Site/Layout Plan* <br />
         <span class="text-caption">
           [Map showing dimensions & directions of project site with entry/exit]
         </span>
       </label>
-      <q-file v-model="formData.cst_cert" outlined>
+      <q-file v-model="formData.site_layout_plan" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -104,13 +104,13 @@
 
     <div class="col-xs-12 col-md-6">
       <label class="zlabel" for="dob" type="date">
-        Attach Linear Strip Plan* <br />
+        5.8 Attach Linear Strip Plan* <br />
         <span class="text-caption">
           [Map showing the width of entry/exit gate and its distance from the
           connecting NH/SH/SR/Other road]
         </span>
       </label>
-      <q-file v-model="formData.cst_cert" outlined>
+      <q-file v-model="formData.linear_strip_plan" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -134,11 +134,15 @@ export default {
     const currentUser = store.getters["auth/getCurrentUser"];
 
     const formData = reactive({
-      proposed_industrial_area: "",
-      proposed_plot_requirement: "",
-      proposed_total_proposed_area: "",
-      proposed_total_built_area: "",
-      proposed_city_town: "",
+      choose_applicable: "",
+      certified_copy_owner: null,
+      certified_lease_doc: null,
+      certified_lease_doc: null,
+      certified_rent_deed: null,
+      noc_owner: null,
+      site_layout_plan: null,
+      linear_strip_plan: null,
+     
     });
     onMounted(() => {});
     return {

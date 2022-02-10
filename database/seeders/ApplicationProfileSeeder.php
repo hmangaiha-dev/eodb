@@ -54,6 +54,7 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'POLLUTION_FORM_17', 'title' => 'Application For Obtaining Authorization Under Construction & Demolition Waste', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_18', 'title' => 'FORM FOR FILING RETURNS BY AUCTIONEER OF USED BATTERIES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_19', 'title' => 'APPLICATION FOR AUTHORISATION OR RENEWAL OF AUTHORISATION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_8', 'title' => 'ANNUAL REPORT TO BE SUBMITTED BY THE OPERATOR OF FACILITY TO THE LOCAL BODY(POLLUTION FORM 9)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
 
 
 

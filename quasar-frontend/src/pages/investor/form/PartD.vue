@@ -10,7 +10,7 @@
           <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"   outlined v-model="formData.designation" type="text" /> -->
           <q-select
             dropdown-icon="expand_more"
-            v-model="formData.proposed_sector"
+            v-model="formData.project_sector"
             :options="proposed_sectors"
             outlined
           />
@@ -26,7 +26,7 @@
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.project_purpose"
           />
         </div>
 
@@ -39,7 +39,7 @@
         <div class="col-xs-12 col-md-5">
           <q-select
             dropdown-icon="expand_more"
-            v-model="formData.proposed_industry_size"
+            v-model="formData.industry_size"
             :options="proposed_industries"
             outlined
           />
@@ -155,7 +155,7 @@
       </label>
 
       <q-select
-        v-model="model"
+        v-model="formData.project_category"
         :options="['Greenfield', 'Brownfield']"
         outlined
       />
@@ -168,17 +168,17 @@
       <div class="row q-ml-md">
         <div class="col-xs-12 col-sm-10">
           <label for="" class="zlabel"> a) If yes, Name of the investor </label>
-          <q-input outlined v-model="formData.lsc_tuna_address" />
+          <q-input outlined v-model="formData.foreign_investor_name" />
         </div>
         <div class="col-xs-12 col-sm-10">
           <label for="" class="zlabel">
             b) Name of the country of origin
           </label>
-          <q-input outlined v-model="formData.lsc_tuna_address" />
+          <q-input outlined v-model="formData.foreign_investor_country" />
         </div>
         <div class="col-xs-12 col-sm-10">
           <label for="" class="zlabel">c) Address and Contact number </label>
-          <q-input outlined v-model="formData.lsc_tuna_address" />
+          <q-input outlined v-model="formData.foreign_investor_address" />
         </div>
       </div>
     </div>
@@ -189,7 +189,7 @@
         Format : PDF )
         <span class="asterisk">*</span></label
       >
-      <q-file v-model="formData.project_report" outlined>
+      <q-file v-model="formData.detail_project_report" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -221,18 +221,17 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      proposed_sector: "",
-      proposed_project_purpose: "",
-
-      proposed_industry_size: "",
-
-      project_type: "",
-
-      project_category: "",
-
-      foreign_colab: "",
-
-      project_report: null,
+     project_sector: "",
+     project_purpose: "",
+     project_purpose: "",
+     industry_size: "",
+     project_type: "",
+     project_type: "",
+     project_category: "",
+     foreign_investor_name: "",
+     foreign_investor_country: "",
+     foreign_investor_address: "",
+     detail_project_report: null,
     });
     onMounted(() => {});
     return {

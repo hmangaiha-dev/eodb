@@ -11,9 +11,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.land_cost"
           />
         </div>
 
@@ -21,14 +21,14 @@
           <label class="zlabel" for="gender"> 7.2 Building Cost * </label>
         </div>
         <div class="col-xs-12 col-md-5">
-          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"   outlined v-model="formData.designation" type="text" /> -->
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.building_cost"
           />
         </div>
 
@@ -42,9 +42,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.plant_machinery_cost"
           />
         </div>
 
@@ -58,9 +58,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.misc_cost"
           />
         </div>
 
@@ -74,9 +74,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.total_project_cost"
           />
         </div>
       </div>
@@ -84,7 +84,7 @@
 
     <div class="col-12 zsubtitle">
       8. Means of Finance (In Lakhs)
-      <div class="row justify-start q-ml-md">
+      <div class="row items-center justify-start q-ml-md">
         <div class="col-xs-12 col-md-5">
           <label class="zlabel" for="gender">
             8.1 Bank/Institutional Finance *
@@ -95,9 +95,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.bank_finance"
           />
         </div>
 
@@ -105,14 +105,14 @@
           <label class="zlabel" for="gender"> 8.1 Equity Contribution * </label>
         </div>
         <div class="col-xs-12 col-md-5">
-          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"   outlined v-model="formData.designation" type="text" /> -->
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.equity_contribution"
           />
         </div>
 
@@ -126,9 +126,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.foreign_direct_invest"
           />
         </div>
 
@@ -142,9 +142,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.subsidy_grant"
           />
         </div>
 
@@ -156,9 +156,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.other_means"
           />
         </div>
       </div>
@@ -166,7 +166,7 @@
 
     <div class="col-12 zsubtitle">
       9. Proposed Employment (Numbers)
-      <div class="row justify-start q-ml-md">
+      <div class="row items-center justify-start q-ml-md">
         <div class="col-xs-12 col-md-5">
           <label class="zlabel" for="gender"> 9.1 Direct Male * </label>
         </div>
@@ -175,9 +175,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.direct_male"
           />
         </div>
 
@@ -185,14 +185,14 @@
           <label class="zlabel" for="gender"> 9.2 Direct Female *</label>
         </div>
         <div class="col-xs-12 col-md-5">
-          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"   outlined v-model="formData.designation" type="text" /> -->
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.direct_female"
           />
         </div>
 
@@ -204,9 +204,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.indirect_male"
           />
         </div>
 
@@ -218,9 +218,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.indirect_female"
           />
         </div>
 
@@ -232,9 +232,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.total_male"
           />
         </div>
 
@@ -246,9 +246,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.total_female"
           />
         </div>
       </div>
@@ -256,7 +256,7 @@
 
     <div class="col-12 zsubtitle">
       10. Proposed Project Schedule
-      <div class="row justify-start q-ml-md">
+      <div class="row items-center justify-start q-ml-md">
         <div class="col-xs-12 col-md-5">
           <label class="zlabel" for="gender">
             10.1 Start of Project Construction *
@@ -267,9 +267,9 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.project_start"
           />
         </div>
 
@@ -279,105 +279,78 @@
           >
         </div>
         <div class="col-xs-12 col-md-5">
-          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
+          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"   outlined v-model="formData.designation" type="text" /> -->
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            dense
+            
             outlined
-            v-model="formData.proposed_total_proposed_area"
+            v-model="formData.commercial_start"
           />
         </div>
-        <div class="col-xs-12 col-md-5">
-          <label class="zlabel" for="gender">
-           10.3 Phase-wise Implementation/FCI Details *</label
+
+        <div class="col-12">
+          <span class="zlabel">
+            10.3 Phase-wise Implementation/FCI Details *
+          </span>
+          <div
+            v-for="i in formData.rows"
+            :key="i"
+            class="row justify q-col-gutter-sm q-ml-md"
           >
-        </div>
-        <div class="col-xs-12 col-md-5">
-          <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            dense
-            outlined
-            v-model="formData.proposed_total_proposed_area"
-          />
-        </div>
+            <!-- {{ i }} -->
+            <div class="col-sm-5 col-xs-12">
+              <q-input
+                label="Phase *"
+                
+                
+                outlined
+              />
+            </div>
 
-         <div class="col-12">
-      <span class="zlabel"> 18. FAMILY DETAILS (DILTU CHHUNGKUA): </span>
-      <div
-        v-for="i in formData.rows"
-        :key="i"
-        class="row justify q-col-gutter-sm q-ml-md"
-      >
-        <!-- {{ i }} -->
-        <div class="col-sm-5 col-xs-12">
-          <q-input
-            label="Name as per (EPIC/PAN/UID)Hming"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.lsc_details[i - 1].name"
-            dense
-            outlined
-          />
+            <div class="col-sm-5 col-xs-12">
+              <q-input
+                placeholder="Product Category *"
+                
+                
+                outlined
+              />
+            </div>
+
+            <div class="col-sm-5 col-xs-12">
+              <q-input
+                placeholder="FCI *"
+                
+                
+                outlined
+              />
+            </div>
+
+            <div class="col-sm-5 col-xs-12">
+              <q-input
+                placeholder="Implementation Date"
+                
+                type="date"
+                
+                outlined
+              />
+            </div>
+
+            <div class="q-my-md q-py-none col-12">
+              <hr />
+            </div>
+          </div>
+
+          <div class="col-4">
+            <q-btn
+              color="primary"
+              class="full-width"
+              label="Add row"
+              @click="addRow"
+            />
+          </div>
         </div>
-
-        <div class="col-sm-5 col-xs-12">
-          <q-input
-            placeholder="Kum zat"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.lsc_details[i - 1].address"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-sm-5 col-xs-12">
-          <q-input
-            placeholder="Hnathawh"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.lsc_details[i - 1].kum"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-sm-5 col-xs-12">
-          <q-input
-            placeholder="Chhungkaw pa ber nen inlaichinna"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.lsc_details[i - 1].caste"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="q-my-md q-py-none col-12">
-          <hr />
-        </div>
-      </div>
-
-      <div class="col-4">
-        <q-btn
-          color="primary"
-          class="full-width"
-          label="Add row"
-          @click="addRow"
-        />
-      </div>
-    </div>
-
-       
       </div>
     </div>
   </div>
@@ -394,18 +367,25 @@ export default {
     const store = useStore();
 
     const formData = reactive({
-      proposed_sector: "",
-      proposed_project_purpose: "",
-
-      proposed_industry_size: "",
-
-      project_type: "",
-
-      project_category: "",
-
-      foreign_colab: "",
-
-      project_report: null,
+     land_cost: "",
+     building_cost: "",
+     plant_machinery_cost: "",
+     misc_cost: "",
+     total_project_cost: "",
+     bank_finance: "",
+     equity_contribution: "",
+     foreign_direct_invest: "",
+     foreign_direct_invest: "",
+     subsidy_grant: "",
+     other_means: "",
+     direct_male: "",
+     direct_female: "",
+     indirect_male: "",   
+     indirect_female: "",   
+     total_male: "",
+     total_female: "",
+     project_start: "",
+     commercial_start: "",
       rows: 1,
     });
     onMounted(() => {});
@@ -420,7 +400,7 @@ export default {
       proposed_industries: ["Micro", "Small", "Medium", "Large"],
       project_categories: ["Greenfield", "Brownfield"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
-       addRow: () => {
+      addRow: () => {
         // formData.lsc_details.push({
         //   name: "",
         //   address: "",
