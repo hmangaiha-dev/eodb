@@ -262,7 +262,9 @@ export default {
       var formDatas = new FormData();
 
       for (let data in applications[0]) {
-        formDatas.append(`${data}`, formData[data]);
+        console.log(`${data}`, applications[0][data]);
+
+        formDatas.append(`${data}`, applications[0][data]);
       }
 
       console.log("formDatas", applications);
