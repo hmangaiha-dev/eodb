@@ -35,6 +35,10 @@ class Application extends Model
     {
         return $this->hasMany(LscPartition::class);
     }
+    public function bamboos(): HasMany
+    {
+        return $this->hasMany(Bamboo::class);
+    }
 
     public function states()
     {

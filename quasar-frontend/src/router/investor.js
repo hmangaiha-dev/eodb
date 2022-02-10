@@ -353,6 +353,14 @@ export default {
             ),
         },
         {
+          path: "submission-anual-report-bio-medical-wastes",
+          name: "pcb:annual-report2",
+          component: () =>
+            import(
+              "pages/common/dept_services/pollution/annualreport/Application.vue"
+            ),
+        },
+        {
           path: "authorisation-under-solid-waste-management-rules-for-processing-recycling-treatment",
           name: "pcb:authorisation-solidwaste",
           component: () =>
