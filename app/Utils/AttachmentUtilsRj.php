@@ -1222,6 +1222,70 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'geology/1/attachments'
     ];
+    const LAND_REVENUE_LSC_SIGNATURE = [
+        'mime' => 'images/*',
+        'application_code' => 'LAND_REVENUE_LSC',
+        'key' => 'lsc_signature',
+        'label' => "Diltu Signature",
+        'disk' => 'public',
+        'folder' => 'land/7/attachments'
+    ];
+    const LAND_REVENUE_LSC_10_1 = [
+        'mime' => 'images/*',
+        'application_code' => 'LAND_REVENUE_LSC',
+        'key' => 'lsc_ten_1',
+        'label' => "1) Original Land Settlement Certificate",
+        'disk' => 'public',
+        'folder' => 'land/7/attachments'
+    ];
+    const LAND_REVENUE_LSC_10_2 = [
+        'mime' => 'images/*',
+        'application_code' => 'LAND_REVENUE_LSC',
+        'key' => 'lsc_ten_2',
+        'label' => "2) Land Valuation Certificate",
+        'disk' => 'public',
+        'folder' => 'land/7/attachments'
+    ];
+    const LAND_REVENUE_LSC_10_3 = [
+        'mime' => 'images/*',
+        'application_code' => 'LAND_REVENUE_LSC',
+        'key' => 'lsc_ten_3',
+        'label' => "3) No Objection Certificate",
+        'disk' => 'public',
+        'folder' => 'land/7/attachments'
+    ];
+    const LAND_REVENUE_LSC_10_4 = [
+        'mime' => 'images/*',
+        'application_code' => 'LAND_REVENUE_LSC',
+        'key' => 'lsc_ten_4',
+        'label' => "4) Non Encumbrance Certificate",
+        'disk' => 'public',
+        'folder' => 'land/7/attachments'
+    ];
+    const LAND_REVENUE_LSC_10_5 = [
+        'mime' => 'images/*',
+        'application_code' => 'LAND_REVENUE_LSC',
+        'key' => 'lsc_ten_5',
+        'label' => "5) Tax payment receipt/ Tax Clearance Certificate",
+        'disk' => 'public',
+        'folder' => 'land/7/attachments'
+    ];
+    const LAND_REVENUE_LSC_10_6 = [
+        'mime' => 'images/*',
+        'application_code' => 'LAND_REVENUE_LSC',
+        'key' => 'lsc_ten_6',
+        'label' => "6) LSC neitu leh a neichhawngtu tur te Voter I.D",
+        'disk' => 'public',
+        'folder' => 'land/7/attachments'
+    ];
+    const LAND_REVENUE_LSC_12 = [
+        'mime' => 'images/*',
+        'application_code' => 'LAND_REVENUE_LSC',
+        'key' => 'lsc_twelve',
+        'label' => "Clearance certificate",
+        'disk' => 'public',
+        'folder' => 'land/7/attachments'
+    ];
 
 
 

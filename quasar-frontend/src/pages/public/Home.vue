@@ -5,19 +5,19 @@
     style="background-color: #b9d8d4"
   >
     <div class="container-lg flex">
-      <div class=" col-sm-5 col-xs-12 q-mb-md">
+      <div class="col-sm-5 col-xs-12 q-mb-md">
         <h1 class="heading content q-px-md"><span>Think of Business!</span></h1>
         <div class="content2">
           <span>There is Ease of Doing Business!</span>
         </div>
         <q-btn
-          @click="e=>navigate('online-services')"
+          @click="(e) => navigate('online-services')"
           label="Explore Department"
           class="explore text-capitalize"
           rounded
         />
         <q-btn
-          @click="e=>navigate('track')"
+          @click="(e) => navigate('track')"
           label="Track Form"
           class="explore q-ml-md text-capitalize"
           rounded
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="gt-sm  col-sm-5">
+    <div class="gt-sm col-sm-5">
       <!-- <img class="map" src="~assets/mzr.png" /> -->
       <q-img
         fit="contain"
@@ -39,43 +39,47 @@
   </div>
 
   <div id="online-services" class="row q-mt-lg justify-center">
-    <div  class="col-lg-12 text-center">
+    <div class="col-lg-12 text-center">
       <span class="explore_dept">Explore Department</span>
     </div>
   </div>
 
-  <div class="row container-lg q-mt-lg justify-start q-col-gutter-md">
+  <div
+    :class="[$q.screen.gt.xs ? 'justify-start' : 'justify-center']"
+    class="row q-mt-lg q-col-gutter-md"
+  >
     <div
       v-for="dept in depts"
       :key="dept.serial"
-      class="col-xs-12 col-sm-6 col-md-3"
+      class="col-lg-3 col-sm-6 col-xs-10"
     >
       <!-- <q-list class="tile cursor-pointer" clickable bordered padding> -->
       <q-item
         :to="{ name: 'common:show', params: { deptname: `${dept?.link}` } }"
-        class="zcard cursor-pointer"
+        class="tile cursor-pointer full-width"
         clickable
-        style="min-height: 140px"
         v-ripple
       >
-        <q-item-section style="font-size: 26px" class="text-primary"  avatar>
+        <q-item-section class="tile-content" avatar>
           {{ dept.serial }}
         </q-item-section>
 
         <q-item-section class="text-center tile-content">{{
-            dept.title
-          }}
-        </q-item-section>
+          dept.title
+        }}</q-item-section>
       </q-item>
       <!-- </q-list> -->
     </div>
   </div>
 
   <div class="track q-mt-lg">
-    <div id="track" class="container-lg  row justify-center">
-
-      <p class="text-primary bg-white q-my-lg q-py-sm q-px-xl col-md-5 col-xs-12 text-center"
-           style="font-size: 26px;min-width: 480px">Track your EODB form</p>
+    <div id="track" class="container-lg row justify-center">
+      <p
+        class="text-primary bg-white q-my-lg q-py-sm q-px-xl col-md-5 col-xs-12 text-center"
+        style="font-size: 26px; min-width: 480px"
+      >
+        Track your EODB form
+      </p>
 
       <div class="col-md-8 col-xs-12">
         <q-input
@@ -87,7 +91,7 @@
         >
           <template v-slot:append>
             <!-- <q-avatar> -->
-            <q-btn class="btn-track" rounded label="Track"/>
+            <q-btn class="btn-track" rounded label="Track" />
             <!-- </q-avatar> -->
           </template>
         </q-input>
@@ -96,17 +100,20 @@
   </div>
 
   <div class="bg-white">
-    <div id="about-us" class="container-lg row q-mt-lg justify-center q-col-gutter-lg">
+    <div
+      id="about-us"
+      class="container-lg row q-mt-lg justify-center q-col-gutter-lg"
+    >
       <div class="col-xs-12 text-center">
         <span class="explore_dept">About Us</span>
       </div>
 
       <div class="col-sm-12 gt-xs text-center">
-        <img class="series" style="width: 90%" src="~assets/group.svg"/>
+        <img class="series" style="width: 90%" src="~assets/group.svg" />
       </div>
 
       <div class="col-sm-12 lt-sm text-center">
-        <img style="width: 100%" src="~assets/about.svg"/>
+        <img style="width: 100%" src="~assets/about.svg" />
       </div>
 
       <div class="col-sm-6 col-xs-12 text-center">
@@ -144,23 +151,22 @@
         <q-item class="q-pb-none">
           <q-item-section avatar>
             <!-- <img src="~assets/question.png" /> -->
-            <q-icon color="primary" name="fmd_good"/>
+            <q-icon color="primary" name="fmd_good" />
           </q-item-section>
 
           <q-item-section>
             <q-item-label class="office-address">OFFICE ADDRESS</q-item-label>
             <q-item-label class="commerce"
-            >Directorate of Commerce & Industries Department Khatla, Near
+              >Directorate of Commerce & Industries Department Khatla, Near
               Circuit House Aizawl - 796001, Mizoram
-            </q-item-label
-            >
+            </q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
       <q-list class="q-pt-none contact-us">
         <q-item class="q-pb-none">
           <q-item-section avatar>
-            <q-icon color="primary" name="call"/>
+            <q-icon color="primary" name="call" />
           </q-item-section>
 
           <q-item-section>
@@ -174,16 +180,15 @@
         <q-item class="q-pb-none">
           <q-item-section avatar>
             <!-- <q-avatar > -->
-            <img src="~assets/mail.png"/>
+            <img src="~assets/mail.png" />
             <!-- </q-avatar> -->
           </q-item-section>
 
           <q-item-section>
             <q-item-label class="office-address">EMAIL ID</q-item-label>
             <q-item-label caption class="commerce"
-            >dirind-mz@gov.in
-            </q-item-label
-            >
+              >dirind-mz@gov.in
+            </q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -192,16 +197,15 @@
         <q-item class="q-pb-none">
           <q-item-section avatar>
             <!-- <q-avatar > -->
-            <img src="~assets/globe.png"/>
+            <img src="~assets/globe.png" />
             <!-- </q-avatar> -->
           </q-item-section>
 
           <q-item-section>
             <q-item-label class="office-address">WEBSITE</q-item-label>
             <q-item-label caption class="commerce"
-            >Industries.mizoram.gov.in
-            </q-item-label
-            >
+              >Industries.mizoram.gov.in
+            </q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -219,25 +223,24 @@
       ></iframe>
     </div>
   </div>
-
 </template>
 
 <script>
-import {defineComponent} from "vue";
-import { scroll } from 'quasar'
-const { getScrollTarget, setVerticalScrollPosition } = scroll
+import { defineComponent } from "vue";
+import { scroll } from "quasar";
+const { getScrollTarget, setVerticalScrollPosition } = scroll;
 
 export default defineComponent({
   name: "PageIndex",
 
   setup() {
-    const navigate=(id) => {
-      var el=document.getElementById(id);
-      const target = getScrollTarget(el)
-      const offset = el.offsetTop
-      const duration = 1000
-      setVerticalScrollPosition(target, offset, duration)
-    }
+    const navigate = (id) => {
+      var el = document.getElementById(id);
+      const target = getScrollTarget(el);
+      const offset = el.offsetTop;
+      const duration = 1000;
+      setVerticalScrollPosition(target, offset, duration);
+    };
     const depts = [
       {
         serial: "01",
@@ -332,7 +335,7 @@ export default defineComponent({
 
     return {
       depts,
-      navigate
+      navigate,
     };
   },
 });
@@ -340,7 +343,6 @@ export default defineComponent({
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins&display=swap");
-
 
 .office-address {
   /* width: 221px;
@@ -400,8 +402,8 @@ export default defineComponent({
 }
 
 .tile {
-  /* width: 398px; */
-  /* height: 100px; */
+  /* width: 398px;
+  height: 100px; */
   margin: 0 16px 0px 12px;
   padding: 30px;
   border-radius: 10px;
@@ -524,7 +526,6 @@ export default defineComponent({
 }
 
 @media (max-width: 600px) {
-
   .track {
     background: url("../../assets/bag.png");
   }

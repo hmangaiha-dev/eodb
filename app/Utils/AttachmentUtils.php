@@ -627,6 +627,16 @@ const SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES=[
         'other_particulars' => self::GEO_MINING_OTHER,
         'signature' => self::GEO_MINING_SIGNATURE,
 
+        'lsc_signature' => self::LAND_REVENUE_LSC_SIGNATURE,
+
+        'lsc_ten_1' => self::LAND_REVENUE_LSC_10_1,
+        'lsc_ten_2' => self::LAND_REVENUE_LSC_10_2,
+        'lsc_ten_3' => self::LAND_REVENUE_LSC_10_3,
+        'lsc_ten_4' => self::LAND_REVENUE_LSC_10_4,
+        'lsc_ten_5' => self::LAND_REVENUE_LSC_10_5,
+        'lsc_ten_6' => self::LAND_REVENUE_LSC_10_6,
+        'lsc_twelve' => self::LAND_REVENUE_LSC_12,
+
 
 
 

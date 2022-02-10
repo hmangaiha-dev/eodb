@@ -2,7 +2,7 @@
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
-        >1. Applicant’s Name (Diltu hming)*
+        >1. Applicant's Name (Diltu hming)*
         <span class="asterisk">*</span></label
       >
       <q-input
@@ -59,7 +59,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.phe_water_connection_five_a"
+            v-model="formData.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             dense
             outlined
           />
@@ -312,7 +312,7 @@ export default {
       phe_water_connection_three: "",
       phe_water_connection_four: "",
       phe_water_connection_five: "",
-      phe_water_connection_five_a: "",
+      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa: "",
       phe_water_connection_five_b: "",
       phe_water_connection_five_c: "",
       phe_water_connection_five_d: "",
