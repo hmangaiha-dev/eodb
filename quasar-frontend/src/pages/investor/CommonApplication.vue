@@ -1,47 +1,8 @@
 <template>
   <q-page>
-    <div class="q-py-md row items-center q-col-gutter-md">
-      <div class="col-sm-4 col-xs-12">
-        <q-list class="zlist" bordered>
-          <q-item clickable>
-            <q-item-section class="text-green text-subtitle1"
-              >1.Personal Details</q-item-section
-            >
-            <q-item-section avatar class="text-green text-caption"
-              >Completed</q-item-section
-            >
-          </q-item>
-        </q-list>
-      </div>
-
-      <div class="col-sm-4 col-xs-12">
-        <q-list class="zlist" bordered>
-          <q-item clickable>
-            <q-item-section class="text-green text-subtitle1"
-              >2.Firm Details</q-item-section
-            >
-            <q-item-section avatar class="text-green text-caption"
-              >Pending</q-item-section
-            >
-          </q-item>
-        </q-list>
-      </div>
-
-      <div class="col-sm-4 col-xs-12">
-        <q-list class="zlist" bordered>
-          <q-item clickable>
-            <q-item-section class="text-green text-subtitle1"
-              >3.Project Details</q-item-section
-            >
-            <q-item-section avatar class="text-green text-caption"
-              >Completed</q-item-section
-            >
-          </q-item>
-        </q-list>
-      </div>
-    </div>
-    <div class="row items-center q-col-gutter-md">
-      <h1 class="text-h6 col-12">Common Application Form</h1>
+    
+    <div class="row q-py-sm items-center q-col-gutter-md">
+      <h1 class="ztitle col-12">Common Application Form</h1>
       <q-tabs
         v-model="tab"
         dense

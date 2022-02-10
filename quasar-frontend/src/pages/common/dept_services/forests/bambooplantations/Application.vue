@@ -6,7 +6,7 @@
       APPLICATION FOR REGISTRATION OF PRIVATE BAMBOO PLANTATION IN NON-FOREST
       AREA
     </div>
-    <q-form @submit.prevent="" class="full-width">
+    <q-form @submit.prevent="submit" class="full-width">
       <div class="row q-col-gutter-lg">
         <div class="col-12">
           <Form ref="applicantRef" />
@@ -20,12 +20,16 @@
     </q-form>
   </div>
 </template>
+
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
-import { date } from "quasar";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+import { useQuasar } from "quasar";
+// import { useQuasar } from "quasar";
+
+import { api } from "src/boot/axios";
+import { useRouter } from "vue-router";
 
 import Form from "./Form.vue";
 // import Part2 from "./Part2.vue";
@@ -38,38 +42,64 @@ export default {
     // Document,
   },
   setup(props, context) {
-    const applicantRef = ref(null);
-    const FirmRef = ref(null);
     const store = useStore();
-    // const draft = store.getters["applicantData/getCurrentDraft"];
-    // const currentUser = store.getters["auth/getCurrentUser"];
+    const q = useQuasar();
 
-    const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: "",
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
-    });
+    const router = useRouter();
+    const applicantRef = ref(null);
 
+    const submit = () => {
+      var formData = {};
+
+      // return console.log(q);
+
+      formData = Object.assign(formData, applicantRef.value.formData);
+
+      // for (const [key, value] of Object.entries(formData)) {
+      //   if (key === "lsc_details") {
+      //     console.log("lsc", key, value);
+      //     // formDatas.(`${key}`, JSON.stringify(value));
+      //   } else {
+      //     console.log(`${key}: ${value}`);
+      //     formDatas.append(`${key}`, value);
+      //   }
+      // }
+
+      var formDatas = new FormData();
+
+      for (let data in formData) {
+        formDatas.append(`${data}`, formData[data]);
+        // console.log(data, formDatas.get(data));
+      }
+
+      formDatas.delete("bamboo_particulars");
+      // return console.log('lsc_details',(formData.lsc_details))
+
+      formDatas.append(
+        "bamboo_particulars",
+        JSON.stringify(formData.bamboo_particulars)
+      );
+
+      api
+        .post("/applications/submit", formDatas)
+        .then((res) => {
+          // return console.log("response value", res.data);
+          q.notify({
+            message: "Application submitted successfully",
+            color: "green",
+          });
+          router.push({ name: "investor:ongoing" });
+        })
+        .catch((err) => console.log("error", err));
+    };
+
+    onMounted(() => {});
     return {
+      applicantRef,
+      q,
+      submit,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
-      applicantRef,
-      FirmRef,
     };
   },
 };

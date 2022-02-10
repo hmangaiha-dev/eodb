@@ -6,7 +6,7 @@
         <label class="zlabel" for="name"
           >A)Name Of The Industrial Unit <span class="asterisk"> *</span></label
         >
-        <q-input dense outlined v-model="formData.industrial_location_name" />
+        <q-input dense outlined v-model="formData.c_n_e_1A" />
       </div>
 
       <div class="col-12 zlabel">
@@ -18,7 +18,7 @@
             <label class="zlabel" for="name"
               >1) Factory Address <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.applicant_name" />
+            <q-input dense outlined v-model="formData.c_n_e_1B1" />
           </div>
 
           <div class="col-md-6 col-xs-10">
@@ -26,7 +26,7 @@
               >2. Telephone/mobile Number
               <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.applicant_name" />
+            <q-input dense outlined v-model="formData.c_n_e_1B2" />
           </div>
         </div>
       </div>
@@ -40,21 +40,21 @@
             <label class="zlabel" for="name"
               >1) Office Address <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.applicant_name" />
+            <q-input dense outlined v-model="formData.c_n_e_C1" />
           </div>
 
           <div class="col-md-6 col-xs-10">
             <label class="zlabel" for="name"
               >2. Telephone No. <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.applicant_name" />
+            <q-input dense outlined v-model="formData.c_n_e_C2" />
           </div>
         </div>
       </div>
 
       <div class="col-12 zlabel">
         <span class="zlabel">D) Registered Office </span>
-        <q-input dense outlined v-model="formData.applicant_name" />
+        <q-input dense outlined v-model="formData.c_n_e_D" />
       </div>
     </div>
 
@@ -70,7 +70,7 @@
               *</span
             ></label
           >
-          <q-input dense outlined v-model="formData.applicant_name" />
+          <q-input dense outlined v-model="formData.c_n_e_2A" />
         </div>
         <div class="col-12">
           <span class="zlabel"
@@ -83,14 +83,14 @@
               <label class="zlabel" for="name"
                 >1) Name <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_2B1" />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2. Address <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_2B2" />
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@
                 >1) Date Of Commencement Of Commercial Production/operation
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_3A1" />
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@
                 >1) Date Of Commencement Of Commercial Production/operation
                 After Expansion <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_3B1" />
             </div>
           </div>
         </div>
@@ -146,14 +146,14 @@
                 >1) EM - part-II , No & date
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_4A1" />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2) IEM No & date<span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_4A2" />
             </div>
           </div>
         </div>
@@ -169,7 +169,7 @@
                 >1) Permanent (PMT) Registration/ IEM/ EM-partII No.
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_4B1" />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -177,7 +177,7 @@
                 >2. Permanent (PMT) Registration/ IEM/ EM-partII Date
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_4B2" />
             </div>
           </div>
         </div>
@@ -188,12 +188,16 @@
             The Concerned Department As Applicable (in Case Of Service Sector
             Units)</span
           >
-          <q-input
-            type="file"
+          <q-file
+            :rules="[(val) => val || 'Signature is required']"
             dense
+            v-model="formData.c_n_e_4C"
             outlined
-            v-model="formData.applicant_name"
-          />
+          >
+            <template v-slot:prepend>
+              <q-icon name="attach_file" />
+            </template>
+          </q-file>
         </div>
       </div>
     </div>
@@ -202,7 +206,7 @@
       <label class="zlabel" for="pob"
         >5. Registration No. Under NEIIPP, 2007 (Form:1A/1B)</label
       >
-      <q-input dense outlined v-model="formData.communication_district" />
+      <q-input dense outlined v-model="formData.c_n_e_5" />
     </div>
 
     <div class="col-12">
@@ -220,7 +224,7 @@
                     >1) Prior To Expansion
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_6Anew1" />
                 </div>
               </div>
             </div>
@@ -235,14 +239,14 @@
                     >1) Prior To Expansion
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_6Aexist1" />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"
                     >2. After Expansion <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_6Aexist2" />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -250,7 +254,7 @@
                     >3. Total After Expansion
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_6Aexist3" />
                 </div>
               </div>
             </div>
@@ -270,7 +274,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Bnew1"
                   />
                 </div>
               </div>
@@ -286,7 +290,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Bexist1"
                   />
                 </div>
 
@@ -295,7 +299,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Bexist2"
                   />
                 </div>
 
@@ -304,7 +308,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Bexist3"
                   />
                 </div>
               </div>
@@ -326,7 +330,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6C2new1"
                   />
                 </div>
 
@@ -340,7 +344,7 @@
                       <q-input
                         dense
                         outlined
-                        v-model="formData.communication_district"
+                        v-model="formData.c_n_e_6C1exist1"
                       />
                     </div>
 
@@ -349,7 +353,7 @@
                       <q-input
                         dense
                         outlined
-                        v-model="formData.communication_district"
+                        v-model="formData.c_n_e_6C1exist2"
                       />
                     </div>
 
@@ -360,7 +364,7 @@
                       <q-input
                         dense
                         outlined
-                        v-model="formData.communication_district"
+                        v-model="formData.c_n_e_6C1exist3"
                       />
                     </div>
                   </div>
@@ -379,7 +383,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_6C2new1"
               />
             </div>
 
@@ -393,7 +397,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6C2exist1"
                   />
                 </div>
 
@@ -402,7 +406,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6C2exist2"
                   />
                 </div>
 
@@ -411,7 +415,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6C2exist3"
                   />
                 </div>
               </div>
@@ -433,7 +437,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_6Dnew1"
               />
             </div>
 
@@ -447,7 +451,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Dexist1"
                   />
                 </div>
 
@@ -456,7 +460,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Dexist2"
                   />
                 </div>
 
@@ -465,7 +469,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Dexist3"
                   />
                 </div>
               </div>
@@ -487,7 +491,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_6Enew1"
               />
             </div>
 
@@ -501,7 +505,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Eexist1"
                   />
                 </div>
 
@@ -510,7 +514,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Eexist2"
                   />
                 </div>
 
@@ -519,7 +523,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Eexist3"
                   />
                 </div>
               </div>
@@ -541,7 +545,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_6Fnew1"
               />
             </div>
 
@@ -555,7 +559,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Fexist1"
                   />
                 </div>
 
@@ -564,7 +568,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Fexist2"
                   />
                 </div>
 
@@ -573,7 +577,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Fexist3"
                   />
                 </div>
               </div>
@@ -595,7 +599,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_6Gnew1"
               />
             </div>
 
@@ -609,7 +613,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Gexist1"
                   />
                 </div>
 
@@ -618,7 +622,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Gexist2"
                   />
                 </div>
 
@@ -627,7 +631,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6Gexist3"
                   />
                 </div>
               </div>
@@ -649,7 +653,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_6totalnew"
               />
             </div>
 
@@ -663,7 +667,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6totalexist1"
                   />
                 </div>
 
@@ -672,7 +676,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6totalexist2"
                   />
                 </div>
 
@@ -681,7 +685,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_6totalexist3"
                   />
                 </div>
               </div>
@@ -705,34 +709,34 @@
                 >1) Promoters Contribution
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7A1" />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2) Equity <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7A2" />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >3) Term Loan <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7A3" />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >4) Un Secured Loan <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7A4" />
             </div>
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >5) Internal Resources <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7A5" />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -740,14 +744,14 @@
                 >6) Any Other Source (please Specify)
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7A6" />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >Total <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7A6total" />
             </div>
           </div>
         </div>
@@ -763,28 +767,28 @@
                 >1) Name Of Bank/Financial Institution
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7B1" />
             </div>
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2) Amount Of Term/working Capital Loan Sanctioned
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7B2" />
             </div>
 
             <div class="col-md-5 col-xs-10">
               <label class="zlabel" for="name"
                 >3) Sanction Letter No. <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7B3" />
             </div>
 
             <div class="col-md-5 col-xs-10">
               <label class="zlabel" for="name"
                 >4) Sanction Letter Date <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7B4" />
             </div>
 
             <div class="col-md-5 col-xs-10">
@@ -792,7 +796,7 @@
                 >5) Amount Of Term/Working Capital Loan Disbursed
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7B5" />
             </div>
           </div>
         </div>
@@ -805,27 +809,27 @@
               <label class="zlabel" for="name"
                 >1) Name <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7C1" />
             </div>
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2) Amount <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7C2" />
             </div>
 
             <div class="col-md-5 col-xs-10">
               <label class="zlabel" for="name"
                 >3) PAN No. <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7C3" />
             </div>
 
             <div class="col-md-5 col-xs-10">
               <label class="zlabel" for="name"
                 >4) Mode Of Payment <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7C4" />
             </div>
           </div>
         </div>
@@ -838,27 +842,27 @@
               <label class="zlabel" for="name"
                 >1) Name <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7D1" />
             </div>
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2) Amount <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7D2" />
             </div>
 
             <div class="col-md-5 col-xs-10">
               <label class="zlabel" for="name"
                 >3) PAN No. <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7D3" />
             </div>
 
             <div class="col-md-5 col-xs-10">
               <label class="zlabel" for="name"
                 >4) Mode Of Payment <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_7D4" />
             </div>
           </div>
         </div>
@@ -878,14 +882,14 @@
               <label class="zlabel" for="name"
                 >1) Sanctioned Load <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_8A1" />
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2) Connected Load<span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_8A2" />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -896,7 +900,7 @@
                   *</span
                 ></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_8A3" />
             </div>
           </div>
         </div>
@@ -912,7 +916,7 @@
                 >1) Sanctioned Load Prior To Expansion
                 <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_8B1" />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -921,7 +925,7 @@
                   *</span
                 ></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_8B2" />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -932,7 +936,7 @@
                   *</span
                 ></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_8B3" />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -943,7 +947,7 @@
                   *</span
                 ></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_8B4" />
             </div>
 
             <div class="col-md-6 col-xs-10">
@@ -954,7 +958,7 @@
                   *</span
                 ></label
               >
-              <q-input dense outlined v-model="formData.applicant_name" />
+              <q-input dense outlined v-model="formData.c_n_e_8B5" />
             </div>
           </div>
         </div>
@@ -975,7 +979,7 @@
                   <label class="zlabel" for="name"
                     >(i) Land Area <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_9Aai" />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -983,28 +987,28 @@
                     >(ii) Revenue Village
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_9Aaii" />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"
                     >(iii) Dag No. <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_9Aaiii" />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"
                     >(iv) Patta No <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_9Aaiv" />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
                   <label class="zlabel" for="name"
                     >(v) Date Of Purchase<span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_9Aav" />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -1013,7 +1017,7 @@
                       *</span
                     ></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_9Aavi" />
                 </div>
               </div>
             </div>
@@ -1028,7 +1032,7 @@
                     >(i) Date Of Allotment/agreement
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_9Abi" />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -1036,7 +1040,7 @@
                     >(ii) Date Of Taking Over Possession
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_9Abii" />
                 </div>
               </div>
             </div>
@@ -1050,7 +1054,7 @@
                       *</span
                     ></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_9Aci" />
                 </div>
 
                 <div class="col-md-6 col-xs-10">
@@ -1058,7 +1062,7 @@
                     >(ii) Period Of Lease
                     <span class="asterisk"> *</span></label
                   >
-                  <q-input dense outlined v-model="formData.applicant_name" />
+                  <q-input dense outlined v-model="formData.c_n_e_9Acii" />
                 </div>
               </div>
             </div>
@@ -1080,7 +1084,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_9Abi"
                   />
                 </div>
 
@@ -1091,7 +1095,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_9Abii"
                   />
                 </div>
               </div>
@@ -1106,7 +1110,7 @@
         >10. Statement Of Investment In Plant & Machinery As Per
         Form:1C(A)</label
       >
-      <q-input dense outlined v-model="formData.communication_district" />
+      <q-input dense outlined v-model="formData.c_n_e_10" />
     </div>
 
     <div class="col-10">
@@ -1125,7 +1129,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_11A1"
               />
             </div>
 
@@ -1137,7 +1141,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_11A21"
                   />
                 </div>
 
@@ -1146,7 +1150,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_11A22"
                   />
                 </div>
               </div>
@@ -1163,7 +1167,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_11A31"
                   />
                 </div>
 
@@ -1172,7 +1176,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_11A32"
                   />
                 </div>
               </div>
@@ -1183,7 +1187,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_11A4"
               />
             </div>
           </div>
@@ -1197,7 +1201,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_11B1"
               />
             </div>
 
@@ -1209,7 +1213,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_11B21"
                   />
                 </div>
 
@@ -1218,7 +1222,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_11B22"
                   />
                 </div>
               </div>
@@ -1235,7 +1239,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_11B31"
                   />
                 </div>
 
@@ -1244,7 +1248,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_11B32"
                   />
                 </div>
               </div>
@@ -1255,7 +1259,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_11B4"
               />
             </div>
           </div>
@@ -1275,7 +1279,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_12A1"
               />
             </div>
 
@@ -1287,7 +1291,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_12A21"
                   />
                 </div>
 
@@ -1296,7 +1300,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_12A22"
                   />
                 </div>
               </div>
@@ -1314,7 +1318,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.communication_district"
+                v-model="formData.c_n_e_12Bi"
               />
             </div>
 
@@ -1328,7 +1332,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_12Bii1"
                   />
                 </div>
 
@@ -1337,7 +1341,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_12Bii2"
                   />
                 </div>
               </div>
@@ -1345,7 +1349,7 @@
 
             <div class="col-12">
               <span class="zlabel"
-                >(ii) Annual Requirement after Expansion</span
+                >(iii) Annual Requirement after Expansion</span
               >
               <div class="row q-ml-md q-col-gutter-md">
                 <div class="col-md-6 col-xs-10">
@@ -1353,7 +1357,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_12Biii1"
                   />
                 </div>
 
@@ -1362,7 +1366,7 @@
                   <q-input
                     dense
                     outlined
-                    v-model="formData.communication_district"
+                    v-model="formData.c_n_e_12Biii2"
                   />
                 </div>
               </div>
@@ -1382,39 +1386,131 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 
-
 export default {
   setup(props, context) {
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
 
     const formData = reactive({
-      industrial_location_name: "Mr",
-      applicant_name: "",
-
-      communication_street: "",
-      communication_city: "",
-      communication_pin_no: "Male",
-      communication_house_no: "",
-      communication_office_phn: "",
-      communication_residence_phn: "",
-      communication_mobile_phn: "",
-      communication_email: "",
-      communication_website: "",
-      communication_district: "Father",
-
-      proposed_street: "",
-      proposed_city: "",
-      proposed_pin_no: "Male",
-      proposed_house_no: "",
-      proposed_office_phn: "",
-      proposed_residence_phn: "",
-      proposed_mobile_phn: "",
+      application_code: "C&E_FORM_3",
+      department_id: 1,
+      c_n_e_1A: "",
+      c_n_e_1B1: "",
+      c_n_e_1B2: "",
+      c_n_e_C1: "",
+      c_n_e_C2: "",
+      c_n_e_D: "",
+      c_n_e_2A: "",
+      c_n_e_2B: "",
+      c_n_e_2B1: "",
+      c_n_e_2B2: "",
+      c_n_e_3A1: "",
+      c_n_e_3B1: "",
+      c_n_e_4A1: "",
+      c_n_e_4A2: "",
+      c_n_e_4B1: "",
+      c_n_e_4B2: "",
+      c_n_e_4C: null,
+      c_n_e_5: "",
+      c_n_e_6Anew1: "",
+      c_n_e_6Aexist1: "",
+      c_n_e_6Aexist2: "",
+      c_n_e_6Aexist3: "",
+      c_n_e_6Bnew1: "",
+      c_n_e_6Bexist1: "",
+      c_n_e_6Bexist2: "",
+      c_n_e_6Bexist3: "",
+      c_n_e_6Cnew1: "",
+      c_n_e_6C1exist1: "",
+      c_n_e_6C1exist2: "",
+      c_n_e_6C1exist3: "",
+      c_n_e_6C2new1: "",
+      c_n_e_6C2exist1: "",
+      c_n_e_6C2exist2: "",
+      c_n_e_6C2exist3: "",
+      c_n_e_6Dnew1: "",
+      c_n_e_6Dexist1: "",
+      c_n_e_6Dexist2: "",
+      c_n_e_6Eexist3: "",
+      c_n_e_6Enew1: "",
+      c_n_e_6Eexist1: "",
+      c_n_e_6Eexist2: "",
+      c_n_e_6Eexist3: "",
+      c_n_e_6Fnew1: "",
+      c_n_e_6Fexist1: "",
+      c_n_e_6Fexist2: "",
+      c_n_e_6Fexist3: "",
+      c_n_e_6Gnew1: "",
+      c_n_e_6Gexist1: "",
+      c_n_e_6Gexist2: "",
+      c_n_e_6Gexist3: "",
+      c_n_e_6totalnew: "",
+      c_n_e_6totalexist1: "",
+      c_n_e_6totalexist2: "",
+      c_n_e_6totalexist3: "",
+      c_n_e_7A1: "",
+      c_n_e_7A2: "",
+      c_n_e_7A3: "",
+      c_n_e_7A4: "",
+      c_n_e_7A5: "",
+      c_n_e_7A6: "",
+      c_n_e_7A6total: "",
+      c_n_e_7B1: "",
+      c_n_e_7B2: "",
+      c_n_e_7B3: "",
+      c_n_e_7B4: "",
+      c_n_e_7B5: "",
+      c_n_e_7C1: "",
+      c_n_e_7C2: "",
+      c_n_e_7C3: "",
+      c_n_e_7C4: "",
+      c_n_e_7D1: "",
+      c_n_e_7D2: "",
+      c_n_e_7D3: "",
+      c_n_e_7D4: "",
+      c_n_e_8A1: "",
+      c_n_e_8A2: "",
+      c_n_e_8A3: "",
+      c_n_e_8A4: "",
+      c_n_e_8B1: "",
+      c_n_e_8B2: "",
+      c_n_e_8B3: "",
+      c_n_e_8B4: "",
+      c_n_e_8B5: "",
+      c_n_e_9Aai: "",
+      c_n_e_9Aaii: "",
+      c_n_e_9Aaiii: "",
+      c_n_e_9Aaiv: "",
+      c_n_e_9Aav: "",
+      c_n_e_9Aavi: "",
+      c_n_e_9Abi: "",
+      c_n_e_9Abii: "",
+      c_n_e_9Aci: "",
+      c_n_e_9Acii: "",
+      c_n_e_10: "",
+      c_n_e_11A1: "",
+      c_n_e_11A21: "",
+      c_n_e_11A22: "",
+      c_n_e_11A31: "",
+      c_n_e_11A32: "",
+      c_n_e_11A4: "",
+      c_n_e_11B1: "",
+      c_n_e_11B21: "",
+      c_n_e_11B22: "",
+      c_n_e_11B31: "",
+      c_n_e_11B32: "",
+      c_n_e_11B4: "",
+      c_n_e_12A1: "",
+      c_n_e_12A21: "",
+      c_n_e_12A22: "",
+      c_n_e_12Bi: "",
+      c_n_e_12Bii1: "",
+      c_n_e_12Bii2: "",
+      c_n_e_12Biii1: "",
+      c_n_e_12Biii2: "",
     });
     onMounted(() => {});
     return {
-     
-
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
