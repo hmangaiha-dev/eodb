@@ -53,8 +53,8 @@
       </div>
     </div>
 
-    <div :class="[ $q.screen.gt.xs ? 'justify-start' : 'justify-center' ]" class="row q-mt-lg q-col-gutter-md">
-      <div
+    <div :class="[ $q.screen.gt.xs ? 'justify-start ' : 'justify-center' ]" class=" q-mx-auto row q-mt-lg q-col-gutter-md">
+      <div 
         v-for="dept in depts"
         :key="dept.serial"
         class="col-lg-3 col-sm-6 col-xs-10"
