@@ -597,7 +597,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 import { ref } from "vue";
@@ -652,11 +652,36 @@ export default {
       lsc_details: [{ name: "", address: "", kum: "", caste: "" }],
       rows: 1,
     });
-    onMounted(() => {
-      console.log("rows", formData.rows);
+    watch(store.state.globalData.common, () => {
+      console.log("watch patta");
+      storeA()
+    });
+
+    const storeA = () => {
+      const { applicant_name, address, email } =
+        store.state.globalData.common.partA;
+
+      formData.land_revenue_patta_one = applicant_name;
+      (formData.land_revenue_patta_four = address),
+        (formData.land_revenue_patta_sixteen_b = email);
+    };
+
+    onMounted(async () => {
+      return storeA();
+      watch();
+      return;
+      const { applicant_name, address, email } = await store.state.globalData
+        .common.partA;
+
+      formData.land_revenue_patta_one = applicant_name;
+      (formData.land_revenue_patta_four = address),
+        (formData.land_revenue_patta_sixteen_b = email);
+      console.log("periodic patta", store.state.globalData.common.partA);
+      // console.log('periodic patta',applicant_name);
     });
     return {
       formData,
+      storeA,
       addRow: () => {
         formData.lsc_details.push({
           name: "",

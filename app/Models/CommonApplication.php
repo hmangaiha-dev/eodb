@@ -10,12 +10,18 @@ class CommonApplication extends Model
     use HasFactory;
 
 
-    protected $fillable = ['user_id','body'];
+    protected $fillable = ['user_id','status'];
 
 
 
     public function attachments()
     {
         return $this->morphMany(Attachment::class, 'owner');
+    }
+
+    public function partA()
+    {
+        return $this->hasOne(PartA::class,'common_id','id');
+
     }
 }

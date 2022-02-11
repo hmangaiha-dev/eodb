@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApplicationFormController;
+use App\Http\Controllers\CommonApplicationController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\InvestorProfileController;
@@ -51,6 +52,12 @@ Route::group(['prefix' => 'investor/applications', 'middleware' => 'auth:sanctum
 Route::group(['prefix' => 'investor/caf', 'middleware' => 'auth:sanctum'], function () {
     Route::post('store', [InvestorController::class, 'store']);
     Route::get('{application}', [InvestorController::class, 'detail'])->where('application', '[0-9]+');
+});
+
+
+Route::group(['prefix' => 'investor/common-applications', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('', [CommonApplicationController::class, 'getCommonApplication']);
+    // Route::get('{application}', [InvestorController::class, 'detail'])->where('application', '[0-9]+');
 });
 
 

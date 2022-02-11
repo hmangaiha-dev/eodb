@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             ApplicationProfileSeeder::class,
             ServiceCategorySeeder::class,
             InvestorSeeder::class,
-            OfficeSeeder::class
+            OfficeSeeder::class,
+            CommonApplicationSeeder::class
         ]);
 
 

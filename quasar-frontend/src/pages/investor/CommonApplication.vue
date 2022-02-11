@@ -1,6 +1,5 @@
 <template>
   <q-page>
-    
     <div class="row q-py-sm items-center q-col-gutter-md">
       <h1 class="ztitle col-12">Common Application Form</h1>
       <q-tabs
@@ -147,6 +146,7 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
+import { api } from "src/boot/axios";
 
 import PersonalDetails from "./form/PersonalDetails.vue";
 import FirmDetails from "./form/FirmDetails.vue";
@@ -157,6 +157,8 @@ import PartE from "./form/PartE.vue";
 import PartF from "./form/PartF.vue";
 import PartG from "./form/PartG.vue";
 import Declaration from "./form/Declaration.vue";
+import { useRouter, useRoute } from "vue-router";
+// import { useStore } from "vuex";
 
 export default {
   components: {
@@ -181,6 +183,8 @@ export default {
     const partGRef = ref(null);
     const declarationRef = ref(null);
     const tab = ref("a");
+    const router = useRouter();
+    const store = useStore();
 
     const toggle = (val) => {
       tab.value = val;
@@ -200,10 +204,28 @@ export default {
       }
     };
 
+    onMounted(() => {
+      console.log('dispatching');
+     store.dispatch('globalData/fetchCommonData')
+    });
+
     const watchTab = (oldValue, newValue) => {
       console.log("new and old", oldValue, newValue);
     };
     const finalSubmit = () => {
+      api
+        .get("/investor/common-applications")
+        .then((res) => {
+          console.log("response value", res.data);
+          // q.notify({
+          //   message: "Application submitted successfully",
+          //   color: "green",
+          // });
+          // router.push({ name: "investor:ongoing" });
+        })
+        .catch((err) => console.log("error", err));
+
+      return;
       console.log("final submit");
 
       var applications = [
@@ -231,12 +253,12 @@ export default {
       console.log("formDatas", applications);
     };
 
-    const store = useStore();
-    const draft = store.getters["applicantData/getCurrentDraft"];
-    const currentUser = store.getters["auth/getCurrentUser"];
+    // const store = useStore();
+    // const draft = store.getters["applicantData/getCurrentDraft"];
+    // const currentUser = store.getters["auth/getCurrentUser"];
 
     const formData = reactive({});
-    onMounted(() => {});
+
     return {
       tab,
       applicantRef,

@@ -265,9 +265,10 @@ export default {
     const rightDrawerOpen = ref(false);
     const menuItems = reactive([{}]);
 
-    onMounted(() => {
+    onMounted(async() => {
       console.log('dsfsf');
        store.dispatch("globalData/fetchDeptServices");
+       await store.dispatch('globalData/fetchCommonData')
 
 
       console.log('investor service',store.state.globalData);

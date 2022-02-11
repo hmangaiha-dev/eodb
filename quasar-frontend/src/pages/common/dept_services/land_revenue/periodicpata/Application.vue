@@ -89,10 +89,11 @@ export default {
         .catch((err) => console.log("error", err));
     };
 
-    onMounted(() => {});
+   
     return {
       applicantRef,
       q,
+      store,
       submit,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

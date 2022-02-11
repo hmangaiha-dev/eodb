@@ -208,24 +208,16 @@ export default {
     const formData = reactive({
       prop_name: "",
       designation: "",
-
       enterprise_name: "",
-
       enterprise_type: "",
       total_directors: "",
-
       pan_no: "",
-
       pan_card: null,
-
       aadhaar_no: "",
-
       passport_no: "",
-
       is_applicant_nri: "",
       tin_no: "",
       tin_cert: null,
-
       cst_no: "",
       cst_cert: null,
       mou_deed: null,
