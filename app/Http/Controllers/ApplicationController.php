@@ -85,6 +85,7 @@ class ApplicationController extends Controller
 
     public function submitApplication(Request $request)
     {
+        //     return $request->file();
 
 
         $this->validate($request, [
@@ -105,11 +106,40 @@ class ApplicationController extends Controller
             'department_id' => $request->get('department_id'),
             'current_state' => 'submitted',
         ]);
+
+
+
+
         $application->states()->create([
             'name' => 'submitted',
             'remark' => 'Application submitted at ' . now()->toDateString()
         ]);
         $application->office()->attach($appProfile->office_id);
+
+        if ($request->application_code == 'LAND_REVENUE_LSC' || $request->application_code == 'LAND_REVENUE_PATTA' || $request->application_code == 'ENV_FOREST_BAMBOO') {
+            if ($request->application_code == 'ENV_FOREST_BAMBOO') {
+                $arrs =  (json_decode($request->bamboo_particulars));
+                foreach ($arrs as $arr) {
+                    $application->bamboos()->create(
+                        (array)$arr
+                    );
+                }
+            } else {
+                $arrs =  (json_decode($request->lsc_details));
+                foreach ($arrs as $arr) {
+                    $application->lscDetails()->create(
+                        (array)$arr
+                        // 'name' => $arr->name,
+                        // 'address' => $arr->address,
+                        // 'kum' => $arr->kum,
+                        // 'caste' => $arr->caste,
+                    );
+                }
+            }
+            // $application->lscDetails()->createMany($request->lsc_details);
+
+        }
+        // return $application;
 
         DB::transaction(function ($cb) use ($appProfile, $request, $application) {
             //        $formData=$request->except(['application_code', 'department_id']);
@@ -194,8 +224,8 @@ class ApplicationController extends Controller
     public function getCertificates(Request $request, Application $model)
     {
         return response()->json([
-            'list'=>$model->certificates()->get()
-        ],200);
+            'list' => $model->certificates()->get()
+        ], 200);
     }
     public function createCertificate(Request $request, Application $model)
     {
@@ -214,7 +244,7 @@ class ApplicationController extends Controller
         ], 200);
     }
 
-    public function deleteCertificate(Request $request, Application $model,$id)
+    public function deleteCertificate(Request $request, Application $model, $id)
     {
         $model->certificates()->find($id)->delete();
         return response()->json([
@@ -226,32 +256,45 @@ class ApplicationController extends Controller
 
     public function getPrint(Request $request, Application $model)
     {
-        $appProfile=$model->profile()->first();
-//        $appProfile = new ApplicationProfile();
-        $template=$appProfile?->printTemplate()->first()->content ?? '';
+        $appProfile = $model->profile()->first();
+        //        $appProfile = new ApplicationProfile();
+        $template = $appProfile?->printTemplate()->first()->content ?? '';
 
-        $vars = $model->applicationValues()->get()->flatMap(fn($item) => [
+        $vars = $model->applicationValues()->get()->flatMap(fn ($item) => [
             "{{{$item->field_key}}}" => $item->field_value
         ])->toArray();
 
-        $result=$this->replaceTemplate($template, $vars);
+        if ($model->application_code == 'LAND_REVENUE_LSC' || $model->application_code == 'LAND_REVENUE_PATTA') {
+            $details = $model->lscDetails()->get();
+            $views = view('lsc.table', ["details" => $details, 'code' => $model->application_code])->render();
+            $content = [
+                "{{content}}" => $views
+            ];
+
+            $vars = $vars + $content;
+        }
+
+        $result = $this->replaceTemplate($template, $vars);
 
         return response()->json([
-            'template'=>$result,
-            'application'=>$model
+            'template' => $result,
+            'application' => $model
         ], 200);
     }
 
     public function getAttachment(Request $request, Application $model)
     {
         return response()->json([
-            'list'=>$model->attachments()->get(),
+            'list' => $model->attachments()->get(),
         ], 200);
     }
 
-    private function replaceTemplate($str,$replace_vars){
+    private function replaceTemplate($str, $replace_vars)
+    {
         $keys = array_keys($replace_vars);
+        // dd($keys);
+        // return $str;
         $values = array_values($replace_vars);
-        return Str::replace($keys,$values,$str);
+        return Str::replace($keys, $values, $str);
     }
 }

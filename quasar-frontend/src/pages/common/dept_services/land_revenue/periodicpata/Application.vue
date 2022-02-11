@@ -5,7 +5,7 @@
     <div class="col-12 ztitle text-center">
      APPLICATION FOR PERIODIC PATTA (PERIODIC PATTA DILNA)
     </div>
-    <q-form @submit.prevent="" class="row">
+    <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />
@@ -24,13 +24,16 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
-import { date } from "quasar";
+import { onMounted, ref } from "vue";
+import { useQuasar } from "quasar";
+// import { useQuasar } from "quasar";
+
+import { api } from "src/boot/axios";
+import { useRouter } from "vue-router";
 
 import Form from "./Form.vue";
 // import Part2 from "./Part2.vue";
 // import Document from "./Document.vue";
-
 
 export default {
   components: {
@@ -40,33 +43,57 @@ export default {
   },
   setup(props, context) {
     const store = useStore();
-    // const draft = store.getters["applicantData/getCurrentDraft"];
-    // const currentUser = store.getters["auth/getCurrentUser"];
-    
-    const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: "",
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
-    });
-  
+    const q = useQuasar();
+
+    const router = useRouter();
+    const applicantRef = ref(null);
+
+    const submit = () => {
+      var formData = {};
+
+      // return console.log(q);
+
+      formData = Object.assign(formData, applicantRef.value.formData);
+
+
+
+      var formDatas = new FormData();
+
+      
+
+       for (let data in formData) {
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+
+      formDatas.delete('lsc_details');
+      // return console.log('lsc_details',(formData.lsc_details))
+
+
+      formDatas.append('lsc_details',JSON.stringify(formData.lsc_details))
+
+
+
+      
+
+      api
+        .post("/applications/submit", formDatas)
+        .then((res) => {
+          // return console.log("response value", res.data);
+          q.notify({
+            message: "Application submitted successfully",
+            color: "green",
+          });
+          router.push({ name: "investor:ongoing" });
+        })
+        .catch((err) => console.log("error", err));
+    };
+
+    onMounted(() => {});
     return {
-    
-    
+      applicantRef,
+      q,
+      submit,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

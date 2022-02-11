@@ -296,6 +296,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_1_type"
                 dense
                 outlined
               />
@@ -305,6 +306,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_1_capacity"
                 dense
                 outlined
               />
@@ -314,6 +316,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_1_qnty"
                 dense
                 outlined
               />
@@ -323,6 +326,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_1_make"
+
                 dense
                 outlined
               />
@@ -332,6 +337,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_1_explosive"
                 dense
                 outlined
               />
@@ -342,6 +348,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_1_mfg"
+
                 dense
                 outlined
               />
@@ -351,6 +359,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_1_purchase"
+
                 dense
                 outlined
               />
@@ -360,6 +370,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_1_remarks"
+
                 dense
                 outlined
               />
@@ -373,6 +385,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_2_type"
                 dense
                 outlined
               />
@@ -382,6 +395,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_2_capacity"
                 dense
                 outlined
               />
@@ -391,6 +405,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_2_qnty"
                 dense
                 outlined
               />
@@ -400,6 +415,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_2_make"
+
                 dense
                 outlined
               />
@@ -409,6 +426,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_2_explosive"
                 dense
                 outlined
               />
@@ -419,6 +437,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_2_mfg"
+
                 dense
                 outlined
               />
@@ -428,6 +448,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_2_purchase"
+
                 dense
                 outlined
               />
@@ -437,19 +459,22 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_2_remarks"
+
                 dense
                 outlined
               />
             </td>
           </tr>
 
-          <tr>
+         <tr>
             <td>3.</td>
             <td>
               <q-input
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_3_type"
                 dense
                 outlined
               />
@@ -459,6 +484,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_3_capacity"
                 dense
                 outlined
               />
@@ -468,6 +494,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_3_qnty"
                 dense
                 outlined
               />
@@ -477,6 +504,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_3_make"
+
                 dense
                 outlined
               />
@@ -486,6 +515,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_3_explosive"
                 dense
                 outlined
               />
@@ -496,6 +526,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_3_mfg"
+
                 dense
                 outlined
               />
@@ -505,6 +537,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_3_purchase"
+
                 dense
                 outlined
               />
@@ -514,6 +548,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_3_remarks"
+
                 dense
                 outlined
               />
@@ -527,6 +563,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_4_type"
                 dense
                 outlined
               />
@@ -536,6 +573,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_4_capacity"
                 dense
                 outlined
               />
@@ -545,6 +583,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_4_qnty"
                 dense
                 outlined
               />
@@ -554,6 +593,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_4_make"
+
                 dense
                 outlined
               />
@@ -563,6 +604,7 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_4_explosive"
                 dense
                 outlined
               />
@@ -573,6 +615,8 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_4_mfg"
+
                 dense
                 outlined
               />
@@ -582,41 +626,111 @@
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                 v-model="formData.fire_eighteen_4_purchase"
+
                 dense
                 outlined
               />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                 v-model="formData.fire_eighteen_4_remarks"
+
+                dense
+                outlined
+              />
             </td>
           </tr>
 
-          <tr>
+        <tr>
             <td>5.</td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                 v-model="formData.fire_eighteen_5_type"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                 v-model="formData.fire_eighteen_5_capacity"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                 v-model="formData.fire_eighteen_5_qnty"
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                 v-model="formData.fire_eighteen_5_make"
+
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                 v-model="formData.fire_eighteen_5_explosive"
+                dense
+                outlined
+              />
             </td>
 
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                 v-model="formData.fire_eighteen_5_mfg"
+
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                 v-model="formData.fire_eighteen_5_purchase"
+
+                dense
+                outlined
+              />
             </td>
             <td>
-              <q-input dense outlined />
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                 v-model="formData.fire_eighteen_5_remarks"
+
+                dense
+                outlined
+              />
             </td>
           </tr>
         </tbody>
@@ -643,7 +757,14 @@
             (a) Under Ground Static Water Storage Tank with capacity.
             <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_nineteen_a" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.fire_nineteen_a"
+            dense
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -651,14 +772,28 @@
             >(b) Terrace Tank with capacity
             <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_nineteen_b" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.fire_nineteen_b"
+            dense
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender"
             >(c) Water source <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_nineteen_c" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.fire_nineteen_c"
+            dense
+            outlined
+          />
         </div>
       </div>
     </div>
@@ -671,7 +806,14 @@
             a) Pump House at Ground level
             <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twenty_a" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.fire_twenty_a"
+            dense
+            outlined
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -679,7 +821,14 @@
             >a) Pump House at Ground level
             <span class="asterisk">*</span></label
           >
-          <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twenty_b" dense outlined />
+          <q-input
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.fire_twenty_b"
+            dense
+            outlined
+          />
         </div>
       </div>
     </div>
@@ -689,7 +838,12 @@
         >21 Detail of safety equipments, if Suits, Entry Suit , B.A. Set etc
         <span class="asterisk">*</span></label
       >
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentyone" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_twentyone"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -698,7 +852,12 @@
         operation of first aid fire fighting equipments installed in the
         premises. <span class="asterisk">*</span></label
       >
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentytwo" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_twentytwo"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -706,7 +865,12 @@
         >23 Detail of flammable and hazardous materials alongwith Types and
         Quantity <span class="asterisk">*</span></label
       >
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentythree" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_twentythree"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -714,7 +878,12 @@
         >24 Whether P. A system is installed
         <span class="asterisk">*</span></label
       >
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentyfour" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_twentyfour"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -722,14 +891,24 @@
         >25 Compliance/ recommendation, if any, made in previous inspection
         <span class="asterisk">*</span></label
       >
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentyfive" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_twentyfive"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
         >26 Other information <span class="asterisk">*</span></label
       >
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="formData.fire_twentysix" dense outlined />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.fire_twentysix"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -764,7 +943,6 @@ import { onMounted } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
-
 export default {
   setup(props, context) {
     const store = useStore();
@@ -797,7 +975,47 @@ export default {
       fire_sixteen: "",
       fire_seventeen: "",
       fire_eighteen: "",
-      fire_tick_any: [],
+      fire_eighteen_1_type: "",
+      fire_eighteen_1_capacity: "",
+      fire_eighteen_1_qnty: "",
+      fire_eighteen_1_make: "",
+      fire_eighteen_1_explosive: "",
+      fire_eighteen_1_mfg: "",
+      fire_eighteen_1_purchase: "",
+      fire_eighteen_1_remarks: "",
+      fire_eighteen_2_type: "",
+      fire_eighteen_2_capacity: "",
+      fire_eighteen_2_qnty: "",
+      fire_eighteen_2_make: "",
+      fire_eighteen_2_explosive: "",
+      fire_eighteen_2_mfg: "",
+      fire_eighteen_2_purchase: "",
+      fire_eighteen_2_remarks: "",
+      fire_eighteen_3_type: "",
+      fire_eighteen_3_capacity: "",
+      fire_eighteen_3_qnty: "",
+      fire_eighteen_3_make: "",
+      fire_eighteen_3_explosive: "",
+      fire_eighteen_3_mfg: "",
+      fire_eighteen_3_purchase: "",
+      fire_eighteen_3_remarks: "",
+      fire_eighteen_4_type: "",
+      fire_eighteen_4_capacity: "",
+      fire_eighteen_4_qnty: "",
+      fire_eighteen_4_make: "",
+      fire_eighteen_4_explosive: "",
+      fire_eighteen_4_mfg: "",
+      fire_eighteen_4_purchase: "",
+      fire_eighteen_4_remarks: "",
+      fire_eighteen_5_type: "",
+      fire_eighteen_5_capacity: "",
+      fire_eighteen_5_qnty: "",
+      fire_eighteen_5_make: "",
+      fire_eighteen_5_explosive: "",
+      fire_eighteen_5_mfg: "",
+      fire_eighteen_5_purchase: "",
+      fire_eighteen_5_remarks: "",
+      fire_tick_any: ['b) Riser'],
       fire_nineteen: "",
       fire_nineteen_a: "",
       fire_nineteen_b: "",

@@ -12,7 +12,6 @@ const BASE_URL ='http://164.100.124.152/api';
 const LOCAL_BASE_URL = 'http://localhost:8000/api';
 const api = axios.create({ baseURL: process.env.DEV?LOCAL_BASE_URL:BASE_URL})
 
-
 export default boot(({ app,router,store }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
 // api.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -41,10 +40,6 @@ export default boot(({ app,router,store }) => {
       store.dispatch('authData/setCurrentUser', null);
       store.dispatch('authData/setToken', null)
       router.replace({name:"home"});
-      Notify.create({
-            message: "Session/Token expired",
-            position: "top",
-          });
     }
 
     return Promise.reject(error,);

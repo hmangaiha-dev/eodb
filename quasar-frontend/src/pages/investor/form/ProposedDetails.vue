@@ -1,24 +1,30 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <div class="col-xs-12 zsubtitle">Proposed Site details</div>
+    <div class="col-xs-12 zsubtitle">5.Proposed Site details</div>
 
-    <div class="col-xs-12 col-md-3">
+    <div class="col-xs-12">
       <label class="zlabel" for="name">
-        Plot Requirement in Industrial Area*
+        5.1 Plot Requirement in Industrial Area*
         <span class="asterisk"> *</span></label
       >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <q-radio v-model="formData.proposed_plot_requirement" val="applicable" label="Applicable" />
-      <q-radio v-model="formData.proposed_plot_requirement" val="not applicable" label="Not Applicable" />
+      <div class="col-xs-12 col-sm-10 zlabel">
+        <q-radio
+          v-model="formData.proposed_plot_requirement"
+          val="applicable"
+          label="Applicable"
+        />
+        <q-radio
+          v-model="formData.proposed_plot_requirement"
+          val="not applicable"
+          label="Not Applicable"
+        />
+      </div>
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="dob" type="date"> Industrial Area* </label>
-    </div>
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-6">
+      <label class="zlabel" for="dob" type="date"> 5.2 Industrial Area* </label>
       <q-select
-        dense
+        
         dropdown-icon="expand_more"
         outlined
         v-model="formData.proposed_industrial_area"
@@ -26,33 +32,39 @@
       />
     </div>
 
-    <div class="col-xs-12 col-md-3">
+    <div class="col-xs-12 col-md-6">
       <label class="zlabel" for="gender"
-        >Total Proposed Project Area(Sq. meter)*
+        >5.3 Total Proposed Project Area(Sq. meter)*
         <span class="asterisk">*</span></label
       >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"   dense outlined v-model="formData.proposed_total_proposed_area" />
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <label class="zlabel" for="pob"> Total Built-up Area(Sq. meter)* </label>
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"   dense outlined v-model="formData.proposed_total_built_area" />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        
+        outlined
+        v-model="formData.proposed_total_proposed_area"
+      />
     </div>
 
-    <div class="col-xs-12 col-md-3">
+    <div class="col-xs-12 col-md-6">
+      <label class="zlabel" for="pob"> 5.4 Total Built-up Area(Sq. meter)* </label>
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        
+        outlined
+        v-model="formData.proposed_total_built_area"
+      />
+    </div>
+
+    <div class="col-xs-12 col-md-6">
       <label class="zlabel" for="gender">
-        City/Town* <span class="asterisk">*</span></label
+        5.5 City/Town* <span class="asterisk">*</span></label
       >
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <!-- <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  dense outlined v-model="formData.designation" type="text" /> -->
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"   dense outlined v-model="formData.proposed_city_town" />
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        
+        outlined
+        v-model="formData.proposed_city_town"
+      />
     </div>
 
     <div class="col-xs-12" />
@@ -65,7 +77,6 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 
-
 export default {
   setup(props, context) {
     const store = useStore();
@@ -73,12 +84,11 @@ export default {
     const currentUser = store.getters["auth/getCurrentUser"];
 
     const formData = reactive({
-      proposed_industrial_area: '',
-      proposed_plot_requirement: '',
-      proposed_total_proposed_area: '',
-      proposed_total_built_area: '',
-      proposed_city_town: ''
-
+      proposed_plot_requirement: "",
+      proposed_industrial_area: "",
+      proposed_total_proposed_area: "",
+      proposed_total_built_area: "",
+      proposed_city_town: "",
     });
     onMounted(() => {});
     return {

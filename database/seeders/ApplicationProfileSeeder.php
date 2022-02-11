@@ -18,6 +18,7 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'C&E_POWER_GENERATING', 'title' => 'APPLICATION FORM FOR CLAIM OF SUBSIDY ON POWER GENERATING', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'C&E_POWER_LINE', 'title' => 'APPLICATION FORM FOR CLAIM OF SUBSIDY ON POWER GENERATING(Line)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'C&E_FORM_9', 'title' => 'APPLICATION FOR CLAIM OF INTEREST SUBSIDY(COMMERCE INDUSTRIES - FORM9)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'C&E_FORM_3', 'title' => 'CLAIMING OF CENTRAL CAPITAL INVESTMENT SUBSIDY(COMMERCE INDUSTRIES - FORM3)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'C&E_COST_PROJECT', 'title' => 'APPLICATION FOR CLAIM SUBSIDY ON COST OF PROJECT REPORT', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POWER_NEW_CONNECTION', 'title' => 'Application for - New Connection (Low Tension Service)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POWER_NEW_CONNECTION2', 'title' => 'New Connection (High Tension / Extra High-Tension Service)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
@@ -35,6 +36,8 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'LAND_REVENUE_LAND_DIVERSION', 'title' => 'APPLICATION FOR DIVERSION OF USE OF LAND', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LAND_REVENUE_LAND_TRANSFER', 'title' => 'APPLICATION FOR TRANSFER OF OWNERSHIP OF LAND HOLDING', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LAND_REVENUE_ALLOTMENT_GOVERNMENT', 'title' => 'APPLICATION FOR THE ALLOTMENT OF LAND TO THE GOVERNMENT DEPARTMENT/CORPORATION/BOARDS ETC. ON LAND LEASE/LIMITED LEASE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'LAND_REVENUE_LSC', 'title' => 'APPLICATION FOR PARTITION OF LSC', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'LAND_REVENUE_PATTA', 'title' => 'PERIODIC PATTA (PERIODIC PATTA DILNA)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
 
         ['code' => 'POLLUTION_CONSENT_INDUSTRIES', 'title' => 'CONSENT FOR ESTABLISHMENT OF INDUSTRIES ETC', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_ACCIDENT_MEDICAL', 'title' => 'ACCIDENT REPORTING FOR BIO-MEDICAL WASTES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
@@ -52,6 +55,7 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'POLLUTION_FORM_17', 'title' => 'Application For Obtaining Authorization Under Construction & Demolition Waste', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_18', 'title' => 'FORM FOR FILING RETURNS BY AUCTIONEER OF USED BATTERIES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POLLUTION_FORM_19', 'title' => 'APPLICATION FOR AUTHORISATION OR RENEWAL OF AUTHORISATION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'POLLUTION_FORM_8', 'title' => 'ANNUAL REPORT TO BE SUBMITTED BY THE OPERATOR OF FACILITY TO THE LOCAL BODY(POLLUTION FORM 9)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
 
 
         ['code' => 'FOOD_DRUG_GENERAL_RETAIL', 'title' => 'Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In Schedule X', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
@@ -60,6 +64,7 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'FOOD_DRUG_FORM19AA', 'title' => 'APPLICATION FOR GRANT OR RENEWAL OF [LICENCE TO SELL, STOCK OR EXHIBIT OR OFFER FOR SALE BY WHOLESALE OR DISTRIBUTE] DRUGS FROM A MOTOR VEHICLE', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'FOOD_DRUG_FORM19B', 'title' => 'APPLICATION FOR GRANT OR RENEWAL OF A (LICENCE TO SELL, STOCK, EXHIBIT OR OFFER FOR SALE, OR DISTRIBUTE) HOMOEOPATHIC MEDICINES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'ENV_FOREST_FELL_TREES', 'title' => 'APPLICATION FOR PERMISSION TO FELL TREES/TREE PLANTATION IN NON-FOREST AREA', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        ['code' => 'ENV_FOREST_BAMBOO', 'title' => 'REGISTRATION OF PRIVATE BAMBOO PLANTATION IN NON-FOREST', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POWER_CHANGE_NAME', 'title' => ' Application Form - Change in Name of Registered Consumer', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POWER_OWNERSHIP_TRANSFER', 'title' => 'Application Form - Transfer of Ownership to Legal Heir', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'POWER_CONVERSION_SERVICE', 'title' => 'Application form - Conversion of Services / Change of Consumer Category / Shifting of Connection', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
