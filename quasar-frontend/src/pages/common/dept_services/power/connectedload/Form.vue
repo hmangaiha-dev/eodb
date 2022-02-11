@@ -229,17 +229,22 @@ Heating/room heater) </td>
 
     </table>
     </div>
+    <div class="col-md-9 col-xs-10 q-mx-auto">
+      <p>Note: The following shall be adopted to arrive at rating of appliances : 1HP = 746 W, KW= 0.85of KVA, KW of Welding Machine (if name plate is illegible) = 25 x highest rating
+of welding current (A) x Power factor (Pf as 0.60), Spare/unused plug or point 1/3rd of rating given herein shall be taken as connected load (Plug 5 A = 100W, Plug 15A
+= 1000W, Light/fan point = 60W).</p>
+    </div>
 
 
 
-    <div class="col-12 zlabel">
+    <div class="col-md-9 zlabel q-mx-auto">
       Note: The following documents are attached with the application form: (if
       applicable)
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-10 q-mx-auto">
       <label for="" class="zlabel">Signature of consumer/applicant </label>
-      <q-file v-model="formData.power_connected_load_signature" outlined>
+      <q-file v-model="formData.power_connected_load_signature" outlined label="Select file">
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>

@@ -396,6 +396,15 @@ const SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES=[
 ];
 
 
+const SIGN_POWER_CONNECTED_LOAD=[
+    'size'=>2048,
+    'mime'=>'images/*',
+    'application_code'=>'POWER_CONNECTED_LOAD',
+    'key'=>'power_connected_load_signature',
+    'label'=>'Signature of applicant',
+    'disk'=>'public',
+    'folder'=>'power/7/attachments'
+];
 
 
 
@@ -525,6 +534,9 @@ const SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES=[
         'power_disconnection_last_bill' => self::POWER_DISCONNECTION_LAST_BILL,
         'power_disconnection_last_payment_receipt' => self::POWER_DISCONNECTION_PAYMENT_RECEIPT,
         'power_disconnection_last_signature' => self::POWER_DISCONNECTION_PAYMENT_SIGNATURE,
+
+        'power_connected_load_signature' => self::SIGN_POWER_CONNECTED_LOAD,
+
 
         //FOOD DRUG
         'food_drug_general_doc_one' => self::FOOD_DRUG_GENERAL_RETAIL_FEE_PEKNA,
