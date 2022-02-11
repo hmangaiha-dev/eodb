@@ -487,6 +487,14 @@ export default {
             ),
         },
         {
+          path: "connected-load",
+          name: "power:connected-load",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/connectedload/Application.vue"
+            ),
+        },
+        {
           path: "meter-complaints-or-request-for-testing",
           name: "power:meter-complaints",
           component: () =>
