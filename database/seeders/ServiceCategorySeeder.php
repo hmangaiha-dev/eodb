@@ -44,7 +44,7 @@ class ServiceCategorySeeder extends Seeder
     ];
     public function run()
     {
-        ServiceCategory::query()->upsert(self::categories,'code');
-        
+//        ServiceCategory::query()->upsert(self::categories,'code');
+
     }
 }

@@ -17,7 +17,7 @@
 
         <q-space />
 
-        <q-item   clickable class="gt-sm" :focused="selectedMenu==='home'"   @click="handleHome">
+        <q-item   clickable class="gt-sm" :focused="selectedMenu==='home'" active-class="text-primary"  @click="handleHome">
           <q-item-section>
             <q-item-label class="nav-item">Home</q-item-label>
           </q-item-section>

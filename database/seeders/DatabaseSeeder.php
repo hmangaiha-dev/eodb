@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             UserSeeder::class,
             DepartmentSeeder::class,
-            DepartmentServiceSeeder::class,
+//            DepartmentServiceSeeder::class,
             ApplicationProfileSeeder::class,
-            ServiceCategorySeeder::class,
+//            ServiceCategorySeeder::class,
             InvestorSeeder::class,
             OfficeSeeder::class
         ]);

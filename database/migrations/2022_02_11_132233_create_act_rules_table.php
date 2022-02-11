@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddArchivedColumnInApplicationTable extends Migration
+class CreateActRulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddArchivedColumnInApplicationTable extends Migration
      */
     public function up()
     {
-        Schema::table('applications', function (Blueprint $table) {
-            $table->string('archived')->default(false);
+        Schema::create('act_rules', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->unsignedInteger('department_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddArchivedColumnInApplicationTable extends Migration
      */
     public function down()
     {
-        Schema::table('application', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('act_rules');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDepartmentInfosTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateDepartmentInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('department_act_rules', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
+            $table->string('number');
+            $table->mediumText('subject');
+            $table->string('authority');
+            $table->date('issued_at');
+            $table->string('status')->default('published');//publish
+
             $table->unsignedInteger('department_id');
-            $table->text('body');
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ class CreateDepartmentInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('department_infos');
+        Schema::dropIfExists('notifications');
     }
 }

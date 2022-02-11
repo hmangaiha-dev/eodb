@@ -9,34 +9,16 @@ class DepartmentService extends Model
 {
     use HasFactory;
 
-    protected $appends = ['dept_name','category_type','dept_slug'];
-
-
-
-    public function category()
-    {
-        return $this->belongsTo(ServiceCategory::class,'category_id','id');
-    }
+    protected $appends = ['dept_name','dept_slug'];
 
 
     public function department()
     {
-        return $this->belongsTo(Department::class,'department_id','id');
+        return $this->belongsTo(Department::class);
     }
-
-
-    public function getDeptNameAttribute() {
-        return $this->department()->first()->dept_name;
-    }
-
-    public function getCategoryTypeAttribute()
-    {
-        return $this->category()->first()->name;
-    }
-
 
     public function getDeptSlugAttribute()
     {
-        return $this->department()->first()->slug;
+        return $this->department()->first()?->slug;
     }
 }

@@ -85,8 +85,11 @@ export default {
         {path: 'process-flows/create', name: 'process-flows:create', component: () => import('pages/admin/setting/process-flows/Create.vue')},
       ]
     },
-
-
+    {path: 'web/online-services', name: 'web:service', component: () => import('pages/admin/website/online-services/List.vue')},
+    {path: 'web/about', name: 'web:about', component: () => import('pages/admin/website/about/index.vue')},
+    {path: 'web/act', name: 'web:act', component: () => import('pages/admin/website/act/list.vue')},
+    {path: 'web/notification', name: 'web:notification', component: () => import('pages/admin/website/notification/index.vue')},
+    {path: 'web/other', name: 'web:other', component: () => import('pages/admin/website/other/index')},
   ]
 }
 

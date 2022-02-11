@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Department extends Model
 {
@@ -26,8 +27,18 @@ class Department extends Model
 
 
 
-    public function services()
+    public function services(): HasMany
     {
         return $this->hasMany(DepartmentService::class);
+    }
+
+    public function acts(): HasMany
+    {
+        return $this->hasMany(ActRule::class);
+    }
+
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
     }
 }

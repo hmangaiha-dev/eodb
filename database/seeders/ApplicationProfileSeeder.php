@@ -54,11 +54,6 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'POLLUTION_FORM_19', 'title' => 'APPLICATION FOR AUTHORISATION OR RENEWAL OF AUTHORISATION', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
 
 
-
-
-
-
-
         ['code' => 'FOOD_DRUG_GENERAL_RETAIL', 'title' => 'Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In Schedule X', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'FOOD_DRUG_RESTRICTED_RETAIL', 'title' => 'APPLICATION FOR GRANT OR RENEWAL OF A (LICENCE TO SELL, STOCK, EXHIBIT OR OFFER FOR SALE, OR DISTRIBUTE) HOMOEOPATHIC MEDICINES', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'FOOD_DRUG_WHOLESALE', 'title' => 'Application For Grant Or Renewal Of A [License To Sell, Stock, Exhibit Or Offer For Sale, Or Distribute] Drugs Other Than Those Specified In Schedule X', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
@@ -80,9 +75,6 @@ class ApplicationProfileSeeder extends Seeder
         ['code' => 'LABOUR_LICENCE_REGISTRATION', 'title' => 'APPLICATION FOR REGISTRATION AND GRANT OR RENEWAL OF LICENSE FOR THE YEAR AND NOTICE OF OCCUPATION SPECIFIED IN SECTIONS 6 & 7 OF THE ACT', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'LABOUR_CERTIFICATE_REGISTRATION', 'title' => 'APPLICATION FOR CERTIFICATE REGISTRATION OF ESTABLISHMENTS', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'GEOLOGY_MINING', 'title' => 'APPLICATION FOR MINING LEASE(Geology)', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
-
-
-
 
         // +$var,
 

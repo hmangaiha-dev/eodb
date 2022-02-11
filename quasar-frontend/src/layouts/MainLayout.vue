@@ -18,24 +18,9 @@
       </q-toolbar>
       <q-separator/>
       <q-toolbar class="scroll-y xs-hide container-lg q-pa-xs q-gutter-sm">
+
         <q-btn  :to="{name:'staff:dashboard'}" :class="$route.name==='staff:dashboard' ?'selected-menu':'' "
                flat outline label="My desk" color="primary" icon="dashboard"/>
-<!--        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Certificate">-->
-<!--          <q-list>-->
-<!--            <q-item :to="{name:'application:new'}" clickable v-close-popup>-->
-<!--              <q-item-section>-->
-<!--                <q-item-label>Unpaid</q-item-label>-->
-<!--              </q-item-section>-->
-<!--            </q-item>-->
-
-        <!--            <q-item :to="{name:'application:verified'}" clickable v-close-popup>-->
-        <!--              <q-item-section>-->
-        <!--                <q-item-label>Paid</q-item-label>-->
-        <!--              </q-item-section>-->
-        <!--            </q-item>-->
-
-<!--          </q-list>-->
-<!--        </q-btn-dropdown>-->
 
         <AdminNav/>
         <q-space/>
@@ -58,14 +43,6 @@
     </q-page-container>
 
     <q-footer elevated class="print-hide bg-grey-8 text-white">
-      <!-- <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
-          </q-avatar>
-          <div>Title</div>
-        </q-toolbar-title>
-      </q-toolbar> -->
      <MsegFooter/>
     </q-footer>
   </q-layout>

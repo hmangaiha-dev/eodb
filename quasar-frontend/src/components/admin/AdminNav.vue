@@ -45,6 +45,14 @@ export default {
             {route_name:'role:read',label:'Manage roles',leftIcon:'tag',rightIcon:'navigate_next'},
             {route_name:'district:read',label:'Master data',leftIcon:'tag',rightIcon:'navigate_next'}
           ]
+        } ,{id:'admin',label:'Web Management',icon:'public',
+          items:[
+            {route_name:'web:service',label:'Online Services',leftIcon:'tag',rightIcon:'navigate_next'},
+            {route_name:'web:about',label:'About us',leftIcon:'tag',rightIcon:'navigate_next'},
+            {route_name:'web:act',label:'Act & Rules',leftIcon:'tag',rightIcon:'navigate_next'},
+            {route_name:'web:notification',label:'Notification',leftIcon:'tag',rightIcon:'navigate_next'},
+            {route_name:'web:other',label:'Other Information',leftIcon:'tag',rightIcon:'navigate_next'}
+          ]
         }
       ]
     }

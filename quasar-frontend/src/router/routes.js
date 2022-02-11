@@ -3,6 +3,8 @@ import investor from "src/router/investor";
 import dev from "src/router/dev";
 import {checkAuth} from './investor'
 import { api } from "src/boot/axios";
+import service from "src/router/service";
+import test from "src/router/service";
 
 
 
@@ -25,7 +27,6 @@ export const checkAlreadyLoggedIn = async(to, from, next) => {
 };
 
 
-
 const routes = [
   {
     path: '/',
@@ -43,11 +44,9 @@ const routes = [
     ]
   },
 
-
   {...admin},
   {...investor},
   {...dev},
-
 
   // Always leave this as last one,
   // but you can also remove it
@@ -55,12 +54,12 @@ const routes = [
     path: '/403',
     name: 'access-denied',
     component: () => import('pages/common/error/AccessDenied.vue')
-  } ,{
+  }, {
     path: '/:catchAll(.*)*',
     name: 'invalid',
     component: () => import('pages/Error404.vue')
   }
-]
+];
 
 
 export default routes
