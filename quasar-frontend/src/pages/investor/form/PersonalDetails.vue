@@ -36,7 +36,12 @@
         </q-file>
         <!-- attach {{ formData.applicant_photo }} -->
         <!-- <router-link to="/"> </router-link> -->
-        <q-btn flat  color="primary" :label="formData.applicant_photo"  @click="showAttachment(formData.applicant_photo)" />
+        <q-btn
+          flat
+          color="primary"
+          :label="formData.applicant_photo"
+          @click="showAttachment(formData.applicant_photo)"
+        />
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender"
@@ -149,7 +154,7 @@
         <q-input
           :rules="[(val) => (val && val.length > 0) || 'Please type something']"
           id="adar"
-          v-model="formData.phone_no"
+          v-model="formData.mobile_no"
           item-aligned
           outlined
         />
@@ -207,8 +212,8 @@ export default {
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
 
-    const dialog = ref(false)
-    const attachment = ref("")
+    const dialog = ref(false);
+    const attachment = ref("");
 
     var formData = reactive({
       applicant_type: "",
@@ -227,21 +232,16 @@ export default {
       alt_email: "",
     });
     onMounted(() => {
-      console.log("mounted");
-   
+      getPersonalDetails();
     });
 
-    watch(store.state.globalData.common, () => {
+    const getPersonalDetails = () => {
       const objects = store.state.globalData.common.partA;
 
-      formData.applicant_type =
-        store.state.globalData.common.partA.applicant_type;
-      formData.applicant_photo =
-        store.state.globalData.common.partA.applicant_photo;
-      formData.applicant_name =
-        store.state.globalData.common.partA.applicant_name;
-      formData.applicant_caste =
-        store.state.globalData.common.partA.applicant_caste;
+      formData.applicant_type = store.state.globalData.common.partA.applicant_type;
+      formData.applicant_photo = store.state.globalData.common.partA.applicant_photo;
+      formData.applicant_name = store.state.globalData.common.partA.applicant_name;
+      formData.applicant_caste = store.state.globalData.common.partA.applicant_caste;
       formData.country = store.state.globalData.common.partA.country;
       formData.state = store.state.globalData.common.partA.state;
       formData.city_town = store.state.globalData.common.partA.city_town;
@@ -252,12 +252,10 @@ export default {
       formData.fax_no = store.state.globalData.common.partA.fax_no;
       formData.email = store.state.globalData.common.partA.email;
       formData.alt_email = store.state.globalData.common.partA.alt_email;
+    };
 
-      // let { Object.keys(formData) } =  store.state.globalData.common.partA;
-
-      // formData = Object.assign(formData, objects);
-
-      console.log("objects", objects);
+    watch(store.state.globalData.common, () => {
+      getPersonalDetails();
     });
     return {
       application_types: [
@@ -275,12 +273,13 @@ export default {
       formData,
       dialog,
       attachment,
-      showAttachment : (val) => {
-        console.log('dialog attach',val);
+      showAttachment: (val) => {
+        console.log("dialog attach", val);
         // return
         attachment.value = "http://localhost:8000/storage/" + val;
-        dialog.value = true
+        dialog.value = true;
       },
+      getPersonalDetails,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },
