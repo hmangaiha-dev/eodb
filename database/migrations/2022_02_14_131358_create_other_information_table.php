@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommonApplicationsTable extends Migration
+class CreateOtherInformationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +13,12 @@ class CreateCommonApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('common_applications', function (Blueprint $table) {
+        Schema::create('other_information', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->json('body');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+
+            $table->unsignedInteger('department_id');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateCommonApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('common_applications');
+        Schema::dropIfExists('other_information');
     }
 }

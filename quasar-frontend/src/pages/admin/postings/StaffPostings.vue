@@ -1,6 +1,6 @@
 <template>
   <q-page class="container-lg  q-my-md" padding>
-    <h1 class="ztitle">Staff posting</h1>
+    <p class="ztitle">Staff posting</p>
       <div class="col-xs-12">
         <q-table
           title="Staff posting"

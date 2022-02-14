@@ -25,10 +25,17 @@ class ActRuleController extends Controller
         ];
     }
 
-    public function detail(Request $request,ActRule $model)
+    public function detail(Request $request, ActRule $model)
     {
         return [
             'data' => $model
+        ];
+    }
+
+    public function download(Request $request, ActRule $model)
+    {
+        return [
+            'data' => $model->attachment()->first(),
         ];
     }
 
@@ -42,19 +49,23 @@ class ActRuleController extends Controller
         if (blank($department)) {
             abort(500, 'No posting found');
         }
-        $model = $department->acts()->create([
+
+        $model = $department->acts()->create(
             $request->only((new ActRule())->getFillable())
-        ]);
+        );
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $path = Storage::disk(Attachment::DISK)->put('acts', $file);
-            $model->attachments()->create(['mime' => $file->getMimeType(),
-                'original_name' => $file->getClientOriginalName(),
-                'label' => $file->getClientOriginalName(),
-                'size' => $file->getSize(),
-                'path' => $path]);
+            $model->attachment()->create([
+                    'mime' => $file->getMimeType(),
+                    'original_name' => $file->getClientOriginalName(),
+                    'label' => $file->getClientOriginalName(),
+                    'size' => $file->getSize(),
+                    'path' => $path
+                ]);
         }
         return [
+            'list' => $department->acts()->paginate(),
             'data' => $model,
             'message' => 'Act & rules saved successfully',
         ];
@@ -100,7 +111,7 @@ class ActRuleController extends Controller
         }
         $model->delete();
         return [
-            'list' => $department->notifications()->paginate(),
+            'list' => $department->acts()->paginate(),
             'message' => 'Act & Rules deleted successfully'
         ];
     }

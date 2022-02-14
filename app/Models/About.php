@@ -10,4 +10,9 @@ class About extends Model
     use HasFactory;
 
     protected $fillable = ['content'];
+
+    public function model()
+    {
+        $this->morphTo('model');
+    }
 }

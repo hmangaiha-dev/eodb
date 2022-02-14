@@ -20,7 +20,7 @@ class ActRule extends Model
         return $this->belongsTo(Department::class);
     }
 
-    public function attachments(): MorphOne
+    public function attachment(): MorphOne
     {
         return $this->morphOne(Attachment::class, 'owner');
     }

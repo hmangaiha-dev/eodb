@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
         $this->call([
             PermissionSeeder::class,
             UserSeeder::class,
@@ -28,19 +27,5 @@ class DatabaseSeeder extends Seeder
             InvestorSeeder::class,
             OfficeSeeder::class
         ]);
-
-
-        // Attachment::factory()->count(3)->create();
-
-
-        // $app = Application::find(1);
-
-        // $app->attachments()->create([
-        //     'original_name' => 'Signature',
-        //     'mime' => 'jpg',
-        //     'label' => 'Signature of the Applicant',
-        //     'size' => '2',
-        //     'path' => 'uploads'
-        // ]);
     }
 }

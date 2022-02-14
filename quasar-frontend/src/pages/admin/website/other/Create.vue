@@ -1,15 +1,15 @@
 <template>
     <q-card style="width: 450px" class="q-pa-lg">
       <q-form @submit="onSubmit" @reset="onReset">
-        <h1 class="zsubtitle q-py-md">New Act</h1>
+        <h1 class="zsubtitle q-py-md">New notification</h1>
 
-        <q-input v-model="formData.name"
+        <q-input v-model="formData.title"
                  outlined
-                 label="Name"
-                 @blur="delete localData.errors['name']"
-                 :error="localData.errors.hasOwnProperty('name')"
-                 :error-message="localData.errors['name']?.toString()"
-                 :rules="[ val => !!val || 'Name is required' ]"
+                 label="Title"
+                 @blur="delete localData.errors['title']"
+                 :error="localData.errors.hasOwnProperty('title')"
+                 :error-message="localData.errors['title']?.toString()"
+                 :rules="[ val => !!val || 'Title  is required' ]"
         />
 
         <q-input v-model="formData.description"
@@ -20,6 +20,8 @@
                  :error="localData.errors.hasOwnProperty('description')"
                  :error-message="localData.errors['description']?.toString()"
         />
+
+
         <q-file filled bottom-slots v-model="formData.attachment" label="Label" counter max-files="1">
           <template v-slot:before>
             <q-icon name="folder_open" />
@@ -48,10 +50,10 @@
 import {computed, reactive} from "@vue/reactivity";
 import {useStore} from "vuex";
 import {api} from "boot/axios";
-import {useQuasar} from "quasar";
+import {date, useQuasar} from "quasar";
 
 export default {
-  name: 'act-create',
+  name: 'other-create',
   emits: ['onCreated'],
   setup(props,context){
     const store = useStore();
@@ -61,19 +63,18 @@ export default {
       errors:{}
     })
     const formData=reactive({
-      name:'',
+      title:'',
       description:'',
-      attachment:''
+      attachment:null
     })
 
     const onSubmit=e=>{
       let data = new FormData();
-      data.append('name',formData.name)
+      data.append('title',formData.title)
       data.append('description',formData.description)
-      data.append('attachment',formData.attachment)
+      data.append('attachment', formData.attachment);
 
-
-      api.post('web/act-rule',data)
+      api.post('web/other',data)
       .then(res=>{
         q.notify({
           type:'positive',

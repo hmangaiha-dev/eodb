@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Attachment;
 use App\Models\Department;
 use App\Models\Notification;
+use App\Models\OtherInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class NotificationController extends Controller
+class InformationController extends Controller
 {
-    public function detail(Request $request,Notification $model)
+    public function detail(Request $request,OtherInformation $model)
     {
         return [
             'data' => $model
@@ -28,13 +29,13 @@ class NotificationController extends Controller
         }
         $search = $request->get('search');
         return [
-            'list' => $department->notifications()
+            'list' => $department->otherInformations()
                 ->when($search,fn($q)=>$q->where('number','LIKE',"$search")->orWhere('subject','LIKE',"$search"))
                 ->paginate(),
         ];
     }
 
-    public function download(Request $request, Notification $model)
+    public function download(Request $request, OtherInformation $model)
     {
         return [
             'data' => $model->attachment()->first(),
@@ -48,10 +49,9 @@ class NotificationController extends Controller
 
         $department = Department::query()->where('dept_code', $office->code)
             ->first();
-        if (blank($department)) {
-            abort(500, 'No posting found');
-        }
-        $model=$department->notifications()->create($request->only((new Notification())->getFillable()));
+        abort_if(blank($department),400,"No posting found");
+
+        $model=$department->otherInformations()->create($request->only((new OtherInformation())->getFillable()));
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $path = Storage::disk(Attachment::DISK)->put('notification', $file);
@@ -62,52 +62,25 @@ class NotificationController extends Controller
                 'path' => $path]);
         }
         return [
-            'list'=>$department->notifications()->paginate(),
+            'list'=>$department?->otherInformations()?->paginate(),
             'data' => $model,
-            'message' => 'Notification saved successfully',
+            'message' => 'Other information saved successfully',
         ];
     }
 
-    public function update(Request $request, Notification $model)
-    {
-        $model->update($request->only((new Notification())->getFillable()));
-        if ($request->hasFile('attachment')) {
-            $file = $request->file('attachment');
-            $path = Storage::disk(Attachment::DISK)->put('notification', $file);
-            $model->attachment()->create(['mime' => $file->getMimeType(),
-                'original_name' => $file->getClientOriginalName(),
-                'label' => $file->getClientOriginalName(),
-                'size' => $file->getSize(),
-                'path' => $path]);
-        }
-        $staff=auth()->user();
-        $office=$staff->currentPost();
-
-        $department = Department::query()->where('dept_code', $office->code)
-            ->first();
-        if (blank($department)) {
-            abort(500, 'No posting found');
-        }
-        return [
-            'list' => $department->notifications()->paginate(),
-            'message' =>'Notification updated successfully'
-        ];
-    }
-
-    public function destroy(Request $request,Notification $model)
+    public function destroy(Request $request,OtherInformation $model)
     {
         $staff=auth()->user();
         $office=$staff->currentPost();
 
         $department = Department::query()->where('dept_code', $office->code)
             ->first();
-        if (blank($department)) {
-            abort(500, 'No posting found');
-        }
+        abort_if(blank($department),400,'No posting found');
+
         $model->delete();
         return [
-            'list' => $department->notifications()->paginate(),
-            'message' =>'Notification deleted successfully'
+            'list' => $department->otherInformations()->paginate(),
+            'message' =>'Other information deleted successfully'
         ];
     }
 }

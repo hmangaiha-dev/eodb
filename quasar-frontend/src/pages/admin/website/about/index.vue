@@ -1,6 +1,6 @@
 <template>
   <q-page padding class="container-lg q-my-md">
-    <h1 class="zsubtitle">About us</h1>
+    <p class="ztitle">About us</p>
     <q-form @submit="submit" class="row zcard">
       <div class="col-12">
         <q-editor
@@ -124,7 +124,7 @@ export default {
       api.get(`web/about`)
         .then(res => {
           const{data} = res.data;
-          localData.about = data;
+          formData.content = data?.content;
         })
         .catch(err => {
           q.notify({
@@ -140,7 +140,7 @@ export default {
         .then(res => {
           q.notify({
             type: 'positive',
-            message: res.data?.message || 'Succcess'
+            message: res.data?.message || 'Success'
           })
         })
         .catch(err => {

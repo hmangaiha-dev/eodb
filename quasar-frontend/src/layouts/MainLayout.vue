@@ -36,7 +36,7 @@
       @hide="localData.openDrawer = false"
       side="left"
     >
-      menu
+      <AdminNav/>
     </q-drawer>
     <q-page-container>
       <router-view />

@@ -85,11 +85,13 @@ export default {
         {path: 'process-flows/create', name: 'process-flows:create', component: () => import('pages/admin/setting/process-flows/Create.vue')},
       ]
     },
+    {path: 'web/online-services/create', name: 'online-service:create', component: () => import('pages/admin/website/online-services/Create.vue')},
+    {path: 'web/online-services/:id/edit', name: 'online-service:edit', component: () => import('pages/admin/website/online-services/Create.vue')},
     {path: 'web/online-services', name: 'web:service', component: () => import('pages/admin/website/online-services/List.vue')},
     {path: 'web/about', name: 'web:about', component: () => import('pages/admin/website/about/index.vue')},
     {path: 'web/act', name: 'web:act', component: () => import('pages/admin/website/act/list.vue')},
-    {path: 'web/notification', name: 'web:notification', component: () => import('pages/admin/website/notification/index.vue')},
-    {path: 'web/other', name: 'web:other', component: () => import('pages/admin/website/other/index')},
+    {path: 'web/notification', name: 'web:notification', component: () => import('pages/admin/website/notification/list.vue')},
+    {path: 'web/other', name: 'web:other', component: () => import('pages/admin/website/other/list')},
   ]
 }
 

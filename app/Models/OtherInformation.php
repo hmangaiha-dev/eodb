@@ -7,21 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-class Notification extends Model
+class OtherInformation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['number', 'subject', 'authority', 'issued_at','status'];
+    protected $fillable = ['title', 'description'];
 
     public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class);
+        return $this->belongsTo(OtherInformation::class);
     }
-
     public function attachment(): MorphOne
     {
         return $this->morphOne(Attachment::class, 'owner');
     }
-
-
 }

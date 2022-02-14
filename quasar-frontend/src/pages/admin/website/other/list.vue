@@ -2,10 +2,10 @@
   <q-page class="container-lg q-my-md" padding>
 
     <div class="zcard">
-      <p class="ztitle">Act & Rules</p>
+      <p class="ztitle">Other Informations</p>
       <div class="row q-col-gutter-md">
         <div class="flex justify-between flex-inline col-12">
-          <q-btn @click="localData.openCreate=true" outline label="New Act & Rule" color="primary"/>
+          <q-btn @click="localData.openCreate=true" outline label="New Information" color="primary"/>
           <q-input v-model="localData.search" placeholder="Search" @keyup="handleSearch" outlined dense>
             <template v-slot:append>
               <q-icon name="search"/>
@@ -23,12 +23,12 @@
                 <q-avatar class="cursor-pointer" @click="handleDownload(item)" icon="attachment"/>
               </q-item-section>
               <q-item-section>
-                <q-item-label>{{ item?.name }}</q-item-label>
-                <q-item-label caption>{{ item?.description }}</q-item-label>
+                <q-item-label>{{ item?.title }}</q-item-label>
+                <q-item-label caption>{{ item?.description }} : created at {{formatCreated(item?.created_at)}}</q-item-label>
               </q-item-section>
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">
-<!--                  <q-btn @click="handleEdit(item)" size="12px" outline icon="edit"/>-->
+                  <!--                  <q-btn @click="handleEdit(item)" size="12px" outline icon="edit"/>-->
                   <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>
                 </div>
               </q-item-section>
@@ -47,10 +47,7 @@
 
     </div>
     <q-dialog @hide="localData.openCreate=false" v-model="localData.openCreate">
-      <act-create @onCreated="onCreated"/>
-    </q-dialog>
-    <q-dialog @hide="localData.openEdit=false" v-model="localData.openEdit">
-      <Edit v-if="!!localData.selectedStaff" @onStaffUpdated="onStaffUpdated" :id="localData.selectedStaff?.id"/>
+      <other-create @onCreated="onCreated"/>
     </q-dialog>
   </q-page>
 </template>
@@ -59,13 +56,12 @@ import {computed, reactive} from "@vue/reactivity";
 import Create from "pages/admin/staff/Create";
 import {onMounted} from "@vue/runtime-core";
 import {api} from "boot/axios";
-import {useQuasar} from "quasar";
+import {date, useQuasar} from "quasar";
 import Edit from "pages/admin/staff/Edit";
-import ActCreate from "pages/admin/website/act/Create";
-import axios from "axios";
+import OtherCreate from "pages/admin/website/other/Create";
 
 export default {
-  components: {ActCreate, Edit, Create},
+  components: {OtherCreate, Edit, Create},
 
   setup(props, context) {
     const q = useQuasar();
@@ -83,14 +79,15 @@ export default {
     })
     const onCreated = (values) => {
       localData.openCreate = false
-      localData.listData = values;
+      const {current_page, total, per_page, data} = values;
+      localData.listData.current_page = current_page;
+      localData.listData.data = data;
+      localData.listData.total = total;
+      localData.listData.per_page = per_page;
     }
-    const onStaffUpdated = (values) => {
-      localData.openEdit = false
-      localData.listData = values;
-    }
-    const deleteAct = id => {
-      api.delete(`web/act-rule/${id}`)
+
+    const deleteNotifications = id => {
+      api.delete(`web/other/${id}`)
         .then(res => {
           const {current_page, total, per_page, data} = res.data.list;
           localData.listData.current_page = current_page;
@@ -105,14 +102,14 @@ export default {
     }
 
     const handleDownload = (item) => {
-      api.get(`web/act-rule/${item.id}/download`)
-      .then(res=>{
-        const {data} = res.data;
-        let a=document.createElement('a');
-        a.href = data?.full_path;
-        a.target = '_blank';
-        a.click();
-      })
+      api.get(`web/other/${item.id}/download`)
+        .then(res => {
+          const {data} = res.data;
+          let a = document.createElement('a');
+          a.href = data?.full_path;
+          a.target = '_blank';
+          a.click();
+        })
     }
     const handleDelete = (item) => {
       q.dialog({
@@ -121,7 +118,7 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        deleteAct(item.id)
+        deleteNotifications(item.id)
       }).onCancel(() => {
         // console.log('>>>> Cancel')
       }).onDismiss(() => {
@@ -132,14 +129,14 @@ export default {
     const handleSearch = e => {
       localData.search = e.target.value;
       if (e.keyCode === 13)
-        fetchActs(1);
+        fetchNotifications(1);
     }
     const updatePagination = (value) => {
-      fetchActs(value)
+      fetchNotifications(value)
     }
 
-    const fetchActs = (page) => {
-      api.get(`web/act-rule?page=${page}`, {params: {search: localData.search}})
+    const fetchNotifications = (page) => {
+      api.get(`web/other?page=${page}`, {params: {search: localData.search}})
         .then(res => {
           const {current_page, total, per_page, data} = res.data.list;
           localData.listData.current_page = current_page;
@@ -152,14 +149,14 @@ export default {
           q.notify({type: 'negative', message})
         })
     }
-    onMounted(() => fetchActs(localData.listData.page))
+    onMounted(() => fetchNotifications(localData.listData.page))
     return {
+      formatCreated: (dateStr) => date.formatDate(dateStr,'DD/MM/YYYY') || '',
       updatePagination,
       pageCount: computed(() => Math.ceil(localData.listData.total / localData.listData.per_page)),
       localData,
-      deleteAct,
       onCreated,
-      onStaffUpdated,
+      deleteNotifications,
       handleSearch,
       handleDownload,
       handleDelete
