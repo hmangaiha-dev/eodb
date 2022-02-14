@@ -3,6 +3,11 @@
     <div class="col-xs-12 text-h6">4.Firm details</div>
 
     <div class="row q-col-gutter-md items-center col-12 q-ml-sm">
+      <q-dialog class="print-hide" v-model="dialog">
+        <q-card>
+          <embed :src="attachment" width="500" height="500" />
+        </q-card>
+      </q-dialog>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="name">
           4.1 Name of Proprietor / Managing Director*
@@ -72,7 +77,14 @@
             <q-icon name="attach_file" />
           </template>
         </q-file>
+        <q-btn
+          flat
+          color="primary"
+          :label="formData.pan_card"
+          @click="showAttachment(formData.pan_card)"
+        />
       </div>
+
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
           4.7 AADHAR Number
@@ -149,6 +161,12 @@
             <q-icon name="attach_file" />
           </template>
         </q-file>
+        <q-btn
+          flat
+          color="primary"
+          :label="formData.pan_card"
+          @click="showAttachment(formData.cst_cert)"
+        />
       </div>
       <!-- <div class="col-xs-12 col-md-6"> -->
       <!-- </div> -->
@@ -163,6 +181,12 @@
             <q-icon name="attach_file" />
           </template>
         </q-file>
+        <q-btn
+          flat
+          color="primary"
+          :label="formData.pan_card"
+          @click="showAttachment(formData.mou_deed)"
+        />
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
@@ -175,6 +199,12 @@
             <q-icon name="attach_file" />
           </template>
         </q-file>
+        <q-btn
+          flat
+          color="primary"
+          :label="formData.company_reg_cert"
+          @click="showAttachment(formData.mou_deed)"
+        />
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
@@ -186,6 +216,12 @@
             <q-icon name="attach_file" />
           </template>
         </q-file>
+        <q-btn
+          flat
+          color="primary"
+          :label="formData.udyog_memorandum"
+          @click="showAttachment(formData.mou_deed)"
+        />
       </div>
     </div>
 
@@ -196,7 +232,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch, ref } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -205,7 +241,10 @@ export default {
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
 
-    const formData = reactive({
+    const dialog = ref(false);
+    const attachment = ref("");
+
+    var formData = reactive({
       prop_name: "",
       designation: "",
       enterprise_name: "",
@@ -223,10 +262,54 @@ export default {
       mou_deed: null,
       company_reg_cert: null,
       udyog_memorandum: null,
+      common_id: null,
     });
     onMounted(() => {});
+
+    watch(store.state.globalData.common, () => {
+      // const objects = store.state.globalData.common.partA;
+
+      formData.prop_name = store.state.globalData.common.partA.prop_name;
+      formData.designation = store.state.globalData.common.partA.designation;
+      formData.enterprise_name =
+        store.state.globalData.common.partA.enterprise_name;
+      formData.enterprise_type =
+        store.state.globalData.common.partA.enterprise_type;
+      formData.total_directors =
+        store.state.globalData.common.partA.total_directors;
+      formData.pan_no = store.state.globalData.common.partA.pan_no;
+      formData.pan_card = store.state.globalData.common.partA.pan_card;
+      formData.aadhaar_no = store.state.globalData.common.partA.aadhaar_no;
+      formData.passport_no = store.state.globalData.common.partA.passport_no;
+      formData.is_applicant_nri =
+        store.state.globalData.common.partA.is_applicant_nri;
+      formData.tin_no = store.state.globalData.common.partA.tin_no;
+      formData.tin_cert = store.state.globalData.common.partA.tin_cert;
+      formData.cst_no = store.state.globalData.common.partA.cst_no;
+      formData.cst_cert = store.state.globalData.common.partA.cst_cert;
+      formData.mou_deed = store.state.globalData.common.partA.mou_deed;
+      formData.company_reg_cert =
+        store.state.globalData.common.partA.company_reg_cert;
+      formData.udyog_memorandum =
+        store.state.globalData.common.partA.udyog_memorandum;
+      formData.common_id = store.state.globalData.common.partA.common_id;
+
+      // let { Object.keys(formData) } =  store.state.globalData.common.partA;
+
+      // formData = Object.assign(formData, objects);
+
+      // console.log("objects", formData);
+    });
     return {
       formData,
+      dialog,
+      attachment,
+      showAttachment: (val) => {
+        console.log("dialog attach", val);
+        // return
+        attachment.value = "http://localhost:8000/storage/" + val;
+        dialog.value = true;
+      },
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

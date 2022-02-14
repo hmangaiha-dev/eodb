@@ -187,6 +187,31 @@ export default {
     const store = useStore();
 
     const toggle = (val) => {
+      formData = Object.assign({}, applicantRef.value.formData);
+      formData = Object.assign(formData, FirmRef.value.formData);
+
+
+
+       var formDatas = new FormData();
+
+      for (let data in formData) {
+        formDatas.append(`${data}`, formData[data]);
+      }
+      // return console.log("form values", formData);
+      api
+        .post("/investor/common-applications/store",formDatas)
+        .then((res) => {
+          console.log("response value", res.data);
+          // q.notify({
+          //   message: "Application submitted successfully",
+          //   color: "green",
+          // });
+          // router.push({ name: "investor:ongoing" });
+        })
+        .catch((err) => console.log("error", err));
+
+      return;
+
       tab.value = val;
       var formData = {};
 
@@ -205,8 +230,8 @@ export default {
     };
 
     onMounted(() => {
-      console.log('dispatching');
-     store.dispatch('globalData/fetchCommonData')
+      console.log("dispatching");
+      store.dispatch("globalData/fetchCommonData");
     });
 
     const watchTab = (oldValue, newValue) => {

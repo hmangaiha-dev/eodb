@@ -57,6 +57,7 @@ Route::group(['prefix' => 'investor/caf', 'middleware' => 'auth:sanctum'], funct
 
 Route::group(['prefix' => 'investor/common-applications', 'middleware' => 'auth:sanctum'], function () {
     Route::get('', [CommonApplicationController::class, 'getCommonApplication']);
+    Route::post('store', [CommonApplicationController::class, 'store']);
     // Route::get('{application}', [InvestorController::class, 'detail'])->where('application', '[0-9]+');
 });
 

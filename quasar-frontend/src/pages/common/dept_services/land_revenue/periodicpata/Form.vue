@@ -597,7 +597,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, watch } from "vue";
+import { onMounted, watch,computed } from "vue";
 import { date } from "quasar";
 
 import { ref } from "vue";
@@ -608,7 +608,7 @@ export default {
     const formData = reactive({
       application_code: "LAND_REVENUE_PATTA",
       department_id: 8,
-      land_revenue_patta_one: "",
+      land_revenue_patta_one: computed(()=>store.state.globalData.common.partA.applicant_name),
       land_revenue_patta_two: "",
       land_revenue_patta_two_a: "",
       land_revenue_patta_two_b: "",
@@ -616,7 +616,7 @@ export default {
       land_revenue_patta_two_d: "",
       land_revenue_patta_three: "",
       land_revenue_patta_three_if_married: "",
-      land_revenue_patta_four: "",
+      land_revenue_patta_four: computed(()=>store.state.globalData.common.partA.address),
       land_revenue_patta_five: "",
       land_revenue_patta_six: "",
       land_revenue_patta_six_a: "",
@@ -642,7 +642,7 @@ export default {
       land_revenue_patta_fiveteen_b: false,
       land_revenue_patta_sixteen: "",
       land_revenue_patta_sixteen_a: "",
-      land_revenue_patta_sixteen_b: "",
+      land_revenue_patta_sixteen_b: computed(()=>store.state.globalData.common.partA.email),
       land_revenue_patta_seventeen: "",
       land_revenue_patta_seventeen_a: "",
       land_revenue_patta_seventeen_b: "",
@@ -652,10 +652,10 @@ export default {
       lsc_details: [{ name: "", address: "", kum: "", caste: "" }],
       rows: 1,
     });
-    watch(store.state.globalData.common, () => {
-      console.log("watch patta");
-      storeA()
-    });
+    // watch(store.state.globalData.common, () => {
+    //   console.log("watch patta");
+    //   storeA()
+    // });
 
     const storeA = () => {
       const { applicant_name, address, email } =
@@ -667,7 +667,7 @@ export default {
     };
 
     onMounted(async () => {
-      return storeA();
+      return;
       watch();
       return;
       const { applicant_name, address, email } = await store.state.globalData

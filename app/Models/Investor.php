@@ -7,6 +7,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * App\Models\Investor
+ *
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read int|null $tokens_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Investor newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Investor newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Investor query()
+ * @mixin \Eloquent
+ */
 class Investor extends Authenticatable
 {
     const RULES = [
