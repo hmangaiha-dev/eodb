@@ -939,7 +939,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -1031,6 +1031,27 @@ export default {
       fire_twentysix: "",
       fire_twentyseven: null,
     });
+
+
+      watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const { applicant_name,city_town, postal_code,address, mobile_no,email,enterprise_name,enterprise_type} =
+        store.state.globalData.common.partA;
+
+  formData.fire_one_a = enterprise_name;
+  formData.fire_one_b = address;
+  formData.fire_two_a = applicant_name;
+  formData.fire_two_b =mobile_no;
+
+formData.fire_four = enterprise_type;
+
+  
+    };
+
+
     onMounted(() => {});
     return {
       group: ref([]),
@@ -1070,6 +1091,7 @@ export default {
         },
       ],
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

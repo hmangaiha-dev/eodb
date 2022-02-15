@@ -34,7 +34,7 @@ class CommonApplicationSeeder extends Seeder
 
         $common->partA()->create([
             'applicant_type' => $faker->sentence,
-            'applicant_photo' => $faker->image('/public/storage/common', 640, 480, null, false),
+            'applicant_photo' => $faker->sentence,
             'applicant_name' => $faker->name,
             'applicant_caste' => 'SC/ST',
             'country' => $faker->country,

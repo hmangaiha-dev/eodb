@@ -188,7 +188,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -220,9 +220,26 @@ export default {
       env_forest_fell_trees_land_copy_cert: null,
       env_forest_fell_trees_plantation_cert: null
     });
+
+  watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const { applicant_name,city_town, postal_code,address, mobile_no,email} =
+        store.state.globalData.common.partA;
+
+
+      formData.env_forest_fell_trees_one = applicant_name;
+      formData.env_forest_fell_trees_three  =city_town;
+
+  
+    };
+
     onMounted(() => {});
     return {
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

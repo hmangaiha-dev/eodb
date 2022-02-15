@@ -315,7 +315,7 @@ Scheme2..."
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, ref } from "vue";
+import { onMounted, ref , watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -362,8 +362,25 @@ export default {
       // six
     });
 
+    watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const { applicant_name,city_town, postal_code,address, mobile_no,email} =
+        store.state.globalData.common.partA;
+
+
+      formData.bamboo_1 = applicant_name;
+      formData.bamboo_3  =city_town;
+
+
+  
+    };
+
     return {
       formData,
+      getA,
       rows,
       addRow: () => {
         formData.bamboo_particulars.push({
