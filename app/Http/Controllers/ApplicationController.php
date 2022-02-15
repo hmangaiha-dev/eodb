@@ -265,13 +265,24 @@ class ApplicationController extends Controller
         ])->toArray();
 
         if ($model->application_code == 'LAND_REVENUE_LSC' || $model->application_code == 'LAND_REVENUE_PATTA') {
-            $details = $model->lscDetails()->get();
-            $views = view('lsc.table', ["details" => $details, 'code' => $model->application_code])->render();
-            $content = [
-                "{{content}}" => $views
-            ];
 
-            $vars = $vars + $content;
+            if ($model->application_code == 'ENV_FOREST_BAMBOO') {
+                $details = $model->bamboos()->get();
+                $views = view('bamboo.table', ["details" => $details, 'code' => $model->application_code])->render();
+                $content = [
+                    "{{content}}" => $views
+                ];
+
+                $vars = $vars + $content;
+            } else {
+                $details = $model->lscDetails()->get();
+                $views = view('lsc.table', ["details" => $details, 'code' => $model->application_code])->render();
+                $content = [
+                    "{{content}}" => $views
+                ];
+
+                $vars = $vars + $content;
+            }
         }
 
         $result = $this->replaceTemplate($template, $vars);
