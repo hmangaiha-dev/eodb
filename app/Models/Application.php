@@ -9,62 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-
-/**
- * App\Models\Application
- *
- * @property int $id
- * @property string $application_code
- * @property string $regn_no
- * @property string $current_state
- * @property string|null $remark
- * @property int|null $application_profile_id
- * @property int $user_id
- * @property int $department_id
- * @property \datetime|null $created_at
- * @property \datetime|null $updated_at
- * @property string $archived
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ApplicationValue[] $applicationValues
- * @property-read int|null $application_values_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Attachment[] $attachments
- * @property-read int|null $attachments_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Bamboo[] $bamboos
- * @property-read int|null $bamboos_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Certificate[] $certificates
- * @property-read int|null $certificates_count
- * @property-read \App\Models\Department|null $department
- * @property-read mixed $application_name
- * @property-read mixed $current_step
- * @property-read mixed $last_step
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LscPartition[] $lscDetails
- * @property-read int|null $lsc_details_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ApplicationMovement[] $movements
- * @property-read int|null $movements_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notesheet[] $notesheets
- * @property-read int|null $notesheets_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Office[] $office
- * @property-read int|null $office_count
- * @property-read \App\Models\ApplicationProfile|null $profile
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Staff[] $staff
- * @property-read int|null $staff_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\State[] $states
- * @property-read int|null $states_count
- * @method static \Illuminate\Database\Eloquent\Builder|Application newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Application newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Application query()
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereApplicationCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereApplicationProfileId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereArchived($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereCurrentState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereDepartmentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereRegnNo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereRemark($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Application whereUserId($value)
- * @mixin \Eloquent
- */
 class Application extends Model
 {
     use HasFactory;

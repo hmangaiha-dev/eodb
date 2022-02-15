@@ -19,10 +19,17 @@ class CommonApplicationController extends Controller
 
     public function store(Request $request)
     {
+        $common = Auth::user()->commonApplications()->firstOrCreate([
+            'user_id' => Auth::id()
+        ],[
+            'status' => 'filling',
+        ]);
 
-        $partA = Auth::user()->commonApplications()->first()->partA()->updateOrCreate(
+        // return $common;
+
+        $partA = $common->partA()->updateOrCreate(
             [
-                'common_id' => $request->common_id,
+                'common_id' => $common->id,
             ],
 
             $request->only((new PartA())->getFillable()),

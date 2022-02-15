@@ -7,36 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * App\Models\ApplicationMovement
- *
- * @property int $id
- * @property int $application_id
- * @property int $staff_id
- * @property int $step
- * @property string $status
- * @property string|null $remark
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Application|null $application
- * @property-read mixed $duration
- * @property-read mixed $received_at
- * @property-read mixed $sent_at
- * @property-read mixed $staff_name
- * @property-read \App\Models\Staff|null $staff
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement query()
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement whereApplicationId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement whereRemark($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement whereStaffId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement whereStep($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ApplicationMovement whereUpdatedAt($value)
- * @mixin \Eloquent
- */
 class ApplicationMovement extends Model
 {
     use HasFactory;
