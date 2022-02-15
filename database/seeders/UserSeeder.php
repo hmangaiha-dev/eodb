@@ -19,6 +19,8 @@ class UserSeeder extends Seeder
             ['full_name'=>'admin','email'=>'admin@email.com','phone'=>'0001234987','password'=>Hash::make('password')],
         ], ['email', 'phone']);
 
+        
+
 
     }
 }
