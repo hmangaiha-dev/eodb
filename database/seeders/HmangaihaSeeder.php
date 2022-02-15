@@ -29,6 +29,8 @@ class HmangaihaSeeder {
         //COMMERCE AND INDUSTRIES
         ['code' => 'CE_GRANT_OF_SUBSIDY', 'title' => ' Application For Grant Of Land Subsidy', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
         ['code' => 'C&E_SUBSIDY_COST_TRANSPORTATION_MACHINERIES', 'title' => 'APPLICATION FOR CLAIM OF SUBSIDY ON COST OF TRANSPORTATION PLANT & MACHINERIES ', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
+        // POWER
+        ['code' => 'POWER_CONNECTED_LOAD', 'title' => 'Procedure for Determination of Connected Load', 'remark' => 'Remark', 'office_id' => 1, 'operational_type' => 'Post processing'],
 
         
     ];
