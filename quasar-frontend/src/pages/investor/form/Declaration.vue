@@ -1,5 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
+    <q-dialog class="print-hide" v-model="dialog">
+      <q-card>
+        <embed :src="attachment" width="500" height="500" />
+      </q-card>
+    </q-dialog>
     <div>
       <ol>
         <li>
@@ -166,6 +171,12 @@
                 <q-icon name="attach_file" />
               </template>
             </q-file>
+            <q-btn
+              flat
+              color="primary"
+              :label="formData.declaration_signature"
+              @click="showAttachment(formData.declaration_signature)"
+            />
           </div>
         </div>
       </div>
@@ -186,12 +197,15 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch,ref } from "vue";
 import { date } from "quasar";
 
 export default {
   setup(props, context) {
     const store = useStore();
+
+    const dialog = ref(false);
+    const attachment = ref("");
 
     const formData = reactive({
       declaration_signature: null,
@@ -200,11 +214,34 @@ export default {
       declaration_designation: "",
       declaration_consent: false,
       rows: 1,
+      model: "declaration",
     });
-    onMounted(() => {});
+    const getDeclaration = () => {
+      // formData.project_sector = store.state.globalData.common.partD?.project_sector;
+
+      for (let data in store.state.globalData.common.selfDeclaration) {
+        formData[data] = store.state.globalData.common?.selfDeclaration[data];
+      }
+    };
+
+    onMounted(() => {
+      getDeclaration();
+    });
+
+    watch(store.state.globalData.common, () => {
+      getDeclaration();
+    });
     return {
       formData,
-
+      getDeclaration,
+      dialog,
+      attachment,
+      showAttachment: (val) => {
+        // console.log("dialog attach", val);
+        // return
+        attachment.value = "http://localhost:8000/storage/" + val;
+        dialog.value = true;
+      },
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
       addRow: () => {
         // formData.lsc_details.push({

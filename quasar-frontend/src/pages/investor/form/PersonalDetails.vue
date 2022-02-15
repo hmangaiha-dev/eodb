@@ -236,22 +236,21 @@ export default {
     });
 
     const getPersonalDetails = () => {
-      const objects = store.state.globalData.common.partA;
 
-      formData.applicant_type = store.state.globalData.common.partA.applicant_type;
-      formData.applicant_photo = store.state.globalData.common.partA.applicant_photo;
-      formData.applicant_name = store.state.globalData.common.partA.applicant_name;
-      formData.applicant_caste = store.state.globalData.common.partA.applicant_caste;
-      formData.country = store.state.globalData.common.partA.country;
-      formData.state = store.state.globalData.common.partA.state;
-      formData.city_town = store.state.globalData.common.partA.city_town;
-      formData.postal_code = store.state.globalData.common.partA.postal_code;
-      formData.address = store.state.globalData.common.partA.address;
-      formData.phone_no = store.state.globalData.common.partA.phone_no;
-      formData.mobile_no = store.state.globalData.common.partA.mobile_no;
-      formData.fax_no = store.state.globalData.common.partA.fax_no;
-      formData.email = store.state.globalData.common.partA.email;
-      formData.alt_email = store.state.globalData.common.partA.alt_email;
+      formData.applicant_type = store.state.globalData.common.partA?.applicant_type;
+      formData.applicant_photo = store.state.globalData.common.partA?.applicant_photo;
+      formData.applicant_name = store.state.globalData.common.partA?.applicant_name;
+      formData.applicant_caste = store.state.globalData.common.partA?.applicant_caste;
+      formData.country = store.state.globalData.common.partA?.country;
+      formData.state = store.state.globalData.common.partA?.state;
+      formData.city_town = store.state.globalData.common.partA?.city_town;
+      formData.postal_code = store.state.globalData.common.partA?.postal_code;
+      formData.address = store.state.globalData.common.partA?.address;
+      formData.phone_no = store.state.globalData.common.partA?.phone_no;
+      formData.mobile_no = store.state.globalData.common.partA?.mobile_no;
+      formData.fax_no = store.state.globalData.common.partA?.fax_no;
+      formData.email = store.state.globalData.common.partA?.email;
+      formData.alt_email = store.state.globalData.common.partA?.alt_email;
     };
 
     watch(store.state.globalData.common, () => {

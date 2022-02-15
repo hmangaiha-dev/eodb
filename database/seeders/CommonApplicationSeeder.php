@@ -21,11 +21,11 @@ class CommonApplicationSeeder extends Seeder
 
         // User::query()->updateOrCreate()
 
-        $user = User::find(2);
+        $user = Auth::user();
 
         $common = $user->commonApplications()->updateOrCreate(
             [
-                'status' => 'partA'
+                'user_id' => Auth::id()
             ],
             ['status' => 'partA']
         );
@@ -34,7 +34,7 @@ class CommonApplicationSeeder extends Seeder
 
         $common->partA()->create([
             'applicant_type' => $faker->sentence,
-            'applicant_photo' => $faker->image('/public/storage/common', 640, 480, null, false),
+            'applicant_photo' => $faker->imageUrl,
             'applicant_name' => $faker->name,
             'applicant_caste' => 'SC/ST',
             'country' => $faker->country,

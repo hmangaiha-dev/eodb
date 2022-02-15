@@ -122,7 +122,7 @@
         </q-tab-panel>
 
         <q-tab-panel name="declaration">
-          <q-form @submit.prevent="finalSubmit">
+         <q-form @submit.prevent="toggle('final')">
             <div class="row q-col-gutter-lg">
               <div class="col-xs-12">
                 <Declaration ref="declarationRef" />
@@ -187,19 +187,36 @@ export default {
     const store = useStore();
 
     const toggle = (val) => {
-      formData = Object.assign({}, applicantRef.value.formData);
-      formData = Object.assign(formData, FirmRef.value.formData);
+      formData = {};
+      if (val == "b") {
+        formData = Object.assign({}, applicantRef.value.formData);
+        formData = Object.assign(formData, FirmRef.value.formData);
+      } else if (val == "c") {
+        formData = Object.assign({}, proposedRef.value.formData);
+      } else if (val == "d") {
+        formData = Object.assign({}, partCRef.value.formData);
+      } else if (val == "e") {
+        formData = Object.assign({}, partDRef.value.formData);
+      } else if (val == "f") {
+        formData = Object.assign({}, partERef.value.formData);
+      } else if (val == "g") {
+        formData = Object.assign({}, partFRef.value.formData);
+      } else if (val == "declaration") {
+        formData = Object.assign({}, partGRef.value.formData);
+      } 
+      else if (val == "final") {
+        formData = Object.assign({}, declarationRef.value.formData);
+      }
 
-
-
-       var formDatas = new FormData();
+      var formDatas = new FormData();
 
       for (let data in formData) {
         formDatas.append(`${data}`, formData[data]);
       }
+      // formDatas.append('model','A');
       // return console.log("form values", formData);
       api
-        .post("/investor/common-applications/store",formDatas)
+        .post("/investor/common-applications/store", formDatas)
         .then((res) => {
           console.log("response value", res.data);
           // q.notify({
@@ -209,6 +226,8 @@ export default {
           // router.push({ name: "investor:ongoing" });
         })
         .catch((err) => console.log("error", err));
+
+      // store.dispatch("globalData/fetchCommonData");
 
       return;
 
@@ -231,7 +250,7 @@ export default {
 
     onMounted(() => {
       console.log("dispatching");
-      store.dispatch("globalData/fetchCommonData");
+      // store.dispatch("globalData/fetchCommonData");
     });
 
     const watchTab = (oldValue, newValue) => {

@@ -1,5 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
+    <q-dialog class="print-hide" v-model="dialog">
+      <q-card>
+        <embed :src="attachment" width="500" height="500" />
+      </q-card>
+    </q-dialog>
     <div class="col-xs-12 col-sm-10">
       <label class="zlabel" for="name">
         5.6 Choose Which Ever Is Applicaple to You <br />
@@ -37,6 +42,12 @@
               <q-icon name="attach_file" />
             </template>
           </q-file>
+          <q-btn
+            flat
+            color="primary"
+            :label="formData.certified_copy_owner"
+            @click="showAttachment(formData.certified_copy_owner)"
+          />
         </div>
       </div>
 
@@ -56,6 +67,12 @@
               <q-icon name="attach_file" />
             </template>
           </q-file>
+          <q-btn
+            flat
+            color="primary"
+            :label="formData.certified_lease_doc"
+            @click="showAttachment(formData.certified_lease_doc)"
+          />
         </div>
       </div>
 
@@ -73,6 +90,12 @@
               <q-icon name="attach_file" />
             </template>
           </q-file>
+          <q-btn
+            flat
+            color="primary"
+            :label="formData.certified_rent_deed"
+            @click="showAttachment(formData.certified_rent_deed)"
+          />
         </div>
         <!-- </div> -->
         <!-- <div class="row q-col-gutter-md"> -->
@@ -83,6 +106,12 @@
               <q-icon name="attach_file" />
             </template>
           </q-file>
+          <q-btn
+            flat
+            color="primary"
+            :label="formData.noc_owner"
+            @click="showAttachment(formData.noc_owner)"
+          />
         </div>
         <!-- </div> -->
       </div>
@@ -100,6 +129,12 @@
           <q-icon name="attach_file" />
         </template>
       </q-file>
+      <q-btn
+        flat
+        color="primary"
+        :label="formData.site_layout_plan"
+        @click="showAttachment(formData.site_layout_plan)"
+      />
     </div>
 
     <div class="col-xs-12 col-md-6">
@@ -115,6 +150,12 @@
           <q-icon name="attach_file" />
         </template>
       </q-file>
+      <q-btn
+        flat
+        color="primary"
+        :label="formData.linear_strip_plan"
+        @click="showAttachment(formData.linear_strip_plan)"
+      />
     </div>
 
     <div class="col-xs-12" />
@@ -124,7 +165,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch, ref } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -132,21 +173,46 @@ export default {
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
+    const dialog = ref(false);
+    const attachment = ref("");
 
     const formData = reactive({
       choose_applicable: "",
       certified_copy_owner: null,
       certified_lease_doc: null,
-      certified_lease_doc: null,
+      // certified_lease_doc: null,
       certified_rent_deed: null,
       noc_owner: null,
       site_layout_plan: null,
       linear_strip_plan: null,
-     
+      model: "C",
     });
-    onMounted(() => {});
+
+    const getC = () => {
+      for (let data in store.state.globalData.common?.partC) {
+        formData[data] = store.state.globalData.common?.partC[data];
+      }
+    };
+    onMounted(() => {
+      getC();
+    });
+
+    watch(store.state.globalData.common, () => {
+      getC();
+      // const objects = store.state.globalData.common.partA;
+
+      // let { Object.keys(formData) } =  store.state.globalData.common.partA;
+
+      // formData = Object.assign(formData, objects);
+
+      // console.log("objects", formData);
+    });
+
     return {
       formData,
+      getC,
+      dialog,
+      attachment,
       choose: [
         "i. Certified Copy of freehold ownership",
         "ii. Certified Copy of leasehold ownership",
@@ -157,6 +223,12 @@ export default {
         "Industrial Estate, Zuangtui",
         "Export Promotion Industrial Park, Lengte",
       ],
+      showAttachment: (val) => {
+        console.log("dialog attach", val);
+        // return
+        attachment.value = "http://localhost:8000/storage/" + val;
+        dialog.value = true;
+      },
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

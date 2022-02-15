@@ -1,5 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
+     <q-dialog class="print-hide" v-model="dialog">
+      <q-card>
+        <embed :src="attachment" width="500" height="500" />
+      </q-card>
+    </q-dialog>
     <div class="col-12 zsubtitle">
       6. Project Details
       <div class="row justify-start q-col-gutter-md q-ml-md">
@@ -194,6 +199,12 @@
           <q-icon name="attach_file" />
         </template>
       </q-file>
+       <q-btn
+        flat
+        color="primary"
+        :label="formData.detail_project_report"
+        @click="showAttachment(formData.detail_project_report)"
+      />
     </div>
 
     <div class="col-12 zlabel">
@@ -213,29 +224,60 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch,ref } from "vue";
 import { date } from "quasar";
 
 export default {
   setup(props, context) {
     const store = useStore();
+     const dialog = ref(false);
+    const attachment = ref("");
 
     const formData = reactive({
-     project_sector: "",
-     project_purpose: "",
-     project_purpose: "",
-     industry_size: "",
-     project_type: "",
-     project_type: "",
-     project_category: "",
-     foreign_investor_name: "",
-     foreign_investor_country: "",
-     foreign_investor_address: "",
-     detail_project_report: null,
+      project_sector: "",
+      project_purpose: "",
+      industry_size: "",
+      project_type: "",
+      project_category: "",
+      foreign_investor_name: "",
+      foreign_investor_country: "",
+      foreign_investor_address: "",
+      detail_project_report: null,
+      model: 'D'
     });
-    onMounted(() => {});
+    const getD = () => {
+      // formData.project_sector = store.state.globalData.common.partD?.project_sector;
+
+      for (let data in store.state.globalData.common.partD) {
+        formData[data] = store.state.globalData.common?.partD[data];
+      }
+    };
+
+    onMounted(() => {
+      getD();
+    });
+
+    watch(store.state.globalData.common, () => {
+      getD();
+      // const objects = store.state.globalData.common.partA;
+
+      // let { Object.keys(formData) } =  store.state.globalData.common.partA;
+
+      // formData = Object.assign(formData, objects);
+
+      // console.log("objects", formData);
+    });
     return {
       formData,
+      dialog,
+      attachment,
+      getD,
+        showAttachment: (val) => {
+        console.log("dialog attach", val);
+        // return
+        attachment.value = "http://localhost:8000/storage/" + val;
+        dialog.value = true;
+      },
       industrial_areas: [
         "Industrial Growth Centre, Luangmual",
         "Industrial Estate, Zuangtui",

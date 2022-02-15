@@ -12,6 +12,13 @@ const state = () => {
     deptServices: [],
     common: {
       partA: {},
+      partB: {},
+      partC: {},
+      partD: {},
+      partE: {},
+      partF: {},
+      partG: {},
+
     },
   };
 };
@@ -23,9 +30,16 @@ const mutations = {
     state.globalLoading = val;
   },
 
-  setPartA: (state,val) => {
-    state.common.partA = val
-    console.log('setA',state.common.partA);
+  setPart: (state,val) => {
+    state.common.partA = val.part_a
+    state.common.partB = val.part_b
+    state.common.partC = val.part_c
+    state.common.partD = val.part_d
+    state.common.partE = val.part_e
+    state.common.partF = val.part_f
+    state.common.partG = val.part_g
+    state.common.selfDeclaration = val.self_declaration
+    // console.log('setA',state.common.partA);
 
   },
 
@@ -44,13 +58,13 @@ const actions = {
     api
       .get("/investor/common-applications")
       .then((res) => {
-        const {
-          part_a
-        } = res.data;
+        // const {
+        //   part_a,part_b
+        // } = res.data;
 
-        console.log('fetch res',res.data.part_a);
+        // console.log('fetch res',res.data.part_a);
 
-        context.commit("setPartA", part_a)
+        context.commit("setPart", res.data)
 
         // console.log('services api data',services[0].items);
       })

@@ -11,30 +11,32 @@
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="name">
           4.1 Name of Proprietor / Managing Director*
-          <span class="asterisk"> *</span></label
-        >
+          <span class="asterisk">*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.prop_name" type="text" />
       </div>
       <div class="col-xs-12 col-md-6">
-        <label class="zlabel" for="dob" type="date"> 4.2 Designation* </label>
+        <label class="zlabel" for="dob" type="date">4.2 Designation*</label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.designation" type="text" />
       </div>
       <div class="col-xs-12 col-md-6">
-        <label class="zlabel" for="gender"
-          >4.3 Name of Enterprise* <span class="asterisk">*</span></label
-        >
+        <label class="zlabel" for="gender">
+          4.3 Name of Enterprise*
+          <span class="asterisk">*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.enterprise_name" />
       </div>
       <div class="col-xs-12 col-md-6">
-        <label class="zlabel" for="gender"
-          >4.4 Type of Enterprise* <span class="asterisk">*</span></label
-        >
+        <label class="zlabel" for="gender">
+          4.4 Type of Enterprise*
+          <span class="asterisk">*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-select
@@ -50,17 +52,16 @@
         />
       </div>
       <div class="col-xs-12 col-md-6">
-        <label class="zlabel" for="pob">
-          4.5 Number of Directors/Proprietor/MD/CEO*</label
-        >
+        <label class="zlabel" for="pob">4.5 Number of Directors/Proprietor/MD/CEO*</label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.total_directors" />
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
-          4.6 PAN Number <span class="asterisk">*</span></label
-        >
+          4.6 PAN Number
+          <span class="asterisk">*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.pan_no" />
@@ -68,8 +69,8 @@
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
           4.6(i) PAN Card Attachment* ( Maximum size : 4 MB Format : PDF )
-          <span class="asterisk">*</span></label
-        >
+          <span class="asterisk">*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-file v-model="formData.pan_card" outlined>
@@ -88,8 +89,8 @@
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
           4.7 AADHAR Number
-          <span class="asterisk">*</span></label
-        >
+          <span class="asterisk">*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.aadhaar_no" />
@@ -104,8 +105,8 @@
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
           4.8 Passport Number
-          <span class="asterisk">*</span></label
-        >
+          <span class="asterisk">*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.passport_no" />
@@ -113,8 +114,8 @@
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
           4.9 Applicant is NRI
-          <span class="asterisk">*</span></label
-        >
+          <span class="asterisk">*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.is_applicant_nri" />
@@ -122,8 +123,8 @@
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
           4.10 TIN/VAT/GSTIN Number
-          <span class="asterisk">*</span></label
-        >
+          <span class="asterisk">*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.tin_no" />
@@ -132,8 +133,10 @@
         <label class="zlabel" for="gender">
           4.10 (i) Attach TIN/VAT/GSTIN Certificate* ( Maximum size : 4 MB
           Format : PDF )
-          <span class="asterisk">*</span></label
-        >
+          <span
+            class="asterisk"
+          >*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-file v-model="formData.tin_cert" outlined>
@@ -141,12 +144,18 @@
             <q-icon name="attach_file" />
           </template>
         </q-file>
+        <q-btn
+          flat
+          color="primary"
+          :label="formData.tin_cert"
+          @click="showAttachment(formData.tin_cert)"
+        />
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
           4.11 CST Number
-          <span class="asterisk">*</span></label
-        >
+          <span class="asterisk">*</span>
+        </label>
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.cst_no" />
@@ -154,8 +163,10 @@
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
           4.11(i) Attach CST Certifiacte * ( Maximum size : 4 MB Format : PDF )
-          <span class="asterisk">*</span></label
-        >
+          <span
+            class="asterisk"
+          >*</span>
+        </label>
         <q-file v-model="formData.cst_cert" outlined>
           <template v-slot:prepend>
             <q-icon name="attach_file" />
@@ -164,7 +175,7 @@
         <q-btn
           flat
           color="primary"
-          :label="formData.pan_card"
+          :label="formData.cst_cert"
           @click="showAttachment(formData.cst_cert)"
         />
       </div>
@@ -174,8 +185,10 @@
         <label class="zlabel" for="gender">
           4.12 MoU/Partnership Deed Attachment* ( Maximum size : 4 MB Format :
           PDF )
-          <span class="asterisk">*</span></label
-        >
+          <span
+            class="asterisk"
+          >*</span>
+        </label>
         <q-file v-model="formData.mou_deed" outlined>
           <template v-slot:prepend>
             <q-icon name="attach_file" />
@@ -184,7 +197,7 @@
         <q-btn
           flat
           color="primary"
-          :label="formData.pan_card"
+          :label="formData.mou_deed"
           @click="showAttachment(formData.mou_deed)"
         />
       </div>
@@ -192,8 +205,10 @@
         <label class="zlabel" for="gender">
           4.13 Certificate of Company Incorporation/Registration Attachment* (
           Maximum size : 4 MB Format : PDF )
-          <span class="asterisk">*</span></label
-        >
+          <span
+            class="asterisk"
+          >*</span>
+        </label>
         <q-file v-model="formData.company_reg_cert" outlined>
           <template v-slot:prepend>
             <q-icon name="attach_file" />
@@ -203,14 +218,14 @@
           flat
           color="primary"
           :label="formData.company_reg_cert"
-          @click="showAttachment(formData.mou_deed)"
+          @click="showAttachment(formData.company_reg_cert)"
         />
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
           4.14 Udyog Aadhaar Memorandum(For Existing Enterprise Only)
-          <span class="asterisk">*</span></label
-        >
+          <span class="asterisk">*</span>
+        </label>
         <q-file v-model="formData.udyog_memorandum" outlined>
           <template v-slot:prepend>
             <q-icon name="attach_file" />
@@ -220,7 +235,7 @@
           flat
           color="primary"
           :label="formData.udyog_memorandum"
-          @click="showAttachment(formData.mou_deed)"
+          @click="showAttachment(formData.udyog_memorandum)"
         />
       </div>
     </div>
@@ -263,36 +278,38 @@ export default {
       company_reg_cert: null,
       udyog_memorandum: null,
       common_id: null,
+      model: 'A'
     });
-    onMounted(() => {});
+
+    const getA = () => {
+      formData.prop_name = store.state.globalData.common.partA?.prop_name;
+      formData.designation = store.state.globalData.common.partA?.designation;
+      formData.enterprise_name = store.state.globalData.common.partA?.enterprise_name;
+      formData.enterprise_type = store.state.globalData.common.partA?.enterprise_type;
+      formData.total_directors = store.state.globalData.common.partA?.total_directors;
+      formData.pan_no = store.state.globalData.common.partA?.pan_no;
+      formData.pan_card = store.state.globalData.common.partA?.pan_card;
+      formData.aadhaar_no = store.state.globalData.common.partA?.aadhaar_no;
+      formData.passport_no = store.state.globalData.common.partA?.passport_no;
+      formData.is_applicant_nri = store.state.globalData.common.partA?.is_applicant_nri;
+      formData.tin_no = store.state.globalData.common.partA?.tin_no;
+      formData.tin_cert = store.state.globalData.common.partA?.tin_cert;
+      formData.cst_no = store.state.globalData.common.partA?.cst_no;
+      formData.cst_cert = store.state.globalData.common.partA?.cst_cert;
+      formData.mou_deed = store.state.globalData.common.partA?.mou_deed;
+      formData.company_reg_cert = store.state.globalData.common.partA?.company_reg_cert;
+      formData.udyog_memorandum = store.state.globalData.common.partA?.udyog_memorandum;
+      formData.common_id = store.state.globalData.common.partA?.common_id;
+    }
+    onMounted(() => {
+      getA()
+    });
 
     watch(store.state.globalData.common, () => {
+      getA()
       // const objects = store.state.globalData.common.partA;
 
-      formData.prop_name = store.state.globalData.common.partA.prop_name;
-      formData.designation = store.state.globalData.common.partA.designation;
-      formData.enterprise_name =
-        store.state.globalData.common.partA.enterprise_name;
-      formData.enterprise_type =
-        store.state.globalData.common.partA.enterprise_type;
-      formData.total_directors =
-        store.state.globalData.common.partA.total_directors;
-      formData.pan_no = store.state.globalData.common.partA.pan_no;
-      formData.pan_card = store.state.globalData.common.partA.pan_card;
-      formData.aadhaar_no = store.state.globalData.common.partA.aadhaar_no;
-      formData.passport_no = store.state.globalData.common.partA.passport_no;
-      formData.is_applicant_nri =
-        store.state.globalData.common.partA.is_applicant_nri;
-      formData.tin_no = store.state.globalData.common.partA.tin_no;
-      formData.tin_cert = store.state.globalData.common.partA.tin_cert;
-      formData.cst_no = store.state.globalData.common.partA.cst_no;
-      formData.cst_cert = store.state.globalData.common.partA.cst_cert;
-      formData.mou_deed = store.state.globalData.common.partA.mou_deed;
-      formData.company_reg_cert =
-        store.state.globalData.common.partA.company_reg_cert;
-      formData.udyog_memorandum =
-        store.state.globalData.common.partA.udyog_memorandum;
-      formData.common_id = store.state.globalData.common.partA.common_id;
+
 
       // let { Object.keys(formData) } =  store.state.globalData.common.partA;
 
@@ -304,6 +321,7 @@ export default {
       formData,
       dialog,
       attachment,
+      getA,
       showAttachment: (val) => {
         console.log("dialog attach", val);
         // return
