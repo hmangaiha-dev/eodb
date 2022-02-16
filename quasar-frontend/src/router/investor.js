@@ -722,9 +722,6 @@ export default {
         },
       ],
     },
-
-
-
     {
       path: "geology-and-mineral-resources",
       component: () => import("layouts/DummyLayout.vue"),

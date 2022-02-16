@@ -2,17 +2,15 @@
   <q-layout @scroll="handleScroll" view="hHh lpR fff">
 
     <q-header  elevated  class="bg-white print-hide green-bottom-border text-primary" height-hint="98">
-      <q-toolbar v-if="!localData.onTop"  class="container-lg">
+      <q-toolbar v-if="!localData.onTop"  class="container-lg flex items-center">
         <q-btn class="lt-sm" @click="localData.openDrawer=true" flat icon="menu"/>
-        <q-toolbar-title>
-          <q-avatar>
-            <img
-              class="bg-primary"
-              src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
-            />
-          </q-avatar>
-          EODB
-        </q-toolbar-title>
+        <router-link to="/"
+        ><img style="width: 80px" src="~assets/eodb-logo.png"
+        /></router-link>
+
+          <q-toolbar-title>
+            Ease of Doing Business
+          </q-toolbar-title>
         <q-space />
         <q-btn :to="{name:'process-flows:read'}" flat icon="settings"/>
       </q-toolbar>
@@ -62,6 +60,7 @@ import {computed} from "vue";
 export default {
   components: {ProfileMenu, AdminNav, MsegFooter},
   setup(props, context) {
+
     const router = useRouter();
     const store = useStore();
     const localData = reactive({

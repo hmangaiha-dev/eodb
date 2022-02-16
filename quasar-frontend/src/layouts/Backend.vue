@@ -1,17 +1,13 @@
 <template>
   <q-layout @scroll="handleScroll" view="hHh lpR fff">
 
-    <q-header elevated class="bg-white print-hide green-bottom-border text-primary" height-hint="98">
+    <q-header elevated class="bg-primary text-white print-hide green-bottom-border" height-hint="98">
       <q-toolbar v-if="!localData.onTop">
         <q-btn class="lt-sm" @click="localData.openDrawer=true" flat icon="menu"/>
-        <q-toolbar-title>
-          <q-avatar>
-            <img
-              class="bg-primary"
-              src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
-            />
-          </q-avatar>
-          EODB
+
+        <q-toolbar-title class="q-mt-md q-pl-lg q-mb-none"
+        ><span class="q-pb-none">Ease of Doing Business</span>
+          <p class="mizoram q-pt-none text-caption">Mizoram</p>
         </q-toolbar-title>
         <q-space/>
         <q-btn :to="{name:'process-flows:read'}" flat icon="settings"/>
@@ -24,7 +20,7 @@
       :model-value="localData.openDrawer"
       @hide="localData.openDrawer = false"
       side="left"
-      class="right-border q-pa-sm"
+      class="right-border q-pa-sm q-mr-lg shadow-7"
     >
 
       <q-list separator class="scroll-y bg-white">
@@ -82,7 +78,7 @@
         <br/>
       </q-list>
     </q-drawer>
-    <q-page-container>
+    <q-page-container class="q-ml-md">
       <router-view/>
     </q-page-container>
 

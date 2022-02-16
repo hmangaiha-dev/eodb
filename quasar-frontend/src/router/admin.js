@@ -3,7 +3,7 @@ import {Notify} from "quasar";
 
 export default {
   path: '/admin',
-  component: () => import('layouts/MainLayout.vue'),
+  component: () => localStorage.getItem('menu')==='sidebar'?import('layouts/Backend.vue'):import('layouts/MainLayout'),
   beforeRouteEnter: (to,from,next) => {
     const store = useStore();
     const loggedIn = store.getters['authData/isAuthenticated'];
@@ -25,7 +25,7 @@ export default {
 
     { path: 'profile',name:'profile:read', component: () => import('pages/admin/profile/Profile.vue') },
 
-    { path: 'roles', name:'role:read', component: () => import('pages/admin/roles/List') },
+    { path:  'roles', name:'role:read', component: () => import('pages/admin/roles/List') },
     { path: 'roles/create',name:'role:create', component: () => import('pages/admin/roles/Create') },
     { path: 'roles/:id',name:'role:edit', component: () => import('pages/admin/roles/Edit') },
 
@@ -59,8 +59,8 @@ export default {
       ]
     },
 
-    { path: 'applications/create',name:'application:create', component: () => import('pages/admin/application/Create') },
-    { path: 'applications/incoming',name:'application:incoming', component: () => import('pages/admin/application/Incoming.vue') },
+    // { path: 'applications/create',name:'application:create', component: () => import('pages/admin/application/Create') },
+    // { path: 'applications/incoming',name:'application:incoming', component: () => import('pages/admin/application/Incoming.vue') },
     { path: 'applications/archived',name:'application:archived', component: () => import('pages/admin/application/Archived.vue') },
     //test
     // { path: 'files/:office_id/incoming',name:'file:incoming', component: () => import('pages/admin/file/IncomingFiles') },
@@ -86,7 +86,7 @@ export default {
       ]
     },
     {path: 'web/online-services/create', name: 'online-service:create', component: () => import('pages/admin/website/online-services/Create.vue')},
-    {path: 'web/online-services/:id/edit', name: 'online-service:edit', component: () => import('pages/admin/website/online-services/Create.vue')},
+    {path: 'web/online-services/:id/edit', name: 'online-service:edit', component: () => import('pages/admin/website/online-services/Edit.vue')},
     {path: 'web/online-services', name: 'web:service', component: () => import('pages/admin/website/online-services/List.vue')},
     {path: 'web/about', name: 'web:about', component: () => import('pages/admin/website/about/index.vue')},
     {path: 'web/act', name: 'web:act', component: () => import('pages/admin/website/act/list.vue')},

@@ -25,6 +25,17 @@ class ActRuleController extends Controller
         ];
     }
 
+    public function departmentAct(Request $request, string $code)
+    {
+        $department=Department::query()->where('dept_code', $code)->first();
+        abort_if(blank($department),400,'No department found');
+
+        return [
+            'list' => $department->acts()->paginate(),
+        ];
+
+    }
+
     public function detail(Request $request, ActRule $model)
     {
         return [

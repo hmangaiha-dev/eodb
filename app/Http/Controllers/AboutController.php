@@ -33,4 +33,13 @@ class AboutController extends Controller
             'message' => 'Content of About Us updated successfully'
         ];
     }
+
+    public function departmentAbout(Request $request, string $code)
+    {
+        $department=Department::query()->where('slug', $code)->first();
+        abort_if(blank($department),400,'Error:No department found');
+        return [
+            'data' => $department->about()->first(),
+        ];
+    }
 }

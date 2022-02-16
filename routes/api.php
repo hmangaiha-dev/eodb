@@ -141,8 +141,18 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
 
 });
 
+Route::group(['prefix' => 'web'], function () {
+    Route::get('{code}/about', [AboutController::class, 'departmentAbout']);
+    Route::get('{code}/act-rule', [ActRuleController::class, 'departmentAct']);
+
+});
 Route::group(['prefix' => 'web', 'middleware' => ['auth:sanctum','staff']], function () {
     Route::get('online-services', [ServiceController::class, 'getServices']);
+    Route::get('online-services/{model}', [ServiceController::class, 'detail']);
+    Route::delete('online-services/{model}', [ServiceController::class, 'destroy']);
+    Route::post('{model}/online-service', [ServiceController::class, 'create']);
+    Route::put('{model}/online-service', [ServiceController::class, 'update']);
+
     Route::get('about', [AboutController::class, 'about']);
     Route::put('about', [AboutController::class, 'updateAbout']);
 

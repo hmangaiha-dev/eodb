@@ -5,7 +5,7 @@
       <p class="ztitle">Online Services</p>
       <div class="row q-col-gutter-md">
         <div class="flex justify-between flex-inline col-12">
-          <q-btn @click="localData.openCreate=true" outline label="New Service" color="primary"/>
+          <q-btn :to="{name:'online-service:create'}" outline label="New Service" color="primary"/>
           <q-input v-model="localData.search" placeholder="Search" @keyup="handleSearch" outlined dense>
             <template v-slot:append>
               <q-icon name="search"/>
@@ -28,7 +28,8 @@
               </q-item-section>
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">
-                                    <q-btn :to="{name:'online-service:edit',params:{id:item.id}}" size="12px" outline icon="edit"/>
+                  <q-btn :to="{name:'online-service:edit',params:{id:item.id}}" size="12px" outline icon="edit"/>
+                  <q-btn @click="handleDelete(item)" size="12px" outline icon="delete"/>
                 </div>
               </q-item-section>
             </q-item>
@@ -48,9 +49,9 @@
     <q-dialog @hide="localData.openCreate=false" v-model="localData.openCreate">
       <notification-create @onCreated="onCreated"/>
     </q-dialog>
-    <q-dialog @hide="localData.openEdit=false" v-model="localData.openEdit">
-      <Edit v-if="!!localData.selectedStaff" @onStaffUpdated="onStaffUpdated" :id="localData.selectedStaff?.id"/>
-    </q-dialog>
+    <!--    <q-dialog @hide="localData.openEdit=false" v-model="localData.openEdit">-->
+    <!--      <Edit v-if="!!localData.selectedStaff" @onStaffUpdated="onStaffUpdated" :id="localData.selectedStaff?.id"/>-->
+    <!--    </q-dialog>-->
   </q-page>
 </template>
 <script>
@@ -88,8 +89,8 @@ export default {
       localData.listData.per_page = per_page;
     }
 
-    const deleteNotifications = id => {
-      api.delete(`web/notification/${id}`)
+    const deleteService = id => {
+      api.delete(`web/online-services/${id}`)
         .then(res => {
           const {current_page, total, per_page, data} = res.data.list;
           localData.listData.current_page = current_page;
@@ -99,7 +100,7 @@ export default {
           q.notify({type: 'positive', message: res.data?.message})
         })
         .catch(err => {
-          q.notify({type: 'negative', message: err?.response?.data?.message})
+          q.notify({type: 'negative', message: err?.response?.data?.message||err.toString()})
         })
     }
 
@@ -120,7 +121,7 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        deleteNotifications(item.id)
+        deleteService(item.id)
       }).onCancel(() => {
         // console.log('>>>> Cancel')
       }).onDismiss(() => {
@@ -131,13 +132,13 @@ export default {
     const handleSearch = e => {
       localData.search = e.target.value;
       if (e.keyCode === 13)
-        fetchNotifications(1);
+        fetchServices(1);
     }
     const updatePagination = (value) => {
-      fetchNotifications(value)
+      fetchServices(value)
     }
 
-    const fetchNotifications = (page) => {
+    const fetchServices = (page) => {
       api.get(`web/online-services?page=${page}`, {params: {search: localData.search}})
         .then(res => {
           const {current_page, total, per_page, data} = res.data.list;
@@ -147,17 +148,17 @@ export default {
           localData.listData.per_page = per_page;
         })
         .catch(err => {
-          let message = !!err?.response ? err.response?.message : err.toString()
-          q.notify({type: 'negative', message})
+          let message = err.response?.data?.message || err.toString();
+          q.notify({type: 'negative', message});
         })
     }
-    onMounted(() => fetchNotifications(localData.listData.page))
+    onMounted(() => fetchServices(localData.listData.page))
     return {
       updatePagination,
       pageCount: computed(() => Math.ceil(localData.listData.total / localData.listData.per_page)),
       localData,
       onCreated,
-      deleteNotifications,
+      deleteService,
       handleSearch,
       handleDownload,
       handleDelete

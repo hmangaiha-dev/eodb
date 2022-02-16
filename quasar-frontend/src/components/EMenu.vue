@@ -7,8 +7,8 @@
     <div class="col-12">
       <q-separator/>
     </div>
-    <div class="col-6">
-      <q-list separator>
+    <div class="col-6 right-border">
+      <q-list class="">
         <q-item v-for="item in DEPARTMENT_LINKS1" :key="item.serial" :to="'/'+item.link+'/online-services'">
           <q-item-section>
             <q-item-label>{{item.title}}</q-item-label>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="col-6">
-      <q-list separator>
+      <q-list>
         <q-item v-for="item in DEPARTMENT_LINKS2" :key="item.serial" :to="'/'+item.link+'/online-services'">
           <q-item-section>
             <q-item-label>{{item.title}}</q-item-label>

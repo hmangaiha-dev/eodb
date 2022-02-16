@@ -3,8 +3,8 @@
 
 
     <q-form style="width: 750px" class="zcard" @submit="onSubmit" @reset="onReset">
-      <h1 class="ztitle q-ma-none">Online service</h1>
-
+      <p class="zsubtitle q-ma-none">Edit <span class="text-weight-light">{{formData?.service_name}}</span> </p>
+      <br/>
       <q-input v-model="formData.service_name"
                outlined
                label="Service name"
@@ -80,7 +80,7 @@
         <q-separator class="q-my-md"/>
 
         <div class="flex-inline">
-          <q-btn type="submit" flat color="primary">Save</q-btn>
+          <q-btn type="submit" flat color="primary">Update</q-btn>
           <q-btn type="reset" flat color="negative">Reset</q-btn>
         </div>
       </q-form>
@@ -93,14 +93,17 @@ import {computed, reactive} from "@vue/reactivity";
 import {useStore} from "vuex";
 import {api} from "boot/axios";
 import {date, useQuasar} from "quasar";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
+import {useRoute, useRouter} from "vue-router";
 
 export default {
-  name: 'notification-create',
+  name: 'notification-edit',
   emits: ['onCreated'],
   setup(props,context){
     const store = useStore();
     const q = useQuasar();
+    const route = useRoute();
+    const router = useRouter();
     const localData=reactive({
       showPassword:false,
       errors:{}
@@ -126,7 +129,7 @@ export default {
     const onSubmit=e=>{
 
       const id = formData.department.value;
-      api.post(`web/${id}/online-service`,formData)
+      api.put(`web/${id}/online-service`,formData)
       .then(res=>{
         const {message, data, list} = res.data;
         q.notify({
@@ -135,6 +138,7 @@ export default {
         })
 
         e?.target?.reset();
+        setTimeout(()=>router.back(),500)
       })
       .catch(err=>{
         q.notify({
@@ -153,9 +157,39 @@ export default {
       formData.fees = '';
       formData.timeline = '';
     }
+    const departments = computed(() => store.state.staffData.departments);
+
+    const fetchDetail=id=>{
+      q.loading.show()
+      api.get(`web/online-services/${id}`)
+      .then(res=>{
+        const {data} = res.data;
+        formData.service_name = data.service_name;
+        formData.operational_type = data.operational_type;
+        formData.department = departments.value.find(d=>d.value===data.department_id);
+        formData.document_to_submit = data.document_to_submit;
+        formData.who_should_apply = data.who_should_apply;
+        formData.how_to_apply = data.how_to_apply;
+        formData.fees = data.fees;
+        formData.timeline = data.timeline;
+      })
+      .catch(err=>{
+        const message = err?.response?.data?.message || err.toString();
+        q.notify({
+          type:'negative',
+          message
+        })
+      })
+      .finally(()=>q.loading.hide())
+
+    }
+    onMounted(() => {
+      const {id} = route.params;
+      fetchDetail(id);
+    })
 
     return{
-      departments:computed(()=>store.state.staffData.departments),
+      departments,
       formData,
       localData,
       onReset,

@@ -14,47 +14,49 @@ class ServiceController extends Controller
         return response()->json(ApplicationProfile::query()->get());
     }
 
+    public function detail(Request $request, DepartmentService $model)
+    {
+        return [
+            'data' => $model
+        ];
+    }
+
     public function getServices(Request $request)
     {
+        $search = $request->get('search');
         return [
-            'list' => DepartmentService::query()->paginate()
+            'list' => DepartmentService::query()->when($search,fn($q)=>$q->where('service_name','LIKE',"%{$search}%"))->paginate()
         ];
     }
 
-    public function actRules(Request $request)
+    public function create(Request $request,Department $model)
     {
-        $staff = auth()->user();
-        $office = $staff->currentPost();
-
-        $data = Department::query()->where('dept_code', $office->code)
-            ->pluck('act_rules');
+        $service=$model->services()->create($request->only((new DepartmentService())->getFillable()));
         return [
-            'data' => $data,
+            'data' => $service,
+            'message' => 'Service added successfully',
+            'list' => $model->services()->paginate()
         ];
     }
-
-    public function notifications(Request $request)
+    public function update(Request $request,DepartmentService $model)
     {
-        $staff = auth()->user();
-        $office = $staff->currentPost();
 
-        $info = Department::query()->where('dept_code', $office->code)
-            ->pluck('info');
+        $service = $model->updateOrFail($request->only((new DepartmentService())->getFillable()));
         return [
-            'data' => $info,
+            'data' => $service,
+            'message' => 'Service updated successfully',
         ];
     }
-
-
-    public function otherInformations(Request $request)
+    public function destroy(Request $request,DepartmentService $model)
     {
-        $staff = auth()->user();
-        $office = $staff->currentPost();
 
-        $info = Department::query()->where('dept_code', $office->code)
-            ->first();
+        $model->delete();
+
         return [
-            'data' => $info,
+            'list' => DepartmentService::query()->paginate(),
+            'data' => $model,
+            'message' => 'Service deleted successfully',
         ];
     }
+
 }
