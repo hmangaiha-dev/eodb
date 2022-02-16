@@ -579,6 +579,9 @@ export default {
 
        watch(store.state.globalData.common, () => {
       getA();
+      store.state.globalData.common,() =>{
+        getG();
+      }
     });
 
     const getA = () => {
@@ -598,6 +601,8 @@ export default {
       formData.power_new_connection_applicant_name = applicant_name  ;
       formData.power_new_connection_communication_district = city_town
       formData.power_new_connection_communication_house = address;
+
+      
 
     
       

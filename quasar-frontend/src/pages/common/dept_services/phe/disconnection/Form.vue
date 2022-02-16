@@ -263,7 +263,7 @@ watch(store.state.globalData.common, () => {
       formData.phe_disconnect_two_e = postal_code ;
       formData.phe_disconnect_two_g = mobile_no ;
 
-      formData.phe_disconnect_two_h = email ;
+      formData.phe_disconnect_three = email ;
 
 
 
