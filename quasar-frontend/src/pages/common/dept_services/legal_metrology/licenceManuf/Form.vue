@@ -412,7 +412,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -446,18 +446,46 @@ export default {
       legal_foundry_details: "",
       legal_steel_facilities: "",
       legal_electricity_availability: "",
-      legal_loan_received: "",
-      legal_bankers: "",
       legal_TAX_number: "",
       legal_previous_licence_application: "",
       legal_item_proposed_selling: "",
       legal_model_approved_details: "",
+      legal_loan_received: "",
+      legal_bank:"",
 
       legal_licence_manuf_signature_designation: null,
     });
+
+
+     watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+      } = store.state.globalData.common.partA;
+      formData.legal_name_manufcaturing = applicant_name;
+      formData.legal_address = address;
+
+      
+
+    };
+
+
+
     onMounted(() => {});
     return {
       group: ref([]),
+      getA,
 
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
