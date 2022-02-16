@@ -197,7 +197,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, watch,ref } from "vue";
+import { onMounted, watch, ref } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -207,7 +207,7 @@ export default {
     const dialog = ref(false);
     const attachment = ref("");
 
-    const formData = reactive({
+    let formData = reactive({
       declaration_signature: null,
       declaration_applicant_name: "",
       declaration_application_date: "",
@@ -216,17 +216,20 @@ export default {
       rows: 1,
       model: "declaration",
     });
-    const getDeclaration = () => {
-      // formData.project_sector = store.state.globalData.common.partD?.project_sector;
 
-      for (let data in store.state.globalData.common.selfDeclaration) {
-        formData[data] = store.state.globalData.common?.selfDeclaration[data];
-      }
-    };
+    const getDeclaration = () =>
+      (formData = Object.assign(
+        formData,
+        store.state.globalData.common?.selfDeclaration
+      ));
 
-    onMounted(() => {
-      getDeclaration();
-    });
+    // const getDeclaration = () => {
+    //   for (let data in store.state.globalData.common.selfDeclaration) {
+    //     formData[data] = store.state.globalData.common?.selfDeclaration[data];
+    //   }
+    // };
+
+    onMounted(() => getDeclaration());
 
     watch(store.state.globalData.common, () => {
       getDeclaration();

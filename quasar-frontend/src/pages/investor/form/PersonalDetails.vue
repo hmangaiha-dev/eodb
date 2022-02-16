@@ -215,7 +215,7 @@ export default {
     const dialog = ref(false);
     const attachment = ref("");
 
-    var formData = reactive({
+    let formData = reactive({
       applicant_type: "",
       applicant_photo: null,
       applicant_name: "",
@@ -231,16 +231,17 @@ export default {
       email: "",
       alt_email: "",
     });
-    onMounted(() => {
-      getPersonalDetails();
-    });
+    onMounted(() => getPersonalDetails());
 
     const getPersonalDetails = () => {
-
-      formData.applicant_type = store.state.globalData.common.partA?.applicant_type;
-      formData.applicant_photo = store.state.globalData.common.partA?.applicant_photo;
-      formData.applicant_name = store.state.globalData.common.partA?.applicant_name;
-      formData.applicant_caste = store.state.globalData.common.partA?.applicant_caste;
+      formData.applicant_type =
+        store.state.globalData.common.partA?.applicant_type;
+      formData.applicant_photo =
+        store.state.globalData.common.partA?.applicant_photo;
+      formData.applicant_name =
+        store.state.globalData.common.partA?.applicant_name;
+      formData.applicant_caste =
+        store.state.globalData.common.partA?.applicant_caste;
       formData.country = store.state.globalData.common.partA?.country;
       formData.state = store.state.globalData.common.partA?.state;
       formData.city_town = store.state.globalData.common.partA?.city_town;
@@ -253,9 +254,7 @@ export default {
       formData.alt_email = store.state.globalData.common.partA?.alt_email;
     };
 
-    watch(store.state.globalData.common, () => {
-      getPersonalDetails();
-    });
+    watch(store.state.globalData.common, () => getPersonalDetails());
     return {
       application_types: [
         "New Enterprise",

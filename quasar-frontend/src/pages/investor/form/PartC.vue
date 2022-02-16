@@ -176,7 +176,7 @@ export default {
     const dialog = ref(false);
     const attachment = ref("");
 
-    const formData = reactive({
+    let formData = reactive({
       choose_applicable: "",
       certified_copy_owner: null,
       certified_lease_doc: null,
@@ -188,25 +188,15 @@ export default {
       model: "C",
     });
 
-    const getC = () => {
-      for (let data in store.state.globalData.common?.partC) {
-        formData[data] = store.state.globalData.common?.partC[data];
-      }
-    };
-    onMounted(() => {
-      getC();
-    });
+    const getC = () =>
+      (formData = Object.assign(
+        formData,
+        store.state.globalData.common?.partC
+      ));
 
-    watch(store.state.globalData.common, () => {
-      getC();
-      // const objects = store.state.globalData.common.partA;
+    onMounted(() => getC());
 
-      // let { Object.keys(formData) } =  store.state.globalData.common.partA;
-
-      // formData = Object.assign(formData, objects);
-
-      // console.log("objects", formData);
-    });
+    watch(store.state.globalData.common, () => getC());
 
     return {
       formData,

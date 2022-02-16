@@ -84,7 +84,7 @@ export default {
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
 
-    const formData = reactive({
+    let formData = reactive({
       proposed_plot_requirement: "",
       proposed_industrial_area: "",
       proposed_total_proposed_area: "",
@@ -93,30 +93,15 @@ export default {
       model: "B",
     });
 
-    const getB = () => {
-      for (let data in store.state.globalData.common?.partB) {
-        formData[data] = store.state.globalData.common?.partB[data];
-      }
-      // formData.proposed_plot_requirement = store.state.globalData.common.partB?.proposed_plot_requirement;
-      // formData.proposed_industrial_area = store.state.globalData.common.partB?.proposed_industrial_area;
-      // formData.proposed_total_proposed_area = store.state.globalData.common.partB?.proposed_total_proposed_area;
-      // formData.proposed_total_built_area = store.state.globalData.common.partB?.proposed_total_built_area;
-      // formData.proposed_city_town = store.state.globalData.common.partB?.proposed_city_town;
-    };
-    onMounted(() => {
-      getB();
-    });
+    const getB = () =>
+      (formData = Object.assign(
+        formData,
+        store.state.globalData.common?.partB
+      ));
 
-    watch(store.state.globalData.common, () => {
-      getB();
-      // const objects = store.state.globalData.common.partA;
+    onMounted(() => getB());
 
-      // let { Object.keys(formData) } =  store.state.globalData.common.partA;
-
-      // formData = Object.assign(formData, objects);
-
-      // console.log("objects", formData);
-    });
+    watch(store.state.globalData.common, () => getB());
 
     return {
       formData,

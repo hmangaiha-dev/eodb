@@ -10,7 +10,7 @@
         indicator-color="primary"
         align="justify"
         narrow-indicator
-        @update:tab="watchTab"
+       
       >
         <q-tab name="a" label="Part-A" />
         <q-tab name="b" label="Part-B" />
@@ -122,7 +122,7 @@
         </q-tab-panel>
 
         <q-tab-panel name="declaration">
-         <q-form @submit.prevent="toggle('final')">
+          <q-form @submit.prevent="toggle('final')">
             <div class="row q-col-gutter-lg">
               <div class="col-xs-12">
                 <Declaration ref="declarationRef" />
@@ -157,6 +157,7 @@ import PartE from "./form/PartE.vue";
 import PartF from "./form/PartF.vue";
 import PartG from "./form/PartG.vue";
 import Declaration from "./form/Declaration.vue";
+import { useQuasar } from "quasar";
 import { useRouter, useRoute } from "vue-router";
 // import { useStore } from "vuex";
 
@@ -173,6 +174,7 @@ export default {
     Declaration,
   },
   setup(props, context) {
+    const q = useQuasar();
     const applicantRef = ref(null);
     const FirmRef = ref(null);
     const proposedRef = ref(null);
@@ -187,122 +189,55 @@ export default {
     const store = useStore();
 
     const toggle = (val) => {
-      formData = {};
-      if (val == "b") {
-        formData = Object.assign({}, applicantRef.value.formData);
-        formData = Object.assign(formData, FirmRef.value.formData);
-      } else if (val == "c") {
-        formData = Object.assign({}, proposedRef.value.formData);
-      } else if (val == "d") {
-        formData = Object.assign({}, partCRef.value.formData);
-      } else if (val == "e") {
-        formData = Object.assign({}, partDRef.value.formData);
-      } else if (val == "f") {
-        formData = Object.assign({}, partERef.value.formData);
-      } else if (val == "g") {
-        formData = Object.assign({}, partFRef.value.formData);
-      } else if (val == "declaration") {
-        formData = Object.assign({}, partGRef.value.formData);
-      } 
-      else if (val == "final") {
-        formData = Object.assign({}, declarationRef.value.formData);
-      }
-
-      var formDatas = new FormData();
-
-      for (let data in formData) {
-        formDatas.append(`${data}`, formData[data]);
-      }
-      // formDatas.append('model','A');
-      // return console.log("form values", formData);
-      api
-        .post("/investor/common-applications/store", formDatas)
-        .then((res) => {
-          console.log("response value", res.data);
-          // q.notify({
-          //   message: "Application submitted successfully",
-          //   color: "green",
-          // });
-          // router.push({ name: "investor:ongoing" });
-        })
-        .catch((err) => console.log("error", err));
-
-      // store.dispatch("globalData/fetchCommonData");
-
-      return;
-
-      tab.value = val;
-      var formData = {};
-
-      // return console.log(q);
-
-      formData = Object.assign({}, applicantRef.value.formData);
-      formData = Object.assign(formData, FirmRef.value.formData);
-
-      return console.log("form values", formData);
-
-      var formDatas = new FormData();
-
-      for (let data in formData) {
-        formDatas.append(`${data}`, formData[data]);
-      }
-    };
-
-    onMounted(() => {
-      console.log("dispatching");
-      // store.dispatch("globalData/fetchCommonData");
-    });
-
-    const watchTab = (oldValue, newValue) => {
-      console.log("new and old", oldValue, newValue);
-    };
-    const finalSubmit = () => {
-      api
-        .get("/investor/common-applications")
-        .then((res) => {
-          console.log("response value", res.data);
-          // q.notify({
-          //   message: "Application submitted successfully",
-          //   color: "green",
-          // });
-          // router.push({ name: "investor:ongoing" });
-        })
-        .catch((err) => console.log("error", err));
-
-      return;
-      console.log("final submit");
-
       var applications = [
         {
-          ...applicantRef.value.formData,
-          ...FirmRef.value.formData,
-          ...proposedRef.value.formData,
-          ...partCRef.value.formData,
-          ...partDRef.value.formData,
-          ...partERef.value.formData,
-          ...partFRef.value.formData,
-          ...partGRef.value.formData,
-          ...declarationRef.value.formData,
+          ...applicantRef.value?.formData,
+          ...FirmRef.value?.formData,
+          ...proposedRef.value?.formData,
+          ...partCRef.value?.formData,
+          ...partDRef.value?.formData,
+          ...partERef.value?.formData,
+          ...partFRef.value?.formData,
+          ...partGRef.value?.formData,
+          ...declarationRef.value?.formData,
         },
       ];
+
+      val == 'b' && Object.assign(applications[0],{model: 'A'})
+      val == 'c' && Object.assign(applications[0],{model: 'B'})
+      val == 'd' && Object.assign(applications[0],{model: 'C'})
+      val == 'e' && Object.assign(applications[0],{model: 'D'})
+      val == 'f' && Object.assign(applications[0],{model: 'E'})
+      val == 'g' && Object.assign(applications[0],{model: 'F'})
+      val == 'final' && Object.assign(applications[0],{model: 'declaration'})
 
       var formDatas = new FormData();
 
       for (let data in applications[0]) {
-        console.log(`${data}`, applications[0][data]);
-
         formDatas.append(`${data}`, applications[0][data]);
       }
+      
+      api
+        .post("/investor/common-applications/store", formDatas)
+        .then((res) => {
+          if (val == "final") {
+            q.notify({
+              message: "Application submitted successfully",
+              color: "green",
+            });
+            // router.push({ name: "investor:ongoing" });
+          } else tab.value = val;
+        })
+        .catch((err) => console.log("error", err));
 
-      console.log("formDatas", applications);
+
+      return;
+
+
     };
 
-    // const store = useStore();
-    // const draft = store.getters["applicantData/getCurrentDraft"];
-    // const currentUser = store.getters["auth/getCurrentUser"];
 
-    const formData = reactive({});
-
+   
     return {
       tab,
       applicantRef,
@@ -315,10 +250,10 @@ export default {
       partFRef,
       partGRef,
       Declaration,
-      formData,
+      q,
       toggle,
-      watchTab,
-      finalSubmit,
+      
+     
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

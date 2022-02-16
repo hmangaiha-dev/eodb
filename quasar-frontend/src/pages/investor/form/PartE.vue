@@ -320,14 +320,14 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted,watch } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
   setup(props, context) {
     const store = useStore();
 
-    const formData = reactive({
+    let formData = reactive({
       land_cost: "",
       building_cost: "",
       plant_machinery_cost: "",
@@ -348,30 +348,17 @@ export default {
       project_start: "",
       commercial_start: "",
       rows: 1,
-      model: 'E'
+      model: "E",
     });
-    const getE = () => {
-      // formData.project_sector = store.state.globalData.common.partD?.project_sector;
+    const getE = () =>
+      (formData = Object.assign(
+        formData,
+        store.state.globalData.common?.partE
+      ));
 
-      for (let data in store.state.globalData.common.partE) {
-        formData[data] = store.state.globalData.common?.partE[data];
-      }
-    };
+    onMounted(() => getE());
 
-    onMounted(() => {
-      getE();
-    });
-
-    watch(store.state.globalData.common, () => {
-      getE();
-      // const objects = store.state.globalData.common.partA;
-
-      // let { Object.keys(formData) } =  store.state.globalData.common.partA;
-
-      // formData = Object.assign(formData, objects);
-
-      // console.log("objects", formData);
-    });
+    watch(store.state.globalData.common, () => getE());
     return {
       formData,
       getE,

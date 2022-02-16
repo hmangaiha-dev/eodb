@@ -480,7 +480,10 @@ Step ..."
         val="false"
         label="Not Applicable"
       />
-      <div v-if="formData.need_clearance == 'true'" class="row justify-start q-ml-sm">
+      <div
+        v-if="formData.need_clearance == 'true'"
+        class="row justify-start q-ml-sm"
+      >
         <div class="col-12 q-ml-sm">
           <div class="col-xs-12 col-md-5">
             <label class="zlabel" for="gender"> a) If Applicable </label>
@@ -559,7 +562,7 @@ export default {
     const dialog = ref(false);
     const attachment = ref("");
 
-    const formData = reactive({
+    let formData = reactive({
       manuf_process_flow: null,
       manuf_process_steps: "",
       env_category: "",
@@ -586,21 +589,15 @@ export default {
 
       rows: 1,
     });
-    const getF = () => {
-      // formData.project_sector = store.state.globalData.common.partD?.project_sector;
+    const getF = () =>
+      (formData = Object.assign(
+        formData,
+        store.state.globalData.common?.partF
+      ));
 
-      for (let data in store.state.globalData.common.partF) {
-        formData[data] = store.state.globalData.common?.partF[data];
-      }
-    };
+    onMounted(() => getF());
 
-    onMounted(() => {
-      getF();
-    });
-
-    watch(store.state.globalData.common, () => {
-      getF();
-    });
+    watch(store.state.globalData.common, () => getF());
     return {
       formData,
       dialog,

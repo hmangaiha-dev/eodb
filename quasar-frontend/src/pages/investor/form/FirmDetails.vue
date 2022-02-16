@@ -52,7 +52,9 @@
         />
       </div>
       <div class="col-xs-12 col-md-6">
-        <label class="zlabel" for="pob">4.5 Number of Directors/Proprietor/MD/CEO*</label>
+        <label class="zlabel" for="pob"
+          >4.5 Number of Directors/Proprietor/MD/CEO*</label
+        >
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.total_directors" />
@@ -133,9 +135,7 @@
         <label class="zlabel" for="gender">
           4.10 (i) Attach TIN/VAT/GSTIN Certificate* ( Maximum size : 4 MB
           Format : PDF )
-          <span
-            class="asterisk"
-          >*</span>
+          <span class="asterisk">*</span>
         </label>
       </div>
       <div class="col-xs-12 col-md-6">
@@ -163,9 +163,7 @@
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
           4.11(i) Attach CST Certifiacte * ( Maximum size : 4 MB Format : PDF )
-          <span
-            class="asterisk"
-          >*</span>
+          <span class="asterisk">*</span>
         </label>
         <q-file v-model="formData.cst_cert" outlined>
           <template v-slot:prepend>
@@ -185,9 +183,7 @@
         <label class="zlabel" for="gender">
           4.12 MoU/Partnership Deed Attachment* ( Maximum size : 4 MB Format :
           PDF )
-          <span
-            class="asterisk"
-          >*</span>
+          <span class="asterisk">*</span>
         </label>
         <q-file v-model="formData.mou_deed" outlined>
           <template v-slot:prepend>
@@ -205,9 +201,7 @@
         <label class="zlabel" for="gender">
           4.13 Certificate of Company Incorporation/Registration Attachment* (
           Maximum size : 4 MB Format : PDF )
-          <span
-            class="asterisk"
-          >*</span>
+          <span class="asterisk">*</span>
         </label>
         <q-file v-model="formData.company_reg_cert" outlined>
           <template v-slot:prepend>
@@ -278,45 +272,38 @@ export default {
       company_reg_cert: null,
       udyog_memorandum: null,
       common_id: null,
-      model: 'A'
+      model: "A",
     });
 
     const getA = () => {
       formData.prop_name = store.state.globalData.common.partA?.prop_name;
       formData.designation = store.state.globalData.common.partA?.designation;
-      formData.enterprise_name = store.state.globalData.common.partA?.enterprise_name;
-      formData.enterprise_type = store.state.globalData.common.partA?.enterprise_type;
-      formData.total_directors = store.state.globalData.common.partA?.total_directors;
+      formData.enterprise_name =
+        store.state.globalData.common.partA?.enterprise_name;
+      formData.enterprise_type =
+        store.state.globalData.common.partA?.enterprise_type;
+      formData.total_directors =
+        store.state.globalData.common.partA?.total_directors;
       formData.pan_no = store.state.globalData.common.partA?.pan_no;
       formData.pan_card = store.state.globalData.common.partA?.pan_card;
       formData.aadhaar_no = store.state.globalData.common.partA?.aadhaar_no;
       formData.passport_no = store.state.globalData.common.partA?.passport_no;
-      formData.is_applicant_nri = store.state.globalData.common.partA?.is_applicant_nri;
+      formData.is_applicant_nri =
+        store.state.globalData.common.partA?.is_applicant_nri;
       formData.tin_no = store.state.globalData.common.partA?.tin_no;
       formData.tin_cert = store.state.globalData.common.partA?.tin_cert;
       formData.cst_no = store.state.globalData.common.partA?.cst_no;
       formData.cst_cert = store.state.globalData.common.partA?.cst_cert;
       formData.mou_deed = store.state.globalData.common.partA?.mou_deed;
-      formData.company_reg_cert = store.state.globalData.common.partA?.company_reg_cert;
-      formData.udyog_memorandum = store.state.globalData.common.partA?.udyog_memorandum;
+      formData.company_reg_cert =
+        store.state.globalData.common.partA?.company_reg_cert;
+      formData.udyog_memorandum =
+        store.state.globalData.common.partA?.udyog_memorandum;
       formData.common_id = store.state.globalData.common.partA?.common_id;
-    }
-    onMounted(() => {
-      getA()
-    });
+    };
+    onMounted(() => getA());
 
-    watch(store.state.globalData.common, () => {
-      getA()
-      // const objects = store.state.globalData.common.partA;
-
-
-
-      // let { Object.keys(formData) } =  store.state.globalData.common.partA;
-
-      // formData = Object.assign(formData, objects);
-
-      // console.log("objects", formData);
-    });
+    watch(store.state.globalData.common, () => getA());
     return {
       formData,
       dialog,

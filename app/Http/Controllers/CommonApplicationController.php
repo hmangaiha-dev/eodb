@@ -19,7 +19,6 @@ class CommonApplicationController extends Controller
     {
         // return 'common';
         return Auth::user()->commonApplications()->with(['partA', 'partB', 'partC', 'partD', 'partE', 'partF', 'partG', 'selfDeclaration'])->first();
-        // $parta = Auth::user()->commonApplications()->with('partA')->first();
 
 
     }

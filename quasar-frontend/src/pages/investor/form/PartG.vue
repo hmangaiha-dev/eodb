@@ -494,9 +494,7 @@
             color="primary"
             :label="formData.water_regular_existing_bill_copy_file"
             @click="
-              showAttachment(
-                formData.water_regular_existing_bill_copy_file
-              )
+              showAttachment(formData.water_regular_existing_bill_copy_file)
             "
           />
         </div>
@@ -616,7 +614,7 @@ export default {
     const dialog = ref(false);
     const attachment = ref("");
 
-    const formData = reactive({
+    let formData = reactive({
       electric_temporary_load_required: "",
       electric_temporary_existing_connection: "",
       electric_temporary_existing_connection_file: null,
@@ -648,21 +646,15 @@ export default {
 
       rows: 1,
     });
-    const getG = () => {
-      // formData.project_sector = store.state.globalData.common.partD?.project_sector;
+    const getG = () =>
+      (formData = Object.assign(
+        formData,
+        store.state.globalData.common?.partG
+      ));
 
-      for (let data in store.state.globalData.common.partG) {
-        formData[data] = store.state.globalData.common?.partG[data];
-      }
-    };
+    onMounted(() => getG());
 
-    onMounted(() => {
-      getG();
-    });
-
-    watch(store.state.globalData.common, () => {
-      getG();
-    });
+    watch(store.state.globalData.common, () => getG());
     return {
       formData,
       getG,
