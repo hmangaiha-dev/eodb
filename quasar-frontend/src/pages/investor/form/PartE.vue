@@ -11,7 +11,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.land_cost"
           />
@@ -26,7 +25,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.building_cost"
           />
@@ -42,7 +40,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.plant_machinery_cost"
           />
@@ -58,7 +55,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.misc_cost"
           />
@@ -74,7 +70,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.total_project_cost"
           />
@@ -95,7 +90,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.bank_finance"
           />
@@ -110,7 +104,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.equity_contribution"
           />
@@ -126,7 +119,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.foreign_direct_invest"
           />
@@ -142,7 +134,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.subsidy_grant"
           />
@@ -156,7 +147,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.other_means"
           />
@@ -175,7 +165,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.direct_male"
           />
@@ -190,7 +179,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.direct_female"
           />
@@ -204,7 +192,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.indirect_male"
           />
@@ -218,7 +205,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.indirect_female"
           />
@@ -232,7 +218,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.total_male"
           />
@@ -246,7 +231,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.total_female"
           />
@@ -267,7 +251,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.project_start"
           />
@@ -284,7 +267,6 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            
             outlined
             v-model="formData.commercial_start"
           />
@@ -301,40 +283,19 @@
           >
             <!-- {{ i }} -->
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                label="Phase *"
-                
-                
-                outlined
-              />
+              <q-input label="Phase *" outlined />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                placeholder="Product Category *"
-                
-                
-                outlined
-              />
+              <q-input placeholder="Product Category *" outlined />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                placeholder="FCI *"
-                
-                
-                outlined
-              />
+              <q-input placeholder="FCI *" outlined />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                placeholder="Implementation Date"
-                
-                type="date"
-                
-                outlined
-              />
+              <q-input placeholder="Implementation Date" type="date" outlined />
             </div>
 
             <div class="q-my-md q-py-none col-12">
@@ -359,38 +320,48 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
   setup(props, context) {
     const store = useStore();
 
-    const formData = reactive({
-     land_cost: "",
-     building_cost: "",
-     plant_machinery_cost: "",
-     misc_cost: "",
-     total_project_cost: "",
-     bank_finance: "",
-     equity_contribution: "",
-     foreign_direct_invest: "",
-     foreign_direct_invest: "",
-     subsidy_grant: "",
-     other_means: "",
-     direct_male: "",
-     direct_female: "",
-     indirect_male: "",   
-     indirect_female: "",   
-     total_male: "",
-     total_female: "",
-     project_start: "",
-     commercial_start: "",
+    let formData = reactive({
+      land_cost: "",
+      building_cost: "",
+      plant_machinery_cost: "",
+      misc_cost: "",
+      total_project_cost: "",
+      bank_finance: "",
+      equity_contribution: "",
+      foreign_direct_invest: "",
+      foreign_direct_invest: "",
+      subsidy_grant: "",
+      other_means: "",
+      direct_male: "",
+      direct_female: "",
+      indirect_male: "",
+      indirect_female: "",
+      total_male: "",
+      total_female: "",
+      project_start: "",
+      commercial_start: "",
       rows: 1,
+      model: "E",
     });
-    onMounted(() => {});
+    const getE = () =>
+      (formData = Object.assign(
+        formData,
+        store.state.globalData.common?.partE
+      ));
+
+    onMounted(() => getE());
+
+    watch(store.state.globalData.common, () => getE());
     return {
       formData,
+      getE,
       industrial_areas: [
         "Industrial Growth Centre, Luangmual",
         "Industrial Estate, Zuangtui",

@@ -1,5 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
+    <q-dialog class="print-hide" v-model="dialog">
+      <q-card>
+        <embed :src="attachment" width="500" height="500" />
+      </q-card>
+    </q-dialog>
     <div class="col-12">
       <label class="zlabel"> 11. Manufacturing </label> <br />
       <label for="" class="zlabel">
@@ -13,49 +18,25 @@
       >
         <!-- {{ i }} -->
         <div class="col-sm-5 col-xs-12">
-          <q-input
-            label="Raw Material"
-            
-            outlined
-          />
+          <q-input label="Raw Material" outlined />
         </div>
 
         <div class="col-sm-5 col-xs-12">
-          <q-input
-            placeholder="Quantity"
-            
-            outlined
-          />
+          <q-input placeholder="Quantity" outlined />
         </div>
 
         <div class="col-sm-5 col-xs-12">
-          <q-input
-            placeholder="Units(Ton per day-TDP)"
-            
-            outlined
-          />
+          <q-input placeholder="Units(Ton per day-TDP)" outlined />
         </div>
 
         <div class="col-sm-5 col-xs-12">
-          <q-input
-            placeholder="Main Product	"
-            
-            outlined
-          />
+          <q-input placeholder="Main Product	" outlined />
         </div>
         <div class="col-sm-5 col-xs-12">
-          <q-input
-            placeholder="Quantity"
-            
-            outlined
-          />
+          <q-input placeholder="Quantity" outlined />
         </div>
         <div class="col-sm-5 col-xs-12">
-          <q-input
-            placeholder="Units(Number per day)"
-            
-            outlined
-          />
+          <q-input placeholder="Units(Number per day)" outlined />
         </div>
 
         <div class="q-my-md q-py-none col-12">
@@ -84,6 +65,7 @@
         </div>
         <div class="col-xs-12 col-md-5">
           <q-file
+            lazy-rules
             :rules="[(val) => val || 'Please type something']"
             v-model="formData.manuf_process_flow"
             outlined
@@ -92,6 +74,12 @@
               <q-icon name="attach_file" />
             </template>
           </q-file>
+          <q-btn
+            flat
+            color="primary"
+            :label="formData.manuf_process_flow"
+            @click="showAttachment(formData.manuf_process_flow)"
+          />
         </div>
 
         <div class="col-xs-12 col-md-5">
@@ -331,7 +319,7 @@ Step ..."
             </div>
             <div class="col-xs-12 col-md-5">
               <q-file
-                :rules="[(val) => val || 'Please type something']"
+                lazy-rules
                 v-model="formData.waste_water_treatment_details"
                 outlined
               >
@@ -339,6 +327,12 @@ Step ..."
                   <q-icon name="attach_file" />
                 </template>
               </q-file>
+              <q-btn
+                flat
+                color="primary"
+                :label="formData.waste_water_treatment_details"
+                @click="showAttachment(formData.waste_water_treatment_details)"
+              />
             </div>
           </div>
         </div>
@@ -368,44 +362,27 @@ Step ..."
           >
             <!-- {{ i }} -->
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                label="Capacity(Ton per hour/KVA)"
-               
-                dense
-                outlined
-              />
+              <q-input label="Capacity(Ton per hour/KVA)" dense outlined />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                placeholder="Type of Fuel"
-               
-                dense
-                outlined
-              />
+              <q-input placeholder="Type of Fuel" dense outlined />
             </div>
 
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Quantity of fuel(in KL per day / Ton per day)"
-               
                 dense
                 outlined
               />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                placeholder="Stack Height	"
-               
-                dense
-                outlined
-              />
+              <q-input placeholder="Stack Height	" dense outlined />
             </div>
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Air Pollution Control Device"
-               
                 dense
                 outlined
               />
@@ -413,7 +390,6 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Boiler Rating(Heating Surface) In cubic meter"
-               
                 dense
                 outlined
               />
@@ -421,18 +397,12 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 placeholder="Stream Pressure(max) In Kg per Cubic cm"
-               
                 dense
                 outlined
               />
             </div>
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                placeholder="Capacity in ltrs"
-               
-                dense
-                outlined
-              />
+              <q-input placeholder="Capacity in ltrs" dense outlined />
             </div>
 
             <div class="q-my-md q-py-none col-12">
@@ -463,39 +433,19 @@ Step ..."
           >
             <!-- {{ i }} -->
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                label="Source of Generation"
-               
-                dense
-                outlined
-              />
+              <q-input label="Source of Generation" dense outlined />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                placeholder="Nature/Type"
-               
-                dense
-                outlined
-              />
+              <q-input placeholder="Nature/Type" dense outlined />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                placeholder="	Quantity(Ton per day)"
-               
-                dense
-                outlined
-              />
+              <q-input placeholder="	Quantity(Ton per day)" dense outlined />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input
-                placeholder="Mode of disposal"
-               
-                dense
-                outlined
-              />
+              <q-input placeholder="Mode of disposal" dense outlined />
             </div>
 
             <div class="q-my-md q-py-none col-12">
@@ -517,10 +467,23 @@ Step ..."
 
     <div class="col-12 zsubtitle">
       13 Need for clearance of vegetation(Trees and Bamboo Groves) in the
-      project site* <br>
-      <q-radio class="zlabel" v-model="condition" val="true" label="Applicable" />
-      <q-radio class="zlabel" v-model="condition" val="false" label="Not Applicable" />
-      <div v-if="condition == 'true'" class="row justify-start q-ml-sm">
+      project site* <br />
+      <q-radio
+        class="zlabel"
+        v-model="formData.need_clearance"
+        val="true"
+        label="Applicable"
+      />
+      <q-radio
+        class="zlabel"
+        v-model="formData.need_clearance"
+        val="false"
+        label="Not Applicable"
+      />
+      <div
+        v-if="formData.need_clearance == 'true'"
+        class="row justify-start q-ml-sm"
+      >
         <div class="col-12 q-ml-sm">
           <div class="col-xs-12 col-md-5">
             <label class="zlabel" for="gender"> a) If Applicable </label>
@@ -575,6 +538,12 @@ Step ..."
               <q-icon name="attach_file" />
             </template>
           </q-file>
+          <q-btn
+            flat
+            color="primary"
+            :label="formData.replantation_plan"
+            @click="showAttachment(formData.replantation_plan)"
+          />
         </div>
       </div>
     </div>
@@ -584,15 +553,16 @@ Step ..."
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { date } from "quasar";
 
 export default {
   setup(props, context) {
     const store = useStore();
-    const condition = ref("");
+    const dialog = ref(false);
+    const attachment = ref("");
 
-    const formData = reactive({
+    let formData = reactive({
       manuf_process_flow: null,
       manuf_process_steps: "",
       env_category: "",
@@ -601,30 +571,44 @@ export default {
       water_usage_per_day_cooling: "",
       water_usage_per_day_domestic: "",
       water_usage_per_day_others: "",
-
       water_water_gen_per_day_process: "",
       water_water_gen_per_day_cooling: "",
       water_water_gen_per_day_domestic: "",
       water_water_gen_per_day_others: "",
-
       water_water_treatment_process: "",
       water_water_treatment_cooling: "",
       water_water_treatment_domestic: "",
       water_water_treatment_others: "",
-
       waste_water_treatment_details: null,
-
       disposal_mode: "",
       trees_cut_no: "",
+      need_clearance: "",
       bamboo_groves_remove_no: "",
       replantation_plan: null,
+      model: "F",
 
       rows: 1,
     });
-    onMounted(() => {});
+    const getF = () =>
+      (formData = Object.assign(
+        formData,
+        store.state.globalData.common?.partF
+      ));
+
+    onMounted(() => getF());
+
+    watch(store.state.globalData.common, () => getF());
     return {
-      condition,
       formData,
+      dialog,
+      attachment,
+      getF,
+      showAttachment: (val) => {
+        console.log("dialog attach", val);
+        // return
+        attachment.value = "http://localhost:8000/storage/" + val;
+        dialog.value = true;
+      },
       industrial_areas: [
         "Industrial Growth Centre, Luangmual",
         "Industrial Estate, Zuangtui",
