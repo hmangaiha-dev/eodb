@@ -1,6 +1,6 @@
 <template>
-  <div class="zcard row items-center q-col-gutter-md">
-    <q-dialog class="print-hide" v-model="dialog">
+  <div class="row items-center q-col-gutter-md">
+    <q-dialog v-model="dialog">
       <q-card>
         <embed :src="attachment" width="500" height="500" />
       </q-card>
@@ -181,7 +181,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-md-5">
+    <!-- <div class="col-xs-12 col-md-5">
       <label class="zlabel" for="gender"> </label>
       <div class="q-gutter-sm">
         <q-checkbox
@@ -190,7 +190,7 @@
           color="teal"
         />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

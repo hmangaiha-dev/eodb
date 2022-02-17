@@ -65,8 +65,7 @@
         </div>
         <div class="col-xs-12 col-md-5">
           <q-file
-            lazy-rules
-            :rules="[(val) => val || 'Please type something']"
+           
             v-model="formData.manuf_process_flow"
             outlined
           >
@@ -530,7 +529,7 @@ Step ..."
         </div>
         <div class="col-xs-12 col-md-6">
           <q-file
-            :rules="[(val) => val || 'Please type something']"
+         
             v-model="formData.replantation_plan"
             outlined
           >

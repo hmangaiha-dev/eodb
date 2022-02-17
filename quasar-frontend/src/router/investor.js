@@ -436,6 +436,12 @@ export default {
           component: () =>
             import("pages/common/dept_services/pollution/19/Application.vue"),
         },
+        {
+          path: "authorization-bio-medical-waste",
+          name: "pcb:23",
+          component: () =>
+            import("pages/common/dept_services/pollution/authorizationBioMedicalWaste/Application.vue"),
+        },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],

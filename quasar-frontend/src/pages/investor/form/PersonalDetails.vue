@@ -1,5 +1,5 @@
 <template>
-  <div class="zcard row items-center q-col-gutter-md">
+  <div :class="[$q.screen.gt.sm && 'zcard']" class="row items-center q-col-gutter-md">
     <q-dialog class="print-hide" v-model="dialog">
       <q-card>
         <embed :src="attachment" width="500" height="500" />
@@ -213,7 +213,7 @@ export default {
     const currentUser = store.getters["auth/getCurrentUser"];
 
     const dialog = ref(false);
-    const attachment = ref("");
+    const attachment = ref(null);
 
     let formData = reactive({
       applicant_type: "",
@@ -236,22 +236,22 @@ export default {
     const getPersonalDetails = () => {
       formData.applicant_type =
         store.state.globalData.common.partA?.applicant_type;
-      formData.applicant_photo =
-        store.state.globalData.common.partA?.applicant_photo;
+      // formData.applicant_photo =
+      //   store.state.globalData.common.partA?.applicant_photo;
       formData.applicant_name =
-        store.state.globalData.common.partA?.applicant_name;
+        store.state.globalData.common.partA?.applicant_name || '';
       formData.applicant_caste =
-        store.state.globalData.common.partA?.applicant_caste;
-      formData.country = store.state.globalData.common.partA?.country;
-      formData.state = store.state.globalData.common.partA?.state;
-      formData.city_town = store.state.globalData.common.partA?.city_town;
-      formData.postal_code = store.state.globalData.common.partA?.postal_code;
-      formData.address = store.state.globalData.common.partA?.address;
-      formData.phone_no = store.state.globalData.common.partA?.phone_no;
-      formData.mobile_no = store.state.globalData.common.partA?.mobile_no;
-      formData.fax_no = store.state.globalData.common.partA?.fax_no;
-      formData.email = store.state.globalData.common.partA?.email;
-      formData.alt_email = store.state.globalData.common.partA?.alt_email;
+        store.state.globalData.common.partA?.applicant_caste || '';
+      formData.country = store.state.globalData.common.partA?.country || '';
+      formData.state = store.state.globalData.common.partA?.state || '';
+      formData.city_town = store.state.globalData.common.partA?.city_town || '';
+      formData.postal_code = store.state.globalData.common.partA?.postal_code || '';
+      formData.address = store.state.globalData.common.partA?.address || '';
+      formData.phone_no = store.state.globalData.common.partA?.phone_no || '';
+      formData.mobile_no = store.state.globalData.common.partA?.mobile_no || '';
+      formData.fax_no = store.state.globalData.common.partA?.fax_no || '';
+      formData.email = store.state.globalData.common.partA?.email || '';
+      formData.alt_email = store.state.globalData.common.partA?.alt_email || '';
     };
 
     watch(store.state.globalData.common, () => getPersonalDetails());
@@ -272,6 +272,7 @@ export default {
       dialog,
       attachment,
       showAttachment: (val) => {
+        attachment.value = null;
         console.log("dialog attach", val);
         // return
         attachment.value = "http://localhost:8000/storage/" + val;

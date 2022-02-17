@@ -420,7 +420,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -470,7 +470,19 @@ export default {
       pollution_authorise_solidwaste_signature: null,
       pollution_authorise_solidwaste_designation: "",
     });
-    onMounted(() => {});
+    watch(store.state.globalData.common, () => getA());
+
+    const getA = () => {
+      const { phone_no,fax_no,email } = store.state.globalData.common?.partA || '';
+      const { declaration_designation } = store.state.globalData.common?.selfDeclaration|| '';
+
+      formData.pollution_authorise_solidwaste_two_i = phone_no;
+      formData.pollution_authorise_solidwaste_two_ii = fax_no;
+      formData.pollution_authorise_solidwaste_two_iii = email;
+      formData.pollution_authorise_solidwaste_designation = declaration_designation;
+    };
+
+    onMounted(async () => getA());
     return {
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

@@ -1171,7 +1171,11 @@
           <label for="" class="zlabel"
             >(vii) List of member HCF not handed over bio-medical waste.</label
           >
-          <q-input dense outlined v-model="formData.pollution_form_5_five_vii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_five_vii"
+          />
         </div>
       </div>
     </div>
@@ -1218,21 +1222,33 @@
           <label class="zlabel" for="name"
             >(ii) Number Of Personnel Trained</label
           >
-          <q-input dense outlined v-model="formData.pollution_form_5_seven_ii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_seven_ii"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"
             >(iii) Number Of Personnel Trained At The Time Of Induction</label
           >
-          <q-input dense outlined v-model="formData.pollution_form_5_seven_iii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_seven_iii"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"
             >(iv) Number Of Personnel Not Undergone Any Training So Far</label
           >
-          <q-input dense outlined v-model="formData.pollution_form_5_seven_iv" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_seven_iv"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -1244,7 +1260,11 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">(vi)( Any Other Information)</label>
-          <q-input dense outlined v-model="formData.pollution_form_5_seven_vi" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_seven_vi"
+          />
         </div>
       </div>
     </div>
@@ -1270,21 +1290,33 @@
           <label class="zlabel" for="name"
             >(ii) Number Of The Persons Affected</label
           >
-          <q-input dense outlined v-model="formData.pollution_form_5_eight_ii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_eight_ii"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"
             >(iii) Remedial Action Taken (Please Attach Details If Any)</label
           >
-          <q-input dense outlined v-model="formData.pollution_form_5_eight_iii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_eight_iii"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"
             >(iv) Any Fatality Occurred, Details.</label
           >
-          <q-input dense outlined v-model="formData.pollution_form_5_eight_iv" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_eight_iv"
+          />
         </div>
       </div>
     </div>
@@ -1314,7 +1346,11 @@
             >(iii) Details Of Continuous Online Emission Monitoring Systems
             Installed</label
           >
-          <q-input dense outlined v-model="formData.pollution_form_5_nine_iii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_nine_iii"
+          />
         </div>
       </div>
     </div>
@@ -1337,14 +1373,22 @@
             4standards?
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.pollution_form_5_eleven_i" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_eleven_i"
+          />
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"
             >(ii) How Many Times You Have Not Met The Standards In A
             Year?</label
           >
-          <q-input dense outlined v-model="formData.pollution_form_5_eleven_ii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form_5_eleven_ii"
+          />
         </div>
       </div>
     </div>
@@ -1393,7 +1437,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -1539,7 +1583,16 @@ export default {
       pollution_form_5_head_name: "",
       pollution_form_5_signature: null,
     });
-    onMounted(() => {});
+    watch(store.state.globalData.common, () => getA());
+
+    const getA = () => {
+      const { address, fax_no, email } = store.state.globalData.common.partA;
+
+      formData.pollution_form_5_one_iii = address;
+      formData.pollution_form_5_one_v = fax_no;
+      formData.pollution_form_5_one_vi = email;
+    };
+    onMounted(async () => getA());
     return {
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

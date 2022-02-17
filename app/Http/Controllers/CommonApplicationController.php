@@ -18,18 +18,26 @@ class CommonApplicationController extends Controller
     public function getCommonApplication()
     {
         // return 'common';
-        return Auth::user()->commonApplications()->with(['partA', 'partB', 'partC', 'partD', 'partE', 'partF', 'partG', 'selfDeclaration'])->first();
-
-
+        return Auth::user()->commonApplications()
+            ->with(
+                ['partA', 'partB', 'partC', 'partD', 'partE', 'partF', 'partG', 'selfDeclaration']
+            )->first();
     }
 
     public function store(Request $request)
     {
-        $common = Auth::user()->commonApplications()->firstOrCreate([
-            'user_id' => Auth::id()
-        ], [
-            'status' => 'filling',
-        ]);
+        // return $request->file();
+
+        $common = Auth::user()->commonApplications()->firstOrCreate(
+            [
+                'user_id' => Auth::id()
+            ],
+            [
+                'status' => 'filling',
+            ]
+        );
+
+        // return $common->id;
 
         $model = [];
 
@@ -120,9 +128,16 @@ class CommonApplicationController extends Controller
                 break;
         }
 
+
+
+        
+
         foreach ($request->file() as $key => $file) {
-            $filePath = $file->store('common');
-            $model->$key = $filePath;
+            // return 'file';
+            if (isset($model->$key)) {
+                $filePath = $file->store('common');
+                $model->$key = $filePath;
+            }
         }
 
         $model->save();

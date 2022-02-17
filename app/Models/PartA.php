@@ -9,7 +9,7 @@ class PartA extends Model
     use HasFactory;
 
     protected $fillable = [
-        'common_id',
+        // 'common_id',
         'applicant_type',
         // 'applicant_photo',
         'applicant_name',
