@@ -64,20 +64,28 @@
           </label>
         </div>
         <div class="col-xs-12 col-md-5">
-          <q-file
-           
-            v-model="formData.manuf_process_flow"
-            outlined
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
             flat
-            color="primary"
-            :label="formData.manuf_process_flow"
-            @click="showAttachment(formData.manuf_process_flow)"
+            @added="
+              (files) => {
+                formData.manuf_process_flow = files[0];
+              }
+            "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="
+              !Array.isArray(formData.manuf_process_flow) &&
+              formData.manuf_process_flow
+            "
+            :src="`http://localhost:8000/storage/${formData.manuf_process_flow}`"
+            style="max-width: 150px; margin-top: -54px"
+            spinner-color="primary"
+            spinner-size="82px"
           />
         </div>
 
@@ -317,20 +325,28 @@ Step ..."
               </label>
             </div>
             <div class="col-xs-12 col-md-5">
-              <q-file
-                lazy-rules
-                v-model="formData.waste_water_treatment_details"
-                outlined
-              >
-                <template v-slot:prepend>
-                  <q-icon name="attach_file" />
-                </template>
-              </q-file>
-              <q-btn
+              <q-uploader
                 flat
-                color="primary"
-                :label="formData.waste_water_treatment_details"
-                @click="showAttachment(formData.waste_water_treatment_details)"
+                @added="
+                  (files) => {
+                    formData.waste_water_treatment_details = files[0];
+                  }
+                "
+                hide-upload-btn
+                ref="formData.applicant_photo"
+                color="grey"
+                url="http://localhost:4444/upload"
+                style="max-width: 300px"
+              />
+              <q-img
+                v-if="
+                  !Array.isArray(formData.waste_water_treatment_details) &&
+                  formData.waste_water_treatment_details
+                "
+                :src="`http://localhost:8000/storage/${formData.waste_water_treatment_details}`"
+                style="max-width: 150px; margin-top: -54px"
+                spinner-color="primary"
+                spinner-size="82px"
               />
             </div>
           </div>
@@ -528,20 +544,28 @@ Step ..."
           </label>
         </div>
         <div class="col-xs-12 col-md-6">
-          <q-file
-         
-            v-model="formData.replantation_plan"
-            outlined
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
             flat
-            color="primary"
-            :label="formData.replantation_plan"
-            @click="showAttachment(formData.replantation_plan)"
+            @added="
+              (files) => {
+                formData.replantation_plan = files[0];
+              }
+            "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="
+              !Array.isArray(formData.replantation_plan) &&
+              formData.replantation_plan
+            "
+            :src="`http://localhost:8000/storage/${formData.replantation_plan}`"
+            style="max-width: 150px; margin-top: -54px"
+            spinner-color="primary"
+            spinner-size="82px"
           />
         </div>
       </div>

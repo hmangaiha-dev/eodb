@@ -162,20 +162,28 @@
         </div>
         <div class="col-xs-12 col-md-5">
           <div class="col-xs-12 col-md-5">
-            <q-file
-              v-model="formData.declaration_signature"
-              outlined
-              label="Select file"
-            >
-              <template v-slot:prepend>
-                <q-icon name="attach_file" />
-              </template>
-            </q-file>
-            <q-btn
+            <q-uploader
               flat
-              color="primary"
-              :label="formData.declaration_signature"
-              @click="showAttachment(formData.declaration_signature)"
+              @added="
+                (files) => {
+                  formData.declaration_signature = files[0];
+                }
+              "
+              hide-upload-btn
+              ref="formData.applicant_photo"
+              color="grey"
+              url="http://localhost:4444/upload"
+              style="max-width: 300px"
+            />
+            <q-img
+              v-if="
+                !Array.isArray(formData.declaration_signature) &&
+                formData.declaration_signature
+              "
+              :src="`http://localhost:8000/storage/${formData.declaration_signature}`"
+              style="max-width: 150px; margin-top: -54px"
+              spinner-color="primary"
+              spinner-size="82px"
             />
           </div>
         </div>

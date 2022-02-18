@@ -37,16 +37,29 @@
           <label class="zlabel" for="">
             a)Attach certified copy of ownership*
           </label>
-          <q-file v-model="formData.certified_copy_owner" outlined>
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
             flat
-            color="primary"
-            :label="formData.certified_copy_owner"
-            @click="showAttachment(formData.certified_copy_owner)"
+            @added="
+              (files) => {
+                formData.certified_copy_owner = files[0];
+              }
+            "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            v-model="formData.certified_copy_owner"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="
+              !Array.isArray(formData.certified_copy_owner) &&
+              formData.certified_copy_owner
+            "
+            :src="`http://localhost:8000/storage/${formData.certified_copy_owner}`"
+            style="max-width: 150px; margin-top: -54px"
+            spinner-color="primary"
+            spinner-size="82px"
           />
         </div>
       </div>
@@ -62,16 +75,29 @@
           <label class="zlabel" for="">
             a)Attach certified of lease document*
           </label>
-          <q-file v-model="formData.certified_lease_doc" outlined>
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
             flat
-            color="primary"
-            :label="formData.certified_lease_doc"
-            @click="showAttachment(formData.certified_lease_doc)"
+            @added="
+              (files) => {
+                formData.certified_lease_doc = files[0];
+              }
+            "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            v-model="formData.certified_lease_doc"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="
+              !Array.isArray(formData.certified_lease_doc) &&
+              formData.certified_lease_doc
+            "
+            :src="`http://localhost:8000/storage/${formData.certified_lease_doc}`"
+            style="max-width: 150px; margin-top: -54px"
+            spinner-color="primary"
+            spinner-size="82px"
           />
         </div>
       </div>
@@ -85,32 +111,55 @@
           <label class="zlabel" for="">
             a)Attach certified copy of rent deed*
           </label>
-          <q-file v-model="formData.certified_rent_deed" outlined>
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
             flat
-            color="primary"
-            :label="formData.certified_rent_deed"
-            @click="showAttachment(formData.certified_rent_deed)"
+            @added="
+              (files) => {
+                formData.certified_rent_deed = files[0];
+              }
+            "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            v-model="formData.certified_rent_deed"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="
+              !Array.isArray(formData.certified_rent_deed) &&
+              formData.certified_rent_deed
+            "
+            :src="`http://localhost:8000/storage/${formData.certified_rent_deed}`"
+            style="max-width: 150px; margin-top: -54px"
+            spinner-color="primary"
+            spinner-size="82px"
           />
         </div>
         <!-- </div> -->
         <!-- <div class="row q-col-gutter-md"> -->
         <div class="col-xs-12 col-md-6">
           <label class="zlabel" for=""> b)NOC from owner* </label>
-          <q-file v-model="formData.noc_owner" outlined>
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
             flat
-            color="primary"
-            :label="formData.noc_owner"
-            @click="showAttachment(formData.noc_owner)"
+            @added="
+              (files) => {
+                formData.noc_owner = files[0];
+              }
+            "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            v-model="formData.noc_owner"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="!Array.isArray(formData.noc_owner) && formData.noc_owner"
+            :src="`http://localhost:8000/storage/${formData.noc_owner}`"
+            style="max-width: 150px; margin-top: -54px"
+            spinner-color="primary"
+            spinner-size="82px"
           />
         </div>
         <!-- </div> -->
@@ -124,16 +173,28 @@
           [Map showing dimensions & directions of project site with entry/exit]
         </span>
       </label>
-      <q-file v-model="formData.site_layout_plan" outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
-      <q-btn
+      <q-uploader
         flat
-        color="primary"
-        :label="formData.site_layout_plan"
-        @click="showAttachment(formData.site_layout_plan)"
+        @added="
+          (files) => {
+            formData.site_layout_plan = files[0];
+          }
+        "
+        hide-upload-btn
+        ref="formData.applicant_photo"
+        color="grey"
+        v-model="formData.site_layout_plan"
+        url="http://localhost:4444/upload"
+        style="max-width: 300px"
+      />
+      <q-img
+        v-if="
+          !Array.isArray(formData.site_layout_plan) && formData.site_layout_plan
+        "
+        :src="`http://localhost:8000/storage/${formData.site_layout_plan}`"
+        style="max-width: 150px; margin-top: -54px"
+        spinner-color="primary"
+        spinner-size="82px"
       />
     </div>
 
@@ -145,16 +206,29 @@
           connecting NH/SH/SR/Other road]
         </span>
       </label>
-      <q-file v-model="formData.linear_strip_plan" outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
-      <q-btn
+      <q-uploader
         flat
-        color="primary"
-        :label="formData.linear_strip_plan"
-        @click="showAttachment(formData.linear_strip_plan)"
+        @added="
+          (files) => {
+            formData.linear_strip_plan = files[0];
+          }
+        "
+        hide-upload-btn
+        ref="formData.applicant_photo"
+        color="grey"
+        v-model="formData.linear_strip_plan"
+        url="http://localhost:4444/upload"
+        style="max-width: 300px"
+      />
+      <q-img
+        v-if="
+          !Array.isArray(formData.linear_strip_plan) &&
+          formData.linear_strip_plan
+        "
+        :src="`http://localhost:8000/storage/${formData.linear_strip_plan}`"
+        style="max-width: 150px; margin-top: -54px"
+        spinner-color="primary"
+        spinner-size="82px"
       />
     </div>
 
@@ -174,13 +248,16 @@ export default {
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
     const dialog = ref(false);
-    const attachment = ref("");
+    const attachment = ref(null);
 
     let formData = reactive({
       choose_applicable: "",
       certified_copy_owner: null,
+      certified_copy_owner2: null,
       certified_lease_doc: null,
+      certified_lease_doc2: null,
       // certified_lease_doc: null,
+      certified_rent_deed: null,
       certified_rent_deed: null,
       noc_owner: null,
       site_layout_plan: null,

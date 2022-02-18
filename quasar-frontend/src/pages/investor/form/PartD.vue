@@ -194,16 +194,29 @@
         Format : PDF )
         <span class="asterisk">*</span></label
       >
-      <q-file v-model="formData.detail_project_report" outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
-      <q-btn
+      <q-uploader
         flat
-        color="primary"
-        :label="formData.detail_project_report"
-        @click="showAttachment(formData.detail_project_report)"
+        @added="
+          (files) => {
+            formData.detail_project_report = files[0];
+          }
+        "
+        hide-upload-btn
+        ref="formData.applicant_photo"
+        color="grey"
+        v-model="formData.detail_project_report"
+        url="http://localhost:4444/upload"
+        style="max-width: 300px"
+      />
+      <q-img
+        v-if="
+          !Array.isArray(formData.detail_project_report) &&
+          formData.detail_project_report
+        "
+        :src="`http://localhost:8000/storage/${formData.detail_project_report}`"
+        style="max-width: 150px; margin-top: -54px"
+        spinner-color="primary"
+        spinner-size="82px"
       />
     </div>
 

@@ -75,17 +75,41 @@
         </label>
       </div>
       <div class="col-xs-12 col-md-6">
-        <q-file v-model="formData.pan_card" outlined>
+        <q-uploader
+          flat
+          @added="
+            (files) => {
+              formData.pan_card = files[0];
+              
+            }
+          "
+          hide-upload-btn
+          ref="formData.applicant_photo"
+          color="grey"
+          v-model="formData.pan_card"
+          url="http://localhost:4444/upload"
+          style="max-width: 300px"
+        />
+
+        <q-img
+       
+          v-if="!Array.isArray(formData.pan_card) && formData.pan_card"
+          :src="`http://localhost:8000/storage/${formData.pan_card}`"
+          style="max-width: 150px; margin-top: -54px"
+          spinner-color="primary"
+          spinner-size="82px"
+        />
+        <!-- <q-file v-model="formData.pan_card" outlined>
           <template v-slot:prepend>
             <q-icon name="attach_file" />
           </template>
-        </q-file>
-        <q-btn
+        </q-file> -->
+        <!-- <q-btn
           flat
           color="primary"
-          :label="formData.pan_card"
+          label="view"
           @click="showAttachment(formData.pan_card)"
-        />
+        /> -->
       </div>
 
       <div class="col-xs-12 col-md-6">
@@ -139,16 +163,28 @@
         </label>
       </div>
       <div class="col-xs-12 col-md-6">
-        <q-file v-model="formData.tin_cert" outlined>
-          <template v-slot:prepend>
-            <q-icon name="attach_file" />
-          </template>
-        </q-file>
-        <q-btn
+        <q-uploader
           flat
-          color="primary"
-          :label="formData.tin_cert"
-          @click="showAttachment(formData.tin_cert)"
+          @added="
+            (files) => {
+              formData.tin_cert = files[0];
+              
+            }
+          "
+          hide-upload-btn
+          ref="formData.applicant_photo"
+          color="grey"
+          v-model="formData.tin_cert"
+          url="http://localhost:4444/upload"
+          style="max-width: 300px"
+        />
+
+        <q-img
+          v-if="!Array.isArray(formData.tin_cert) && formData.tin_cert"
+          :src="`http://localhost:8000/storage/${formData.tin_cert}`"
+          style="max-width: 150px; margin-top: -54px"
+          spinner-color="primary"
+          spinner-size="82px"
         />
       </div>
       <div class="col-xs-12 col-md-6">
@@ -165,16 +201,28 @@
           4.11(i) Attach CST Certifiacte * ( Maximum size : 4 MB Format : PDF )
           <span class="asterisk">*</span>
         </label>
-        <q-file v-model="formData.cst_cert" outlined>
-          <template v-slot:prepend>
-            <q-icon name="attach_file" />
-          </template>
-        </q-file>
-        <q-btn
+        <q-uploader
           flat
-          color="primary"
-          :label="formData.cst_cert"
-          @click="showAttachment(formData.cst_cert)"
+          @added="
+            (files) => {
+              formData.cst_cert = files[0];
+              
+            }
+          "
+          hide-upload-btn
+          ref="formData.applicant_photo"
+          color="grey"
+          v-model="formData.cst_cert"
+          url="http://localhost:4444/upload"
+          style="max-width: 300px"
+        />
+
+        <q-img
+          v-if="!Array.isArray(formData.cst_cert) && formData.cst_cert"
+          :src="`http://localhost:8000/storage/${formData.cst_cert}`"
+          style="max-width: 150px; margin-top: -54px"
+          spinner-color="primary"
+          spinner-size="82px"
         />
       </div>
       <!-- <div class="col-xs-12 col-md-6"> -->
@@ -185,16 +233,27 @@
           PDF )
           <span class="asterisk">*</span>
         </label>
-        <q-file v-model="formData.mou_deed" outlined>
-          <template v-slot:prepend>
-            <q-icon name="attach_file" />
-          </template>
-        </q-file>
-        <q-btn
+        <q-uploader
           flat
-          color="primary"
-          :label="formData.mou_deed"
-          @click="showAttachment(formData.mou_deed)"
+          @added="
+            (files) => {
+              formData.mou_deed = files[0];
+              
+            }
+          "
+          hide-upload-btn
+          ref="formData.applicant_photo"
+          color="grey"
+          v-model="formData.mou_deed"
+          url="http://localhost:4444/upload"
+          style="max-width: 300px"
+        />
+        <q-img
+          v-if="!Array.isArray(formData.mou_deed) && formData.mou_deed"
+          :src="`http://localhost:8000/storage/${formData.mou_deed}`"
+          style="max-width: 150px; margin-top: -54px"
+          spinner-color="primary"
+          spinner-size="82px"
         />
       </div>
       <div class="col-xs-12 col-md-6">
@@ -203,16 +262,30 @@
           Maximum size : 4 MB Format : PDF )
           <span class="asterisk">*</span>
         </label>
-        <q-file v-model="formData.company_reg_cert" outlined>
-          <template v-slot:prepend>
-            <q-icon name="attach_file" />
-          </template>
-        </q-file>
-        <q-btn
+        <q-uploader
           flat
-          color="primary"
-          :label="formData.company_reg_cert"
-          @click="showAttachment(formData.company_reg_cert)"
+          @added="
+            (files) => {
+              formData.company_reg_cert = files[0];
+              
+            }
+          "
+          hide-upload-btn
+          ref="formData.applicant_photo"
+          color="grey"
+          v-model="formData.company_reg_cert"
+          url="http://localhost:4444/upload"
+          style="max-width: 300px"
+        />
+        <q-img
+          v-if="
+            !Array.isArray(formData.company_reg_cert) &&
+            formData.company_reg_cert
+          "
+          :src="`http://localhost:8000/storage/${formData.company_reg_cert}`"
+          style="max-width: 150px; margin-top: -54px"
+          spinner-color="primary"
+          spinner-size="82px"
         />
       </div>
       <div class="col-xs-12 col-md-6">
@@ -220,16 +293,30 @@
           4.14 Udyog Aadhaar Memorandum(For Existing Enterprise Only)
           <span class="asterisk">*</span>
         </label>
-        <q-file v-model="formData.udyog_memorandum" outlined>
-          <template v-slot:prepend>
-            <q-icon name="attach_file" />
-          </template>
-        </q-file>
-        <q-btn
+        <q-uploader
           flat
-          color="primary"
-          :label="formData.udyog_memorandum"
-          @click="showAttachment(formData.udyog_memorandum)"
+          @added="
+            (files) => {
+              formData.udyog_memorandum = files[0];
+              
+            }
+          "
+          hide-upload-btn
+          ref="formData.applicant_photo"
+          color="grey"
+          v-model="formData.udyog_memorandum"
+          url="http://localhost:4444/upload"
+          style="max-width: 300px"
+        />
+        <q-img
+          v-if="
+            !Array.isArray(formData.udyog_memorandum) &&
+            formData.udyog_memorandum
+          "
+          :src="`http://localhost:8000/storage/${formData.udyog_memorandum}`"
+          style="max-width: 150px; margin-top: -54px"
+          spinner-color="primary"
+          spinner-size="82px"
         />
       </div>
     </div>
@@ -309,6 +396,7 @@ export default {
       dialog,
       attachment,
       getA,
+      previewImg: ref(true),
       showAttachment: (val) => {
         console.log("dialog attach", val);
         // return

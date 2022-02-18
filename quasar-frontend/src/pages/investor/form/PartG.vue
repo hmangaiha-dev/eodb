@@ -56,24 +56,30 @@
             outlined
             v-model="formData.electric_temporary_existing_connection_file"
           /> -->
-          <q-file
-            v-model="formData.electric_temporary_existing_connection_file"
-            outlined
-            label="Select file"
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" label="Select a file" />
-            </template>
-          </q-file>
-          <q-btn
+
+          <q-uploader
             flat
-            color="primary"
-            :label="formData.electric_temporary_existing_connection_file"
-            @click="
-              showAttachment(
-                formData.electric_temporary_existing_connection_file
-              )
+            @added="
+              (files) => {
+                formData.electric_temporary_existing_connection_file = files[0];
+              }
             "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="
+              !Array.isArray(
+                formData.electric_temporary_existing_connection_file
+              ) && formData.electric_temporary_existing_connection_file
+            "
+            :src="`http://localhost:8000/storage/${formData.electric_temporary_existing_connection_file}`"
+            style="max-width: 150px; margin-top: -54px"
+            spinner-color="primary"
+            spinner-size="82px"
           />
         </div>
 
@@ -236,22 +242,29 @@
           </label>
         </div>
         <div class="q-my-md col-xs-12 col-md-5">
-          <q-file
-            v-model="formData.electric_regular_existing_connection_file"
-            outlined
-            label="Select file"
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
             flat
-            color="primary"
-            :label="formData.electric_regular_existing_connection_file"
-            @click="
-              showAttachment(formData.electric_regular_existing_connection_file)
+            @added="
+              (files) => {
+                formData.electric_regular_existing_connection_file = files[0];
+              }
             "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="
+              !Array.isArray(
+                formData.electric_regular_existing_connection_file
+              ) && formData.electric_regular_existing_connection_file
+            "
+            :src="`http://localhost:8000/storage/${formData.electric_regular_existing_connection_file}`"
+            style="max-width: 150px; margin-top: -54px"
+            spinner-color="primary"
+            spinner-size="82px"
           />
         </div>
 
@@ -418,22 +431,29 @@
           </label>
         </div>
         <div class="col-xs-12 col-md-5">
-          <q-file
-            v-model="formData.water_temporary_existing_bill_copy_file"
-            outlined
-            label="Select file"
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
             flat
-            color="primary"
-            :label="formData.water_temporary_existing_bill_copy_file"
-            @click="
-              showAttachment(formData.water_temporary_existing_bill_copy_file)
+            @added="
+              (files) => {
+                formData.water_temporary_existing_bill_copy_file = files[0];
+              }
             "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="
+              !Array.isArray(
+                formData.water_temporary_existing_bill_copy_file
+              ) && formData.water_temporary_existing_bill_copy_file
+            "
+            :src="`http://localhost:8000/storage/${formData.water_temporary_existing_bill_copy_file}`"
+            style="max-width: 150px; margin-top: -54px"
+            spinner-color="primary"
+            spinner-size="82px"
           />
         </div>
       </div>
@@ -480,22 +500,28 @@
           </label>
         </div>
         <div class="q-my-sm col-xs-12 col-md-5">
-          <q-file
-            v-model="formData.water_regular_existing_bill_copy_file"
-            outlined
-            label="Select file"
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
             flat
-            color="primary"
-            :label="formData.water_regular_existing_bill_copy_file"
-            @click="
-              showAttachment(formData.water_regular_existing_bill_copy_file)
+            @added="
+              (files) => {
+                formData.water_regular_existing_bill_copy_file = files[0];
+              }
             "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="
+              !Array.isArray(formData.water_regular_existing_bill_copy_file) &&
+              formData.water_regular_existing_bill_copy_file
+            "
+            :src="`http://localhost:8000/storage/${formData.water_regular_existing_bill_copy_file}`"
+            style="max-width: 150px; margin-top: -54px"
+            spinner-color="primary"
+            spinner-size="82px"
           />
         </div>
 

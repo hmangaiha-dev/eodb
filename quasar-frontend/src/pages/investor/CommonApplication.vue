@@ -229,6 +229,7 @@ export default {
       val == "e" && Object.assign(applications[0], partDRef.value?.formData);
       val == "f" && Object.assign(applications[0], partERef.value?.formData);
       val == "g" && Object.assign(applications[0], partFRef.value?.formData);
+      val == "declaration" && Object.assign(applications[0], partGRef.value?.formData);
       val == "final" && Object.assign(applications[0], declarationRef.value?.formData);
 
       var formDatas = new FormData();
