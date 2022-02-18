@@ -519,7 +519,7 @@ for the electricity supply requisitioned. "
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -575,9 +575,44 @@ export default {
 
       power_new_connection_identity_proof: null,
     });
+
+
+       watch(store.state.globalData.common, () => {
+      getA();
+      store.state.globalData.common,() =>{
+        getG();
+      }
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.power_new_connection_applicant_name = applicant_name  ;
+      formData.power_new_connection_communication_district = city_town
+      formData.power_new_connection_communication_house = address;
+
+      
+
+    
+      
+
+    };
+
     onMounted(() => {});
     return {
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

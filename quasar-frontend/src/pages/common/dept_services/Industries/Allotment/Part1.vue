@@ -193,7 +193,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 
 
@@ -232,6 +232,26 @@ export default {
 
       
     });
+
+  watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const { applicant_name,city_town, postal_code,address, mobile_no,email} =
+        store.state.globalData.common.partA;
+
+
+      formData.applicant_name = applicant_name;
+      formData.communication_city  =city_town;
+      formData.communication_pin_no = postal_code;
+      formData.communication_mobile_phn = address;
+      formData.communication_email = email;
+
+  
+    };
+
+
     onMounted(() => {
    
     });
@@ -239,6 +259,7 @@ export default {
      
      
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

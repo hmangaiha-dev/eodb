@@ -279,7 +279,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -310,11 +310,37 @@ export default {
       labour_contract_lic_ten: "",
       labour_contract_lic_signature: null,
     });
+
+    watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+      } = store.state.globalData.common.partA;
+
+      formData.labour_contract_lic_one = applicant_name;
+      formData.labour_contract_lic_two = address;
+      formData.labour_contract_lic_four_a = enterprise_name;
+      enterprise_typ ?  formData.labour_contract_lic_four_b = enterprise_typ : formData.labour_contract_lic_four_b="";
+      company_reg_certe ?  formData.labour_contract_lic_four_c = company_reg_certe :  formData.labour_contract_lic_four_c="";
+    };
+
     onMounted(() => {});
     return {
       group: ref([]),
 
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

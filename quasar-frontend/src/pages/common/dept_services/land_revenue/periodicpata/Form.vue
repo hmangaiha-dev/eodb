@@ -657,12 +657,18 @@ export default {
     });
 
     const getA = () => {
-      const { applicant_name, address, email } =
+      const { applicant_name, address, email,mobile_no } =
         store.state.globalData.common.partA;
 
       formData.land_revenue_patta_one = applicant_name;
       formData.land_revenue_patta_four = address;
       formData.land_revenue_patta_sixteen_b = email;
+      formData.land_revenue_patta_sixteen_a = mobile_no;
+
+
+
+
+
     };
 
     onMounted(async () => {

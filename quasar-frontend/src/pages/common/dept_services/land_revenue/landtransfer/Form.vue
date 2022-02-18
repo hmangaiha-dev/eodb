@@ -514,7 +514,7 @@ chhungin ka register ngei ang"
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -575,9 +575,31 @@ export default {
       land_revenue_land_transfer_signature: null,
       land_revenue_land_transfer_agreement: false,
     });
+
+     watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const { applicant_name, address  ,mobile_no} =
+        store.state.globalData.common.partA;
+
+      formData.land_revenue_land_transfer_two_a = applicant_name;
+      formData.land_revenue_land_transfer_two_c = address;
+      formData.land_revenue_land_transfer_tuna_address = address;
+      formData.land_revenue_land_transfer_phone = mobile_no;
+
+
+  
+    };
+
+
+
+
     onMounted(() => {});
     return {
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

@@ -221,7 +221,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 
 export default {
@@ -257,6 +257,32 @@ export default {
       power_conversion_service_signature: null
 
     });
+
+       watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.power_conversion_service_three = applicant_name  ;
+      formData.power_conversion_service_six = address ;
+      formData.power_conversion_service_seven = mobile_no ;
+    
+      
+
+    };
     onMounted(() => {});
     return {
       formData,
