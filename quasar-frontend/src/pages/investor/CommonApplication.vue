@@ -138,7 +138,12 @@
               </div>
             </div>
             <div class="col-12 q-mt-md">
-              <q-btn :disable="!declaration_consent" color="green-6" type="submit" label="Save Application" />
+              <q-btn
+                :disable="!declaration_consent"
+                color="green-6"
+                type="submit"
+                label="Save Application"
+              />
               <!-- <span class="q-mx-md"> </span> -->
               <!-- <q-btn color="blue-6" type="submit" label="Final Submit" /> -->
             </div>
@@ -199,30 +204,36 @@ export default {
     const store = useStore();
 
     const toggle = (val) => {
-      var applications = [
+      let applications = [
         {
-          ...applicantRef.value?.formData,
-          ...FirmRef.value?.formData,
-          ...proposedRef.value?.formData,
-          ...partCRef.value?.formData,
-          ...partDRef.value?.formData,
-          ...partERef.value?.formData,
-          ...partFRef.value?.formData,
-          ...partGRef.value?.formData,
-          ...declarationRef.value?.formData,
+          // ...applicantRef.value?.formData,
+          // ...FirmRef.value?.formData,
+          // ...proposedRef.value?.formData,
+          // ...partCRef.value?.formData,
+          // ...partDRef.value?.formData,
+          // ...partERef.value?.formData,
+          // ...partFRef.value?.formData,
+          // ...partGRef.value?.formData,
+          // ...declarationRef.value?.formData,
         },
       ];
 
-      val == "b" && Object.assign(applications[0], { model: "A" });
-      val == "c" && Object.assign(applications[0], { model: "B" });
-      val == "d" && Object.assign(applications[0], { model: "C" });
-      val == "e" && Object.assign(applications[0], { model: "D" });
-      val == "f" && Object.assign(applications[0], { model: "E" });
-      val == "g" && Object.assign(applications[0], { model: "F" });
-      val == "final" &&
-        Object.assign(applications[0], { model: "declaration" });
+      val == "b" &&
+        Object.assign(
+          applications[0],
+          applicantRef.value?.formData,
+          FirmRef.value?.formData
+        );
+      val == "c" && Object.assign(applications[0], proposedRef.value?.formData);
+      val == "d" && Object.assign(applications[0], partCRef.value?.formData);
+      val == "e" && Object.assign(applications[0], partDRef.value?.formData);
+      val == "f" && Object.assign(applications[0], partERef.value?.formData);
+      val == "g" && Object.assign(applications[0], partFRef.value?.formData);
+      val == "final" && Object.assign(applications[0], declarationRef.value?.formData);
 
       var formDatas = new FormData();
+
+      // return console.log("applications", applications[0]);
 
       for (let data in applications[0]) {
         formDatas.append(`${data}`, applications[0][data]);

@@ -236,8 +236,8 @@ export default {
     const getPersonalDetails = () => {
       formData.applicant_type =
         store.state.globalData.common.partA?.applicant_type;
-      // formData.applicant_photo =
-      //   store.state.globalData.common.partA?.applicant_photo;
+      formData.applicant_photo =
+        store.state.globalData.common.partA?.applicant_photo;
       formData.applicant_name =
         store.state.globalData.common.partA?.applicant_name || '';
       formData.applicant_caste =

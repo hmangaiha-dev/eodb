@@ -37,11 +37,8 @@ class CommonApplicationController extends Controller
             ]
         );
 
-        // return $common->id;
 
         $model = [];
-
-        // return $common;
 
         switch ($request->model) {
             case ('A'):
@@ -128,16 +125,9 @@ class CommonApplicationController extends Controller
                 break;
         }
 
-
-
-        
-
         foreach ($request->file() as $key => $file) {
-            // return 'file';
-            if (isset($model->$key)) {
-                $filePath = $file->store('common');
-                $model->$key = $filePath;
-            }
+            $filePath = $file->store('common');
+            $model->$key = $filePath;
         }
 
         $model->save();
