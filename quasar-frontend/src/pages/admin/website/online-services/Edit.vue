@@ -128,8 +128,10 @@ export default {
 
     const onSubmit=e=>{
 
+      // return console.log('forms',formData);
+
       const id = formData.department.value;
-      api.put(`web/${id}/online-service`,formData)
+      api.put(`web/${route.params.id}/online-service`,formData)
       .then(res=>{
         const {message, data, list} = res.data;
         q.notify({
@@ -163,6 +165,7 @@ export default {
       q.loading.show()
       api.get(`web/online-services/${id}`)
       .then(res=>{
+        // console.log('fetch id',res.data);
         const {data} = res.data;
         formData.service_name = data.service_name;
         formData.operational_type = data.operational_type;

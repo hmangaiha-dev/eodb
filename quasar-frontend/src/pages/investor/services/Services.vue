@@ -81,8 +81,8 @@
             <q-tab name="PRE-ESTABLISHMENT" label="PRE-ESTABLISHMENT" />
             <q-tab name="POST-ESTABLISHMENT" label="POST-ESTABLISHMENT" />
             <q-tab name="POST-COMMENCEMENT" label="POST-COMMENCEMENT" />
-            <q-tab name="PRE-OPERATION" label="PRE-OPERATION" />
-            <q-tab name="POST-OPERATION" label="POST-OPERATION" />
+            <q-tab name="PRE-PROCESSING" label="PRE-PROCESSING" />
+            <q-tab name="POST-PROCESSING" label="POST-PROCESSING" />
           </q-tabs>
           <q-tab-panels class="full-width" v-model="tab" animated>
             <q-tab-panel name="services">
@@ -298,7 +298,7 @@ export default {
         if (newvalue === "ALL-CATEGORIES") return;
 
         const finalResult = rows.value.filter((service) => {
-          return service?.category_type == newvalue;
+          return service?.operational_type == newvalue;
         });
 
         rows.value = finalResult;

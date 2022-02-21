@@ -27,11 +27,12 @@ class ActRuleController extends Controller
 
     public function departmentAct(Request $request, string $code)
     {
-        $department=Department::query()->where('dept_code', $code)->first();
+        $department=Department::query()->where('slug', $code)->first();
+
         abort_if(blank($department),400,'No department found');
 
         return [
-            'list' => $department->acts()->paginate(),
+            'list' => $department->acts()->with('attachment')->paginate(),
         ];
 
     }
