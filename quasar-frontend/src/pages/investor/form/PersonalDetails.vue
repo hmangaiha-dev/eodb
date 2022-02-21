@@ -3,9 +3,11 @@
     :class="[$q.screen.gt.sm && 'zcard']"
     class="row items-center q-col-gutter-md"
   >
-    <q-dialog class="print-hide" v-model="dialog">
-      <q-card>
-        <embed :src="attachment" width="500" height="500" />
+    <q-dialog v-model="dialog">
+      <q-card class="col-12">
+        <q-card-section>
+          <embed :src="attachment" width="900" height="900" />
+        </q-card-section>
       </q-card>
     </q-dialog>
     <div class="col-xs-12 col-md-6">
@@ -33,6 +35,7 @@
       </div>
       <div class="col-xs-12 col-md-6">
         <q-uploader
+        
           flat
           @added="
             (files) => {
@@ -45,16 +48,49 @@
           color="grey"
           v-model="formData.applicant_photo"
           url="http://localhost:4444/upload"
-          style="max-width: 300px"
         />
 
         <q-img
-          v-if="previewImg"
+          v-if="mimeType(formData.applicant_photo)"
+          :src="`http://localhost:8000/storage/${formData.applicant_photo}`"
+          style="max-width: 150px; max-height: 150px; margin-top: -54px"
+          spinner-color="primary"
+          spinner-size="82px"
+        />
+
+        <!-- {{ typeof formData.udyog_memorandum }} -->
+
+        <q-btn
+          v-if="
+            typeof formData.applicant_photo !== 'object' &&
+            !mimeType(formData.applicant_photo)
+          "
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          icon="o_picture_as_pdf"
+          label="view"
+          @click="showAttachment(formData.applicant_photo)"
+        />
+
+        <!-- <q-btn
+          v-if="typeof formData.applicant_photo === 'string'"
+          flat
+          style="max-width: 150px; margin-top: -54px"
+          color="primary"
+          label="view"
+          @click="showAttachment(formData.applicant_photo)"
+        /> -->
+
+        <!-- <q-img
+          v-if="
+            !Array.isArray(formData.applicant_photo) && formData.applicant_photo
+          "
           :src="`http://localhost:8000/storage/${formData.applicant_photo}`"
           style="max-width: 150px; margin-top: -54px"
           spinner-color="primary"
           spinner-size="82px"
-        />
+        /> -->
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender"
@@ -290,6 +326,12 @@ export default {
         console.log("added", files[0]);
         formData.applicant_photo = files[0];
         previewImg.value = false;
+      },
+      mimeType: (val) => {
+        // return console.log(typeof val);
+        let index = String(val).lastIndexOf(".");
+        let mime = String(val).substring(index + 1);
+        return typeof val === "string" && val ? mime != "pdf" : false;
       },
       attachment,
       showAttachment: (val) => {

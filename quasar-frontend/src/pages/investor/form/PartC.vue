@@ -1,8 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <q-dialog class="print-hide" v-model="dialog">
-      <q-card>
-        <embed :src="attachment" width="500" height="500" />
+    <q-dialog v-model="dialog">
+      <q-card class="col-12">
+        <q-card-section>
+          <embed :src="attachment" width="900" height="900" />
+        </q-card-section>
       </q-card>
     </q-dialog>
     <div class="col-xs-12 col-sm-10">
@@ -38,6 +40,7 @@
             a)Attach certified copy of ownership*
           </label>
           <q-uploader
+            accept=".pdf"
             flat
             @added="
               (files) => {
@@ -51,16 +54,40 @@
             url="http://localhost:4444/upload"
             style="max-width: 300px"
           />
+
           <q-img
+            v-if="mimeType(formData.certified_copy_owner)"
+            :src="`http://localhost:8000/storage/${formData.certified_copy_owner}`"
+            style="max-width: 150px; max-height: 150px; margin-top: -100px"
+            spinner-color="primary"
+            spinner-size="82px"
+          />
+
+          <!-- {{ typeof formData.udyog_memorandum }} -->
+
+          <q-btn
+            v-if="
+              typeof formData.certified_copy_owner !== 'object' &&
+              !mimeType(formData.certified_copy_owner)
+            "
+            flat
+            style="max-width: 150px; margin-top: -100px"
+            color="primary"
+            icon="o_picture_as_pdf"
+            label="view"
+            @click="showAttachment(formData.certified_copy_owner)"
+          />
+
+          <!-- <q-img
             v-if="
               !Array.isArray(formData.certified_copy_owner) &&
               formData.certified_copy_owner
             "
             :src="`http://localhost:8000/storage/${formData.certified_copy_owner}`"
-            style="max-width: 150px; margin-top: -54px"
+            style="max-width: 150px; margin-top: -100px"
             spinner-color="primary"
             spinner-size="82px"
-          />
+          /> -->
         </div>
       </div>
 
@@ -76,6 +103,7 @@
             a)Attach certified of lease document*
           </label>
           <q-uploader
+            accept=".pdf"
             flat
             @added="
               (files) => {
@@ -90,15 +118,37 @@
             style="max-width: 300px"
           />
           <q-img
+            v-if="mimeType(formData.certified_lease_doc)"
+            :src="`http://localhost:8000/storage/${formData.certified_lease_doc}`"
+            style="max-width: 150px; max-height: 150px; margin-top: -100px"
+            spinner-color="primary"
+            spinner-size="82px"
+          />
+
+          <!-- {{ typeof formData.udyog_memorandum }} -->
+
+          <q-btn
+            v-if="
+              typeof formData.certified_lease_doc !== 'object' &&
+              !mimeType(formData.certified_lease_doc)
+            "
+            flat
+            style="max-width: 150px; margin-top: -100px"
+            color="primary"
+            icon="o_picture_as_pdf"
+            label="view"
+            @click="showAttachment(formData.certified_lease_doc)"
+          />
+          <!-- <q-img
             v-if="
               !Array.isArray(formData.certified_lease_doc) &&
               formData.certified_lease_doc
             "
             :src="`http://localhost:8000/storage/${formData.certified_lease_doc}`"
-            style="max-width: 150px; margin-top: -54px"
+            style="max-width: 150px; margin-top: -100px"
             spinner-color="primary"
             spinner-size="82px"
-          />
+          /> -->
         </div>
       </div>
 
@@ -112,6 +162,7 @@
             a)Attach certified copy of rent deed*
           </label>
           <q-uploader
+            accept=".pdf"
             flat
             @added="
               (files) => {
@@ -126,21 +177,45 @@
             style="max-width: 300px"
           />
           <q-img
+            v-if="mimeType(formData.certified_rent_deed)"
+            :src="`http://localhost:8000/storage/${formData.certified_rent_deed}`"
+            style="max-width: 150px; max-height: 150px; margin-top: -100px"
+            spinner-color="primary"
+            spinner-size="82px"
+          />
+
+          <!-- {{ typeof formData.udyog_memorandum }} -->
+
+          <q-btn
+            v-if="
+              typeof formData.certified_rent_deed !== 'object' &&
+              !mimeType(formData.certified_rent_deed)
+            "
+            flat
+            style="max-width: 150px; margin-top: -100px"
+            color="primary"
+            icon="o_picture_as_pdf"
+            label="view"
+            @click="showAttachment(formData.certified_rent_deed)"
+          />
+
+          <!-- <q-img
             v-if="
               !Array.isArray(formData.certified_rent_deed) &&
               formData.certified_rent_deed
             "
             :src="`http://localhost:8000/storage/${formData.certified_rent_deed}`"
-            style="max-width: 150px; margin-top: -54px"
+            style="max-width: 150px; margin-top: -100px"
             spinner-color="primary"
             spinner-size="82px"
-          />
+          /> -->
         </div>
         <!-- </div> -->
         <!-- <div class="row q-col-gutter-md"> -->
         <div class="col-xs-12 col-md-6">
           <label class="zlabel" for=""> b)NOC from owner* </label>
           <q-uploader
+            accept=".pdf"
             flat
             @added="
               (files) => {
@@ -155,12 +230,35 @@
             style="max-width: 300px"
           />
           <q-img
-            v-if="!Array.isArray(formData.noc_owner) && formData.noc_owner"
+            v-if="mimeType(formData.noc_owner)"
             :src="`http://localhost:8000/storage/${formData.noc_owner}`"
-            style="max-width: 150px; margin-top: -54px"
+            style="max-width: 150px; max-height: 150px; margin-top: -100px"
             spinner-color="primary"
             spinner-size="82px"
           />
+
+          <!-- {{ typeof formData.udyog_memorandum }} -->
+
+          <q-btn
+            v-if="
+              typeof formData.noc_owner !== 'object' &&
+              !mimeType(formData.noc_owner)
+            "
+            flat
+            style="max-width: 150px; margin-top: -100px"
+            color="primary"
+            icon="o_picture_as_pdf"
+            label="view"
+            @click="showAttachment(formData.noc_owner)"
+          />
+
+          <!-- <q-img
+            v-if="!Array.isArray(formData.noc_owner) && formData.noc_owner"
+            :src="`http://localhost:8000/storage/${formData.noc_owner}`"
+            style="max-width: 150px; margin-top: -100px"
+            spinner-color="primary"
+            spinner-size="82px"
+          /> -->
         </div>
         <!-- </div> -->
       </div>
@@ -174,6 +272,7 @@
         </span>
       </label>
       <q-uploader
+        accept=".pdf"
         flat
         @added="
           (files) => {
@@ -188,14 +287,37 @@
         style="max-width: 300px"
       />
       <q-img
+        v-if="mimeType(formData.site_layout_plan)"
+        :src="`http://localhost:8000/storage/${formData.site_layout_plan}`"
+        style="max-width: 150px; max-height: 150px; margin-top: -100px"
+        spinner-color="primary"
+        spinner-size="82px"
+      />
+
+      <!-- {{ typeof formData.udyog_memorandum }} -->
+
+      <q-btn
+        v-if="
+          typeof formData.site_layout_plan !== 'object' &&
+          !mimeType(formData.site_layout_plan)
+        "
+        flat
+        style="max-width: 150px; margin-top: -100px"
+        color="primary"
+        icon="o_picture_as_pdf"
+        label="view"
+        @click="showAttachment(formData.site_layout_plan)"
+      />
+
+      <!-- <q-img
         v-if="
           !Array.isArray(formData.site_layout_plan) && formData.site_layout_plan
         "
         :src="`http://localhost:8000/storage/${formData.site_layout_plan}`"
-        style="max-width: 150px; margin-top: -54px"
+        style="max-width: 150px; margin-top: -100px"
         spinner-color="primary"
         spinner-size="82px"
-      />
+      /> -->
     </div>
 
     <div class="col-xs-12 col-md-6">
@@ -207,6 +329,7 @@
         </span>
       </label>
       <q-uploader
+        accept=".pdf"
         flat
         @added="
           (files) => {
@@ -220,16 +343,39 @@
         url="http://localhost:4444/upload"
         style="max-width: 300px"
       />
+
       <q-img
+        v-if="mimeType(formData.linear_strip_plan)"
+        :src="`http://localhost:8000/storage/${formData.linear_strip_plan}`"
+        style="max-width: 150px; max-height: 150px; margin-top: -100px"
+        spinner-color="primary"
+        spinner-size="82px"
+      />
+
+      <!-- {{ typeof formData.udyog_memorandum }} -->
+
+      <q-btn
+        v-if="
+          typeof formData.linear_strip_plan !== 'object' &&
+          !mimeType(formData.linear_strip_plan)
+        "
+        flat
+        style="max-width: 150px; margin-top: -100px"
+        color="primary"
+        icon="o_picture_as_pdf"
+        label="view"
+        @click="showAttachment(formData.linear_strip_plan)"
+      />
+      <!-- <q-img
         v-if="
           !Array.isArray(formData.linear_strip_plan) &&
           formData.linear_strip_plan
         "
         :src="`http://localhost:8000/storage/${formData.linear_strip_plan}`"
-        style="max-width: 150px; margin-top: -54px"
+        style="max-width: 150px; margin-top: -100px"
         spinner-color="primary"
         spinner-size="82px"
-      />
+      /> -->
     </div>
 
     <div class="col-xs-12" />
@@ -280,6 +426,12 @@ export default {
       getC,
       dialog,
       attachment,
+      mimeType: (val) => {
+        // return console.log(typeof val);
+        let index = String(val).lastIndexOf(".");
+        let mime = String(val).substring(index + 1);
+        return typeof val === "string" && val ? mime != "pdf" : false;
+      },
       choose: [
         "i. Certified Copy of freehold ownership",
         "ii. Certified Copy of leasehold ownership",

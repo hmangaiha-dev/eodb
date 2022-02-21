@@ -1,8 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <q-dialog class="print-hide" v-model="dialog">
-      <q-card>
-        <embed :src="attachment" width="500" height="500" />
+    <q-dialog v-model="dialog">
+      <q-card class="col-12">
+        <q-card-section>
+          <embed :src="attachment" width="900" height="900" />
+        </q-card-section>
       </q-card>
     </q-dialog>
     <div class="col-12 zsubtitle">
@@ -58,6 +60,8 @@
           /> -->
 
           <q-uploader
+            accept=".pdf"
+            @rejected="onRejected"
             flat
             @added="
               (files) => {
@@ -65,21 +69,25 @@
               }
             "
             hide-upload-btn
-            ref="formData.applicant_photo"
             color="grey"
             url="http://localhost:4444/upload"
             style="max-width: 300px"
           />
-          <q-img
+          <q-btn
             v-if="
-              !Array.isArray(
-                formData.electric_temporary_existing_connection_file
-              ) && formData.electric_temporary_existing_connection_file
+              typeof formData.electric_temporary_existing_connection_file !==
+              'object'
             "
-            :src="`http://localhost:8000/storage/${formData.electric_temporary_existing_connection_file}`"
-            style="max-width: 150px; margin-top: -54px"
-            spinner-color="primary"
-            spinner-size="82px"
+            flat
+            style="max-width: 150px; margin-top: -100px"
+            color="primary"
+            icon="o_picture_as_pdf"
+            label="view"
+            @click="
+              showAttachment(
+                formData.electric_temporary_existing_connection_file
+              )
+            "
           />
         </div>
 
@@ -243,6 +251,8 @@
         </div>
         <div class="q-my-md col-xs-12 col-md-5">
           <q-uploader
+            accept=".pdf"
+            @rejected="onRejected"
             flat
             @added="
               (files) => {
@@ -255,16 +265,19 @@
             url="http://localhost:4444/upload"
             style="max-width: 300px"
           />
-          <q-img
+          <q-btn
             v-if="
-              !Array.isArray(
-                formData.electric_regular_existing_connection_file
-              ) && formData.electric_regular_existing_connection_file
+              typeof formData.electric_regular_existing_connection_file !==
+              'object'
             "
-            :src="`http://localhost:8000/storage/${formData.electric_regular_existing_connection_file}`"
-            style="max-width: 150px; margin-top: -54px"
-            spinner-color="primary"
-            spinner-size="82px"
+            flat
+            style="max-width: 150px; margin-top: -100px"
+            color="primary"
+            icon="o_picture_as_pdf"
+            label="view"
+            @click="
+              showAttachment(formData.electric_regular_existing_connection_file)
+            "
           />
         </div>
 
@@ -432,6 +445,8 @@
         </div>
         <div class="col-xs-12 col-md-5">
           <q-uploader
+            accept=".pdf"
+            @rejected="onRejected"
             flat
             @added="
               (files) => {
@@ -444,16 +459,19 @@
             url="http://localhost:4444/upload"
             style="max-width: 300px"
           />
-          <q-img
+          <q-btn
             v-if="
-              !Array.isArray(
-                formData.water_temporary_existing_bill_copy_file
-              ) && formData.water_temporary_existing_bill_copy_file
+              typeof formData.water_temporary_existing_bill_copy_file !==
+              'object'
             "
-            :src="`http://localhost:8000/storage/${formData.water_temporary_existing_bill_copy_file}`"
-            style="max-width: 150px; margin-top: -54px"
-            spinner-color="primary"
-            spinner-size="82px"
+            flat
+            style="max-width: 150px; margin-top: -100px"
+            color="primary"
+            icon="o_picture_as_pdf"
+            label="view"
+            @click="
+              showAttachment(formData.water_temporary_existing_bill_copy_file)
+            "
           />
         </div>
       </div>
@@ -501,6 +519,8 @@
         </div>
         <div class="q-my-sm col-xs-12 col-md-5">
           <q-uploader
+            accept=".pdf"
+            @rejected="onRejected"
             flat
             @added="
               (files) => {
@@ -513,15 +533,18 @@
             url="http://localhost:4444/upload"
             style="max-width: 300px"
           />
-          <q-img
+          <q-btn
             v-if="
-              !Array.isArray(formData.water_regular_existing_bill_copy_file) &&
-              formData.water_regular_existing_bill_copy_file
+              typeof formData.water_regular_existing_bill_copy_file !== 'object'
             "
-            :src="`http://localhost:8000/storage/${formData.water_regular_existing_bill_copy_file}`"
-            style="max-width: 150px; margin-top: -54px"
-            spinner-color="primary"
-            spinner-size="82px"
+            flat
+            style="max-width: 150px; margin-top: -100px"
+            color="primary"
+            icon="o_picture_as_pdf"
+            label="view"
+            @click="
+              showAttachment(formData.water_regular_existing_bill_copy_file)
+            "
           />
         </div>
 
@@ -631,7 +654,7 @@
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted, watch, ref } from "vue";
-import { date } from "quasar";
+import { date, useQuasar } from "quasar";
 
 export default {
   setup(props, context) {
@@ -639,6 +662,7 @@ export default {
 
     const dialog = ref(false);
     const attachment = ref("");
+    const $q = useQuasar();
 
     let formData = reactive({
       electric_temporary_load_required: "",
@@ -683,6 +707,14 @@ export default {
     watch(store.state.globalData.common, () => getG());
     return {
       formData,
+      onRejected: (rejectedEntries) => {
+        // Notify plugin needs to be installed
+        // https://quasar.dev/quasar-plugins/notify#Installation
+        $q.notify({
+          type: "negative",
+          message: `${rejectedEntries.length} file(s) did not pass validation constraints`,
+        });
+      },
       getG,
       dialog,
       attachment,

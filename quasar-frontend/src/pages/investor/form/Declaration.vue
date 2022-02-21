@@ -163,6 +163,7 @@
         <div class="col-xs-12 col-md-5">
           <div class="col-xs-12 col-md-5">
             <q-uploader
+              accept=".jpg, image/*"
               flat
               @added="
                 (files) => {

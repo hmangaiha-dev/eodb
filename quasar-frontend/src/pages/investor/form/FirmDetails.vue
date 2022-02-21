@@ -3,9 +3,11 @@
     <div class="col-xs-12 text-h6">4.Firm details</div>
 
     <div class="row q-col-gutter-md items-center col-12 q-ml-sm">
-      <q-dialog class="print-hide" v-model="dialog">
-        <q-card>
-          <embed :src="attachment" width="500" height="500" />
+      <q-dialog v-model="dialog">
+        <q-card class="col-12">
+          <q-card-section>
+            <embed :src="attachment" width="900" height="900" />
+          </q-card-section>
         </q-card>
       </q-dialog>
       <div class="col-xs-12 col-md-6">
@@ -76,11 +78,11 @@
       </div>
       <div class="col-xs-12 col-md-6">
         <q-uploader
+          accept=".pdf"
           flat
           @added="
             (files) => {
               formData.pan_card = files[0];
-              
             }
           "
           hide-upload-btn
@@ -92,13 +94,44 @@
         />
 
         <q-img
-       
-          v-if="!Array.isArray(formData.pan_card) && formData.pan_card"
+          v-if="mimeType(formData.pan_card)"
           :src="`http://localhost:8000/storage/${formData.pan_card}`"
-          style="max-width: 150px; margin-top: -54px"
+          style="max-width: 150px; margin-top: -100px"
           spinner-color="primary"
           spinner-size="82px"
         />
+
+        <!-- {{ typeof formData.udyog_memorandum }} -->
+
+        <q-btn
+          v-if="
+            typeof formData.pan_card !== 'object' &&
+            !mimeType(formData.pan_card)
+          "
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          icon="picture_as_pdf"
+          label="view"
+          @click="showAttachment(formData.pan_card)"
+        />
+
+        <!-- <q-btn
+          v-if="typeof formData.pan_card === 'string'"
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          label="view"
+          @click="showAttachment(formData.pan_card)"
+        /> -->
+
+        <!-- <q-img
+          v-if="!Array.isArray(formData.pan_card) && formData.pan_card"
+          :src="`http://localhost:8000/storage/${formData.pan_card}`"
+          style="max-width: 150px; margin-top: -100px"
+          spinner-color="primary"
+          spinner-size="82px"
+        /> -->
         <!-- <q-file v-model="formData.pan_card" outlined>
           <template v-slot:prepend>
             <q-icon name="attach_file" />
@@ -164,11 +197,11 @@
       </div>
       <div class="col-xs-12 col-md-6">
         <q-uploader
+          accept=".pdf"
           flat
           @added="
             (files) => {
               formData.tin_cert = files[0];
-              
             }
           "
           hide-upload-btn
@@ -180,12 +213,44 @@
         />
 
         <q-img
-          v-if="!Array.isArray(formData.tin_cert) && formData.tin_cert"
+          v-if="mimeType(formData.tin_cert)"
           :src="`http://localhost:8000/storage/${formData.tin_cert}`"
-          style="max-width: 150px; margin-top: -54px"
+          style="max-width: 150px; margin-top: -100px"
           spinner-color="primary"
           spinner-size="82px"
         />
+
+        <!-- {{ typeof formData.udyog_memorandum }} -->
+
+        <q-btn
+          v-if="
+            typeof formData.tin_cert !== 'object' &&
+            !mimeType(formData.tin_cert)
+          "
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          icon="picture_as_pdf"
+          label="view"
+          @click="showAttachment(formData.tin_cert)"
+        />
+
+        <!-- <q-btn
+          v-if="typeof formData.tin_cert === 'string'"
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          label="view"
+          @click="showAttachment(formData.tin_cert)"
+        /> -->
+
+        <!-- <q-img
+          v-if="!Array.isArray(formData.tin_cert) && formData.tin_cert"
+          :src="`http://localhost:8000/storage/${formData.tin_cert}`"
+          style="max-width: 150px; margin-top: -100px"
+          spinner-color="primary"
+          spinner-size="82px"
+        /> -->
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
@@ -202,11 +267,11 @@
           <span class="asterisk">*</span>
         </label>
         <q-uploader
+          accept=".pdf"
           flat
           @added="
             (files) => {
               formData.cst_cert = files[0];
-              
             }
           "
           hide-upload-btn
@@ -218,12 +283,44 @@
         />
 
         <q-img
-          v-if="!Array.isArray(formData.cst_cert) && formData.cst_cert"
+          v-if="mimeType(formData.cst_cert)"
           :src="`http://localhost:8000/storage/${formData.cst_cert}`"
-          style="max-width: 150px; margin-top: -54px"
+          style="max-width: 150px; margin-top: -100px"
           spinner-color="primary"
           spinner-size="82px"
         />
+
+        <!-- {{ typeof formData.udyog_memorandum }} -->
+
+        <q-btn
+          v-if="
+            typeof formData.cst_cert !== 'object' &&
+            !mimeType(formData.cst_cert)
+          "
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          icon="picture_as_pdf"
+          label="view"
+          @click="showAttachment(formData.cst_cert)"
+        />
+
+        <!-- <q-btn
+          v-if="typeof formData.cst_cert === 'string'"
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          label="view"
+          @click="showAttachment(formData.cst_cert)"
+        /> -->
+
+        <!-- <q-img
+          v-if="!Array.isArray(formData.cst_cert) && formData.cst_cert"
+          :src="`http://localhost:8000/storage/${formData.cst_cert}`"
+          style="max-width: 150px; margin-top: -100px"
+          spinner-color="primary"
+          spinner-size="82px"
+        /> -->
       </div>
       <!-- <div class="col-xs-12 col-md-6"> -->
       <!-- </div> -->
@@ -234,11 +331,11 @@
           <span class="asterisk">*</span>
         </label>
         <q-uploader
+          accept=".pdf"
           flat
           @added="
             (files) => {
               formData.mou_deed = files[0];
-              
             }
           "
           hide-upload-btn
@@ -248,13 +345,45 @@
           url="http://localhost:4444/upload"
           style="max-width: 300px"
         />
+
         <q-img
-          v-if="!Array.isArray(formData.mou_deed) && formData.mou_deed"
+          v-if="mimeType(formData.mou_deed)"
           :src="`http://localhost:8000/storage/${formData.mou_deed}`"
-          style="max-width: 150px; margin-top: -54px"
+          style="max-width: 150px; margin-top: -100px"
           spinner-color="primary"
           spinner-size="82px"
         />
+
+        <!-- {{ typeof formData.udyog_memorandum }} -->
+
+        <q-btn
+          v-if="
+            typeof formData.mou_deed !== 'object' &&
+            !mimeType(formData.mou_deed)
+          "
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          icon="picture_as_pdf"
+          label="view"
+          @click="showAttachment(formData.mou_deed)"
+        />
+
+        <!-- <q-btn
+          v-if="typeof formData.mou_deed === 'string'"
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          label="view"
+          @click="showAttachment(formData.mou_deed)"
+        /> -->
+        <!-- <q-img
+          v-if="!Array.isArray(formData.mou_deed) && formData.mou_deed"
+          :src="`http://localhost:8000/storage/${formData.mou_deed}`"
+          style="max-width: 150px; margin-top: -100px"
+          spinner-color="primary"
+          spinner-size="82px"
+        /> -->
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
@@ -263,11 +392,11 @@
           <span class="asterisk">*</span>
         </label>
         <q-uploader
+          accept=".pdf"
           flat
           @added="
             (files) => {
               formData.company_reg_cert = files[0];
-              
             }
           "
           hide-upload-btn
@@ -277,16 +406,49 @@
           url="http://localhost:4444/upload"
           style="max-width: 300px"
         />
+
         <q-img
+          v-if="mimeType(formData.company_reg_cert)"
+          :src="`http://localhost:8000/storage/${formData.company_reg_cert}`"
+          style="max-width: 150px; margin-top: -100px"
+          spinner-color="primary"
+          spinner-size="82px"
+        />
+
+        <!-- {{ typeof formData.udyog_memorandum }} -->
+
+        <q-btn
+          v-if="
+            typeof formData.company_reg_cert !== 'object' &&
+            !mimeType(formData.company_reg_cert)
+          "
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          icon="picture_as_pdf"
+          label="view"
+          @click="showAttachment(formData.company_reg_cert)"
+        />
+
+        <!-- <q-btn
+          v-if="typeof formData.company_reg_cert === 'string'"
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          label="view"
+          @click="showAttachment(formData.company_reg_cert)"
+        /> -->
+
+        <!-- <q-img
           v-if="
             !Array.isArray(formData.company_reg_cert) &&
             formData.company_reg_cert
           "
           :src="`http://localhost:8000/storage/${formData.company_reg_cert}`"
-          style="max-width: 150px; margin-top: -54px"
+          style="max-width: 150px; margin-top: -100px"
           spinner-color="primary"
           spinner-size="82px"
-        />
+        /> -->
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
@@ -294,11 +456,11 @@
           <span class="asterisk">*</span>
         </label>
         <q-uploader
+          accept=".pdf"
           flat
           @added="
             (files) => {
               formData.udyog_memorandum = files[0];
-              
             }
           "
           hide-upload-btn
@@ -308,16 +470,33 @@
           url="http://localhost:4444/upload"
           style="max-width: 300px"
         />
+        <!-- {{ formData.udyog_memorandum }} -->
+
+        <!-- {{ mimeType(formData.udyog_memorandum) }} -->
         <q-img
-          v-if="
-            !Array.isArray(formData.udyog_memorandum) &&
-            formData.udyog_memorandum
-          "
+          v-if="mimeType(formData.udyog_memorandum)"
           :src="`http://localhost:8000/storage/${formData.udyog_memorandum}`"
-          style="max-width: 150px; margin-top: -54px"
+          style="max-width: 150px; margin-top: -100px"
           spinner-color="primary"
           spinner-size="82px"
         />
+
+        <!-- {{ typeof formData.udyog_memorandum }} -->
+
+        <q-btn
+          v-if="
+            typeof formData.udyog_memorandum !== 'object' &&
+            !mimeType(formData.udyog_memorandum)
+          "
+          flat
+          style="max-width: 150px; margin-top: -100px"
+          color="primary"
+          icon="picture_as_pdf"
+          label="view"
+          @click="showAttachment(formData.udyog_memorandum)"
+        />
+
+        <!-- {{ Boolean('jpeg' || 'jpgdd') }} -->
       </div>
     </div>
 
@@ -396,6 +575,12 @@ export default {
       dialog,
       attachment,
       getA,
+      mimeType: (val) => {
+        // return console.log(typeof val);
+        let index = String(val).lastIndexOf(".");
+        let mime = String(val).substring(index + 1);
+        return typeof val === "string" && val ? mime != "pdf" : false;
+      },
       previewImg: ref(true),
       showAttachment: (val) => {
         console.log("dialog attach", val);
