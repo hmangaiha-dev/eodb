@@ -144,6 +144,8 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
 Route::group(['prefix' => 'web'], function () {
     Route::get('{code}/about', [AboutController::class, 'departmentAbout']);
     Route::get('{code}/act-rule', [ActRuleController::class, 'departmentAct']);
+    Route::get('{code}/notification', [NotificationController::class, 'departmentNotification']);
+    Route::get('{code}/other', [InformationController::class, 'departmentOther']);
 
 });
 Route::group(['prefix' => 'web', 'middleware' => ['auth:sanctum','staff']], function () {

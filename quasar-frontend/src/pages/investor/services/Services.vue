@@ -84,7 +84,7 @@
             <q-tab name="PRE-PROCESSING" label="PRE-PROCESSING" />
             <q-tab name="POST-PROCESSING" label="POST-PROCESSING" />
           </q-tabs>
-          <q-tab-panels class="full-width" v-model="tab" animated>
+          <q-tab-panels keep-alive class="full-width" v-model="tab" animated>
             <q-tab-panel name="services">
               <q-table
                 v-model:pagination="pagination"
