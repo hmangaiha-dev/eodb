@@ -429,7 +429,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -483,7 +483,20 @@ export default {
       pollution_form11_brand_signature: null,
       pollution_form11_brand_designation: "",
     });
-    onMounted(() => {});
+    watch(store.state.globalData.common, () => getA());
+
+    const getA = () => {
+      const { phone_no, mobile_no, fax_no, email } =
+        store.state.globalData.common.partA || "";
+      const { declaration_designation } =
+        store.state.globalData.common.selfDeclaration || "";
+
+      formData.pollution_form11_two = `Telephone: ${phone_no},\nMobile:  ${mobile_no},\nFax: ${fax_no},\nEmail: ${email}`;
+      formData.pollution_form11_brand_designation = declaration_designation
+    };
+
+    onMounted(async () => getA());
+
     return {
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

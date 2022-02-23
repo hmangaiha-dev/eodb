@@ -50,17 +50,7 @@
           >
           <q-input outlined v-model="formData.pollution_form_8_solidwaste_4i" />
         </div>
-        <div class="col-md-6 col-xs-12">
-          <label class="zlabel" for="name"
-            >II) Name & Address of the local body<span class="asterisk">
-              *</span
-            ></label
-          >
-          <q-input
-            outlined
-            v-model="formData.pollution_form_8_solidwaste_4ii"
-          />
-        </div>
+      
 
         <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">

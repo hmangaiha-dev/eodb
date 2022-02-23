@@ -37,7 +37,7 @@
         type="textarea"
         dense
         outlined
-        v-model="formData.pollution_form16_two"
+        v-model="formData.pollution_form16_three"
       />
     </div>
 
@@ -60,7 +60,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -75,7 +75,17 @@ export default {
       pollution_form16_three: "",
       pollution_form16_signature: null,
     });
-    onMounted(() => {});
+    watch(store.state.globalData.common, () => getA());
+
+    const getA = () => {
+      const { applicant_name, address } =
+        store.state.globalData.common.partA
+
+      formData.pollution_form16_one = `Name: ${applicant_name || ''}\nAddress: ${address || ''}`
+      formData.pollution_form16_three = applicant_name
+    };
+
+    onMounted(async () => getA());
     return {
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

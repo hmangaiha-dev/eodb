@@ -1,16 +1,19 @@
-	<template>
-	  <div class="zcard row items-center q-col-gutter-md">
-	    <div class="col-12 text-h6 q-pb-none text-center">FORM – V</div>
-	    <p class="col-12 text-caption q-py-none text-center">[See rule 7(iv)] </p>
-	    <div class="col-12 ztitle text-center">
-FORM FOR FILING RETURNS OF SALE OF NEW BATTERIES AND
-COLLECTION OF OLD BATTERIES
-	    </div>
-      <div>
-        <p>[To be submitted by dealers to the manufacturers by 31st May (for sale during October-March)
-and 30th November (for sale during April-September) every year]</p>
-      </div>
-	     <q-form @submit.prevent="submit" class="row">
+<template>
+  <div class=" row items-center q-col-gutter-md">
+    <div class="col-12 text-h6 q-pb-none text-center">FORM – V</div>
+    <p class="col-12 text-caption q-py-none text-center">[See rule 7(iv)]</p>
+    <div class="col-12 ztitle text-center">
+      FORM FOR FILING RETURNS OF SALE OF NEW BATTERIES AND COLLECTION OF OLD
+      BATTERIES
+    </div>
+    <div>
+      <p>
+        [To be submitted by dealers to the manufacturers by 31st May (for sale
+        during October-March) and 30th November (for sale during
+        April-September) every year]
+      </p>
+    </div>
+    <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />
@@ -37,7 +40,6 @@ import { useRouter } from "vue-router";
 import Form from "./Form.vue";
 import router from "src/router";
 
-
 export default {
   components: {
     Form,
@@ -53,9 +55,7 @@ export default {
 
     const submit = () => {
       // return console.log('my router',myRouter);
-      var formData = reactive({
-       
-      });
+      var formData = reactive({});
 
       formData = Object.assign(formData, applicantRef.value.formData);
 

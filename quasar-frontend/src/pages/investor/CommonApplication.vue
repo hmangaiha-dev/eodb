@@ -10,7 +10,6 @@
         indicator-color="primary"
         align="justify"
         narrow-indicator
-       
       >
         <q-tab name="a" label="Part-A" />
         <q-tab name="b" label="Part-B" />
@@ -123,13 +122,28 @@
 
         <q-tab-panel name="declaration">
           <q-form @submit.prevent="toggle('final')">
-            <div class="row q-col-gutter-lg">
+            <div class="zcard row q-ma-xs q-col-gutter-lg">
               <div class="col-xs-12">
                 <Declaration ref="declarationRef" />
+                <div class="col-xs-12 col-md-5">
+                  <label class="zlabel" for="gender"> </label>
+                  <div class="q-gutter-sm">
+                    <q-checkbox
+                      v-model="declaration_consent"
+                      label="I accept the terms and conditions"
+                      color="teal"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-12 q-mt-md">
-              <q-btn color="green-6" type="submit" label="Save Application" />
+              <q-btn
+                :disable="!declaration_consent"
+                color="green-6"
+                type="submit"
+                label="Save Application"
+              />
               <!-- <span class="q-mx-md"> </span> -->
               <!-- <q-btn color="blue-6" type="submit" label="Final Submit" /> -->
             </div>
@@ -159,7 +173,7 @@ import PartG from "./form/PartG.vue";
 import Declaration from "./form/Declaration.vue";
 import { useQuasar } from "quasar";
 import { useRouter, useRoute } from "vue-router";
-// import { useStore } from "vuex";
+// import { useStore } from "vuex"  ;
 
 export default {
   components: {
@@ -184,42 +198,52 @@ export default {
     const partFRef = ref(null);
     const partGRef = ref(null);
     const declarationRef = ref(null);
+    const declaration_consent = ref(false);
     const tab = ref("a");
     const router = useRouter();
     const store = useStore();
 
     const toggle = (val) => {
-      var applications = [
+      let applications = [
         {
-          ...applicantRef.value?.formData,
-          ...FirmRef.value?.formData,
-          ...proposedRef.value?.formData,
-          ...partCRef.value?.formData,
-          ...partDRef.value?.formData,
-          ...partERef.value?.formData,
-          ...partFRef.value?.formData,
-          ...partGRef.value?.formData,
-          ...declarationRef.value?.formData,
+          // ...applicantRef.value?.formData,
+          // ...FirmRef.value?.formData,
+          // ...proposedRef.value?.formData,
+          // ...partCRef.value?.formData,
+          // ...partDRef.value?.formData,
+          // ...partERef.value?.formData,
+          // ...partFRef.value?.formData,
+          // ...partGRef.value?.formData,
+          // ...declarationRef.value?.formData,
         },
       ];
 
-      val == 'b' && Object.assign(applications[0],{model: 'A'})
-      val == 'c' && Object.assign(applications[0],{model: 'B'})
-      val == 'd' && Object.assign(applications[0],{model: 'C'})
-      val == 'e' && Object.assign(applications[0],{model: 'D'})
-      val == 'f' && Object.assign(applications[0],{model: 'E'})
-      val == 'g' && Object.assign(applications[0],{model: 'F'})
-      val == 'final' && Object.assign(applications[0],{model: 'declaration'})
+      val == "b" &&
+        Object.assign(
+          applications[0],
+          applicantRef.value?.formData,
+          FirmRef.value?.formData
+        );
+      val == "c" && Object.assign(applications[0], proposedRef.value?.formData);
+      val == "d" && Object.assign(applications[0], partCRef.value?.formData);
+      val == "e" && Object.assign(applications[0], partDRef.value?.formData);
+      val == "f" && Object.assign(applications[0], partERef.value?.formData);
+      val == "g" && Object.assign(applications[0], partFRef.value?.formData);
+      val == "declaration" && Object.assign(applications[0], partGRef.value?.formData);
+      val == "final" && Object.assign(applications[0], declarationRef.value?.formData);
 
       var formDatas = new FormData();
+
+      // return console.log("applications", applications[0]);
 
       for (let data in applications[0]) {
         formDatas.append(`${data}`, applications[0][data]);
       }
-      
+
       api
         .post("/investor/common-applications/store", formDatas)
         .then((res) => {
+          // return console.log('res value',res.data);
           if (val == "final") {
             q.notify({
               message: "Application submitted successfully",
@@ -230,14 +254,9 @@ export default {
         })
         .catch((err) => console.log("error", err));
 
-
       return;
-
-
     };
 
-
-   
     return {
       tab,
       applicantRef,
@@ -249,13 +268,8 @@ export default {
       partERef,
       partFRef,
       partGRef,
-      Declaration,
-      q,
+      declaration_consent,
       toggle,
-      
-     
-      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
-      maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },
 };

@@ -2,7 +2,8 @@
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-12 text-h6 q-pb-none text-center">Annexure 11.8</div>
     <div class="col-12 ztitle text-center">
-Procedure for Determination of Connected Load    </div>
+      Procedure for Determination of Connected Load
+    </div>
     <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">

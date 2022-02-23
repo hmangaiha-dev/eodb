@@ -1,8 +1,13 @@
 <template>
-  <div class="zcard row items-center q-col-gutter-md">
-    <q-dialog class="print-hide" v-model="dialog">
-      <q-card>
-        <embed :src="attachment" width="500" height="500" />
+  <div
+    :class="[$q.screen.gt.sm && 'zcard']"
+    class="row items-center q-col-gutter-md"
+  >
+    <q-dialog v-model="dialog">
+      <q-card class="col-12">
+        <q-card-section>
+          <embed :src="attachment" width="900" height="900" />
+        </q-card-section>
       </q-card>
     </q-dialog>
     <div class="col-xs-12 col-md-6">
@@ -29,19 +34,63 @@
         </label>
       </div>
       <div class="col-xs-12 col-md-6">
-        <q-file v-model="formData.applicant_photo" outlined>
-          <template v-slot:prepend>
-            <q-icon name="attach_file" />
-          </template>
-        </q-file>
-        <!-- attach {{ formData.applicant_photo }} -->
-        <!-- <router-link to="/"> </router-link> -->
-        <q-btn
+        <q-uploader
+        
           flat
+          @added="
+            (files) => {
+              formData.applicant_photo = files[0];
+              previewImg = false;
+            }
+          "
+          hide-upload-btn
+          ref="formData.applicant_photo"
+          color="grey"
+          v-model="formData.applicant_photo"
+          url="http://localhost:4444/upload"
+        />
+
+        <q-img
+          v-if="mimeType(formData.applicant_photo)"
+          :src="`http://localhost:8000/storage/${formData.applicant_photo}`"
+          style="max-width: 150px; max-height: 150px; margin-top: -54px"
+          spinner-color="primary"
+          spinner-size="82px"
+        />
+
+        <!-- {{ typeof formData.udyog_memorandum }} -->
+
+        <q-btn
+          v-if="
+            typeof formData.applicant_photo !== 'object' &&
+            !mimeType(formData.applicant_photo)
+          "
+          flat
+          style="max-width: 150px; margin-top: -100px"
           color="primary"
-          :label="formData.applicant_photo"
+          icon="o_picture_as_pdf"
+          label="view"
           @click="showAttachment(formData.applicant_photo)"
         />
+
+        <!-- <q-btn
+          v-if="typeof formData.applicant_photo === 'string'"
+          flat
+          style="max-width: 150px; margin-top: -54px"
+          color="primary"
+          label="view"
+          @click="showAttachment(formData.applicant_photo)"
+        /> -->
+
+        <!-- <q-img
+          v-if="
+            !Array.isArray(formData.applicant_photo) && formData.applicant_photo
+          "
+          :src="`http://localhost:8000/storage/${formData.applicant_photo}`"
+          style="max-width: 150px; margin-top: -54px"
+          spinner-color="primary"
+          spinner-size="82px"
+        /> -->
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender"
@@ -203,7 +252,7 @@
 <script>
 import { reactive, ref } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, computed, watch } from "vue";
+import { onMounted, computed, watch, onUpdated } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -214,6 +263,7 @@ export default {
 
     const dialog = ref(false);
     const attachment = ref("");
+    const previewImg = ref(true);
 
     let formData = reactive({
       applicant_type: "",
@@ -239,19 +289,20 @@ export default {
       formData.applicant_photo =
         store.state.globalData.common.partA?.applicant_photo;
       formData.applicant_name =
-        store.state.globalData.common.partA?.applicant_name;
+        store.state.globalData.common.partA?.applicant_name || "";
       formData.applicant_caste =
-        store.state.globalData.common.partA?.applicant_caste;
-      formData.country = store.state.globalData.common.partA?.country;
-      formData.state = store.state.globalData.common.partA?.state;
-      formData.city_town = store.state.globalData.common.partA?.city_town;
-      formData.postal_code = store.state.globalData.common.partA?.postal_code;
-      formData.address = store.state.globalData.common.partA?.address;
-      formData.phone_no = store.state.globalData.common.partA?.phone_no;
-      formData.mobile_no = store.state.globalData.common.partA?.mobile_no;
-      formData.fax_no = store.state.globalData.common.partA?.fax_no;
-      formData.email = store.state.globalData.common.partA?.email;
-      formData.alt_email = store.state.globalData.common.partA?.alt_email;
+        store.state.globalData.common.partA?.applicant_caste || "";
+      formData.country = store.state.globalData.common.partA?.country || "";
+      formData.state = store.state.globalData.common.partA?.state || "";
+      formData.city_town = store.state.globalData.common.partA?.city_town || "";
+      formData.postal_code =
+        store.state.globalData.common.partA?.postal_code || "";
+      formData.address = store.state.globalData.common.partA?.address || "";
+      formData.phone_no = store.state.globalData.common.partA?.phone_no || "";
+      formData.mobile_no = store.state.globalData.common.partA?.mobile_no || "";
+      formData.fax_no = store.state.globalData.common.partA?.fax_no || "";
+      formData.email = store.state.globalData.common.partA?.email || "";
+      formData.alt_email = store.state.globalData.common.partA?.alt_email || "";
     };
 
     watch(store.state.globalData.common, () => getPersonalDetails());
@@ -269,10 +320,23 @@ export default {
         "Women Entrepreneur",
       ],
       formData,
+      previewImg,
       dialog,
+      added: (files) => {
+        console.log("added", files[0]);
+        formData.applicant_photo = files[0];
+        previewImg.value = false;
+      },
+      mimeType: (val) => {
+        // return console.log(typeof val);
+        let index = String(val).lastIndexOf(".");
+        let mime = String(val).substring(index + 1);
+        return typeof val === "string" && val ? mime != "pdf" : false;
+      },
       attachment,
       showAttachment: (val) => {
-        console.log("dialog attach", val);
+        attachment.value = val;
+        // console.log("dialog attach", val);
         // return
         attachment.value = "http://localhost:8000/storage/" + val;
         dialog.value = true;

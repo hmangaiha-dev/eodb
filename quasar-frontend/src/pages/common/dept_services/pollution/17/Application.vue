@@ -1,5 +1,5 @@
 <template>
-  <div class="zcard row items-center q-col-gutter-md">
+  <div class="row items-center q-col-gutter-md">
     <!-- <div class="col-12 text-h6 q-pb-none text-center">Form-2</div>
     <p class="col-12 text-caption q-py-none text-center">[See Rule 3(1)]</p> -->
     <div class="col-12 text-center">
@@ -12,7 +12,7 @@
       <p>[SEE RULES 6 (1)]</p>
     </div>
 
-    <q-form @submit.prevent="submit" class="col">
+    <q-form @submit.prevent="submit">
       <!-- <div class="row">
         <div class="col-12"> -->
           <Form ref="applicantRef" />

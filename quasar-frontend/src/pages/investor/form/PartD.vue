@@ -1,8 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <q-dialog class="print-hide" v-model="dialog">
-      <q-card>
-        <embed :src="attachment" width="500" height="500" />
+    <q-dialog v-model="dialog">
+      <q-card class="col-12">
+        <q-card-section>
+          <embed :src="attachment" width="900" height="900" />
+        </q-card-section>
       </q-card>
     </q-dialog>
     <div class="col-12 zsubtitle">
@@ -194,17 +196,55 @@
         Format : PDF )
         <span class="asterisk">*</span></label
       >
-      <q-file v-model="formData.detail_project_report" outlined>
-        <template v-slot:prepend>
-          <q-icon name="attach_file" />
-        </template>
-      </q-file>
-      <q-btn
+      <q-uploader
+      accept=".pdf"
         flat
+        @added="
+          (files) => {
+            formData.detail_project_report = files[0];
+          }
+        "
+        hide-upload-btn
+        ref="formData.applicant_photo"
+        color="grey"
+        v-model="formData.detail_project_report"
+        url="http://localhost:4444/upload"
+        style="max-width: 300px"
+      />
+
+      <q-img
+        v-if="mimeType(formData.detail_project_report)"
+        :src="`http://localhost:8000/storage/${formData.detail_project_report}`"
+        style="max-width: 150px; max-height: 150px; margin-top: -54px"
+        spinner-color="primary"
+        spinner-size="82px"
+      />
+
+      <!-- {{ typeof formData.udyog_memorandum }} -->
+
+      <q-btn
+        v-if="
+          typeof formData.detail_project_report !== 'object' &&
+          !mimeType(formData.detail_project_report)
+        "
+        flat
+        style="max-width: 150px; margin-top: -100px"
         color="primary"
-        :label="formData.detail_project_report"
+        icon="o_picture_as_pdf"
+        label="view"
         @click="showAttachment(formData.detail_project_report)"
       />
+
+      <!-- <q-img
+        v-if="
+          !Array.isArray(formData.detail_project_report) &&
+          formData.detail_project_report
+        "
+        :src="`http://localhost:8000/storage/${formData.detail_project_report}`"
+        style="max-width: 150px; margin-top: -54px"
+        spinner-color="primary"
+        spinner-size="82px"
+      /> -->
     </div>
 
     <div class="col-12 zlabel">
@@ -258,6 +298,13 @@ export default {
       formData,
       dialog,
       attachment,
+
+      mimeType: (val) => {
+        // return console.log(typeof val);
+        let index = String(val).lastIndexOf(".");
+        let mime = String(val).substring(index + 1);
+        return typeof val === "string" && val ? mime != "pdf" : false;
+      },
       getD,
       showAttachment: (val) => {
         console.log("dialog attach", val);

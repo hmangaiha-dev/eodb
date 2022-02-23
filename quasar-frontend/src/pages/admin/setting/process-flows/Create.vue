@@ -12,7 +12,11 @@
           dropdown-icon="arrow_drop_down"
           v-model="formData.application"
           :options="application_profiles"
+          @filter="filterFn"
           use-chips
+          use-input
+          input-debounce="0"
+          fill-input
           label="Select Application"
         />
         <div class="text-center">
@@ -78,7 +82,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import FlowDialog from "pages/admin/setting/process-flows/FlowDialog";
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { api } from "boot/axios";
 import { onMounted } from "vue";
@@ -99,9 +103,18 @@ export default {
       openDialog: false,
     });
 
+    const application_profiles = ref();
+
+    const getApplicationProfiles = () => {
+      application_profiles.value = store.state.staffData.application_profiles;
+    };
+
+    watch(store.state.staffData, () => {
+      getApplicationProfiles();
+    });
+
     onMounted(() => {
-      // store.dispatch('staffData/fetchData')
-      console.log('dispatching actions');
+      getApplicationProfiles();
     });
 
     const handleSave = ({ staff, duration, actions }) => {
@@ -134,12 +147,25 @@ export default {
       removeFlow,
       list,
       formData,
+      getApplicationProfiles,
       handleSave,
       localData,
       handleSubmit,
-      application_profiles: computed(
-        () => store.state.staffData.application_profiles
-      ),
+      application_profiles,
+      filterFn(val, update) {
+        if (val === "") {
+          update(() => getApplicationProfiles());
+          return;
+        }
+
+        update(() => {
+          getApplicationProfiles();
+          const needle = val.toLowerCase();
+          application_profiles.value = application_profiles.value.filter(
+            (v) => v.title.toLowerCase().indexOf(needle) > -1
+          );
+        });
+      },
     };
   },
 };

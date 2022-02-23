@@ -1,8 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
-    <q-dialog class="print-hide" v-model="dialog">
-      <q-card>
-        <embed :src="attachment" width="500" height="500" />
+    <q-dialog v-model="dialog">
+      <q-card class="col-12">
+        <q-card-section>
+          <embed :src="attachment" width="900" height="900" />
+        </q-card-section>
       </q-card>
     </q-dialog>
     <div class="col-12">
@@ -64,20 +66,41 @@
           </label>
         </div>
         <div class="col-xs-12 col-md-5">
-          <q-file
-            lazy-rules
-            :rules="[(val) => val || 'Please type something']"
-            v-model="formData.manuf_process_flow"
-            outlined
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
+            accept=".pdf"
             flat
+            @added="
+              (files) => {
+                formData.manuf_process_flow = files[0];
+              }
+            "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+
+          <q-img
+            v-if="mimeType(formData.manuf_process_flow)"
+            :src="`http://localhost:8000/storage/${formData.manuf_process_flow}`"
+            style="max-width: 150px; max-height: 150px; margin-top: -100px"
+            spinner-color="primary"
+            spinner-size="82px"
+          />
+
+          <!-- {{ typeof formData.udyog_memorandum }} -->
+
+          <q-btn
+            v-if="
+              typeof formData.manuf_process_flow !== 'object' &&
+              !mimeType(formData.manuf_process_flow)
+            "
+            flat
+            style="max-width: 150px; margin-top: -100px"
             color="primary"
-            :label="formData.manuf_process_flow"
+            icon="o_picture_as_pdf"
+            label="view"
             @click="showAttachment(formData.manuf_process_flow)"
           />
         </div>
@@ -318,19 +341,41 @@ Step ..."
               </label>
             </div>
             <div class="col-xs-12 col-md-5">
-              <q-file
-                lazy-rules
-                v-model="formData.waste_water_treatment_details"
-                outlined
-              >
-                <template v-slot:prepend>
-                  <q-icon name="attach_file" />
-                </template>
-              </q-file>
-              <q-btn
+              <q-uploader
+                accept=".pdf"
                 flat
+                @added="
+                  (files) => {
+                    formData.waste_water_treatment_details = files[0];
+                  }
+                "
+                hide-upload-btn
+                ref="formData.applicant_photo"
+                color="grey"
+                url="http://localhost:4444/upload"
+                style="max-width: 300px"
+              />
+
+              <q-img
+                v-if="mimeType(formData.waste_water_treatment_details)"
+                :src="`http://localhost:8000/storage/${formData.waste_water_treatment_details}`"
+                style="max-width: 150px; max-height: 150px; margin-top: -100px"
+                spinner-color="primary"
+                spinner-size="82px"
+              />
+
+              <!-- {{ typeof formData.udyog_memorandum }} -->
+
+              <q-btn
+                v-if="
+                  typeof formData.waste_water_treatment_details !== 'object' &&
+                  !mimeType(formData.waste_water_treatment_details)
+                "
+                flat
+                style="max-width: 150px; margin-top: -100px"
                 color="primary"
-                :label="formData.waste_water_treatment_details"
+                icon="o_picture_as_pdf"
+                label="view"
                 @click="showAttachment(formData.waste_water_treatment_details)"
               />
             </div>
@@ -529,19 +574,40 @@ Step ..."
           </label>
         </div>
         <div class="col-xs-12 col-md-6">
-          <q-file
-            :rules="[(val) => val || 'Please type something']"
-            v-model="formData.replantation_plan"
-            outlined
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
-          <q-btn
+          <q-uploader
+            accept=".pdf"
             flat
+            @added="
+              (files) => {
+                formData.replantation_plan = files[0];
+              }
+            "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="mimeType(formData.replantation_plan)"
+            :src="`http://localhost:8000/storage/${formData.replantation_plan}`"
+            style="max-width: 150px; max-height: 150px; margin-top: -100px"
+            spinner-color="primary"
+            spinner-size="82px"
+          />
+
+          <!-- {{ typeof formData.udyog_memorandum }} -->
+
+          <q-btn
+            v-if="
+              typeof formData.replantation_plan !== 'object' &&
+              !mimeType(formData.replantation_plan)
+            "
+            flat
+            style="max-width: 150px; margin-top: -100px"
             color="primary"
-            :label="formData.replantation_plan"
+            icon="o_picture_as_pdf"
+            label="view"
             @click="showAttachment(formData.replantation_plan)"
           />
         </div>
@@ -602,6 +668,12 @@ export default {
       formData,
       dialog,
       attachment,
+      mimeType: (val) => {
+        // return console.log(typeof val);
+        let index = String(val).lastIndexOf(".");
+        let mime = String(val).substring(index + 1);
+        return typeof val === "string" && val ? mime != "pdf" : false;
+      },
       getF,
       showAttachment: (val) => {
         console.log("dialog attach", val);
