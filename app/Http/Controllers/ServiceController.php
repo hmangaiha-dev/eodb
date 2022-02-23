@@ -23,22 +23,33 @@ class ServiceController extends Controller
 
     public function getServices(Request $request)
     {
-        $search = $request->get('search');
+        $staff = auth('sanctum')->user();
+        //return $staff->tokenCan('office:read') ? 'yes' : 'no';
+        $service = DepartmentService::query();
+        $service->when(isset($staff->currentPost()->pivot->office_id), function ($q) use ($staff) {
+            return $q->where('department_id', $staff->currentPost()->pivot->office_id);
+        });
+
+        $data = $service->paginate();
         return [
-            'list' => DepartmentService::query()->when($search,fn($q)=>$q->where('service_name','LIKE',"%{$search}%"))->paginate()
+            'list' => $data,
         ];
+        // $search = $request->get('search');
+        // return [
+        //     'list' => DepartmentService::query()->when($search, fn ($q) => $q->where('service_name', 'LIKE', "%{$search}%"))->paginate()
+        // ];
     }
 
-    public function create(Request $request,Department $model)
+    public function create(Request $request, Department $model)
     {
-        $service=$model->services()->create($request->only((new DepartmentService())->getFillable()));
+        $service = $model->services()->create($request->only((new DepartmentService())->getFillable()));
         return [
             'data' => $service,
             'message' => 'Service added successfully',
             'list' => $model->services()->paginate()
         ];
     }
-    public function update(Request $request,DepartmentService $model)
+    public function update(Request $request, DepartmentService $model)
     {
 
         $service = $model->updateOrFail($request->only((new DepartmentService())->getFillable()));
@@ -47,7 +58,7 @@ class ServiceController extends Controller
             'message' => 'Service updated successfully',
         ];
     }
-    public function destroy(Request $request,DepartmentService $model)
+    public function destroy(Request $request, DepartmentService $model)
     {
 
         $model->delete();
@@ -58,5 +69,4 @@ class ServiceController extends Controller
             'message' => 'Service deleted successfully',
         ];
     }
-
 }

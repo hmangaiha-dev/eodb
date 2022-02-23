@@ -66,6 +66,11 @@ class Staff extends Authenticatable
         return $this->belongsToMany(Role::class, 'staff_roles');
     }
 
+    public function hasRole($role)
+    {
+        return $this->roles()->firstWhere('name',$role) ? true : false;
+    }
+
     public function scopeCurrentPost($builder)
     {
         $builder->whereHas('postings', function ($query) {
