@@ -2,40 +2,23 @@
   <q-layout @scroll="handleScroll" view="hHh lpR fff">
 
     <q-header  elevated  class="bg-white print-hide green-bottom-border text-primary" height-hint="98">
-      <q-toolbar v-if="!localData.onTop"  class="container-lg">
+      <q-toolbar v-if="!localData.onTop"  class="container-lg flex items-center">
         <q-btn class="lt-sm" @click="localData.openDrawer=true" flat icon="menu"/>
-        <q-toolbar-title>
-          <q-avatar>
-            <img
-              class="bg-primary"
-              src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
-            />
-          </q-avatar>
-          EODB
-        </q-toolbar-title>
+        <router-link to="/"
+        ><img style="width: 80px" src="~assets/eodb-logo.png"
+        /></router-link>
+
+          <q-toolbar-title>
+            Ease of Doing Business
+          </q-toolbar-title>
         <q-space />
         <q-btn :to="{name:'process-flows:read'}" flat icon="settings"/>
       </q-toolbar>
       <q-separator/>
       <q-toolbar class="scroll-y xs-hide container-lg q-pa-xs q-gutter-sm">
+
         <q-btn  :to="{name:'staff:dashboard'}" :class="$route.name==='staff:dashboard' ?'selected-menu':'' "
                flat outline label="My desk" color="primary" icon="dashboard"/>
-<!--        <q-btn-dropdown no-caps dropdown-icon="arrow_drop_down" flat  label="Certificate">-->
-<!--          <q-list>-->
-<!--            <q-item :to="{name:'application:new'}" clickable v-close-popup>-->
-<!--              <q-item-section>-->
-<!--                <q-item-label>Unpaid</q-item-label>-->
-<!--              </q-item-section>-->
-<!--            </q-item>-->
-
-        <!--            <q-item :to="{name:'application:verified'}" clickable v-close-popup>-->
-        <!--              <q-item-section>-->
-        <!--                <q-item-label>Paid</q-item-label>-->
-        <!--              </q-item-section>-->
-        <!--            </q-item>-->
-
-<!--          </q-list>-->
-<!--        </q-btn-dropdown>-->
 
         <AdminNav/>
         <q-space/>
@@ -51,21 +34,13 @@
       @hide="localData.openDrawer = false"
       side="left"
     >
-      menu
+      <AdminNav/>
     </q-drawer>
     <q-page-container>
       <router-view />
     </q-page-container>
 
     <q-footer elevated class="print-hide bg-grey-8 text-white">
-      <!-- <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
-          </q-avatar>
-          <div>Title</div>
-        </q-toolbar-title>
-      </q-toolbar> -->
      <MsegFooter/>
     </q-footer>
   </q-layout>
@@ -85,6 +60,7 @@ import {computed} from "vue";
 export default {
   components: {ProfileMenu, AdminNav, MsegFooter},
   setup(props, context) {
+
     const router = useRouter();
     const store = useStore();
     const localData = reactive({

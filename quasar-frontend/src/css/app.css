@@ -32,6 +32,9 @@
   line-height: 1.6;
   letter-spacing: 0.0075em;
 }
+.right-border {
+  border-right: #faf7f7 solid 2px;
+}
 
 .ztitle {
   font-size: 24px;

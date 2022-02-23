@@ -4,38 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class DepartmentService extends Model
 {
     use HasFactory;
 
-    protected $appends = ['dept_name','category_type','dept_slug'];
+    protected $fillable = ['service_name', 'who_should_apply', 'how_to_apply', 'document_to_submit', 'timeline', 'fees', 'path', 'sample_form', 'operational_type'];
 
+    protected $appends = ['dept'];
 
-
-    public function category()
+    public function department(): BelongsTo
     {
-        return $this->belongsTo(ServiceCategory::class,'category_id','id');
+        return $this->belongsTo(Department::class);
     }
 
-
-    public function department()
+    public function getDeptAttribute()
     {
-        return $this->belongsTo(Department::class,'department_id','id');
-    }
-
-
-    public function getDeptNameAttribute() {
-        return $this->department()->first()->dept_name;
-    }
-
-    public function getCategoryTypeAttribute()
-    {
-        return $this->category()->first()->name;
-    }
-
-
-    public function getDeptSlugAttribute()
-    {
-        return $this->department()->first()->slug;
+        return $this->department()->first()?->dept_name;
     }
 }

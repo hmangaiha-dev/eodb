@@ -42,7 +42,7 @@
       class="row q-col-gutter-md q-pa-sm container-lg"
     >
       <div style="width: 100%" class="col-12 q-pa-md">
-        <q-toolbar class="justify-center bg-white shadow-1">
+        <q-toolbar class="justify-center bg-white shadow-1 ">
           <q-item :focused="tab==='services'" clickable @click="tab='services'">
             <q-item-section>
               <q-item-label class="nav-item">Online Services</q-item-label>

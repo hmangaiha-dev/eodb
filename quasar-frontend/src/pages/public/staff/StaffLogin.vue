@@ -85,16 +85,17 @@ export default {
     const submit = () => {
       api.post('auth/staff-login', formData)
         .then(res => {
-          const {token, user} = res.data;
+          const {token, user,permissions} = res.data;
           console.log("user",user);
           console.log(token);
           store.dispatch('authData/setToken',token)
           store.dispatch('authData/setCurrentUser',user)
+          store.dispatch('authData/setPermissions',permissions)
           api.defaults.headers['Authorization'] = `Bearer ${token}`;
 
           setTimeout(()=>{
             router.push({name: 'staff:dashboard'});
-          },2000)
+          },1000)
         })
         .catch(err => {
           if (err?.response?.data?.errors)

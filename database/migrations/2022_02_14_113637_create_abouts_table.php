@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDepartmentActRulesTable extends Migration
+class CreateAboutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateDepartmentActRulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('department_act_rules', function (Blueprint $table) {
+        Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('department_id')->nullable();
-            $table->text('name')->nullable();
-            $table->string('copy')->nullable();
+            $table->text('content');
+            $table->morphs('model');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateDepartmentActRulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('department_act_rules');
+        Schema::dropIfExists('abouts');
     }
 }

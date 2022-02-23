@@ -1,13 +1,17 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ActRuleController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationMovementHistory;
 use App\Http\Controllers\ApplicationProfileController;
 use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DeskController;
+use App\Http\Controllers\InformationController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\NotesheetController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PostingController;
 use App\Http\Controllers\ProcessFlowController;
@@ -15,6 +19,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicDataController;
 use App\Http\Controllers\ResourceDataController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StaffAuthController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Http\Request;
@@ -136,8 +141,44 @@ Route::group(['prefix' => 'applications','middleware'=>['auth:sanctum']], functi
 
 });
 
-Route::post('applications/submit', [ApplicationController::class, 'submitApplication'])->middleware('auth:sanctum');
+Route::group(['prefix' => 'web'], function () {
+    Route::get('{code}/about', [AboutController::class, 'departmentAbout']);
+    Route::get('{code}/act-rule', [ActRuleController::class, 'departmentAct']);
 
+});
+Route::group(['prefix' => 'web', 'middleware' => ['auth:sanctum','staff']], function () {
+    Route::get('online-services', [ServiceController::class, 'getServices']);
+    Route::get('online-services/{model}', [ServiceController::class, 'detail']);
+    Route::delete('online-services/{model}', [ServiceController::class, 'destroy']);
+    Route::post('{model}/online-service', [ServiceController::class, 'create']);
+    Route::put('{model}/online-service', [ServiceController::class, 'update']);
+
+    Route::get('about', [AboutController::class, 'about']);
+    Route::put('about', [AboutController::class, 'updateAbout']);
+
+    Route::get('act-rule', [ActRuleController::class, 'index']);
+    Route::post('act-rule', [ActRuleController::class, 'store']);
+    Route::get('act-rule/{model}/download', [ActRuleController::class, 'download']);
+    Route::get('act-rule/{model}', [ActRuleController::class, 'detail']);
+    Route::put('act-rule/{model}', [ActRuleController::class, 'update']);
+    Route::delete('act-rule/{model}', [ActRuleController::class, 'destroy']);
+
+    Route::get('notification', [NotificationController::class, 'index']);
+    Route::post('notification', [NotificationController::class, 'store']);
+    Route::get('notification/{model}/download', [NotificationController::class, 'download']);
+    Route::get('notification/{model}', [NotificationController::class, 'detail']);
+    Route::put('notification/{model}', [NotificationController::class, 'update']);
+    Route::delete('notification/{model}', [NotificationController::class, 'destroy']);
+
+    Route::get('other', [InformationController::class, 'index']);
+    Route::post('other', [InformationController::class, 'store']);
+    Route::get('other/{model}/download', [InformationController::class, 'download']);
+    Route::get('other/{model}', [InformationController::class, 'detail']);
+    Route::put('other/{model}', [InformationController::class, 'update']);
+    Route::delete('other/{model}', [InformationController::class, 'destroy']);
+
+});
+Route::post('applications/submit', [ApplicationController::class, 'submitApplication'])->middleware('auth:sanctum');
 //Public routes
 Route::get('attachment/{code}', [AttachmentController::class, 'getApplicationAttachments']);
 // base_path('routes/rj/index.php');

@@ -32,10 +32,6 @@ class AttachmentUtilsRj
         'folder' => 'pollution/5/attachments'
     ];
 
-
-
-
-
     const PHE_WATER_CONNECTION_SIGNATURE = [
         'size' => 2048,
         'mime' => 'images/*',
@@ -73,7 +69,7 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'phe/4/attachments'
     ];
-    const PHE_CHANGE_NAME_LAND_PASS =   [
+    const PHE_CHANGE_NAME_LAND_PASS = [
         'size' => 2048,
         'mime' => 'images/*',
         'application_code' => 'PHE_CHANGE_NAME',
@@ -112,7 +108,6 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'phe/6/attachments'
     ];
-
 
 
     const LABOUR_CERTIFICATE_REGISTRATION_SIGNATURE = [
@@ -335,7 +330,7 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'power/2/attachments'
     ];
-    const POWER_NEW_CONNECTION2_MEMORANDUM  = [
+    const POWER_NEW_CONNECTION2_MEMORANDUM = [
         'size' => 2048,
         'mime' => 'images/*',
         'application_code' => 'POWER_NEW_CONNECTION2',
@@ -344,7 +339,7 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'power/2/attachments'
     ];
-    const POWER_NEW_CONNECTION2_RESIDENTIAL  = [
+    const POWER_NEW_CONNECTION2_RESIDENTIAL = [
         'size' => 2048,
         'mime' => 'images/*',
         'application_code' => 'POWER_NEW_CONNECTION2',
@@ -602,9 +597,6 @@ class AttachmentUtilsRj
     ];
 
 
-
-
-
     const FOOD_DRUG_RESTRICTED_FEE_PEKNA = [
         'mime' => 'images/*',
         'application_code' => 'FOOD_DRUG_RESTRICTED_RETAIL',
@@ -695,15 +687,6 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'food/5/attachments'
     ];
-
-
-
-
-
-
-
-
-
 
 
     const FOOD_DRUG_WHOLESALE_FEE_PEKNA = [
@@ -856,7 +839,6 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'pollution/7/attachments'
     ];
-
 
 
     const POLLUTION_PRODUCER_BRAND_DISTRICT_INDUSTRIES = [
@@ -1133,7 +1115,7 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'pollution/19/attachments'
     ];
-    
+
     const POLLUTION_FORM_19_SIGNATURE = [
         'mime' => 'images/*',
         'application_code' => 'POLLUTION_FORM_19',
@@ -1286,14 +1268,6 @@ class AttachmentUtilsRj
         'disk' => 'public',
         'folder' => 'land/7/attachments'
     ];
-
-
-
-
-
-
-
-
 
 
     // const ATTACHMENTS = [

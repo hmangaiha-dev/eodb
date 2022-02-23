@@ -7,6 +7,7 @@ import Quasar from "quasar";
 
 const state = () => {
   return {
+    departments: [],
     permissions: [],
     roles: [],
     districts: [],
@@ -35,6 +36,7 @@ const mutations = {
   setFileType: (state, types) => (state.file_types = types),
   setApplicationTypes: (state, types) => (state.application_types = types),
   setApplicationProfiles: (state, types) => (state.application_profiles = types),
+  setDepartments: (state, data) => (state.departments = data),
 };
 
 const actions = {
@@ -51,6 +53,7 @@ const actions = {
           file_types,
           application_types,
           application_profiles,
+          departments
         } = res.data;
         context.commit("setPermissions", permissions);
         context.commit("setRoles", roles);
@@ -60,6 +63,7 @@ const actions = {
         context.commit("setFileType", file_types);
         context.commit("setApplicationTypes", application_types);
         context.commit("setApplicationProfiles", application_profiles);
+        context.commit("setDepartments", departments);
 
         // console.log('services api data',services[0].items);
       })
