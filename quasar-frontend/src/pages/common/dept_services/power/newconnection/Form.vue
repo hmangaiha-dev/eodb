@@ -579,9 +579,9 @@ export default {
 
        watch(store.state.globalData.common, () => {
       getA();
-      store.state.globalData.common,() =>{
+      
         getG();
-      }
+      
     });
 
     const getA = () => {
@@ -598,9 +598,31 @@ export default {
         tin_no,
       } = store.state.globalData.common.partA;
 
+
+
+
       formData.power_new_connection_applicant_name = applicant_name  ;
       formData.power_new_connection_communication_district = city_town
       formData.power_new_connection_communication_house = address;
+
+      
+
+    
+      
+
+    };
+
+    const getG = () => {
+      const {
+        applicant_name,
+       electric_regular_consumer_type
+      } = store.state.globalData.common.partG;
+
+
+
+
+      formData.power_new_connection_supply_category = electric_regular_consumer_type  ;
+
 
       
 
@@ -613,6 +635,7 @@ export default {
     return {
       formData,
       getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

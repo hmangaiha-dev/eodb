@@ -260,6 +260,7 @@ export default {
 
        watch(store.state.globalData.common, () => {
       getA();
+      getG();
     });
 
     const getA = () => {
@@ -283,9 +284,22 @@ export default {
       
 
     };
+
+      const getG = () => {
+      const {
+        
+       electric_regular_consumer_number,
+      } = store.state.globalData.common.partG;
+
+      formData.power_conversion_service_two = electric_regular_consumer_number  ;
+
+
+    };
     onMounted(() => {});
     return {
       formData,
+      getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

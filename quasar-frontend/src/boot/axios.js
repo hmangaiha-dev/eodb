@@ -10,7 +10,11 @@ import {LocalStorage, Notify, Quasar} from "quasar";
 // for each client)
 const BASE_URL ='http://164.100.124.152/api';
 const LOCAL_BASE_URL = 'http://localhost:8000/api';
+const LOCAL_BASE_URL2 = 'http://localhost:8000';
+
 const api = axios.create({ baseURL: process.env.DEV?LOCAL_BASE_URL:BASE_URL})
+const api2 = axios.create({ baseURL: process.env.DEV?LOCAL_BASE_URL2:BASE_URL})
+
 
 
 export default boot(({ app,router,store }) => {
@@ -66,6 +70,56 @@ export default boot(({ app,router,store }) => {
   app.config.globalProperties.$api = api
   // ^ ^ ^ this will allow you to use this.$api (for Vue Options API form)
   //       so you can easily perform requests against your app's API
+
+
+
+  api2.interceptors.response.use((response) => {
+    // if(response?.status === 401) {
+    //   LocalStorage.remove('user');
+    //   LocalStorage.remove('token');
+    //   store.dispatch('authData/setCurrentUser', null);
+    //   store.dispatch('authData/setToken', null);
+    //   router.replace({name:'home'})
+    //   Notify.create({
+    //     message: "Session/Token expired",
+    //     position: "top",
+    //     icon: "warnings",
+    //   });
+    // }
+    if (response?.status === 500) {
+    }
+    return response;
+  }, (error) => {
+
+    if (error?.response?.status === 401) {
+      LocalStorage.remove('user');
+      LocalStorage.remove('token');
+      store.dispatch('authData/setCurrentUser', null);
+      store.dispatch('authData/setToken', null)
+      router.replace({name:"home"});
+      Notify.create({
+            message: "Session/Token expired",
+            position: "top",
+          });
+    }
+
+    return Promise.reject(error,);
+  });
+  api2.interceptors.request.use(
+    function(config) {
+      let token=store.getters['authData/getToken'];
+      config.headers['Authorization']=`Bearer ${token}`;
+      return config;
+    },
+    function(error) {
+      return Promise.reject(error);
+    }
+  );
+  app.config.globalProperties.$axios = axios
+  // ^ ^ ^ this will allow you to use this.$axios (for Vue Options API form)
+  //       so you won't necessarily have to import axios in each vue file
+
+  app.config.globalProperties.$api2 = api2
 })
 
-export { api }
+export { api,api2 }
