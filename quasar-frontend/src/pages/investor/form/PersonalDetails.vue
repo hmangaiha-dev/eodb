@@ -336,9 +336,9 @@ export default {
       attachment,
       showAttachment: (val) => {
         attachment.value = val;
-        // console.log("dialog attach", val);
         // return
         attachment.value = "http://localhost:8000/storage/" + val;
+        console.log("dialog attach check", attachment.value);
         dialog.value = true;
       },
       getPersonalDetails,
