@@ -25,7 +25,7 @@ class ServiceController extends Controller
     {
         $staff = auth('sanctum')->user();
         //return $staff->tokenCan('office:read') ? 'yes' : 'no';
-        $service = DepartmentService::query();
+        $service = DepartmentService::query()->orderBy('department_id');
         $service->when(isset($staff->currentPost()->pivot->office_id), function ($q) use ($staff) {
             return $q->where('department_id', $staff->currentPost()->pivot->office_id);
         });

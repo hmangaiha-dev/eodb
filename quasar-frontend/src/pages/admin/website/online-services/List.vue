@@ -24,7 +24,7 @@
               </q-item-section>
               <q-item-section>
                 <q-item-label>{{ item?.service_name }}</q-item-label>
-                <q-item-label caption>{{ item?.description }}</q-item-label>
+                <q-item-label caption>{{ item?.dept }}</q-item-label>
               </q-item-section>
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">

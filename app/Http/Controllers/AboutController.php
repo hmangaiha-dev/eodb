@@ -12,6 +12,8 @@ class AboutController extends Controller
         $staff = auth()->user();
         $office = $staff->currentPost();
 
+        // return $office;
+
         abort_if(blank($office), 400, 'No office found');
         $data = Department::query()->where('dept_code', $office->code)
             ->first();
@@ -27,7 +29,9 @@ class AboutController extends Controller
         abort_if(blank($office), 400, 'No office found');
 
         $department = Department::query()->where('dept_code', $office->code)->first();
-        $department->about()?->updateOrCreate(['content' => $request->get('content')]);
+        $department->about()?->updateOrCreate([
+            'model_id' => $department->id
+        ], ['content' => $request->get('content')]);
         return [
             'data' => $department?->about()->first(),
             'message' => 'Content of About Us updated successfully'
@@ -36,8 +40,8 @@ class AboutController extends Controller
 
     public function departmentAbout(Request $request, string $code)
     {
-        $department=Department::query()->where('slug', $code)->first();
-        abort_if(blank($department),400,'Error:No department found');
+        $department = Department::query()->where('slug', $code)->first();
+        abort_if(blank($department), 400, 'Error:No department found');
         return [
             'data' => $department->about()->first(),
         ];
