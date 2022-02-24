@@ -25,7 +25,7 @@ class CreateDepartmentServicesTable extends Migration
             $table->string('fees')->nullable();
             $table->string('path')->nullable();
             $table->string('sample_form')->nullable();
-            $table->string('operational_type')->default('PRE-ESTABLISHMENT');
+            $table->string('operational_type')->default('PRE-ESTABLISHMENT')->nullable();
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class NotificationController extends Controller
 {
-    public function detail(Request $request,Notification $model)
+    public function detail(Request $request, Notification $model)
     {
         return [
             'data' => $model
@@ -18,8 +18,8 @@ class NotificationController extends Controller
     }
     public function index(Request $request)
     {
-        $staff=auth()->user();
-        $office=$staff->currentPost();
+        $staff = auth()->user();
+        $office = $staff->currentPost();
 
         $department = Department::query()->where('dept_code', $office->code)
             ->first();
@@ -28,9 +28,21 @@ class NotificationController extends Controller
         }
         $search = $request->get('search');
         return [
-            'list' => $department->notifications()
-                ->when($search,fn($q)=>$q->where('number','LIKE',"$search")->orWhere('subject','LIKE',"$search"))
+            'list' => $department->notifications()->with('attachment')
+                ->when($search, fn ($q) => $q->where('number', 'LIKE', "$search")->orWhere('subject', 'LIKE', "$search"))
                 ->paginate(),
+        ];
+    }
+
+
+    public function departmentNotification(Request $request, string $code)
+    {
+        $department = Department::query()->where('slug', $code)->first();
+
+        abort_if(blank($department), 400, 'No department found');
+
+        return [
+            'list' => $department->notifications()->with('attachment')->paginate(),
         ];
     }
 
@@ -43,26 +55,28 @@ class NotificationController extends Controller
 
     public function store(Request $request)
     {
-        $staff=auth()->user();
-        $office=$staff->currentPost();
+        $staff = auth()->user();
+        $office = $staff->currentPost();
 
         $department = Department::query()->where('dept_code', $office->code)
             ->first();
         if (blank($department)) {
             abort(500, 'No posting found');
         }
-        $model=$department->notifications()->create($request->only((new Notification())->getFillable()));
+        $model = $department->notifications()->create($request->only((new Notification())->getFillable()));
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $path = Storage::disk(Attachment::DISK)->put('notification', $file);
-            $model->attachment()->create(['mime' => $file->getMimeType(),
+            $model->attachment()->create([
+                'mime' => $file->getMimeType(),
                 'original_name' => $file->getClientOriginalName(),
                 'label' => $file->getClientOriginalName(),
                 'size' => $file->getSize(),
-                'path' => $path]);
+                'path' => $path
+            ]);
         }
         return [
-            'list'=>$department->notifications()->paginate(),
+            'list' => $department->notifications()->with('attachment')->paginate(),
             'data' => $model,
             'message' => 'Notification saved successfully',
         ];
@@ -74,14 +88,16 @@ class NotificationController extends Controller
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $path = Storage::disk(Attachment::DISK)->put('notification', $file);
-            $model->attachment()->create(['mime' => $file->getMimeType(),
+            $model->attachment()->update([
+                'mime' => $file->getMimeType(),
                 'original_name' => $file->getClientOriginalName(),
                 'label' => $file->getClientOriginalName(),
                 'size' => $file->getSize(),
-                'path' => $path]);
+                'path' => $path
+            ]);
         }
-        $staff=auth()->user();
-        $office=$staff->currentPost();
+        $staff = auth()->user();
+        $office = $staff->currentPost();
 
         $department = Department::query()->where('dept_code', $office->code)
             ->first();
@@ -89,15 +105,15 @@ class NotificationController extends Controller
             abort(500, 'No posting found');
         }
         return [
-            'list' => $department->notifications()->paginate(),
-            'message' =>'Notification updated successfully'
+            'list' => $department->notifications()->with('attachment')->paginate(),
+            'message' => 'Notification updated successfully'
         ];
     }
 
-    public function destroy(Request $request,Notification $model)
+    public function destroy(Request $request, Notification $model)
     {
-        $staff=auth()->user();
-        $office=$staff->currentPost();
+        $staff = auth()->user();
+        $office = $staff->currentPost();
 
         $department = Department::query()->where('dept_code', $office->code)
             ->first();
@@ -106,8 +122,8 @@ class NotificationController extends Controller
         }
         $model->delete();
         return [
-            'list' => $department->notifications()->paginate(),
-            'message' =>'Notification deleted successfully'
+            'list' => $department->notifications()->with('attachment')->paginate(),
+            'message' => 'Notification deleted successfully'
         ];
     }
 }

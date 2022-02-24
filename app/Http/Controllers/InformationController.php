@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class InformationController extends Controller
 {
-    public function detail(Request $request,OtherInformation $model)
+    public function detail(Request $request, OtherInformation $model)
     {
         return [
             'data' => $model
@@ -19,8 +19,8 @@ class InformationController extends Controller
     }
     public function index(Request $request)
     {
-        $staff=auth()->user();
-        $office=$staff->currentPost();
+        $staff = auth()->user();
+        $office = $staff->currentPost();
 
         $department = Department::query()->where('dept_code', $office->code)
             ->first();
@@ -29,11 +29,23 @@ class InformationController extends Controller
         }
         $search = $request->get('search');
         return [
-            'list' => $department->otherInformations()
-                ->when($search,fn($q)=>$q->where('number','LIKE',"$search")->orWhere('subject','LIKE',"$search"))
+            'list' => $department->otherInformations()->with('attachment')
+                ->when($search, fn ($q) => $q->where('number', 'LIKE', "$search")->orWhere('subject', 'LIKE', "$search"))
                 ->paginate(),
         ];
     }
+
+    public function departmentOther(Request $request, string $code)
+    {
+        $department = Department::query()->where('slug', $code)->first();
+
+        abort_if(blank($department), 400, 'No department found');
+
+        return [
+            'list' => $department->otherInformations()->with('attachment')->paginate(),
+        ];
+    }
+
 
     public function download(Request $request, OtherInformation $model)
     {
@@ -44,43 +56,82 @@ class InformationController extends Controller
 
     public function store(Request $request)
     {
-        $staff=auth()->user();
-        $office=$staff->currentPost();
+        $staff = auth()->user();
+        $office = $staff->currentPost();
 
         $department = Department::query()->where('dept_code', $office->code)
             ->first();
-        abort_if(blank($department),400,"No posting found");
+        abort_if(blank($department), 400, "No posting found");
 
-        $model=$department->otherInformations()->create($request->only((new OtherInformation())->getFillable()));
+        $model = $department->otherInformations()->create($request->only((new OtherInformation())->getFillable()));
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
-            $path = Storage::disk(Attachment::DISK)->put('notification', $file);
-            $model->attachment()->create(['mime' => $file->getMimeType(),
+            $path = Storage::disk(Attachment::DISK)->put('other', $file);
+            $model->attachment()->create([
+                'mime' => $file->getMimeType(),
                 'original_name' => $file->getClientOriginalName(),
                 'label' => $file->getClientOriginalName(),
                 'size' => $file->getSize(),
-                'path' => $path]);
+                'path' => $path
+            ]);
         }
         return [
-            'list'=>$department?->otherInformations()?->paginate(),
+            'list' => $department?->otherInformations()->with('attachment')?->paginate(),
             'data' => $model,
             'message' => 'Other information saved successfully',
         ];
     }
 
-    public function destroy(Request $request,OtherInformation $model)
+
+    public function update(OtherInformation $model, Request $request)
     {
-        $staff=auth()->user();
-        $office=$staff->currentPost();
+        $staff = auth()->user();
+        $office = $staff->currentPost();
 
         $department = Department::query()->where('dept_code', $office->code)
             ->first();
-        abort_if(blank($department),400,'No posting found');
+        if (blank($department)) {
+            abort(500, 'No posting found');
+        }
+        $model->update($request->only((new OtherInformation())->getFillable()));
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $path = Storage::disk(Attachment::DISK)
+                ->put('other', $file);
+            $model->attachment()->update([
+                'mime' => $file->getMimeType(),
+                'original_name' => $file->getClientOriginalName(),
+                'label' => $file->getClientOriginalName(),
+                'size' => $file->getSize(),
+                'path' => $path
+            ]);
+        }
+
+        return [
+            'list' => $department->otherInformations()->with('attachment')->paginate(),
+            'message' => 'Notification updated successfully'
+        ];
+    }
+
+    public function destroy(Request $request, OtherInformation $model)
+    {
+        $staff = auth()->user();
+        $office = $staff->currentPost();
+
+        $department = Department::query()->where('dept_code', $office->code)
+            ->first();
+        abort_if(blank($department), 400, 'No posting found');
 
         $model->delete();
+
+
+
+        $file = $model->attachment()->first()->path;
+
+        Storage::delete($file);
         return [
-            'list' => $department->otherInformations()->paginate(),
-            'message' =>'Other information deleted successfully'
+            'list' => $department->otherInformations()->with('attachment')->paginate(),
+            'message' => 'Other information deleted successfully'
         ];
     }
 }

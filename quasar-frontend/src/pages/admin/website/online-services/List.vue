@@ -19,6 +19,7 @@
         <div class="col-12">
           <q-list separator>
             <q-item v-for="item in localData.listData.data" :key="item.id">
+              <!-- {{ item.id }} -->
               <q-item-section avatar>
                 <q-avatar class="cursor-pointer" @click="handleDownload(item)" icon="attachment"/>
               </q-item-section>

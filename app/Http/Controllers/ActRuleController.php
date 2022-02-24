@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ActRule;
 use App\Models\Attachment;
 use App\Models\Department;
+use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,17 +22,18 @@ class ActRuleController extends Controller
             abort(500, 'No posting found');
         }
         return [
-            'list' => $department->acts()->paginate(),
+            'list' => $department->acts()->with('attachment')->paginate(),
         ];
     }
 
     public function departmentAct(Request $request, string $code)
     {
-        $department=Department::query()->where('dept_code', $code)->first();
+        $department=Department::query()->where('slug', $code)->first();
+
         abort_if(blank($department),400,'No department found');
 
         return [
-            'list' => $department->acts()->paginate(),
+            'list' => $department->acts()->with('attachment')->paginate(),
         ];
 
     }
@@ -76,13 +78,13 @@ class ActRuleController extends Controller
                 ]);
         }
         return [
-            'list' => $department->acts()->paginate(),
+            'list' => $department->acts()->with('attachment')->paginate(),
             'data' => $model,
             'message' => 'Act & rules saved successfully',
         ];
     }
 
-    public function update(Request $request, ActRule $model)
+    public function update(ActRule $model,Request $request)
     {
         $staff = auth()->user();
         $office = $staff->currentPost();
@@ -96,8 +98,8 @@ class ActRuleController extends Controller
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $path = Storage::disk(Attachment::DISK)
-                ->put('notification', $file);
-            $model->attachments()->create(['mime' => $file->getMimeType(),
+                ->put('acts', $file);
+            $model->attachment()->update(['mime' => $file->getMimeType(),
                 'original_name' => $file->getClientOriginalName(),
                 'label' => $file->getClientOriginalName(),
                 'size' => $file->getSize(),
@@ -105,7 +107,7 @@ class ActRuleController extends Controller
         }
 
         return [
-            'list' => $department->notifications()->paginate(),
+            'list' => $department->acts()->with('attachment')->paginate(),
             'message' => 'Notification updated successfully'
         ];
     }
@@ -121,6 +123,11 @@ class ActRuleController extends Controller
             abort(500, 'No posting found');
         }
         $model->delete();
+
+        $file = $model->attachment()->first()->path;
+
+        Storage::delete($file);
+
         return [
             'list' => $department->acts()->paginate(),
             'message' => 'Act & Rules deleted successfully'

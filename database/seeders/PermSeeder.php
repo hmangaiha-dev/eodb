@@ -123,6 +123,7 @@ class PermSeeder extends Seeder
             ['id'=>23,'role_id'=>1,'permission_id'=>23],
             ['id'=>24,'role_id'=>1,'permission_id'=>24],
             ['id'=>25,'role_id'=>2,'permission_id'=>1], //added
+            ['id'=>24,'role_id'=>2,'permission_id'=>7], //newly added
         ],'id');
         Staff::query()->upsert([
             ['id' => 1, 'full_name' => 'super', 'email' => 'super@email.com', 'phone' => '0000000000', 'password' => Hash::make('secret')],
@@ -133,6 +134,7 @@ class PermSeeder extends Seeder
         StaffRole::query()->upsert([
             ['id'=>1,'staff_id'=>1,'role_id'=>1],
             ['id'=>2,'staff_id'=>2,'role_id'=>2],
+            ['id'=>2,'staff_id'=>2,'role_id'=>1], //added
             ['id'=>3,'staff_id'=>3,'role_id'=>3],
             ['id'=>4,'staff_id'=>1,'role_id'=>2], //added
         ],'id');
