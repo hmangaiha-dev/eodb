@@ -117,8 +117,7 @@ export default {
       api
         .get(`web/${deptname}/notification`)
         .then((res) => {
-          // const {data} = res.data;
-          // return console.log("data", res.data);
+      
           localState.data = res.data.list.data;
 
           rows.value = res.data.list.data;

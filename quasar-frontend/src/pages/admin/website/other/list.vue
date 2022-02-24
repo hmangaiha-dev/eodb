@@ -1,13 +1,13 @@
 <template>
   <q-page class="container-lg q-my-md" padding>
     <div class="zcard">
-      <p class="ztitle">Act & Rules</p>
+      <p class="ztitle">Other Informations</p>
       <div class="row q-col-gutter-md">
         <div class="flex justify-between flex-inline col-12">
           <q-btn
             @click="localData.openCreate = true"
             outline
-            label="New Act & Rule"
+            label="New other info"
             color="primary"
           />
           <q-input

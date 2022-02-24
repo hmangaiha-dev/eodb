@@ -187,6 +187,7 @@ export default {
           params: { search: localData.search },
         })
         .then((res) => {
+          // return console.log('noti',res.data);
           const { current_page, total, per_page, data } = res.data.list;
           localData.listData.current_page = current_page;
           localData.listData.data = data;

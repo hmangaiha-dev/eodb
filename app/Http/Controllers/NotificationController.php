@@ -38,6 +38,7 @@ class NotificationController extends Controller
     public function departmentNotification(Request $request, string $code)
     {
         $department = Department::query()->where('slug', $code)->first();
+        
 
         abort_if(blank($department), 400, 'No department found');
 

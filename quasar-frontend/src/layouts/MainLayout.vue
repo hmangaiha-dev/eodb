@@ -1,6 +1,8 @@
 <template>
   <q-layout @scroll="handleScroll" view="hHh lpR fff">
 
+    {{ $q.screen.gt.xs ? localData.openDrawer =  false : true }}
+
     <q-header  elevated  class="bg-white print-hide green-bottom-border text-primary" height-hint="98">
       <q-toolbar v-if="!localData.onTop"  class="container-lg flex items-center">
         <q-btn class="lt-sm" @click="localData.openDrawer=true" flat icon="menu"/>
