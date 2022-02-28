@@ -35,7 +35,8 @@
         (3) Capacity:
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.pollution_form13_three" />
+      <q-input dense outlined v-model="formData.pollution_form13_three"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+ />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -52,7 +53,8 @@
         upon along with the source
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.pollution_form13_five" />
+      <q-input dense outlined v-model="formData.pollution_form13_five"          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
     </div>
 
     <div class="col-12">
@@ -93,7 +95,8 @@
         sites:
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.pollution_form13_seven" />
+      <q-input dense outlined v-model="formData.pollution_form13_seven"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+ />
     </div>
 
     <div class="col-sm-10 col-xs-12">
@@ -106,7 +109,8 @@
         type="textarea"
         dense
         outlined
-        v-model="formData.pollution_form13_eight"
+        v-model="formData.pollution_form13_eight"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 

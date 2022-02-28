@@ -175,7 +175,6 @@
         ></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.pollution_authorization_generation_six"
         dense
         outlined

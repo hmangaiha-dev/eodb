@@ -10,6 +10,8 @@
         dense
         outlined
         v-model="formData.pollution_form14_one"
+                :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 
@@ -22,7 +24,8 @@
         type="textarea"
         dense
         outlined
-        v-model="formData.pollution_form14_two"
+        v-model="formData.pollution_form14_two"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 
@@ -31,7 +34,8 @@
         (3) Area in sq. kilometres
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.pollution_form14_three" />
+      <q-input dense outlined v-model="formData.pollution_form14_three"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+  />
     </div>
 
     <div class="col-12">
@@ -49,12 +53,14 @@
             dense
             type="textarea"
             outlined
-            v-model="formData.pollution_form14_four_a"
+            v-model="formData.pollution_form14_four_a"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
           />
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">(b) Telephone No.</label>
-          <q-input dense outlined v-model="formData.pollution_form14_four_b" />
+          <q-input dense outlined v-model="formData.pollution_form14_four_b"          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"> (c) Fax No. </label>

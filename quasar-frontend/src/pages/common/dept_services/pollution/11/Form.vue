@@ -11,6 +11,8 @@
         dense
         outlined
         v-model="formData.pollution_form11_one"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 
@@ -48,7 +50,8 @@
 
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.pollution_form11_four" />
+      <q-input dense outlined v-model="formData.pollution_form11_four"          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+ />
     </div>
 
     <div class="col-12">
@@ -116,11 +119,15 @@
             (a) Products
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.pollution_form11_seven_a" />
+
+          <q-input dense outlined  v-model="formData.pollution_form11_seven_a"          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+ 
+           />
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">(b) Installed capacity</label>
-          <q-input dense outlined v-model="formData.pollution_form11_seven_b" />
+          <q-input dense outlined v-model="formData.pollution_form11_seven_b"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
         </div>
       </div>
     </div>
@@ -294,7 +301,8 @@
             i. Name
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.pollution_form11_nine_i" />
+          <q-input dense outlined v-model="formData.pollution_form11_nine_i"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">ii. Quantity required /year</label>
@@ -398,6 +406,8 @@
         dense
         outlined
         v-model="formData.pollution_form11_thirteen"
+                :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 
