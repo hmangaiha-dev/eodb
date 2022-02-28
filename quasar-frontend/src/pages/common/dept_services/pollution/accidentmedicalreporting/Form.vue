@@ -83,7 +83,7 @@
         Environment
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.six" />
+      <q-input dense outlined v-model="formData.pollution_accident_medical_six" />
     </div>
 
     <div class="col-md-6 col-xs-10">

@@ -50,7 +50,6 @@
       >
       <q-input
         type="textarea"
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.labour_migant_work_four"
         dense
         outlined

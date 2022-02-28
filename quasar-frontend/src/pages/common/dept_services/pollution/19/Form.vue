@@ -16,6 +16,9 @@
             type="textarea"
             outlined
             v-model="formData.pollution_form19_one_i"
+              :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
         <div class="col-md-6 col-xs-10">
@@ -510,7 +513,7 @@
                 <q-input
                   dense
                   outlined
-                  v-model="formData.pollution_form19_five_viii_yellow_v_i"
+                  v-model="formData.pollution_form19_five_viii_yellow_c_i"
                 />
               </div>
               <div class="col-md-6 col-xs-10">
@@ -520,7 +523,7 @@
                 <q-input
                   dense
                   outlined
-                  v-model="formData.pollution_form19_five_viii_yellow_c_i"
+                  v-model="formData.pollution_form19_five_viii_yellow_c_ii"
                 />
               </div>
             </div>

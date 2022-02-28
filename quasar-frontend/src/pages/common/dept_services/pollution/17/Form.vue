@@ -22,6 +22,9 @@
             type="textarea"
             outlined
             v-model="formData.pollution_form17_partA_one_a"
+             :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
         <div class="col-md-6 col-xs-12">

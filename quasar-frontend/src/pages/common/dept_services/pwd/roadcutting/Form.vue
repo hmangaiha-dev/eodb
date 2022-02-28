@@ -48,9 +48,7 @@
             c) Email identity <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          
             v-model="formData.pwd_road_cutting_two_c"
             dense
             outlined
@@ -67,9 +65,7 @@
             a) House No if any <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.pwd_road_cutting_three_a"
             dense
             outlined

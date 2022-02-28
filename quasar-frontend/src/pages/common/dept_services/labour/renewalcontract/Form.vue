@@ -98,7 +98,7 @@
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
             d) Maximum number of contract labour proposed to be employed in the
-            tablishment on any dat
+            tablishment on any date
             <span class="asterisk">*</span></label
           >
           <q-input

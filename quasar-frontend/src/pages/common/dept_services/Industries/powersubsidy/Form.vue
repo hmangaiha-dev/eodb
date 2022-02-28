@@ -50,7 +50,7 @@
         >3. Constitution Proprietorship / Partnership / Co- Operative Society /
         Private. Limited <span class="asterisk"> *</span></label
       >
-      <q-select dense v-model="model" :options="formData.constitution_types" outlined />
+      <q-select dense :options="formData.constitution_types" outlined />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -111,7 +111,7 @@
         8. Investment (Existing/Proposed)
         <span class="asterisk">*</span></label
       >
-      <q-select dense v-model="model" :options="formData.investments" outlined />
+      <q-select dense :options="formData.investments" outlined />
     </div>
 
     <div class="col-12">
@@ -122,9 +122,7 @@
             >a)Technical<span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+        
             v-model="formData.land_revenue_land_transfer_seven_a"
             dense
             outlined
@@ -136,9 +134,7 @@
             >b) Non-Technical<span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.land_revenue_land_transfer_seven_a"
             dense
             outlined
@@ -148,9 +144,7 @@
         <div class="col-md-6 col-xs-10">
           <label class="zlabel">c) Total<span class="asterisk">*</span></label>
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+         
             v-model="formData.land_revenue_land_transfer_seven_a"
             dense
             outlined

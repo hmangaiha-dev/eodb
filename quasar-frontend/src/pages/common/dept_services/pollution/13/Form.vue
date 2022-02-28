@@ -10,6 +10,9 @@
         dense
         outlined
         v-model="formData.pollution_form13_one"
+         :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
       />
     </div>
 

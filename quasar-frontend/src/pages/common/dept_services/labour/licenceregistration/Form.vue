@@ -65,9 +65,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          
             v-model="formData.labour_lic_reg_three_a"
             dense
             outlined
@@ -82,9 +80,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+         
             v-model="formData.labour_lic_reg_three_b"
             dense
             outlined
@@ -340,9 +336,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.labour_lic_reg_ten_a"
             dense
             outlined
@@ -358,9 +352,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.labour_lic_reg_ten_b"
             dense
             outlined

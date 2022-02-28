@@ -64,7 +64,6 @@
         ></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.land_revenue_allot_govt_five"
         dense
         outlined
@@ -92,7 +91,6 @@
         conditions of occupation<span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.land_revenue_allot_govt_seven"
         dense
         outlined
@@ -121,7 +119,6 @@
         Lease<span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.land_revenue_allot_govt_nine"
         dense
         outlined
@@ -137,7 +134,6 @@
         ></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.land_revenue_allot_govt_ten"
         dense
         outlined

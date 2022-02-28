@@ -110,7 +110,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_email" />
+      <q-input dense outlined v-model="formData.communication_email" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -137,7 +137,7 @@
 
     <div class="col-xs-12 col-md-1">
       <label class="zlabel" for="dob" type="date"
-        >Steet<span class="asterisk">*</span>
+        >Street<span class="asterisk">*</span>
       </label>
     </div>
     <div class="col-xs-12 col-md-2">

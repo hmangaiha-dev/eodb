@@ -14,7 +14,9 @@
           <q-input
             dense
             outlined
-            v-model="formData.pollution_consent_general_1_1"
+            v-model="formData.pollution_consent_general_1_1"   :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
         <div class="col-12">
@@ -32,7 +34,9 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.pollution_consent_general_1_2_I"
+                v-model="formData.pollution_consent_general_1_2_I"   :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
               />
             </div>
 
@@ -70,7 +74,9 @@
           <q-input
             dense
             outlined
-            v-model="formData.pollution_consent_general_1_3"
+            v-model="formData.pollution_consent_general_1_3"   :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
 
@@ -94,7 +100,9 @@
           <q-input
             dense
             outlined
-            v-model="formData.pollution_consent_general_1_5"
+            v-model="formData.pollution_consent_general_1_5"   :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
       </div>

@@ -11,6 +11,7 @@
         dense
         outlined
         v-model="formData.pollution_form18_one"
+       
       />
     </div>
 

@@ -19,7 +19,7 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            b) Locaation of the establishment
+            b) Location of the establishment
             <span class="asterisk">*</span></label
           >
           <q-input

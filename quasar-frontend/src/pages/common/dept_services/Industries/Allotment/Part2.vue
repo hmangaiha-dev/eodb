@@ -49,7 +49,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.incase_others" />
+      <q-input  dense outlined v-model="formData.incase_others" />
     </div>
 
     <div class="col-xs-12 col-md-2">

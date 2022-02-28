@@ -91,9 +91,7 @@
             <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.phe_reconn_two_f"
             dense
             outlined

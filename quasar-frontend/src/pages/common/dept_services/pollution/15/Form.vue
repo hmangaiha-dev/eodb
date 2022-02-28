@@ -10,6 +10,9 @@
         dense
         outlined
         v-model="formData.pollution_form15_one"
+         :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
       />
     </div>
 
@@ -18,7 +21,10 @@
         2. TIN/VAT number*
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.pollution_form15_two" />
+      <q-input dense outlined v-model="formData.pollution_form15_two" 
+       :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"/>
     </div>
 
     <div class="col-12 text-center zlabel">

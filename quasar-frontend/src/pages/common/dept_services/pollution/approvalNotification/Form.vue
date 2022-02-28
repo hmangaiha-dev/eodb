@@ -1,127 +1,101 @@
 <template>
   <div class="zcard mx-auto q-mx-xl q-col-gutter-md">
+    <div class="" style="max-width: 100rem">
+      <h3>PART -I</h3>
+      <p>Particulars to be included in a notification of a site</p>
+      <p>1. The name and address of the employer making the notification.</p>
+      <p>
+        2. The full postal address of the site where the notifiable industrial
+        activity will be carried on.
+      </p>
+      <p>
+        3. The area of the site covered by the notification and of any adjacent
+        site which is required to be taken into account by virtue of b(ii) of
+        schedule 2 and 3.
+      </p>
+      <p>
+        4. The date on which it is anticipated that the notifiable industrial
+        activity will commence, or if it has already commenced a statement to
+        that effect.
+      </p>
+      <p>
+        5. The name and maximum quantity liable to be on the site of each
+        dangerous substance for which notification is being made.
+      </p>
+      <p>
+        6. Organisation structure namely organisation diagram for the proposed
+        industrial activity and set up for ensuring safety and health.
+      </p>
+      <p>
+        7. Information relating to the potential for major accidents, namely-
+      </p>
 
+      <ol class="q-ml-xl">
+        <li>identification of major accident hazards ;</li>
 
-    <div class=" " style="max-width:100rem">
- <h3>PART -I</h3>
-<p>Particulars to be included in a
-notification of a site</p>
-<p>1. The name and address of the
-employer making the notification.</p>
-<p>2. The full postal address of the
-site where the notifiable industrial
-activity will be carried on.</p>
-<p>3. The area of the site covered by
-the notification and of any adjacent site
-which is required to be taken into
-account by virtue of b(ii) of schedule 2
-and 3.</p>
-<p>4. The date on which it is
-anticipated that the notifiable industrial
-activity will commence, or if it has
-already commenced a statement to that
-effect.</p>
-<p>5. The name and maximum
-quantity liable to be on the site of each
-dangerous substance for which
-notification is being made.</p>
-<p>6. Organisation structure namely
-organisation diagram for the proposed
-industrial activity and set up for
-ensuring safety and health.</p>
-<p>7. Information relating to the
-potential for major accidents, namely-</p>
+        <li>
+          the conditions or the events which could be significant in brining one
+          about;
+        </li>
+        <li>a brief description of the measures taken.</li>
+      </ol>
 
-<ol class="q-ml-xl">
-  <li>identification of major
-accident hazards ;
-  </li>
+      <p>8. Information relating to the site namely-</p>
 
-  <li>the conditions or the
-events which could be
-significant in brining
-one about;</li>
-<li>a brief description of
-the measures taken.</li>
-</ol>
+      <ol class="q-ml-xl">
+        <li>
+          a map of the site and its surrounding area to a scale large enough to
+          show any features that may be significant in the assessment of the
+          hazard or risk associated with the site,-
+          <ul class="q-ml-lg">
+            <li>area likely to be affected by the major accident.</li>
 
+            <li>Population distribution in the vicinity</li>
+          </ul>
+        </li>
 
-<p>8. Information relating to the site
-namely-</p>
+        <li>
+          a scale plan of the site showing the location and quantities of all
+          significant inventories of the hazardous chemicals;
+        </li>
 
-<ol class="q-ml-xl">
-  <li> a map of the site and
-its surrounding area to a scale
-large enough to show any
-features that may be significant
-in the assessment of the hazard
-or risk associated with the site,-
-        <ul class="q-ml-lg">
-          <li>area likely to be
-affected by the major
-accident.</li>
+        <li>
+          a description of the process or storage involving the hazardous
+          chemicals and an indication of the conditions under which it is
+          normally held;
+        </li>
 
-<li>Population distribution
-in the vicinity</li>
-        </ul>
+        <li>the maximum number of persons likely to be present on site.</li>
+      </ol>
 
-</li>
+      <p>
+        9. The arrangement for training of workers and equipment necessary to
+        ensure safety of such workers.
+      </p>
+      <h3>PART II</h3>
 
-<li>a scale plan of the site
-showing the location and
-quantities of all significant
-inventories of the hazardous
-chemicals;</li>
+      <p>Particulars to be included regarding pipeline</p>
+      <ol>
+        <li>The names and address of the persons making the notification.</li>
+        <li>
+          The full postal address of the place from which the pipeline activity
+          is controlled, addresses of the places where the pipeline starts and
+          finishes and a map showing the pipeline route drawn to a scale of not
+          less than 1:400000.
+        </li>
 
-<li>a description of the
-process or storage involving
-the hazardous chemicals and an
-indication of the conditions
-under which it is normally
-held;</li>
+        <li>
+          The date on which it is anticipated that the notifiable activity will
+          commence, or if it is already commenced a statement to that effect.
+        </li>
 
-<li>the maximum number
-of persons likely to be present
-on site.</li>
-</ol>
-
-<p>9. The arrangement for training of
-workers and equipment necessary to
-ensure safety of such workers.</p>
-<h3>PART II</h3>
-
-<p>Particulars to be included regarding
-pipeline</p>
-<ol>
-  <li>The names and address of the
-persons making the
-notification.</li>
-<li>
-  The full postal address of the
-place from which the pipeline
-activity is controlled, addresses
-of the places where the
-pipeline starts and finishes and
-a map showing the pipeline
-route drawn to a scale of not
-less than 1:400000.
-</li>
-
-<li>The date on which it is
-anticipated that the notifiable
-activity will commence, or if it
-is already commenced a
-statement to that effect.</li>
-
-<li>The total length of the pipeline,
-its diameter and normal
-operating pressure and the
-name and maximum quantity
-liable to be in the pipeline of
-each hazardous chemical for
-which notification is being
-made</li>
-</ol>
+        <li>
+          The total length of the pipeline, its diameter and normal operating
+          pressure and the name and maximum quantity liable to be in the
+          pipeline of each hazardous chemical for which notification is being
+          made
+        </li>
+      </ol>
     </div>
     <!-- <div class="col-12">
       <label for="" class="zlabel">1. </label>
