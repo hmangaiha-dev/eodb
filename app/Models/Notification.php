@@ -11,7 +11,8 @@ class Notification extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['number', 'subject', 'authority', 'issued_at','status'];
+    protected $fillable = ['number', 'subject', 'authority', 'issued_at', 'status'];
+    protected $appends = ['department_name'];
 
     public function department(): BelongsTo
     {
@@ -23,5 +24,8 @@ class Notification extends Model
         return $this->morphOne(Attachment::class, 'owner');
     }
 
-
+    public function getDepartmentNameAttribute()
+    {
+        return $this->department()->first()?->dept_name ?? 'NA';
+    }
 }

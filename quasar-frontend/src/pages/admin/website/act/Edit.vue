@@ -24,6 +24,7 @@
       />
 
       <q-file
+      
         accept=".pdf"
         filled
         bottom-slots
@@ -75,6 +76,7 @@ export default {
   props: ["act"],
   setup(props, context) {
     const store = useStore();
+    console.log('edit props',props.act);
     const q = useQuasar();
     const localData = reactive({
       showPassword: false,
@@ -85,8 +87,8 @@ export default {
       name: props.act.name,
       description: props.act.description,
       attachment: null,
-      capture: props.act.attachment.full_path,
-      original_name: props.act.attachment.original_name,
+      capture: props.act?.attachment?.full_path,
+      original_name: props.act?.attachment?.original_name,
     });
 
     const onSubmit = (e) => {

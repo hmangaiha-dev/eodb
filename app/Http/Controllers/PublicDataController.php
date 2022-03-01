@@ -27,7 +27,7 @@ class PublicDataController extends Controller
 
         ], 200);
     }
-    public function fetchStaffData(Request $request)
+    public function  fetchStaffData(Request $request)
     {
         return response()->json([
             'roles' => Role::query()->get(['id', 'name'])->map(fn($role) => ['value' => $role->id, 'label' => $role->name]),
@@ -35,6 +35,7 @@ class PublicDataController extends Controller
                 'value'=>$item->id,
                 'label'=>$item->name
             ]),
+            'role' => auth('sanctum')->user()->roles()->get(),
             'file_types' => [
                 ['value' => 'common_file', 'label' => 'Common file'],
             ],

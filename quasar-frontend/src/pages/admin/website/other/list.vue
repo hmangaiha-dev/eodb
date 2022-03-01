@@ -27,8 +27,12 @@
           <q-separator />
         </div>
         <div class="col-12">
-          <q-list separator>
-            <q-item v-for="item in localData.listData.data" :key="item.id">
+          <q-list
+            v-for="item in localData.listData.data"
+            :key="item.id"
+            separator
+          >
+            <q-item v-for="item in item.other_informations" :key="item">
               <q-item-section avatar>
                 <q-avatar
                   class="cursor-pointer"
@@ -39,6 +43,12 @@
               <q-item-section>
                 <q-item-label>{{ item?.title }}</q-item-label>
                 <q-item-label caption>{{ item?.description }}</q-item-label>
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>
+                  {{ item.department_name }}
+                </q-item-label>
               </q-item-section>
               <q-item-section side>
                 <div class="flex flex-inline q-gutter-sm">
@@ -75,7 +85,7 @@
       @hide="localData.openCreate = false"
       v-model="localData.openCreate"
     >
-      <act-create @onCreated="onCreated" />
+      <act-create :role="localData.listData.role" :dept="localData.listData.data" @onCreated="onCreated" />
     </q-dialog>
     <q-dialog @hide="localData.openEdit = false" v-model="localData.openEdit">
       <Edit @onUpdated="onUpdated" :other="localData.other" />
@@ -107,6 +117,7 @@ export default {
         data: [],
         current_page: 1,
         total: 1,
+        role: null
       },
       other: {},
     });
@@ -139,6 +150,7 @@ export default {
     };
 
     const handleDownload = (item) => {
+      // return console.log('item',item);
       api.get(`web/other/${item.id}/download`).then((res) => {
         const { data } = res.data;
         let a = document.createElement("a");
@@ -189,6 +201,7 @@ export default {
           const { current_page, total, per_page, data } = res.data.list;
           localData.listData.current_page = current_page;
           localData.listData.data = data;
+           localData.listData.role = res.data.role;
           localData.listData.total = total;
           localData.listData.per_page = per_page;
         })

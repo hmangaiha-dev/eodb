@@ -10,6 +10,7 @@ const state = () => {
     departments: [],
     permissions: [],
     roles: [],
+    role: [],
     districts: [],
     staffs: [],
     offices: [],
@@ -28,6 +29,7 @@ const getters={}
 const mutations = {
   setPermissions: (state, permissions) => (state.permissions = permissions),
   setRoles: (state, roles) => (state.roles = roles),
+  setRole: (state, role) => (state.role = role),
   setDistricts: (state, districts) => (state.districts = districts),
   setStaffs: (state, staffs) => (state.staffs = staffs),
   setPostingStatuses: (state, stats) => (state.postingStatuses = stats),
@@ -46,6 +48,7 @@ const actions = {
       .then((res) => {
         const {
           roles,
+          role,
           districts,
           permissions,
           offices,
@@ -57,6 +60,7 @@ const actions = {
         } = res.data;
         context.commit("setPermissions", permissions);
         context.commit("setRoles", roles);
+        context.commit("setRole", role);
         context.commit("setDistricts", districts);
         context.commit("setStaffs", staffs);
         context.commit("setOffices", offices);
@@ -64,6 +68,8 @@ const actions = {
         context.commit("setApplicationTypes", application_types);
         context.commit("setApplicationProfiles", application_profiles);
         context.commit("setDepartments", departments);
+        // console.log('current role',departments);
+
 
         // console.log('services api data',services[0].items);
       })

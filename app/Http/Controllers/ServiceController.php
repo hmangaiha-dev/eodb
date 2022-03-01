@@ -24,25 +24,36 @@ class ServiceController extends Controller
     public function getServices(Request $request)
     {
         $staff = auth('sanctum')->user();
+        $office = $staff->currentPost();
         //return $staff->tokenCan('office:read') ? 'yes' : 'no';
         $service = DepartmentService::query()->orderBy('department_id');
-        $service->when(isset($staff->currentPost()->pivot->office_id), function ($q) use ($staff) {
-            return $q->where('department_id', $staff->currentPost()->pivot->office_id);
+        $service->when(isset($office), function ($q) use ($staff, $office) {
+            return $q->where('department_id', $office->id);
         });
 
-        $data = $service->paginate();
-        return [
-            'list' => $data,
-        ];
-        // $search = $request->get('search');
+        // $data = $service->paginate();
         // return [
-        //     'list' => DepartmentService::query()->when($search, fn ($q) => $q->where('service_name', 'LIKE', "%{$search}%"))->paginate()
+        //     'list' => $data,
         // ];
+        $search = $request->get('search');
+        return [
+            'list' => $service->when($search, fn ($q) => $q->where('service_name', 'LIKE', "%{$search}%"))->paginate()
+        ];
     }
 
     public function create(Request $request, Department $model)
     {
-        $service = $model->services()->create($request->only((new DepartmentService())->getFillable()));
+        $staff = auth('sanctum')->user();
+        $office = $staff->currentPost();
+
+        $service = [];
+
+        $model->when(!blank($office), function ($q) use ($office, $request,$service) {
+            $service =  Department::find($office->id);
+            $service->services()->create($request->only((new DepartmentService())->getFillable()));
+        }, function () use ($model, $request,$service) {
+            $service = $model->services()->create($request->only((new DepartmentService())->getFillable()));
+        });
         return [
             'data' => $service,
             'message' => 'Service added successfully',

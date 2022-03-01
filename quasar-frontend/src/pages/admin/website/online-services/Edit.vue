@@ -6,7 +6,6 @@
       @submit="onSubmit"
       @reset="onReset"
     >
-      @method('PUT')
       <p class="zsubtitle q-ma-none">
         Edit <span class="text-weight-light">{{ formData?.service_name }}</span>
       </p>

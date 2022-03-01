@@ -3,20 +3,84 @@
     <q-form @submit="onSubmit" @reset="onReset">
       <h1 class="zsubtitle q-py-md">{{ formData.name }}</h1>
 
-      <!-- <q-input
-        v-model="formData.name"
-        outlined
-        label="Name"
-        @blur="delete localData.errors['name']"
-        :error="localData.errors.hasOwnProperty('name')"
-        :error-message="localData.errors['name']?.toString()"
-        :rules="[(val) => !!val || 'Name is required']"
-      /> -->
-
       <q-editor
         v-model="formData.content"
-        :definitions="{
-          bold: { label: 'Bold', icon: null, tip: '' },
+        :dense="$q.screen.lt.md"
+        :toolbar="[
+          [
+            {
+              label: $q.lang.editor.align,
+              icon: $q.iconSet.editor.align,
+              fixedLabel: true,
+              list: 'only-icons',
+              options: ['left', 'center', 'right', 'justify'],
+            },
+            {
+              label: $q.lang.editor.align,
+              icon: $q.iconSet.editor.align,
+              fixedLabel: true,
+              options: ['left', 'center', 'right', 'justify'],
+            },
+          ],
+          ['bold', 'italic', 'strike', 'underline', 'subscript', 'superscript'],
+          ['token', 'hr', 'link', 'custom_btn'],
+          ['print', 'fullscreen'],
+          [
+            {
+              label: $q.lang.editor.formatting,
+              icon: $q.iconSet.editor.formatting,
+              list: 'no-icons',
+              options: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code'],
+            },
+            {
+              label: $q.lang.editor.fontSize,
+              icon: $q.iconSet.editor.fontSize,
+              fixedLabel: true,
+              fixedIcon: true,
+              list: 'no-icons',
+              options: [
+                'size-1',
+                'size-2',
+                'size-3',
+                'size-4',
+                'size-5',
+                'size-6',
+                'size-7',
+              ],
+            },
+            {
+              label: $q.lang.editor.defaultFont,
+              icon: $q.iconSet.editor.font,
+              fixedIcon: true,
+              list: 'no-icons',
+              options: [
+                'default_font',
+                'arial',
+                'arial_black',
+                'comic_sans',
+                'courier_new',
+                'impact',
+                'lucida_grande',
+                'times_new_roman',
+                'verdana',
+              ],
+            },
+            'removeFormat',
+          ],
+          ['quote', 'unordered', 'ordered', 'outdent', 'indent'],
+
+          ['undo', 'redo'],
+          ['viewsource'],
+        ]"
+        :fonts="{
+          arial: 'Arial',
+          arial_black: 'Arial Black',
+          comic_sans: 'Comic Sans MS',
+          courier_new: 'Courier New',
+          impact: 'Impact',
+          lucida_grande: 'Lucida Grande',
+          times_new_roman: 'Times New Roman',
+          verdana: 'Verdana',
         }"
       />
 
@@ -40,7 +104,7 @@ export default {
   emits: ["onUpdated"],
   props: ["dept"],
   setup(props, context) {
-    // console.log('edit props',props.dept,dept_name);
+    console.log("edit props", props.dept?.name);
     const store = useStore();
     const q = useQuasar();
     const localData = reactive({
@@ -48,15 +112,15 @@ export default {
       errors: {},
     });
     const formData = reactive({
-      id: props.dept.id,
-      name: props.dept.name,
-      code: props.dept.code,
-      content: props.dept.content,
+      id: props.dept?.id,
+      name: props.dept?.name,
+      code: props.dept?.code,
+      content: props.dept?.content,
     });
 
     const onSubmit = (e) => {
-      context.emit('onUpdated',formData)
-      return
+      context.emit("onUpdated", formData);
+      return;
       let data = new FormData();
       data.append("id", formData.id);
       data.append("name", formData.name);

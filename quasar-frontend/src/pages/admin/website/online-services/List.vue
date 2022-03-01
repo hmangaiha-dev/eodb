@@ -20,9 +20,9 @@
           <q-list separator>
             <q-item v-for="item in localData.listData.data" :key="item.id">
               <!-- {{ item.id }} -->
-              <q-item-section avatar>
+              <!-- <q-item-section avatar>
                 <q-avatar class="cursor-pointer" @click="handleDownload(item)" icon="attachment"/>
-              </q-item-section>
+              </q-item-section> -->
               <q-item-section>
                 <q-item-label>{{ item?.service_name }}</q-item-label>
                 <q-item-label caption>{{ item?.dept }}</q-item-label>
@@ -48,7 +48,7 @@
 
     </div>
     <q-dialog @hide="localData.openCreate=false" v-model="localData.openCreate">
-      <notification-create @onCreated="onCreated"/>
+      <notification-create  @onCreated="onCreated"/>
     </q-dialog>
     <!--    <q-dialog @hide="localData.openEdit=false" v-model="localData.openEdit">-->
     <!--      <Edit v-if="!!localData.selectedStaff" @onStaffUpdated="onStaffUpdated" :id="localData.selectedStaff?.id"/>-->

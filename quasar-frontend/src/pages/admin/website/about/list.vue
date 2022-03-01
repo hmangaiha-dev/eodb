@@ -37,9 +37,9 @@
     </q-item-section>
   </q-item>
 
-  <q-dialog @hide="localData.openCreate = false" v-model="localData.openCreate">
+  <!-- <q-dialog @hide="localData.openCreate = false" v-model="localData.openCreate">
     <act-create @onCreated="onCreated" />
-  </q-dialog>
+  </q-dialog> -->
   <q-dialog
     class=""
     @hide="localData.openEdit = false"
@@ -67,7 +67,7 @@ export default {
 
   setup(props, context) {
     // const propsRef = toRef(props);
-    console.log("props test", props.dept);
+    // console.log("props test", props.dept);
     const q = useQuasar();
     const localData = reactive({
       openCreate: false,
@@ -84,6 +84,7 @@ export default {
         name: props.dept.dept_name,
         code: props.dept.dept_code,
         content: props.dept?.about?.content,
+
       },
       dept: {},
     });
@@ -157,10 +158,10 @@ export default {
       if (e.keyCode === 13) fetchActs(1);
     };
     const updatePagination = (value) => {
-      fetchActs(value);
+      fetchAbout(value);
     };
 
-    const fetchActs = (page) => {
+    const fetchAbout = (page) => {
       api
         .get(`web/act-rule?page=${page}`, {
           params: { search: localData.search },
@@ -197,6 +198,8 @@ export default {
       handleDownload,
       handleEdit,
       handleDelete,
+      fetchAbout
+      
     };
   },
 };

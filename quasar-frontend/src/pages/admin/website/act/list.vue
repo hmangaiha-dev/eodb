@@ -28,37 +28,45 @@
         </div>
         <div class="col-12">
           <q-list separator>
-            <q-item v-for="item in localData.listData.data" :key="item.id">
-              <q-item-section avatar>
-                <q-avatar
-                  class="cursor-pointer"
-                  @click="handleDownload(item)"
-                  icon="attachment"
-                />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label>{{ item?.name }}</q-item-label>
-                <q-item-label caption>{{ item?.description }}</q-item-label>
-              </q-item-section>
-              <q-item-section side>
-                <div class="flex flex-inline q-gutter-sm">
-                  <q-btn
-                    @click="handleEdit(item)"
-                    size="12px"
-                    outline
-                    icon="edit"
+            <div v-for="(item, index) in localData.listData.data" :key="index">
+              <!-- {{ item.dept_name }} -->
+              <q-item v-for="(act, index) in item?.acts" :key="index">
+                <q-item-section avatar>
+                  <q-avatar
+                    class="cursor-pointer"
+                    @click="handleDownload(act)"
+                    icon="attachment"
                   />
-
-                  <!--                  <q-btn @click="handleEdit(item)" size="12px" outline icon="edit"/>-->
-                  <q-btn
-                    @click="handleDelete(item)"
-                    size="12px"
-                    outline
-                    icon="delete"
-                  />
-                </div>
-              </q-item-section>
-            </q-item>
+                </q-item-section>
+                <q-item-section>
+                  <!-- {{ item.acts }} -->
+                  <q-item-label>{{ act.name }}</q-item-label>
+                  <q-item-label caption>{{ act.description }}</q-item-label>
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>
+                    {{ item.dept_name }}
+                  </q-item-label>
+                </q-item-section>
+                <q-item-section side>
+                  <div class="flex flex-inline q-gutter-sm">
+                    <q-btn
+                      @click="handleEdit(act)"
+                      size="12px"
+                      outline
+                      icon="edit"
+                    />
+                    <!--                  <q-btn @click="handleEdit(item)" size="12px" outline icon="edit"/>-->
+                    <q-btn
+                      @click="handleDelete(act)"
+                      size="12px"
+                      outline
+                      icon="delete"
+                    />
+                  </div>
+                </q-item-section>
+              </q-item>
+            </div>
           </q-list>
         </div>
         <div class="col-12">
@@ -75,7 +83,7 @@
       @hide="localData.openCreate = false"
       v-model="localData.openCreate"
     >
-      <act-create @onCreated="onCreated" />
+      <act-create :role="localData.listData.role" :dept="localData.listData.data" @onCreated="onCreated" />
     </q-dialog>
     <q-dialog @hide="localData.openEdit = false" v-model="localData.openEdit">
       <Edit @onUpdated="onUpdated" :act="localData.act" />
@@ -105,6 +113,7 @@ export default {
       listData: {
         per_page: 15,
         data: [],
+        role: null,
         current_page: 1,
         total: 1,
       },
@@ -126,6 +135,7 @@ export default {
       api
         .delete(`web/act-rule/${id}`)
         .then((res) => {
+          
           const { current_page, total, per_page, data } = res.data.list;
           localData.listData.current_page = current_page;
           localData.listData.data = data;
@@ -154,7 +164,6 @@ export default {
       localData.openEdit = true;
     };
 
-  
     const handleDelete = (item) => {
       q.dialog({
         title: "Confirm",
@@ -188,8 +197,12 @@ export default {
         })
         .then((res) => {
           const { current_page, total, per_page, data } = res.data.list;
+          console.log("actrule", res.data.list);
           localData.listData.current_page = current_page;
+          // localData.listData.data.push(data[0])
           localData.listData.data = data;
+          localData.listData.role = res.data.role
+          // console.log("array data", res.data.role);
           localData.listData.total = total;
           localData.listData.per_page = per_page;
         })

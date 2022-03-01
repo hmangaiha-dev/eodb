@@ -12,13 +12,19 @@ class OtherInformation extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'description'];
+    protected $appends = ['department_name'];
 
     public function department(): BelongsTo
     {
-        return $this->belongsTo(OtherInformation::class);
+        return $this->belongsTo(Department::class);
     }
     public function attachment(): MorphOne
     {
         return $this->morphOne(Attachment::class, 'owner');
+    }
+
+    public function getDepartmentNameAttribute()
+    {
+        return $this->department()->first()?->dept_name ?? 'NA';
     }
 }

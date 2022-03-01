@@ -21,16 +21,30 @@ class NotificationController extends Controller
         $staff = auth()->user();
         $office = $staff->currentPost();
 
-        $department = Department::query()->where('dept_code', $office->code)
-            ->first();
-        if (blank($department)) {
-            abort(500, 'No posting found');
-        }
+        $department = Department::query();
+        $department->when(!blank($office), function ($q) use ($office) {
+            return $q->where('dept_code', $office->code)->first();
+        })->first();
+
+        // // Thangtea code
+        // $department = Department::query()->where('dept_code', $office->code)
+        //     ->first();
+        // if (blank($department)) {
+        //     abort(500, 'No posting found');
+        // }
+
+        // $search = $request->get('search');
+        // return [
+        //     'list' => $department->notifications()->with('attachment')
+        //         ->when($search, fn ($q) => $q->where('number', 'LIKE', "$search")->orWhere('subject', 'LIKE', "$search"))
+        //         ->paginate(),
+        // ];
+        // // Thangtea code
+
         $search = $request->get('search');
         return [
-            'list' => $department->notifications()->with('attachment')
-                ->when($search, fn ($q) => $q->where('number', 'LIKE', "$search")->orWhere('subject', 'LIKE', "$search"))
-                ->paginate(),
+            'list' => $department->with('notifications', fn ($q) => $q->with('attachment')->when($search, fn ($q) => $q->where('number', 'LIKE', "%{$search}%")->orWhere('subject', 'LIKE', "%{$search}%"))->get())->paginate(),
+            'role' => $staff->hasRole('admin')
         ];
     }
 
@@ -38,7 +52,7 @@ class NotificationController extends Controller
     public function departmentNotification(Request $request, string $code)
     {
         $department = Department::query()->where('slug', $code)->first();
-        
+
 
         abort_if(blank($department), 400, 'No department found');
 
@@ -58,17 +72,31 @@ class NotificationController extends Controller
     {
         $staff = auth()->user();
         $office = $staff->currentPost();
+        
+        $model = Department::query();
+        $notification = [];
+        $notification = $model->when(isset($office), function ($q) use ($office, $request, $model, $notification) {
+            $model = $q->where('dept_code', $office->code)->first();
+            return $model->notifications()->create(
+                $request->only((new Notification())->getFillable())
+            );
+        }, function ($q) use ($request, $model, $office) {
+            $model = $q->where('dept_code', $request->code)->first();
+            return $model->notifications()->create(
+                $request->only((new Notification())->getFillable())
+            );
+        });
 
-        $department = Department::query()->where('dept_code', $office->code)
-            ->first();
-        if (blank($department)) {
-            abort(500, 'No posting found');
-        }
-        $model = $department->notifications()->create($request->only((new Notification())->getFillable()));
+        // $department = Department::query()->where('dept_code', $office->code)
+        //     ->first();
+        // if (blank($department)) {
+        //     abort(500, 'No posting found');
+        // }
+        // $model = $department->notifications()->create($request->only((new Notification())->getFillable()));
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $path = Storage::disk(Attachment::DISK)->put('notification', $file);
-            $model->attachment()->create([
+            $notification->attachment()->create([
                 'mime' => $file->getMimeType(),
                 'original_name' => $file->getClientOriginalName(),
                 'label' => $file->getClientOriginalName(),
@@ -76,15 +104,32 @@ class NotificationController extends Controller
                 'path' => $path
             ]);
         }
+
+        $department = Department::query();
+        $department->when(isset($office), function ($q) use ($office) {
+            return $q->where('dept_code', $office->code);
+        });
+
         return [
-            'list' => $department->notifications()->with('attachment')->paginate(),
-            'data' => $model,
-            'message' => 'Notification saved successfully',
+            'list' => $department->with('notifications', fn ($q) => $q->with('attachment')
+                // ->when($search, fn ($q) => $q->where('number', 'LIKE', "$search")->orWhere('subject', 'LIKE', "$search"))
+                ->get())->paginate(),
+            'role' => $staff->hasRole('admin')
         ];
+
+        // return [
+        //     'list' => $department->notifications()->with('attachment')->paginate(),
+        //     'data' => $model,
+        //     'message' => 'Notification saved successfully',
+        // ];
     }
 
     public function update(Request $request, Notification $model)
     {
+        $staff = auth()->user();
+        $office = $staff->currentPost();
+        if (!blank($office))
+            abort_if($office->id != $model->department_id, 400, 'Insufficient permision!');
         $model->update($request->only((new Notification())->getFillable()));
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
@@ -100,31 +145,70 @@ class NotificationController extends Controller
         $staff = auth()->user();
         $office = $staff->currentPost();
 
-        $department = Department::query()->where('dept_code', $office->code)
-            ->first();
-        if (blank($department)) {
-            abort(500, 'No posting found');
-        }
+
+
+        $department = Department::query();
+        $department->when(isset($office), function ($q) use ($office) {
+            return $q->where('dept_code', $office->code);
+        });
+
         return [
-            'list' => $department->notifications()->with('attachment')->paginate(),
-            'message' => 'Notification updated successfully'
+            'list' => $department->with('notifications', fn ($q) => $q->with('attachment')
+                // ->when($search, fn ($q) => $q->where('number', 'LIKE', "$search")->orWhere('subject', 'LIKE', "$search"))
+                ->get())->paginate(),
+            'role' => $staff->hasRole('admin')
         ];
+
+
+
+
+        // $department = Department::query()->where('dept_code', $office->code)
+        //     ->first();
+        // if (blank($department)) {
+        //     abort(500, 'No posting found');
+        // }
+        // return [
+        //     'list' => $department->notifications()->with('attachment')->paginate(),
+        //     'message' => 'Notification updated successfully'
+        // ];
     }
 
     public function destroy(Request $request, Notification $model)
     {
+        // $staff = auth()->user();
+        // $office = $staff->currentPost();
+
+        // $department = Department::query()->where('dept_code', $office->code)
+        //     ->first();
+        // if (blank($department)) {
+        //     abort(500, 'No posting found');
+        // }
+        // $model->delete();
+        // return [
+        //     'list' => $department->notifications()->with('attachment')->paginate(),
+        //     'message' => 'Notification deleted successfully'
+        // ];
+
         $staff = auth()->user();
         $office = $staff->currentPost();
+        if (!blank($office))
+            abort_if($office->id != $model->department_id, 400, 'Insufficient permision!');
 
-        $department = Department::query()->where('dept_code', $office->code)
-            ->first();
-        if (blank($department)) {
+        $department = Department::query();
+        $department->when((isset($office) || auth()->user()->hasRole('admin')), function ($q) use ($office, $model) {
+            return $model->delete();
+        }, function () {
             abort(500, 'No posting found');
-        }
-        $model->delete();
+        });
+
+        $file = $model->attachment()->first()->path;
+
+        Storage::delete($file);
+
         return [
-            'list' => $department->notifications()->with('attachment')->paginate(),
-            'message' => 'Notification deleted successfully'
+            'list' => $department->with('notifications', fn ($q) => $q->with('attachment')
+                ->get())->paginate(),
+            'message' => 'Act & Rules deleted successfully'
         ];
     }
 }
