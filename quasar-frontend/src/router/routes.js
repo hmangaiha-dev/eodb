@@ -1,21 +1,30 @@
 import admin from "src/router/admin";
 import investor from "src/router/investor";
 import dev from "src/router/dev";
-import { checkAuth } from "./investor";
+// import { checkAuth } from "./investor";
 import { api } from "src/boot/axios";
-import service from "src/router/service";
-import test from "src/router/service";
+// import service from "src/router/service";
+// import test from "src/router/service";
 
-export const checkAlreadyLoggedIn = async (to, from, next) => {
-  console.log("auth check isloggedin");
+const checkAlreadyLoggedIn = async (to, from, next) => {
+  // console.log("auth check isloggedin", next);
   await api
     .get("/user")
-    .then((res) =>
+    .then((res) => {
+      console.log('authenticated');
       next({
         name: "home",
-      })
-    )
-    .catch((err) => next());
+      });
+      return
+    })
+    .catch((err) => {
+      console.log('catch');
+      next();
+      // return;
+    })
+    .finally(()=>{
+      // next();
+    })
 };
 
 const routes = [
@@ -32,7 +41,7 @@ const routes = [
       },
       {
         path: "staff-login",
-        beforeEnter: checkAlreadyLoggedIn,
+        // beforeEnter: checkAlreadyLoggedIn,
         name: "staff:login",
         component: () => import("pages/public/staff/StaffLogin.vue"),
       },

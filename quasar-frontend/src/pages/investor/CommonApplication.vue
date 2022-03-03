@@ -126,7 +126,7 @@
               <div class="col-xs-12">
                 <Declaration ref="declarationRef" />
                 <div class="col-xs-12 col-md-5">
-                  <label class="zlabel" for="gender"> </label>
+                  <label class="zlabel" for="gender"></label>
                   <div class="q-gutter-sm">
                     <q-checkbox
                       v-model="declaration_consent"
@@ -204,19 +204,7 @@ export default {
     const store = useStore();
 
     const toggle = (val) => {
-      let applications = [
-        {
-          // ...applicantRef.value?.formData,
-          // ...FirmRef.value?.formData,
-          // ...proposedRef.value?.formData,
-          // ...partCRef.value?.formData,
-          // ...partDRef.value?.formData,
-          // ...partERef.value?.formData,
-          // ...partFRef.value?.formData,
-          // ...partGRef.value?.formData,
-          // ...declarationRef.value?.formData,
-        },
-      ];
+      let applications = [{}];
 
       val == "b" &&
         Object.assign(
@@ -229,8 +217,10 @@ export default {
       val == "e" && Object.assign(applications[0], partDRef.value?.formData);
       val == "f" && Object.assign(applications[0], partERef.value?.formData);
       val == "g" && Object.assign(applications[0], partFRef.value?.formData);
-      val == "declaration" && Object.assign(applications[0], partGRef.value?.formData);
-      val == "final" && Object.assign(applications[0], declarationRef.value?.formData);
+      val == "declaration" &&
+        Object.assign(applications[0], partGRef.value?.formData);
+      val == "final" &&
+        Object.assign(applications[0], declarationRef.value?.formData);
 
       var formDatas = new FormData();
 
@@ -240,10 +230,37 @@ export default {
         formDatas.append(`${data}`, applications[0][data]);
       }
 
+      applications[0].din_details.splice(
+        applications[0].din_details.length - 1
+      );
+
+      if (val == "b") {
+        formDatas.delete("din_details");
+        applications[0].din_details.forEach((element, index) => {
+          formDatas.append(`din_attach[${index}][number]`, element.number);
+          formDatas.append(
+            `din_attach[${index}][qualification]`,
+            element.qualification
+          );
+          formDatas.append(
+            `din_attach[${index}][association_year]`,
+            element.association_year
+          );
+          formDatas.append(
+            `din_attach[${index}][experience_year]`,
+            element.experience_year
+          );
+        });
+      }
+
+      // return;
+
+      // return console.log(formDatas.get("din_attach[0]"));
+
       api
         .post("/investor/common-applications/store", formDatas)
         .then((res) => {
-          // return console.log('res value',res.data);
+          return console.log("res value", res.data);
           if (val == "final") {
             q.notify({
               message: "Application submitted successfully",

@@ -39,7 +39,7 @@ export default boot(({ app,router,store }) => {
       LocalStorage.remove('token');
       store.dispatch('authData/setCurrentUser', null);
       store.dispatch('authData/setToken', null)
-      router.replace({name:"home"});
+      // router.replace({name:"home"});
     }
 
     return Promise.reject(error,);

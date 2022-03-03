@@ -58,6 +58,94 @@
           >4.5 Number of Directors/Proprietor/MD/CEO*</label
         >
       </div>
+
+      <div class="q-my-md q-py-none col-12">
+        <hr />
+      </div>
+
+      <div class="col-12">
+        <!-- <span class="zlabel"> 18. FAMILY DETAILS (DILTU CHHUNGKUA): </span> -->
+        <div
+          v-for="i in formData.din_details.length-1"
+          :key="i"
+          class="row justify q-col-gutter-sm"
+        >
+          <!-- {{ i }} -->
+          <!-- {{ formData.din_details[i-1].number }} -->
+          <div class="col-xs-12 col-sm-3">
+            <q-input
+              label="DIN Number"
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="formData.din_details[i - 1].number"
+              outlined
+            />
+          </div>
+
+          <div class="col-xs-12 col-sm-3">
+            <q-file
+              outlined
+              v-model="formData.din_details[i - 1].qualification"
+            >
+              <template v-slot:prepend>
+                <q-icon name="attach_file" />
+              </template>
+            </q-file>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+            <q-input
+              placeholder="Year of Association"
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="formData.din_details[i - 1].association_year"
+              outlined
+            />
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+            <q-input
+              placeholder="Year of Experiance"
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="formData.din_details[i - 1].experience_year"
+              outlined
+            />
+          </div>
+          <div class="col-xs-12 col-sm-2 q-mt-sm">
+            <q-btn
+              @click="deleteRow(i - 1)"
+              round
+              color="red-4"
+              icon="remove"
+            />
+          </div>
+
+          <div class="q-my-md q-py-none col-12">
+            <hr />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <q-btn
+            color="primary"
+            class="full-width"
+            label="Add row"
+            @click="addRow"
+          />
+        </div>
+      </div>
+
+       <div class="col-xs-12 col-md-6">
+        <label class="zlabel" for="gender">
+           4.5 Number of Directors/Proprietor/MD/CEO*
+          <span class="asterisk">*</span>
+        </label>
+      </div>
+
       <div class="col-xs-12 col-md-6">
         <q-input outlined v-model="formData.total_directors" />
       </div>
@@ -539,6 +627,14 @@ export default {
       udyog_memorandum: null,
       common_id: null,
       model: "A",
+      din_details: [
+        {
+          // number: "",
+          // qualification: null,
+          // association_year: "",
+          // experience_year: "",
+        },
+      ],
     });
 
     const getA = () => {
@@ -589,6 +685,19 @@ export default {
         dialog.value = true;
       },
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
+      addRow: () => {
+        formData.din_details.push({
+          number: "",
+          qualification: null,
+          association_year: "",
+          experience_year: "",
+        });
+        formData.rows++;
+      },
+      deleteRow(i) {
+        // return console.log(formData.din_details[i]);
+        formData.din_details.splice(i, 1);
+      },
     };
   },
 };

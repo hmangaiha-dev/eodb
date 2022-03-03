@@ -8,6 +8,8 @@ class PartA extends Model
 {
     use HasFactory;
 
+    protected $appends = ['dinDetails'];
+
     protected $fillable = [
         // 'common_id',
         'applicant_type',
@@ -43,10 +45,20 @@ class PartA extends Model
         // 'udyog_memorandum',
     ];
 
+    public function getDinDetailsAttribute()
+    {
+        return $this->dinDetails()->get();
+    }
+
 
     public function commonApplication()
     {
         return $this->belongsTo(CommonApplication::class,'common_id');
 
+    }
+    public function dinDetails()
+    {
+        return $this->hasMany(DinDetail::class,'part_a_id');
+        
     }
 }

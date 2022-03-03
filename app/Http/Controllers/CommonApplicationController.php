@@ -26,7 +26,12 @@ class CommonApplicationController extends Controller
 
     public function store(Request $request)
     {
-        // return $request->file();
+        // return $request->file("din_attach[0]['qualification']")->store('ijhkhn');
+        // $file =  $request->file('din_attach')[0]['qualification'];
+        // return $file;
+        // return $request->file("din_attach[0]['qualification']")->store('ijhkhn');
+        // return (($request->din_attach));
+        // return $request->has('din_attach') ? 'has' : 'not';
 
         $common = Auth::user()->commonApplications()->firstOrCreate(
             [
@@ -50,6 +55,27 @@ class CommonApplicationController extends Controller
                     $request->only((new PartA())->getFillable()),
 
                 );
+
+                // return $model;
+
+                $model->when(count(($request->din_attach)) > 1, function ($q) use ($request,$model) {
+                    // $q->dinDetails()->createMany($request->get('dinDetails'));
+                    foreach ($request->din_attach as $key => $arr) {
+                        $key = (int)$key;
+                        $file = $request->file('din_attach')[$key]['qualification']->store('dinDetails');
+                        // $file = $request->din_attach[1]['qualification']->store('dinDetails');
+                        // return $key;
+                        $model->dinDetails()->create([
+                            'number' => $request->din_attach[$key]['number'],
+                            // 'qualification' => $request->din_attach[$key]['qualification']->store('dinDetails'),
+                            'qualification' => $file,
+                            'association_year' => $request->din_attach[$key]['association_year'],
+                            'experience_year' => $request->din_attach[$key]['experience_year'],
+                        ]);
+                        // $request->din_attach[$key]['attach']->store('din');
+                    }
+                });
+
                 break;
 
             case ('B'):
@@ -125,10 +151,10 @@ class CommonApplicationController extends Controller
                 break;
         }
 
-        foreach ($request->file() as $key => $file) {
-            $filePath = $file->store('common');
-            $model->$key = $filePath;
-        }
+        // foreach ($request->file() as $key => $file) {
+        //     $filePath = $file->store('common');
+        //     $model->$key = $filePath;
+        // }
 
         $model->save();
     }
