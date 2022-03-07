@@ -98,6 +98,12 @@ class Application extends Model
         return $this->department()->first()?->dept_code . '/' . $this->application_code;
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+    
+
     protected function serializeDate(DateTimeInterface $date): string
     {
         return $date->format('Y-m-d H:i:s');

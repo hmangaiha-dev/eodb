@@ -1,31 +1,15 @@
 <template>
   <div class="q-pa-lg">
     <div class="row q-col-gutter-md">
-      <div v-if="!localData.length" class="zlabel">
-        No Applications so far
-      </div>
-      <div v-else v-for="item in localData" :key="item.id" class="col-md-4 col-xs-12">
-        <q-card style="min-height: 316px;" class="zcard">
+      <div class="col-md-4 col-xs-12">
+        <q-card class="my-card">
+          <q-img src="~assets/cert.png">
+            <div class="absolute-bottom text-h6">Title</div>
+          </q-img>
+
           <q-card-section>
-            <p class="col-xs-12 col-md-4 zvalue ellipsis">
-              {{ item.application_name }}
-            </p>
-            <div class="text-subtitle2">{{ item.regn_no }}</div>
-            <div class="text-subtitle2">{{ item.department.dept_name }}</div>
+            {{ lorem }}
           </q-card-section>
-          <q-card-section>
-            <div class="text-subtitle2">
-              Submitted at {{ dateFilter(item.created_at) }}
-            </div>
-          </q-card-section>
-          <q-card-actions align="left">
-            <q-btn
-              @click="showApplicantDetail(item.id)"
-              color="green"
-              outline
-              label="Open"
-            />
-          </q-card-actions>
         </q-card>
       </div>
     </div>
@@ -61,6 +45,8 @@ export default {
       localData,
       router,
       date,
+      lorem:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       dateFilter,
       showApplicantDetail: (id) => {
         // return console.log("show app detail",id);

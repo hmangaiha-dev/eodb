@@ -99,5 +99,10 @@ class User extends Authenticatable
         return $this->hasMany(CommonApplication::class,'user_id','id');
     }
 
+    // public function certificates()
+    // {
+    //     return $this->hasMany(Certificate::class,'user_id');
+    // }
+
     
 }

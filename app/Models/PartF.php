@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PartF extends Model
 {
     use HasFactory;
+    protected $appends = ['manufactureDetails', 'emissionDetails','solidWasteDetails'];
     protected $fillable = [
         'manuf_process_steps',
         'env_category',
@@ -34,5 +35,32 @@ class PartF extends Model
     public function commonApplication()
     {
         return $this->belongsTo(CommonApplication::class, 'common_id');
+    }
+
+
+    public function getManufactureDetailsAttribute()
+    {
+        return $this->manufactureDetails()->get();
+    }
+    public function getEmissionDetailsAttribute()
+    {
+        return $this->emissionDetails()->get();
+    }
+    public function getsolidWasteDetailsAttribute()
+    {
+        return $this->solidWasteDetails()->get();
+    }
+
+    public function manufactureDetails()
+    {
+        return $this->hasMany(ManufactureDetail::class, 'part_f_id');
+    }
+    public function emissionDetails()
+    {
+        return $this->hasMany(EmissionData::class, 'part_f_id');
+    }
+    public function solidWasteDetails()
+    {
+        return $this->hasMany(SolidWasteGeneration::class, 'part_f_id');
     }
 }

@@ -9,6 +9,8 @@ class PartE extends Model
 {
     use HasFactory;
 
+    protected $appends = ['fciDetails'];
+
     protected $fillable = [
         'land_cost',
         'building_cost',
@@ -30,8 +32,20 @@ class PartE extends Model
         'commercial_start',
     ];
 
+
+    public function getFciDetailsAttribute()
+    {
+        return $this->fciDetails()->get();
+    }
+
     public function commonApplication()
     {
         return $this->belongsTo(CommonApplication::class, 'common_id');
+    }
+
+
+    public function fciDetails()
+    {
+        return $this->hasMany(FciDetail::class, 'part_e_id');
     }
 }

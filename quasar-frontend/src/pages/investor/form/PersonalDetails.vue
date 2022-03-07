@@ -35,7 +35,7 @@
       </div>
       <div class="col-xs-12 col-md-6">
         <q-uploader
-        
+          accept=".jpg,.png,image/*"
           flat
           @added="
             (files) => {

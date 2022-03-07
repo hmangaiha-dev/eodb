@@ -61,6 +61,11 @@ export default {
       name: "investor:ongoing",
       component: () => import("pages/investor/OnGoingApplications.vue"),
     },
+    {
+      path: "applications/certificates",
+      name: "investor:certificates",
+      component: () => import("pages/investor/Certificates.vue"),
+    },
 
     {
       path: "application/:id",

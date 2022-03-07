@@ -230,13 +230,16 @@ export default {
         formDatas.append(`${data}`, applications[0][data]);
       }
 
-      applications[0].din_details.splice(
-        applications[0].din_details.length - 1
-      );
+      // applications[0].din_details.splice(
+      //   applications[0].din_details.length - 1
+      // );
 
       if (val == "b") {
         formDatas.delete("din_details");
+        // console.log('drtilas',applications[0].din_details);
+        // return
         applications[0].din_details.forEach((element, index) => {
+          formDatas.append(`din_attach[${index}][id]`, element.id);
           formDatas.append(`din_attach[${index}][number]`, element.number);
           formDatas.append(
             `din_attach[${index}][qualification]`,
@@ -253,14 +256,37 @@ export default {
         });
       }
 
-      // return;
+      if (val == "f") {
+        // formDatas.delete("fciDetails");
+        formDatas.append(
+          "fciDetails",
+          JSON.stringify(applications[0].fciDetails)
+        );
+      }
+      if (val == "g") {
+        formDatas.append(
+          "manufactureDetails",
+          JSON.stringify(applications[0].manufactureDetails)
+        );
+        formDatas.append(
+          "emissionDetails",
+          JSON.stringify(applications[0].emissionDetails)
+        );
+
+        formDatas.append(
+          "solidWasteDetails",
+          JSON.stringify(applications[0].solidWasteDetails)
+        );
+      }
+
+      // return console.log(formDatas.get(fci_details));;
 
       // return console.log(formDatas.get("din_attach[0]"));
 
       api
         .post("/investor/common-applications/store", formDatas)
         .then((res) => {
-          return console.log("res value", res.data);
+          // return console.log("res value", res.data);
           if (val == "final") {
             q.notify({
               message: "Application submitted successfully",

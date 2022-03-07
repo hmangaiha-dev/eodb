@@ -14,31 +14,75 @@
         Products/By-Products)
       </label>
       <div
-        v-for="i in formData.rows"
+        v-for="i in formData.manufactureDetails.length"
         :key="i"
         class="row justify q-col-gutter-sm q-ml-md"
       >
         <!-- {{ i }} -->
         <div class="col-sm-5 col-xs-12">
-          <q-input label="Raw Material" outlined />
+          <q-input
+            label="Raw Material"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].raw_material"
+            outlined
+          />
         </div>
 
         <div class="col-sm-5 col-xs-12">
-          <q-input placeholder="Quantity" outlined />
+          <q-input
+            label="Quantity"
+            type="number"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].raw_quantity"
+            outlined
+          />
         </div>
 
         <div class="col-sm-5 col-xs-12">
-          <q-input placeholder="Units(Ton per day-TDP)" outlined />
+          <q-input
+            label="Units(Ton per day-TDP)"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].units_ton_per_day"
+            outlined
+          />
         </div>
 
         <div class="col-sm-5 col-xs-12">
-          <q-input placeholder="Main Product	" outlined />
+          <q-input
+            label="Main Product"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].main_product"
+            outlined
+          />
         </div>
         <div class="col-sm-5 col-xs-12">
-          <q-input placeholder="Quantity" outlined />
+          <q-input
+            label="Quantity"
+            type="number"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].main_product_quantity"
+            outlined
+          />
         </div>
         <div class="col-sm-5 col-xs-12">
-          <q-input placeholder="Units(Number per day)" outlined />
+          <q-input
+            label="Units(Number per day)"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].units_number_per_day"
+            outlined
+          />
         </div>
 
         <div class="q-my-md q-py-none col-12">
@@ -401,53 +445,103 @@ Step ..."
             FURNANCE, PROCESS EMISSION, DC SET)
           </span>
           <div
-            v-for="i in formData.rows"
+            v-for="i in formData.emissionDetails.length"
             :key="i"
             class="row justify q-col-gutter-sm q-ml-md"
           >
             <!-- {{ i }} -->
             <div class="col-sm-5 col-xs-12">
-              <q-input label="Capacity(Ton per hour/KVA)" dense outlined />
-            </div>
-
-            <div class="col-sm-5 col-xs-12">
-              <q-input placeholder="Type of Fuel" dense outlined />
-            </div>
-
-            <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Quantity of fuel(in KL per day / Ton per day)"
-                dense
+                label="Capacity(Ton per hour/KVA)"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].capacity_ton"
                 outlined
               />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input placeholder="Stack Height	" dense outlined />
+              <q-input
+                label="Type of Fuel"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].fuel_type"
+                outlined
+              />
             </div>
+
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Air Pollution Control Device"
-                dense
+                label="Quantity of fuel(in KL per day / Ton per day)"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].fuel_quantity"
+                outlined
+              />
+            </div>
+
+            <div class="col-sm-5 col-xs-12">
+              <q-input
+                label="Stack Height(AGL)"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].agl"
                 outlined
               />
             </div>
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Boiler Rating(Heating Surface) In cubic meter"
-                dense
+                label="Stack Height(ARL)"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].arl"
                 outlined
               />
             </div>
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Stream Pressure(max) In Kg per Cubic cm"
-                dense
+                label="Air Pollution Control Device"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].control_device"
                 outlined
               />
             </div>
             <div class="col-sm-5 col-xs-12">
-              <q-input placeholder="Capacity in ltrs" dense outlined />
+              <q-input
+                label="Boiler Rating(Heating Surface) In cubic meter"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].boiler_rating"
+                outlined
+              />
+            </div>
+            <div class="col-sm-5 col-xs-12">
+              <q-input
+                label="Stream Pressure(max) In Kg per Cubic cm"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].stream_pressure"
+                outlined
+              />
+            </div>
+            <div class="col-sm-5 col-xs-12">
+              <q-input
+                label="Capacity in ltrs"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].capacity_lt"
+                outlined
+              />
             </div>
 
             <div class="q-my-md q-py-none col-12">
@@ -460,7 +554,7 @@ Step ..."
               color="primary"
               class="full-width"
               label="Add row"
-              @click="addRow"
+              @click="addNewEmission"
             />
           </div>
         </div>
@@ -472,25 +566,53 @@ Step ..."
         <div class="col-12">
           <span class="zlabel"> 12.5 Solid Waste Generation Details </span>
           <div
-            v-for="i in formData.rows"
+            v-for="i in formData.solidWasteDetails.length"
             :key="i"
             class="row justify q-col-gutter-sm q-ml-md"
           >
             <!-- {{ i }} -->
             <div class="col-sm-5 col-xs-12">
-              <q-input label="Source of Generation" dense outlined />
+              <q-input
+                label="Source of Generation"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.solidWasteDetails[i - 1].source_generation"
+                outlined
+              />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input placeholder="Nature/Type" dense outlined />
+              <q-input
+                label="Nature/Type"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.solidWasteDetails[i - 1].nature_type"
+                outlined
+              />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input placeholder="	Quantity(Ton per day)" dense outlined />
+              <q-input
+                label="Quantity(Ton per day)"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.solidWasteDetails[i - 1].quantity_ton"
+                outlined
+              />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input placeholder="Mode of disposal" dense outlined />
+              <q-input
+                label="Mode of disposal"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.solidWasteDetails[i - 1].disposal_mode"
+                outlined
+              />
             </div>
 
             <div class="q-my-md q-py-none col-12">
@@ -503,7 +625,7 @@ Step ..."
               color="primary"
               class="full-width"
               label="Add row"
-              @click="addRow"
+              @click="addNewSolidWaste"
             />
           </div>
         </div>
@@ -651,17 +773,38 @@ export default {
       need_clearance: "",
       bamboo_groves_remove_no: "",
       replantation_plan: null,
+      manufactureDetails: [],
+      emissionDetails: [],
+      solidWasteDetails: [],
       model: "F",
 
       rows: 1,
     });
-    const getF = () =>
-      (formData = Object.assign(
-        formData,
-        store.state.globalData.common?.partF
-      ));
+    const getF = () => {
+      formData = Object.assign(formData, store.state.globalData.common?.partF);
+      let manufactureDetails =
+        store.state.globalData.common?.partF?.manufactureDetails;
+      let emissionDetails =
+        store.state.globalData.common?.partF?.emissionDetails;
+      let solidWasteDetails =
+        store.state.globalData.common?.partF?.solidWasteDetails;
+      formData.manufactureDetails = [];
+      formData.emissionDetails = [];
+      formData.solidWasteDetails = [];
 
-    onMounted(() => getF());
+      formData.manufactureDetails = manufactureDetails.map((obj) => ({
+        ...obj,
+      }));
+      formData.emissionDetails = emissionDetails.map((obj) => ({
+        ...obj,
+      }));
+      formData.solidWasteDetails = solidWasteDetails.map((obj) => ({
+        ...obj,
+      }));
+      // formData.manufactureDetails = [...formData.man];
+    };
+
+    onMounted(async () => await getF());
 
     watch(store.state.globalData.common, () => getF());
     return {
@@ -691,12 +834,40 @@ export default {
       project_categories: ["Greenfield", "Brownfield"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
       addRow: () => {
-        // formData.lsc_details.push({
-        //   name: "",
-        //   address: "",
-        //   kum: "",
-        //   caste: "",
-        // });
+        formData.manufactureDetails.push({
+          id: null,
+          raw_material: "",
+          raw_quantity: "",
+          units_ton_per_day: "",
+          main_product: "",
+          main_product_quantity: "",
+          units_number_per_day: "",
+        });
+        formData.rows++;
+      },
+      addNewEmission: () => {
+        formData.emissionDetails.push({
+          id: null,
+          capacity_ton: "",
+          fuel_type: "",
+          fuel_quantity: "",
+          agl: "",
+          arl: "",
+          control_device: "",
+          boiler_rating: "",
+          stream_pressure: "",
+          capacity_lt: "",
+        });
+        formData.rows++;
+      },
+      addNewSolidWaste: () => {
+        formData.solidWasteDetails.push({
+          id: null,
+          source_generation: "",
+          nature_type: "",
+          quantity_ton: "",
+          disposal_mode: "",
+        });
         formData.rows++;
       },
     };

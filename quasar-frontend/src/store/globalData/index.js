@@ -24,7 +24,12 @@ const state = () => {
 };
 const getters = {
   isGlobalLoading: (state) => state.globalLoading,
+  getPartF: (state) => state.common.partF,
 };
+
+
+
+
 const mutations = {
   setGlobalLoading: (state, val) => {
     state.globalLoading = val;

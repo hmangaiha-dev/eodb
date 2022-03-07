@@ -66,7 +66,7 @@
       <div class="col-12">
         <!-- <span class="zlabel"> 18. FAMILY DETAILS (DILTU CHHUNGKUA): </span> -->
         <div
-          v-for="i in formData.din_details.length-1"
+          v-for="i in formData.din_details.length"
           :key="i"
           class="row justify q-col-gutter-sm"
         >
@@ -85,6 +85,14 @@
 
           <div class="col-xs-12 col-sm-3">
             <q-file
+              :rules="[
+                (val) =>
+                  !!formData.din_details[i - 1].qualification_attach ||
+                  val ||
+                  'Please type something',
+              ]"
+              accept=".pdf"
+              label="Attachment(Educational Qualification)"
               outlined
               v-model="formData.din_details[i - 1].qualification"
             >
@@ -92,6 +100,17 @@
                 <q-icon name="attach_file" />
               </template>
             </q-file>
+            <!-- {{ formData.din_details[i - 1].qualification_attach }} -->
+            <q-btn
+              v-if="formData.din_details[i - 1].qualification_attach"
+              flat
+              color="primary"
+              icon="picture_as_pdf"
+              label="view"
+              @click="
+                showAttachment(formData.din_details[i - 1].qualification_attach)
+              "
+            />
           </div>
 
           <div class="col-xs-12 col-sm-2">
@@ -139,9 +158,9 @@
         </div>
       </div>
 
-       <div class="col-xs-12 col-md-6">
+      <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
-           4.5 Number of Directors/Proprietor/MD/CEO*
+          4.5 Number of Directors/Proprietor/MD/CEO*
           <span class="asterisk">*</span>
         </label>
       </div>
@@ -662,6 +681,30 @@ export default {
       formData.udyog_memorandum =
         store.state.globalData.common.partA?.udyog_memorandum;
       formData.common_id = store.state.globalData.common.partA?.common_id;
+
+      // console.log(
+      //   "din details fetch",
+      //   store.state.globalData.common.partA?.dinDetails
+      // );
+
+      let dinDetails = store.state.globalData.common.partA?.dinDetails;
+
+      formData.din_details = [];
+
+      dinDetails?.forEach((element, index) => {
+        formData.din_details = [
+          ...formData.din_details,
+          {
+            id: element.id,
+            number: element.number,
+            qualification: null,
+            association_year: element.association_year,
+            experience_year: element.experience_year,
+            qualification_attach: element.qualification,
+          },
+        ];
+      });
+      console.log("element details", formData.din_details);
     };
     onMounted(() => getA());
 
@@ -687,6 +730,7 @@ export default {
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
       addRow: () => {
         formData.din_details.push({
+          id: null,
           number: "",
           qualification: null,
           association_year: "",

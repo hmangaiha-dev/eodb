@@ -26,6 +26,9 @@ class CommonApplicationController extends Controller
 
     public function store(Request $request)
     {
+        // // return count($request->din_attach);
+        // return $request->file();
+        // return (json_decode($request->emissionDetails));
         // return $request->file("din_attach[0]['qualification']")->store('ijhkhn');
         // $file =  $request->file('din_attach')[0]['qualification'];
         // return $file;
@@ -58,20 +61,26 @@ class CommonApplicationController extends Controller
 
                 // return $model;
 
-                $model->when(count(($request->din_attach)) > 1, function ($q) use ($request,$model) {
+                $model->when(count(($request->din_attach)) > 0, function ($q) use ($request, $model) {
                     // $q->dinDetails()->createMany($request->get('dinDetails'));
                     foreach ($request->din_attach as $key => $arr) {
-                        $key = (int)$key;
-                        $file = $request->file('din_attach')[$key]['qualification']->store('dinDetails');
-                        // $file = $request->din_attach[1]['qualification']->store('dinDetails');
-                        // return $key;
-                        $model->dinDetails()->create([
+                        // $file = $request->file('din_attach')[$key]['qualification']->store('dinDetails');
+                        $file = isset(($request->file('din_attach')[$key]['qualification'])) ? true : false;
+                        $detail = $model->dinDetails()->updateOrcreate([
+                            'id' => $request->din_attach[$key]['id'],
+                        ], [
                             'number' => $request->din_attach[$key]['number'],
-                            // 'qualification' => $request->din_attach[$key]['qualification']->store('dinDetails'),
-                            'qualification' => $file,
+                            // 'qualification' => $file,
                             'association_year' => $request->din_attach[$key]['association_year'],
                             'experience_year' => $request->din_attach[$key]['experience_year'],
                         ]);
+
+                        $model->when($file,function($q) use($detail,$request,$key) {
+                            $detail->update([
+                                'qualification' => $request->file('din_attach')[$key]['qualification']->store('dinDetails')
+                            ]);
+                        });
+                        
                         // $request->din_attach[$key]['attach']->store('din');
                     }
                 });
@@ -118,6 +127,20 @@ class CommonApplicationController extends Controller
                     $request->only((new PartE())->getFillable()),
 
                 );
+
+                $model->when(count(json_decode($request->fciDetails)) > 0, function ($q) use ($request, $model) {
+                    $arrs =  (json_decode($request->fciDetails));
+                    foreach ($arrs as $arr) {
+                        $model->fciDetails()->updateOrcreate(
+                            [
+                                'id' => $arr->id,
+                            ],
+                            (array) $arr
+
+                        );
+                    }
+                });
+
                 break;
             case ('F'):
                 $model = $common->partF()->updateOrCreate(
@@ -128,6 +151,44 @@ class CommonApplicationController extends Controller
                     $request->only((new PartF())->getFillable()),
 
                 );
+
+                $model->when(count(json_decode($request->manufactureDetails)) > 0, function ($q) use ($request, $model) {
+                    $arrs =  (json_decode($request->manufactureDetails));
+                    foreach ($arrs as $arr) {
+                        $model->manufactureDetails()->updateOrcreate(
+                            [
+                                'id' => $arr->id,
+                            ],
+                            (array) $arr
+
+                        );
+                    }
+                });
+                $model->when(count(json_decode($request->emissionDetails)) > 0, function ($q) use ($request, $model) {
+                    $arrs =  (json_decode($request->emissionDetails));
+                    foreach ($arrs as $arr) {
+                        $model->emissionDetails()->updateOrcreate(
+                            [
+                                'id' => $arr->id,
+                            ],
+                            (array) $arr
+
+                        );
+                    }
+                });
+
+                $model->when(count(json_decode($request->solidWasteDetails)) > 0, function ($q) use ($request, $model) {
+                    $arrs =  (json_decode($request->solidWasteDetails));
+                    foreach ($arrs as $arr) {
+                        $model->solidWasteDetails()->updateOrcreate(
+                            [
+                                'id' => $arr->id,
+                            ],
+                            (array) $arr
+
+                        );
+                    }
+                });
                 break;
             case ('G'):
                 $model = $common->partG()->updateOrCreate(
@@ -150,12 +211,13 @@ class CommonApplicationController extends Controller
                 );
                 break;
         }
-
-        // foreach ($request->file() as $key => $file) {
-        //     $filePath = $file->store('common');
-        //     $model->$key = $filePath;
-        // }
-
+        foreach ($request->file() as $key => $file) {
+            // $check = $file . 'is'. is_array($file).'\n';
+            if (!is_array($file)) {
+                $filePath = $file->store('common');
+                $model->$key = $filePath;
+            }
+        }
         $model->save();
     }
 }

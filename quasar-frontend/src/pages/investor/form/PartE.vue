@@ -277,25 +277,51 @@
             10.3 Phase-wise Implementation/FCI Details *
           </span>
           <div
-            v-for="i in formData.rows"
+            v-for="i in formData.fciDetails.length"
             :key="i"
             class="row justify q-col-gutter-sm q-ml-md"
           >
             <!-- {{ i }} -->
             <div class="col-sm-5 col-xs-12">
-              <q-input label="Phase *" outlined />
+              <q-input
+                label="Phase*"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.fciDetails[i - 1].phase"
+                outlined
+              />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input placeholder="Product Category *" outlined />
+              <q-input
+                label="Product Category *"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.fciDetails[i - 1].product_category"
+                outlined
+              />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input placeholder="FCI *" outlined />
+              <q-input
+                label="FCI *"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.fciDetails[i - 1].fci"
+                outlined
+              />
             </div>
 
             <div class="col-sm-5 col-xs-12">
-              <q-input placeholder="Implementation Date" type="date" outlined />
+              <!-- <q-input placeholder="Implementation Date" type="date" outlined /> -->
+              <q-input
+                label="Implementation Date"
+                v-model="formData.fciDetails[i - 1].implementation_date"
+                outlined
+              />
             </div>
 
             <div class="q-my-md q-py-none col-12">
@@ -347,14 +373,37 @@ export default {
       total_female: "",
       project_start: "",
       commercial_start: "",
+      fciDetails: [],
       rows: 1,
       model: "E",
     });
-    const getE = () =>
-      (formData = Object.assign(
-        formData,
-        store.state.globalData.common?.partE
-      ));
+    const getE = () => {
+      formData = Object.assign(formData, store.state.globalData.common?.partE);
+      // formData.fciDetails = [];
+      // formData.fciDetails = Object.assign(
+      //   formData.fciDetails,
+      //   store.state.globalData.common?.partE?.fciDetails
+      // );
+
+      let fciDetails = store.state.globalData.common?.partE.fciDetails;
+
+      formData.fciDetails = [];
+
+      fciDetails?.forEach((element, index) => {
+        formData.fciDetails = [
+          ...formData.fciDetails,
+          {
+            id: element.id,
+            phase: element.phase,
+            product_category: element.product_category,
+            fci: element.fci,
+            implementation_date: element.implementation_date,
+            // qualification_attach: element.qualification,
+          },
+        ];
+      });
+    };
+    // console.log('form',formData);
 
     onMounted(() => getE());
 
@@ -372,12 +421,13 @@ export default {
       project_categories: ["Greenfield", "Brownfield"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
       addRow: () => {
-        // formData.lsc_details.push({
-        //   name: "",
-        //   address: "",
-        //   kum: "",
-        //   caste: "",
-        // });
+        formData.fciDetails.push({
+          id: null,
+          phase: "",
+          product_category: "",
+          fci: "",
+          implementation_date: "",
+        });
         formData.rows++;
       },
     };
