@@ -26,16 +26,6 @@ class CommonApplicationController extends Controller
 
     public function store(Request $request)
     {
-        // // return count($request->din_attach);
-        // return $request->file();
-        // return (json_decode($request->emissionDetails));
-        // return $request->file("din_attach[0]['qualification']")->store('ijhkhn');
-        // $file =  $request->file('din_attach')[0]['qualification'];
-        // return $file;
-        // return $request->file("din_attach[0]['qualification']")->store('ijhkhn');
-        // return (($request->din_attach));
-        // return $request->has('din_attach') ? 'has' : 'not';
-
         $common = Auth::user()->commonApplications()->firstOrCreate(
             [
                 'user_id' => Auth::id()
@@ -44,7 +34,6 @@ class CommonApplicationController extends Controller
                 'status' => 'filling',
             ]
         );
-
 
         $model = [];
 
@@ -59,29 +48,22 @@ class CommonApplicationController extends Controller
 
                 );
 
-                // return $model;
-
-                $model->when(count(($request->din_attach)) > 0, function ($q) use ($request, $model) {
-                    // $q->dinDetails()->createMany($request->get('dinDetails'));
+                $model->when(isset($request->din_attach), function ($q) use ($request, $model) {
                     foreach ($request->din_attach as $key => $arr) {
-                        // $file = $request->file('din_attach')[$key]['qualification']->store('dinDetails');
                         $file = isset(($request->file('din_attach')[$key]['qualification'])) ? true : false;
                         $detail = $model->dinDetails()->updateOrcreate([
                             'id' => $request->din_attach[$key]['id'],
                         ], [
                             'number' => $request->din_attach[$key]['number'],
-                            // 'qualification' => $file,
                             'association_year' => $request->din_attach[$key]['association_year'],
                             'experience_year' => $request->din_attach[$key]['experience_year'],
                         ]);
-
-                        $model->when($file,function($q) use($detail,$request,$key) {
+                        //set qualification attachment only if exist
+                        $model->when($file, function ($q) use ($detail, $request, $key) {
                             $detail->update([
                                 'qualification' => $request->file('din_attach')[$key]['qualification']->store('dinDetails')
                             ]);
                         });
-                        
-                        // $request->din_attach[$key]['attach']->store('din');
                     }
                 });
 
@@ -127,7 +109,6 @@ class CommonApplicationController extends Controller
                     $request->only((new PartE())->getFillable()),
 
                 );
-
                 $model->when(count(json_decode($request->fciDetails)) > 0, function ($q) use ($request, $model) {
                     $arrs =  (json_decode($request->fciDetails));
                     foreach ($arrs as $arr) {
@@ -185,7 +166,6 @@ class CommonApplicationController extends Controller
                                 'id' => $arr->id,
                             ],
                             (array) $arr
-
                         );
                     }
                 });
@@ -212,7 +192,6 @@ class CommonApplicationController extends Controller
                 break;
         }
         foreach ($request->file() as $key => $file) {
-            // $check = $file . 'is'. is_array($file).'\n';
             if (!is_array($file)) {
                 $filePath = $file->store('common');
                 $model->$key = $filePath;

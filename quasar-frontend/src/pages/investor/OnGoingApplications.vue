@@ -1,13 +1,18 @@
 <template>
   <div class="q-pa-lg">
     <div class="row q-col-gutter-md">
-      <div v-if="!localData.length" class="zlabel">
-        No Applications so far
-      </div>
-      <div v-else v-for="item in localData" :key="item.id" class="col-md-4 col-xs-12">
-        <q-card style="min-height: 316px;" class="zcard">
-          <q-card-section>
-            <p class="col-xs-12 col-md-4 zvalue ellipsis">
+      <div v-if="!localData.length" class="zlabel">No Applications so far</div>
+
+      
+      <div
+        v-else
+        v-for="item in localData"
+        :key="item.id"
+        class="col-md-6 col-lg-3 col-xs-12"
+      >
+        <q-card style="min-height: 316px" class="zcard">
+          <q-card-section class="ellipsis">
+            <p class="col-xs-12 col-md-4 zvalue">
               {{ item.application_name }}
             </p>
             <div class="text-subtitle2">{{ item.regn_no }}</div>
@@ -38,27 +43,21 @@ import { onMounted } from "vue";
 import { ref, computed } from "vue";
 import { date } from "quasar";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 export default {
   setup() {
     const localData = ref([]);
     const router = useRouter();
+    const store = useStore();
     onMounted(() => {
-      api
-        .get("investor/applications")
-        .then((res) => {
-          localData.value = res.data;
-        })
-        .catch((err) => {
-          console.log("error response", err.message);
-        });
     });
 
     const dateFilter = (dt) => {
       return date.formatDate(new Date(dt), "DD/MM/YYYY hh:mm a");
     };
     return {
-      localData,
+      localData: computed(() => store.state.globalData.applications),
       router,
       date,
       dateFilter,

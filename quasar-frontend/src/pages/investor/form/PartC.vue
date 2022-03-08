@@ -40,6 +40,7 @@
             a)Attach certified copy of ownership*
           </label>
           <q-uploader
+            @removed="formData.certified_copy_owner = null"
             accept=".pdf"
             flat
             @added="
@@ -103,6 +104,7 @@
             a)Attach certified of lease document*
           </label>
           <q-uploader
+            @removed="formData.certified_lease_doc = null"
             accept=".pdf"
             flat
             @added="
@@ -162,6 +164,7 @@
             a)Attach certified copy of rent deed*
           </label>
           <q-uploader
+            @removed="formData.certified_rent_deed = null"
             accept=".pdf"
             flat
             @added="
@@ -215,6 +218,7 @@
         <div class="col-xs-12 col-md-6">
           <label class="zlabel" for=""> b)NOC from owner* </label>
           <q-uploader
+            @removed="formData.noc_owner = null"
             accept=".pdf"
             flat
             @added="
@@ -272,6 +276,7 @@
         </span>
       </label>
       <q-uploader
+        @removed="formData.site_layout_plan = null"
         accept=".pdf"
         flat
         @added="
@@ -329,6 +334,7 @@
         </span>
       </label>
       <q-uploader
+        @removed="formData.linear_strip_plan = null"
         accept=".pdf"
         flat
         @added="
@@ -423,6 +429,9 @@ export default {
 
     return {
       formData,
+      removed: () => {
+        console.log("removed");
+      },
       getC,
       dialog,
       attachment,

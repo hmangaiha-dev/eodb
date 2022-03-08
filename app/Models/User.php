@@ -98,11 +98,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(CommonApplication::class,'user_id','id');
     }
-
-    // public function certificates()
-    // {
-    //     return $this->hasMany(Certificate::class,'user_id');
-    // }
+    
+    public function certificates()
+    {
+        return $this->hasManyThrough(Certificate::class,Application::class,'user_id','owner_id','id','id');
+    }
 
     
 }

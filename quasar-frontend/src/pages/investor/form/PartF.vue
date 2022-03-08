@@ -111,6 +111,7 @@
         </div>
         <div class="col-xs-12 col-md-5">
           <q-uploader
+            @removed="formData.manuf_process_flow = null"
             accept=".pdf"
             flat
             @added="
@@ -386,6 +387,7 @@ Step ..."
             </div>
             <div class="col-xs-12 col-md-5">
               <q-uploader
+                @removed="formData.waste_water_treatment_details = null"
                 accept=".pdf"
                 flat
                 @added="
@@ -697,6 +699,7 @@ Step ..."
         </div>
         <div class="col-xs-12 col-md-6">
           <q-uploader
+            @removed="formData.replantation_plan = null"
             accept=".pdf"
             flat
             @added="
@@ -792,15 +795,24 @@ export default {
       formData.emissionDetails = [];
       formData.solidWasteDetails = [];
 
-      formData.manufactureDetails = manufactureDetails.map((obj) => ({
-        ...obj,
-      }));
-      formData.emissionDetails = emissionDetails.map((obj) => ({
-        ...obj,
-      }));
-      formData.solidWasteDetails = solidWasteDetails.map((obj) => ({
-        ...obj,
-      }));
+      if (manufactureDetails) {
+        formData.manufactureDetails = manufactureDetails.map((obj) => ({
+          ...obj,
+        }));
+      }
+
+      if (emissionDetails) {
+        formData.emissionDetails = emissionDetails.map((obj) => ({
+          ...obj,
+        }));
+      }
+
+      if (solidWasteDetails) {
+        formData.solidWasteDetails = solidWasteDetails.map((obj) => ({
+          ...obj,
+        }));
+      }
+
       // formData.manufactureDetails = [...formData.man];
     };
 

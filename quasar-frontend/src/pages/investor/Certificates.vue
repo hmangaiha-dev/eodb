@@ -1,15 +1,64 @@
 <template>
   <div class="q-pa-lg">
     <div class="row q-col-gutter-md">
-      <div class="col-md-4 col-xs-12">
-        <q-card class="my-card">
-          <q-img src="~assets/cert.png">
-            <div class="absolute-bottom text-h6">Title</div>
+      <q-card class="col-md-6 col-xs-12" v-if="localData.loading">
+        <q-item>
+          <q-item-section avatar>
+            <q-skeleton type="QAvatar" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>
+              <q-skeleton type="text" />
+            </q-item-label>
+            <q-item-label caption>
+              <q-skeleton type="text" />
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-skeleton height="200px" square />
+
+        <q-card-actions align="right" class="q-gutter-md">
+          <q-skeleton type="QBtn" />
+          <q-skeleton type="QBtn" />
+        </q-card-actions>
+      </q-card>
+
+      <div class="col-12 ztitle text-start">My Certificates</div>
+      <div v-if="!localData.certs.length" class="zlabel">
+        No Certificates to show
+      </div>
+      <div
+        v-else
+        v-for="item in localData.certs"
+        :key="item"
+        class="col-md-4 col-lg-3 col-sm-6 col-xs-12"
+      >
+        <q-card>
+          <q-img :ratio="16 / 9" src="~assets/cert.png">
+            <div class="absolute-bottom text-h6">{{ item?.name }}</div>
           </q-img>
 
-          <q-card-section>
-            {{ lorem }}
+          <q-card-section class="text-body1">
+            {{ item.application?.application_code }}
+            <div class="zlabel ellipsis">
+              {{ item.application?.application_name }}
+            </div>
           </q-card-section>
+
+          <q-card-actions class="q-py-none" align="right">
+            <span class="q-ml-sm zlabel"> {{ item.remark }} </span>
+            <q-space />
+            <q-btn
+              size="lg"
+              @click="handleDownload(item.full_path)"
+              flat
+              round
+              color="teal"
+              icon="download"
+            />
+          </q-card-actions>
         </q-card>
       </div>
     </div>
@@ -19,24 +68,27 @@
 <script>
 import { api } from "src/boot/axios";
 import { onMounted } from "vue";
+import { reactive } from "@vue/reactivity";
 import { ref, computed } from "vue";
 import { date } from "quasar";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 export default {
-  setup() {
-    const localData = ref([]);
+  setup(props, context) {
+    const store = useStore();
+    const localData = reactive({
+      certs: [],
+      loading: true,
+    });
+
+    localData.certs = computed(() => store.state.globalData.certs);
     const router = useRouter();
     onMounted(() => {
-      api
-        .get("investor/applications")
-        .then((res) => {
-          localData.value = res.data;
-        })
-        .catch((err) => {
-          console.log("error response", err.message);
-        });
+      return localData.loading = false
     });
+
+  
 
     const dateFilter = (dt) => {
       return date.formatDate(new Date(dt), "DD/MM/YYYY hh:mm a");
@@ -45,8 +97,6 @@ export default {
       localData,
       router,
       date,
-      lorem:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       dateFilter,
       showApplicantDetail: (id) => {
         // return console.log("show app detail",id);
@@ -57,30 +107,12 @@ export default {
           },
         });
       },
+      handleDownload: (url) => {
+        window.open(url, "_blank").focus();
+        // console.log(url);
+      },
+     
     };
   },
 };
 </script>
-
-<style lang="sass">
-.my-sticky-header-table
-  /* height or max-height is important */
-  height: 310px
-
-  .q-table__top,
-  .q-table__bottom,
-  thead tr:first-child th
-    /* bg color is important for th; just specify one */
-    background-color: #c1f4cd
-
-  thead tr th
-    position: sticky
-    z-index: 1
-  thead tr:first-child th
-    top: 0
-
-  /* this is when the loading indicator appears */
-  &.q-table--loading thead tr:last-child th
-    /* height of all previous header rows */
-    top: 48px
-</style>

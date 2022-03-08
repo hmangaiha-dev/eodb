@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- Route::get('{any}', function () {
-     return view('app');
- })->where('any', '.*');
+// Route::get('/forgot-password', function () {
+//     return view('auth.forgot-password');
+// })->middleware('guest')->name('password.request');
+
+
+// Route::get('/reset-password/{token}', function ($token) {
+//     return view('auth.reset-password', ['token' => $token]);
+// })->middleware('guest')->name('password.reset');
+
+
+Route::post('/reset-password',[ResetPasswordController::class,'postResetPassord'])->middleware('guest')->name('password.update');
+Route::get('{any}', function () {
+    return view('app');
+})->where('any', '.*');

@@ -60,6 +60,9 @@
           /> -->
 
           <q-uploader
+            @removed="
+              formData.electric_temporary_existing_connection_file = null
+            "
             accept=".pdf"
             @rejected="onRejected"
             flat
@@ -251,6 +254,7 @@
         </div>
         <div class="q-my-md col-xs-12 col-md-5">
           <q-uploader
+            @removed="formData.electric_regular_existing_connection_file = null"
             accept=".pdf"
             @rejected="onRejected"
             flat
@@ -445,6 +449,7 @@
         </div>
         <div class="col-xs-12 col-md-5">
           <q-uploader
+            @removed="formData.water_temporary_existing_bill_copy_file = null"
             accept=".pdf"
             @rejected="onRejected"
             flat
@@ -519,6 +524,7 @@
         </div>
         <div class="q-my-sm col-xs-12 col-md-5">
           <q-uploader
+            @removed="formData.water_regular_existing_bill_copy_file = null"
             accept=".pdf"
             @rejected="onRejected"
             flat

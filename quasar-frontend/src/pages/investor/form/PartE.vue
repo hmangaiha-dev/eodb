@@ -385,7 +385,7 @@ export default {
       //   store.state.globalData.common?.partE?.fciDetails
       // );
 
-      let fciDetails = store.state.globalData.common?.partE.fciDetails;
+      let fciDetails = store.state.globalData.common?.partE?.fciDetails;
 
       formData.fciDetails = [];
 

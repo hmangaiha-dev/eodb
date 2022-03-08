@@ -49,6 +49,7 @@
       </q-header>
 
       <q-drawer
+
         persistent
         class="q-pa-md"
         v-model="leftDrawerOpen"
@@ -85,6 +86,7 @@
           <q-item-section> Common Application </q-item-section>
         </q-item>
         <q-expansion-item
+          default-opened
           expand-icon="expand_more"
           group="somegroup"
           icon="sticky_note_2"
@@ -99,9 +101,9 @@
             <q-item-section avatar>
               <q-icon color="yellow-7" name="hourglass_empty" />
             </q-item-section>
-            <q-item-section> Ongoing Applications </q-item-section>
+            <q-item-section> Submitted Applications </q-item-section>
           </q-item>
-          <q-item
+          <!-- <q-item
             active-class="active-item q-px-md"
             class="q-ml-md zitem"
             :to="{ name: 'investor:approved' }"
@@ -111,7 +113,7 @@
               <q-icon color="green-4" name="check_circle" />
             </q-item-section>
             <q-item-section> Approved Applications </q-item-section>
-          </q-item>
+          </q-item> -->
 
           <q-item
             active-class="active-item q-px-md"

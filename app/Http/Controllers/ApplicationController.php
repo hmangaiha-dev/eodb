@@ -227,6 +227,21 @@ class ApplicationController extends Controller
             'list' => $model->certificates()->get()
         ], 200);
     }
+
+    public function getUserCertificates()
+    {
+        // $array =  collect(Auth::user()->certificates()->get());
+        // return $array;
+        return response()->json([
+            'list' => collect(Auth::user()->certificates()->get()),
+        ],200);
+        // return response()->json([
+        //     'list' => $model->certificates()->get()
+        // ], 200);
+    }
+
+
+    
     public function createCertificate(Request $request, Application $model)
     {
         $certificate = $model->certificates()->save(new Certificate($request->only((new Certificate())->getFillable())));

@@ -197,7 +197,8 @@
         <span class="asterisk">*</span></label
       >
       <q-uploader
-      accept=".pdf"
+        @removed="formData.detail_project_report = null"
+        accept=".pdf"
         flat
         @added="
           (files) => {

@@ -46,7 +46,7 @@ class InvestorController extends Controller
                 'original_name' => $key,
                 'mime' => 'jpg',
                 'label' =>  $key,
-                'size' => '2',   
+                'size' => '2',
                 'path' => $path
             ]);
         }
@@ -54,13 +54,15 @@ class InvestorController extends Controller
 
     public function getApplications()
     {
-        // return 'yes';
-
         $user =  Auth::user();
-
-        $app = $user->applications()->with('department')->orderBy('applications.created_at', 'desc')->get();
-
-        return $app;
+        return response()->json([
+            'list' => $user->applications()->with('department')->orderBy('applications.created_at', 'desc')->get(),
+            'certs' => $user->certificates()->get(),
+            'common' => $user->commonApplications()
+                ->with(
+                    ['partA', 'partB', 'partC', 'partD', 'partE', 'partF', 'partG', 'selfDeclaration']
+                )->first()
+        ]);
     }
 
 

@@ -1,4 +1,4 @@
- // import state from './state'
+// import state from './state'
 // import * as getters from './getters'
 // import * as mutations from './mutations'
 // import * as actions from './actions'
@@ -10,6 +10,8 @@ const state = () => {
   return {
     globalLoading: false,
     deptServices: [],
+    applications: [],
+    certs: [],
     common: {
       partA: {},
       partB: {},
@@ -18,7 +20,6 @@ const state = () => {
       partE: {},
       partF: {},
       partG: {},
-
     },
   };
 };
@@ -27,25 +28,41 @@ const getters = {
   getPartF: (state) => state.common.partF,
 };
 
-
-
-
 const mutations = {
   setGlobalLoading: (state, val) => {
     state.globalLoading = val;
   },
 
-  setPart: (state,val) => {
-    state.common.partA = val.part_a
-    state.common.partB = val.part_b
-    state.common.partC = val.part_c
-    state.common.partD = val.part_d
-    state.common.partE = val.part_e
-    state.common.partF = val.part_f
-    state.common.partG = val.part_g
-    state.common.selfDeclaration = val.self_declaration
+  setPart: (state, val) => {
+    console.log("set part");
+    state.common.partA = val.part_a;
+    state.common.partB = val.part_b;
+    state.common.partC = val.part_c;
+    state.common.partD = val.part_d;
+    state.common.partE = val.part_e;
+    state.common.partF = val.part_f;
+    state.common.partG = val.part_g;
+    state.common.selfDeclaration = val.self_declaration;
     // console.log('setA',state.common.partA);
+  },
 
+  setCerts: (state, val) => {
+    state.certs = val;
+  },
+  setApplications: (state, val) => {
+    // console.log('globalData app',state.applications);
+    state.applications = val.list;
+    state.certs = val.certs;
+    state.common.partA = val.common.part_a;
+    state.common.partB = val.common.part_b;
+    state.common.partC = val.common.part_c;
+    state.common.partD = val.common.part_d;
+    state.common.partE = val.common.part_e;
+    state.common.partF = val.common.part_f;
+    state.common.partG = val.common.part_g;
+    state.common.selfDeclaration = val.common.self_declaration;
+    // state.certs = val.certs;
+    // context.commit("setPart", val.common);
   },
 
   setDeptServices: (state, data) => {
@@ -58,21 +75,14 @@ const actions = {
     context.commit("setGlobalLoading", val);
   },
 
-  fetchCommonData: (context) => {
+  fetchCommonData: async (context) => {
     // context.dispatch("globalData/setGlobalLoading", true, { root: true });
-    api
-      .get("/investor/common-applications")
-      .then((res) => {
-        // const {
-        //   part_a,part_b
-        // } = res.data;
-
-        // console.log('fetch res',res.data.part_a);
-
-        context.commit("setPart", res.data)
-
-        // console.log('services api data',services[0].items);
-      })
+    await api
+      .get("/investor/applications")
+      .then(
+        (res) => context.commit("setApplications", res.data)
+        // console.log('services api data',list);
+      )
       .catch((err) => {
         // const q = useQuasar();
         // q.notify({

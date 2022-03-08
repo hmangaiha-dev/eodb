@@ -236,7 +236,12 @@ export default {
 
       if (val == "b") {
         formDatas.delete("din_details");
+
+        // formDatas.append("din_attach", []);
+        // return console.log("din", applications[0].din_details);
         // console.log('drtilas',applications[0].din_details);
+
+        // applications[0].din_details.length <
         // return
         applications[0].din_details.forEach((element, index) => {
           formDatas.append(`din_attach[${index}][id]`, element.id);

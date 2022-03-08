@@ -35,6 +35,7 @@
       </div>
       <div class="col-xs-12 col-md-6">
         <q-uploader
+          @removed="formData.applicant_photo = null"
           accept=".jpg,.png,image/*"
           flat
           @added="
@@ -50,20 +51,18 @@
           url="http://localhost:4444/upload"
         />
 
-        <q-img
+        <!-- <q-img
           v-if="mimeType(formData.applicant_photo)"
           :src="`http://localhost:8000/storage/${formData.applicant_photo}`"
           style="max-width: 150px; max-height: 150px; margin-top: -54px"
           spinner-color="primary"
           spinner-size="82px"
-        />
-
-        <!-- {{ typeof formData.udyog_memorandum }} -->
+        /> -->
 
         <q-btn
           v-if="
             typeof formData.applicant_photo !== 'object' &&
-            !mimeType(formData.applicant_photo)
+            formData.applicant_photo
           "
           flat
           style="max-width: 150px; margin-top: -100px"
@@ -333,6 +332,7 @@ export default {
         let mime = String(val).substring(index + 1);
         return typeof val === "string" && val ? mime != "pdf" : false;
       },
+
       attachment,
       showAttachment: (val) => {
         attachment.value = val;
