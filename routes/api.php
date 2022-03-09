@@ -117,7 +117,7 @@ Route::group(['prefix' => 'application-profiles', 'middleware' => ['auth:sanctum
     Route::get('{model}/print-template', [ApplicationProfileController::class, 'detail']);
 });
 
-Route::group(['prefix' => 'applications', 'middleware' => ['auth:sanctum']], function () {
+Route::group(['prefix' => 'applications', 'middleware' => ['auth:sanctum','staff']], function () {
     Route::get('certificates', [ApplicationController::class, 'getUserCertificates']);
     //    Route::post('submit', [ApplicationController::class, 'submitApplication']);
     Route::get('me', [DeskController::class, 'myApplication']);

@@ -104,6 +104,7 @@ export default {
       api
         .post(`web/act-rule/${formData.id}`, data)
         .then((res) => {
+          return console.log('user',res.data);
           q.notify({
             type: "positive",
             message: res?.data?.message,

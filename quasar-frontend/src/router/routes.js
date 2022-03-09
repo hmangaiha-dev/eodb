@@ -40,6 +40,18 @@ const routes = [
         component: () => import("pages/public/Login.vue"),
       },
       {
+        path: "forgot-password",
+        // beforeEnter: checkAlreadyLoggedIn,
+        name: "investor:forgot-password",
+        component: () => import("pages/public/ForgotPassword"),
+      },
+      {
+        path: "reset-password/:token",
+        // beforeEnter: checkAlreadyLoggedIn,
+        name: "investor:new-password",
+        component: () => import("pages/public/NewPassword"),
+      },
+      {
         path: "staff-login",
         // beforeEnter: checkAlreadyLoggedIn,
         name: "staff:login",

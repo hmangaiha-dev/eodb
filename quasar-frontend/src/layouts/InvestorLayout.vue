@@ -49,12 +49,12 @@
       </q-header>
 
       <q-drawer
-
+        width="400"
+        :breakpoint="1580"
         persistent
         class="q-pa-md"
         v-model="leftDrawerOpen"
         side="left"
-        style="min-width: 280px"
         bordered
       >
         <q-item>
@@ -258,11 +258,8 @@ export default {
     const menuItems = reactive([{}]);
 
     onMounted(async () => {
-      console.log("dsfsf");
       store.dispatch("globalData/fetchDeptServices");
       await store.dispatch("globalData/fetchCommonData");
-
-      console.log("investor service", store.state.globalData);
     });
 
     return {

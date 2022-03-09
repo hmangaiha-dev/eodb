@@ -4,64 +4,63 @@
       <div class="col-md-6 col-xs-10 col-sm-8 col-lg-3 col-md-3">
         <q-form @submit="submit" @reset="reset">
           <q-card flat class="zcard">
-            <p class="text-h6 text-weight-regular q-mt-md text-center">Login</p>
+            <p class="text-h6 text-weight-regular q-mt-md text-center">
+              Reset New Password
+            </p>
             <q-card-section>
               <q-input
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
+                type="email"
                 v-model="loginData.email"
                 label="Email"
                 outlined
-              />
-
-              <q-input
-                v-model="loginData.password"
-                filled
-                :type="isPwd ? 'password' : 'text'"
-                label="Password"
               >
-                <template v-slot:append>
-                  <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
-                    class="cursor-pointer"
-                    @click="isPwd = !isPwd"
-                  />
+              </q-input>
+            </q-card-section>
+            <q-card-section>
+              <q-input
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                type="password"
+                v-model="loginData.password"
+                label="Password"
+                outlined
+              >
+                <template v-slot:prepend>
+                  <q-icon name="lock" />
+                </template>
+              </q-input>
+            </q-card-section>
+            <q-card-section>
+              <q-input
+                :rules="[
+                  (val) =>
+                    loginData.password == loginData.confirmPassword ||
+                    'Password do not match',
+                ]"
+                type="password"
+                v-model="loginData.confirmPassword"
+                label="Confirm Password"
+                outlined
+              >
+                <template v-slot:prepend>
+                  <q-icon name="lock" />
                 </template>
               </q-input>
             </q-card-section>
             <q-card-section style="display: flex" class="q-py-none">
-              <q-checkbox right-label v-model="remember" label="Remember me" />
               <q-space />
               <q-btn
                 outline
                 padding="sm"
                 type="submit"
                 color="primary"
-                label="Login"
-                class="q-mr-md"
+                label="Confirm"
+                class="full-width"
               />
-              <q-btn padding="sm" type="reset" color="red" label="Reset" />
-            </q-card-section>
-            <q-card-section class="q-py-xs">
-              <router-link
-                style="text-decoration: none; color: #3c8dbc"
-                class="q-mb-md"
-                :to="{ name: 'investor:forgot-password' }"
-              >
-                Forgot password?
-              </router-link>
-              <br />
-            </q-card-section>
-
-            <q-card-section class="q-py-xs">
-              <router-link
-                style="text-decoration: none; color: #3c8dbc"
-                class="q-mt-lg"
-                to="/register"
-              >
-                Register as new membership
-              </router-link>
             </q-card-section>
           </q-card>
         </q-form>
@@ -82,7 +81,7 @@
 import { useQuasar } from "quasar";
 import { reactive } from "@vue/reactivity";
 import { api } from "src/boot/axios";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
 
@@ -94,9 +93,14 @@ export default {
     const store = useStore();
     const q = useQuasar();
     const loginData = reactive({
-      email: "investor@email.com",
-      password: "password",
+      email: "",
+      token: route.params.token,
+      password: "",
+      confirmPassword: "",
+      // password: "password",
     });
+
+    onMounted(() => {});
 
     return {
       loginData,
@@ -106,12 +110,21 @@ export default {
 
       submit: () => {
         api
-          .post("auth/login", loginData)
+          .post("reset-password", loginData)
           .then((res) => {
-            const { token, user } = res.data;
-            store.dispatch("authData/setCurrentUser", user);
-            store.dispatch("authData/setToken", token);
-            router.push(route.redirectedFrom || "investor");
+            // return console.log("res data", res.data);
+            // const { token, user } = res.data;
+
+            q.notify({
+              color: 'primary',
+              position: "top",
+              icon: "announcement",
+              message: res.data.message,
+            });
+
+            router.push({
+              name: 'investor:login'
+            });
             // router.push({ name: "home" });
 
             // api.defaults.headers["Authorization"] = `Bearer ${token}`;

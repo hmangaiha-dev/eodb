@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('guest')->name('password.reset');
 
 
-Route::post('/reset-password',[ResetPasswordController::class,'postResetPassord'])->middleware('guest')->name('password.update');
+// Route::post('/send-reset-link',[ResetPasswordController::class,'resetPassword'])->middleware('guest')->name('password.update');
+// Route::post('/reset-password',[ResetPasswordController::class,'postResetPassord'])->middleware('guest')->name('password.update');
 Route::get('{any}', function () {
     return view('app');
 })->where('any', '.*');

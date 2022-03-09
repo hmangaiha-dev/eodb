@@ -66,7 +66,7 @@ class OfficeController extends Controller
     public function update(Request $request, Office $office)
     {
         $staff = auth('sanctum')->user();
-        if (!$staff->tokenCan('office:update'))
+        if (!$staff->tokenCan('office:edit'))
             throw new UnauthorizedException('Unauthorized access');
 
         $this->validate($request, [

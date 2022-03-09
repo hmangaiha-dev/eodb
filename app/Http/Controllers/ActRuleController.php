@@ -107,7 +107,7 @@ class ActRuleController extends Controller
 
     public function update(ActRule $model, Request $request)
     {
-        $staff = auth()->user();
+        $staff = auth('sanctum')->user();
         $office = $staff->currentPost();
         if (!blank($office))
             abort_if($office->id != $model->department_id, 400, 'Insufficient permision!');

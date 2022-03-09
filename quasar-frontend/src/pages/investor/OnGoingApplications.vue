@@ -63,6 +63,7 @@ export default {
       dateFilter,
       showApplicantDetail: (id) => {
         // return console.log("show app detail",id);
+        //dff
         router.push({
           name: "investor:show-applicant",
           params: {

@@ -38,44 +38,60 @@
       </div>
     </div>
 
-    <div
-      class="row q-col-gutter-md q-pa-sm container-lg"
-    >
+    <div class="row q-col-gutter-md q-pa-sm container-lg">
       <div style="width: 100%" class="col-12 q-pa-md">
-        <q-toolbar class="justify-center bg-white shadow-1 ">
-          <q-item :focused="tab==='services'" clickable @click="tab='services'">
+        <q-toolbar class="justify-center bg-white shadow-1">
+          <q-item
+            :focused="tab === 'services'"
+            clickable
+            @click="tab = 'services'"
+          >
             <q-item-section>
               <q-item-label class="nav-item">Online Services</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item  :focused="tab==='about'"   clickable @click="tab='about'">
+          <q-item :focused="tab === 'about'" clickable @click="tab = 'about'">
             <q-item-section>
               <q-item-label class="nav-item">About Us</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item :focused="tab==='actrules'"  clickable @click="tab='actrules'">
+          <q-item
+            :focused="tab === 'actrules'"
+            clickable
+            @click="tab = 'actrules'"
+          >
             <q-item-section>
               <q-item-label class="nav-item">Act & Rules</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item :focused="tab==='noti'"  class="nav-item" clickable @click="tab='noti'">
+          <q-item
+            :focused="tab === 'noti'"
+            class="nav-item"
+            clickable
+            @click="tab = 'noti'"
+          >
             <q-item-section>
               <q-item-label class="nav-item">Notifications</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item :focused="tab==='other'"  class="nav-item" clickable @click="tab='other'">
+          <q-item
+            :focused="tab === 'other'"
+            class="nav-item"
+            clickable
+            @click="tab = 'other'"
+          >
             <q-item-section>
               <q-item-label class="nav-item">Other Information</q-item-label>
             </q-item-section>
           </q-item>
         </q-toolbar>
-        <br/>
+        <br />
         <div class="znhovercard">
           <q-tabs
             v-if="tab == 'services'"
             stretch
             v-model="tabCategory"
-            class="bg-grey-3 q-mt-md text-grey-8 "
+            class="bg-grey-3 q-mt-md text-grey-8"
           >
             <q-tab name="ALL-CATEGORIES" label="All Categories" />
             <q-tab name="PRE-ESTABLISHMENT" label="PRE-ESTABLISHMENT" />
@@ -106,8 +122,8 @@
                     <q-td key="how_to_apply" :props="props">
                       <q-btn
                         @click="
-                        showDialog(props.row.how_to_apply, 'How to apply')
-                      "
+                          showDialog(props.row.how_to_apply, 'How to apply')
+                        "
                         class="text-weight-regular"
                         color="blue-6"
                         flat
@@ -117,11 +133,11 @@
                     <q-td key="who_should_apply" :props="props">
                       <q-btn
                         @click="
-                        showDialog(
-                          props.row.who_should_apply,
-                          'Who should apply'
-                        )
-                      "
+                          showDialog(
+                            props.row.who_should_apply,
+                            'Who should apply'
+                          )
+                        "
                         class="text-weight-regular"
                         color="blue-6"
                         flat
@@ -131,11 +147,11 @@
                     <q-td key="document_to_submit" :props="props">
                       <q-btn
                         @click="
-                        showDialog(
-                          props.row.document_to_submit,
-                          'Document to be submitted'
-                        )
-                      "
+                          showDialog(
+                            props.row.document_to_submit,
+                            'Document to be submitted'
+                          )
+                        "
                         class="text-weight-regular"
                         color="blue-6"
                         flat
@@ -195,10 +211,7 @@
               <OtherInfo />
             </q-tab-panel>
           </q-tab-panels>
-
         </div>
-
-
       </div>
     </div>
 
@@ -281,7 +294,7 @@ export default {
         })
         .catch((err) => console.log("error", err));
 
-      refresh();
+      refreshServies();
 
       onRequest();
     });
@@ -293,13 +306,12 @@ export default {
     watch(
       () => tabCategory.value,
       (newvalue, oldValue) => {
-        refresh();
+        refreshServies();
 
         if (newvalue === "ALL-CATEGORIES") return;
-
-        const finalResult = rows.value.filter((service) => {
-          return service?.operational_type == newvalue;
-        });
+        const finalResult = rows.value.filter(
+          (service) => service?.operational_type == newvalue
+        );
 
         rows.value = finalResult;
 
@@ -311,18 +323,18 @@ export default {
       () => route.params.deptname,
       () => {
         if (route.name != "common:create") return;
-
-        refresh();
+        tabCategory.value = "ALL-CATEGORIES";
+        refreshServies();
       }
     );
 
-    const refresh = () => {
+    const refreshServies = () => {
       const result = deptServices.filter((dept, index) => {
         // console.log('dept value and index',dept.slug,index);
         return dept.slug == route.params.deptname;
       });
 
-      dept_name.value = result[0].dept_name;
+      dept_name.value = result[0]?.dept_name;
 
       !result.length && router.push({ name: "invalid" });
 
@@ -424,7 +436,7 @@ export default {
         "PRE-OPERATION",
         "POST-OPERATION",
       ],
-      refresh,
+      refreshServies,
       dialog,
       dialogKey,
       dialogContent,

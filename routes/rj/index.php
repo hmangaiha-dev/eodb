@@ -5,8 +5,12 @@ use App\Http\Controllers\CommonApplicationController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\InvestorProfileController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Models\Application;
+use Illuminate\Http\Request;
 use App\Models\DepartmentService;
+use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +64,35 @@ Route::group(['prefix' => 'investor/common-applications', 'middleware' => 'auth:
     Route::post('store', [CommonApplicationController::class, 'store']);
     // Route::get('{application}', [InvestorController::class, 'detail'])->where('application', '[0-9]+');
 });
+
+
+
+// Route::post('/forgot-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password:email');
+// Route::post('/forgot-password', function (Request $request) {
+//     $request->validate(['email' => 'required|email']);
+
+//     $status = Password::sendResetLink(
+//         $request->only('email')
+//     );
+
+//     // return $status === Password::RESET_LINK_SENT
+//     //     ? back()->with(['status' => __($status)])
+//     //     : back()->withErrors(['email' => __($status)]);
+// })->middleware('guest')->name('password.email');
+
+
+Route::get('/reset-password/{token}', function ($token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('web')->name('password.reset');
+
+
+
+// Route::post('/reset-password', function (Request $request) {
+//     // dd($request->all());
+// })->middleware('guest')->name('password.update');
+
+Route::post('/forgot-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
+Route::post('/reset-password', [ResetPasswordController::class, 'postResetPassword'])->middleware('guest')->name('password.reset.post');
 
 
 // Route::get('/service', function () {

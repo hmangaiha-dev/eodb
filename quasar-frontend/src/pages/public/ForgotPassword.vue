@@ -4,64 +4,29 @@
       <div class="col-md-6 col-xs-10 col-sm-8 col-lg-3 col-md-3">
         <q-form @submit="submit" @reset="reset">
           <q-card flat class="zcard">
-            <p class="text-h6 text-weight-regular q-mt-md text-center">Login</p>
+            <p class="text-h6 text-weight-regular q-mt-md text-center">
+              Reset Password
+            </p>
             <q-card-section>
               <q-input
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
                 v-model="loginData.email"
-                label="Email"
+                label="Registered Email id"
                 outlined
               />
-
-              <q-input
-                v-model="loginData.password"
-                filled
-                :type="isPwd ? 'password' : 'text'"
-                label="Password"
-              >
-                <template v-slot:append>
-                  <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
-                    class="cursor-pointer"
-                    @click="isPwd = !isPwd"
-                  />
-                </template>
-              </q-input>
             </q-card-section>
             <q-card-section style="display: flex" class="q-py-none">
-              <q-checkbox right-label v-model="remember" label="Remember me" />
               <q-space />
               <q-btn
                 outline
                 padding="sm"
                 type="submit"
                 color="primary"
-                label="Login"
-                class="q-mr-md"
+                label="Proceed"
+                class="full-width"
               />
-              <q-btn padding="sm" type="reset" color="red" label="Reset" />
-            </q-card-section>
-            <q-card-section class="q-py-xs">
-              <router-link
-                style="text-decoration: none; color: #3c8dbc"
-                class="q-mb-md"
-                :to="{ name: 'investor:forgot-password' }"
-              >
-                Forgot password?
-              </router-link>
-              <br />
-            </q-card-section>
-
-            <q-card-section class="q-py-xs">
-              <router-link
-                style="text-decoration: none; color: #3c8dbc"
-                class="q-mt-lg"
-                to="/register"
-              >
-                Register as new membership
-              </router-link>
             </q-card-section>
           </q-card>
         </q-form>
@@ -94,8 +59,8 @@ export default {
     const store = useStore();
     const q = useQuasar();
     const loginData = reactive({
-      email: "investor@email.com",
-      password: "password",
+      email: "",
+      // password: "password",
     });
 
     return {
@@ -106,19 +71,18 @@ export default {
 
       submit: () => {
         api
-          .post("auth/login", loginData)
+          .post("forgot-password", loginData)
           .then((res) => {
-            const { token, user } = res.data;
-            store.dispatch("authData/setCurrentUser", user);
-            store.dispatch("authData/setToken", token);
-            router.push(route.redirectedFrom || "investor");
-            // router.push({ name: "home" });
-
-            // api.defaults.headers["Authorization"] = `Bearer ${token}`;
+            // return console.log('res data',res.data);
+            q.notify({
+              color: "primary",
+              position: "top",
+              icon: "announcement",
+              message: res.data.message,
+            });
           })
           .catch((err) => {
             console.log("error post response", err.response.data.message);
-
             err.response.data.message &&
               q.notify({
                 type: "negative",
