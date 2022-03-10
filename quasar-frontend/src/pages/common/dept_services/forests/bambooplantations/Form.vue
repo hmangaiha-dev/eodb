@@ -292,7 +292,14 @@ Scheme2..."
             D) Any Other Doucments (if Any)
             <span class="asterisk"> *</span></label
           >
-          <q-input outlined v-model="formData.bamboo_other" />
+          <q-file
+            v-model="formData.bamboo_other"
+            outlined
+          >
+            <template v-slot:prepend>
+              <q-icon name="attach_file" />
+            </template>
+          </q-file>
         </div>
       </div>
     </div>
@@ -315,7 +322,7 @@ Scheme2..."
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, ref , watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -367,15 +374,17 @@ export default {
     });
 
     const getA = () => {
-      const { applicant_name,city_town, postal_code,address, mobile_no,email} =
-        store.state.globalData.common.partA;
-
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+      } = store.state.globalData.common.partA;
 
       formData.bamboo_1 = applicant_name;
-      formData.bamboo_3  =city_town;
-
-
-  
+      formData.bamboo_3 = city_town;
     };
 
     return {

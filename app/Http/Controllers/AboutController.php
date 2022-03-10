@@ -12,9 +12,6 @@ class AboutController extends Controller
         $staff = auth()->user();
         $office = $staff->currentPost();
         $dept = Department::query();
-        // abort_if(blank($office), 400, 'No office found');
-        // $data = Department::query()->where('dept_code', $office->code)
-        //     ->first();
 
         $dept->when(isset($office), function ($q) use ($office) {
             return $q->where('dept_code', $office->code);

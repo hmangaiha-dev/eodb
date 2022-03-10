@@ -26,21 +26,6 @@ class NotificationController extends Controller
             return $q->where('dept_code', $office->code)->first();
         })->first();
 
-        // // Thangtea code
-        // $department = Department::query()->where('dept_code', $office->code)
-        //     ->first();
-        // if (blank($department)) {
-        //     abort(500, 'No posting found');
-        // }
-
-        // $search = $request->get('search');
-        // return [
-        //     'list' => $department->notifications()->with('attachment')
-        //         ->when($search, fn ($q) => $q->where('number', 'LIKE', "$search")->orWhere('subject', 'LIKE', "$search"))
-        //         ->paginate(),
-        // ];
-        // // Thangtea code
-
         $search = $request->get('search');
         return [
             'list' => $department->with('notifications', fn ($q) => $q->with('attachment')->when($search, fn ($q) => $q->where('number', 'LIKE', "%{$search}%")->orWhere('subject', 'LIKE', "%{$search}%"))->get())->paginate(),
@@ -86,13 +71,6 @@ class NotificationController extends Controller
                 $request->only((new Notification())->getFillable())
             );
         });
-
-        // $department = Department::query()->where('dept_code', $office->code)
-        //     ->first();
-        // if (blank($department)) {
-        //     abort(500, 'No posting found');
-        // }
-        // $model = $department->notifications()->create($request->only((new Notification())->getFillable()));
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $path = Storage::disk(Attachment::DISK)->put('notification', $file);
@@ -116,12 +94,6 @@ class NotificationController extends Controller
                 ->get())->paginate(),
             'role' => $staff->hasRole('admin')
         ];
-
-        // return [
-        //     'list' => $department->notifications()->with('attachment')->paginate(),
-        //     'data' => $model,
-        //     'message' => 'Notification saved successfully',
-        // ];
     }
 
     public function update(Request $request, Notification $model)
@@ -158,36 +130,10 @@ class NotificationController extends Controller
                 ->get())->paginate(),
             'role' => $staff->hasRole('admin')
         ];
-
-
-
-
-        // $department = Department::query()->where('dept_code', $office->code)
-        //     ->first();
-        // if (blank($department)) {
-        //     abort(500, 'No posting found');
-        // }
-        // return [
-        //     'list' => $department->notifications()->with('attachment')->paginate(),
-        //     'message' => 'Notification updated successfully'
-        // ];
     }
 
     public function destroy(Request $request, Notification $model)
     {
-        // $staff = auth()->user();
-        // $office = $staff->currentPost();
-
-        // $department = Department::query()->where('dept_code', $office->code)
-        //     ->first();
-        // if (blank($department)) {
-        //     abort(500, 'No posting found');
-        // }
-        // $model->delete();
-        // return [
-        //     'list' => $department->notifications()->with('attachment')->paginate(),
-        //     'message' => 'Notification deleted successfully'
-        // ];
 
         $staff = auth()->user();
         $office = $staff->currentPost();
@@ -203,7 +149,7 @@ class NotificationController extends Controller
 
         $file = $model->attachment()->first()->path;
 
-        Storage::delete($file);
+        Storage::delete($file); 
 
         return [
             'list' => $department->with('notifications', fn ($q) => $q->with('attachment')

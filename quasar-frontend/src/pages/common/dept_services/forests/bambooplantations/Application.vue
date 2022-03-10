@@ -83,7 +83,7 @@ export default {
       api
         .post("/applications/submit", formDatas)
         .then((res) => {
-          // return console.log("response value", res.data);
+          return console.log("response value", res.data);
           q.notify({
             message: "Application submitted successfully",
             color: "green",

@@ -85,7 +85,7 @@ class ApplicationController extends Controller
 
     public function submitApplication(Request $request)
     {
-        //     return $request->file();
+            // return $request->file();
 
 
         $this->validate($request, [
@@ -118,32 +118,15 @@ class ApplicationController extends Controller
 
         if ($request->application_code == 'LAND_REVENUE_LSC' || $request->application_code == 'LAND_REVENUE_PATTA' || $request->application_code == 'ENV_FOREST_BAMBOO') {
             if ($request->application_code == 'ENV_FOREST_BAMBOO') {
-                $arrs =  (json_decode($request->bamboo_particulars));
-                foreach ($arrs as $arr) {
-                    $application->bamboos()->create(
-                        (array)$arr
-                    );
-                }
+                $arrs = (array) json_decode($request->bamboo_particulars, true);
+                $application->bamboos()->createMany($arrs);
             } else {
-                $arrs =  (json_decode($request->lsc_details));
-                foreach ($arrs as $arr) {
-                    $application->lscDetails()->create(
-                        (array)$arr
-                        // 'name' => $arr->name,
-                        // 'address' => $arr->address,
-                        // 'kum' => $arr->kum,
-                        // 'caste' => $arr->caste,
-                    );
-                }
+                $arrs =  (array)json_decode($request->lsc_details,true);
+                $application->lscDetails()->createMany($arrs);
             }
-            // $application->lscDetails()->createMany($request->lsc_details);
-
         }
-        // return $application;
 
         DB::transaction(function ($cb) use ($appProfile, $request, $application) {
-            //        $formData=$request->except(['application_code', 'department_id']);
-            //        $application = new Application();
             $keysArr = KeysUtil::getApplicationKeys($request->get('application_code'));
             foreach ($keysArr as $key) {
                 $application->applicationValues()->create([
@@ -234,14 +217,14 @@ class ApplicationController extends Controller
         // return $array;
         return response()->json([
             'list' => collect(Auth::user()->certificates()->get()),
-        ],200);
+        ], 200);
         // return response()->json([
         //     'list' => $model->certificates()->get()
         // ], 200);
     }
 
 
-    
+
     public function createCertificate(Request $request, Application $model)
     {
         $certificate = $model->certificates()->save(new Certificate($request->only((new Certificate())->getFillable())));
@@ -279,11 +262,13 @@ class ApplicationController extends Controller
             "{{{$item->field_key}}}" => $item->field_value
         ])->toArray();
 
-        if ($model->application_code == 'LAND_REVENUE_LSC' || $model->application_code == 'LAND_REVENUE_PATTA') {
+        if ($model->application_code == 'LAND_REVENUE_LSC' || $model->application_code == 'LAND_REVENUE_PATTA' || $model->application_code == 'ENV_FOREST_BAMBOO') {
 
             if ($model->application_code == 'ENV_FOREST_BAMBOO') {
                 $details = $model->bamboos()->get();
-                $views = view('bamboo.table', ["details" => $details, 'code' => $model->application_code])->render();
+                $field_key = ['bamboo_total_species','bamboo_total_nos','bamboo_total_total_bamboo','bamboo_total_total_mature'];
+                $total = $model->applicationValues()->whereIn('field_key',$field_key)->get()->pluck('field_value');
+                $views = view('bamboo.table', ["details" => $details, 'code' => $model->application_code,'total' => $total])->render();
                 $content = [
                     "{{content}}" => $views
                 ];

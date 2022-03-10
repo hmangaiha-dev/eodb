@@ -36,7 +36,7 @@ class Application extends Model
     }
     public function bamboos(): HasMany
     {
-        return $this->hasMany(Bamboo::class);
+        return $this->hasMany(Bamboo::class,'application_id','id');
     }
 
     public function states()

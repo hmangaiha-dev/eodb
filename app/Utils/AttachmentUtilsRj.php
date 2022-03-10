@@ -10,7 +10,7 @@ class AttachmentUtilsRj
         'application_code' => 'POLLUTION_CONSENT_INDUSTRIES',
         'key' => 'pollution_consent_general_ev_3_1_2_a',
         'label' => '3.1.2 a) Attached Map Showing Topographical Features Of The Area',
-        'disk' => 'public',
+        'disk' => 'public', 
         'folder' => 'pollution/1/attachments'
     ];
     const POLLUTION_CONSENT_INDUSTRIES_SIGNATURE = [
@@ -1267,6 +1267,38 @@ class AttachmentUtilsRj
         'label' => "Clearance certificate",
         'disk' => 'public',
         'folder' => 'land/7/attachments'
+    ];
+    const ENV_LAND_PASS = [
+        'mime' => 'images/*',
+        'application_code' => 'ENV_FOREST_BAMBOO',
+        'key' => 'bamboo_landpass',
+        'label' => "Attested Copy Of Land Pass(LSC/Patta./VC Pass)",
+        'disk' => 'public',
+        'folder' => 'env/1/attachments'
+    ];
+    const ENV_LOCATION_MAP = [
+        'mime' => 'images/*',
+        'application_code' => 'ENV_FOREST_BAMBOO',
+        'key' => 'bamboo_map',
+        'label' => "B) Location Map Of The Plantation Showing Roads, Paths, Rivers, Etc",
+        'disk' => 'public',
+        'folder' => 'env/1/attachments'
+    ];
+    const ENV_NOC = [
+        'mime' => 'images/*',
+        'application_code' => 'ENV_FOREST_BAMBOO',
+        'key' => 'bamboo_noc',
+        'label' => "C) No Objection Certificate (NOC) From Village Council Concerned.",
+        'disk' => 'public',
+        'folder' => 'env/1/attachments'
+    ];
+    const ENV_OTHER = [
+        'mime' => 'images/*',
+        'application_code' => 'ENV_FOREST_BAMBOO',
+        'key' => 'bamboo_other',
+        'label' => "Any Other Doucments (if Any)",
+        'disk' => 'public',
+        'folder' => 'env/1/attachments'
     ];
 
 

@@ -99,10 +99,6 @@ class ActRuleController extends Controller
             'list' => $department->with('acts', fn ($q) => $q->with('attachment'))->paginate(),
             'message' => 'Act rule updated successfully'
         ];
-        // return [
-        //     'data' => $model,
-        //     'message' => 'Act & rules saved successfully',
-        // ];
     }
 
     public function update(ActRule $model, Request $request)
@@ -135,7 +131,6 @@ class ActRuleController extends Controller
 
         return [
             'list' => $department->with('acts', fn ($q) => $q->with('attachment'))->paginate(),
-            // 'list' => $department->acts()->with('attachment')->paginate(),
             'message' => 'Act rule updated successfully'
         ];
     }
@@ -143,7 +138,6 @@ class ActRuleController extends Controller
     public function destroy(Request $request, ActRule $model)
     {
 
-        // return auth()->user()->hasRole('admin');
         $staff = auth()->user();
         $office = $staff->currentPost();
         if (!blank($office))
@@ -155,14 +149,6 @@ class ActRuleController extends Controller
         }, function () {
             abort(500, 'No posting found');
         });
-        // if (blank($office) && auth()->user()->hasRole('admin')) {
-        //     abort(500, 'No posting found');
-        // }
-        // $department = Department::query()->where('dept_code', $office->code)
-        //     ->first();
-
-        // $model->delete();
-
         $file = $model->attachment()->first()->path;
         Storage::delete($file);
         return [

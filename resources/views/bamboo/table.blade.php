@@ -44,6 +44,14 @@
 
             </tr>
         @endforeach
+        <tr>
+            <td class="text-center">Total</td>
+            {{-- <td class="text-center"><?php echo '{{bamboo_total_species}}' ?></td> --}}
+            <td class="text-center"> {{ $total[0] }} </td>
+            <td class="text-center"> {{ $total[1] }} </td>
+            <td class="text-center"> {{ $total[2] }} </td>
+            <td class="text-center"> {{ $total[3] }} </td>
+        </tr>
 
 
     </tbody>

@@ -650,6 +650,15 @@ const SIGN_POWER_CONNECTED_LOAD=[
         'lsc_twelve' => self::LAND_REVENUE_LSC_12,
 
 
+        'bamboo_map' => self::ENV_LOCATION_MAP,
+        'bamboo_noc' => self::ENV_NOC,
+        'bamboo_other' => self::ENV_OTHER,
+        'bamboo_landpass' => self::ENV_LAND_PASS,
+
+
+
+
+
 
 
         
