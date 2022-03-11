@@ -13,7 +13,7 @@ class ApplicationProfile extends Model
     use HasFactory;
 
     protected $fillable = ['code', 'title','application_id', 'operational_type','remark','published','office_id'];
-    protected $appends = ['last_step','actions'];
+    protected $appends = ['last_step','actions','dept_name'];
 
     public function printTemplate(): HasOne
     {
@@ -27,6 +27,10 @@ class ApplicationProfile extends Model
     {
         return $this->belongsTo(Office::class);
     }
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class,'office_id','id');
+    }
     public function processFlows(): HasMany
     {
         return $this->hasMany(ProcessFlow::class);
@@ -35,6 +39,11 @@ class ApplicationProfile extends Model
     public function getLastStepAttribute()
     {
         return $this->processFlows()->orderBy('step','desc')->latest()?->first()?->step;
+    }
+
+    public function getDeptNameAttribute()
+    {
+        return $this->department()->first()->dept_name;
     }
 
   public function getActionsAttribute()

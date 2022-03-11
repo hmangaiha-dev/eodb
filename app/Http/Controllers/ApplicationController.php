@@ -289,8 +289,11 @@ class ApplicationController extends Controller
 
         return response()->json([
             'template' => $result,
-            'application' => $model
+            'application' => $model,
+            'attachment' => $model->attachments()->get(),
         ], 200);
+
+
     }
 
     public function getAttachment(Request $request, Application $model)

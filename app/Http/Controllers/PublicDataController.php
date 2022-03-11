@@ -43,6 +43,7 @@ class PublicDataController extends Controller
             'staffs'=>Staff::query()->get(['id as value','full_name as label']),
             'offices'=>Office::query()->get(['id as value','name as label']),
             'application_profiles'=>ApplicationProfile::query()->get(),
+            'print_templates'=>ApplicationProfile::query()->whereHas('printTemplate')->get(),
             'departments'=>Department::query()->get(['id as value','dept_name as label']),
 
         ], 200);

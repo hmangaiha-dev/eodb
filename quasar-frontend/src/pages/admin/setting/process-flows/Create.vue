@@ -4,7 +4,7 @@
     <div class="">
       <div class="zdetailcard flex items-center justify-between">
         <q-select
-          style="min-width: 250px"
+          style="min-width: 65%"
           outlined
           item-aligned
           option-value="code"
@@ -13,12 +13,25 @@
           v-model="formData.application"
           :options="application_profiles"
           @filter="filterFn"
-          use-chips
+         
           use-input
           input-debounce="0"
-          fill-input
+         
           label="Select Application"
-        />
+        >
+          <template v-slot:option="scope">
+            <q-item v-bind="scope.itemProps">
+              <q-item-section avatar>
+                <q-icon color="primary" name="send" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ scope.opt.title }}</q-item-label>
+                <q-item-label caption>{{ scope.opt.dept_name }}</q-item-label>
+                <q-item-label caption> {{ scope.opt.code }} </q-item-label>
+              </q-item-section>
+            </q-item>
+          </template>
+        </q-select>
         <div class="text-center">
           <q-btn
             @click="localData.openDialog = true"
@@ -162,7 +175,7 @@ export default {
           getApplicationProfiles();
           const needle = val.toLowerCase();
           application_profiles.value = application_profiles.value.filter(
-            (v) => v.title.toLowerCase().indexOf(needle) > -1
+            (v) => v.title.toLowerCase().indexOf(needle) > -1 || v.code.toLowerCase().indexOf(needle) > -1 || v.dept_name.toLowerCase().indexOf(needle) > -1
           );
         });
       },

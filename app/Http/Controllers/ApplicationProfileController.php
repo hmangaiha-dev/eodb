@@ -12,10 +12,12 @@ class ApplicationProfileController extends Controller
     {
         $search = $request->get('search');
         $list = ApplicationProfile::query()
-            ->when($search,fn($q)=>$q->where('title','LIKE',"%$search%"))
+            ->when($search,fn($q)=>$q->where('title','LIKE',"%$search%")->orWhere('code','LIKE',"%$search%"))
             ->paginate();
+        $template = ApplicationProfile::query()->whereHas('printTemplate')->get();
         return response()->json([
-            'list' =>$list
+            'list' =>$list,
+            'templates' => $template
         ]);
     }
 

@@ -15,7 +15,7 @@
       <q-btn @click="printApplication" label="Print" outline class="print-hide"/>
     </div>
     <br/>
-    <Attachments class="print-hide" :attachments="localData.attachments"/>
+    <Attachments class="print-hide" :attachments="localData.attachment"/>
 
   </q-page>
 </template>
@@ -38,30 +38,31 @@ export default {
     const localData = reactive({
       application: {},
       template: 'test',
-      attachments: [],
+      attachment: [],
     });
 
     const getPrint = (id) => {
       api.get(`applications/${id}/print`)
         .then(res => {
-          const {template, application} = res.data;
+          const {template, application,attachment} = res.data;
           localData.template = template;
           localData.application = application;
+          localData.attachment = attachment;
         })
         .catch(err => q.notify({type: "negative", message: err.response?.message || ''}))
     }
-    const getAttachment = (id) => {
-      api.get(`applications/${id}/attachments`)
-        .then(res => {
-          const {list} = res.data;
-          localData.attachments = list;
-        })
-        .catch(err => q.notify({type: "negative", message: err.response?.message || ''}))
-    }
+    // const getAttachment = (id) => {
+    //   api.get(`applications/${id}/attachments`)
+    //     .then(res => {
+    //       const {list} = res.data;
+    //       localData.attachments = list;
+    //     })
+    //     .catch(err => q.notify({type: "negative", message: err.response?.message || ''}))
+    // }
     onMounted(() => {
       const id = route.params.id;
       getPrint(id);
-      getAttachment(id);
+      // getAttachment(id);
     });
     return {
       localData,

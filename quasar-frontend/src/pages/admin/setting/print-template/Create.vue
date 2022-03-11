@@ -126,7 +126,7 @@ export default {
       api.get(`application-profiles/${id}/print-template`)
         .then(res => {
           localData.application = res.data;
-          formData.content = res.data?.print_template.content || '';
+          formData.content = res.data?.print_template?.content || '';
         })
     }
     onMounted(() => detail());
