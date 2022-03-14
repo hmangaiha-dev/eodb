@@ -29,6 +29,8 @@ class PublicDataController extends Controller
     }
     public function  fetchStaffData(Request $request)
     {
+        $staff = auth('sanctum')->user();
+        $office = $staff->currentPost();
         return response()->json([
             'roles' => Role::query()->get(['id', 'name'])->map(fn($role) => ['value' => $role->id, 'label' => $role->name]),
             'permissions'=>Permission::query()->get(['id','name'])->map(fn($item)=>[
@@ -42,7 +44,9 @@ class PublicDataController extends Controller
             'districts' => DataUtil::DISTRICTS,
             'staffs'=>Staff::query()->get(['id as value','full_name as label']),
             'offices'=>Office::query()->get(['id as value','name as label']),
-            'application_profiles'=>ApplicationProfile::query()->get(),
+            'application_profiles'=>ApplicationProfile::query()->when(isset($office),function($q) use($office) {
+                return $q->where('office_id',$office->id);
+            })->get(),
             'print_templates'=>ApplicationProfile::query()->whereHas('printTemplate')->get(),
             'departments'=>Department::query()->get(['id as value','dept_name as label']),
 

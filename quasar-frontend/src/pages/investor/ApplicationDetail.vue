@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="row q-col-gutter-xs q-ma-lg">
-      <div v-html="localData.template" class="col-12" />
+      <div style="padding: 36px; border: 1px solid #ccc" v-html="localData.template" class="col-12" />
       <div class="col-12">
         <Attachments :attachments="localData.attachment" />
       </div>

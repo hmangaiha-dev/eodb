@@ -37,7 +37,7 @@
       <div class="col-sm-6 col-md-4">
         <q-card style="min-height: 150px;" bordered class="my-card">
           <q-card-section>
-            <div class="text-h6 text-center text-red-6">01</div>
+            <div class="text-h6 text-center text-red-6">0</div>
           </q-card-section>
 
           <q-separator dark inset />

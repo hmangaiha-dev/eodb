@@ -657,6 +657,11 @@ const SIGN_POWER_CONNECTED_LOAD=[
 
 
 
+        'labour_emp_contract_eight' => self::LABOUR_EMPLOYMENT_CONTRACT_RECEIPT,
+        'labour_emp_contract_signature' => self::LABOUR_EMPLOYMENT_CONTRACT_SIGNATURE,
+
+
+
 
 
 

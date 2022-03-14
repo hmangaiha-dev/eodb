@@ -6,26 +6,38 @@
       >
       <br />
       <q-checkbox
+        true-value="yes"
+        false-value="no"
         v-model="formData.land_revenue_land_transfer_one_a"
         label="a)Residential LSC"
       />
       <q-checkbox
+        true-value="yes"
+        false-value="no"
         v-model="formData.land_revenue_land_transfer_one_b"
         label="b)Agriculture LSC"
       />
       <q-checkbox
+        true-value="yes"
+        false-value="no"
         v-model="formData.land_revenue_land_transfer_one_c"
         label="c)HP"
       />
       <q-checkbox
+        true-value="yes"
+        false-value="no"
         v-model="formData.land_revenue_land_transfer_one_d"
         label="d)SHOP PASS"
       />
       <q-checkbox
+        true-value="yes"
+        false-value="no"
         v-model="formData.land_revenue_land_transfer_one_e"
         label="e)PP"
       />
       <q-checkbox
+        true-value="yes"
+        false-value="no"
         v-model="formData.land_revenue_land_transfer_one_f"
         label="f)LL"
       />
@@ -128,19 +140,27 @@
       >
       <br />
       <q-checkbox
+        true-value="yes"
+        false-value="no"
         v-model="formData.land_revenue_land_transfer_four_a"
         label="a)Rochun (inheritance)"
       />
       <q-checkbox
+        true-value="yes"
+        false-value="no"
         v-model="formData.land_revenue_land_transfer_four_b"
         label="b)A thlawna pek ( free gift)"
       />
       <q-checkbox
+        true-value="yes"
+        false-value="no"
         v-model="formData.land_revenue_land_transfer_four_c"
         label="c)Halh/ leiba rulhna ( transfer by sale)"
       />
       <q-checkbox
-        v-model="formData.land_revenue_land_transfer_four_c"
+        true-value="yes"
+        false-value="no"
+        v-model="formData.land_revenue_land_transfer_four_d"
         label="d)Inthleng (mutual exchange)"
       />
     </div>
@@ -373,6 +393,7 @@
       >
         <template v-slot:control>
           <q-checkbox
+         
             class="text-caption"
             v-model="formData.land_revenue_land_transfer_agreement"
             label="A chunga sawite khi a dik ani tih ka hriattir a. Ka LAND SETTLEMENT
@@ -514,7 +535,7 @@ chhungin ka register ngei ang"
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted,watch } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -525,12 +546,12 @@ export default {
       application_code: "LAND_REVENUE_LAND_TRANSFER",
       department_id: 8,
       land_revenue_land_transfer_one: "",
-      land_revenue_land_transfer_one_a: false,
-      land_revenue_land_transfer_one_b: false,
-      land_revenue_land_transfer_one_c: false,
-      land_revenue_land_transfer_one_d: false,
-      land_revenue_land_transfer_one_e: true,
-      land_revenue_land_transfer_one_f: false,
+      land_revenue_land_transfer_one_a: "no",
+      land_revenue_land_transfer_one_b: "no",
+      land_revenue_land_transfer_one_c: "no",
+      land_revenue_land_transfer_one_d: "no",
+      land_revenue_land_transfer_one_e: "no",
+      land_revenue_land_transfer_one_f: "no",
       land_revenue_land_transfer_one_number: "",
       land_revenue_land_transfer_one_kum: "",
       land_revenue_land_transfer_two: "",
@@ -540,10 +561,10 @@ export default {
       land_revenue_land_transfer_two_d: "",
       land_revenue_land_transfer_three: "",
       land_revenue_land_transfer_four: "",
-      land_revenue_land_transfer_four_a: false,
-      land_revenue_land_transfer_four_b: false,
-      land_revenue_land_transfer_four_c: true,
-      land_revenue_land_transfer_four_d: false,
+      land_revenue_land_transfer_four_a: "no",
+      land_revenue_land_transfer_four_b: "no",
+      land_revenue_land_transfer_four_c: "no",
+      land_revenue_land_transfer_four_d: "no",
       land_revenue_land_transfer_seven: "",
       land_revenue_land_transfer_seven_a: "",
       land_revenue_land_transfer_seven_b: "",
@@ -576,25 +597,19 @@ export default {
       land_revenue_land_transfer_agreement: false,
     });
 
-     watch(store.state.globalData.common, () => {
+    watch(store.state.globalData.common, () => {
       getA();
     });
 
     const getA = () => {
-      const { applicant_name, address  ,mobile_no} =
+      const { applicant_name, address, mobile_no } =
         store.state.globalData.common.partA;
 
       formData.land_revenue_land_transfer_two_a = applicant_name;
       formData.land_revenue_land_transfer_two_c = address;
       formData.land_revenue_land_transfer_tuna_address = address;
       formData.land_revenue_land_transfer_phone = mobile_no;
-
-
-  
     };
-
-
-
 
     onMounted(() => {});
     return {

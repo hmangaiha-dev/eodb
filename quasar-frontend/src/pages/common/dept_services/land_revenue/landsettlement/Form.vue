@@ -80,18 +80,11 @@
         >3.Whether Married?If Married,name Of Husband Or Wife(In Capital
         Letters)</label
       >
-    </div>
-
-    <div class="col-xs-12 col-md-2">
-      <q-radio
+      <q-input
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.land_revenue_land_settlement_three"
-        val="Yes"
-        label="Yes"
-      />
-      <q-radio
-        v-model="formData.land_revenue_land_settlement_three"
-        val="No"
-        label="No"
+        dense
+        outlined
       />
     </div>
 
@@ -309,7 +302,6 @@
       </label>
 
       <q-checkbox
-      
         v-model="formData.land_revenue_land_settlement_fifteen_a"
         label="(a) House Pass Certificate"
       />
@@ -405,7 +397,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted,watch } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -421,7 +413,7 @@ export default {
       land_revenue_land_settlement_two_b: "",
       land_revenue_land_settlement_two_c: "",
       land_revenue_land_settlement_two_d: "",
-      land_revenue_land_settlement_three: "No",
+      land_revenue_land_settlement_three: "",
       land_revenue_land_settlement_four: "",
       land_revenue_land_settlement_five: "",
       land_revenue_land_settlement_six: "",
@@ -449,12 +441,12 @@ export default {
       land_revenue_land_settlement_signature: null,
     });
 
-      watch(store.state.globalData.common, () => {
+    watch(store.state.globalData.common, () => {
       getA();
     });
 
     const getA = () => {
-      const { applicant_name, address, email,mobile_no,city_town } =
+      const { applicant_name, address, email, mobile_no, city_town } =
         store.state.globalData.common.partA;
 
       formData.land_revenue_land_settlement_one = applicant_name;
@@ -462,15 +454,7 @@ export default {
       formData.land_revenue_land_settlement_sixteen_b = email;
       formData.land_revenue_land_settlement_sixteen_a = mobile_no;
       formData.land_revenue_land_settlement_two_d = city_town;
-
-
-
-
-
-
     };
-
-
 
     onMounted(() => {});
     return {
