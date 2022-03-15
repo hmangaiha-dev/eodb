@@ -537,7 +537,7 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
-        >22 requir Any electricity dues outstanding in licensee's area of
+        >22 Any electricity dues outstanding in licensee's area of
         operation in consumer's name: ements (If yes, attach a copy): Yes/
         No<span class="asterisk">*</span></label
       >

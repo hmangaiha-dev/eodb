@@ -48,6 +48,18 @@
         outlined
       />
     </div>
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="gender"
+        >4Contracted load<span class="asterisk">*</span></label
+      >
+      <q-input
+       
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.power_disconnection_load"
+        dense
+        outlined
+      />
+    </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
@@ -140,6 +152,7 @@ export default {
       power_disconnection_two: "",
       power_disconnection_three: "",
       power_disconnection_four: "",
+      power_disconnection_load: "",
       power_disconnection_five: "",
       power_disconnection_six: "",
       power_disconnection_last_bill: null,

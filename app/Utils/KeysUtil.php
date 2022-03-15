@@ -2216,6 +2216,7 @@ class KeysUtil
             'power_disconnection_two',
             'power_disconnection_three',
             'power_disconnection_four',
+            'power_disconnection_load',
             'power_disconnection_five',
             'power_disconnection_six',
         ],

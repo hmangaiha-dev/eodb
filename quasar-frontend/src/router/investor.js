@@ -330,7 +330,7 @@ export default {
           name: "pcb:accident-reporting-medical",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/accidentmedicalreporting/Application.vue"
+              "pages/common/dept_services/pollution/2/Application.vue"
             ),
         },
         {
@@ -338,7 +338,7 @@ export default {
           name: "pcb:accident-reporting-hazardous",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/accidenthazardousreporting/Application.vue"
+              "pages/common/dept_services/pollution/4/Application.vue"
             ),
         },
         {
@@ -346,7 +346,7 @@ export default {
           name: "pcb:accident-reporting-solidwaste",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/accidentsolidwastereporting/Application.vue"
+              "pages/common/dept_services/pollution/6/Application.vue"
             ),
         },
         {
@@ -354,7 +354,7 @@ export default {
           name: "pcb:annual-report",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/annualreport/Application.vue"
+              "pages/common/dept_services/pollution/annualreport(3)/Application.vue"
             ),
         },
         {
@@ -362,7 +362,7 @@ export default {
           name: "pcb:annual-report2",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/annualreport/Application.vue"
+              "pages/common/dept_services/pollution/annualreport(3)/Application.vue"
             ),
         },
         {
@@ -370,7 +370,7 @@ export default {
           name: "pcb:authorisation-solidwaste",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/authorisationundersolidwaste/Application.vue"
+              "pages/common/dept_services/pollution/7/Application.vue"
             ),
         },
         {
@@ -378,7 +378,7 @@ export default {
           name: "pcb:anual-solidwaste",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/formatofannualreport/Application.vue"
+              "pages/common/dept_services/pollution/8/Application.vue"
             ),
         },
         {

@@ -79,21 +79,29 @@
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-12 zlabel col-xs-12">
           <q-checkbox
+            true-value="✓"
+            false-value=""
             left-label
             v-model="formData.pollution_authorise_solidwaste_four_a"
             label="a)Waste processing"
           />
           <q-checkbox
+            true-value="✓"
+            false-value=""
             left-label
             v-model="formData.pollution_authorise_solidwaste_four_b"
             label="b) Recycling"
           />
           <q-checkbox
+            true-value="✓"
+            false-value=""
             left-label
             v-model="formData.pollution_authorise_solidwaste_four_c"
             label="c) Treatment"
           />
           <q-checkbox
+            true-value="✓"
+            false-value=""
             left-label
             v-model="formData.pollution_authorise_solidwaste_four_d"
             label="d) Disposal at landfill"
@@ -420,7 +428,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted,watch } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -437,10 +445,10 @@ export default {
       pollution_authorise_solidwaste_two_iii: "",
       pollution_authorise_solidwaste_three: "",
       pollution_authorise_solidwaste_four: "",
-      pollution_authorise_solidwaste_four_a: false,
-      pollution_authorise_solidwaste_four_b: false,
-      pollution_authorise_solidwaste_four_c: false,
-      pollution_authorise_solidwaste_four_d: false,
+      pollution_authorise_solidwaste_four_a: "",
+      pollution_authorise_solidwaste_four_b: "",
+      pollution_authorise_solidwaste_four_c: "",
+      pollution_authorise_solidwaste_four_d: "",
       pollution_authorise_solidwaste_five: "",
       pollution_authorise_solidwaste_five_a: null,
       pollution_authorise_solidwaste_five_b: null,
@@ -473,13 +481,16 @@ export default {
     watch(store.state.globalData.common, () => getA());
 
     const getA = () => {
-      const { phone_no,fax_no,email } = store.state.globalData.common?.partA || '';
-      const { declaration_designation } = store.state.globalData.common?.selfDeclaration|| '';
+      const { phone_no, fax_no, email } =
+        store.state.globalData.common?.partA || "";
+      const { declaration_designation } =
+        store.state.globalData.common?.selfDeclaration || "";
 
       formData.pollution_authorise_solidwaste_two_i = phone_no;
       formData.pollution_authorise_solidwaste_two_ii = fax_no;
       formData.pollution_authorise_solidwaste_two_iii = email;
-      formData.pollution_authorise_solidwaste_designation = declaration_designation;
+      formData.pollution_authorise_solidwaste_designation =
+        declaration_designation;
     };
 
     onMounted(async () => getA());
