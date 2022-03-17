@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 class Office extends Model
@@ -38,5 +39,9 @@ class Office extends Model
     public function applications(): BelongsToMany
     {
         return $this->belongsToMany(Application::class,'office_applications');
+    }
+    public function profile(): HasOne
+    {
+        return $this->hasOne(DepartmentProfile::class,'dept_id','id');
     }
 }

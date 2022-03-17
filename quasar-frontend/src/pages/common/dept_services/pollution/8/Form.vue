@@ -537,20 +537,7 @@
 
         <div class="zlabel col-12">Bin/ population ratio</div>
 
-        <div class="col-xs-12">
-          <label class="zlabel" for="name">
-            24.No. and type of waste storage depots in the city/town Open waste
-            storage sites Masonry bins Cement concrete cylinder bins
-            Dhalao/covered rooms/space Covered metal/plastic containers Upto 1.1
-            m3 bins 2 to 5 m3 bins Above 5m3 containers Bin-less city
-            (No.Capacity in m3)
-            <span class="asterisk"> *</span></label
-          >
-          <q-input
-            outlined
-            v-model="formData.pollution_form_8_solidwaste_924"
-          />
-        </div>
+  
 
         <div class="zlabel col-12">
           25.Ward wise details of waste storage depots (attach):
@@ -1488,6 +1475,7 @@ export default {
       pollution_form_8_solidwaste_930: "",
       pollution_form_8_solidwaste_931: "",
       pollution_form_8_solidwaste_932: "",
+      pollution_form_8_solidwaste_933: "",
       pollution_form_8_solidwaste_934: "",
       pollution_form_8_solidwaste_935: "",
       pollution_form_8_solidwaste_936: "",
@@ -1496,6 +1484,7 @@ export default {
       pollution_form_8_solidwaste_939: "",
       pollution_form_8_solidwaste_940: "",
       pollution_form_8_solidwaste_941: "",
+      pollution_form_8_solidwaste_942: "",
       pollution_form_8_solidwaste_944: "",
       pollution_form_8_solidwaste_943: "",
       pollution_form_8_solidwaste_944: "",
@@ -1506,6 +1495,7 @@ export default {
       pollution_form_8_solidwaste_949: "",
       pollution_form_8_solidwaste_950: "",
       pollution_form_8_solidwaste_951: "",
+      pollution_form_8_solidwaste_952: "",
       pollution_form_8_solidwaste_954: "",
       pollution_form_8_solidwaste_953: "",
       pollution_form_8_solidwaste_954: "",
@@ -1516,6 +1506,7 @@ export default {
       pollution_form_8_solidwaste_959: "",
       pollution_form_8_solidwaste_960: "",
       pollution_form_8_solidwaste_961: "",
+      pollution_form_8_solidwaste_962: "",
       pollution_form_8_solidwaste_964: "",
       pollution_form_8_solidwaste_963: "",
       pollution_form_8_solidwaste_964: "",

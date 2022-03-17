@@ -49,7 +49,7 @@
       </q-header>
 
       <q-drawer
-        width="400"
+        width=400
         :breakpoint="1580"
         persistent
         class="q-pa-md"

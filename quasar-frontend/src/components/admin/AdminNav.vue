@@ -109,6 +109,12 @@ export default {
         icon: "public",
         items: [
           {
+            route_name: "office:read",
+            label: "Manage offices",
+            leftIcon: "tag",
+            rightIcon: "navigate_next",
+          },
+          {
             route_name: "web:about",
             label: "About us",
             leftIcon: "tag",
@@ -146,7 +152,7 @@ export default {
 
           if (!isSuper.value) {
             let menu = menus[1].items[0]; // Get Online service menu
-            menus[2].items.unshift(menu) // move to web management
+            menus[2].items.unshift(menu); // move to web management
             menus.splice(1, 1); //remove admin control as it is not super admin
           }
         })

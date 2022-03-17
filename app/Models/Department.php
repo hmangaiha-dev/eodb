@@ -51,4 +51,9 @@ class Department extends Model
     {
         return $this->hasMany(OtherInformation::class);
     }
+    public function profile()
+    {
+        return $this->hasOne(DepartmentProfile::class,'dept_id','id');
+
+    }
 }

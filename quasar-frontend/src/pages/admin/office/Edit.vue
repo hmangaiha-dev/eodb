@@ -8,8 +8,17 @@
         <q-breadcrumbs-el label="Edit office" />
       </q-breadcrumbs>
     </div>
+    
 
-    <q-form class="zcard q-pa-md" @reset="resetForm" @submit="handleSubmit">
+    <q-dialog v-model="localState.openImage">
+      <q-img :src="localState.selectedAttachment"></q-img>
+    </q-dialog>
+
+    <q-form
+      class="zcard q-pa-md"
+      @reset="resetForm"
+      @submit.prevent="handleSubmit"
+    >
       <div class="row q-col-gutter-md">
         <div class="col-xs-12 zsubtitle">Office detail</div>
         <div class="col-xs-12 col-md-6">
@@ -37,6 +46,7 @@
             :rules="[(val) => !!val || 'Name is required']"
           />
         </div>
+
         <div class="col-xs-12 col-md-6">
           <q-input
             v-model="formData.description"
@@ -60,6 +70,107 @@
             @blur="delete localData.errors['contacts']"
           />
         </div>
+
+        <div class="col-xs-12">
+          <q-separator />
+        </div>
+        <div class="col-xs-12 zsubtitle">Profile</div>
+        <div class="col-xs-12 col-md-6">
+          <q-input
+            v-model="profile.hod_secratariat_name"
+            class="q-mt-md"
+            label="Secretariat HOD Name"
+            outlined
+          />
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <q-input
+            v-model="profile.hod_secratariat_designation"
+            class="q-mt-md"
+            label="Secretariat HOD Designation"
+            outlined
+          />
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+          <q-file
+            filled
+            accept=".jpg,image/*"
+            class="col-xs-12"
+            bottom-slots
+            max-file-size="248000"
+            v-model="profile.hod_secratariat_photo"
+            label="Secretariat HOD Photo"
+            counter
+          >
+            <template v-slot:hint> Maximum File Upload size 2mb </template>
+
+            <template v-slot:append>
+              <q-btn round dense flat icon="add" @click.stop />
+            </template>
+          </q-file>
+          
+
+          <q-btn
+            @click="
+              () => {
+                localState.selectedAttachment = profile.sect_photo;
+                localState.openImage = true;
+              }
+            "
+            flat
+            color="primary"
+            icon="picture_as_pdf"
+            label="view"
+          />
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <q-input
+            v-model="profile.hod_directorate_name"
+            class="q-mt-md"
+            label="Directorate HOD Name"
+            outlined
+          />
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <q-input
+            v-model="profile.hod_directorate_designation"
+            class="q-mt-md"
+            label="Directorate HOD Designation"
+            outlined
+          />
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <q-file
+            filled
+            accept=".jpg,image/*"
+            class="col-xs-12"
+            bottom-slots
+            max-file-size="248000"
+            v-model="profile.hod_directorate_photo"
+            label="Directorate HOD Photo"
+            counter
+          >
+            <template v-slot:hint> Maximum File Upload size 2mb </template>
+
+            <template v-slot:append>
+              <q-btn round dense flat icon="add" @click.stop />
+            </template>
+          </q-file>
+          <q-btn
+            @click="
+              () => {
+                localState.selectedAttachment = profile.dict_photo;
+                localState.openImage = true;
+              }
+            "
+            flat
+            color="primary"
+            icon="picture_as_pdf"
+            label="view"
+          />
+        </div>
+
         <div class="col-xs-12">
           <q-separator />
         </div>
@@ -121,6 +232,7 @@ import { useQuasar } from "quasar";
 import { ref } from "vue";
 import { onMounted } from "@vue/runtime-core";
 import { useRoute, useRouter } from "vue-router";
+import { preFetch } from "quasar/wrappers";
 
 export default {
   setup(props, context) {
@@ -131,21 +243,39 @@ export default {
     const localData = reactive({
       errors: {},
     });
+    const localState = reactive({
+      openImage: false,
+      openPdf: false,
+      selectedAttachment: null,
+    });
     const tempRoles = ref([]);
     const bankData = reactive({
       bank_name: "",
       ac_holder: "",
       ac_no: "",
-      contact: "",
+      // contact: "",
       ifsc: "",
-      description: "",
+      remark: "",
+      // description: "",
+    });
+
+    const profile = reactive({
+      hod_secratariat_name: "",
+      hod_secratariat_designation: "",
+      hod_secratariat_photo: null,
+      sect_photo: null,
+      hod_directorate_name: "",
+      hod_directorate_designation: "",
+      hod_directorate_photo: null,
+      dict_photo: null,
     });
     let formData = reactive({
       id: null,
       code: "",
       name: "",
       description: "",
-      contacts: "",
+      contact: "",
+      _method: "put",
     });
 
     onMounted(() => {
@@ -163,6 +293,20 @@ export default {
           formData.description = description;
           formData.contact = contact;
 
+          if (res.data.profile) {
+            profile.hod_secratariat_name =
+              res.data.profile.hod_secratariat_name;
+            profile.hod_secratariat_designation =
+              res.data.profile.hod_secratariat_designation;
+            profile.hod_directorate_name =
+              res.data.profile.hod_directorate_name;
+            profile.hod_directorate_designation =
+              res.data.profile.hod_directorate_designation;
+            profile.sect_photo = res.data.profile.sect_photo;
+            profile.dict_photo = res.data.profile.dict_photo;
+            console.log("profile", res.data.profile.hod_secratariat_name);
+          }
+
           if (bank_detail) {
             const { bank_name, ac_holder, ac_no, ifsc } = bank_detail;
             bankData.bank_name = bank_name;
@@ -179,12 +323,32 @@ export default {
             });
         });
     });
-    const handleSubmit = (e) => {
+    const handleSubmit = () => {
       const { id } = route.params;
-      formData.bank_detail = { ...bankData };
+      //  return console.log('all',formData);
+      // formData.bank_detail = { ...bankData };
+
+      // return console.log('all2',formData);
+
+      const formDatas = new FormData();
+      // formDatas.append("bank_detail", JSON.stringify(bankData));
+      formData = Object.assign(formData, bankData, profile);
+      // return console.log("all", formData);
+
+      for (let data in formData) {
+        //  console.log(data,'is',profile[data]);
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+      formDatas.append("bank_detail", JSON.stringify(bankData));
+
+      // formDatas.append('hod_secratariat_photo',profile.hod_secratariat_photo)
+      // formDatas.append('hod_directorate_photo',profile.hod_directorate_photo)
+
       api
-        .put(`office/${id}`, formData)
+        .post(`office/${id}`, formDatas)
         .then((res) => {
+          return console.log("res data", res.data);
           q.notify({
             type: "positive",
             message: res?.data?.message,
@@ -219,10 +383,12 @@ export default {
     return {
       localData,
       bankData,
+      profile,
       formData,
       resetForm,
       handleSubmit,
       tempRoles,
+      localState,
     };
   },
 };

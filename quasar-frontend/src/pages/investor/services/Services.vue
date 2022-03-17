@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <div class="banner-dept">
-      <div class="contain container-lg">
+      <div class="containd container-lg">
         <div
           class="row q-px-md q-pt-xl justify-between q-col-gutter-md"
           style="max-width: 1400px; margin: 0 auto"
@@ -12,7 +12,7 @@
             {{ dept_name }}
           </div>
           <br />
-          <div class="col-4">
+          <div class="col-sm-6 col-xs-12">
             <q-card flat>
               <q-card-section>
                 <div class="text-h6">P. Jawahar</div>
@@ -23,7 +23,7 @@
               </q-card-section>
             </q-card>
           </div>
-          <div class="col-4">
+          <div class="col-sm-6 col-xs-12">
             <q-card flat>
               <q-card-section>
                 <div class="text-h6">J. Hmingthanmawia</div>
@@ -40,7 +40,9 @@
 
     <div class="row q-col-gutter-md q-pa-sm container-lg">
       <div style="width: 100%" class="col-12 q-pa-md">
-        <q-toolbar class="justify-center bg-white shadow-1">
+        <!-- <q-toolbar  class="row col-12 
+        justify-center bg-white shadow-1"> -->
+        <q-tabs stretch class="bg-white shadow-1 q-mt-md text-grey-8">
           <q-item
             :focused="tab === 'services'"
             clickable
@@ -84,7 +86,8 @@
               <q-item-label class="nav-item">Other Information</q-item-label>
             </q-item-section>
           </q-item>
-        </q-toolbar>
+        </q-tabs>
+        <!-- </q-toolbar> -->
         <br />
         <div class="znhovercard">
           <q-tabs
@@ -454,6 +457,7 @@ export default {
 .banner-dept {
   background-image: url("https://eodbmizoram.gov.in/images/commerce/departmentbackground.png");
   width: 100%;
-  height: 400px;
+  /* height: 400px; */
+  padding-bottom: 30px;
 }
 </style>

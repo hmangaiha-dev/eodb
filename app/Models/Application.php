@@ -38,6 +38,10 @@ class Application extends Model
     {
         return $this->hasMany(Bamboo::class,'application_id','id');
     }
+    public function powerSubsidyMachineries(): HasMany
+    {
+        return $this->hasMany(PowerSubsidyMachinery::class,'application_id','id');
+    }
 
     public function states()
     {

@@ -85,7 +85,7 @@ class ApplicationController extends Controller
 
     public function submitApplication(Request $request)
     {
-            // return $request->file();
+        // return $request->all();
 
 
         $this->validate($request, [
@@ -116,12 +116,15 @@ class ApplicationController extends Controller
         ]);
         $application->office()->attach($appProfile->office_id);
 
-        if ($request->application_code == 'LAND_REVENUE_LSC' || $request->application_code == 'LAND_REVENUE_PATTA' || $request->application_code == 'ENV_FOREST_BAMBOO') {
+        if ($request->application_code == 'LAND_REVENUE_LSC' || $request->application_code == 'LAND_REVENUE_PATTA' || $request->application_code == 'ENV_FOREST_BAMBOO' || $request->application_code == 'C&E_POWER_SUBSIDY') {
             if ($request->application_code == 'ENV_FOREST_BAMBOO') {
                 $arrs = (array) json_decode($request->bamboo_particulars, true);
                 $application->bamboos()->createMany($arrs);
+            } else if ($request->application_code == 'C&E_POWER_SUBSIDY') {
+                $arrs = (array) json_decode($request->machineries, true);
+                $application->powerSubsidyMachineries()->createMany($arrs);
             } else {
-                $arrs =  (array)json_decode($request->lsc_details,true);
+                $arrs =  (array)json_decode($request->lsc_details, true);
                 $application->lscDetails()->createMany($arrs);
             }
         }
@@ -262,19 +265,28 @@ class ApplicationController extends Controller
             "{{{$item->field_key}}}" => $item->field_value
         ])->toArray();
 
-        if ($model->application_code == 'LAND_REVENUE_LSC' || $model->application_code == 'LAND_REVENUE_PATTA' || $model->application_code == 'ENV_FOREST_BAMBOO') {
+        if ($model->application_code == 'LAND_REVENUE_LSC' || $model->application_code == 'LAND_REVENUE_PATTA' || $model->application_code == 'ENV_FOREST_BAMBOO' || $model->application_code == 'C&E_POWER_SUBSIDY') {
 
             if ($model->application_code == 'ENV_FOREST_BAMBOO') {
                 $details = $model->bamboos()->get();
-                $field_key = ['bamboo_total_species','bamboo_total_nos','bamboo_total_total_bamboo','bamboo_total_total_mature'];
-                $total = $model->applicationValues()->whereIn('field_key',$field_key)->get()->pluck('field_value');
-                $views = view('bamboo.table', ["details" => $details, 'code' => $model->application_code,'total' => $total])->render();
+                $field_key = ['bamboo_total_species', 'bamboo_total_nos', 'bamboo_total_total_bamboo', 'bamboo_total_total_mature'];
+                $total = $model->applicationValues()->whereIn('field_key', $field_key)->get()->pluck('field_value');
+                $views = view('bamboo.table', ["details" => $details, 'code' => $model->application_code, 'total' => $total])->render();
                 $content = [
                     "{{content}}" => $views
                 ];
 
                 $vars = $vars + $content;
-            } else {
+            } else if($model->application_code == 'C&E_POWER_SUBSIDY'){
+                $details = $model->powerSubsidyMachineries()->get();
+                $views = view('machineries.table', ["details" => $details, 'code' => $model->application_code])->render();
+                $content = [
+                    "{{content}}" => $views
+                ];
+
+                $vars = $vars + $content;
+            } 
+            else {
                 $details = $model->lscDetails()->get();
                 $views = view('lsc.table', ["details" => $details, 'code' => $model->application_code])->render();
                 $content = [
@@ -292,8 +304,6 @@ class ApplicationController extends Controller
             'application' => $model,
             'attachment' => $model->attachments()->get(),
         ], 200);
-
-
     }
 
     public function getAttachment(Request $request, Application $model)

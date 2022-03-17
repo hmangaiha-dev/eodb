@@ -48,71 +48,99 @@
               class="zlabel col-xs-12"
             >
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_i"
                 label="(i) Generation"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_ii"
                 label="(ii) Collection"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_iii"
                 label="(iii) Storage"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_iv"
                 label="(iv) Transportation"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_v"
                 label="(v) Reception"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_vi"
                 label="(vi) Reuse"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_vii"
                 label="(vii) Recycling"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_viii"
                 label="(viii) Recovery"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_ix"
                 label="(ix) Pre-processing"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_x"
                 label="(x) Co-processing"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_xi"
                 label="(xi) Utilisation"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_xii"
                 label="(xii) Treatment"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_xiii"
                 label="(xiii) Disposal"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_xiv"
                 label="(xiv) Incineration"
@@ -198,16 +226,22 @@
           <div class="row justify q-col-gutter-md q-ml-md">
             <div class="zlabel col-md-6 col-xs-12">
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_three_b_i"
                 label="(i) 01 Shift"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_three_b_ii"
                 label="(ii) 02 Shifts"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_three_b_iii"
                 label="(iii) Round the clock"
@@ -669,11 +703,7 @@
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"> Designation </label>
-      <q-input
-        dense
-        outlined
-        v-model="formData.pollution_form17_designation"
-      />
+      <q-input dense outlined v-model="formData.pollution_form17_designation" />
     </div>
 
     <!-- <div class="col-lg-4 col-sm-6">
@@ -701,20 +731,20 @@ export default {
       pollution_form17_partA_one_a: "",
       pollution_form17_partA_one_b: "",
       pollution_form17_partA_one_c: "",
-      pollution_form17_partA_one_c_i: false,
-      pollution_form17_partA_one_c_ii: false,
-      pollution_form17_partA_one_c_iii: false,
-      pollution_form17_partA_one_c_iv: false,
-      pollution_form17_partA_one_c_v: false,
-      pollution_form17_partA_one_c_vi: false,
-      pollution_form17_partA_one_c_vii: false,
-      pollution_form17_partA_one_c_viii: false,
-      pollution_form17_partA_one_c_ix: false,
-      pollution_form17_partA_one_c_x: false,
-      pollution_form17_partA_one_c_xi: false,
-      pollution_form17_partA_one_c_xii: false,
-      pollution_form17_partA_one_c_xiii: false,
-      pollution_form17_partA_one_c_xiv: false,
+      pollution_form17_partA_one_c_i: "no",
+      pollution_form17_partA_one_c_ii: "no",
+      pollution_form17_partA_one_c_iii: "no",
+      pollution_form17_partA_one_c_iv: "no",
+      pollution_form17_partA_one_c_v: "no",
+      pollution_form17_partA_one_c_vi: "no",
+      pollution_form17_partA_one_c_vii: "no",
+      pollution_form17_partA_one_c_viii: "no",
+      pollution_form17_partA_one_c_ix: "no",
+      pollution_form17_partA_one_c_x: "no",
+      pollution_form17_partA_one_c_xi: "no",
+      pollution_form17_partA_one_c_xii: "no",
+      pollution_form17_partA_one_c_xiii: "no",
+      pollution_form17_partA_one_c_xiv: "no",
       pollution_form17_partA_one_d: "",
       pollution_form17_partA_two: "",
       pollution_form17_partA_two_a: "",
@@ -722,9 +752,9 @@ export default {
       pollution_form17_partA_three: "",
       pollution_form17_partA_three_a: "",
       pollution_form17_partA_three_b: "",
-      pollution_form17_partA_three_b_i: false,
-      pollution_form17_partA_three_b_ii: false,
-      pollution_form17_partA_three_b_iii: false,
+      pollution_form17_partA_three_b_i: "no",
+      pollution_form17_partA_three_b_ii: "no",
+      pollution_form17_partA_three_b_iii: "no",
       pollution_form17_partA_four: null,
       pollution_form17_partA_five: "",
       pollution_form17_partB: "",
