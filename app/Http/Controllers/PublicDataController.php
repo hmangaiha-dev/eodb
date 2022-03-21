@@ -43,7 +43,10 @@ class PublicDataController extends Controller
             ],
             'districts' => DataUtil::DISTRICTS,
             'staffs'=>Staff::query()->get(['id as value','full_name as label']),
-            'offices'=>Office::query()->get(['id as value','name as label']),
+            // 'offices'=>Office::query()->get(['id as value','name as label']),
+            'offices'=>Office::query()->when($office,function($q) use ($office){
+                $q->where('id',$office->id);
+            })->get(['id as value','name as label']),
             'application_profiles'=>ApplicationProfile::query()->when(isset($office),function($q) use($office) {
                 return $q->where('office_id',$office->id);
             })->get(),

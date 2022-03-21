@@ -13,12 +13,13 @@
           </div>
           <br />
           <div class="col-sm-6 col-xs-12">
+            <!-- profile {{ localData.profie }} -->
             <q-card flat>
               <q-card-section>
-                <div class="text-h6">P. Jawahar</div>
+                <div class="text-h6"> {{ localData.profile?.hod_secratariat_name || 'Secretary Name' }} </div>
               </q-card-section>
               <q-card-section>
-                <div>Secretary</div>
+                <div> {{ localData.profile?.hod_secratariat_designation || 'Secretary Designation' }} </div>
                 <div>{{ dept_name }}</div>
               </q-card-section>
             </q-card>
@@ -26,10 +27,10 @@
           <div class="col-sm-6 col-xs-12">
             <q-card flat>
               <q-card-section>
-                <div class="text-h6">J. Hmingthanmawia</div>
+                <div class="text-h6"> {{ localData.profile?.hod_directorate_name || 'Directorate name' }} </div>
               </q-card-section>
               <q-card-section>
-                <div>Director</div>
+                <div> {{ localData.profile?.hod_secratariat_designation || 'Directorate Designation' }} </div>
                 <div>{{ dept_name }}</div>
               </q-card-section>
             </q-card>
@@ -284,9 +285,12 @@ export default {
     const tabCategory = ref("ALL-CATEGORIES");
 
     const dept_name = ref("");
+    
 
     const localData = reactive({
       category: "ALL-CATEGORIES",
+      profile: {},
+
     });
 
     onMounted(async () => {
@@ -340,6 +344,11 @@ export default {
       dept_name.value = result[0]?.dept_name;
 
       !result.length && router.push({ name: "invalid" });
+
+      localData.profile = result[0]?.profile;
+
+      console.log('profile',result[0].profile);
+      // console.log('profile',localData);
 
       rows.value = result[0]?.services;
 
@@ -444,10 +453,7 @@ export default {
       dialogKey,
       dialogContent,
       showDialog,
-      // filterCategory,
-      test: (value) => {
-        console.log("dfdf", value);
-      },
+     
     };
   },
 };

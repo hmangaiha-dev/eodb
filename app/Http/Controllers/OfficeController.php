@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\UnauthorizedException;
 use Storage;
+use Illuminate\Support\Arr;
 
 class OfficeController extends Controller
 {
@@ -25,10 +26,13 @@ class OfficeController extends Controller
     public function index(Request $request)
     {
         $staff = auth('sanctum')->user();
-        if (!$staff->tokenCan('office:read'))
-            throw new UnauthorizedException('Unauthorized access');
+        $office = $staff->currentPost();
+        // if (!$staff->tokenCan('office:read'))
+        //     throw new UnauthorizedException('Unauthorized access');
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
-        return response()->json(Office::query()->paginate($per_page), 200);
+        return response()->json(Office::query()->when(isset($office), function($q) use($office) {
+            return $q->where('id',$office->id);
+        })->paginate($per_page), 200);
     }
 
     public function show(Request $request, int $id)
@@ -81,9 +85,10 @@ class OfficeController extends Controller
         // $bankDetail = $request->get('bank_detail');
         // $profile = $request->get('profile');
         $office->update($request->only($office->getFillable()));
-        // if (!blank($bankDetail)) {
-        // $bank = new BankDetail($request->only((new BankDetail())->getFillable()));
-        $office->bankDetail()->update($request->only((new BankDetail())->getFillable()));
+      
+        $bank_data = json_decode($request->bank_detail,true);
+        $bank = Arr::only($bank_data, (new BankDetail())->getFillable());
+        $office->bankDetail()->update($bank);
         // }
         // if (!blank($profile)) {
         // $bank = new DepartmentProfile($request->only((new DepartmentProfile())->getFillable()));
@@ -103,7 +108,7 @@ class OfficeController extends Controller
             Storage::deleteDirectory($request->code . '/hod_directorate_photo');
             $fileName = $request->file('hod_directorate_photo')->getClientOriginalName();
             $director_photo = $request->file('hod_directorate_photo')->storeAs($request->code . '/hod_directorate_photo', $fileName);
-            $profile->hod_directorate_photo = $fileName;
+            $profile->hod_directorate_photo = $director_photo;
         }
         $profile->save();
         // }

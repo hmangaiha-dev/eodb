@@ -11,7 +11,7 @@ class DepartmentProfile extends Model
 
     protected $fillable = ['hod_secratariat_name','hod_secratariat_designation','hod_directorate_name','hod_directorate_designation'];
 
-    protected $appends = ['sect_photo','dict_photo'];
+    protected $appends = ['sect_photo','dict_photo','dept_name'];
 
     public function department()
     {
@@ -29,5 +29,10 @@ class DepartmentProfile extends Model
     public function getDictPhotoAttribute()
     {
         return url('/storage') . '/' . $this->hod_directorate_photo;
+    }
+
+    public function getDeptNameAttribute()
+    {
+        return $this->department()->first()->dept_name;
     }
 }

@@ -25,6 +25,8 @@ class Department extends Model
 
 
     ];
+
+    protected $appends = ['profile'];
     // protected $guarded = [];
 
 
@@ -55,5 +57,10 @@ class Department extends Model
     {
         return $this->hasOne(DepartmentProfile::class,'dept_id','id');
 
+    }
+
+    public function getProfileAttribute()
+    {
+        return $this->profile()->first();
     }
 }

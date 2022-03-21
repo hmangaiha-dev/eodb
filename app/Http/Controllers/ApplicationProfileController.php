@@ -32,6 +32,7 @@ class ApplicationProfileController extends Controller
 
     public function applicationFlows(Request $request)
     {
+        // return $request->all();
         $staff = auth('sanctum')->user();
         $office = $staff->currentPost();
         return response()->json([

@@ -332,7 +332,7 @@ export default {
 
       const formDatas = new FormData();
       // formDatas.append("bank_detail", JSON.stringify(bankData));
-      formData = Object.assign(formData, bankData, profile);
+      formData = Object.assign(formData,profile);
       // return console.log("all", formData);
 
       for (let data in formData) {
@@ -348,7 +348,7 @@ export default {
       api
         .post(`office/${id}`, formDatas)
         .then((res) => {
-          return console.log("res data", res.data);
+          // return console.log("res data", res.data);
           q.notify({
             type: "positive",
             message: res?.data?.message,
