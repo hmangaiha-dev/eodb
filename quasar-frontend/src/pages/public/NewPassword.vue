@@ -22,7 +22,7 @@
             <q-card-section>
               <q-input
                 :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
+                  (val) => (val && val.length > 8) || 'Minimum 8 characters',
                 ]"
                 type="password"
                 v-model="loginData.password"
@@ -93,14 +93,16 @@ export default {
     const store = useStore();
     const q = useQuasar();
     const loginData = reactive({
-      email: "",
+      email: route.query.email,
       token: route.params.token,
       password: "",
       confirmPassword: "",
       // password: "password",
     });
 
-    onMounted(() => {});
+    onMounted(() => {
+      // console.log('route',route.params);
+    });
 
     return {
       loginData,
@@ -110,7 +112,7 @@ export default {
 
       submit: () => {
         api
-          .post("reset-password", loginData)
+          .post("update-password", loginData)
           .then((res) => {
             // return console.log("res data", res.data);
             // const { token, user } = res.data;

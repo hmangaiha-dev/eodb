@@ -15,22 +15,67 @@
           <div class="col-sm-6 col-xs-12">
             <!-- profile {{ localData.profie }} -->
             <q-card flat>
-              <q-card-section>
-                <div class="text-h6"> {{ localData.profile?.hod_secratariat_name || 'Secretary Name' }} </div>
+              <q-card-section horizontal>
+                <q-card-section>
+                  <div class="text-h6">
+                    {{
+                      localData.profile?.hod_secratariat_name ||
+                      "Secretary Name"
+                    }}
+                  </div>
+                </q-card-section>
+                <q-space />
+
+                <q-card-section>
+                  <q-card-section class="gt-sm col-5 flex flex-center">
+                    <q-avatar size="100px">
+                      <img :src="localData.profile?.sect_photo" />
+                    </q-avatar>
+                  </q-card-section>
+                </q-card-section>
               </q-card-section>
-              <q-card-section>
-                <div> {{ localData.profile?.hod_secratariat_designation || 'Secretary Designation' }} </div>
+
+              <q-card-section :style="$q.screen.gt.sm && 'margin-top:-67px;'">
+                <div>
+                  {{
+                    localData.profile?.hod_secratariat_designation ||
+                    "Secretary Designation"
+                  }}
+                </div>
                 <div>{{ dept_name }}</div>
               </q-card-section>
             </q-card>
           </div>
           <div class="col-sm-6 col-xs-12">
+            <!-- profile {{ localData.profie }} -->
             <q-card flat>
-              <q-card-section>
-                <div class="text-h6"> {{ localData.profile?.hod_directorate_name || 'Directorate name' }} </div>
+              <q-card-section horizontal>
+                <q-card-section>
+                  <div class="text-h6">
+                    {{
+                      localData.profile?.hod_directorate_name ||
+                      "Directorate name"
+                    }}
+                  </div>
+                </q-card-section>
+                <q-space />
+
+                <q-card-section>
+                  <q-card-section class="gt-sm col-5 flex flex-center">
+                    <q-avatar size="100px">
+                      <img :src="localData.profile?.dict_photo" />
+                    </q-avatar>
+                  </q-card-section>
+                </q-card-section>
               </q-card-section>
-              <q-card-section>
-                <div> {{ localData.profile?.hod_secratariat_designation || 'Directorate Designation' }} </div>
+
+              <q-card-section :style="$q.screen.gt.sm && 'margin-top:-67px;'">
+                <div>
+                  {{
+                    localData.profile?.hod_secratariat_designation ||
+                    "Directorate Designation"
+                  }}
+                </div>
                 <div>{{ dept_name }}</div>
               </q-card-section>
             </q-card>
@@ -285,12 +330,10 @@ export default {
     const tabCategory = ref("ALL-CATEGORIES");
 
     const dept_name = ref("");
-    
 
     const localData = reactive({
       category: "ALL-CATEGORIES",
       profile: {},
-
     });
 
     onMounted(async () => {
@@ -347,7 +390,7 @@ export default {
 
       localData.profile = result[0]?.profile;
 
-      console.log('profile',result[0].profile);
+      console.log("profile", result[0].profile);
       // console.log('profile',localData);
 
       rows.value = result[0]?.services;
@@ -453,7 +496,6 @@ export default {
       dialogKey,
       dialogContent,
       showDialog,
-     
     };
   },
 };

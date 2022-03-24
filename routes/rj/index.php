@@ -91,8 +91,9 @@ Route::get('/reset-password/{token}', function ($token) {
 //     // dd($request->all());
 // })->middleware('guest')->name('password.update');
 
-Route::post('/forgot-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
-Route::post('/reset-password', [ResetPasswordController::class, 'postResetPassword'])->middleware('guest')->name('password.reset.post');
+Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->middleware('guest')->name('password.reset.link');
+Route::post('/update-password', [ResetPasswordController::class, 'updatePassword'])->middleware('guest')->name('password.update');
+// Route::post('/reset-password', [ResetPasswordController::class, 'postResetPassword'])->middleware('guest')->name('password.reset.post');
 
 
 // Route::get('/service', function () {

@@ -9,6 +9,7 @@
             </p>
             <q-card-section>
               <q-input
+                type="email"
                 :rules="[
                   (val) => (val && val.length > 0) || 'Please type something',
                 ]"
@@ -20,6 +21,7 @@
             <q-card-section style="display: flex" class="q-py-none">
               <q-space />
               <q-btn
+                :loading="loading"
                 outline
                 padding="sm"
                 type="submit"
@@ -30,15 +32,7 @@
             </q-card-section>
           </q-card>
         </q-form>
-        <!-- <q-btn color="primary" icon="check" label="Get User" @click="getUser" />
-
-        <q-btn
-          class="float-right"
-          color="red-4"
-          icon="check"
-          label="Logout"
-          @click="handleLogout"
-        /> -->
+       
       </div>
     </div>
   </q-page>
@@ -55,6 +49,7 @@ export default {
   setup(props, context) {
     const router = useRouter();
     const route = useRoute();
+    const loading = ref(false);
 
     const store = useStore();
     const q = useQuasar();
@@ -66,10 +61,12 @@ export default {
     return {
       loginData,
       isPwd: ref(true),
+      loading,
 
-      remember: ref(true),
+      remember: ref(false),
 
       submit: () => {
+        loading.value = true;
         api
           .post("forgot-password", loginData)
           .then((res) => {
@@ -78,19 +75,22 @@ export default {
               color: "primary",
               position: "top",
               icon: "announcement",
-              message: res.data.message,
+              message: res.data.status,
             });
           })
           .catch((err) => {
-            console.log("error post response", err.response.data.message);
-            err.response.data.message &&
+            console.log("error post response", err.response.data.status);
+            err.response.data.status &&
               q.notify({
                 type: "negative",
                 position: "top",
                 icon: "warnings",
                 color: "red-4",
-                message: err.response.data.message,
+                message: err.response.data.status,
               });
+          })
+          .finally(() => {
+            loading.value = false;
           });
       },
 

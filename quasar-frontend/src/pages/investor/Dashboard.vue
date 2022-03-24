@@ -6,7 +6,7 @@
     >
       <div class="col-12 ztitle text-start">Dashboard</div>
 
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4 col-xs-12">
         <q-card style="min-height: 150px;" bordered class="my-card">
           <q-card-section>
             <div class="text-h6 text-center text-green-7"> {{ countOngoing }} </div>
@@ -20,7 +20,7 @@
         </q-card>
       </div>
 
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4 col-xs-12">
         <q-card style="min-height: 150px;" bordered class="my-card">
           <q-card-section>
             <div class="text-h6 text-center text-orange-6">01</div>
@@ -34,7 +34,7 @@
         </q-card>
       </div>
 
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4 col-xs-12">
         <q-card style="min-height: 150px;" bordered class="my-card">
           <q-card-section>
             <div class="text-h6 text-center text-red-6">0</div>

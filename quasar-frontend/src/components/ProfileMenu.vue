@@ -6,7 +6,7 @@
       </q-item-section>
     </q-item>
 
-    <q-item  :to="userType == 'staff' ? { name: 'staff:dashboard' } : { name: 'investor:dashboard' }" clickable>
+    <q-item exact  :to="userType == 'staff' ? { name: 'staff:dashboard' } : { name: 'investor:dashboard' }" clickable>
     <!-- <q-item exact :to="{ name: 'investor:dashboard' }" clickable> -->
       <q-item-section>
         <q-item-label>Go to dashboard</q-item-label>

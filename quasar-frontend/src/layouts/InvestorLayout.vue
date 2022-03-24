@@ -2,13 +2,13 @@
   <div class="my-layout">
     <q-layout view="hHh Lpr lff">
       <q-header elevated class="bg-white text-white" height-hint="98">
-        <q-toolbar class="q-px-xl text-dark q-py-none">
+        <q-toolbar :class="$q.screen.gt.sm && 'q-px-xl'" class="text-dark q-py-none">
           <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
           <router-link to="/"
             ><img style="width: 80px" src="~assets/eodb-logo.png"
           /></router-link>
 
-          <q-toolbar-title class="q-mt-md q-pl-lg q-mb-none"
+          <q-toolbar-title class="gt-xs q-mt-md q-pl-lg q-mb-none"
             ><span class="heading q-pb-none">Ease of Doing Business</span>
             <p class="mizoram q-pt-none text-caption">Mizoram</p>
           </q-toolbar-title>
@@ -27,29 +27,11 @@
             <ProfileMenu />
           </q-btn-dropdown>
 
-          <q-btn-dropdown class="lt-md" flat icon="menu">
-            <q-list>
-              <q-item
-                active-class="active-item q-px-md"
-                to="/h"
-                v-for="link in essentialLinks"
-                :key="link.title"
-                clickable
-                v-close-popup
-              >
-                <q-item-section class="btn-dropdown">
-                  <q-item-label style="color: #00000080">{{
-                    link.title
-                  }}</q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
         </q-toolbar>
       </q-header>
 
       <q-drawer
-        width=400
+        :width="$q.screen.gt.xs ? 400 : 300"
         :breakpoint="1580"
         persistent
         class="q-pa-md"

@@ -13,6 +13,7 @@ use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\NotesheetController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\PaytmController;
 use App\Http\Controllers\PostingController;
 use App\Http\Controllers\ProcessFlowController;
 use App\Http\Controllers\ProfileController;
@@ -187,4 +188,10 @@ Route::group(['prefix' => 'web', 'middleware' => ['auth:sanctum', 'staff']], fun
 Route::post('applications/submit', [ApplicationController::class, 'submitApplication'])->middleware('auth:sanctum');
 //Public routes
 Route::get('attachment/{code}', [AttachmentController::class, 'getApplicationAttachments']);
+
+
+Route::post('initiate-payment', [PaytmController::class, 'makePayment']);
+Route::get('response-handler', [PaytmController::class, 'responseHandler']);
+
+
 // base_path('routes/rj/index.php');
