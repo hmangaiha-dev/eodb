@@ -64,8 +64,8 @@ import Part1 from "./Part1.vue";
 import Part2 from "./Part2.vue";
 import Document from "./Document.vue";
 import { api } from "src/boot/axios";
-
-import { useRouter } from "vue-router";
+// import { route } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 import { useQuasar } from "quasar";
 
@@ -79,33 +79,52 @@ export default {
     const part1Form = ref(null);
     const part2Form = ref(null);
     const documentForm = ref(null);
+    const route = useRoute();
+
+    const q = useQuasar();
 
     const paymentURL = ref(false);
 
     const router = useRouter();
 
     const initPaytm = () => {
+      var fields = Object.assign(
+        part1Form.value.formData,
+        part2Form.value.formData
+      );
+
+      console.log("fields", fields);
+
+      formData = Object.assign(formData, fields);
+
+      formData = Object.assign(formData, documentForm.value.formData);
+
+      var formDatas = new FormData();
+
+      for (let data in formData) {
+        console.log("data value of" + data, formData[data]);
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+      formDatas.append("amount", 1);
+
       //  return console.log('payment res',res.data);
       api
-        .post("/initiate-payment", {
-          // order_id: "dsd",
-          amount: "1",
-        })
+        .post("/initiate-payment", formDatas)
         .then((res) => {
           console.log("payment url", res.data);
           let paymentURL = res.data;
+          // return;
 
-          api
-            .get(paymentURL)
-            .then((res) => {
-              console.log("success payment", res.data);
-            })
-            .catch((err) => {
-              console.log("payment failes", err.response);
-            });
+          window.open(paymentURL, "_self").focus();
         })
         .catch((err) => {
           console.log("error", err);
+
+          q.notify({
+            type: "negative",
+            message: "Something went wrong",
+          });
         });
     };
 
@@ -117,6 +136,15 @@ export default {
       department_id: 1,
     });
     onMounted(() => {
+      // popupWindow = window.open("http://google.com", "name", "width=700,height=350");
+      // popupWindow.focus();
+      // return console.log("query", route.query.status);
+      // console.log('source',view-source:https://paymentgw.mizoram.gov.in/msegs-payment/206);
+      // return console.log('source',window.open('view-source:https://paymentgw.mizoram.gov.in/msegs-payment/206'));
+      // <a target="_blank" href="view-source:https://paymentgw.mizoram.gov.in/msegs-payment/206'">view Wikipedia's home page HTML source</a>
+      // fetch('https://paymentgw.mizoram.gov.in/msegs-payment/206').then((response) => response.text()).then((text) => console.log(text));
+
+      return;
       var config = {
         root: "",
         flow: "DEFAULT",
@@ -130,7 +158,7 @@ export default {
         },
         data: {
           orderId: "1648118268",
-          token: "ddc34ad2205f47c58c614641917f3ddb1648119316108",
+          token: Date.now(),
           tokenType: "TXN_TOKEN",
           amount: "1",
         },

@@ -1,5 +1,5 @@
 <template>
-  <div class="zcard row items-center q-gutter-md q-col-gutter-md">
+  <div class="zcard row items-center q-col-gutter-md">
     
     <div class="col-3">
       <label class="zlabel" for="name"
@@ -9,7 +9,7 @@
     </div>
 
     <div class="col-6">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.industrial_location_name" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.industrial_location_name" />
     </div>
 
 
@@ -34,100 +34,100 @@
       >
     </p>
 
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="name"
         >1.Name of the Applicant <span class="asterisk"> *</span></label
       >
     </div>
 
     <div class="col-xs-12 col-md-4">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.applicant_name" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.applicant_name" />
     </div>
 
     <div class="col-xs-12 zlabel">2.Address for communication</div>
 
-    <div class="col-xs-12 col-md-1">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="dob" type="date"
         >Steet<span class="asterisk">*</span>
       </label>
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_street" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.communication_street" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender"
         >City/Town/Village <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_city" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.communication_city" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender"
         >PIN No <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_pin_no" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.communication_pin_no" />
     </div>
 
-    <div class="col-xs-12 col-md-1">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender"
         >House No <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_house_no" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.communication_house_no" />
     </div>
 
-    <div class="col-xs-12 col-md-1">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender"
         >Phone No <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Office" dense outlined v-model="formData.communication_office_phn" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Office"  outlined v-model="formData.communication_office_phn" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-3">
       <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         label="Residence"
-        dense
+        
         outlined
         v-model="formData.communication_residence_phn"
       />
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Mobile" dense outlined v-model="formData.communication_mobile_phn" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Mobile"  outlined v-model="formData.communication_mobile_phn" />
     </div>
 
-    <div class="col-xs-12 col-md-1">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender"
         >Email Addess <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_email" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.communication_email" />
     </div>
 
-    <div class="col-xs-12 col-md-1">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender"
         >Website <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_website" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.communication_website" />
     </div>
 
-    <div class="col-xs-12 col-md-1">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="pob">District</label>
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.communication_district" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.communication_district" />
     </div>
 
     <div class="col-xs-12 zlabel">
@@ -135,55 +135,55 @@
       Unit: Proposed/Existing.
     </div>
 
-    <div class="col-xs-12 col-md-1">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="dob" type="date"
         >Steet<span class="asterisk">*</span>
       </label>
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.proposed_street" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.proposed_street" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender"
         >City/Town/Village <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.proposed_city" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.proposed_city" />
     </div>
 
    
 
-    <div class="col-xs-12 col-md-1">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender"
         >House No <span class="asterisk">*</span></label
       >
     </div>
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.proposed_house_no" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.proposed_house_no" />
     </div>
 
-    <div class="col-xs-12 col-md-1">
+    <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="gender"
         >Phone No <span class="asterisk">*</span></label
       >
     </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Office" dense outlined v-model="formData.proposed_office_phn" />
+    <div class="col-xs-12 col-md-3">
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Office"  outlined v-model="formData.proposed_office_phn" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-3">
       <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         label="Residence"
-        dense
+        
         outlined
         v-model="formData.proposed_residence_phn"
       />
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Mobile" dense outlined v-model="formData.proposed_mobile_phn" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" label="Mobile"  outlined v-model="formData.proposed_mobile_phn" />
     </div>
 
     <div class="col-xs-12" />

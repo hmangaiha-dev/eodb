@@ -5,6 +5,7 @@ use App\Http\Controllers\CommonApplicationController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\InvestorProfileController;
+use App\Http\Controllers\PaytmController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Models\Application;
 use Illuminate\Http\Request;
@@ -93,6 +94,18 @@ Route::get('/reset-password/{token}', function ($token) {
 
 Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->middleware('guest')->name('password.reset.link');
 Route::post('/update-password', [ResetPasswordController::class, 'updatePassword'])->middleware('guest')->name('password.update');
+
+
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    // Route::get('', [CommonApplicationController::class, 'getCommonApplication']);
+    // Route::post('store', [CommonApplicationController::class, 'store']);
+    // Route::get('{application}', [InvestorController::class, 'detail'])->where('application', '[0-9]+');
+    Route::post('initiate-payment', [PaytmController::class, 'makePayment']);
+});
+Route::get('response-handler', [PaytmController::class, 'responseHandler']);
+Route::get('initiate-payment', [PaytmController::class, 'makePayment']);
+
 // Route::post('/reset-password', [ResetPasswordController::class, 'postResetPassword'])->middleware('guest')->name('password.reset.post');
 
 

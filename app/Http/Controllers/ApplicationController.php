@@ -85,7 +85,9 @@ class ApplicationController extends Controller
 
     public function submitApplication(Request $request)
     {
-        // return $request->all();
+        // // return $request->all();
+        // return auth()->user();
+        // // return 'jje';
 
 
         $this->validate($request, [

@@ -118,7 +118,7 @@ Route::group(['prefix' => 'application-profiles', 'middleware' => ['auth:sanctum
     Route::get('{model}/print-template', [ApplicationProfileController::class, 'detail']);
 });
 
-Route::group(['prefix' => 'applications', 'middleware' => ['auth:sanctum','staff']], function () {
+Route::group(['prefix' => 'applications', 'middleware' => ['auth:sanctum', 'staff']], function () {
     Route::get('certificates', [ApplicationController::class, 'getUserCertificates']);
     //    Route::post('submit', [ApplicationController::class, 'submitApplication']);
     Route::get('me', [DeskController::class, 'myApplication']);
@@ -152,7 +152,6 @@ Route::group(['prefix' => 'web'], function () {
     Route::get('{code}/act-rule', [ActRuleController::class, 'departmentAct']);
     Route::get('{code}/notification', [NotificationController::class, 'departmentNotification']);
     Route::get('{code}/other', [InformationController::class, 'departmentOther']);
-
 });
 Route::group(['prefix' => 'web', 'middleware' => ['auth:sanctum', 'staff']], function () {
     Route::get('online-services', [ServiceController::class, 'getServices']);
@@ -190,8 +189,8 @@ Route::post('applications/submit', [ApplicationController::class, 'submitApplica
 Route::get('attachment/{code}', [AttachmentController::class, 'getApplicationAttachments']);
 
 
-Route::post('initiate-payment', [PaytmController::class, 'makePayment']);
-Route::get('response-handler', [PaytmController::class, 'responseHandler']);
+
+
 
 
 // base_path('routes/rj/index.php');
