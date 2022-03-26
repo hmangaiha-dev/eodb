@@ -98,13 +98,11 @@ Route::post('/update-password', [ResetPasswordController::class, 'updatePassword
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    // Route::get('', [CommonApplicationController::class, 'getCommonApplication']);
-    // Route::post('store', [CommonApplicationController::class, 'store']);
-    // Route::get('{application}', [InvestorController::class, 'detail'])->where('application', '[0-9]+');
+
     Route::post('initiate-payment', [PaytmController::class, 'makePayment']);
 });
 Route::get('response-handler', [PaytmController::class, 'responseHandler']);
-Route::get('initiate-payment', [PaytmController::class, 'makePayment']);
+// Route::get('initiate-payment', [PaytmController::class, 'makePayment']);
 
 // Route::post('/reset-password', [ResetPasswordController::class, 'postResetPassword'])->middleware('guest')->name('password.reset.post');
 

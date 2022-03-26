@@ -15,7 +15,7 @@ class Application extends Model
 
     const ONGOING_STATUSES = ['submitted'];
 
-    protected $fillable = ['application_code', 'regn_no','application_profile_id','user_id','department_id' ,'current_state','archived', 'remark'];
+    protected $fillable = ['application_code', 'regn_no','application_profile_id','user_id','department_id','paid','current_state','archived', 'remark'];
     protected $appends = ['application_name','current_step','last_step'];
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',

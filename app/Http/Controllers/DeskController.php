@@ -9,10 +9,10 @@ class DeskController extends Controller
     public function myApplication(Request $request)
     {
         $staff = auth()?->user();
-        $search = $request->get('search');
+        $search = $request->get('search'); 
 
         return $staff->myApplication()
-            ->where('status', 'dealing')
+            ->where([['status', '=', 'dealing'], ['paid', '=', true ]])
             ->where('applications.archived', false)
             ->paginate();
 

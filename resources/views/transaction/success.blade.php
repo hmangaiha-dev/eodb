@@ -25,8 +25,14 @@
         margin: 0;
     }
 
-    i {
+    .checkmark{
         color: #9ABC66;
+        font-size: 100px;
+        line-height: 200px;
+        margin-left: -15px;
+    }
+    .xmark{
+        color: #dd1010;
         font-size: 100px;
         line-height: 200px;
         margin-left: -15px;
@@ -46,15 +52,15 @@
 <body>
     <div class="card">
         @if ($status == 'success')
-            <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+            <div style="border-radius:200px; height:200px; width:200px; background: #faf5f6; margin:0 auto;">
                 <i class="checkmark">✓</i>
             </div>
             <h1>Payment Success</h1>
         @else
             <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
-                <i class="checkmark">✘</i>
+                <i class="xmark">✘</i>
             </div>
-            <h1>Payment Failed</h1>
+            <h1>Sorry! No transaction found</h1>
         @endif
         <p> <input style="background-color: white;color: #333;border: 2px solid #4CAF50;padding:10px;cursor: pointer;"
                 type="button" onclick="location.href='http://localhost:8080/investor';" value="Go to Dashboard" /> </p>

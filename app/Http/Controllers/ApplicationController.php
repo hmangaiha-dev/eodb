@@ -107,6 +107,7 @@ class ApplicationController extends Controller
             'user_id' => Auth::id(),
             'department_id' => $request->get('department_id'),
             'current_state' => 'submitted',
+            'paid' => true,
         ]);
 
 

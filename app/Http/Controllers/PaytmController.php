@@ -126,18 +126,8 @@ class PaytmController extends Controller
 
     public function makePayment(Request $request)
     {
-        // return view('transaction.success', ['message' => 'succes']);
-        // return 'dsf';
-
-        // return Auth::id();
-
-        $this->application = $request;
-        // return redirect()->away('http://localhost:8080/investor/commerce-and-industries/allotment-of-industrial-plot');
-
-        // $result = $this->submitApplication($this->application);
-        // return $result;
-
-        // return redirect()->away('http://localhost:8080/investor/commerce-and-industries/allotment-of-industrial-plot');
+        // return $this->saveApplication($request);
+        
 
         $this->orderId = now()->timestamp;
         // return $request->all();
@@ -159,6 +149,9 @@ class PaytmController extends Controller
             ]
         ]);
 
+        $this->saveApplication($request);
+
+
         $response = json_decode($response->getBody());
         return $response;
         // return redirect($response);
@@ -166,10 +159,6 @@ class PaytmController extends Controller
 
     public function responseHandler(Request $request)
     {
-
-        // return now()->timestamp;
-
-        // return $this->orderId;
 
         $paytmParams = array();
 
@@ -217,6 +206,12 @@ class PaytmController extends Controller
 
         if ($result->body->resultInfo->resultStatus == 'TXN_SUCCESS') {
 
+            $order = Order::query()->firstWhere('order_id', $request->get('orderId'));
+
+            $order && $order->application()->update([
+                'paid' => true
+            ]);
+
             $payment = new Payment();
             // $payment->transaction_id = ;
             $payment->order_id = $request->get('orderId');
@@ -225,9 +220,11 @@ class PaytmController extends Controller
             $payment->amount = $result->body->txnAmount;
             $payment->callback_url = $this->callbackUrl;
             $payment->save();
+            return view('transaction.success', ['status' => 'success']);
 
 
-            $this->submitApplication($this->application);
+
+            // $this->submitApplication($this->application);
         } else
             return view('transaction.success', ['status' => 'failure']);
         // return redirect()->away('http://localhost:8080/investor/commerce-and-industries/allotment-of-industrial-plot?status=' . $payment_status);
@@ -235,12 +232,8 @@ class PaytmController extends Controller
 
 
     }
-    public function submitApplication(Request $request)
+    public function saveApplication(Request $request)
     {
-        // // return $request->all();
-        // return auth()->user();
-        // // return 'jje';
-
 
         $this->validate($request, [
             'application_code' => ['required'],
@@ -261,8 +254,10 @@ class PaytmController extends Controller
             'current_state' => 'submitted',
         ]);
 
-
-
+        $order = new Order();
+        $order->application_id = $application->id;
+        $order->order_id = $this->orderId;
+        $order->save();
 
         $application->states()->create([
             'name' => 'submitted',
@@ -320,7 +315,7 @@ class PaytmController extends Controller
             }
         }
 
-        return view('transaction.success', ['status' => 'failure']);
+        // return view('transaction.success', ['status' => 'failure']);
         // $views = view('bamboo.table', ["details" => $details, 'code' => $model->application_code, 'total' => $total])->render();
 
         // return response()->json([

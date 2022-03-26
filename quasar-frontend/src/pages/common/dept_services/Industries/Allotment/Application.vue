@@ -112,7 +112,7 @@ export default {
       api
         .post("/initiate-payment", formDatas)
         .then((res) => {
-          console.log("payment url", res.data);
+          // return console.log("payment url", res.data);
           let paymentURL = res.data;
           // return;
 

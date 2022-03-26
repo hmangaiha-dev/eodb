@@ -141,8 +141,7 @@ class OfficeController extends Controller
     {
         $staff = auth('sanctum')->user();
         $office = $staff->currentPost();
-        //        $office = new Office();
-        $applications = $office?->applications()
+        $applications = $staff?->myApplication()
             ->paginate();
         return response()->json($applications, 200);
     }

@@ -56,7 +56,7 @@ class InvestorController extends Controller
     {
         $user =  Auth::user();
         return response()->json([
-            'list' => $user->applications()->with('department')->orderBy('applications.created_at', 'desc')->get(),
+            'list' => $user->applications()->where('paid',true)->with('department')->orderBy('applications.created_at', 'desc')->get(),
             'certs' => $user->certificates()->get(),
             'common' => $user->commonApplications()
                 ->with(
