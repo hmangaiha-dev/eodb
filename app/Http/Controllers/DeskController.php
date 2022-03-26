@@ -13,7 +13,18 @@ class DeskController extends Controller
 
         return $staff->myApplication()
             ->where('status', 'dealing')
-            ->where('applications.archived',false)
+            ->where('applications.archived', false)
             ->paginate();
+
+
+
+
+
+        // $staff = auth('sanctum')->user();
+        // $office = $staff->currentPost();
+        // //        $office = new Office();
+        // $applications = $office?->applications()
+        //     ->paginate();
+        // return response()->json($applications, 200);
     }
 }

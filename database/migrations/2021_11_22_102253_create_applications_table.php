@@ -26,6 +26,7 @@ class CreateApplicationsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('department_id');
 
+            $table->string('archived')->default(false);
 
             $table->timestamps();
         });

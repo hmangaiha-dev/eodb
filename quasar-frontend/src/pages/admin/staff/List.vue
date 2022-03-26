@@ -1,6 +1,6 @@
 <template>
   <q-page class="container-lg q-my-md" padding>
-    <h1 class="ztitle">Staffs</h1>
+    <p class="ztitle">Staffs</p>
 
     <div class="zcard">
       <div class="row q-col-gutter-md">

@@ -380,7 +380,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -420,9 +420,30 @@ export default {
       land_revenue_land_house_agreement: false,
       land_revenue_land_house_signature: "",
     });
-    onMounted(() => {});
+    watch(store.state.globalData.common, () => {  
+      getA();
+    });
+
+    const getA = () => {
+      const { applicant_name, address,email,mobile_no,city_town } =
+        store.state.globalData.common.partA;
+
+      formData.land_revenue_land_house_one = applicant_name;
+      formData.land_revenue_land_house_three = address;
+      formData.land_revenue_land_house_thirteen_a = mobile_no;
+      formData.land_revenue_land_house_thirteen_b = email;
+      formData.land_revenue_land_house_two_d = city_town;
+
+    };
+
+    onMounted(async () => {
+      getA();
+    });
+
+    
     return {
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

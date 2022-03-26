@@ -177,7 +177,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -202,6 +202,36 @@ export default {
       phe_reconn_four: "",
       phe_reconn_signature: null,
     });
+
+    watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.phe_reconn_one = applicant_name  ;
+      formData.phe_reconn_two_d = city_town ;
+      formData.phe_reconn_two_e = postal_code ;
+      formData.phe_reconn_two_g = mobile_no ;
+
+      formData.phe_reconn_two_h = email ;
+
+
+
+    };
+
     onMounted(() => {});
     return {
       group: ref([]),

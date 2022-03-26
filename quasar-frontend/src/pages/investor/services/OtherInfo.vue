@@ -1,67 +1,124 @@
 <template>
-  <div>
-    <q-table flat title-class="text-uppercase" title="Other Informations" :columns="columns" :rows="rows" row-key="name" >
-        <template v-slot:body-cell-download="props">
-        <q-td :props="props">
-          <div>
-            <q-btn color="primary" label="download" />
-          </div>
+  <!-- <div v-for="row in rows" :key="row">
+    {{ data.name }}
+  </div> -->
 
+  <q-table
+    flat
+    title-class="text-uppercase"
+    title="Other Information"
+    :columns="columns"
+    :rows="rows"
+    row-key="name"
+  >
+    <template v-slot:body="props">
+      <q-tr :props="props">
+        <q-td key="title" :props="props">
+          {{ props.row.title }}
         </q-td>
-      </template>
-    </q-table>
-  </div>
+
+        <q-td key="description" :props="props">
+          {{ props.row.description }}
+        </q-td>
+
+        <q-td key="attachment" :props="props">
+          <q-btn
+            @click="redirectUrl(props.row.attachment?.full_path)"
+            color="primary"
+            label="download"
+          />
+          <!-- {{ props.row.attachment?.full_path }} -->
+        </q-td>
+      </q-tr>
+    </template>
+  </q-table>
 </template>
 
 <script>
-import { date } from 'quasar';
-const columns = [
-  {
-    name: "serial",
-    required: true,
-    label: "#",
-    align: "left",
-    field: "serial",
-    format: (val) => `${val}`,
-    sortable: false,
-  },
-  {
-    name: "other_info",
-    required: true,
-    label: "Act and Rules",
-    align: "left",
-    field: "other_info",
-    format: (val) => `${val}`,
-    sortable: true,
-  },
+import { onMounted, reactive, ref } from "vue";
+// import { useRoute } from "vue-router";
+import { api } from "boot/axios";
+import { useQuasar } from "quasar";
+import { useRouter, useRoute } from "vue-router";
 
-
-  {
-    name: "download",
-    required: true,
-    label: "Download",
-    align: "left",
-    field: "download",
-    format: (val) => `${val}`,
-    sortable: true,
-  },
-];
-
-const rows = [
-  {
-    serial: 1,
-    other_info: 'District/Divisional Officers with Office Address',
-
-    download: "download",
-
-
-  }
-];
 export default {
-  setup() {
+  setup(props, context) {
+    const router = useRouter();
+    const route = useRoute();
+    const q = useQuasar();
+    const columns = reactive([
+      {
+        name: "title",
+        required: true,
+        label: "Other Informations",
+        align: "left",
+        field: "title",
+        format: (val) => `${val}`,
+        sortable: false,
+      },
+      {
+        name: "description",
+        required: true,
+        label: "Notification number",
+        align: "left",
+        field: "description",
+        format: (val) => `${val}`,
+        sortable: false,
+      },
+
+      {
+        name: "attachment",
+        required: true,
+        label: "Download",
+        align: "left",
+        field: "attachment",
+        format: (val) => `${val}`,
+        sortable: true,
+      },
+    ]);
+
+    let rows = ref([
+      {
+        // name: "commerce",
+        // description: "TEst",
+      },
+    ]);
+
+    const localState = reactive({
+      data: [],
+    });
+    onMounted(() => {
+      const { deptname } = route.params;
+
+      q.loading.show();
+      api
+        .get(`web/${deptname}/other`)
+        .then((res) => {
+          // const {data} = res.data;
+          // return console.log("data", res.data);
+          localState.data = res.data.list.data;
+
+          rows.value = res.data.list.data;
+
+          console.log("rows", rows.value);
+        })
+        .catch((err) => {
+          q.notify({
+            type: "negative",
+            message: err.response?.data?.message || err.toString(),
+          });
+        })
+        .finally(() => q.loading.hide());
+    });
     return {
+      localState,
       columns,
       rows,
+      route,
+      router,
+      redirectUrl: (route) => {
+        window.open(route, "_blank").focus();
+      },
     };
   },
 };

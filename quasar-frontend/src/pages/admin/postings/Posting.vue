@@ -104,7 +104,7 @@ export default {
       remark: ''
     })
 
-    const submit=()=>{
+    const submit=(e)=>{
       const data={
         staff_id:formData.staff.value,
         office_id:formData.office.value,
@@ -113,7 +113,7 @@ export default {
       api.post('posting',data)
         .then(res=>{
           q.notify({type:'positive',message:res.data?.message})
-          reset();
+          e.target?.reset();
         })
         .catch(err=>{
           if (err?.response?.data?.errors)
@@ -130,7 +130,6 @@ export default {
       formData.joining_date = null;
       formData.status = 'on-duty';
       formData.remark = '';
-      formRef.value.reset()
     }
 
     return {

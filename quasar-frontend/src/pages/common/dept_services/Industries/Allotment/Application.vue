@@ -5,7 +5,33 @@
     <div class="col-12 ztitle text-center">
       APPLICATION FOR ALLOTMENT OF INDUSTRIAL PLOT/SHET AT
     </div>
-    <q-form @submit.prevent="submit" class="row">
+
+    <q-dialog v-model="paymentURL">
+      <q-card>
+        <q-card-section>
+          <div class="text-h6">Alert</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <!-- {{ window.open('https://paymentgw.mizoram.gov.in/msegs-payment/6','_self') }} -->
+          <!-- <q-item  target="_blank" to="https://paymentgw.mizoram.gov.in/msegs-payment/5">dd</q-item> -->
+
+          <!-- <iframe
+            title="hello"
+            src="https://paymentgw.mizoram.gov.in/msegs-payment/11"
+            frameborder="0"
+          ></iframe> -->
+
+          <!-- <embed type="" src="https://paymentgw.mizoram.gov.in/msegs-payment/11" /> -->
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="OK" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
+    <q-form @submit.prevent="initPaytm" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Part1 ref="part1Form" />
@@ -38,11 +64,10 @@ import Part1 from "./Part1.vue";
 import Part2 from "./Part2.vue";
 import Document from "./Document.vue";
 import { api } from "src/boot/axios";
-
-import { useRouter } from 'vue-router'
+// import { route } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 import { useQuasar } from "quasar";
-
 
 export default {
   components: {
@@ -54,8 +79,54 @@ export default {
     const part1Form = ref(null);
     const part2Form = ref(null);
     const documentForm = ref(null);
+    const route = useRoute();
 
-    const router = useRouter()
+    const q = useQuasar();
+
+    const paymentURL = ref(false);
+
+    const router = useRouter();
+
+    const initPaytm = () => {
+      var fields = Object.assign(
+        part1Form.value.formData,
+        part2Form.value.formData
+      );
+
+      console.log("fields", fields);
+
+      formData = Object.assign(formData, fields);
+
+      formData = Object.assign(formData, documentForm.value.formData);
+
+      var formDatas = new FormData();
+
+      for (let data in formData) {
+        console.log("data value of" + data, formData[data]);
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+      formDatas.append("amount", 1);
+
+      //  return console.log('payment res',res.data);
+      api
+        .post("/initiate-payment", formDatas)
+        .then((res) => {
+          console.log("payment url", res.data);
+          let paymentURL = res.data;
+          // return;
+
+          window.open(paymentURL, "_self").focus();
+        })
+        .catch((err) => {
+          console.log("error", err);
+
+          q.notify({
+            type: "negative",
+            message: "Something went wrong",
+          });
+        });
+    };
 
     const $q = useQuasar();
     const store = useStore();
@@ -64,12 +135,61 @@ export default {
       application_code: "C&E_ALLOTMENT_PLOT",
       department_id: 1,
     });
-    onMounted(() => {});
+    onMounted(() => {
+      // popupWindow = window.open("http://google.com", "name", "width=700,height=350");
+      // popupWindow.focus();
+      // return console.log("query", route.query.status);
+      // console.log('source',view-source:https://paymentgw.mizoram.gov.in/msegs-payment/206);
+      // return console.log('source',window.open('view-source:https://paymentgw.mizoram.gov.in/msegs-payment/206'));
+      // <a target="_blank" href="view-source:https://paymentgw.mizoram.gov.in/msegs-payment/206'">view Wikipedia's home page HTML source</a>
+      // fetch('https://paymentgw.mizoram.gov.in/msegs-payment/206').then((response) => response.text()).then((text) => console.log(text));
+
+      return;
+      var config = {
+        root: "",
+        flow: "DEFAULT",
+        merchant: {
+          name: "MSeGS",
+          logo: "https://paymentgw.mizoram.gov.in/images/logo.png",
+        },
+        style: {
+          headerBackgroundColor: "#8dd8ff",
+          headerColor: "#3f3f40",
+        },
+        data: {
+          orderId: "1648118268",
+          token: Date.now(),
+          tokenType: "TXN_TOKEN",
+          amount: "1",
+        },
+        handler: {
+          notifyMerchant: function (eventName, data) {
+            if (eventName == "SESSION_EXPIRED") {
+              alert("Your session has expired!!");
+              location.reload();
+            }
+          },
+        },
+      };
+
+      if (window.Paytm && window.Paytm.CheckoutJS) {
+        window.Paytm.CheckoutJS.init(config)
+          .then(function onSuccess() {
+            window.Paytm.CheckoutJS.invoke();
+          })
+          .catch(function onError(error) {
+            console.log("Error => ", error);
+          });
+      }
+    });
 
     return {
       part1Form,
       part2Form,
       documentForm,
+      initPaytm,
+      paymentURL,
+      page: "https://paymentgw.mizoram.gov.in/msegs-payment/6",
 
       submit: () => {
         var fields = Object.assign(
@@ -82,7 +202,6 @@ export default {
         formData = Object.assign(formData, fields);
 
         formData = Object.assign(formData, documentForm.value.formData);
-
 
         var formDatas = new FormData();
 
@@ -97,15 +216,15 @@ export default {
           .then((res) => {
             console.log("response value", res.data);
             $q.notify({
-              message: 'Application submitted successfully',
-              color: 'green'
-            })
-            router.push({ name: 'investor:ongoing' })
-
+              message: "Application submitted successfully",
+              color: "green",
+            });
+            router.push({ name: "investor:ongoing" });
           })
           .catch((err) => console.log("error", err));
       },
       router,
+      window: window,
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

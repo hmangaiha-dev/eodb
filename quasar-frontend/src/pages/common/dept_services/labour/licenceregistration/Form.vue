@@ -440,7 +440,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -483,6 +483,21 @@ export default {
       labour_lic_reg_eleven_c: "",
       labour_lic_reg_eleven_signature: null,
     });
+
+watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const { applicant_name,city_town, postal_code,address, mobile_no,email,enterprise_name,enterprise_type} =
+        store.state.globalData.common.partA;
+
+  formData.labour_lic_reg_one = enterprise_name;
+  formData.labour_lic_reg_two_a = address;
+
+  
+    };
+
     onMounted(() => {});
     return {
       group: ref([]),

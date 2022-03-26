@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-
 class Application extends Model
 {
     use HasFactory;
@@ -37,7 +36,11 @@ class Application extends Model
     }
     public function bamboos(): HasMany
     {
-        return $this->hasMany(Bamboo::class);
+        return $this->hasMany(Bamboo::class,'application_id','id');
+    }
+    public function powerSubsidyMachineries(): HasMany
+    {
+        return $this->hasMany(PowerSubsidyMachinery::class,'application_id','id');
     }
 
     public function states()
@@ -98,6 +101,12 @@ class Application extends Model
     {
         return $this->department()->first()?->dept_code . '/' . $this->application_code;
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+    
 
     protected function serializeDate(DateTimeInterface $date): string
     {

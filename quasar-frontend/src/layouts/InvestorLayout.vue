@@ -1,173 +1,148 @@
 <template>
   <div class="my-layout">
     <q-layout view="hHh Lpr lff">
-      <div class="my-layout">
-        <q-header elevated class="bg-primary text-white" height-hint="98">
-          <q-toolbar class=" bg-white text-dark q-py-none">
-            <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-            <router-link to="/"
-              ><img style="width: 80px" src="~assets/eodb-logo.png"
-            /></router-link>
+      <q-header elevated class="bg-white text-white" height-hint="98">
+        <q-toolbar :class="$q.screen.gt.sm && 'q-px-xl'" class="text-dark q-py-none">
+          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+          <router-link to="/"
+            ><img style="width: 80px" src="~assets/eodb-logo.png"
+          /></router-link>
 
-            <q-toolbar-title class="q-mt-md q-pl-lg q-mb-none"
-              ><span class="heading q-pb-none">Ease of Doing Business</span>
-              <p class="mizoram q-pt-none text-caption">Mizoram</p>
-            </q-toolbar-title>
+          <q-toolbar-title class="gt-xs q-mt-md q-pl-lg q-mb-none"
+            ><span class="heading q-pb-none">Ease of Doing Business</span>
+            <p class="mizoram q-pt-none text-caption">Mizoram</p>
+          </q-toolbar-title>
 
-            <q-space />
-            <q-space />
+          <q-space />
+          <q-space />
 
-            <q-btn-dropdown
-              color="primary"
-              v-if="isAuthenticated"
-              outline
-              class="q-pa-xs"
-              icon="account_circle"
-              rounded
-            >
-              <ProfileMenu />
-            </q-btn-dropdown>
-
-            <q-btn-dropdown class="lt-md" flat icon="menu">
-              <q-list>
-                <q-item
-                  active-class="active-item q-px-md"
-                  to="/h"
-                  v-for="link in essentialLinks"
-                  :key="link.title"
-                  clickable
-                  v-close-popup
-                >
-                  <q-item-section class="btn-dropdown">
-                    <q-item-label style="color: #00000080">{{
-                      link.title
-                    }}</q-item-label>
-                  </q-item-section>
-                </q-item>
-              </q-list>
-            </q-btn-dropdown>
-          </q-toolbar>
-        </q-header>
-
-        <q-page-container>
-          <q-drawer
-            class="q-px-md q-ml-md"
-            :width="$q.screen.gt.md ? 400 : 350"
-            v-model="leftDrawerOpen"
-            side="left"
-            bordered
+          <q-btn-dropdown
+            color="primary"
+            v-if="isAuthenticated"
+            outline
+            class="q-pa-xs"
+            icon="account_circle"
+            rounded
           >
-            <q-item>
-              <q-item-section class="text-italic text-subtitle1 text-caption"
-                >Applicant Profile</q-item-section
-              >
-            </q-item>
-            <q-item
-              exact
-              class="zitem text-primary"
-              active-class="active-item q-px-md"
-              to="/investor"
-              clickable
-            >
-              <q-item-section avatar>
-                <q-icon color="negative" name="dashboard" />
-              </q-item-section>
-              <q-item-section> Dashboard </q-item-section>
-            </q-item>
+            <ProfileMenu />
+          </q-btn-dropdown>
 
-            <q-item
-              exact
-              class="zitem text-primary"
-              active-class="active-item q-px-md"
-              to="/investor/profile"
-              clickable
-            >
-              <q-item-section avatar>
-                <q-icon color="green" name="people" />
-              </q-item-section>
-              <q-item-section> Profile </q-item-section>
-            </q-item>
-            <q-expansion-item
-              group="somegroup"
-              label="Online Services"
-              header-class="text-primary"
-            >
-              <q-item
-                v-for="dept in depts"
-                :key="dept"
-                class="q-ml-md zitem"
-                active-class="active-item q-px-md"
-                exact
-                :to="`/investor/${dept.slug}/online-services`"
-              >
-                <q-item-section avatar>
-                  <q-icon color="negative" name="precision_manufacturing" />
-                </q-item-section>
-                <q-item-section> {{ dept.name }} </q-item-section>
-              </q-item>
-            </q-expansion-item>
-            <q-expansion-item
-              expand-icon="expand_more"
-              group="somegroup"
-              icon="explore"
-              label="My Applications"
-              header-class="text-primary"
-            >
-              <q-item
-                class="q-ml-md zitem"
-                active-class="active-item q-px-md"
-                :to="{ name: 'investor:ongoing' }"
-                clickable
-              >
-                <q-item-section avatar>
-                  <q-icon color="yellow-7" name="hourglass_empty" />
-                </q-item-section>
-                <q-item-section> Ongoing Applications </q-item-section>
-              </q-item>
-              <q-item
-                active-class="active-item q-px-md"
-                class="q-ml-md zitem"
-                :to="{ name: 'investor:approved' }"
-                clickable
-              >
-                <q-item-section avatar>
-                  <q-icon color="green-4" name="check_circle" />
-                </q-item-section>
-                <q-item-section> Approved Applications </q-item-section>
-              </q-item>
+        </q-toolbar>
+      </q-header>
 
-              <q-item
-                active-class="active-item q-px-md"
-                class="q-ml-md zitem"
-                :to="{ name: 'investor:application-track' }"
-                clickable
-              >
-                <q-item-section avatar>
-                  <q-icon color="green" name="trending_up" />
-                </q-item-section>
-                <q-item-section> Track Application </q-item-section>
-              </q-item>
-            </q-expansion-item>
-            <q-separator />
-            <q-item
-              class="zitem text-primary"
-              active-class="active-item q-px-md"
-              :to="{ name: 'common-application' }"
-              clickable
-            >
-              <q-item-section avatar>
-                <q-icon color="negative" name="dashboard" />
-              </q-item-section>
-              <q-item-section> Common Application </q-item-section>
-            </q-item>
-          </q-drawer>
-          <!-- <keep-alive> -->
-            <router-view class="container-lg "/>
-          <!-- </keep-alive> -->
-        </q-page-container>
+      <q-drawer
+        :width="$q.screen.gt.xs ? 400 : 300"
+        :breakpoint="1580"
+        persistent
+        class="q-pa-md"
+        v-model="leftDrawerOpen"
+        side="left"
+        bordered
+      >
+        <q-item>
+          <q-item-section class="text-italic text-subtitle1 text-caption"
+            >Applicant Profile</q-item-section
+          >
+        </q-item>
+        <q-item
+          exact
+          class="zitem"
+          active-class="active-item q-px-md"
+          to="/investor"
+          clickable
+        >
+          <q-item-section avatar>
+            <q-icon name="dashboard" />
+          </q-item-section>
+          <q-item-section> Dashboard </q-item-section>
+        </q-item>
+        <q-item
+          class="zitem"
+          active-class="active-item q-px-md"
+          :to="{ name: 'common-application' }"
+          clickable
+        >
+          <q-item-section avatar>
+            <q-icon name="assignment" />
+          </q-item-section>
+          <q-item-section> Common Application </q-item-section>
+        </q-item>
+        <q-expansion-item
+          default-opened
+          expand-icon="expand_more"
+          group="somegroup"
+          icon="sticky_note_2"
+          label="My Applications"
+        >
+          <q-item
+            class="q-ml-md zitem"
+            active-class="active-item q-px-md"
+            :to="{ name: 'investor:ongoing' }"
+            clickable
+          >
+            <q-item-section avatar>
+              <q-icon color="yellow-7" name="hourglass_empty" />
+            </q-item-section>
+            <q-item-section> Submitted Applications </q-item-section>
+          </q-item>
+          <!-- <q-item
+            active-class="active-item q-px-md"
+            class="q-ml-md zitem"
+            :to="{ name: 'investor:approved' }"
+            clickable
+          >
+            <q-item-section avatar>
+              <q-icon color="green-4" name="check_circle" />
+            </q-item-section>
+            <q-item-section> Approved Applications </q-item-section>
+          </q-item> -->
 
-        <!-- <MsegsFooter /> -->
-      </div>
+          <q-item
+            active-class="active-item q-px-md"
+            class="q-ml-md zitem"
+            :to="{ name: 'investor:application-track' }"
+            clickable
+          >
+            <q-item-section avatar>
+              <q-icon color="green" name="trending_up" />
+            </q-item-section>
+            <q-item-section> Track Application </q-item-section>
+          </q-item>
+          <q-item
+            active-class="active-item q-px-md"
+            class="q-ml-md zitem"
+            :to="{ name: 'investor:certificates' }"
+            clickable
+          >
+            <q-item-section avatar>
+              <q-icon color="pink" name="drafts" />
+            </q-item-section>
+            <q-item-section> Certificates </q-item-section>
+          </q-item>
+        </q-expansion-item>
+
+        <q-expansion-item group="somegroup" label="Online Services" icon="dns">
+          <q-item
+            v-for="dept in depts"
+            :key="dept"
+            active-class="active-item q-px-md"
+            exact
+            :to="`/investor/${dept.slug}/online-services`"
+          >
+            <q-icon size="9px" class="self-center q-pa-md" name="circle" />
+            <q-item-section> {{ dept.name }} </q-item-section>
+          </q-item>
+        </q-expansion-item>
+        <q-separator />
+      </q-drawer>
+
+      <q-page-container>
+        <!-- <keep-alive> -->
+        <router-view class="container-lg" />
+        <!-- </keep-alive> -->
+      </q-page-container>
+
+      <!-- <MsegsFooter /> -->
     </q-layout>
   </div>
 </template>
@@ -235,7 +210,6 @@ const depts = [
     slug: "excise-and-narcotics",
   },
 
-
   {
     name: "Public Health Engineering Department",
     slug: "public-health-engineering",
@@ -265,13 +239,9 @@ export default {
     const rightDrawerOpen = ref(false);
     const menuItems = reactive([{}]);
 
-    onMounted(async() => {
-      console.log('dsfsf');
-       store.dispatch("globalData/fetchDeptServices");
-       await store.dispatch('globalData/fetchCommonData')
-
-
-      console.log('investor service',store.state.globalData);
+    onMounted(async () => {
+      store.dispatch("globalData/fetchDeptServices");
+      await store.dispatch("globalData/fetchCommonData");
     });
 
     return {

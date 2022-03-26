@@ -21,13 +21,14 @@ class StaffAuthController extends Controller
             return response()->json(['message'=>"Invalid credential"], 400);
         }
 
-        \auth('staff')->login($staff);
+//        \auth('staff')->login($staff);
 
         $abilities=$staff->getPermissionsName();
         $token=$staff->createToken('personal_access_token', $abilities)->plainTextToken;
         return response()->json([
             'token' => $token,
             'user' => $staff,
+            'permissions'=>$abilities
         ],200);
     }
 

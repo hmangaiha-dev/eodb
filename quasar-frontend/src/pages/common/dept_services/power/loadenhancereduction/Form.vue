@@ -72,7 +72,12 @@
             i) Existing sanctioned load (in kW):
             <span class="asterisk"> *</span></label
           >
-          <q-input outlined v-model="formData.power_load_enc_rdc_six_i" type="text" dense />
+          <q-input
+            outlined
+            v-model="formData.power_load_enc_rdc_six_i"
+            type="text"
+            dense
+          />
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12">
           <label class="zlabel" for="name"
@@ -99,7 +104,12 @@
             i) Existing sanctioned load (in kW):
             <span class="asterisk"> *</span></label
           >
-          <q-input outlined v-model="formData.power_load_enc_rdc_seven_i" type="text" dense />
+          <q-input
+            outlined
+            v-model="formData.power_load_enc_rdc_seven_i"
+            type="text"
+            dense
+          />
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12">
           <label class="zlabel" for="name"
@@ -141,14 +151,20 @@
         <div class="col-12">
           <div class="zlabel" style="display: grid">
             <q-checkbox
+              true-value="yes"
+              false-value="no"
               v-model="formData.power_load_enc_rdc_nine_a"
               label="(a) Lighting"
             />
             <q-checkbox
+              true-value="yes"
+              false-value="no"
               v-model="formData.power_load_enc_rdc_nine_b"
               label="(b) Motive Power"
             />
             <q-checkbox
+              true-value="yes"
+              false-value="no"
               v-model="formData.power_load_enc_rdc_nine_c"
               label="(c) Agricultural"
             />
@@ -169,10 +185,7 @@
         >Signature of the consumer <span class="asterisk">*</span></label
       >
 
-      <q-file
-        v-model="formData.power_load_enc_rdc_signature"
-        outlined
-      >
+      <q-file v-model="formData.power_load_enc_rdc_signature" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -189,10 +202,7 @@
         >1. A work completion certificate & test report from Licensed Electrical
         Contractor, if the consumer's installation has been altered</label
       >
-      <q-file
-        v-model="formData.power_load_enc_rdc_completion_cert"
-        outlined
-      >
+      <q-file v-model="formData.power_load_enc_rdc_completion_cert" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -217,7 +227,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -242,15 +252,37 @@ export default {
       power_load_enc_rdc_seven_ii: "",
       power_load_enc_rdc_eight: "",
       power_load_enc_rdc_nine: "",
-      power_load_enc_rdc_nine_a: false,
-      power_load_enc_rdc_nine_b: false,
-      power_load_enc_rdc_nine_c: false,
+      power_load_enc_rdc_nine_a: 'no',
+      power_load_enc_rdc_nine_b: 'no',
+      power_load_enc_rdc_nine_c: 'no',
       power_load_enc_rdc_nine_d: "",
       power_load_enc_rdc_signature: null,
       power_load_enc_rdc_completion_cert: null,
-      power_load_enc_rdc_authorised_sign: null
-     
+      power_load_enc_rdc_authorised_sign: null,
     });
+    watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.power_load_enc_rdc_one = applicant_name;
+      formData.power_load_enc_rdc_four = address;
+      formData.power_load_enc_rdc_five = mobile_no;
+    };
+
     onMounted(() => {});
     return {
       formData,

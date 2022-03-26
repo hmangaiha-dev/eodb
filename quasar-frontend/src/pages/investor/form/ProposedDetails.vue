@@ -24,7 +24,6 @@
     <div class="col-xs-12 col-md-6">
       <label class="zlabel" for="dob" type="date"> 5.2 Industrial Area* </label>
       <q-select
-        
         dropdown-icon="expand_more"
         outlined
         v-model="formData.proposed_industrial_area"
@@ -38,18 +37,20 @@
         <span class="asterisk">*</span></label
       >
       <q-input
+        lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        
         outlined
         v-model="formData.proposed_total_proposed_area"
       />
     </div>
 
     <div class="col-xs-12 col-md-6">
-      <label class="zlabel" for="pob"> 5.4 Total Built-up Area(Sq. meter)* </label>
+      <label class="zlabel" for="pob">
+        5.4 Total Built-up Area(Sq. meter)*
+      </label>
       <q-input
+        lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        
         outlined
         v-model="formData.proposed_total_built_area"
       />
@@ -60,8 +61,8 @@
         5.5 City/Town* <span class="asterisk">*</span></label
       >
       <q-input
+        lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        
         outlined
         v-model="formData.proposed_city_town"
       />
@@ -74,7 +75,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -83,16 +84,28 @@ export default {
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
 
-    const formData = reactive({
+    let formData = reactive({
       proposed_plot_requirement: "",
       proposed_industrial_area: "",
       proposed_total_proposed_area: "",
       proposed_total_built_area: "",
       proposed_city_town: "",
+      model: "B",
     });
-    onMounted(() => {});
+
+    const getB = () =>
+      (formData = Object.assign(
+        formData,
+        store.state.globalData.common?.partB
+      ));
+
+    onMounted(() => getB());
+
+    watch(store.state.globalData.common, () => getB());
+
     return {
       formData,
+      getB,
       industrial_areas: [
         "Industrial Growth Centre, Luangmual",
         "Industrial Estate, Zuangtui",

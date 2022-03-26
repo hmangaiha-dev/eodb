@@ -16,7 +16,6 @@ class CreateDepartmentServicesTable extends Migration
         Schema::create('department_services', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('department_id')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
             // $table->string('slug')->nullable();
             $table->text('service_name')->nullable();
             $table->text('who_should_apply')->nullable();
@@ -26,6 +25,7 @@ class CreateDepartmentServicesTable extends Migration
             $table->string('fees')->nullable();
             $table->string('path')->nullable();
             $table->string('sample_form')->nullable();
+            $table->string('operational_type')->default('PRE-ESTABLISHMENT')->nullable();
             $table->timestamps();
         });
     }

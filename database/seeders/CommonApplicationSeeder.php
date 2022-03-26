@@ -18,34 +18,40 @@ class CommonApplicationSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $user = User::find(2);
 
-        $common = $user->commonApplications()->create([
-            'status' => 'partA'
-        ]);
+        // User::query()->updateOrCreate()
+
+        $user = Auth::user();
+
+        $common = $user->commonApplications()->updateOrCreate(
+            [
+                'user_id' => Auth::id()
+            ],
+            ['status' => 'partA']
+        );
         // dd($common->partA);
 
 
         $common->partA()->create([
             'applicant_type' => $faker->sentence,
-            //applicant_photo => $faker->sentence,
-            'applicant_name' => $faker->sentence,
-            'applicant_caste' => $faker->sentence,
-            'country' => $faker->sentence,
-            'state' => $faker->sentence,
-            'city_town' => $faker->sentence,
-            'postal_code' => $faker->sentence,
-            'address' => $faker->sentence,
-            'phone_no' => $faker->sentence,
-            'mobile_no' => $faker->sentence,
-            'fax_no' => $faker->sentence,
-            'email' => $faker->sentence,
-            'alt_email' => $faker->sentence,
-            'prop_name' => $faker->sentence,
-            'designation' => $faker->sentence,
-            'enterprise_name' => $faker->sentence,
-            'enterprise_type' => $faker->sentence,
-            'total_directors' => $faker->sentence,
+            'applicant_photo' => $faker->imageUrl,
+            'applicant_name' => $faker->name,
+            'applicant_caste' => 'SC/ST',
+            'country' => $faker->country,
+            'state' => 'Aizawl',
+            'city_town' => $faker->city,
+            'postal_code' => $faker->postcode,
+            'address' => $faker->address,
+            'phone_no' => $faker->phoneNumber,
+            'mobile_no' => $faker->phoneNumber,
+            'fax_no' => $faker->randomNumber,
+            'email' => $faker->email,
+            'alt_email' => $faker->email,
+            'prop_name' => $faker->name,
+            'designation' => $faker->word,
+            'enterprise_name' => $faker->company,
+            'enterprise_type' => "Partnership",
+            'total_directors' => $faker->name,
             'pan_no' => $faker->sentence,
             'pan_card' => $faker->sentence,
             'aadhaar_no' => $faker->sentence,
@@ -55,9 +61,5 @@ class CommonApplicationSeeder extends Seeder
             //tin_cert => $faker->sentence,
             'cst_no' => $faker->sentence,
         ]);
-
-
-
-        
     }
 }

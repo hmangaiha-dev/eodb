@@ -10,10 +10,7 @@
     </div> -->
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        1.Authorization no:<span
-          class="asterisk"
-          >*</span
-        ></label
+        1.Authorization no:<span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
@@ -37,8 +34,7 @@
     </div>
     <div class="col-lg-6 col-sm-10 col-xs-12">
       <label class="zlabel" for="gender"
-        >2.Occuppier/Operator
-        <span class="asterisk">*</span></label
+        >2.Occuppier/Operator <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
@@ -49,8 +45,7 @@
     </div>
     <div class="col-lg-6 col-sm-10 col-xs-12">
       <label class="zlabel" for="gender"
-        >Facility location
-        <span class="asterisk">*</span></label
+        >Facility location <span class="asterisk">*</span></label
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
@@ -60,90 +55,151 @@
       />
     </div>
 
-
     <div class="col-12">
       <label for="" class="zlabel"
-        >Acitivities for which authorization is required
-        :</label
+        >Acitivities for which authorization is required :</label
       >
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
-         
-                <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_1" label="Generation, segregation " />
-           </div>
-         
           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_2" label="Collection " />
-           </div>
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_3" label="Storage" />
-           </div>
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_4" label="Packaging " />
-           </div>
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_5" label="Reception " />
-           </div>
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_6" label="Transportation " />
-           </div>
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_7" label="  Treatment or processing or conversion " />
-           </div>
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_8" label="Recycling " />
-           </div>
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_9" label=" Disposal or destruction  " />
-           </div>
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_10" label="Use " />
-           </div>
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_11" label="Offering for sale, transfer " />
-           </div>
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_bio_waste_two_activity_12" label=" Any other form of handling  " />
-           </div>
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_1
+              "
+              label="Generation, segregation "
+            />
+          </div>
 
-  
-
-
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_2
+              "
+              label="Collection "
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_3
+              "
+              label="Storage"
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_4
+              "
+              label="Packaging "
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_5
+              "
+              label="Reception "
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_6
+              "
+              label="Transportation "
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_7
+              "
+              label="  Treatment or processing or conversion "
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_8
+              "
+              label="Recycling "
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_9
+              "
+              label=" Disposal or destruction  "
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_10
+              "
+              label="Use "
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_11
+              "
+              label="Offering for sale, transfer "
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="
+                formData.pollution_authorization_bio_waste_two_activity_12
+              "
+              label=" Any other form of handling  "
+            />
+          </div>
         </div>
-
-       
       </div>
     </div>
 
     <div class="col-12">
-      <label for="" class="zlabel"
-        >3.Biomedical waste capacity
-      </label>
+      <label for="" class="zlabel">3.Biomedical waste capacity </label>
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
@@ -161,7 +217,10 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            (ii) Number healthcare facilities covered by CBMWTF:<span class="asterisk">*</span></label
+            (ii) Number healthcare facilities covered by CBMWTF:<span
+              class="asterisk"
+              >*</span
+            ></label
           >
           <q-input
             :rules="[
@@ -174,7 +233,10 @@
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            (iii) Installed treatment and disposal capacity<span class="asterisk">*</span></label
+            (iii) Installed treatment and disposal capacity<span
+              class="asterisk"
+              >*</span
+            ></label
           >
           <q-input
             :rules="[
@@ -185,7 +247,6 @@
             outlined
           />
         </div>
-        
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
@@ -203,9 +264,10 @@
           />
         </div>
 
-         <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            (v) Quantity of Biomedical waste handled, treated or disposed:<span class="asterisk"
+            (v) Quantity of Biomedical waste handled, treated or disposed:<span
+              class="asterisk"
               >*</span
             ></label
           >
@@ -221,15 +283,14 @@
       </div>
     </div>
 
-
-     <div class="col-12">
+    <div class="col-12">
       <label for="" class="zlabel"
-        >Type of Waste Category Quantity permitted for Handling: 
+        >Type of Waste Category Quantity permitted for Handling:
       </label>
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-             Yellow<span class="asterisk">*</span></label
+            Yellow<span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
@@ -267,13 +328,10 @@
             outlined
           />
         </div>
-        
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            Blue<span class="asterisk"
-              >*</span
-            ></label
+            Blue<span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
@@ -285,9 +343,10 @@
           />
         </div>
 
-         <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            Puncture Proof, leak proof, tamper proof containers<span class="asterisk"
+            Puncture Proof, leak proof, tamper proof containers<span
+              class="asterisk"
               >*</span
             ></label
           >
@@ -303,9 +362,8 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            Cardboard boxes with blue colored marking <span class="asterisk"
-              >*</span
-            ></label
+            Cardboard boxes with blue colored marking
+            <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
@@ -319,8 +377,6 @@
       </div>
     </div>
 
-    
-
     <div class="col-12 zlabel">
       I hereby declare that the particulars given above are true to the best of
       my knowledge and belief.
@@ -332,7 +388,12 @@
         <span class="asterisk">*</span></label
       >
 
-      <q-file v-model="formData.pollution_authorization_bio_waste_signature_designation" outlined>
+      <q-file
+        v-model="
+          formData.pollution_authorization_bio_waste_signature_designation
+        "
+        outlined
+      >
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -370,48 +431,36 @@ export default {
     const formData = reactive({
       application_code: "POLLUTION_AUTHORIZATION_BIO_WASTE",
       department_id: 11,
-      pollution_authorization_bio_waste_one_1:'',
-      pollution_authorization_bio_waste_one_2:'',
-      pollution_authorization_bio_waste_two_1:'',
-      pollution_authorization_bio_waste_two_2:'',
-      pollution_authorization_bio_waste_two_activity_1:false,
-      pollution_authorization_bio_waste_two_activity_2:false,
-      pollution_authorization_bio_waste_two_activity_3:false,
-      pollution_authorization_bio_waste_two_activity_4:false,
-      pollution_authorization_bio_waste_two_activity_5:false,
-      pollution_authorization_bio_waste_two_activity_6:false,
-      pollution_authorization_bio_waste_two_activity_7:false,
-      pollution_authorization_bio_waste_two_activity_8:false,
-      pollution_authorization_bio_waste_two_activity_9:false,
-      pollution_authorization_bio_waste_two_activity_10:true,
-      pollution_authorization_bio_waste_two_activity_11:true,
-      pollution_authorization_bio_waste_two_activity_12:true,
+      pollution_authorization_bio_waste_one_1: "",
+      pollution_authorization_bio_waste_one_2: "",
+      pollution_authorization_bio_waste_two_1: "",
+      pollution_authorization_bio_waste_two_2: "",
+      pollution_authorization_bio_waste_two_activity_1: false,
+      pollution_authorization_bio_waste_two_activity_2: false,
+      pollution_authorization_bio_waste_two_activity_3: false,
+      pollution_authorization_bio_waste_two_activity_4: false,
+      pollution_authorization_bio_waste_two_activity_5: false,
+      pollution_authorization_bio_waste_two_activity_6: false,
+      pollution_authorization_bio_waste_two_activity_7: false,
+      pollution_authorization_bio_waste_two_activity_8: false,
+      pollution_authorization_bio_waste_two_activity_9: false,
+      pollution_authorization_bio_waste_two_activity_10: true,
+      pollution_authorization_bio_waste_two_activity_11: true,
+      pollution_authorization_bio_waste_two_activity_12: true,
 
-      pollution_authorization_bio_waste_three:'',
-      pollution_authorization_bio_waste_three_1:'',
-      pollution_authorization_bio_waste_three_2:'',
-      pollution_authorization_bio_waste_three_3:'',
-      pollution_authorization_bio_waste_three_4:'',
-      pollution_authorization_bio_waste_three_5:'',
+      pollution_authorization_bio_waste_three: "",
+      pollution_authorization_bio_waste_three_1: "",
+      pollution_authorization_bio_waste_three_2: "",
+      pollution_authorization_bio_waste_three_3: "",
+      pollution_authorization_bio_waste_three_4: "",
+      pollution_authorization_bio_waste_three_5: "",
 
-      pollution_authorization_bio_waste_category_1:'',
-      pollution_authorization_bio_waste_category_2:'',
-      pollution_authorization_bio_waste_category_3:'',
-      pollution_authorization_bio_waste_category_4:'',
-      pollution_authorization_bio_waste_category_5:'',
-      pollution_authorization_bio_waste_category_6:'',
-
-
-
-
-
-
-
-     
-
-
-
-
+      pollution_authorization_bio_waste_category_1: "",
+      pollution_authorization_bio_waste_category_2: "",
+      pollution_authorization_bio_waste_category_3: "",
+      pollution_authorization_bio_waste_category_4: "",
+      pollution_authorization_bio_waste_category_5: "",
+      pollution_authorization_bio_waste_category_6: "",
 
       pollution_authorization_bio_waste_signature_designation: null,
     });

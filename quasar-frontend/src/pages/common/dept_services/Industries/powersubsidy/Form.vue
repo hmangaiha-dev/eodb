@@ -6,7 +6,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_a"
+        v-model="formData.commerce_power_subsidy_one"
         dense
         outlined
       />
@@ -23,7 +23,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_two_a"
+            v-model="formData.commerce_power_subsidy_two_a"
             dense
             outlined
           />
@@ -37,7 +37,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_two_b"
+            v-model="formData.commerce_power_subsidy_two_b"
             dense
             outlined
           />
@@ -50,7 +50,12 @@
         >3. Constitution Proprietorship / Partnership / Co- Operative Society /
         Private. Limited <span class="asterisk"> *</span></label
       >
-      <q-select dense v-model="model" :options="formData.constitution_types" outlined />
+      <q-select
+        dense
+        v-model="formData.commerce_power_subsidy_three"
+        :options="formData.constitution_types"
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -60,7 +65,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_four"
         dense
         outlined
       />
@@ -73,7 +78,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_five"
         dense
         outlined
       />
@@ -87,7 +92,7 @@
       <q-input
         type="date"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_six"
         dense
         outlined
       />
@@ -100,7 +105,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_seven"
         dense
         outlined
       />
@@ -111,7 +116,12 @@
         8. Investment (Existing/Proposed)
         <span class="asterisk">*</span></label
       >
-      <q-select dense v-model="model" :options="formData.investments" outlined />
+      <q-select
+        dense
+        v-model="formData.commerce_power_subsidy_eight"
+        :options="formData.investments"
+        outlined
+      />
     </div>
 
     <div class="col-12">
@@ -125,7 +135,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+            v-model="formData.commerce_power_subsidy_nine_a"
             dense
             outlined
           />
@@ -139,7 +149,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+            v-model="formData.commerce_power_subsidy_nine_b"
             dense
             outlined
           />
@@ -151,7 +161,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+            v-model="formData.commerce_power_subsidy_nine_c"
             dense
             outlined
           />
@@ -164,7 +174,7 @@
         10. Detail Of Machineries Indicating The Kilowatt (KW) Required
       </span>
       <div
-        v-for="i in formData.rows"
+        v-for="i in formData.machineries.length"
         :key="i"
         class="row justify q-col-gutter-sm q-ml-md"
       >
@@ -174,19 +184,19 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+            v-model="formData.machineries[i - 1].detail"
             dense
             outlined
           />
         </div>
 
-         <div class="col-md-4 col-xs-12">
+        <div class="col-md-4 col-xs-12">
           <q-input
             placeholder="Kilowatt (KW)"
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.land_revenue_land_transfer_seven_a"
+            v-model="formData.machineries[i - 1].kw"
             dense
             outlined
           />
@@ -210,7 +220,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_eleven"
         dense
         outlined
       />
@@ -224,7 +234,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_twelve"
         dense
         outlined
       />
@@ -237,7 +247,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_thirteen"
         dense
         outlined
       />
@@ -250,7 +260,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_fourteen"
         dense
         outlined
       />
@@ -259,10 +269,10 @@
     <div class="col-12 text-caption">
       <q-field
         ref="toggle"
-        :value="formData.land_revenue_land_transfer_agreement"
+        :value="formData.commerce_power_subsidy_agreement"
         :rules="[
           (val) =>
-            formData.land_revenue_land_transfer_agreement == true ||
+            formData.commerce_power_subsidy_agreement == true ||
             'Please agree the declaration',
         ]"
         borderless
@@ -271,7 +281,7 @@
         <template v-slot:control>
           <q-checkbox
             class="text-caption"
-            v-model="formData.land_revenue_land_transfer_agreement"
+            v-model="formData.commerce_power_subsidy_agreement"
             label="I do hereby affirm that the informations furnished above are true and the documents attached herewith are genuine."
           />
         </template>
@@ -283,8 +293,8 @@
         >Signature of the Applicant<span class="asterisk">*</span></label
       >
       <q-file
-      dense
-        v-model="formData.land_revenue_land_transfer_holder_signature"
+        dense
+        v-model="formData.commerce_power_subsidy_signature"
         outlined
       >
         <template v-slot:prepend>
@@ -305,7 +315,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_declr_1"
         dense
         outlined
       />
@@ -318,7 +328,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_declr_2"
         dense
         outlined
       />
@@ -331,7 +341,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_declr_3"
         dense
         outlined
       />
@@ -343,7 +353,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_declr_4"
         dense
         outlined
       />
@@ -356,7 +366,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_declr_5"
         dense
         outlined
       />
@@ -369,7 +379,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_declr_6"
         dense
         outlined
       />
@@ -382,7 +392,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.land_revenue_land_transfer_two_b"
+        v-model="formData.commerce_power_subsidy_declr_7"
         dense
         outlined
       />
@@ -391,10 +401,10 @@
     <div class="col-12 text-caption">
       <q-field
         ref="toggle"
-        :value="formData.land_revenue_land_transfer_agreement"
+        :value="formData.commerce_power_subsidy_agreement2"
         :rules="[
           (val) =>
-            formData.land_revenue_land_transfer_agreement == true ||
+            formData.commerce_power_subsidy_agreement2 == true ||
             'Please agree the declaration',
         ]"
         borderless
@@ -403,7 +413,7 @@
         <template v-slot:control>
           <q-checkbox
             class="text-caption"
-            v-model="formData.land_revenue_land_transfer_agreement"
+            v-model="formData.commerce_power_subsidy_agreement2"
             label="I hereby declared that the power made available in my Factory utilized for the specific
 proposed of the works for which it is intended and it is not utilized for other proposed
 such as Domestic Lighting Cooking, etc. is at any time it is found that the energy
@@ -433,74 +443,55 @@ export default {
 
       rows: 2,
       constitution_types: [
-        'Proprietorship',
-        'Partnership',
-        'Co-Operative Society',
-        'Private Limited'
+        "Proprietorship",
+        "Partnership",
+        "Co-Operative Society",
+        "Private Limited",
       ],
-      investments: [
-        'Land & Building',
-        'Plant & Machineries',
-        'Others'
-      ],
+      investments: ["Land & Building", "Plant & Machineries", "Others"],
 
+      // machineries: [],
+      machineries: [{ detail: "", kw: "" }],
 
-      land_revenue_land_transfer_one: "",
-      land_revenue_land_transfer_one_a: false,
-      land_revenue_land_transfer_one_b: false,
-      land_revenue_land_transfer_one_c: false,
-      land_revenue_land_transfer_one_d: false,
-      land_revenue_land_transfer_one_e: true,
-      land_revenue_land_transfer_one_f: false,
-      land_revenue_land_transfer_one_number: "",
-      land_revenue_land_transfer_one_kum: "",
-      land_revenue_land_transfer_two: "",
-      land_revenue_land_transfer_two_a: "",
-      land_revenue_land_transfer_two_b: "",
-      land_revenue_land_transfer_two_c: "",
-      land_revenue_land_transfer_two_d: "",
-      land_revenue_land_transfer_three: "",
-      land_revenue_land_transfer_four: "",
-      land_revenue_land_transfer_four_a: false,
-      land_revenue_land_transfer_four_b: false,
-      land_revenue_land_transfer_four_c: true,
-      land_revenue_land_transfer_four_d: false,
-      land_revenue_land_transfer_seven: "",
-      land_revenue_land_transfer_seven_a: "",
-      land_revenue_land_transfer_seven_b: "",
-      land_revenue_land_transfer_eight: "",
-      land_revenue_land_transfer_nine: "",
-      land_revenue_land_transfer_nine_a: null,
-      land_revenue_land_transfer_nine_b: null,
-      land_revenue_land_transfer_nine_c: null,
-      land_revenue_land_transfer_nine_d: null,
-      land_revenue_land_transfer_nine_e: null,
-      land_revenue_land_transfer_ten: "",
-      land_revenue_land_transfer_eleven: "",
-      land_revenue_land_transfer_eleven_a: "",
-      land_revenue_land_transfer_eleven_b: "",
-      land_revenue_land_transfer_eleven_c: "",
-      land_revenue_land_transfer_eleven_d: "",
-      land_revenue_land_transfer_eleven_e: "",
-      land_revenue_land_transfer_eleven_f: "",
-      land_revenue_land_transfer_hriatpui: "",
-      land_revenue_land_transfer_hriatpui_one: "",
-      land_revenue_land_transfer_hriatpui_one_a: null,
-      land_revenue_land_transfer_hriatpui_one_b: "",
-      land_revenue_land_transfer_hriatpui_two: "",
-      land_revenue_land_transfer_hriatpui_two_a: null,
-      land_revenue_land_transfer_hriatpui_two_b: "",
-      land_revenue_land_transfer_holder_signature: null,
-      land_revenue_land_transfer_tuna_address: "",
-      land_revenue_land_transfer_phone: "",
-      land_revenue_land_transfer_signature: null,
-      land_revenue_land_transfer_agreement: false,
+      commerce_power_subsidy_constitution_type: "",
+      commerce_power_subsidy_invesment: "",
+      commerce_power_subsidy_one: "",
+      commerce_power_subsidy_two_a: "",
+      commerce_power_subsidy_two_b: "",
+      commerce_power_subsidy_three: "",
+      commerce_power_subsidy_four: "",
+      commerce_power_subsidy_five: "",
+      commerce_power_subsidy_six: "",
+      commerce_power_subsidy_seven: "",
+      commerce_power_subsidy_eight: "",
+      commerce_power_subsidy_nine: "",
+      commerce_power_subsidy_nine_a: "",
+      commerce_power_subsidy_nine_b: "",
+      commerce_power_subsidy_nine_c: "",
+      commerce_power_subsidy_eleven: "",
+      commerce_power_subsidy_twelve: "",
+      commerce_power_subsidy_thirteen: "",
+      commerce_power_subsidy_fourteen: "",
+      commerce_power_subsidy_declr_1: "",
+      commerce_power_subsidy_declr_2: "",
+      commerce_power_subsidy_declr_3: "",
+      commerce_power_subsidy_declr_4: "",
+      commerce_power_subsidy_declr_5: "",
+      commerce_power_subsidy_declr_6: "",
+      commerce_power_subsidy_declr_7: "",
+
+      commerce_power_subsidy_signature: null,
+      commerce_power_subsidy_agreement: false,
+      commerce_power_subsidy_agreement2: false,
     });
     onMounted(() => {});
     return {
       formData,
-      addRow:() => {
-        formData.rows++
+      addRow: () => {
+        formData.machineries.push({
+          detail: "",
+          kw: "",
+        });
       },
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

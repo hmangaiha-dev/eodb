@@ -11,8 +11,8 @@
         >1. <span class="asterisk"> *</span></label
       >
 
-      <div class="row justify q-col-gutter-md q-ml-md">
-        <div class="col-md-6 col-xs-10">
+      <div class="row justify q-col-gutter-md q-ml-sm">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (a) Name and address of the unit and location of facility :
             <span class="asterisk"> *</span></label
@@ -24,7 +24,7 @@
             v-model="formData.pollution_form17_partA_one_a"
           />
         </div>
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (b) Name of the occupier of the facility or operator of disposal
             facility with designation, Tel, Fax and e-mail:
@@ -48,71 +48,99 @@
               class="zlabel col-xs-12"
             >
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_i"
                 label="(i) Generation"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_ii"
                 label="(ii) Collection"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_iii"
                 label="(iii) Storage"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_iv"
                 label="(iv) Transportation"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_v"
                 label="(v) Reception"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_vi"
                 label="(vi) Reuse"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_vii"
                 label="(vii) Recycling"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_viii"
                 label="(viii) Recovery"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_ix"
                 label="(ix) Pre-processing"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_x"
                 label="(x) Co-processing"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_xi"
                 label="(xi) Utilisation"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_xii"
                 label="(xii) Treatment"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_xiii"
                 label="(xiii) Disposal"
               />
               <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_one_c_xiv"
                 label="(xiv) Incineration"
@@ -121,7 +149,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (d) In case of renewal of authorisation previous authorisation
             numbers and dates and provide copies of annual returns of last three
@@ -144,7 +172,7 @@
       >
 
       <div class="row justify q-col-gutter-md q-ml-md">
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (a) Nature and quantity of waste handled per annum (in metric tonne
             or kilo litre):
@@ -157,12 +185,16 @@
             v-model="formData.pollution_form17_partA_two_a"
           />
         </div>
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (b) Nature and quantity of waste stored at any time (in metric tonne
             or kilo litre)
           </label>
-          <q-input dense outlined v-model="formData.pollution_form17_partA_two_b" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form17_partA_two_b"
+          />
         </div>
       </div>
     </div>
@@ -173,7 +205,7 @@
       >
 
       <div class="row justify q-col-gutter-md q-ml-md">
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (a) Year of commissioning and commencement of production:
             <span class="asterisk"> *</span></label
@@ -186,16 +218,30 @@
           />
         </div>
 
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (b) Whether the industry works: <span class="asterisk"> *</span>
           </label>
 
           <div class="row justify q-col-gutter-md q-ml-md">
-            <div class="zlabel col-md-6 col-xs-10">
-              <q-checkbox left-label v-model="formData.pollution_form17_partA_three_b_i" label="(i) 01 Shift" />
-              <q-checkbox left-label v-model="formData.pollution_form17_partA_three_b_ii" label="(ii) 02 Shifts" />
+            <div class="zlabel col-md-6 col-xs-12">
               <q-checkbox
+                true-value="yes"
+                false-value="no"
+                left-label
+                v-model="formData.pollution_form17_partA_three_b_i"
+                label="(i) 01 Shift"
+              />
+              <q-checkbox
+                true-value="yes"
+                false-value="no"
+                left-label
+                v-model="formData.pollution_form17_partA_three_b_ii"
+                label="(ii) 02 Shifts"
+              />
+              <q-checkbox
+                true-value="yes"
+                false-value="no"
                 left-label
                 v-model="formData.pollution_form17_partA_three_b_iii"
                 label="(iii) Round the clock"
@@ -239,7 +285,7 @@
       </q-file>
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         5. Provide undertaking or declaration to comply with all provisions
         including the scope of submitting bank guarantee in the event of
@@ -266,7 +312,7 @@
       >
 
       <div class="row justify q-col-gutter-md q-ml-md">
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (a) Products and by-products manufactured : (names and product wise
             quantity per annum)
@@ -279,7 +325,7 @@
             v-model="formData.pollution_form17_partB_one_a"
           />
         </div>
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (b) Process description including process flow sheet indicating
             inputs and outputs (raw materials, chemicals, products, by-products,
@@ -292,7 +338,7 @@
           </q-file>
         </div>
 
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (c) Characteristics (waste-wise) and Quantity of waste generation
             per annum:
@@ -312,7 +358,7 @@
           </label>
 
           <div class="row justify q-col-gutter-md q-ml-md">
-            <div class="col-md-6 col-xs-10">
+            <div class="col-md-6 col-xs-12">
               <label class="zlabel" for="name">
                 i. Capacity and mode of secured storage within the plant
                 <span class="asterisk"> *</span></label
@@ -323,7 +369,7 @@
                 v-model="formData.pollution_form17_partB_one_d_i"
               />
             </div>
-            <div class="col-md-6 col-xs-10">
+            <div class="col-md-6 col-xs-12">
               <label class="zlabel" for="name">
                 ii. Utilisation within the plant (provide details);
               </label>
@@ -335,7 +381,7 @@
               />
             </div>
 
-            <div class="col-md-6 col-xs-10">
+            <div class="col-md-6 col-xs-12">
               <label class="zlabel" for="name">
                 iii. If not utilised within the plant, please provide details of
                 what is done with this
@@ -348,7 +394,7 @@
               />
             </div>
 
-            <div class="col-md-6 col-xs-10">
+            <div class="col-md-6 col-xs-12">
               <label class="zlabel" for="name">
                 iv. Arrangement for transportation to actual users/ TSDF
               </label>
@@ -362,7 +408,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (e) Details of the environmental safeguards and environmental
             facilities provided for safe handling of all the wastes at point (c)
@@ -378,7 +424,7 @@
       </div>
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         2. Hazardous and other wastes generated as per these rules from storage
         of hazardous chemicals as defined under the Manufacture, Storage and
@@ -402,64 +448,100 @@
       >
 
       <div class="row justify q-col-gutter-md q-ml-md">
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (i) Location of site with layout map;
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.pollution_form17_partC_one_i" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form17_partC_one_i"
+          />
         </div>
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name"
             >(ii) Safe storage of the waste and storage capacity;</label
           >
-          <q-input dense outlined v-model="formData.pollution_form17_partC_one_ii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form17_partC_one_ii"
+          />
         </div>
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (iii) The treatment processes and their capacities;
           </label>
-          <q-input dense outlined v-model="formData.pollution_form17_partC_one_iii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form17_partC_one_iii"
+          />
         </div>
 
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name"> (iv) Secured landfills;</label>
-          <q-input dense outlined v-model="formData.pollution_form17_partC_one_iv" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form17_partC_one_iv"
+          />
         </div>
 
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name"> (v) Incineration, if any;</label>
-          <q-input dense outlined v-model="formData.pollution_form17_partC_one_v" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form17_partC_one_v"
+          />
         </div>
 
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (vi) Leachate collection and treatment system;
           </label>
-          <q-input dense outlined v-model="formData.pollution_form17_partC_one_vi" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form17_partC_one_vi"
+          />
         </div>
 
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">(vii) Fire fighting systems;</label>
-          <q-input dense outlined v-model="formData.pollution_form17_partC_one_vii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form17_partC_one_vii"
+          />
         </div>
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name"
             >(viii) Environmental management plan including monitoring; and
           </label>
-          <q-input dense outlined v-model="formData.pollution_form17_partC_one_viii" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form17_partC_one_viii"
+          />
         </div>
 
-        <div class="col-md-6 col-xs-10">
+        <div class="col-md-6 col-xs-12">
           <label class="zlabel" for="name">
             (ix) Arrangement for transportation of waste from generators.
           </label>
-          <q-input dense outlined v-model="formData.pollution_form17_partC_one_ix" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.pollution_form17_partC_one_ix"
+          />
         </div>
       </div>
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         2. Provide details of any other activities undertaken at the Treatment,
         storage and disposal facility site.
@@ -492,7 +574,7 @@
       <hr />
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         1 Nature and quantity of different wastes received per annum from
         domestic sources or imported or both:
@@ -505,7 +587,7 @@
       />
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         2. Installed capacity as per registration issued by the District
         Industries Centre or any other authorised Government agency. Provide
@@ -519,7 +601,7 @@
       />
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         3. Provide details of secured storage of wastes including the storage
         capacity
@@ -532,7 +614,7 @@
       />
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         4. Process description including process flow sheet indicating equipment
         details inputs and outputs (input wastes, chemicals, products,
@@ -547,7 +629,7 @@
       />
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         5. Provide details of end users of products or by-products:
       </label>
@@ -559,7 +641,7 @@
       />
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         6. Provide details of pollution control systems such as Effluent
         Treatment Plant, scrubbers, etc. including mode of disposal of waste:
@@ -572,7 +654,7 @@
       />
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         7. Provide details of occupational health and safety measures:
       </label>
@@ -584,7 +666,7 @@
       />
     </div>
 
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name">
         8. Has the facility been set up as per Central Pollution Control Board
         guidelines? If yes, provide a report on the compliance with the
@@ -621,12 +703,7 @@
 
     <div class="col-md-6 col-xs-12">
       <label class="zlabel" for="name"> Designation </label>
-      <q-input
-        type="textarea"
-        dense
-        outlined
-        v-model="formData.pollution_form17_designation"
-      />
+      <q-input dense outlined v-model="formData.pollution_form17_designation" />
     </div>
 
     <!-- <div class="col-lg-4 col-sm-6">
@@ -639,7 +716,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -654,20 +731,20 @@ export default {
       pollution_form17_partA_one_a: "",
       pollution_form17_partA_one_b: "",
       pollution_form17_partA_one_c: "",
-      pollution_form17_partA_one_c_i: false,
-      pollution_form17_partA_one_c_ii: false,
-      pollution_form17_partA_one_c_iii: false,
-      pollution_form17_partA_one_c_iv: false,
-      pollution_form17_partA_one_c_v: false,
-      pollution_form17_partA_one_c_vi: false,
-      pollution_form17_partA_one_c_vii: false,
-      pollution_form17_partA_one_c_viii: false,
-      pollution_form17_partA_one_c_ix: false,
-      pollution_form17_partA_one_c_x: false,
-      pollution_form17_partA_one_c_xi: false,
-      pollution_form17_partA_one_c_xii: false,
-      pollution_form17_partA_one_c_xiii: false,
-      pollution_form17_partA_one_c_xiv: false,
+      pollution_form17_partA_one_c_i: "no",
+      pollution_form17_partA_one_c_ii: "no",
+      pollution_form17_partA_one_c_iii: "no",
+      pollution_form17_partA_one_c_iv: "no",
+      pollution_form17_partA_one_c_v: "no",
+      pollution_form17_partA_one_c_vi: "no",
+      pollution_form17_partA_one_c_vii: "no",
+      pollution_form17_partA_one_c_viii: "no",
+      pollution_form17_partA_one_c_ix: "no",
+      pollution_form17_partA_one_c_x: "no",
+      pollution_form17_partA_one_c_xi: "no",
+      pollution_form17_partA_one_c_xii: "no",
+      pollution_form17_partA_one_c_xiii: "no",
+      pollution_form17_partA_one_c_xiv: "no",
       pollution_form17_partA_one_d: "",
       pollution_form17_partA_two: "",
       pollution_form17_partA_two_a: "",
@@ -675,9 +752,9 @@ export default {
       pollution_form17_partA_three: "",
       pollution_form17_partA_three_a: "",
       pollution_form17_partA_three_b: "",
-      pollution_form17_partA_three_b_i: false,
-      pollution_form17_partA_three_b_ii: false,
-      pollution_form17_partA_three_b_iii: false,
+      pollution_form17_partA_three_b_i: "no",
+      pollution_form17_partA_three_b_ii: "no",
+      pollution_form17_partA_three_b_iii: "no",
       pollution_form17_partA_four: null,
       pollution_form17_partA_five: "",
       pollution_form17_partB: "",
@@ -718,7 +795,16 @@ export default {
       pollution_form17_signature: null,
       pollution_form17_designation: "",
     });
-    onMounted(() => {});
+    watch(store.state.globalData.common, () => getA());
+
+    const getA = () => {
+      const { declaration_designation } =
+        store.state.globalData.common.selfDeclaration || "";
+
+      formData.pollution_form17_designation = declaration_designation;
+    };
+    onMounted(async () => getA());
+
     return {
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

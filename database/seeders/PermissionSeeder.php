@@ -35,11 +35,12 @@ class PermissionSeeder extends Seeder
 //    ];
 
     const WEBSITE_PERMS = [
-        ['name' => 'website:read'], ['name' => 'website:create'], ['name' => 'website:update'], ['name' => 'website:delete']
+        ['name' => 'website:read'], ['name' => 'website:create'], ['name' => 'website:update'], ['name' => 'website:delete'],
     ];
     const SETTING_PERMS = [
         ['name' => 'setting:read'], ['name' => 'setting:create'], ['name' => 'setting:update'], ['name' => 'setting:delete']
     ];
+
 
     public function run()
     {

@@ -396,6 +396,15 @@ const SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES=[
 ];
 
 
+const SIGN_POWER_CONNECTED_LOAD=[
+    'size'=>2048,
+    'mime'=>'images/*',
+    'application_code'=>'POWER_CONNECTED_LOAD',
+    'key'=>'power_connected_load_signature',
+    'label'=>'Signature of applicant',
+    'disk'=>'public',
+    'folder'=>'power/7/attachments'
+];
 
 
 
@@ -526,6 +535,9 @@ const SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES=[
         'power_disconnection_last_payment_receipt' => self::POWER_DISCONNECTION_PAYMENT_RECEIPT,
         'power_disconnection_last_signature' => self::POWER_DISCONNECTION_PAYMENT_SIGNATURE,
 
+        'power_connected_load_signature' => self::SIGN_POWER_CONNECTED_LOAD,
+
+
         //FOOD DRUG
         'food_drug_general_doc_one' => self::FOOD_DRUG_GENERAL_RETAIL_FEE_PEKNA,
         'food_drug_general_five_i' => self::FOOD_DRUG_GENERAL_RETAIL_SIGNATURE,
@@ -636,6 +648,20 @@ const SIGN_CE_SUBSIDY_COST_TRANSPORTATION_MACHINERIES=[
         'lsc_ten_5' => self::LAND_REVENUE_LSC_10_5,
         'lsc_ten_6' => self::LAND_REVENUE_LSC_10_6,
         'lsc_twelve' => self::LAND_REVENUE_LSC_12,
+
+
+        'bamboo_map' => self::ENV_LOCATION_MAP,
+        'bamboo_noc' => self::ENV_NOC,
+        'bamboo_other' => self::ENV_OTHER,
+        'bamboo_landpass' => self::ENV_LAND_PASS,
+
+
+
+        'labour_emp_contract_eight' => self::LABOUR_EMPLOYMENT_CONTRACT_RECEIPT,
+        'labour_emp_contract_signature' => self::LABOUR_EMPLOYMENT_CONTRACT_SIGNATURE,
+
+
+
 
 
 

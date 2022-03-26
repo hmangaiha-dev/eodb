@@ -160,7 +160,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -183,11 +183,39 @@ export default {
       labour_contract_renew_signature: null,
       labour_contract_renew_six: null,
     });
+
+
+     watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+      } = store.state.globalData.common.partA;
+
+      formData.labour_contract_renew_one = applicant_name + address;
+      company_reg_certe ? formData.labour_contract_renew_two = company_reg_certe : formData.labour_contract_renew_two= "";
+
+      
+
+    };
+
+
     onMounted(() => {});
     return {
       group: ref([]),
 
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

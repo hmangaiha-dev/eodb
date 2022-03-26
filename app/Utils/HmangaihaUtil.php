@@ -357,6 +357,32 @@ class HmangaihaUtil
             'commerce_subsidy_cost_transportation_ten_b',
             'commerce_subsidy_cost_transportation_ten_c',
             'commerce_subsidy_cost_transportation_eleven',
+        ],
+        // POWER
+        "POWER_CONNECTED_LOAD"=>[
+            'power_connected_load_one',
+            'power_connected_load_two',
+            'power_connected_load_three',
+            'power_connected_load_four:', 
+            'power_connected_load_t1',
+            'power_connected_load_t2',
+            'power_connected_load_t3',
+            'power_connected_load_t4',
+            'power_connected_load_t5',
+            'power_connected_load_t6',
+            'power_connected_load_t7',
+            'power_connected_load_t8',
+            'power_connected_load_t9',
+            'power_connected_load_t10',
+            'power_connected_load_t11',
+            'power_connected_load_t12',
+            'power_connected_load_t13',
+            'power_connected_load_t14',
+            'power_connected_load_t15',
+            'power_connected_load_t16',
+            'power_connected_load_t17',
+            'power_connected_load_t18',
+            'power_connected_load_t_total',
         ]
 
 

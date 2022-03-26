@@ -597,7 +597,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, watch,computed } from "vue";
+import { onMounted, watch, computed } from "vue";
 import { date } from "quasar";
 
 import { ref } from "vue";
@@ -653,35 +653,30 @@ export default {
       rows: 1,
     });
     watch(store.state.globalData.common, () => {
-      console.log("watch patta");
-      storeA()
+      getA();
     });
 
-    const storeA = () => {
-      const { applicant_name, address, email } =
+    const getA = () => {
+      const { applicant_name, address, email,mobile_no } =
         store.state.globalData.common.partA;
 
-      // formData.land_revenue_patta_one = applicant_name;
-      (formData.land_revenue_patta_four = address),
-        (formData.land_revenue_patta_sixteen_b = email);
+      formData.land_revenue_patta_one = applicant_name;
+      formData.land_revenue_patta_four = address;
+      formData.land_revenue_patta_sixteen_b = email;
+      formData.land_revenue_patta_sixteen_a = mobile_no;
+
+
+
+
+
     };
 
     onMounted(async () => {
-      return storeA();
-      watch();
-      return;
-      const { applicant_name, address, email } = await store.state.globalData
-        .common.partA;
-
-      formData.land_revenue_patta_one = applicant_name;
-      (formData.land_revenue_patta_four = address),
-        (formData.land_revenue_patta_sixteen_b = email);
-      console.log("periodic patta", store.state.globalData.common.partA);
-      // console.log('periodic patta',applicant_name);
+      getA();
     });
     return {
       formData,
-      storeA,
+      getA,
       addRow: () => {
         formData.lsc_details.push({
           name: "",

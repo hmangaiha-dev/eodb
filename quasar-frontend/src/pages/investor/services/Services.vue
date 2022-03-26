@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <div class="banner-dept">
-      <div class="contain container-lg">
+      <div class="containd container-lg">
         <div
           class="row q-px-md q-pt-xl justify-between q-col-gutter-md"
           style="max-width: 1400px; margin: 0 auto"
@@ -12,24 +12,70 @@
             {{ dept_name }}
           </div>
           <br />
-          <div class="col-4">
+          <div class="col-sm-6 col-xs-12">
+            <!-- profile {{ localData.profie }} -->
             <q-card flat>
-              <q-card-section>
-                <div class="text-h6">P. Jawahar</div>
+              <q-card-section horizontal>
+                <q-card-section>
+                  <div class="text-h6">
+                    {{
+                      localData.profile?.hod_secratariat_name ||
+                      "Secretary Name"
+                    }}
+                  </div>
+                </q-card-section>
+                <q-space />
+
+                <q-card-section>
+                  <q-card-section class="gt-sm col-5 flex flex-center">
+                    <q-avatar size="100px">
+                      <img :src="localData.profile?.sect_photo" />
+                    </q-avatar>
+                  </q-card-section>
+                </q-card-section>
               </q-card-section>
-              <q-card-section>
-                <div>Secretary</div>
+
+              <q-card-section :style="$q.screen.gt.sm && 'margin-top:-67px;'">
+                <div>
+                  {{
+                    localData.profile?.hod_secratariat_designation ||
+                    "Secretary Designation"
+                  }}
+                </div>
                 <div>{{ dept_name }}</div>
               </q-card-section>
             </q-card>
           </div>
-          <div class="col-4">
+          <div class="col-sm-6 col-xs-12">
+            <!-- profile {{ localData.profie }} -->
             <q-card flat>
-              <q-card-section>
-                <div class="text-h6">J. Hmingthanmawia</div>
+              <q-card-section horizontal>
+                <q-card-section>
+                  <div class="text-h6">
+                    {{
+                      localData.profile?.hod_directorate_name ||
+                      "Directorate name"
+                    }}
+                  </div>
+                </q-card-section>
+                <q-space />
+
+                <q-card-section>
+                  <q-card-section class="gt-sm col-5 flex flex-center">
+                    <q-avatar size="100px">
+                      <img :src="localData.profile?.dict_photo" />
+                    </q-avatar>
+                  </q-card-section>
+                </q-card-section>
               </q-card-section>
-              <q-card-section>
-                <div>Director</div>
+
+              <q-card-section :style="$q.screen.gt.sm && 'margin-top:-67px;'">
+                <div>
+                  {{
+                    localData.profile?.hod_secratariat_designation ||
+                    "Directorate Designation"
+                  }}
+                </div>
                 <div>{{ dept_name }}</div>
               </q-card-section>
             </q-card>
@@ -38,53 +84,72 @@
       </div>
     </div>
 
-    <div
-      class="row q-col-gutter-md q-pa-sm container-lg"
-    >
+    <div class="row q-col-gutter-md q-pa-sm container-lg">
       <div style="width: 100%" class="col-12 q-pa-md">
-        <q-toolbar class="justify-center bg-white shadow-1">
-          <q-item :focused="tab==='services'" clickable @click="tab='services'">
+        <!-- <q-toolbar  class="row col-12 
+        justify-center bg-white shadow-1"> -->
+        <q-tabs stretch class="bg-white shadow-1 q-mt-md text-grey-8">
+          <q-item
+            :focused="tab === 'services'"
+            clickable
+            @click="tab = 'services'"
+          >
             <q-item-section>
               <q-item-label class="nav-item">Online Services</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item  :focused="tab==='about'"   clickable @click="tab='about'">
+          <q-item :focused="tab === 'about'" clickable @click="tab = 'about'">
             <q-item-section>
               <q-item-label class="nav-item">About Us</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item :focused="tab==='actrules'"  clickable @click="tab='actrules'">
+          <q-item
+            :focused="tab === 'actrules'"
+            clickable
+            @click="tab = 'actrules'"
+          >
             <q-item-section>
               <q-item-label class="nav-item">Act & Rules</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item :focused="tab==='noti'"  class="nav-item" clickable @click="tab='noti'">
+          <q-item
+            :focused="tab === 'noti'"
+            class="nav-item"
+            clickable
+            @click="tab = 'noti'"
+          >
             <q-item-section>
               <q-item-label class="nav-item">Notifications</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item :focused="tab==='other'"  class="nav-item" clickable @click="tab='other'">
+          <q-item
+            :focused="tab === 'other'"
+            class="nav-item"
+            clickable
+            @click="tab = 'other'"
+          >
             <q-item-section>
               <q-item-label class="nav-item">Other Information</q-item-label>
             </q-item-section>
           </q-item>
-        </q-toolbar>
-        <br/>
+        </q-tabs>
+        <!-- </q-toolbar> -->
+        <br />
         <div class="znhovercard">
           <q-tabs
             v-if="tab == 'services'"
             stretch
             v-model="tabCategory"
-            class="bg-grey-3 q-mt-md text-grey-8 "
+            class="bg-grey-3 q-mt-md text-grey-8"
           >
             <q-tab name="ALL-CATEGORIES" label="All Categories" />
             <q-tab name="PRE-ESTABLISHMENT" label="PRE-ESTABLISHMENT" />
             <q-tab name="POST-ESTABLISHMENT" label="POST-ESTABLISHMENT" />
             <q-tab name="POST-COMMENCEMENT" label="POST-COMMENCEMENT" />
-            <q-tab name="PRE-OPERATION" label="PRE-OPERATION" />
-            <q-tab name="POST-OPERATION" label="POST-OPERATION" />
+            <q-tab name="PRE-PROCESSING" label="PRE-PROCESSING" />
+            <q-tab name="POST-PROCESSING" label="POST-PROCESSING" />
           </q-tabs>
-          <q-tab-panels class="full-width" v-model="tab" animated>
+          <q-tab-panels keep-alive class="full-width" v-model="tab" animated>
             <q-tab-panel name="services">
               <q-table
                 v-model:pagination="pagination"
@@ -106,8 +171,8 @@
                     <q-td key="how_to_apply" :props="props">
                       <q-btn
                         @click="
-                        showDialog(props.row.how_to_apply, 'How to apply')
-                      "
+                          showDialog(props.row.how_to_apply, 'How to apply')
+                        "
                         class="text-weight-regular"
                         color="blue-6"
                         flat
@@ -117,11 +182,11 @@
                     <q-td key="who_should_apply" :props="props">
                       <q-btn
                         @click="
-                        showDialog(
-                          props.row.who_should_apply,
-                          'Who should apply'
-                        )
-                      "
+                          showDialog(
+                            props.row.who_should_apply,
+                            'Who should apply'
+                          )
+                        "
                         class="text-weight-regular"
                         color="blue-6"
                         flat
@@ -131,11 +196,11 @@
                     <q-td key="document_to_submit" :props="props">
                       <q-btn
                         @click="
-                        showDialog(
-                          props.row.document_to_submit,
-                          'Document to be submitted'
-                        )
-                      "
+                          showDialog(
+                            props.row.document_to_submit,
+                            'Document to be submitted'
+                          )
+                        "
                         class="text-weight-regular"
                         color="blue-6"
                         flat
@@ -195,10 +260,7 @@
               <OtherInfo />
             </q-tab-panel>
           </q-tab-panels>
-
         </div>
-
-
       </div>
     </div>
 
@@ -271,6 +333,7 @@ export default {
 
     const localData = reactive({
       category: "ALL-CATEGORIES",
+      profile: {},
     });
 
     onMounted(async () => {
@@ -281,7 +344,7 @@ export default {
         })
         .catch((err) => console.log("error", err));
 
-      refresh();
+      refreshServies();
 
       onRequest();
     });
@@ -293,13 +356,12 @@ export default {
     watch(
       () => tabCategory.value,
       (newvalue, oldValue) => {
-        refresh();
+        refreshServies();
 
         if (newvalue === "ALL-CATEGORIES") return;
-
-        const finalResult = rows.value.filter((service) => {
-          return service?.category_type == newvalue;
-        });
+        const finalResult = rows.value.filter(
+          (service) => service?.operational_type == newvalue
+        );
 
         rows.value = finalResult;
 
@@ -311,20 +373,25 @@ export default {
       () => route.params.deptname,
       () => {
         if (route.name != "common:create") return;
-
-        refresh();
+        tabCategory.value = "ALL-CATEGORIES";
+        refreshServies();
       }
     );
 
-    const refresh = () => {
+    const refreshServies = () => {
       const result = deptServices.filter((dept, index) => {
         // console.log('dept value and index',dept.slug,index);
         return dept.slug == route.params.deptname;
       });
 
-      dept_name.value = result[0].dept_name;
+      dept_name.value = result[0]?.dept_name;
 
       !result.length && router.push({ name: "invalid" });
+
+      localData.profile = result[0]?.profile;
+
+      console.log("profile", result[0].profile);
+      // console.log('profile',localData);
 
       rows.value = result[0]?.services;
 
@@ -424,15 +491,11 @@ export default {
         "PRE-OPERATION",
         "POST-OPERATION",
       ],
-      refresh,
+      refreshServies,
       dialog,
       dialogKey,
       dialogContent,
       showDialog,
-      // filterCategory,
-      test: (value) => {
-        console.log("dfdf", value);
-      },
     };
   },
 };
@@ -442,6 +505,7 @@ export default {
 .banner-dept {
   background-image: url("https://eodbmizoram.gov.in/images/commerce/departmentbackground.png");
   width: 100%;
-  height: 400px;
+  /* height: 400px; */
+  padding-bottom: 30px;
 }
 </style>

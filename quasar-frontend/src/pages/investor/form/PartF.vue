@@ -1,5 +1,12 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
+    <q-dialog v-model="dialog">
+      <q-card class="col-12">
+        <q-card-section>
+          <embed :src="attachment" width="900" height="900" />
+        </q-card-section>
+      </q-card>
+    </q-dialog>
     <div class="col-12">
       <label class="zlabel"> 11. Manufacturing </label> <br />
       <label for="" class="zlabel">
@@ -7,7 +14,7 @@
         Products/By-Products)
       </label>
       <div
-        v-for="i in formData.rows"
+        v-for="i in formData.manufactureDetails.length"
         :key="i"
         class="row justify q-col-gutter-sm q-ml-md"
       >
@@ -15,45 +22,65 @@
         <div class="col-sm-5 col-xs-12">
           <q-input
             label="Raw Material"
-            
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].raw_material"
             outlined
           />
         </div>
 
         <div class="col-sm-5 col-xs-12">
           <q-input
-            placeholder="Quantity"
-            
+            label="Quantity"
+            type="number"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].raw_quantity"
             outlined
           />
         </div>
 
         <div class="col-sm-5 col-xs-12">
           <q-input
-            placeholder="Units(Ton per day-TDP)"
-            
+            label="Units(Ton per day-TDP)"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].units_ton_per_day"
             outlined
           />
         </div>
 
         <div class="col-sm-5 col-xs-12">
           <q-input
-            placeholder="Main Product	"
-            
+            label="Main Product"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].main_product"
             outlined
           />
         </div>
         <div class="col-sm-5 col-xs-12">
           <q-input
-            placeholder="Quantity"
-            
+            label="Quantity"
+            type="number"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].main_product_quantity"
             outlined
           />
         </div>
         <div class="col-sm-5 col-xs-12">
           <q-input
-            placeholder="Units(Number per day)"
-            
+            label="Units(Number per day)"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+            v-model="formData.manufactureDetails[i - 1].units_number_per_day"
             outlined
           />
         </div>
@@ -83,15 +110,44 @@
           </label>
         </div>
         <div class="col-xs-12 col-md-5">
-          <q-file
-            :rules="[(val) => val || 'Please type something']"
-            v-model="formData.manuf_process_flow"
-            outlined
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
+          <q-uploader
+            @removed="formData.manuf_process_flow = null"
+            accept=".pdf"
+            flat
+            @added="
+              (files) => {
+                formData.manuf_process_flow = files[0];
+              }
+            "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+
+          <q-img
+            v-if="mimeType(formData.manuf_process_flow)"
+            :src="`http://localhost:8000/storage/${formData.manuf_process_flow}`"
+            style="max-width: 150px; max-height: 150px; margin-top: -100px"
+            spinner-color="primary"
+            spinner-size="82px"
+          />
+
+          <!-- {{ typeof formData.udyog_memorandum }} -->
+
+          <q-btn
+            v-if="
+              typeof formData.manuf_process_flow !== 'object' &&
+              !mimeType(formData.manuf_process_flow)
+            "
+            flat
+            style="max-width: 150px; margin-top: -100px"
+            color="primary"
+            icon="o_picture_as_pdf"
+            label="view"
+            @click="showAttachment(formData.manuf_process_flow)"
+          />
         </div>
 
         <div class="col-xs-12 col-md-5">
@@ -330,15 +386,44 @@ Step ..."
               </label>
             </div>
             <div class="col-xs-12 col-md-5">
-              <q-file
-                :rules="[(val) => val || 'Please type something']"
-                v-model="formData.waste_water_treatment_details"
-                outlined
-              >
-                <template v-slot:prepend>
-                  <q-icon name="attach_file" />
-                </template>
-              </q-file>
+              <q-uploader
+                @removed="formData.waste_water_treatment_details = null"
+                accept=".pdf"
+                flat
+                @added="
+                  (files) => {
+                    formData.waste_water_treatment_details = files[0];
+                  }
+                "
+                hide-upload-btn
+                ref="formData.applicant_photo"
+                color="grey"
+                url="http://localhost:4444/upload"
+                style="max-width: 300px"
+              />
+
+              <q-img
+                v-if="mimeType(formData.waste_water_treatment_details)"
+                :src="`http://localhost:8000/storage/${formData.waste_water_treatment_details}`"
+                style="max-width: 150px; max-height: 150px; margin-top: -100px"
+                spinner-color="primary"
+                spinner-size="82px"
+              />
+
+              <!-- {{ typeof formData.udyog_memorandum }} -->
+
+              <q-btn
+                v-if="
+                  typeof formData.waste_water_treatment_details !== 'object' &&
+                  !mimeType(formData.waste_water_treatment_details)
+                "
+                flat
+                style="max-width: 150px; margin-top: -100px"
+                color="primary"
+                icon="o_picture_as_pdf"
+                label="view"
+                @click="showAttachment(formData.waste_water_treatment_details)"
+              />
             </div>
           </div>
         </div>
@@ -362,7 +447,7 @@ Step ..."
             FURNANCE, PROCESS EMISSION, DC SET)
           </span>
           <div
-            v-for="i in formData.rows"
+            v-for="i in formData.emissionDetails.length"
             :key="i"
             class="row justify q-col-gutter-sm q-ml-md"
           >
@@ -370,67 +455,93 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 label="Capacity(Ton per hour/KVA)"
-               
-                dense
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].capacity_ton"
                 outlined
               />
             </div>
 
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Type of Fuel"
-               
-                dense
+                label="Type of Fuel"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].fuel_type"
                 outlined
               />
             </div>
 
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Quantity of fuel(in KL per day / Ton per day)"
-               
-                dense
+                label="Quantity of fuel(in KL per day / Ton per day)"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].fuel_quantity"
                 outlined
               />
             </div>
 
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Stack Height	"
-               
-                dense
+                label="Stack Height(AGL)"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].agl"
                 outlined
               />
             </div>
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Air Pollution Control Device"
-               
-                dense
+                label="Stack Height(ARL)"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].arl"
                 outlined
               />
             </div>
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Boiler Rating(Heating Surface) In cubic meter"
-               
-                dense
+                label="Air Pollution Control Device"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].control_device"
                 outlined
               />
             </div>
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Stream Pressure(max) In Kg per Cubic cm"
-               
-                dense
+                label="Boiler Rating(Heating Surface) In cubic meter"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].boiler_rating"
                 outlined
               />
             </div>
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Capacity in ltrs"
-               
-                dense
+                label="Stream Pressure(max) In Kg per Cubic cm"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].stream_pressure"
+                outlined
+              />
+            </div>
+            <div class="col-sm-5 col-xs-12">
+              <q-input
+                label="Capacity in ltrs"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.emissionDetails[i - 1].capacity_lt"
                 outlined
               />
             </div>
@@ -445,7 +556,7 @@ Step ..."
               color="primary"
               class="full-width"
               label="Add row"
-              @click="addRow"
+              @click="addNewEmission"
             />
           </div>
         </div>
@@ -457,7 +568,7 @@ Step ..."
         <div class="col-12">
           <span class="zlabel"> 12.5 Solid Waste Generation Details </span>
           <div
-            v-for="i in formData.rows"
+            v-for="i in formData.solidWasteDetails.length"
             :key="i"
             class="row justify q-col-gutter-sm q-ml-md"
           >
@@ -465,35 +576,43 @@ Step ..."
             <div class="col-sm-5 col-xs-12">
               <q-input
                 label="Source of Generation"
-               
-                dense
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.solidWasteDetails[i - 1].source_generation"
                 outlined
               />
             </div>
 
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Nature/Type"
-               
-                dense
+                label="Nature/Type"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.solidWasteDetails[i - 1].nature_type"
                 outlined
               />
             </div>
 
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="	Quantity(Ton per day)"
-               
-                dense
+                label="Quantity(Ton per day)"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.solidWasteDetails[i - 1].quantity_ton"
                 outlined
               />
             </div>
 
             <div class="col-sm-5 col-xs-12">
               <q-input
-                placeholder="Mode of disposal"
-               
-                dense
+                label="Mode of disposal"
+                :rules="[
+                  (val) => (val && val.length > 0) || 'Please type something',
+                ]"
+                v-model="formData.solidWasteDetails[i - 1].disposal_mode"
                 outlined
               />
             </div>
@@ -508,7 +627,7 @@ Step ..."
               color="primary"
               class="full-width"
               label="Add row"
-              @click="addRow"
+              @click="addNewSolidWaste"
             />
           </div>
         </div>
@@ -517,10 +636,23 @@ Step ..."
 
     <div class="col-12 zsubtitle">
       13 Need for clearance of vegetation(Trees and Bamboo Groves) in the
-      project site* <br>
-      <q-radio class="zlabel" v-model="condition" val="true" label="Applicable" />
-      <q-radio class="zlabel" v-model="condition" val="false" label="Not Applicable" />
-      <div v-if="condition == 'true'" class="row justify-start q-ml-sm">
+      project site* <br />
+      <q-radio
+        class="zlabel"
+        v-model="formData.need_clearance"
+        val="true"
+        label="Applicable"
+      />
+      <q-radio
+        class="zlabel"
+        v-model="formData.need_clearance"
+        val="false"
+        label="Not Applicable"
+      />
+      <div
+        v-if="formData.need_clearance == 'true'"
+        class="row justify-start q-ml-sm"
+      >
         <div class="col-12 q-ml-sm">
           <div class="col-xs-12 col-md-5">
             <label class="zlabel" for="gender"> a) If Applicable </label>
@@ -566,15 +698,43 @@ Step ..."
           </label>
         </div>
         <div class="col-xs-12 col-md-6">
-          <q-file
-            :rules="[(val) => val || 'Please type something']"
-            v-model="formData.replantation_plan"
-            outlined
-          >
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
+          <q-uploader
+            @removed="formData.replantation_plan = null"
+            accept=".pdf"
+            flat
+            @added="
+              (files) => {
+                formData.replantation_plan = files[0];
+              }
+            "
+            hide-upload-btn
+            ref="formData.applicant_photo"
+            color="grey"
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+          />
+          <q-img
+            v-if="mimeType(formData.replantation_plan)"
+            :src="`http://localhost:8000/storage/${formData.replantation_plan}`"
+            style="max-width: 150px; max-height: 150px; margin-top: -100px"
+            spinner-color="primary"
+            spinner-size="82px"
+          />
+
+          <!-- {{ typeof formData.udyog_memorandum }} -->
+
+          <q-btn
+            v-if="
+              typeof formData.replantation_plan !== 'object' &&
+              !mimeType(formData.replantation_plan)
+            "
+            flat
+            style="max-width: 150px; margin-top: -100px"
+            color="primary"
+            icon="o_picture_as_pdf"
+            label="view"
+            @click="showAttachment(formData.replantation_plan)"
+          />
         </div>
       </div>
     </div>
@@ -584,15 +744,16 @@ Step ..."
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { date } from "quasar";
 
 export default {
   setup(props, context) {
     const store = useStore();
-    const condition = ref("");
+    const dialog = ref(false);
+    const attachment = ref("");
 
-    const formData = reactive({
+    let formData = reactive({
       manuf_process_flow: null,
       manuf_process_steps: "",
       env_category: "",
@@ -601,30 +762,80 @@ export default {
       water_usage_per_day_cooling: "",
       water_usage_per_day_domestic: "",
       water_usage_per_day_others: "",
-
       water_water_gen_per_day_process: "",
       water_water_gen_per_day_cooling: "",
       water_water_gen_per_day_domestic: "",
       water_water_gen_per_day_others: "",
-
       water_water_treatment_process: "",
       water_water_treatment_cooling: "",
       water_water_treatment_domestic: "",
       water_water_treatment_others: "",
-
       waste_water_treatment_details: null,
-
       disposal_mode: "",
       trees_cut_no: "",
+      need_clearance: "",
       bamboo_groves_remove_no: "",
       replantation_plan: null,
+      manufactureDetails: [],
+      emissionDetails: [],
+      solidWasteDetails: [],
+      model: "F",
 
       rows: 1,
     });
-    onMounted(() => {});
+    const getF = () => {
+      formData = Object.assign(formData, store.state.globalData.common?.partF);
+      let manufactureDetails =
+        store.state.globalData.common?.partF?.manufactureDetails;
+      let emissionDetails =
+        store.state.globalData.common?.partF?.emissionDetails;
+      let solidWasteDetails =
+        store.state.globalData.common?.partF?.solidWasteDetails;
+      formData.manufactureDetails = [];
+      formData.emissionDetails = [];
+      formData.solidWasteDetails = [];
+
+      if (manufactureDetails) {
+        formData.manufactureDetails = manufactureDetails.map((obj) => ({
+          ...obj,
+        }));
+      }
+
+      if (emissionDetails) {
+        formData.emissionDetails = emissionDetails.map((obj) => ({
+          ...obj,
+        }));
+      }
+
+      if (solidWasteDetails) {
+        formData.solidWasteDetails = solidWasteDetails.map((obj) => ({
+          ...obj,
+        }));
+      }
+
+      // formData.manufactureDetails = [...formData.man];
+    };
+
+    onMounted(async () => await getF());
+
+    watch(store.state.globalData.common, () => getF());
     return {
-      condition,
       formData,
+      dialog,
+      attachment,
+      mimeType: (val) => {
+        // return console.log(typeof val);
+        let index = String(val).lastIndexOf(".");
+        let mime = String(val).substring(index + 1);
+        return typeof val === "string" && val ? mime != "pdf" : false;
+      },
+      getF,
+      showAttachment: (val) => {
+        console.log("dialog attach", val);
+        // return
+        attachment.value = "http://localhost:8000/storage/" + val;
+        dialog.value = true;
+      },
       industrial_areas: [
         "Industrial Growth Centre, Luangmual",
         "Industrial Estate, Zuangtui",
@@ -635,12 +846,40 @@ export default {
       project_categories: ["Greenfield", "Brownfield"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
       addRow: () => {
-        // formData.lsc_details.push({
-        //   name: "",
-        //   address: "",
-        //   kum: "",
-        //   caste: "",
-        // });
+        formData.manufactureDetails.push({
+          id: null,
+          raw_material: "",
+          raw_quantity: "",
+          units_ton_per_day: "",
+          main_product: "",
+          main_product_quantity: "",
+          units_number_per_day: "",
+        });
+        formData.rows++;
+      },
+      addNewEmission: () => {
+        formData.emissionDetails.push({
+          id: null,
+          capacity_ton: "",
+          fuel_type: "",
+          fuel_quantity: "",
+          agl: "",
+          arl: "",
+          control_device: "",
+          boiler_rating: "",
+          stream_pressure: "",
+          capacity_lt: "",
+        });
+        formData.rows++;
+      },
+      addNewSolidWaste: () => {
+        formData.solidWasteDetails.push({
+          id: null,
+          source_generation: "",
+          nature_type: "",
+          quantity_ton: "",
+          disposal_mode: "",
+        });
         formData.rows++;
       },
     };

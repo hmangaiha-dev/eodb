@@ -245,6 +245,8 @@
 
     <div class="col-10">
       <q-toggle
+        true-value="Yes"
+        false-value="No"
         v-model="formData.power_new_connection_is_laying_service"
         label="9.Please indicate whether you want to carry out the works of laying service line and/or dedicated distribution facility
 for the electricity supply requisitioned. "
@@ -253,11 +255,12 @@ for the electricity supply requisitioned. "
 
     <div class="col-10">
       <q-toggle
+        true-value="Yes"
+        false-value="No"
         v-model="formData.power_new_connection_own_meter"
         label="10.Please indicate whether you want to install your own CEA approved meter. (Yes/No) "
       />
     </div>
-    ;
 
     <div class="col-12">
       <label for="" class="zlabel">11.</label>
@@ -279,11 +282,15 @@ for the electricity supply requisitioned. "
             (b) Identity Proof duly certified submitted along with this
             application form: <br />
             <q-radio
+              true-value="Yes"
+              false-value="No"
               v-model="formData.power_new_connection_for"
               val="person"
               label="For a Person"
             />
             <q-radio
+              true-value="Yes"
+              false-value="No"
               v-model="formData.power_new_connection_for"
               val="organization"
               label="For an Organization"
@@ -311,8 +318,8 @@ for the electricity supply requisitioned. "
             (v) Photo identity card issued by Government agency; <br />
             (vi) PAN card; <br />
             (viii) Certificate from village Pradhan/ Patwari/ Lekhpal/ village
-            level worker/ village chowkidar/ Primary school teacher/ in-charge of
-            primary health centre etc.
+            level worker/ village chowkidar/ Primary school teacher/ in-charge
+            of primary health centre etc.
           </div>
         </div>
 
@@ -325,8 +332,8 @@ for the electricity supply requisitioned. "
             (v) Photo identity card issued by Government agency; <br />
             (vi) PAN card; <br />
             (viii) Certificate from village Pradhan/ Patwari/ Lekhpal/ village
-            level worker/ village chowkidar/ Primary school teacher/ in-charge of
-            primary health centre etc.
+            level worker/ village chowkidar/ Primary school teacher/ in-charge
+            of primary health centre etc.
           </div>
         </div>
 
@@ -351,10 +358,7 @@ for the electricity supply requisitioned. "
             </div>
           </label>
 
-          <q-file
-            v-model="formData.power_new_connection_11c"
-            outlined
-          >
+          <q-file v-model="formData.power_new_connection_11c" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -378,10 +382,7 @@ for the electricity supply requisitioned. "
             </div>
           </label>
 
-          <q-file
-            v-model="formData.power_new_connection_11d"
-            outlined
-          >
+          <q-file v-model="formData.power_new_connection_11d" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -394,10 +395,7 @@ for the electricity supply requisitioned. "
             (e) Any other document as applicable (Please specify)
           </label>
 
-          <q-file
-            v-model="formData.power_new_connection_11e"
-            outlined
-          >
+          <q-file v-model="formData.power_new_connection_11e" outlined>
             <template v-slot:prepend>
               <q-icon name="attach_file" />
             </template>
@@ -474,11 +472,11 @@ for the electricity supply requisitioned. "
         partnership deed and an authorization in the name of the applicant for
         signing the requisition form and agreement;
       </label>
-       <q-file v-model="formData.power_new_connection_note1" outlined>
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
+      <q-file v-model="formData.power_new_connection_note1" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
     <div class="col-12">
       <label class="zlabel" for="gender">
@@ -487,31 +485,32 @@ for the electricity supply requisitioned. "
         of Incorporation along with an authorization in the name of the
         applicant for signing the requisition form and agreement;
       </label>
-       <q-file v-model="formData.power_new_connection_note2" outlined>
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
+      <q-file v-model="formData.power_new_connection_note2" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
     <div class="col-12">
       <label class="zlabel" for="gender">
         3. Other documents applicable only for select consumer categories:
         <br />
         <div class="q-ml-md">
-          (a) Industrial consumers: Valid Industrial License, if applicable <br> (b)
-          Agricultural consumers: No Objection Certificate from competent
-          government authority for tube wells, if required <br> (c) Non-Domestic
-          Khokhas and Temporary Structure: No Objection Certificate for khokha or
-          temporary structure from the nagar nigam / nagar palika / nagar
-          panchayat / gram sabha / gram panchayat / land development authority /
-          land owning agency
+          (a) Industrial consumers: Valid Industrial License, if applicable
+          <br />
+          (b) Agricultural consumers: No Objection Certificate from competent
+          government authority for tube wells, if required <br />
+          (c) Non-Domestic Khokhas and Temporary Structure: No Objection
+          Certificate for khokha or temporary structure from the nagar nigam /
+          nagar palika / nagar panchayat / gram sabha / gram panchayat / land
+          development authority / land owning agency
         </div>
       </label>
-        <q-file v-model="formData.power_new_connection_note3" outlined>
-            <template v-slot:prepend>
-              <q-icon name="attach_file" />
-            </template>
-          </q-file>
+      <q-file v-model="formData.power_new_connection_note3" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
   </div>
 </template>
@@ -519,7 +518,7 @@ for the electricity supply requisitioned. "
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -555,13 +554,13 @@ export default {
       power_new_connection_temporay_from: "",
       power_new_connection_temporay_to: "",
 
-      power_new_connection_is_laying_service: true,
+      power_new_connection_is_laying_service: "Yes",
 
-      power_new_connection_own_meter: true,
+      power_new_connection_own_meter: "Yes",
 
       power_new_connection_photo: null,
 
-      power_new_connection_for: "person",
+      power_new_connection_for: "No",
 
       power_new_connection_11c: null,
       power_new_connection_11d: null,
@@ -575,9 +574,38 @@ export default {
 
       power_new_connection_identity_proof: null,
     });
+
+    watch(store.state.globalData.common, () => {
+      getA();
+      store.state.globalData.common,
+        () => {
+          getG();
+        };
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.power_new_connection_applicant_name = applicant_name;
+      formData.power_new_connection_communication_district = city_town;
+      formData.power_new_connection_communication_house = address;
+    };
+
     onMounted(() => {});
     return {
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

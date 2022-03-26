@@ -2,8 +2,8 @@
   <q-page>
     <div class="row q-mt-lg justify-center">
       <div class="col-md-6 col-xs-10 col-sm-8 col-lg-3 col-md-3">
-        <q-form  @submit="submit" @reset="reset">
-          <q-card  flat class="zcard">
+        <q-form @submit="submit" @reset="reset">
+          <q-card flat class="zcard">
             <p class="text-h6 text-weight-regular q-mt-md text-center">Login</p>
             <q-card-section>
               <q-input
@@ -14,14 +14,21 @@
                 label="Email"
                 outlined
               />
+
               <q-input
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
                 v-model="loginData.password"
+                filled
+                :type="isPwd ? 'password' : 'text'"
                 label="Password"
-                outlined
-              />
+              >
+                <template v-slot:append>
+                  <q-icon
+                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    class="cursor-pointer"
+                    @click="isPwd = !isPwd"
+                  />
+                </template>
+              </q-input>
             </q-card-section>
             <q-card-section style="display: flex" class="q-py-none">
               <q-checkbox right-label v-model="remember" label="Remember me" />
@@ -40,7 +47,7 @@
               <router-link
                 style="text-decoration: none; color: #3c8dbc"
                 class="q-mb-md"
-                to="/reset-password"
+                :to="{ name: 'investor:forgot-password' }"
               >
                 Forgot password?
               </router-link>
@@ -77,13 +84,12 @@ import { reactive } from "@vue/reactivity";
 import { api } from "src/boot/axios";
 import { ref } from "vue";
 import { useStore } from "vuex";
-import { useRouter,useRoute } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 export default {
   setup(props, context) {
     const router = useRouter();
     const route = useRoute();
-
 
     const store = useStore();
     const q = useQuasar();
@@ -94,6 +100,7 @@ export default {
 
     return {
       loginData,
+      isPwd: ref(true),
 
       remember: ref(true),
 
@@ -104,7 +111,7 @@ export default {
             const { token, user } = res.data;
             store.dispatch("authData/setCurrentUser", user);
             store.dispatch("authData/setToken", token);
-            router.push(route.redirectedFrom || 'investor')
+            router.push(route.redirectedFrom || "investor");
             // router.push({ name: "home" });
 
             // api.defaults.headers["Authorization"] = `Bearer ${token}`;
@@ -112,13 +119,14 @@ export default {
           .catch((err) => {
             console.log("error post response", err.response.data.message);
 
-            err.response.data.message && q.notify({
-              type: 'negative',
-              position: 'top',
-              icon: 'warnings',
-              color: 'red-4',
-              message: err.response.data.message
-            })
+            err.response.data.message &&
+              q.notify({
+                type: "negative",
+                position: "top",
+                icon: "warnings",
+                color: "red-4",
+                message: err.response.data.message,
+              });
           });
       },
 

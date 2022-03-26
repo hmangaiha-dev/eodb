@@ -18,11 +18,7 @@
         2. TIN/VAT number*
         <span class="asterisk"> *</span></label
       >
-      <q-input
-        dense
-        outlined
-        v-model="formData.pollution_form15_two"
-      />
+      <q-input dense outlined v-model="formData.pollution_form15_two" />
     </div>
 
     <div class="col-12 text-center zlabel">
@@ -42,7 +38,6 @@
       </q-file>
     </div>
 
-
     <!-- <div class="col-lg-4 col-sm-6">
       <div class="row justify-end q-col-gutter-md"> -->
 
@@ -53,7 +48,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -66,9 +61,19 @@ export default {
       pollution_form15_one: "",
       pollution_form15_two: "",
       pollution_form15_signature: null,
-     
     });
-    onMounted(() => {});
+    watch(store.state.globalData.common, () => getA());
+
+    const getA = () => {
+      const { applicant_name, phone_no, fax_no,tin_no } =
+        store.state.globalData.common.partA || "";
+
+      formData.pollution_form15_one = `Name: ${applicant_name}\nTelephone: ${phone_no}\nFax no: ${fax_no}`;
+      formData.pollution_form15_two = tin_no
+    };
+
+    onMounted(async () => getA());
+
     return {
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

@@ -59,7 +59,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            v-model="formData.phe_water_connection_five_a"
             dense
             outlined
           />
@@ -296,7 +296,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -312,7 +312,7 @@ export default {
       phe_water_connection_three: "",
       phe_water_connection_four: "",
       phe_water_connection_five: "",
-      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa: "",
+      phe_water_connection_five_a: "",
       phe_water_connection_five_b: "",
       phe_water_connection_five_c: "",
       phe_water_connection_five_d: "",
@@ -332,11 +332,42 @@ export default {
       phe_water_connection_fourteen_b: false,
       signature_phe_water_connection: null,
     });
+
+    watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.phe_water_connection_one = applicant_name  ;
+      formData.phe_water_connection_five_d = city_town ;
+      formData.phe_water_connection_five_f = postal_code ;
+      formData.phe_water_connection_five_g = mobile_no ;
+
+      formData.phe_water_connection_six = email ;
+
+
+
+    };
+
     onMounted(() => {});
     return {
       group: ref([]),
 
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },
