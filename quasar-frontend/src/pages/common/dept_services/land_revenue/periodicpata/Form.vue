@@ -597,7 +597,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted, watch } from "vue";
+import { onMounted, watch,computed } from "vue";
 import { date } from "quasar";
 
 import { ref } from "vue";
@@ -608,7 +608,7 @@ export default {
     const formData = reactive({
       application_code: "LAND_REVENUE_PATTA",
       department_id: 8,
-      land_revenue_patta_one: "",
+      land_revenue_patta_one: computed(()=>store.state.globalData.common.partA.applicant_name),
       land_revenue_patta_two: "",
       land_revenue_patta_two_a: "",
       land_revenue_patta_two_b: "",
@@ -661,7 +661,7 @@ export default {
       const { applicant_name, address, email } =
         store.state.globalData.common.partA;
 
-      formData.land_revenue_patta_one = applicant_name;
+      // formData.land_revenue_patta_one = applicant_name;
       (formData.land_revenue_patta_four = address),
         (formData.land_revenue_patta_sixteen_b = email);
     };

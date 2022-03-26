@@ -36,6 +36,7 @@
       </div>
       <div class="col-xs-12 col-md-6">
         <q-input
+        lazy-rules
           :rules="[(val) => (val && val.length > 0) || 'Please type something']"
          
           outlined
@@ -210,6 +211,7 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
+import {api} from 'boot/axios'
 
 export default {
   setup(props, context) {
@@ -217,7 +219,7 @@ export default {
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
 
-    const formData = reactive({
+    var formData = reactive({
       application_type: "",
       application_photo: null,
       applicant_name: "",
@@ -257,7 +259,25 @@ export default {
 
       // udyog_no: ''
     });
-    onMounted(() => {});
+    onMounted(() => {
+       api
+      .get("/investor/common-applications")
+      .then((res) => {
+        
+        formData = Object.assign(formData,res.data.part_a)
+        console.log('fetch res personal',res.data.part_a);
+
+        
+      })
+      .catch((err) => {
+        // const q = useQuasar();
+        // q.notify({
+        //   type: "negative",
+        //   message: err.toString(),
+        // });
+        console.error('err',err);
+      });
+    });
     return {
       application_types: [
         "New Enterprise",

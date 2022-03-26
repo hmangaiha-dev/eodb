@@ -12,4 +12,9 @@ class CommonApplicationController extends Controller
         // return 'common';
         return Auth::user()->commonApplications()->with('partA')->first();
     }
+
+    public function store(Request $request)
+    {
+        Auth::user()->commonApplications()->partA()->updateOrCreate([$request->all(),$request->all()]);
+    }
 }
