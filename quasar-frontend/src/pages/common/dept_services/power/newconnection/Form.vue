@@ -577,10 +577,9 @@ export default {
 
     watch(store.state.globalData.common, () => {
       getA();
-      store.state.globalData.common,
-        () => {
-          getG();
-        };
+      
+        getG();
+      
     });
 
     const getA = () => {
@@ -602,10 +601,30 @@ export default {
       formData.power_new_connection_communication_house = address;
     };
 
+    const getG = () => {
+      const {
+        applicant_name,
+       electric_regular_consumer_type
+      } = store.state.globalData.common.partG;
+
+
+
+
+      formData.power_new_connection_supply_category = electric_regular_consumer_type  ;
+
+
+      
+
+    
+      
+
+    };
+
     onMounted(() => {});
     return {
       formData,
       getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

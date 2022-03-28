@@ -1213,8 +1213,8 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => 'dummy',
                 'timeline' => 'dummy',
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
-                'sample_form' => 'dummy'
+                'path' => "connected-load",
+                'sample_form' => $faker->sentence
             ],
             [
                 'id' => 84,

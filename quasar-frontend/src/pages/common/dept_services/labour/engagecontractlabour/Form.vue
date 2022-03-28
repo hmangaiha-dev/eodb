@@ -187,7 +187,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.labour_contract_lic_six"
         dense
         outlined
@@ -202,7 +201,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.labour_contract_lic_seven"
         dense
         outlined
@@ -216,7 +214,6 @@
         Form-V is enclosed: <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.labour_contract_lic_eight"
         dense
         outlined

@@ -173,7 +173,7 @@ export default {
         },
         {
           path: "claim-under-central-comprehensive-insurance-subsidy-scheme",
-          name: "industries:comprehensive",
+          name: "industries:factory",
           component: () =>
             import(
               "pages/common/dept_services/Industries/factoryshed/Application.vue"

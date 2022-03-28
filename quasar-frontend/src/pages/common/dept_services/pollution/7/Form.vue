@@ -10,6 +10,9 @@
         dense
         outlined
         v-model="formData.pollution_authorise_solidwaste_one"
+          :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
       />
     </div>
 
@@ -27,6 +30,9 @@
             dense
             outlined
             v-model="formData.pollution_authorise_solidwaste_two_i"
+              :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
 

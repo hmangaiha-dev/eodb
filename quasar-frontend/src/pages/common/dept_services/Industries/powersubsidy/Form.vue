@@ -50,12 +50,16 @@
         >3. Constitution Proprietorship / Partnership / Co- Operative Society /
         Private. Limited <span class="asterisk"> *</span></label
       >
+<<<<<<< HEAD
       <q-select
         dense
         v-model="formData.commerce_power_subsidy_three"
         :options="formData.constitution_types"
         outlined
       />
+=======
+      <q-select dense :options="formData.constitution_types" outlined />
+>>>>>>> dev2
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -116,12 +120,16 @@
         8. Investment (Existing/Proposed)
         <span class="asterisk">*</span></label
       >
+<<<<<<< HEAD
       <q-select
         dense
         v-model="formData.commerce_power_subsidy_eight"
         :options="formData.investments"
         outlined
       />
+=======
+      <q-select dense :options="formData.investments" outlined />
+>>>>>>> dev2
     </div>
 
     <div class="col-12">
@@ -132,10 +140,15 @@
             >a)Technical<span class="asterisk">*</span></label
           >
           <q-input
+<<<<<<< HEAD
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
             v-model="formData.commerce_power_subsidy_nine_a"
+=======
+        
+            v-model="formData.land_revenue_land_transfer_seven_a"
+>>>>>>> dev2
             dense
             outlined
           />
@@ -146,10 +159,15 @@
             >b) Non-Technical<span class="asterisk">*</span></label
           >
           <q-input
+<<<<<<< HEAD
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
             v-model="formData.commerce_power_subsidy_nine_b"
+=======
+           
+            v-model="formData.land_revenue_land_transfer_seven_a"
+>>>>>>> dev2
             dense
             outlined
           />
@@ -158,10 +176,15 @@
         <div class="col-md-6 col-xs-10">
           <label class="zlabel">c) Total<span class="asterisk">*</span></label>
           <q-input
+<<<<<<< HEAD
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
             v-model="formData.commerce_power_subsidy_nine_c"
+=======
+         
+            v-model="formData.land_revenue_land_transfer_seven_a"
+>>>>>>> dev2
             dense
             outlined
           />

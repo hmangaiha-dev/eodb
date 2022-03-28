@@ -1,8 +1,10 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-xs-12 text-h6">4.Firm details</div>
+    attach {{ attachment }}
 
     <div class="row q-col-gutter-md items-center col-12 q-ml-sm">
+      
       <q-dialog v-model="dialog">
         <q-card class="col-12">
           <q-card-section>
@@ -622,6 +624,7 @@ export default {
         console.log("dialog attach", val);
         // return
         attachment.value = "http://localhost:8000/storage/" + val;
+        console.log("dialog attach check", attachment.value);
         dialog.value = true;
       },
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

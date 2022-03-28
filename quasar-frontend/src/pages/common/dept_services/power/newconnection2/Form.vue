@@ -882,6 +882,7 @@ export default {
     });
    watch(store.state.globalData.common, () => {
       getA();
+      getG();
     });
 
     const getA = () => {
@@ -905,12 +906,31 @@ export default {
 
     };
 
+    const getG = () => {
+      const {
+        applicant_name,
+       electric_regular_new_load_demand_kva,
+
+      } = store.state.globalData.common.partG;
+
+      formData.power_new_conn2_seven_a = electric_regular_new_load_demand_kva  ;
+
+
+      
+
+    
+      
+
+    };
+
+
 
 
     onMounted(() => {});
     return {
       formData,
       getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

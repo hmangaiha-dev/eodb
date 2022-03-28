@@ -158,7 +158,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_six"
         dense
         outlined
@@ -171,7 +170,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_seven"
         dense
         outlined
@@ -184,7 +182,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_eight"
         dense
         outlined
@@ -197,7 +194,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_nine"
         dense
         outlined
@@ -210,7 +206,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_ten"
         dense
         outlined
@@ -223,7 +218,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_eleven"
         dense
         outlined
@@ -248,13 +242,15 @@
         13. LSC/Land Pass/Relevant document (Attested Photocopy)*:
         <span class="asterisk">*</span></label
       >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.phe_water_connection_thirteen"
-        dense
-        outlined
-      />
+
+      <q-file v-model="formData.phe_water_connection_thirteen" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
+
+
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
@@ -326,7 +322,7 @@ export default {
       phe_water_connection_ten: "",
       phe_water_connection_eleven: "",
       phe_water_connection_twelve: "",
-      phe_water_connection_thirteen: "",
+      phe_water_connection_thirteen:null,
       phe_water_connection_fourteen: "",
       phe_water_connection_fourteen_a: true,
       phe_water_connection_fourteen_b: false,
@@ -335,6 +331,7 @@ export default {
 
     watch(store.state.globalData.common, () => {
       getA();
+      getG();
     });
 
     const getA = () => {
@@ -361,6 +358,17 @@ export default {
 
 
     };
+     const getG = () => {
+      const {
+        
+       electric_regular_consumer_number,
+       electric_temporary_existing_connection_file	
+      } = store.state.globalData.common.partG;
+
+      formData.power_change_name_two = electric_regular_consumer_number  ;
+
+    };
+
 
     onMounted(() => {});
     return {
@@ -368,6 +376,7 @@ export default {
 
       formData,
       getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

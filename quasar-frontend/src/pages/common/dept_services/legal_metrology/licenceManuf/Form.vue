@@ -293,7 +293,6 @@
         If so, give details.<span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.legal_loan_received"
         dense
         outlined
@@ -305,8 +304,7 @@
         >15. Name of bankers, if any.<span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.legal_bankers"
+        v-model="formData.legal_bank"
         dense
         outlined
       />
@@ -330,7 +328,6 @@
         when and with what results ?<span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.legal_previous_licence_application"
         dense
         outlined

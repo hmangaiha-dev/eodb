@@ -262,6 +262,7 @@ export default {
     });
     watch(store.state.globalData.common, () => {
       getA();
+      getG();
     });
 
     const getA = () => {
@@ -282,10 +283,26 @@ export default {
       formData.power_load_enc_rdc_four = address;
       formData.power_load_enc_rdc_five = mobile_no;
     };
+      const getG = () => {
+      const {
+        
+       electric_regular_consumer_number,
+       electric_temporary_existing_load_demand_kw
+      } = store.state.globalData.common.partG;
+
+      formData.power_load_enc_rdc_three = electric_regular_consumer_number  ;
+      formData.power_load_enc_rdc_six_i = electric_temporary_existing_load_demand_kw;
+      formData.power_load_enc_rdc_seven_i = electric_temporary_existing_load_demand_kw;
+
+
+
+    };
 
     onMounted(() => {});
     return {
       formData,
+      getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

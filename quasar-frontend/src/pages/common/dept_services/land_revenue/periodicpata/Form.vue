@@ -673,6 +673,7 @@ export default {
 
     onMounted(async () => {
       getA();
+      getG();
     });
     return {
       formData,

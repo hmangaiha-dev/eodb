@@ -137,7 +137,7 @@
 
     <div class="col-xs-12 col-md-3">
       <label class="zlabel" for="dob" type="date"
-        >Steet<span class="asterisk">*</span>
+        >Street<span class="asterisk">*</span>
       </label>
     </div>
     <div class="col-xs-12 col-md-3">

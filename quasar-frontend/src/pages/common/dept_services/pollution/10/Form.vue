@@ -23,6 +23,8 @@
             dense
             outlined
             v-model="formData.pollution_producer_one_a"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
           />
         </div>
         <div class="col-md-6 col-xs-10">
@@ -102,6 +104,8 @@
             dense
             outlined
             v-model="formData.pollution_producer_three_a"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
           />
         </div>
         <div class="col-md-6 col-xs-10">
@@ -133,6 +137,8 @@
             dense
             outlined
             v-model="formData.pollution_producer_four_a"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
           />
         </div>
         <div class="col-md-6 col-xs-10">
@@ -229,6 +235,8 @@
             dense
             outlined
             v-model="formData.pollution_producer_nine_a"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
           />
         </div>
         <div class="col-md-6 col-xs-10">

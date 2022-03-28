@@ -168,12 +168,19 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted,watch } from "vue";
 import { date } from "quasar";
+import axios from 'axios';
+// const api2 = axios.create({ baseURL: 'http://127.0.0.1:8000' });
+import { api2 } from "src/boot/axios";
+
+
+
 
 export default {
   setup(props, context) {
     const store = useStore();
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
+    const token = store.getters["auth/getToken"];
 
     const formData = reactive({
       application_code: "POWER_CHANGE_NAME",
@@ -194,6 +201,7 @@ export default {
     });
        watch(store.state.globalData.common, () => {
       getA();
+      getG();
     });
 
     const getA = () => {
@@ -212,16 +220,40 @@ export default {
 
       formData.power_change_name_three = applicant_name  ;
       formData.power_change_name_six = address ;
-      formData.power_change_name_seven = mobile_no ;
-    
-      
+      formData.power_change_name_seven = mobile_no ;   
+
+    };
+      const getG = () => {
+      const {
+        
+       electric_regular_consumer_number,
+       electric_temporary_existing_connection_file	
+      } = store.state.globalData.common.partG;
+
+      formData.power_change_name_two = electric_regular_consumer_number  ;
+      // formData.power_change_name_latest_bill =  electric_temporary_existing_connection_file	;
+      //  api2.get("/storage/"+electric_temporary_existing_connection_file,
+      // )
+      //   .then((res) => {
+      //     console.log("response value", res.data);
+      //     // formData.power_change_name_latest_bill =  res.data
+         
+      //   })
+      //   .catch((err) => console.log("error", err));
 
     };
 
-    onMounted(() => {});
+
+    onMounted(() => {
+
+    });
+    
+    
     return {
       formData,
       getA,
+      getG,
+    
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

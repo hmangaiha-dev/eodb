@@ -6,7 +6,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.labour_cert_reg_one"
         dense
         outlined
@@ -23,9 +22,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.labour_cert_reg_two_a"
             dense
             outlined
@@ -39,9 +36,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.labour_cert_reg_two_b"
             dense
             outlined
@@ -64,9 +59,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+       
             v-model="formData.labour_cert_reg_three_a"
             dense
             outlined
@@ -80,9 +73,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.labour_cert_reg_three_b"
             dense
             outlined
@@ -96,9 +87,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          
             v-model="formData.labour_cert_reg_three_c"
             dense
             outlined
@@ -112,9 +101,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+         
             v-model="formData.labour_cert_reg_three_d"
             dense
             outlined
@@ -128,9 +115,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.labour_cert_reg_three_e"
             dense
             outlined
@@ -213,9 +198,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          
             v-model="formData.labour_cert_reg_seven_a"
             dense
             outlined
@@ -229,9 +212,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          
             v-model="formData.labour_cert_reg_seven_b"
             dense
             outlined
@@ -250,9 +231,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          
             v-model="formData.labour_cert_reg_eight_a"
             dense
             outlined
@@ -265,9 +244,7 @@
             <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.labour_cert_reg_eight_b"
             dense
             outlined
@@ -288,9 +265,7 @@
           >
           <q-input
             type="textarea"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.labour_cert_reg_nine_a"
             dense
             outlined
@@ -303,9 +278,7 @@
             <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          
             v-model="formData.labour_cert_reg_nine_b"
             dense
             outlined

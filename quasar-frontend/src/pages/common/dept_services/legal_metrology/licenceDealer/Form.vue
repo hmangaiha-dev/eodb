@@ -118,9 +118,7 @@ monogram and his licence number) and provide
             (a) Registration of Importer of Weights and Measures, if any<span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+         
             v-model="formData.legal_licence_dealer_eight_a"
             dense
             outlined
@@ -132,9 +130,7 @@ monogram and his licence number) and provide
             (b) Approval of model imported into India by Central Government<span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.legal_licence_dealer_eight_b"
             dense
             outlined
@@ -150,7 +146,6 @@ monogram and his licence number) and provide
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.legal_licence_dealer_nine"
         dense
         outlined

@@ -7,7 +7,8 @@
     </div>
 
     <div class="col-6">
-      <q-input dense outlined />
+      <q-input dense outlined         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
     </div>
 
     <div class="col-12 ztitle">
@@ -336,24 +337,34 @@ export default {
     const store = useStore();
   
     const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: currentUser?.email,
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
+     application_code: "LAND_OWNERSHIP_HOLDING",
+      department_id: 8,
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+      land_ownership_holding_1: "",
+
+
     });
     onMounted(() => {
      

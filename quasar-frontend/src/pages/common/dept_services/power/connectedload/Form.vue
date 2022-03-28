@@ -316,7 +316,51 @@ export default {
       parseInt(formData.power_connected_load_t17)*100 + parseInt(formData.power_connected_load_t18)*150
       ;
       console.log(formData.power_connected_load_t_total);
-    })
+    });
+
+       watch(store.state.globalData.common, () => {
+      getA();
+      getG();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.power_connected_load_one = applicant_name  ;
+      formData.power_connected_load_four = address ;
+
+    
+      
+
+    };
+
+      const getG = () => {
+      const {
+        
+       electric_regular_existing_connection,
+       electric_regular_consumer_number
+      } = store.state.globalData.common.partG;
+
+      // formData.power_connected_load_two = electric_regular_existing_connection  ;
+      formData.power_connected_load_three = electric_regular_consumer_number  ;
+
+
+
+    };
+
+
+
 
     
 
@@ -324,6 +368,8 @@ export default {
     onMounted(() => {});
     return {
       formData,
+      getA,
+      getG,
 
       multiply: (value, multiplier) => {
         value = value * multiplier;

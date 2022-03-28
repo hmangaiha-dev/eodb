@@ -6,7 +6,8 @@
         <label class="zlabel" for="name"
           >A)Name Of The Industrial Unit <span class="asterisk"> *</span></label
         >
-        <q-input dense outlined v-model="formData.c_n_e_1A" />
+        <q-input dense outlined v-model="formData.c_n_e_1A"          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
       </div>
 
       <div class="col-12 zlabel">
@@ -18,7 +19,8 @@
             <label class="zlabel" for="name"
               >1) Factory Address <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.c_n_e_1B1" />
+            <q-input dense outlined v-model="formData.c_n_e_1B1"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+ />
           </div>
 
           <div class="col-md-6 col-xs-10">
@@ -26,7 +28,8 @@
               >2. Telephone/mobile Number
               <span class="asterisk"> *</span></label
             >
-            <q-input dense outlined v-model="formData.c_n_e_1B2" />
+            <q-input dense outlined v-model="formData.c_n_e_1B2"          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
           </div>
         </div>
       </div>
@@ -70,7 +73,8 @@
               *</span
             ></label
           >
-          <q-input dense outlined v-model="formData.c_n_e_2A" />
+          <q-input dense outlined v-model="formData.c_n_e_2A"          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
         </div>
         <div class="col-12">
           <span class="zlabel"
@@ -83,14 +87,16 @@
               <label class="zlabel" for="name"
                 >1) Name <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.c_n_e_2B1" />
+              <q-input dense outlined v-model="formData.c_n_e_2B1"          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
             </div>
 
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="name"
                 >2. Address <span class="asterisk"> *</span></label
               >
-              <q-input dense outlined v-model="formData.c_n_e_2B2" />
+              <q-input dense outlined v-model="formData.c_n_e_2B2"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+ />
             </div>
           </div>
         </div>
@@ -1431,7 +1437,7 @@ export default {
       c_n_e_6Dnew1: "",
       c_n_e_6Dexist1: "",
       c_n_e_6Dexist2: "",
-      c_n_e_6Eexist3: "",
+      c_n_e_6Dexist3: "",
       c_n_e_6Enew1: "",
       c_n_e_6Eexist1: "",
       c_n_e_6Eexist2: "",

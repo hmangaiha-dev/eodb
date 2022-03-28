@@ -152,7 +152,7 @@
           />
         </div>
         <div class="col-xs-12 col-md-5">
-          <label class="zlabel" for="gender"> g) New Load Demand (KWA)* </label>
+          <label class="zlabel" for="gender"> g) New Load Demand (KVA)* </label>
         </div>
         <div class="col-xs-12 col-md-5">
           <q-input

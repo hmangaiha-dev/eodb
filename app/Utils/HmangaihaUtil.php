@@ -105,10 +105,10 @@ class HmangaihaUtil
 
         ],
         'LEGAL_REGISTRATION_IMPORTER_PACKER' => [
+            'legal_registration_importer_one',
             'legal_registration_importer_two',
             'legal_registration_importer_three',
             'legal_registration_importer_four',
-            'legal_registration_importer_one',
             'legal_registration_importer_five',
             'legal_registration_importer_six',
             'legal_registration_importer_seven',

@@ -16,6 +16,8 @@
             dense
             outlined
             v-model="formData.pollution_form12_one_a"
+                    :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
           />
         </div>
         <div class="col-md-6 col-xs-10">
@@ -61,7 +63,9 @@
             (a) Total capital invested on the project
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.pollution_form12_three_a" />
+          <q-input dense outlined v-model="formData.pollution_form12_three_a" 
+                  :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+ />
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"

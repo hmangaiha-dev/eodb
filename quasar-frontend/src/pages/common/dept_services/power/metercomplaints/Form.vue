@@ -202,6 +202,7 @@ export default {
 
     watch(store.state.globalData.common, () => {
       getA();
+      getG();
     });
 
     const getA = () => {
@@ -221,11 +222,25 @@ export default {
       formData.power_meter_complaints_three = applicant_name;
       formData.power_meter_complaints_four = address;
     };
+      const getG = () => {
+      const {
+        
+       electric_regular_consumer_number,
+       electric_temporary_existing_load_demand_kw
+      } = store.state.globalData.common.partG;
+
+      formData.power_meter_complaints_two = electric_regular_consumer_number  ;
+ 
+
+
+
+    };
 
     onMounted(() => {});
     return {
       formData,
       getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

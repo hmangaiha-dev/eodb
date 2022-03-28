@@ -115,7 +115,6 @@ and his licence number.)<span class="asterisk"
         ></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.legal_dealer_renewal_eight"
         dense
         outlined

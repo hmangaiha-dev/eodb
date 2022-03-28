@@ -34,9 +34,7 @@
             b) Hmun bik (Street/Lane) <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          
             v-model="formData.phe_disconnect_two_b"
             dense
             outlined
@@ -106,9 +104,7 @@
             <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+         
             v-model="formData.phe_disconnect_two_g"
             dense
             outlined
@@ -121,9 +117,7 @@
             <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.phe_disconnect_two_h"
             dense
             outlined
@@ -164,7 +158,6 @@
         ></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_disconnect_five"
         dense
         outlined

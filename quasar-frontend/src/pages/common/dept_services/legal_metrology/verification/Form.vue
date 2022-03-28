@@ -267,7 +267,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.legal_verification_deposited_receipt_No"
+            v-model="formData.legal_verification_deposted_date"
             dense
             outlined
           />

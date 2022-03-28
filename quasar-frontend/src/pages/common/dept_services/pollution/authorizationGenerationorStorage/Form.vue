@@ -86,59 +86,7 @@
             />
           </div>
         </div>
-        <!-- <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.legal_type_weight"
-            dense
-            outlined
-          />
-        </div> -->
-
-        <!-- <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            (ii) Treatment, if any <span class="asterisk">*</span></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.legal_type_measures"
-            dense
-            outlined
-          />
-        </div>
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            (iii) Collection, Transportation, Storage <span class="asterisk">*</span></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.legal_type_weighing_instrument"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            (iv) Refurbishing <span
-              class="asterisk"
-              >*</span
-            ></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.legal_type_measuring_instrument"
-            dense
-            outlined
-          />
-        </div> -->
+ 
       </div>
     </div>
 
@@ -227,7 +175,6 @@
         ></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.pollution_authorization_generation_six"
         dense
         outlined

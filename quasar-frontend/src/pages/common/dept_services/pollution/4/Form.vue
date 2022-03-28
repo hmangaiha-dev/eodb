@@ -16,6 +16,9 @@
             dense
             outlined
             v-model="formData.pollution_accident_medical_one_a"
+              :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
         <div class="col-md-6 col-xs-10">
@@ -24,6 +27,9 @@
             dense
             outlined
             v-model="formData.pollution_accident_medical_one_b"
+              :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
       </div>
@@ -38,6 +44,9 @@
         dense
         outlined
         v-model="formData.pollution_accident_medical_two"
+          :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
       />
     </div>
 
@@ -50,6 +59,9 @@
         dense
         outlined
         v-model="formData.pollution_accident_medical_three"
+          :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
       />
     </div>
 
@@ -62,6 +74,8 @@
         dense
         outlined
         v-model="formData.pollution_accident_medical_four"
+                :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 
@@ -74,6 +88,9 @@
         dense
         outlined
         v-model="formData.pollution_accident_medical_five"
+          :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
       />
     </div>
 
@@ -87,6 +104,8 @@
         dense
         outlined
         v-model="formData.pollution_accident_medical_six"
+                :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 
@@ -99,6 +118,9 @@
         dense
         outlined
         v-model="formData.pollution_accident_medical_seven"
+          :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
       />
     </div>
 
@@ -111,6 +133,8 @@
         dense
         outlined
         v-model="formData.pollution_accident_medical_eight"
+                :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 
@@ -123,6 +147,8 @@
         dense
         outlined
         v-model="formData.pollution_accident_medical_nine"
+                :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 
@@ -130,12 +156,13 @@
       <label class="zlabel" for="name">
         10. Does Your Facility Have An Emergency Control Policy? If Yes Give
         Details
-        <span class="asterisk"> *</span></label
+       </label
       >
       <q-input
         dense
         outlined
         v-model="formData.pollution_accident_medical_ten"
+        
       />
     </div>
 
