@@ -51,6 +51,7 @@ export default {
     const router = useRouter();
     const store = useStore();
     onMounted(() => {
+      store.dispatch('globalData/fetchCommonData');
     });
 
     const dateFilter = (dt) => {

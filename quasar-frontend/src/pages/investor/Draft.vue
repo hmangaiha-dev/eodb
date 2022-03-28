@@ -51,7 +51,10 @@ export default {
     const localData = ref([]);
     const router = useRouter();
     const store = useStore();
-    onMounted(() => {});
+    onMounted(() => {
+      // store.state.
+      store.dispatch('globalData/fetchCommonData');
+    });
 
     const dateFilter = (dt) => {
       return date.formatDate(new Date(dt), "DD/MM/YYYY hh:mm a");

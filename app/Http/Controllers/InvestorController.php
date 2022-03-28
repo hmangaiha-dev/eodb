@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\CommonApplication;
 use App\Models\Investor;
 use App\Models\User;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -56,7 +57,7 @@ class InvestorController extends Controller
     {
         $user =  Auth::user();
         return response()->json([
-            'list' => $user->applications()->where('paid',true)->with('department')->orderBy('applications.created_at', 'desc')->get(),
+            'list' => $user->applications()->where('paid', true)->doesntHave('draft')->with('department')->orderBy('applications.created_at', 'desc')->get(),
             'drafts' => $user->drafts()->get(),
             'certs' => $user->certificates()->get(),
             'common' => $user->commonApplications()
