@@ -408,9 +408,20 @@ const SIGN_POWER_CONNECTED_LOAD=[
 
 
 
+const PHE_WATER_CONNECTION_LSC=[
+    'size'=>2048,
+    'mime'=>'images/*',
+    'application_code'=>'PHE_WATER_CONNECTION',
+    'key'=>'phe_water_connection_thirteen',
+    'label'=>'Signature of applicant',
+    'disk'=>'public',
+    'folder'=>'land/5/attachments'
+];
+
+
     const ATTACHMENTS = [
         'signature_phe_water_connection'=>self::PHE_WATER_CONNECTION_SIGNATURE,
-        // LEGAL METROLOGY
+        'phe_water_connection_thirteen'=>self::PHE_WATER_CONNECTION_LSC,
         'legal_licence_manuf_signature_designation'=>self::SIGN_LEGAL_LICENCE_MANUFACTURING,
         'legal_licence_renewal_manuf_signature_designation'=>self::SIGN_LEGAL_LICENCE_RENEWAL_MANUFACTURER,
         'legal_dealer_renewal_signature_designation'=>self::SIGN_LEGAL_DEALER_RENEWAL,

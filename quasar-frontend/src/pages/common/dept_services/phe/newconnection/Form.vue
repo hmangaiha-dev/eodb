@@ -242,12 +242,15 @@
         13. LSC/Land Pass/Relevant document (Attested Photocopy)*:
         <span class="asterisk">*</span></label
       >
-      <q-input
-        v-model="formData.phe_water_connection_thirteen"
-        dense
-        outlined
-      />
+
+      <q-file v-model="formData.phe_water_connection_thirteen" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
+
+
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
@@ -319,7 +322,7 @@ export default {
       phe_water_connection_ten: "",
       phe_water_connection_eleven: "",
       phe_water_connection_twelve: "",
-      phe_water_connection_thirteen: "",
+      phe_water_connection_thirteen:null,
       phe_water_connection_fourteen: "",
       phe_water_connection_fourteen_a: true,
       phe_water_connection_fourteen_b: false,
