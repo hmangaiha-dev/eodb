@@ -8,6 +8,7 @@ use App\Models\ApplicationProfile;
 use App\Models\Attachment;
 use App\Models\Certificate;
 use App\Models\DepartmentService;
+use App\Models\DraftApplication;
 use App\Utils\AttachmentUtils;
 use App\Utils\KeysUtil;
 use App\Utils\NumberGenerator;
@@ -111,6 +112,14 @@ class ApplicationController extends Controller
             'current_state' => 'submitted',
             'paid' => true,
         ]);
+
+        if($request->has('draft_id')) {
+            $draft_id = $request->get('draft_id');
+            $application = Application::find($draft_id);
+            $application->delete();
+            // $draft = DraftApplication::where('application_id',$draft_id)->delete();
+            $application->draft()->delete();
+        }
 
         if ($request->draft == 'draft') {
             $application->draft()->create([

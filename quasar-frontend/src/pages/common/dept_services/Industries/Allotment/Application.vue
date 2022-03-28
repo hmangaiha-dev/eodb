@@ -47,7 +47,12 @@
       </div>
 
       <div class="text-center q-mt-md col-12">
-        <q-btn @click="submit('draft')" color="blue" label="Draft" />
+        <q-btn
+          v-if="!route.query.draft"
+          @click="submit('draft')"
+          color="blue"
+          label="Draft"
+        />
         <q-btn class="q-mx-md" type="submit" color="green-5" label="Submit" />
         <q-btn class="q-mx-md" color="red-4" label="Reset" />
       </div>
@@ -97,6 +102,7 @@ export default {
     const submit = (type) => {
       var formDatas = new FormData();
       formDatas.append("draft", type);
+      if (route.query.draft) formDatas.append("draft_id", route.query.draft);
       // return console.log('event',type);
       let fields = Object.assign(
         formData,
@@ -196,6 +202,7 @@ export default {
       page: "https://paymentgw.mizoram.gov.in/msegs-payment/6",
       submit,
       router,
+      route,
       window: window,
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
