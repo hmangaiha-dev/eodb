@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
-
 class Staff extends Authenticatable
 {
     const RULES = [
@@ -65,6 +64,11 @@ class Staff extends Authenticatable
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, 'staff_roles');
+    }
+
+    public function hasRole($role)
+    {
+        return $this->roles()->firstWhere('name',$role) ? true : false;
     }
 
     public function scopeCurrentPost($builder)

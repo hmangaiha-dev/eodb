@@ -57,12 +57,14 @@ export default {
       for (let data in formData) {
         formDatas.append(`${data}`, formData[data]);
       }
+
+      formDatas.append('machineries',JSON.stringify(formData.machineries))
       // return console.log('formdatas',formData);
 
       api
         .post("/applications/submit", formDatas)
         .then((res) => {
-          // console.log("response value", res.data);
+          // return console.log("response value", res.data);
           q.notify({
             message: "Application submitted successfully",
             color: "green",

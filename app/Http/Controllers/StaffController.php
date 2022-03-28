@@ -70,7 +70,7 @@ class StaffController extends Controller
     public function update(Request $request, Staff $staff)
     {
         $user = auth('sanctum')->user();
-        if (!$user->tokenCan('staff:update')) {
+        if (!$user->tokenCan('staff:edit')) {
             throw new \Exception('Unauthorized access', 403);
         }
         $this->validate($request, [

@@ -105,7 +105,6 @@
       >
       <q-input
         type="textarea"
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         dense
         outlined
         v-model="formData.food_drug_19B_three"
@@ -119,7 +118,6 @@
       >
       <q-input
         type="textarea"
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         dense
         outlined
         v-model="formData.food_drug_19B_four"

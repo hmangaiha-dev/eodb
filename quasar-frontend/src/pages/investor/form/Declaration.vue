@@ -1,5 +1,10 @@
 <template>
-  <div class="zcard row items-center q-col-gutter-md">
+  <div class="row items-center q-col-gutter-md">
+    <q-dialog v-model="dialog">
+      <q-card>
+        <embed :src="attachment" width="500" height="500" />
+      </q-card>
+    </q-dialog>
     <div>
       <ol>
         <li>
@@ -157,20 +162,36 @@
         </div>
         <div class="col-xs-12 col-md-5">
           <div class="col-xs-12 col-md-5">
-            <q-file
-              v-model="formData.declaration_signature"
-              outlined
-              label="Select file"
-            >
-              <template v-slot:prepend>
-                <q-icon name="attach_file" />
-              </template>
-            </q-file>
+            <q-uploader
+              @removed="formData.declaration_signature = null"
+              accept=".jpg, image/*"
+              flat
+              @added="
+                (files) => {
+                  formData.declaration_signature = files[0];
+                }
+              "
+              hide-upload-btn
+              ref="formData.applicant_photo"
+              color="grey"
+              url="http://localhost:4444/upload"
+              style="max-width: 300px"
+            />
+            <q-img
+              v-if="
+                !Array.isArray(formData.declaration_signature) &&
+                formData.declaration_signature
+              "
+              :src="`http://localhost:8000/storage/${formData.declaration_signature}`"
+              style="max-width: 150px; margin-top: -54px"
+              spinner-color="primary"
+              spinner-size="82px"
+            />
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-md-5">
+    <!-- <div class="col-xs-12 col-md-5">
       <label class="zlabel" for="gender"> </label>
       <div class="q-gutter-sm">
         <q-checkbox
@@ -179,32 +200,61 @@
           color="teal"
         />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch, ref } from "vue";
 import { date } from "quasar";
 
 export default {
   setup(props, context) {
     const store = useStore();
 
-    const formData = reactive({
+    const dialog = ref(false);
+    const attachment = ref("");
+
+    let formData = reactive({
       declaration_signature: null,
       declaration_applicant_name: "",
       declaration_application_date: "",
       declaration_designation: "",
       declaration_consent: false,
       rows: 1,
+      model: "declaration",
     });
-    onMounted(() => {});
+
+    const getDeclaration = () =>
+      (formData = Object.assign(
+        formData,
+        store.state.globalData.common?.selfDeclaration
+      ));
+
+    // const getDeclaration = () => {
+    //   for (let data in store.state.globalData.common.selfDeclaration) {
+    //     formData[data] = store.state.globalData.common?.selfDeclaration[data];
+    //   }
+    // };
+
+    onMounted(() => getDeclaration());
+
+    watch(store.state.globalData.common, () => {
+      getDeclaration();
+    });
     return {
       formData,
-
+      getDeclaration,
+      dialog,
+      attachment,
+      showAttachment: (val) => {
+        // console.log("dialog attach", val);
+        // return
+        attachment.value = "http://localhost:8000/storage/" + val;
+        dialog.value = true;
+      },
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
       addRow: () => {
         // formData.lsc_details.push({

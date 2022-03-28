@@ -2,7 +2,7 @@
   <q-page class="container">
     <h1 class="ztitle">My desk</h1>
     <div class="row q-col-gutter-md">
-      <div v-for="item in localData.listData.data" :key="item.id" class="col-xs-12 col-sm-6 col-md-3">
+      <div v-for="item in localData.listData.data" :key="item.id" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <ApplicationCard @open="handleOpen" :application="item"/>
       </div>
     </div>

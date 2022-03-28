@@ -35,7 +35,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.labour_employ_work_three"
         dense
         outlined
@@ -145,7 +144,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -167,6 +166,31 @@ export default {
       labour_employ_work_nine: null,
      
     });
+
+
+     watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+      } = store.state.globalData.common.partA;
+
+      formData.labour_employ_work_one = address;
+
+    };
+
+
+
     onMounted(() => {});
     return {
       group: ref([]),

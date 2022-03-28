@@ -75,7 +75,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -93,11 +93,39 @@ export default {
       phe_water_transfer_signature: null,
      
     });
+
+
+    watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.phe_water_transfer_one = applicant_name ;
+      formData.phe_water_transfer_two = address ;
+
+
+
+    };
+
     onMounted(() => {});
     return {
       group: ref([]),
 
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

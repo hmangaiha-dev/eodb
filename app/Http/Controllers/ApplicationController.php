@@ -7,6 +7,7 @@ use App\Models\ApplicationMovement;
 use App\Models\ApplicationProfile;
 use App\Models\Attachment;
 use App\Models\Certificate;
+use App\Models\DepartmentService;
 use App\Utils\AttachmentUtils;
 use App\Utils\KeysUtil;
 use App\Utils\NumberGenerator;
@@ -85,7 +86,10 @@ class ApplicationController extends Controller
 
     public function submitApplication(Request $request)
     {
-        //     return $request->file();
+        // return $request->draft;
+        // // return $request->all();
+        // return auth()->user();
+        // // return 'jje';
 
 
         $this->validate($request, [
@@ -105,9 +109,15 @@ class ApplicationController extends Controller
             'user_id' => Auth::id(),
             'department_id' => $request->get('department_id'),
             'current_state' => 'submitted',
+            'paid' => true,
         ]);
 
-
+        if ($request->draft == 'draft') {
+            $application->draft()->create([
+                'draft' => true,
+                'route' => $request->route
+            ]);
+        };
 
 
         $application->states()->create([
@@ -116,34 +126,20 @@ class ApplicationController extends Controller
         ]);
         $application->office()->attach($appProfile->office_id);
 
-        if ($request->application_code == 'LAND_REVENUE_LSC' || $request->application_code == 'LAND_REVENUE_PATTA' || $request->application_code == 'ENV_FOREST_BAMBOO') {
+        if ($request->application_code == 'LAND_REVENUE_LSC' || $request->application_code == 'LAND_REVENUE_PATTA' || $request->application_code == 'ENV_FOREST_BAMBOO' || $request->application_code == 'C&E_POWER_SUBSIDY') {
             if ($request->application_code == 'ENV_FOREST_BAMBOO') {
-                $arrs =  (json_decode($request->bamboo_particulars));
-                foreach ($arrs as $arr) {
-                    $application->bamboos()->create(
-                        (array)$arr
-                    );
-                }
+                $arrs = (array) json_decode($request->bamboo_particulars, true);
+                $application->bamboos()->createMany($arrs);
+            } else if ($request->application_code == 'C&E_POWER_SUBSIDY') {
+                $arrs = (array) json_decode($request->machineries, true);
+                $application->powerSubsidyMachineries()->createMany($arrs);
             } else {
-                $arrs =  (json_decode($request->lsc_details));
-                foreach ($arrs as $arr) {
-                    $application->lscDetails()->create(
-                        (array)$arr
-                        // 'name' => $arr->name,
-                        // 'address' => $arr->address,
-                        // 'kum' => $arr->kum,
-                        // 'caste' => $arr->caste,
-                    );
-                }
+                $arrs =  (array)json_decode($request->lsc_details, true);
+                $application->lscDetails()->createMany($arrs);
             }
-            // $application->lscDetails()->createMany($request->lsc_details);
-
         }
-        // return $application;
 
         DB::transaction(function ($cb) use ($appProfile, $request, $application) {
-            //        $formData=$request->except(['application_code', 'department_id']);
-            //        $application = new Application();
             $keysArr = KeysUtil::getApplicationKeys($request->get('application_code'));
             foreach ($keysArr as $key) {
                 $application->applicationValues()->create([
@@ -227,6 +223,21 @@ class ApplicationController extends Controller
             'list' => $model->certificates()->get()
         ], 200);
     }
+
+    public function getUserCertificates()
+    {
+        // $array =  collect(Auth::user()->certificates()->get());
+        // return $array;
+        return response()->json([
+            'list' => collect(Auth::user()->certificates()->get()),
+        ], 200);
+        // return response()->json([
+        //     'list' => $model->certificates()->get()
+        // ], 200);
+    }
+
+
+
     public function createCertificate(Request $request, Application $model)
     {
         $certificate = $model->certificates()->save(new Certificate($request->only((new Certificate())->getFillable())));
@@ -264,21 +275,43 @@ class ApplicationController extends Controller
             "{{{$item->field_key}}}" => $item->field_value
         ])->toArray();
 
-        if ($model->application_code == 'LAND_REVENUE_LSC' || $model->application_code == 'LAND_REVENUE_PATTA') {
-            $details = $model->lscDetails()->get();
-            $views = view('lsc.table', ["details" => $details, 'code' => $model->application_code])->render();
-            $content = [
-                "{{content}}" => $views
-            ];
+        if ($model->application_code == 'LAND_REVENUE_LSC' || $model->application_code == 'LAND_REVENUE_PATTA' || $model->application_code == 'ENV_FOREST_BAMBOO' || $model->application_code == 'C&E_POWER_SUBSIDY') {
 
-            $vars = $vars + $content;
+            if ($model->application_code == 'ENV_FOREST_BAMBOO') {
+                $details = $model->bamboos()->get();
+                $field_key = ['bamboo_total_species', 'bamboo_total_nos', 'bamboo_total_total_bamboo', 'bamboo_total_total_mature'];
+                $total = $model->applicationValues()->whereIn('field_key', $field_key)->get()->pluck('field_value');
+                $views = view('bamboo.table', ["details" => $details, 'code' => $model->application_code, 'total' => $total])->render();
+                $content = [
+                    "{{content}}" => $views
+                ];
+
+                $vars = $vars + $content;
+            } else if ($model->application_code == 'C&E_POWER_SUBSIDY') {
+                $details = $model->powerSubsidyMachineries()->get();
+                $views = view('machineries.table', ["details" => $details, 'code' => $model->application_code])->render();
+                $content = [
+                    "{{content}}" => $views
+                ];
+
+                $vars = $vars + $content;
+            } else {
+                $details = $model->lscDetails()->get();
+                $views = view('lsc.table', ["details" => $details, 'code' => $model->application_code])->render();
+                $content = [
+                    "{{content}}" => $views
+                ];
+
+                $vars = $vars + $content;
+            }
         }
 
         $result = $this->replaceTemplate($template, $vars);
 
         return response()->json([
             'template' => $result,
-            'application' => $model
+            'application' => $model,
+            'attachment' => $model->attachments()->get(),
         ], 200);
     }
 
@@ -287,6 +320,12 @@ class ApplicationController extends Controller
         return response()->json([
             'list' => $model->attachments()->get(),
         ], 200);
+    }
+
+    public function getApplicatonFee(string $code)
+    {
+        // return $code;
+        return ApplicationProfile::query()->firstWhere('code', $code);
     }
 
     private function replaceTemplate($str, $replace_vars)

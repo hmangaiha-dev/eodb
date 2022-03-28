@@ -59,7 +59,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            v-model="formData.phe_water_connection_five_a"
             dense
             outlined
           />
@@ -158,7 +158,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_six"
         dense
         outlined
@@ -171,7 +170,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_seven"
         dense
         outlined
@@ -184,7 +182,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_eight"
         dense
         outlined
@@ -197,7 +194,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_nine"
         dense
         outlined
@@ -210,7 +206,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_ten"
         dense
         outlined
@@ -223,7 +218,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.phe_water_connection_eleven"
         dense
         outlined
@@ -248,13 +242,15 @@
         13. LSC/Land Pass/Relevant document (Attested Photocopy)*:
         <span class="asterisk">*</span></label
       >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.phe_water_connection_thirteen"
-        dense
-        outlined
-      />
+
+      <q-file v-model="formData.phe_water_connection_thirteen" outlined>
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
     </div>
+
+
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
@@ -296,7 +292,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -312,7 +308,7 @@ export default {
       phe_water_connection_three: "",
       phe_water_connection_four: "",
       phe_water_connection_five: "",
-      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa: "",
+      phe_water_connection_five_a: "",
       phe_water_connection_five_b: "",
       phe_water_connection_five_c: "",
       phe_water_connection_five_d: "",
@@ -326,17 +322,61 @@ export default {
       phe_water_connection_ten: "",
       phe_water_connection_eleven: "",
       phe_water_connection_twelve: "",
-      phe_water_connection_thirteen: "",
+      phe_water_connection_thirteen:null,
       phe_water_connection_fourteen: "",
       phe_water_connection_fourteen_a: true,
       phe_water_connection_fourteen_b: false,
       signature_phe_water_connection: null,
     });
+
+    watch(store.state.globalData.common, () => {
+      getA();
+      getG();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.phe_water_connection_one = applicant_name  ;
+      formData.phe_water_connection_five_d = city_town ;
+      formData.phe_water_connection_five_f = postal_code ;
+      formData.phe_water_connection_five_g = mobile_no ;
+
+      formData.phe_water_connection_six = email ;
+
+
+
+    };
+     const getG = () => {
+      const {
+        
+       electric_regular_consumer_number,
+       electric_temporary_existing_connection_file	
+      } = store.state.globalData.common.partG;
+
+      formData.power_change_name_two = electric_regular_consumer_number  ;
+
+    };
+
+
     onMounted(() => {});
     return {
       group: ref([]),
 
       formData,
+      getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

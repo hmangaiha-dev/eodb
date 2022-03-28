@@ -166,9 +166,7 @@
             (a) Technical  <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+         
             v-model="formData.ce_grant_of_subsidy_ten_a"
             dense
             outlined
@@ -180,9 +178,7 @@
           (b) Non- Technical <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+        
             v-model="formData.ce_grant_of_subsidy_ten_b"
             dense
             outlined

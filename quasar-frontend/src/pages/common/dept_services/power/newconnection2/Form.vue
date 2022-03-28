@@ -537,7 +537,7 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
-        >22 requir Any electricity dues outstanding in licensee's area of
+        >22 Any electricity dues outstanding in licensee's area of
         operation in consumer's name: ements (If yes, attach a copy): Yes/
         No<span class="asterisk">*</span></label
       >
@@ -802,7 +802,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 
 export default {
@@ -880,9 +880,57 @@ export default {
       power_new_conn2_doc_twelve: null,
       power_new_conn2_doc_thirteen: null,
     });
+   watch(store.state.globalData.common, () => {
+      getA();
+      getG();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.power_new_conn2_one = applicant_name  ;
+      formData.power_new_conn2_three = address ;
+    
+      
+
+    };
+
+    const getG = () => {
+      const {
+        applicant_name,
+       electric_regular_new_load_demand_kva,
+
+      } = store.state.globalData.common.partG;
+
+      formData.power_new_conn2_seven_a = electric_regular_new_load_demand_kva  ;
+
+
+      
+
+    
+      
+
+    };
+
+
+
+
     onMounted(() => {});
     return {
       formData,
+      getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

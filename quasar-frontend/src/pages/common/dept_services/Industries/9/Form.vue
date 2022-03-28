@@ -147,9 +147,7 @@
             >c) Others <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+        
             v-model="formData.commerce_form9_eightAc"
             dense
             outlined
@@ -166,9 +164,7 @@
             >a) Technical<span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.commerce_form9_nine_a"
             dense
             outlined
@@ -180,9 +176,7 @@
             >b) Non-Technical <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.commerce_form9_nine_b"
             dense
             outlined
@@ -193,9 +187,7 @@
             >c) Others <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.commerce_form9_nine_c"
             dense
             outlined
@@ -256,9 +248,7 @@
             Original voucher) <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.commerce_form9_ten_d"
             dense
             outlined

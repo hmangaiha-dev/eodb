@@ -1,12 +1,13 @@
 <template>
   <q-list separator>
-    <q-item  exact :to="{ name: 'investor:profile' }" clickable>
+    <q-item exact :to="{ name: 'investor:profile' }" clickable>
       <q-item-section>
         <q-item-label>Profile</q-item-label>
       </q-item-section>
     </q-item>
 
-    <q-item exact :to="{ name: 'investor:dashboard' }" clickable>
+    <q-item exact  :to="userType == 'staff' ? { name: 'staff:dashboard' } : { name: 'investor:dashboard' }" clickable>
+    <!-- <q-item exact :to="{ name: 'investor:dashboard' }" clickable> -->
       <q-item-section>
         <q-item-label>Go to dashboard</q-item-label>
       </q-item-section>
@@ -26,20 +27,18 @@
   </q-list>
 </template>
 <script>
-import { reactive } from "@vue/reactivity";
+import { reactive,computed } from "vue";
 import { api } from "src/boot/axios";
-import {useRouter} from "vue-router";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 // import {computed} from "vue";
-
-
 
 export default {
   emits: ["onMenuItemClick"],
   setup(props, context) {
     const router = useRouter();
-     const store = useStore();
+    const store = useStore();
     const menus = reactive({
       items: [
         { key: "profile", title: "Update profile" },
@@ -53,6 +52,8 @@ export default {
     return {
       menus,
       handleMenuClick,
+
+      userType: computed(() => store.getters["authData/getUserType"]),
 
       handleLogout: (e) => {
         api

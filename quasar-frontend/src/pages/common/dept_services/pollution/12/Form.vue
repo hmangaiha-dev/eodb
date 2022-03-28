@@ -16,6 +16,8 @@
             dense
             outlined
             v-model="formData.pollution_form12_one_a"
+                    :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
           />
         </div>
         <div class="col-md-6 col-xs-10">
@@ -32,11 +34,7 @@
             (c) In case of renewal, previous registration number and date of
             registration
           </label>
-          <q-input
-            dense
-            outlined
-            v-model="formData.pollution_form12_one_c"
-          />
+          <q-input dense outlined v-model="formData.pollution_form12_one_c" />
         </div>
       </div>
     </div>
@@ -65,21 +63,15 @@
             (a) Total capital invested on the project
             <span class="asterisk"> *</span></label
           >
-          <q-input
-            dense
-            outlined
-            v-model="formData.pollution_form12_three_a"
-          />
+          <q-input dense outlined v-model="formData.pollution_form12_three_a" 
+                  :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+ />
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name"
             >(b) Year of commencement of production</label
           >
-          <q-input
-            dense
-            outlined
-            v-model="formData.pollution_form12_three_b"
-          />
+          <q-input dense outlined v-model="formData.pollution_form12_three_b" />
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">
@@ -108,11 +100,7 @@
     </div>
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="name"> Designation </label>
-      <q-input
-        v-model="formData.pollution_form12_designation"
-        dense
-        outlined
-      />
+      <q-input v-model="formData.pollution_form12_designation" dense outlined />
       <!-- </div>
       </div> -->
     </div>
@@ -124,7 +112,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -146,7 +134,19 @@ export default {
       pollution_form12_signature: null,
       pollution_form12_designation: "",
     });
-    onMounted(() => {});
+    watch(store.state.globalData.common, () => getA());
+
+    const getA = () => {
+      const { declaration_designation } =
+      store.state.globalData.common.selfDeclaration || "";
+
+      formData.pollution_form12_designation = declaration_designation;
+      
+    };
+
+    onMounted(async () => getA());
+
+   
     return {
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

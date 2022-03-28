@@ -48,9 +48,7 @@
             c) Email identity <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          
             v-model="formData.pwd_road_cutting_two_c"
             dense
             outlined
@@ -67,9 +65,7 @@
             a) House No if any <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.pwd_road_cutting_three_a"
             dense
             outlined
@@ -221,7 +217,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -255,6 +251,34 @@ export default {
       pwd_road_cutting_six: "",
       
     });
+
+ watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.pwd_road_cutting_one = applicant_name  ;
+      formData.pwd_road_cutting_two_b = mobile_no ;
+      formData.pwd_road_cutting_two_c = email ;
+      formData.pwd_road_cutting_three_c = city_town;
+
+      
+
+    };
+
     onMounted(() => {});
     return {
      

@@ -17,7 +17,7 @@ class CreateAttachmentsTable extends Migration
             $table->id();
             $table->string('original_name');
             $table->string('mime');
-            $table->string('label')->nullable();
+            $table->text('label')->nullable();
             $table->integer('size');
             $table->string('path');
             $table->nullableMorphs('owner');

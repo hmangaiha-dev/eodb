@@ -2,7 +2,7 @@
   <q-page class="container-lg" padding>
     <h1 class="ztitle">Profile</h1>
     <br/>
-    <div class="zcard row  q-col-gutter-md">
+    <div class="zcard row q-ml-sm q-col-gutter-md">
       <div class="col-xs-12 zsubtitle">Profile details</div>
       <div class="col-xs-3">Full Name</div>
       <div class="col-xs-9">

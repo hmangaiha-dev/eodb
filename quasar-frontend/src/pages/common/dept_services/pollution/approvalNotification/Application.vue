@@ -1,5 +1,5 @@
 	<template>
-	  <div class="zcard row items-center q-col-gutter-md">
+	  <div class="row items-center q-col-gutter-md">
 	    <div class="col-12 text-h6 q-pb-none text-center">[ See Rule 7(1)]</div>
 	    <p class="col-12 text-caption q-py-none text-center">SCHEDULE -7</p>
 	    <div class="col-12 ztitle text-center">

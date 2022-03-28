@@ -308,7 +308,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 
 import {ref} from 'vue'
@@ -353,11 +353,33 @@ export default {
       lsc_tuna_address: "",
       lsc_phone_no: "",
     });
+
+
+     watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const { applicant_name, address  ,mobile_no} =
+        store.state.globalData.common.partA;
+
+      formData.lsc_one = applicant_name;
+      formData.lsc_three = address;
+      formData.lsc_tuna_address = address;
+      formData.lsc_phone_no = mobile_no;
+
+
+  
+    };
+
+
+
     onMounted(() => {
       console.log('rows',formData.rows);
     });
     return {
       formData,
+      getA,
       addRow: () => {
         formData.lsc_details.push({
           name: "",

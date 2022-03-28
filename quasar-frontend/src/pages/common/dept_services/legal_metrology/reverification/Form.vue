@@ -267,7 +267,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.legal_reverification_deposited_receipt_No"
+            v-model="formData.legal_reverification_deposted_date"
             dense
             outlined
           />
@@ -315,7 +315,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -358,11 +358,38 @@ export default {
 
       legal_reverification_signature_designation: null,
     });
+
+     watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.legal_reverification_locality = city_town;
+
+
+    };
+
+
+
     onMounted(() => {});
     return {
       group: ref([]),
 
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

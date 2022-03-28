@@ -10,24 +10,40 @@ class ApplicationProfileController extends Controller
 {
     public function index(Request $request)
     {
+        $staff = auth('sanctum')->user();
+        $office = $staff->currentPost();
         $search = $request->get('search');
         $list = ApplicationProfile::query()
-            ->when($search,fn($q)=>$q->where('title','LIKE',"%$search%"))
+            ->when($search, fn ($q) => $q->where('title', 'LIKE', "%$search%")->orWhere('code', 'LIKE', "%$search%"))
+            ->when(isset($office), function ($q) use ($office){
+                return $q->where('office_id',$office->id);
+            },function(){
+                // return $q->gall
+            })
             ->paginate();
+        $template = ApplicationProfile::query()->whereHas('printTemplate')->when(isset($office),function($q) use($office){
+            return $q->where('office_id',$office->id);
+        })->get();
         return response()->json([
-            'list' =>$list
+            'list' => $list,
+            'templates' => $template
         ]);
     }
 
     public function applicationFlows(Request $request)
     {
+        // return $request->all();
+        $staff = auth('sanctum')->user();
+        $office = $staff->currentPost();
         return response()->json([
-            'list' => ApplicationProfile::query()->whereHas('processFlows')->with('processFlows')->paginate(),
+            'list' => ApplicationProfile::query()->whereHas('processFlows')->when(isset($office),function($q) use($office)  {
+                return $q->where('office_id',$office->id);
+            })->with('processFlows')->paginate(),
             'message' => ''
         ]);
     }
 
-    public function toggle(Request $request,ApplicationProfile $model)
+    public function toggle(Request $request, ApplicationProfile $model)
     {
         $model->published = !$model->published;
         return response()->json([
@@ -35,7 +51,7 @@ class ApplicationProfileController extends Controller
             'list' => ApplicationProfile::query()
                 ->whereHas('processFlows')
                 ->paginate(),
-        ],200);
+        ], 200);
     }
 
     public function destroyFlow(Request $request, ApplicationProfile $model)
@@ -49,7 +65,7 @@ class ApplicationProfileController extends Controller
         ]);
     }
 
-    public function deleteApplicationProfile(Request $request,ApplicationProfile $model)
+    public function deleteApplicationProfile(Request $request, ApplicationProfile $model)
     {
         $model->processFlows()->delete();
         $model->delete();
@@ -62,19 +78,19 @@ class ApplicationProfileController extends Controller
 
     public function createPrintTemplate(Request $request, ApplicationProfile $model)
     {
-        $template=$model->printTemplate()->updateOrCreate(
-            ['application_profile_id'=>$model->id],
-            $request->only((new PrintTemplate())->getFillable()));
+        $template = $model->printTemplate()->updateOrCreate(
+            ['application_profile_id' => $model->id],
+            $request->only((new PrintTemplate())->getFillable())
+        );
 
         return response()->json([
             'message' => 'Application print template created successfully',
-            'data'=>$template
+            'data' => $template
         ]);
     }
 
     public function detail(Request $request, ApplicationProfile $model)
     {
-        return response()->json($model->load('printTemplate'),200);
+        return response()->json($model->load('printTemplate'), 200);
     }
-
 }

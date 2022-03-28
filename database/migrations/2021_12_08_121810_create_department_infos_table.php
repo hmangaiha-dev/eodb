@@ -13,7 +13,7 @@ class CreateDepartmentInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('department_infos', function (Blueprint $table) {
+        Schema::create('department_act_rules', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('department_id');
             $table->text('body');

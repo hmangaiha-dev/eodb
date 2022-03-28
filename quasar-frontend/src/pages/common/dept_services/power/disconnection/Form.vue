@@ -48,6 +48,18 @@
         outlined
       />
     </div>
+    <div class="col-md-6 col-xs-10">
+      <label class="zlabel" for="gender"
+        >4Contracted load<span class="asterisk">*</span></label
+      >
+      <q-input
+       
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        v-model="formData.power_disconnection_load"
+        dense
+        outlined
+      />
+    </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
@@ -124,7 +136,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -140,6 +152,7 @@ export default {
       power_disconnection_two: "",
       power_disconnection_three: "",
       power_disconnection_four: "",
+      power_disconnection_load: "",
       power_disconnection_five: "",
       power_disconnection_six: "",
       power_disconnection_last_bill: null,
@@ -147,9 +160,51 @@ export default {
       power_disconnection_last_signature: null,
      
     });
+
+       watch(store.state.globalData.common, () => {
+      getA();
+      getG();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.power_disconnection_three = applicant_name  ;
+      formData.power_disconnection_five = address ;
+      formData.power_disconnection_six = mobile_no ;
+    
+      
+
+    };
+      const getG = () => {
+      const {
+        
+       electric_regular_consumer_number,
+       electric_temporary_existing_load_demand_kw
+      } = store.state.globalData.common.partG;
+
+      formData.power_disconnection_two = electric_regular_consumer_number  ;
+     
+
+
+
+    };
     onMounted(() => {});
     return {
       formData,
+      getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

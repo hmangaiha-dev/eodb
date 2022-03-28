@@ -4,7 +4,7 @@
     <div class="">
       <div class="zdetailcard flex items-center justify-between">
         <q-select
-          style="min-width: 250px"
+          style="min-width: 65%"
           outlined
           item-aligned
           option-value="code"
@@ -12,9 +12,26 @@
           dropdown-icon="arrow_drop_down"
           v-model="formData.application"
           :options="application_profiles"
-          use-chips
+          @filter="filterFn"
+         
+          use-input
+          input-debounce="0"
+         
           label="Select Application"
-        />
+        >
+          <template v-slot:option="scope">
+            <q-item v-bind="scope.itemProps">
+              <q-item-section avatar>
+                <q-icon color="primary" name="send" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ scope.opt.title }}</q-item-label>
+                <q-item-label caption>{{ scope.opt.dept_name }}</q-item-label>
+                <q-item-label caption> {{ scope.opt.code }} </q-item-label>
+              </q-item-section>
+            </q-item>
+          </template>
+        </q-select>
         <div class="text-center">
           <q-btn
             @click="localData.openDialog = true"
@@ -78,7 +95,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import FlowDialog from "pages/admin/setting/process-flows/FlowDialog";
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { api } from "boot/axios";
 import { onMounted } from "vue";
@@ -99,9 +116,18 @@ export default {
       openDialog: false,
     });
 
+    const application_profiles = ref();
+
+    const getApplicationProfiles = () => {
+      application_profiles.value = store.state.staffData.application_profiles;
+    };
+
+    watch(store.state.staffData, () => {
+      getApplicationProfiles();
+    });
+
     onMounted(() => {
-      // store.dispatch('staffData/fetchData')
-      console.log('dispatching actions');
+      getApplicationProfiles();
     });
 
     const handleSave = ({ staff, duration, actions }) => {
@@ -134,12 +160,25 @@ export default {
       removeFlow,
       list,
       formData,
+      getApplicationProfiles,
       handleSave,
       localData,
       handleSubmit,
-      application_profiles: computed(
-        () => store.state.staffData.application_profiles
-      ),
+      application_profiles,
+      filterFn(val, update) {
+        if (val === "") {
+          update(() => getApplicationProfiles());
+          return;
+        }
+
+        update(() => {
+          getApplicationProfiles();
+          const needle = val.toLowerCase();
+          application_profiles.value = application_profiles.value.filter(
+            (v) => v.title.toLowerCase().indexOf(needle) > -1 || v.code.toLowerCase().indexOf(needle) > -1 || v.dept_name.toLowerCase().indexOf(needle) > -1
+          );
+        });
+      },
     };
   },
 };

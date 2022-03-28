@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('country')->nullable();
             $table->string('pincode')->nullable();
             $table->string('mobile')->nullable();
+            $table->rememberToken()->nullable();
 
             $table->softDeletes();
 

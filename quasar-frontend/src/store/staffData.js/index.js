@@ -7,8 +7,10 @@ import Quasar from "quasar";
 
 const state = () => {
   return {
+    departments: [],
     permissions: [],
     roles: [],
+    role: [],
     districts: [],
     staffs: [],
     offices: [],
@@ -27,6 +29,7 @@ const getters={}
 const mutations = {
   setPermissions: (state, permissions) => (state.permissions = permissions),
   setRoles: (state, roles) => (state.roles = roles),
+  setRole: (state, role) => (state.role = role),
   setDistricts: (state, districts) => (state.districts = districts),
   setStaffs: (state, staffs) => (state.staffs = staffs),
   setPostingStatuses: (state, stats) => (state.postingStatuses = stats),
@@ -35,6 +38,7 @@ const mutations = {
   setFileType: (state, types) => (state.file_types = types),
   setApplicationTypes: (state, types) => (state.application_types = types),
   setApplicationProfiles: (state, types) => (state.application_profiles = types),
+  setDepartments: (state, data) => (state.departments = data),
 };
 
 const actions = {
@@ -44,6 +48,7 @@ const actions = {
       .then((res) => {
         const {
           roles,
+          role,
           districts,
           permissions,
           offices,
@@ -51,15 +56,20 @@ const actions = {
           file_types,
           application_types,
           application_profiles,
+          departments
         } = res.data;
         context.commit("setPermissions", permissions);
         context.commit("setRoles", roles);
+        context.commit("setRole", role);
         context.commit("setDistricts", districts);
         context.commit("setStaffs", staffs);
         context.commit("setOffices", offices);
         context.commit("setFileType", file_types);
         context.commit("setApplicationTypes", application_types);
         context.commit("setApplicationProfiles", application_profiles);
+        context.commit("setDepartments", departments);
+        // console.log('current role',departments);
+
 
         // console.log('services api data',services[0].items);
       })

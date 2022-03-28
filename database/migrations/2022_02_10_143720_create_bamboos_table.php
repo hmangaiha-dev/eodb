@@ -16,13 +16,13 @@ class CreateBamboosTable extends Migration
     {
         Schema::create('bamboos', function (Blueprint $table) {
             $table->id();
-            $table->string('year');
-            $table->string('species');
-            $table->string('nos');
-            $table->string('total_bamboo');
-            $table->string('total_mature');
-            // $table->bigInteger('application_id');
-            $table->foreignIdFor(Application::class, 'application_id');
+            $table->string('year')->nullable();
+            $table->string('species')->nullable();
+            $table->string('nos')->nullable();
+            $table->string('total_bamboo')->nullable();
+            $table->string('total_mature')->nullable();
+            // $table->bigInteger('application_id')->nullable();
+            $table->foreignIdFor(Application::class, 'application_id')->nullable();
             $table->timestamps();
         });
     }

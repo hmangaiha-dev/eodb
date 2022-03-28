@@ -143,7 +143,7 @@ class DepartmentSeeder extends Seeder
             'id'    =>  17,
             'dept_name' => 'Geology & Mineral Resources',
             'slug' => 'geology-and-mineral-resources',
-            'dept_code' => 'URBAN',
+            'dept_code' => 'GEO',
             'sect_name' => 'P. Jawahar',
             'dict_name' => 'J. Hmingthanmawia'
         ]

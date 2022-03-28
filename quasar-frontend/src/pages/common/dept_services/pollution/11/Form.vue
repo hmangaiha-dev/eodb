@@ -11,6 +11,8 @@
         dense
         outlined
         v-model="formData.pollution_form11_one"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 
@@ -48,7 +50,8 @@
 
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.pollution_form11_four" />
+      <q-input dense outlined v-model="formData.pollution_form11_four"          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+ />
     </div>
 
     <div class="col-12">
@@ -116,11 +119,15 @@
             (a) Products
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.pollution_form11_seven_a" />
+
+          <q-input dense outlined  v-model="formData.pollution_form11_seven_a"          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+ 
+           />
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">(b) Installed capacity</label>
-          <q-input dense outlined v-model="formData.pollution_form11_seven_b" />
+          <q-input dense outlined v-model="formData.pollution_form11_seven_b"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
         </div>
       </div>
     </div>
@@ -294,7 +301,8 @@
             i. Name
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.pollution_form11_nine_i" />
+          <q-input dense outlined v-model="formData.pollution_form11_nine_i"         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="name">ii. Quantity required /year</label>
@@ -398,6 +406,8 @@
         dense
         outlined
         v-model="formData.pollution_form11_thirteen"
+                :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 
@@ -429,7 +439,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -483,7 +493,20 @@ export default {
       pollution_form11_brand_signature: null,
       pollution_form11_brand_designation: "",
     });
-    onMounted(() => {});
+    watch(store.state.globalData.common, () => getA());
+
+    const getA = () => {
+      const { phone_no, mobile_no, fax_no, email } =
+        store.state.globalData.common.partA || "";
+      const { declaration_designation } =
+        store.state.globalData.common.selfDeclaration || "";
+
+      formData.pollution_form11_two = `Telephone: ${phone_no},\nMobile:  ${mobile_no},\nFax: ${fax_no},\nEmail: ${email}`;
+      formData.pollution_form11_brand_designation = declaration_designation
+    };
+
+    onMounted(async () => getA());
+
     return {
       formData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

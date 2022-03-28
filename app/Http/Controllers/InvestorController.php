@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\CommonApplication;
 use App\Models\Investor;
 use App\Models\User;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -46,7 +47,7 @@ class InvestorController extends Controller
                 'original_name' => $key,
                 'mime' => 'jpg',
                 'label' =>  $key,
-                'size' => '2',   
+                'size' => '2',
                 'path' => $path
             ]);
         }
@@ -54,13 +55,16 @@ class InvestorController extends Controller
 
     public function getApplications()
     {
-        // return 'yes';
-
         $user =  Auth::user();
-
-        $app = $user->applications()->with('department')->orderBy('applications.created_at', 'desc')->get();
-
-        return $app;
+        return response()->json([
+            'list' => $user->applications()->where('paid', true)->doesntHave('draft')->with('department')->orderBy('applications.created_at', 'desc')->get(),
+            'drafts' => $user->drafts()->get(),
+            'certs' => $user->certificates()->get(),
+            'common' => $user->commonApplications()
+                ->with(
+                    ['partA', 'partB', 'partC', 'partD', 'partE', 'partF', 'partG', 'selfDeclaration']
+                )->first()
+        ]);
     }
 
 
@@ -68,9 +72,10 @@ class InvestorController extends Controller
     public function detail(Application $application)
     {
         abort_if($application->user_id != Auth::id(), 403, 'You dont have a permission!');
-        $application->load(['profile', 'applicationValues', 'attachments']);
+        $application->load(['profile', 'applicationValues', 'attachments'])->with('vadlues');
         return response()->json([
             'data' => $application,
+            'values' => $application->values()
         ], 200);
     }
 

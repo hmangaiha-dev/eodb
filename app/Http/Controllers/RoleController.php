@@ -58,7 +58,7 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $staff = auth('sanctum')->user();
-        if (!$staff->tokenCan('role:update')) {
+        if (!$staff->tokenCan('role:edit')) {
             throw new \Exception('Unauthorized access', 403);
         }
         $this->validate($request, ['name' => 'required']);

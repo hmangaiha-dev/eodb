@@ -89,6 +89,11 @@ class OfficeSeeder extends Seeder
             'id'    =>  16,
             'name' => 'Urban Development & Proverty Alleviation',
             'code' => 'URBAN',
+        ],
+        [
+            'id'    =>  17,
+            'name' => 'Geology & Mineral Resources',
+            'code' => 'GEO',
         ]
 
     ];

@@ -108,9 +108,7 @@
             part-I (if any) of MSME</label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             dense
             outlined
             v-model="formData.commerce_factory_shed_eightA_i"
@@ -123,9 +121,7 @@
             (IEM) (if any) of DIPP.</label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             dense
             outlined
             v-model="formData.commerce_factory_shed_eightA_ii"
@@ -137,9 +133,7 @@
             No. from the concerned Department.</label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             dense
             outlined
             v-model="formData.commerce_factory_shed_eightB"
@@ -153,7 +147,6 @@
         >9 Date of commencement of Commercial Production ( for New unit.)</label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         dense
         outlined
         v-model="formData.commerce_factory_shed_nine"
@@ -181,9 +174,7 @@
             >(i) what is the percentage of investment up to 31.3.2007?</label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             dense
             outlined
             v-model="formData.commerce_factory_shed_eleven_i"
@@ -196,9 +187,7 @@
             expansion.</label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             dense
             outlined
             v-model="formData.commerce_factory_shed_eleven_ii"
@@ -222,9 +211,7 @@
                 >(i) Upto 31.3.2007 <span class="asterisk"> *</span></label
               >
               <q-input
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+              
                 dense
                 outlined
                 v-model="formData.commerce_factory_shed_twelveAa_i"
@@ -236,9 +223,7 @@
                 >(ii) After 31.3.2007 <span class="asterisk"> *</span></label
               >
               <q-input
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+              
                 dense
                 outlined
                 v-model="formData.commerce_factory_shed_twelveAa_ii"
@@ -324,9 +309,7 @@
                 >(i) Upto 31.3.2007 <span class="asterisk"> *</span></label
               >
               <q-input
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+             
                 dense
                 outlined
                 v-model="formData.commerce_factory_shed_twelveBa_i"
@@ -338,9 +321,7 @@
                 >(ii) After 31.3.2007 <span class="asterisk"> *</span></label
               >
               <q-input
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 dense
                 outlined
                 v-model="formData.commerce_factory_shed_twelveBa_ii"
@@ -591,7 +572,6 @@
         [Form:1E(A)]</label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         dense
         outlined
         v-model="formData.commerce_factory_shed_thirten"
@@ -613,7 +593,6 @@
         Scheme, 2007
       </label>
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         dense
         outlined
         v-model="formData.commerce_factory_shed_fifteen"
@@ -625,7 +604,6 @@
         16. Whether subsidy availed on a new unit or Expanded unit
       </label>
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         dense
         outlined
         v-model="formData.commerce_factory_shed_sixteen"
@@ -753,9 +731,7 @@
             <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+         
             type="textarea"
             v-model="formData.commerce_factory_shed_twenty_a"
             dense
@@ -771,9 +747,7 @@
             <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.commerce_factory_shed_twenty_b"
             dense
             outlined
@@ -784,9 +758,7 @@
             >(c) Period of Insurance <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.commerce_factory_shed_twenty_c"
             dense
             outlined
@@ -798,9 +770,7 @@
             >(d) Fire Policy No (S). <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+          
             v-model="formData.commerce_factory_shed_twenty_d"
             dense
             outlined
@@ -813,9 +783,7 @@
             Replacement Value) <span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+           
             v-model="formData.commerce_factory_shed_twenty_e"
             dense
             outlined
@@ -831,9 +799,7 @@
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="gender"> (a) Boundary Wall </label>
               <q-input
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+              
                 v-model="formData.commerce_factory_shed_twenty_f_a"
                 dense
                 outlined
@@ -842,9 +808,7 @@
             <div class="col-md-6 col-xs-10">
               <label class="zlabel" for="gender"> (b) Buildings </label>
               <q-input
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+             
                 v-model="formData.commerce_factory_shed_twenty_f_b"
                 dense
                 outlined
@@ -855,9 +819,7 @@
                 (c ) Plant & Machinery
               </label>
               <q-input
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+              
                 v-model="formData.commerce_factory_shed_twenty_f_c"
                 dense
                 outlined
@@ -868,9 +830,7 @@
                 (d) Misc. fixed Assets
               </label>
               <q-input
-                :rules="[
-                  (val) => (val && val.length > 0) || 'Please type something',
-                ]"
+               
                 v-model="formData.commerce_factory_shed_twenty_f_d"
                 dense
                 outlined
@@ -898,9 +858,7 @@
             (h) Amount of Refund, if any, after Insurance of the Policy
           </label>
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.commerce_factory_shed_twenty_h"
             dense
             outlined
@@ -946,7 +904,6 @@
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         type="textarea"
         v-model="formData.commerce_factory_shed_twentyone"
         dense

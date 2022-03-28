@@ -52,7 +52,7 @@ export default {
           name: "legal:dealer-renewal",
           component: () =>
             import(
-              "pages/common/dept_services/legal_metrology/licenceRepair/Application.vue"
+              "pages/common/dept_services/legal_metrology/renewalDealer/Application.vue"
             ),
         },
         {

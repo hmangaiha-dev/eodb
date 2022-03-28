@@ -55,6 +55,8 @@
         v-model="formData.commerce_power_generating_three"
         :options="formData.constitution_types"
         outlined
+                :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+
       />
     </div>
 

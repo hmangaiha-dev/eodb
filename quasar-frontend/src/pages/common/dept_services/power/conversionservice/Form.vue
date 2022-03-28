@@ -98,28 +98,40 @@
           >
           <br />
 
-          <div style="display:grid">
+          <div style="display: grid">
             <q-checkbox
+              true-value="yes"
+              false-value="no"
               v-model="formData.power_conversion_service_eight_i_a"
               label="a)Conversion from LT single phase to LT 3-phase"
             />
             <q-checkbox
+              true-value="yes"
+              false-value="no"
               v-model="formData.power_conversion_service_eight_i_b"
               label="b)Conversion from LT 3-phase to LT single phase"
             />
             <q-checkbox
+              true-value="yes"
+              false-value="no"
               v-model="formData.power_conversion_service_eight_i_c"
               label="c)Conversion from LT to HT"
             />
             <q-checkbox
+              true-value="yes"
+              false-value="no"
               v-model="formData.power_conversion_service_eight_i_d"
               label="d) Conversion from HT to LT"
             />
             <q-checkbox
+              true-value="yes"
+              false-value="no"
               v-model="formData.power_conversion_service_eight_i_e"
               label="e)Conversion from HT to EHT"
             />
             <q-checkbox
+              true-value="yes"
+              false-value="no"
               v-model="formData.power_conversion_service_eight_i_f"
               label="f) Conversion from EHT to HT"
             />
@@ -185,7 +197,10 @@
       <label for="" class="zlabel"
         >1. Installation inspection report by the Electrical Inspector</label
       >
-      <q-file v-model="formData.power_conversion_service_inspection_report" outlined>
+      <q-file
+        v-model="formData.power_conversion_service_inspection_report"
+        outlined
+      >
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -203,10 +218,8 @@
       </q-file>
     </div>
 
-     <div class="col-md-6 col-xs-10">
-      <label for="" class="zlabel"
-        >Signature of the consumer</label
-      >
+    <div class="col-md-6 col-xs-10">
+      <label for="" class="zlabel">Signature of the consumer</label>
       <q-file v-model="formData.power_conversion_service_signature" outlined>
         <template v-slot:prepend>
           <q-icon name="attach_file" />
@@ -221,7 +234,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -242,24 +255,60 @@ export default {
       power_conversion_service_seven: "",
       power_conversion_service_eight: "",
       power_conversion_service_eight_i: "",
-      power_conversion_service_eight_i_a: false,
-      power_conversion_service_eight_i_b: false,
-      power_conversion_service_eight_i_c: false,
-      power_conversion_service_eight_i_d: false,
-      power_conversion_service_eight_i_e: false,
-      power_conversion_service_eight_i_f: false,
-      power_conversion_service_eight_i_g: '',
-      power_conversion_service_eight_ii: '',
-      power_conversion_service_eight_iii: '',
-      power_conversion_service_nine: '',
+      power_conversion_service_eight_i_a: 'no',
+      power_conversion_service_eight_i_b: 'no',
+      power_conversion_service_eight_i_c: 'no',
+      power_conversion_service_eight_i_d: 'no',
+      power_conversion_service_eight_i_e: 'no',
+      power_conversion_service_eight_i_f: 'no',
+      power_conversion_service_eight_i_g: "",
+      power_conversion_service_eight_ii: "",
+      power_conversion_service_eight_iii: "",
+      power_conversion_service_nine: "",
       power_conversion_service_inspection_report: null,
       power_conversion_service_other_doc: null,
-      power_conversion_service_signature: null
-
+      power_conversion_service_signature: null,
     });
+
+    watch(store.state.globalData.common, () => {
+      getA();
+      getG();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.power_conversion_service_three = applicant_name;
+      formData.power_conversion_service_six = address;
+      formData.power_conversion_service_seven = mobile_no;
+    };
+
+      const getG = () => {
+      const {
+        
+       electric_regular_consumer_number,
+      } = store.state.globalData.common.partG;
+
+      formData.power_conversion_service_two = electric_regular_consumer_number  ;
+
+
+    };
     onMounted(() => {});
     return {
       formData,
+      getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

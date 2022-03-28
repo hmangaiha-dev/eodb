@@ -64,7 +64,6 @@
         ></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.land_revenue_allot_govt_five"
         dense
         outlined
@@ -92,7 +91,6 @@
         conditions of occupation<span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.land_revenue_allot_govt_seven"
         dense
         outlined
@@ -121,7 +119,6 @@
         Lease<span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.land_revenue_allot_govt_nine"
         dense
         outlined
@@ -137,7 +134,6 @@
         ></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.land_revenue_allot_govt_ten"
         dense
         outlined
@@ -167,7 +163,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 
 export default {
@@ -190,9 +186,26 @@ export default {
       land_revenue_allot_govt_eleven: ""
     
     });
+
+  watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const { address, } =
+        store.state.globalData.common.partA;
+
+      formData.land_revenue_allot_govt_two = address;
+
+
+  
+    };
+
+
     onMounted(() => {});
     return {
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

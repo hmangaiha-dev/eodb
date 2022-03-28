@@ -1,6 +1,5 @@
 <template>
   <q-page>
-    
     <div class="row q-py-sm items-center q-col-gutter-md">
       <h1 class="ztitle col-12">Common Application Form</h1>
       <q-tabs
@@ -11,7 +10,6 @@
         indicator-color="primary"
         align="justify"
         narrow-indicator
-        @update:tab="watchTab"
       >
         <q-tab name="a" label="Part-A" />
         <q-tab name="b" label="Part-B" />
@@ -123,14 +121,29 @@
         </q-tab-panel>
 
         <q-tab-panel name="declaration">
-          <q-form @submit.prevent="finalSubmit">
-            <div class="row q-col-gutter-lg">
+          <q-form @submit.prevent="toggle('final')">
+            <div class="zcard row q-ma-xs q-col-gutter-lg">
               <div class="col-xs-12">
                 <Declaration ref="declarationRef" />
+                <div class="col-xs-12 col-md-5">
+                  <label class="zlabel" for="gender"></label>
+                  <div class="q-gutter-sm">
+                    <q-checkbox
+                      v-model="declaration_consent"
+                      label="I accept the terms and conditions"
+                      color="teal"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-12 q-mt-md">
-              <q-btn color="green-6" type="submit" label="Save Application" />
+              <q-btn
+                :disable="!declaration_consent"
+                color="green-6"
+                type="submit"
+                label="Save Application"
+              />
               <!-- <span class="q-mx-md"> </span> -->
               <!-- <q-btn color="blue-6" type="submit" label="Final Submit" /> -->
             </div>
@@ -147,6 +160,7 @@ import { useStore } from "vuex";
 import { onMounted } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
+import { api } from "src/boot/axios";
 
 import PersonalDetails from "./form/PersonalDetails.vue";
 import FirmDetails from "./form/FirmDetails.vue";
@@ -157,6 +171,9 @@ import PartE from "./form/PartE.vue";
 import PartF from "./form/PartF.vue";
 import PartG from "./form/PartG.vue";
 import Declaration from "./form/Declaration.vue";
+import { useQuasar } from "quasar";
+import { useRouter, useRoute } from "vue-router";
+// import { useStore } from "vuex"  ;
 
 export default {
   components: {
@@ -171,6 +188,7 @@ export default {
     Declaration,
   },
   setup(props, context) {
+    const q = useQuasar();
     const applicantRef = ref(null);
     const FirmRef = ref(null);
     const proposedRef = ref(null);
@@ -180,63 +198,113 @@ export default {
     const partFRef = ref(null);
     const partGRef = ref(null);
     const declarationRef = ref(null);
+    const declaration_consent = ref(false);
     const tab = ref("a");
+    const router = useRouter();
+    const store = useStore();
 
     const toggle = (val) => {
-      tab.value = val;
-      var formData = {};
+      let applications = [{}];
 
-      // return console.log(q);
-
-      formData = Object.assign({}, applicantRef.value.formData);
-      formData = Object.assign(formData, FirmRef.value.formData);
-
-      return console.log("form values", formData);
-
-      var formDatas = new FormData();
-
-      for (let data in formData) {
-        formDatas.append(`${data}`, formData[data]);
-      }
-    };
-
-    const watchTab = (oldValue, newValue) => {
-      console.log("new and old", oldValue, newValue);
-    };
-    const finalSubmit = () => {
-      console.log("final submit");
-
-      var applications = [
-        {
-          ...applicantRef.value.formData,
-          ...FirmRef.value.formData,
-          ...proposedRef.value.formData,
-          ...partCRef.value.formData,
-          ...partDRef.value.formData,
-          ...partERef.value.formData,
-          ...partFRef.value.formData,
-          ...partGRef.value.formData,
-          ...declarationRef.value.formData,
-        },
-      ];
+      val == "b" &&
+        Object.assign(
+          applications[0],
+          applicantRef.value?.formData,
+          FirmRef.value?.formData
+        );
+      val == "c" && Object.assign(applications[0], proposedRef.value?.formData);
+      val == "d" && Object.assign(applications[0], partCRef.value?.formData);
+      val == "e" && Object.assign(applications[0], partDRef.value?.formData);
+      val == "f" && Object.assign(applications[0], partERef.value?.formData);
+      val == "g" && Object.assign(applications[0], partFRef.value?.formData);
+      val == "declaration" &&
+        Object.assign(applications[0], partGRef.value?.formData);
+      val == "final" &&
+        Object.assign(applications[0], declarationRef.value?.formData);
 
       var formDatas = new FormData();
+
+      // return console.log("applications", applications[0]);
 
       for (let data in applications[0]) {
-        console.log(`${data}`, applications[0][data]);
-
         formDatas.append(`${data}`, applications[0][data]);
       }
 
-      console.log("formDatas", applications);
+      // applications[0].din_details.splice(
+      //   applications[0].din_details.length - 1
+      // );
+
+      if (val == "b") {
+        formDatas.delete("din_details");
+
+        // formDatas.append("din_attach", []);
+        // return console.log("din", applications[0].din_details);
+        // console.log('drtilas',applications[0].din_details);
+
+        // applications[0].din_details.length <
+        // return
+        applications[0].din_details.forEach((element, index) => {
+          formDatas.append(`din_attach[${index}][id]`, element.id);
+          formDatas.append(`din_attach[${index}][number]`, element.number);
+          formDatas.append(
+            `din_attach[${index}][qualification]`,
+            element.qualification
+          );
+          formDatas.append(
+            `din_attach[${index}][association_year]`,
+            element.association_year
+          );
+          formDatas.append(
+            `din_attach[${index}][experience_year]`,
+            element.experience_year
+          );
+        });
+      }
+
+      if (val == "f") {
+        // formDatas.delete("fciDetails");
+        formDatas.append(
+          "fciDetails",
+          JSON.stringify(applications[0].fciDetails)
+        );
+      }
+      if (val == "g") {
+        formDatas.append(
+          "manufactureDetails",
+          JSON.stringify(applications[0].manufactureDetails)
+        );
+        formDatas.append(
+          "emissionDetails",
+          JSON.stringify(applications[0].emissionDetails)
+        );
+
+        formDatas.append(
+          "solidWasteDetails",
+          JSON.stringify(applications[0].solidWasteDetails)
+        );
+      }
+
+      // return console.log(formDatas.get(fci_details));;
+
+      // return console.log(formDatas.get("din_attach[0]"));
+
+      api
+        .post("/investor/common-applications/store", formDatas)
+        .then((res) => {
+          // return console.log("res value", res.data);
+          if (val == "final") {
+            q.notify({
+              message: "Application submitted successfully",
+              color: "green",
+            });
+            // router.push({ name: "investor:ongoing" });
+          } else tab.value = val;
+        })
+        .catch((err) => console.log("error", err));
+
+      return;
     };
 
-    const store = useStore();
-    const draft = store.getters["applicantData/getCurrentDraft"];
-    const currentUser = store.getters["auth/getCurrentUser"];
-
-    const formData = reactive({});
-    onMounted(() => {});
     return {
       tab,
       applicantRef,
@@ -248,13 +316,8 @@ export default {
       partERef,
       partFRef,
       partGRef,
-      Declaration,
-      formData,
+      declaration_consent,
       toggle,
-      watchTab,
-      finalSubmit,
-      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
-      maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },
 };

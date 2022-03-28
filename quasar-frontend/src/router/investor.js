@@ -61,6 +61,16 @@ export default {
       name: "investor:ongoing",
       component: () => import("pages/investor/OnGoingApplications.vue"),
     },
+    {
+      path: "applications/certificates",
+      name: "investor:certificates",
+      component: () => import("pages/investor/Certificates.vue"),
+    },
+    {
+      path: "applications/draft",
+      name: "investor:drafts",
+      component: () => import("pages/investor/Draft.vue"),
+    },
 
     {
       path: "application/:id",
@@ -163,7 +173,7 @@ export default {
         },
         {
           path: "claim-under-central-comprehensive-insurance-subsidy-scheme",
-          name: "industries:comprehensive",
+          name: "industries:factory",
           component: () =>
             import(
               "pages/common/dept_services/Industries/factoryshed/Application.vue"
@@ -325,7 +335,7 @@ export default {
           name: "pcb:accident-reporting-medical",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/accidentmedicalreporting/Application.vue"
+              "pages/common/dept_services/pollution/2/Application.vue"
             ),
         },
         {
@@ -333,7 +343,7 @@ export default {
           name: "pcb:accident-reporting-hazardous",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/accidenthazardousreporting/Application.vue"
+              "pages/common/dept_services/pollution/4/Application.vue"
             ),
         },
         {
@@ -341,7 +351,7 @@ export default {
           name: "pcb:accident-reporting-solidwaste",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/accidentsolidwastereporting/Application.vue"
+              "pages/common/dept_services/pollution/6/Application.vue"
             ),
         },
         {
@@ -349,7 +359,7 @@ export default {
           name: "pcb:annual-report",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/annualreport/Application.vue"
+              "pages/common/dept_services/pollution/annualreport(3)/Application.vue"
             ),
         },
         {
@@ -357,7 +367,7 @@ export default {
           name: "pcb:annual-report2",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/annualreport/Application.vue"
+              "pages/common/dept_services/pollution/annualreport(3)/Application.vue"
             ),
         },
         {
@@ -365,7 +375,7 @@ export default {
           name: "pcb:authorisation-solidwaste",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/authorisationundersolidwaste/Application.vue"
+              "pages/common/dept_services/pollution/7/Application.vue"
             ),
         },
         {
@@ -373,7 +383,7 @@ export default {
           name: "pcb:anual-solidwaste",
           component: () =>
             import(
-              "pages/common/dept_services/pollution/formatofannualreport/Application.vue"
+              "pages/common/dept_services/pollution/8/Application.vue"
             ),
         },
         {
@@ -436,6 +446,12 @@ export default {
           component: () =>
             import("pages/common/dept_services/pollution/19/Application.vue"),
         },
+        {
+          path: "authorization-bio-medical-waste",
+          name: "pcb:23",
+          component: () =>
+            import("pages/common/dept_services/pollution/authorizationBioMedicalWaste/Application.vue"),
+        },
 
         // claiming-central-capital-investment-subsidy-scheme
       ],
@@ -492,6 +508,14 @@ export default {
           component: () =>
             import(
               "pages/common/dept_services/power/loadenhancereduction/Application.vue"
+            ),
+        },
+        {
+          path: "connected-load",
+          name: "power:connected-load",
+          component: () =>
+            import(
+              "pages/common/dept_services/power/connectedload/Application.vue"
             ),
         },
         {
@@ -722,9 +746,6 @@ export default {
         },
       ],
     },
-
-
-
     {
       path: "geology-and-mineral-resources",
       component: () => import("layouts/DummyLayout.vue"),

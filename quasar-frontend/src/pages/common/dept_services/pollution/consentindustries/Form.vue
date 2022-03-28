@@ -1,7 +1,7 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-10">
-      <label class="text-h5" for="name"
+      <label class="text-h6" for="name"
         >1. General <span class="asterisk"> *</span></label
       >
 
@@ -14,7 +14,9 @@
           <q-input
             dense
             outlined
-            v-model="formData.pollution_consent_general_1_1"
+            v-model="formData.pollution_consent_general_1_1"   :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
         <div class="col-12">
@@ -32,7 +34,9 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.pollution_consent_general_1_2_I"
+                v-model="formData.pollution_consent_general_1_2_I"   :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
               />
             </div>
 
@@ -55,7 +59,7 @@
               <q-input
                 dense
                 outlined
-                v-model="formData.pollution_consent_general_1_2_II"
+                v-model="formData.pollution_consent_general_1_2_III"
               />
             </div>
           </div>
@@ -70,7 +74,9 @@
           <q-input
             dense
             outlined
-            v-model="formData.pollution_consent_general_1_3"
+            v-model="formData.pollution_consent_general_1_3"   :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
 
@@ -94,14 +100,16 @@
           <q-input
             dense
             outlined
-            v-model="formData.pollution_consent_general_1_5"
+            v-model="formData.pollution_consent_general_1_5"   :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
           />
         </div>
       </div>
     </div>
 
     <div class="col-12">
-      <label class="text-h5" for="name"
+      <label class="text-h6" for="name"
         >2. PROCESS DETAIL <span class="asterisk"> *</span></label
       >
 
@@ -404,7 +412,7 @@
     </div>
 
     <div class="col-12">
-      <label class="text-h5" for="name"
+      <label class="text-h6" for="name"
         >3. GENERAL ENVIRONMENT (Site, Climate, Settlement)
       </label>
       <div class="row justify q-col-gutter-md q-ml-md">
@@ -786,7 +794,7 @@
     </div>
 
     <div class="col-12">
-      <label class="text-h5" for="">4. WATER REQUIREMENTS</label>
+      <label class="text-h6" for="">4. WATER REQUIREMENTS</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
@@ -847,7 +855,7 @@
     </div>
 
     <div class="col-12">
-      <label class="text-h5" for="">5. WASTE WATER DISCHARGES</label>
+      <label class="text-h6" for="">5. WASTE WATER DISCHARGES</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
@@ -999,7 +1007,7 @@
     </div>
 
     <div class="col-12">
-      <label class="text-h5" for="">6. SOLID WASTES</label>
+      <label class="text-h6" for="">6. SOLID WASTES</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
@@ -1099,7 +1107,7 @@
     </div>
 
     <div class="col-12">
-      <label class="text-h5" for="">7. ATMOSPHERIC EMISSIONS</label>
+      <label class="text-h6" for="">7. ATMOSPHERIC EMISSIONS</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
@@ -1551,7 +1559,7 @@
     </div>
 
     <div class="col-12">
-      <label for="" class="text-h5">8. OTHER TYPES OF POLLUTION</label>
+      <label for="" class="text-h6">8. OTHER TYPES OF POLLUTION</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
@@ -1645,7 +1653,7 @@
     </div>
 
     <div class="col-12">
-      <label for="" class="text-h5">9. MANAGEMENT OF POLLUTION CONTROL</label>
+      <label for="" class="text-h6">9. MANAGEMENT OF POLLUTION CONTROL</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
@@ -1711,7 +1719,7 @@
     </div>
 
     <div class="col-12">
-      <label for="" class="text-h5">10. COST OF POLLUTION CONTROL</label>
+      <label for="" class="text-h6">10. COST OF POLLUTION CONTROL</label>
 
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
@@ -1777,7 +1785,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -1954,9 +1962,22 @@ export default {
       pollution_consent_cost_ten_10_12: "",
       pollution_consent_signature: null,
     });
-    onMounted(() => {});
+    watch(store.state.globalData.common, () => getA());
+
+    const getA = () => {
+      const { enterprise_name, phone_no, fax_no, email } =
+        store.state.globalData.common.partA;
+
+      formData.pollution_consent_general_1_1 = enterprise_name;
+      formData.pollution_consent_general_1_2_I = phone_no;
+      formData.pollution_consent_general_1_2_II = fax_no;
+      formData.pollution_consent_general_1_2_III = email;
+    };
+
+    onMounted(async () => getA());
     return {
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

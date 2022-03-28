@@ -166,7 +166,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 
 export default {
@@ -192,9 +192,48 @@ export default {
       power_change_name_succession: null,
       power_change_name_signature: null,
     });
+       watch(store.state.globalData.common, () => {
+      getA();
+      getG();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.power_change_name_three = applicant_name  ;
+      formData.power_change_name_six = address ;
+      formData.power_change_name_seven = mobile_no ;
+    
+      
+
+    };
+      const getG = () => {
+      const {
+        
+       electric_regular_consumer_number,
+      } = store.state.globalData.common.partG;
+
+      formData.power_change_name_two = electric_regular_consumer_number  ;
+
+
+    };
+
     onMounted(() => {});
     return {
       formData,
+      getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

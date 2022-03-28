@@ -19,7 +19,7 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            b) Locaation of the establishment
+            b) Location of the establishment
             <span class="asterisk">*</span></label
           >
           <q-input
@@ -258,7 +258,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -293,11 +293,32 @@ export default {
 
       
     });
+
+
+    watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const { applicant_name,city_town, postal_code,address, mobile_no,email,enterprise_name,enterprise_type} =
+        store.state.globalData.common.partA;
+
+  formData.labour_emp_contract_one_a = enterprise_name;
+  formData.labour_emp_contract_one_b = address;
+  formData.labour_emp_contract_two = postal_code;
+  formData.labour_emp_contract_three_a =applicant_name;
+
+
+
+
+  
+    };
     onMounted(() => {});
     return {
       group: ref([]),
 
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

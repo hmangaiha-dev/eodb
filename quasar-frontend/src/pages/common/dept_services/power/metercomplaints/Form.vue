@@ -74,23 +74,33 @@
         <div class="col-12">
           <div class="zlabel" style="display: grid">
             <q-checkbox
+              true-value="✓"
+              false-value=""
               v-model="formData.power_meter_complaints_five_a"
               label="(a) Burnt out"
             />
             <q-checkbox
+              true-value="✓"
+              false-value=""
               v-model="formData.power_meter_complaints_five_b"
               label="(b) Completely stopped"
             />
             <q-checkbox
+              true-value="✓"
+              false-value=""
               v-model="formData.power_meter_complaints_five_c"
               label="(c) Fast meter"
             />
 
             <q-checkbox
+              true-value="✓"
+              false-value=""
               v-model="formData.power_meter_complaints_five_d"
               label="(d) Seal broken"
             />
             <q-checkbox
+              true-value="✓"
+              false-value=""
               v-model="formData.power_meter_complaints_five_e"
               label="(e) Testing of Meter"
             />
@@ -107,8 +117,18 @@
       >
       <br />
 
-      <q-radio class="zlabel" v-model="formData.power_meter_complaints_six" val="(a)Consumer" label="(a)Consumer" />
-      <q-radio class="zlabel" v-model="formData.power_meter_complaints_six" val="(b)Licensee" label="(b)Licensee" />
+      <q-radio
+        class="zlabel"
+        v-model="formData.power_meter_complaints_six"
+        val="(a)Consumer"
+        label="(a)Consumer"
+      />
+      <q-radio
+        class="zlabel"
+        v-model="formData.power_meter_complaints_six"
+        val="(b)Licensee"
+        label="(b)Licensee"
+      />
     </div>
 
     <div class="col-md-6 col-sm-12 col-xs-12">
@@ -151,7 +171,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
@@ -169,20 +189,58 @@ export default {
       power_meter_complaints_three: "",
       power_meter_complaints_four: "",
       power_meter_complaints_five: "",
-      power_meter_complaints_five_a: false,
-      power_meter_complaints_five_b: false,
-      power_meter_complaints_five_c: false,
-      power_meter_complaints_five_d: false,
-      power_meter_complaints_five_e: false,
+      power_meter_complaints_five_a: "",
+      power_meter_complaints_five_b: "",
+      power_meter_complaints_five_c: "",
+      power_meter_complaints_five_d: "",
+      power_meter_complaints_five_e: "",
       power_meter_complaints_six: "",
       power_meter_complaints_seven: "",
       power_meter_complaints_eight: "",
       power_meter_complaints_signature: null,
-    
     });
+
+    watch(store.state.globalData.common, () => {
+      getA();
+      getG();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.power_meter_complaints_three = applicant_name;
+      formData.power_meter_complaints_four = address;
+    };
+      const getG = () => {
+      const {
+        
+       electric_regular_consumer_number,
+       electric_temporary_existing_load_demand_kw
+      } = store.state.globalData.common.partG;
+
+      formData.power_meter_complaints_two = electric_regular_consumer_number  ;
+ 
+
+
+
+    };
+
     onMounted(() => {});
     return {
       formData,
+      getA,
+      getG,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
 class User extends Authenticatable
 {
     use  HasApiTokens, HasFactory, Notifiable;
@@ -94,6 +93,19 @@ class User extends Authenticatable
     public function applications()
     {
         return $this->hasMany(Application::class,'user_id','id');
+    }
+    public function commonApplications()
+    {
+        return $this->hasMany(CommonApplication::class,'user_id','id');
+    }
+    
+    public function certificates()
+    {
+        return $this->hasManyThrough(Certificate::class,Application::class,'user_id','owner_id','id','id');
+    }
+    public function drafts()
+    {
+        return $this->hasManyThrough(DraftApplication::class,Application::class,'user_id','application_id','id','id');
     }
 
     

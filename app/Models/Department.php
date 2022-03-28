@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Department extends Model
 {
@@ -22,12 +25,42 @@ class Department extends Model
 
 
     ];
+
+    protected $appends = ['profile'];
     // protected $guarded = [];
 
 
-
-    public function services()
+    public function about(): MorphOne
+    {
+        return $this->morphOne(About::class,'model',);
+    }
+    public function services(): HasMany
     {
         return $this->hasMany(DepartmentService::class);
+    }
+
+    public function acts(): HasMany
+    {
+        return $this->hasMany(ActRule::class);
+    }
+
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    public function otherInformations(): HasMany
+    {
+        return $this->hasMany(OtherInformation::class);
+    }
+    public function profile()
+    {
+        return $this->hasOne(DepartmentProfile::class,'dept_id','id');
+
+    }
+
+    public function getProfileAttribute()
+    {
+        return $this->profile()->first();
     }
 }

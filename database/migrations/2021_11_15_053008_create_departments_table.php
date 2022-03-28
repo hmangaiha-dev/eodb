@@ -18,6 +18,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('dept_name');
             $table->string('dept_code')->unique();
             $table->string('slug')->unique();
+
             $table->string('sect_name')->nullable();
             $table->string('dict_name')->nullable();
             $table->text('info')->nullable();
@@ -26,7 +27,7 @@ class CreateDepartmentsTable extends Migration
             $table->text('other_info')->nullable();
 
             $table->softDeletes();
-            
+
 
             $table->timestamps();
         });

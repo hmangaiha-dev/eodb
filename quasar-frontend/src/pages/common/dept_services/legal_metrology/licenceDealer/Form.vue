@@ -118,9 +118,7 @@ monogram and his licence number) and provide
             (a) Registration of Importer of Weights and Measures, if any<span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+         
             v-model="formData.legal_licence_dealer_eight_a"
             dense
             outlined
@@ -132,9 +130,7 @@ monogram and his licence number) and provide
             (b) Approval of model imported into India by Central Government<span class="asterisk">*</span></label
           >
           <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
+            
             v-model="formData.legal_licence_dealer_eight_b"
             dense
             outlined
@@ -150,7 +146,6 @@ monogram and his licence number) and provide
         <span class="asterisk">*</span></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.legal_licence_dealer_nine"
         dense
         outlined
@@ -197,7 +192,7 @@ monogram and his licence number) and provide
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -227,11 +222,41 @@ export default {
 
       legal_licence_dealer_signature_designation: null,
     });
+
+     watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+        enterprise_name,
+        enterprise_typ,
+        company_reg_certe,
+        tin_no,
+      } = store.state.globalData.common.partA;
+
+      formData.legal_licence_dealer_two = applicant_name;
+      formData.legal_licence_dealer_two =   address;
+    formData.legal_licence_dealer_seven = tin_no;
+    
+      
+
+    };
+
+
+
     onMounted(() => {});
     return {
       group: ref([]),
 
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

@@ -7,7 +7,8 @@
     </div>
 
     <div class="col-6">
-      <q-input dense outlined />
+      <q-input dense outlined  v-model="formData.land_allotment_shop_1"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -17,37 +18,24 @@
     </div>
 
     <div class="col-xs-12 col-md-4">
-      <q-input dense outlined />
+      <q-input dense outlined      v-model="formData.land_allotment_shop_2_a"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
     </div>
 
-    <div class="col-xs-12 zsubtitle">2.Address for communication</div>
 
-    <div class="col-xs-12 col-md-1">
-      <label class="zlabel" for="dob" type="date"
-        >Present age<span class="asterisk">*</span>
-      </label>
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
-    </div>
 
+    
     <div class="col-xs-12 col-md-2">
       <label class="zlabel" for="gender"
         >Place of birth <span class="asterisk">*</span></label
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
+      <q-input dense outlined  v-model="formData.land_allotment_shop_2_b"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+/>
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <label class="zlabel" for="gender"
-        >District <span class="asterisk">*</span></label
-      >
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
-    </div>
+ 
 
     <div class="col-xs-12 col-md-1">
       <label class="zlabel" for="gender"
@@ -55,7 +43,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
+      <q-input dense outlined  v-model="formData.land_allotment_shop_3"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -64,16 +52,10 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined />
+      <q-input label="Office" dense outlined v-model="formData.land_allotment_shop_4"       :rules="[(val) => (val && val.length > 0) || 'Please type something']" />
     </div>
 
-    <div class="col-xs-12 col-md-2">
-      <q-input label="Residence" dense outlined />
-    </div>
-
-    <div class="col-xs-12 col-md-3">
-      <q-input label="Mobile" dense outlined />
-    </div>
+  
 
     <div class="col-xs-12 col-md-1">
       <label class="zlabel" for="gender"
@@ -81,7 +63,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
+      <q-input dense outlined v-model="formData.land_allotment_shop_5_a"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -90,7 +72,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
+      <q-input dense outlined v-model="formData.land_allotment_shop_5_b"       :rules="[(val) => (val && val.length > 0) || 'Please type something']" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -101,8 +83,8 @@
     </div>
 
     <div class="col-xs-12 col-md-2">
-      <q-radio name="check" v-model="check" val="line" label="Line" />
-      <q-radio name="check" v-model="check" val="rectangle" label="Rectangle" />
+      <q-radio name="check" v-model="formData.land_allotment_shop_4" val="line" label="Line" />
+      <q-radio name="check" v-model="formData.land_allotment_shop_4" val="rectangle" label="Rectangle" />
     </div>
 
     <div class="col-xs-12 zsubtitle">
@@ -118,7 +100,7 @@
       </label>
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
+      <q-input dense outlined  v-model="formData.land_allotment_shop_8_a"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -127,7 +109,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
+      <q-input dense outlined  v-model="formData.land_allotment_shop_8_b"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -136,7 +118,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
+      <q-input dense outlined v-model="formData.land_allotment_shop_9"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div>Clearly Indicate Name(s) & Addresse(s) Of Immediate Neighbour *</div>
@@ -147,7 +129,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input dense outlined />
+      <q-input dense outlined v-model="formData.land_allotment_shop_10_a"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -156,7 +138,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined />
+      <q-input label="Office" dense outlined v-model="formData.land_allotment_shop_10_b"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -165,7 +147,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined />
+      <q-input label="Office" dense outlined v-model="formData.land_allotment_shop_10_c"       :rules="[(val) => (val && val.length > 0) || 'Please type something']" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -174,7 +156,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined />
+      <q-input label="Office" dense outlined v-model="formData.land_allotment_shop_10_d"       :rules="[(val) => (val && val.length > 0) || 'Please type something']" />
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -184,7 +166,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined />
+      <q-input label="Office" dense outlined v-model="formData.land_allotment_shop_11"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -195,7 +177,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined />
+      <q-input label="Office" dense outlined v-model="formData.land_allotment_shop_12"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div>Other Contact Details</div>
@@ -206,7 +188,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined />
+      <q-input label="Office" dense outlined v-model="formData.land_allotment_shop_13_a"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div class="col-xs-12 col-md-1">
@@ -215,7 +197,7 @@
       >
     </div>
     <div class="col-xs-12 col-md-2">
-      <q-input label="Office" dense outlined />
+      <q-input label="Office" dense outlined v-model="formData.land_allotment_shop_13_b"       :rules="[(val) => (val && val.length > 0) || 'Please type something']"/>
     </div>
 
     <div class="col-12">
@@ -225,7 +207,7 @@
     </div>
 
     <div class="col-12">
-       <q-radio dense v-model="shape" val="line" label="I hereby certify that all particulars and documents are true and correct. Any incorrect particulars furnished herein will result in cancellation of settlement or allotment (A chunga sawite khi a dik vek tih ka hriattir e. Diklo a awm a nih chuan allotment emaw settlement pek tawh pawh sut leh theih a ni tih ka hre bawk e). I also hereby agree to abide by terms and conditions laid down in rule 14 & 15 of these Rules ( Rule 14 leh 15 na in a phut zawng zawngte zawm turin ka intiam a, ka zawm loh chuan House Pass pawh sut leh turin ka in tiam e)." />
+       <q-radio dense  val="line" label="I hereby certify that all particulars and documents are true and correct. Any incorrect particulars furnished herein will result in cancellation of settlement or allotment (A chunga sawite khi a dik vek tih ka hriattir e. Diklo a awm a nih chuan allotment emaw settlement pek tawh pawh sut leh theih a ni tih ka hre bawk e). I also hereby agree to abide by terms and conditions laid down in rule 14 & 15 of these Rules ( Rule 14 leh 15 na in a phut zawng zawngte zawm turin ka intiam a, ka zawm loh chuan House Pass pawh sut leh turin ka in tiam e)." />
     </div>
 
 
@@ -256,46 +238,39 @@ export default {
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
     const localData = reactive({
-      genders: [
-        { value: "Male", label: "Male" },
-        { value: "Female", label: "Female" },
-        { value: "Other", label: "Other" },
-      ],
-      epic_relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-      ],
-      relations: [
-        { value: "Father", label: "Father" },
-        { value: "Mother", label: "Mother" },
-        { value: "Spouse", label: "Spouse" },
-        { value: "Guardian", label: "Guardian" },
-      ],
-      adults: [
+    
+      tribal: [
         { value: true, label: "Applicant is above 18 years" },
         { value: false, label: "Applicant is below 18 years" },
       ],
     });
 
     const formData = reactive({
-      title: "Mr",
-      name: "",
-      dob: "",
-      gender: "Male",
-      father_name: "",
-      mother_name: "",
-      birth_place: "",
-      phone_no: "",
-      email: currentUser?.email,
-      aadhaar_no: "",
-      relation: "Father",
-      relation_name: "",
-      relation_title: "Mr",
-      adult: true,
-      epic_no: "",
-      epic_relation: "Father",
-      epic_holder: "",
-      constituency: "",
+       application_code: "LAND_ALLOTMENT_SHOP",
+      department_id: 8,
+      land_allotment_shop_1: "",
+      land_allotment_shop_2_a: "",
+      land_allotment_shop_2_b: "",
+      land_allotment_shop_3: "",
+      land_allotment_shop_4: "",
+      land_allotment_shop_5_a: "",
+      land_allotment_shop_5_b: "",
+      land_allotment_shop_6: "",
+      land_allotment_shop_7: "",
+      land_allotment_shop_8_a: "",
+      land_allotment_shop_8_b: "",
+      land_allotment_shop_9: "",
+      land_allotment_shop_10_a: "",
+      land_allotment_shop_10_b: "",
+      land_allotment_shop_10_c: "",
+      land_allotment_shop_10_d: "",
+      land_allotment_shop_11: "",
+      land_allotment_shop_12: "",
+      land_allotment_shop_13_a: "",
+      land_allotment_shop_13_b: "",
+    
+
+   
     });
     onMounted(() => {
      

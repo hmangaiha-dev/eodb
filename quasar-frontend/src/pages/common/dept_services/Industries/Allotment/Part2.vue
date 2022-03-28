@@ -9,7 +9,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.enterprise_name" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.enterprise_name" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.enterprise_category" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.enterprise_category" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.nature_activity" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.nature_activity" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -39,7 +39,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.isAncillary" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.isAncillary" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -49,7 +49,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.incase_others" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.incase_others" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -59,7 +59,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.if_yes" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.if_yes" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -69,7 +69,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.organization_type" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.organization_type" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -80,7 +80,7 @@
 
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.product_manufacture" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.product_manufacture" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -90,7 +90,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.service_provided" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.service_provided" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -100,7 +100,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.proposed_investment" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.proposed_investment" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -110,7 +110,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.installed_capacity" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.installed_capacity" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -120,7 +120,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.area_plot" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.area_plot" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -130,7 +130,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.no_of_ready_build" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.no_of_ready_build" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -140,7 +140,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.electric_power" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.electric_power" />
     </div>
 
     <div class="col-xs-12 col-md-2">
@@ -150,7 +150,7 @@
     </div>
 
     <div class="col-xs-12 col-md-3">
-      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" dense outlined v-model="formData.daily_water" />
+      <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']"  outlined v-model="formData.daily_water" />
     </div>
 
 

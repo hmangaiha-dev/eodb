@@ -198,7 +198,7 @@ shall be reverted back to the Government or cancelled my land holding."
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted ,watch} from "vue";
 import { date } from "quasar";
 
 export default {
@@ -224,9 +224,32 @@ export default {
       land_revenue_land_diversion_agreement: false,
       land_revenue_land_diversion_signature: null,
     });
+
+
+      watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const { applicant_name, address } =
+        store.state.globalData.common.partA;
+
+      formData.land_revenue_land_diversion_one = applicant_name;
+      formData.land_revenue_land_diversion_three = address;
+  
+
+
+
+
+
+    };
+
+
+
     onMounted(() => {});
     return {
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

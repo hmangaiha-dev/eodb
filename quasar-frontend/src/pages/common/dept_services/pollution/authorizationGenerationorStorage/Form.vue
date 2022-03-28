@@ -10,12 +10,10 @@
     </div> -->
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-        1. Name and full address: <span
-          class="asterisk"
-          >*</span
-        ></label
+        1. Name and full address: <span class="asterisk">*</span></label
       >
       <q-input
+        type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.pollution_authorization_generation_one"
         dense
@@ -25,21 +23,23 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-       2. Contact Person with designation and contact details such as telephone Nos, Fax. No. and E-mail:
+        2. Contact Person with designation and contact details such as telephone
+        Nos, Fax. No. and E-mail:
         <span class="asterisk">*</span></label
       >
       <q-input
+        type="textarea"
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.pollution_authorization_generation_two"
         dense
         outlined
       />
     </div>
-   
+
     <div class="col-12">
       <label for="" class="zlabel"
-        >3. Authorisation required for (Please tick mark appropriate activity/ies*) 
-        :</label
+        >3. Authorisation required for (Please tick mark appropriate
+        activity/ies*) :</label
       >
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
@@ -47,101 +47,56 @@
             (i) Generation during manufacturing or refurbishing*<span class="asterisk">*</span></label
           > -->
 
-           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_generation_three_i" label="(i) Generation during manufacturing or refurbishing*" />
-           </div>
-         
-
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="formData.pollution_authorization_generation_three_i"
+              label="(i) Generation during manufacturing or refurbishing*"
+            />
+          </div>
 
           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_generation_three_ii" label="(ii) Treatment, if any" />
-           </div>
-
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="formData.pollution_authorization_generation_three_ii"
+              label="(ii) Treatment, if any"
+            />
+          </div>
 
           <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_generation_three_iii" label="(iii) Collection, Transportation, Storage " />
-           </div>
- <div class="q-gutter-sm">
-                 <q-checkbox  :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]" v-model="formData.pollution_authorization_generation_three_iv" label="(iv) Refurbishing " />
-           </div>
-         
-
-         </div>
-          <!-- <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.legal_type_weight"
-            dense
-            outlined
-          />
-        </div> -->
-
-        <!-- <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            (ii) Treatment, if any <span class="asterisk">*</span></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.legal_type_measures"
-            dense
-            outlined
-          />
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="formData.pollution_authorization_generation_three_iii"
+              label="(iii) Collection, Transportation, Storage "
+            />
+          </div>
+          <div class="q-gutter-sm">
+            <q-checkbox
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please type something',
+              ]"
+              v-model="formData.pollution_authorization_generation_three_iv"
+              label="(iv) Refurbishing "
+            />
+          </div>
         </div>
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            (iii) Collection, Transportation, Storage <span class="asterisk">*</span></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.legal_type_weighing_instrument"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            (iv) Refurbishing <span
-              class="asterisk"
-              >*</span
-            ></label
-          >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.legal_type_measuring_instrument"
-            dense
-            outlined
-          />
-        </div> -->
+ 
       </div>
     </div>
 
-
-
-     <div class="col-12">
-      <label for="" class="zlabel"
-        >4. E-waste details: 
-        :</label
-      >
+    <div class="col-12">
+      <label for="" class="zlabel">4. E-waste details: :</label>
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            (a) Total quantity e-waste generated in MT/A <span class="asterisk">*</span></label
+            (a) Total quantity e-waste generated in MT/A
+            <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
@@ -155,7 +110,8 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            (b) Quantity refurbished (applicable to refurbisher) <span class="asterisk">*</span></label
+            (b) Quantity refurbished (applicable to refurbisher)
+            <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
@@ -168,7 +124,8 @@
         </div>
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-          (c) Quantity sent for recycling <span class="asterisk">*</span></label
+            (c) Quantity sent for recycling
+            <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
@@ -182,10 +139,8 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-           (d) Quantity sent for disposal <span
-              class="asterisk"
-              >*</span
-            ></label
+            (d) Quantity sent for disposal
+            <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
@@ -199,10 +154,9 @@
       </div>
     </div>
 
-
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender">
-       5. Details of Facilities for storage/handling/treatment/refurbishing: 
+        5. Details of Facilities for storage/handling/treatment/refurbishing:
         <span class="asterisk">*</span></label
       >
       <q-input
@@ -215,19 +169,17 @@
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="gender"
-        >6. In case of renewal of authorisation previous authorisation no. and date and details of annual returns:<span class="asterisk"
+        >6. In case of renewal of authorisation previous authorisation no. and
+        date and details of annual returns:<span class="asterisk"
           >*</span
         ></label
       >
       <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         v-model="formData.pollution_authorization_generation_six"
         dense
         outlined
       />
     </div>
-
- 
 
     <div class="col-12 zlabel">
       I hereby declare that the particulars given above are true to the best of
@@ -240,7 +192,12 @@
         <span class="asterisk">*</span></label
       >
 
-      <q-file v-model="formData.pollution_authorization_generation_signature_designation" outlined>
+      <q-file
+        v-model="
+          formData.pollution_authorization_generation_signature_designation
+        "
+        outlined
+      >
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -267,7 +224,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,watch } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
 
@@ -297,7 +254,22 @@ export default {
 
       pollution_authorization_generation_signature_designation: null,
     });
-    onMounted(() => {});
+     watch(store.state.globalData.common, () => getA());
+
+    const getA = () => {
+      const { applicant_name,address,phone_no, fax_no, email } =
+        store.state.globalData.common.partA || '';
+
+          const { declaration_designation } =
+        store.state.globalData.common.selfDeclaration || '';
+
+      formData.pollution_authorization_generation_one = `Name: ${applicant_name || ''}\nAddress: ${address || ''}`;
+      formData.pollution_authorization_generation_two = `Contact: ${phone_no || ''}\nDesignation: ${declaration_designation || ''}\nTelephone: ${phone_no || ''} \nFax no: ${fax_no || ''} \nEmail: ${email}`
+
+    };
+
+    onMounted(async () => getA());
+
     return {
       group: ref([]),
 

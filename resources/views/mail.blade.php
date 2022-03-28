@@ -1,0 +1,1 @@
+<p>Hi your reset password link is http://localhost:8080/reset-password/{{ $token }}</p>

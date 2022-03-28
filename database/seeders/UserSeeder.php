@@ -16,9 +16,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         Staff::query()->upsert([
-            ['full_name'=>'admin','email'=>'admin@email.com','phone'=>'0001234987','password'=>Hash::make('password')],
+            ['full_name' => 'admin', 'email' => 'admin@email.com', 'phone' => '0001234987', 'password' => Hash::make('password')],
         ], ['email', 'phone']);
-
-
     }
 }

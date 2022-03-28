@@ -4,14 +4,24 @@
       <label class="zlabel" for="name"
         >1. Name Of The Applicant <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.env_forest_fell_trees_one" dense outlined />
+      <q-input
+        v-model="formData.env_forest_fell_trees_one"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
       <label class="zlabel" for="name"
         >2. Father's name <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.env_forest_fell_trees_two" dense outlined />
+      <q-input
+        v-model="formData.env_forest_fell_trees_two"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -19,7 +29,12 @@
         >3. Address (Village | Town | Station | District )
         <span class="asterisk"> *</span></label
       >
-      <q-input  v-model="formData.env_forest_fell_trees_three" type="textarea" dense outlined />
+      <q-input
+        v-model="formData.env_forest_fell_trees_three"
+        type="textarea"
+        dense
+        outlined
+      />
     </div>
 
     <div class="col-10">
@@ -33,7 +48,14 @@
           <label class="zlabel" for="name"
             >A) Area<span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.env_forest_fell_trees_four_a" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.env_forest_fell_trees_four_a"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -41,7 +63,14 @@
             B) Boundaries
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.env_forest_fell_trees_four_b" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.env_forest_fell_trees_four_b"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -49,7 +78,11 @@
             >C) Reference To Patta | License Of The Land
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.env_forest_fell_trees_four_c" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.env_forest_fell_trees_four_c"
+          />
         </div>
       </div>
     </div>
@@ -59,7 +92,12 @@
         >5. Species of trees/tree plantation
         <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.env_forest_fell_trees_five" dense outlined />
+      <q-input
+        v-model="formData.env_forest_fell_trees_five"
+        dense
+        outlined
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -67,7 +105,12 @@
         >6. Year of raising the plantation
         <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.env_forest_fell_trees_six" dense outlined />
+      <q-input
+        v-model="formData.env_forest_fell_trees_six"
+        dense
+        outlined
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -75,7 +118,12 @@
         >7. Reference to registration of the trees/tree plantation (enclosed
         certifies) <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.env_forest_fell_trees_seven" dense outlined />
+      <q-input
+        v-model="formData.env_forest_fell_trees_seven"
+        dense
+        outlined
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -83,7 +131,12 @@
         8. Nature of felling (viz. thinning/final felling)
         <span class="asterisk"> *</span></label
       >
-      <q-input v-model="formData.env_forest_fell_trees_eight" dense outlined />
+      <q-input
+        v-model="formData.env_forest_fell_trees_eight"
+        dense
+        outlined
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+      />
     </div>
 
     <div class="col-12">
@@ -98,7 +151,14 @@
               *</span
             ></label
           >
-          <q-input dense outlined v-model="formData.env_forest_fell_trees_nine_a" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.env_forest_fell_trees_nine_a"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -106,7 +166,14 @@
             B) For sale within Mizoram
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.env_forest_fell_trees_nine_b" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.env_forest_fell_trees_nine_b"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+          />
         </div>
 
         <div class="col-md-6 col-xs-10">
@@ -114,7 +181,14 @@
             C) For sale outside Mizoram
             <span class="asterisk"> *</span></label
           >
-          <q-input dense outlined v-model="formData.env_forest_fell_trees_nine_c" />
+          <q-input
+            dense
+            outlined
+            v-model="formData.env_forest_fell_trees_nine_c"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please type something',
+            ]"
+          />
         </div>
       </div>
     </div>
@@ -124,7 +198,12 @@
         >10. No. of trees purposed to be felled
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.env_forest_fell_trees_ten" />
+      <q-input
+        dense
+        outlined
+        v-model="formData.env_forest_fell_trees_ten"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -132,7 +211,12 @@
         >11. The route by which the felled timber will be transported
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.env_forest_fell_trees_eleven" />
+      <q-input
+        dense
+        outlined
+        v-model="formData.env_forest_fell_trees_eleven"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+      />
     </div>
 
     <div class="col-10">
@@ -140,7 +224,12 @@
         >12. Period of operation purposed (Not to exceed one year in any case)
         <span class="asterisk"> *</span></label
       >
-      <q-input dense outlined v-model="formData.env_forest_fell_trees_twelve" />
+      <q-input
+        dense
+        outlined
+        v-model="formData.env_forest_fell_trees_twelve"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+      />
     </div>
 
     <div class="col-md-6 col-xs-10">
@@ -188,13 +277,12 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 
 export default {
   setup(props, context) {
     const store = useStore();
-  
 
     const formData = reactive({
       application_code: "ENV_FOREST_FELL_TREES",
@@ -218,11 +306,31 @@ export default {
       env_forest_fell_trees_eleven: "",
       env_forest_fell_trees_twelve: "",
       env_forest_fell_trees_land_copy_cert: null,
-      env_forest_fell_trees_plantation_cert: null
+      env_forest_fell_trees_plantation_cert: null,
     });
+
+    watch(store.state.globalData.common, () => {
+      getA();
+    });
+
+    const getA = () => {
+      const {
+        applicant_name,
+        city_town,
+        postal_code,
+        address,
+        mobile_no,
+        email,
+      } = store.state.globalData.common.partA;
+
+      formData.env_forest_fell_trees_one = applicant_name;
+      formData.env_forest_fell_trees_three = city_town;
+    };
+
     onMounted(() => {});
     return {
       formData,
+      getA,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },
