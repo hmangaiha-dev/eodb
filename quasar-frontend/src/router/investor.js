@@ -66,6 +66,11 @@ export default {
       name: "investor:certificates",
       component: () => import("pages/investor/Certificates.vue"),
     },
+    {
+      path: "applications/draft",
+      name: "investor:drafts",
+      component: () => import("pages/investor/Draft.vue"),
+    },
 
     {
       path: "application/:id",

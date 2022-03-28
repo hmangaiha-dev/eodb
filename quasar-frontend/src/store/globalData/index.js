@@ -11,6 +11,7 @@ const state = () => {
     globalLoading: false,
     deptServices: [],
     applications: [],
+    drafts: [],
     certs: [],
     common: {
       partA: {},
@@ -53,6 +54,7 @@ const mutations = {
     // console.log('globalData app',state.applications);
     state.applications = val.list;
     state.certs = val.certs;
+    state.drafts = val.drafts;
     state.common.partA = val.common.part_a;
     state.common.partB = val.common.part_b;
     state.common.partC = val.common.part_c;

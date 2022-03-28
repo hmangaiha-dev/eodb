@@ -145,6 +145,8 @@ Route::group(['prefix' => 'applications', 'middleware' => ['auth:sanctum']], fun
     Route::post('{model}/close', [ApplicationController::class, 'close']);
     Route::get('{model}/print', [ApplicationController::class, 'getPrint']);
     Route::get('{model}/attachments', [ApplicationController::class, 'getAttachment']);
+
+    Route::get('fee/{code}', [ApplicationController::class, 'getApplicatonFee']);
 });
 
 Route::group(['prefix' => 'web'], function () {

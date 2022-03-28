@@ -103,6 +103,10 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough(Certificate::class,Application::class,'user_id','owner_id','id','id');
     }
+    public function drafts()
+    {
+        return $this->hasManyThrough(DraftApplication::class,Application::class,'user_id','application_id','id','id');
+    }
 
     
 }

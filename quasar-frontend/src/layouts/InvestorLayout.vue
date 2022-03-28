@@ -119,6 +119,17 @@
             </q-item-section>
             <q-item-section> Certificates </q-item-section>
           </q-item>
+           <q-item
+            active-class="active-item q-px-md"
+            class="q-ml-md zitem"
+            :to="{ name: 'investor:drafts' }"
+            clickable
+          >
+            <q-item-section avatar>
+              <q-icon color="green" name="edit_note" />
+            </q-item-section>
+            <q-item-section> Drafts </q-item-section>
+          </q-item>
         </q-expansion-item>
 
         <q-expansion-item group="somegroup" label="Online Services" icon="dns">

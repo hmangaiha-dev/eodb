@@ -7,6 +7,7 @@ use App\Models\ApplicationMovement;
 use App\Models\ApplicationProfile;
 use App\Models\Attachment;
 use App\Models\Certificate;
+use App\Models\DepartmentService;
 use App\Utils\AttachmentUtils;
 use App\Utils\KeysUtil;
 use App\Utils\NumberGenerator;
@@ -85,6 +86,7 @@ class ApplicationController extends Controller
 
     public function submitApplication(Request $request)
     {
+        // return $request->draft;
         // // return $request->all();
         // return auth()->user();
         // // return 'jje';
@@ -110,7 +112,12 @@ class ApplicationController extends Controller
             'paid' => true,
         ]);
 
-
+        if ($request->draft == 'draft') {
+            $application->draft()->create([
+                'draft' => true,
+                'route' => $request->route
+            ]);
+        };
 
 
         $application->states()->create([
@@ -280,7 +287,7 @@ class ApplicationController extends Controller
                 ];
 
                 $vars = $vars + $content;
-            } else if($model->application_code == 'C&E_POWER_SUBSIDY'){
+            } else if ($model->application_code == 'C&E_POWER_SUBSIDY') {
                 $details = $model->powerSubsidyMachineries()->get();
                 $views = view('machineries.table', ["details" => $details, 'code' => $model->application_code])->render();
                 $content = [
@@ -288,8 +295,7 @@ class ApplicationController extends Controller
                 ];
 
                 $vars = $vars + $content;
-            } 
-            else {
+            } else {
                 $details = $model->lscDetails()->get();
                 $views = view('lsc.table', ["details" => $details, 'code' => $model->application_code])->render();
                 $content = [
@@ -314,6 +320,12 @@ class ApplicationController extends Controller
         return response()->json([
             'list' => $model->attachments()->get(),
         ], 200);
+    }
+
+    public function getApplicatonFee(string $code)
+    {
+        // return $code;
+        return ApplicationProfile::query()->firstWhere('code', $code);
     }
 
     private function replaceTemplate($str, $replace_vars)

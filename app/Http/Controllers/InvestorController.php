@@ -57,6 +57,7 @@ class InvestorController extends Controller
         $user =  Auth::user();
         return response()->json([
             'list' => $user->applications()->where('paid',true)->with('department')->orderBy('applications.created_at', 'desc')->get(),
+            'drafts' => $user->drafts()->get(),
             'certs' => $user->certificates()->get(),
             'common' => $user->commonApplications()
                 ->with(
@@ -70,9 +71,10 @@ class InvestorController extends Controller
     public function detail(Application $application)
     {
         abort_if($application->user_id != Auth::id(), 403, 'You dont have a permission!');
-        $application->load(['profile', 'applicationValues', 'attachments']);
+        $application->load(['profile', 'applicationValues', 'attachments'])->with('vadlues');
         return response()->json([
             'data' => $application,
+            'values' => $application->values()
         ], 200);
     }
 

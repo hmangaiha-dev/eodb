@@ -31,7 +31,7 @@
       </q-card>
     </q-dialog>
 
-    <q-form @submit.prevent="initPaytm" class="row">
+    <q-form @submit.prevent="submit('final')" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Part1 ref="part1Form" />
@@ -47,7 +47,8 @@
       </div>
 
       <div class="text-center q-mt-md col-12">
-        <q-btn type="submit" color="green-5" label="Submit" />
+        <q-btn @click="submit('draft')" color="blue" label="Draft" />
+        <q-btn class="q-mx-md" type="submit" color="green-5" label="Submit" />
         <q-btn class="q-mx-md" color="red-4" label="Reset" />
       </div>
     </q-form>
@@ -87,98 +88,102 @@ export default {
 
     const router = useRouter();
 
-    const initPaytm = () => {
-      var fields = Object.assign(
-        part1Form.value.formData,
-        part2Form.value.formData
-      );
+    const formData = reactive({
+      application_code: "C&E_ALLOTMENT_PLOT",
+      department_id: 1,
+      route: "industries:allotment",
+    });
 
-      console.log("fields", fields);
-
-      formData = Object.assign(formData, fields);
-
-      formData = Object.assign(formData, documentForm.value.formData);
-
+    const submit = (type) => {
       var formDatas = new FormData();
+      formDatas.append("draft", type);
+      // return console.log('event',type);
+      let fields = Object.assign(
+        formData,
+        part1Form.value.formData,
+        part2Form.value.formData,
+        documentForm.value.formData
+      );
+      for (let data in fields) formDatas.append(`${data}`, formData[data]);
 
-      for (let data in formData) {
-        console.log("data value of" + data, formData[data]);
-        formDatas.append(`${data}`, formData[data]);
+      if (type == "final") {
+        api
+          .get("applications/fee/" + formData.application_code)
+          .then((res) => {
+            let { fee } = res.data;
+            if (fee) {
+              formDatas.append("amount", fee);
+
+              api
+                .post("/initiate-payment", formDatas)
+                .then((res) => {
+                  let paymentURL = res.data;
+                  window.open(paymentURL, "_self").focus();
+                })
+                .catch((err) => {
+                  console.log("error", err);
+
+                  q.notify({
+                    type: "negative",
+                    message: "Something went wrong",
+                  });
+                });
+            } else {
+              api
+                .post("/applications/submit", formDatas)
+                .then((res) => {
+                  // return console.log("response value", res.data);
+                  q.notify({
+                    message: "Application submitted successfully",
+                    color: "green",
+                  });
+                  router.push({ name: "investor:ongoing" });
+                })
+                .catch((err) => console.log("error", err));
+            }
+            // else return console.log('no');
+            // console.log("fees", fee);
+          })
+          .catch((err) => {});
+      } else {
+        api
+          .post("/applications/submit", formDatas)
+          .then((res) => {
+            // return console.log("response value", res.data);
+            q.notify({
+              message: "Application submitted successfully",
+              color: "green",
+            });
+            router.push({ name: "investor:ongoing" });
+          })
+          .catch((err) => console.log("error", err));
       }
-
-      formDatas.append("amount", 1);
-
-      //  return console.log('payment res',res.data);
-      api
-        .post("/initiate-payment", formDatas)
-        .then((res) => {
-          // return console.log("payment url", res.data);
-          let paymentURL = res.data;
-          // return;
-
-          window.open(paymentURL, "_self").focus();
-        })
-        .catch((err) => {
-          console.log("error", err);
-
-          q.notify({
-            type: "negative",
-            message: "Something went wrong",
-          });
-        });
     };
+
+    //  return console.log('payment res',res.data);
 
     const $q = useQuasar();
     const store = useStore();
 
-    var formData = reactive({
-      application_code: "C&E_ALLOTMENT_PLOT",
-      department_id: 1,
-    });
     onMounted(() => {
-      // popupWindow = window.open("http://google.com", "name", "width=700,height=350");
-      // popupWindow.focus();
-      // return console.log("query", route.query.status);
-      // console.log('source',view-source:https://paymentgw.mizoram.gov.in/msegs-payment/206);
-      // return console.log('source',window.open('view-source:https://paymentgw.mizoram.gov.in/msegs-payment/206'));
-      // <a target="_blank" href="view-source:https://paymentgw.mizoram.gov.in/msegs-payment/206'">view Wikipedia's home page HTML source</a>
-      // fetch('https://paymentgw.mizoram.gov.in/msegs-payment/206').then((response) => response.text()).then((text) => console.log(text));
-
-      return;
-      var config = {
-        root: "",
-        flow: "DEFAULT",
-        merchant: {
-          name: "MSeGS",
-          logo: "https://paymentgw.mizoram.gov.in/images/logo.png",
-        },
-        style: {
-          headerBackgroundColor: "#8dd8ff",
-          headerColor: "#3f3f40",
-        },
-        data: {
-          orderId: "1648118268",
-          token: Date.now(),
-          tokenType: "TXN_TOKEN",
-          amount: "1",
-        },
-        handler: {
-          notifyMerchant: function (eventName, data) {
-            if (eventName == "SESSION_EXPIRED") {
-              alert("Your session has expired!!");
-              location.reload();
-            }
-          },
-        },
-      };
-
-      if (window.Paytm && window.Paytm.CheckoutJS) {
-        window.Paytm.CheckoutJS.init(config)
-          .then(function onSuccess() {
-            window.Paytm.CheckoutJS.invoke();
+      if (route.query.draft) {
+        let id = route.query.draft;
+        api
+          .get("investor/applications/" + id)
+          .then((res) => {
+            let { values } = res.data;
+            console.log("drafts application", values);
+            part1Form.value.formData = Object.assign(
+              part1Form.value.formData,
+              values
+            );
+            part2Form.value.formData = Object.assign(
+              part2Form.value.formData,
+              values
+            );
           })
-          .catch(function onError(error) {
-            console.log("Error => ", error);
+          .catch((err) => {
+            console.log(err);
           });
       }
     });
@@ -187,42 +192,9 @@ export default {
       part1Form,
       part2Form,
       documentForm,
-      initPaytm,
       paymentURL,
       page: "https://paymentgw.mizoram.gov.in/msegs-payment/6",
-
-      submit: () => {
-        var fields = Object.assign(
-          part1Form.value.formData,
-          part2Form.value.formData
-        );
-
-        console.log("fields", fields);
-
-        formData = Object.assign(formData, fields);
-
-        formData = Object.assign(formData, documentForm.value.formData);
-
-        var formDatas = new FormData();
-
-        for (let data in formData) {
-          console.log("data value of" + data, formData[data]);
-          formDatas.append(`${data}`, formData[data]);
-        }
-        // return
-
-        api
-          .post("/applications/submit", formDatas)
-          .then((res) => {
-            console.log("response value", res.data);
-            $q.notify({
-              message: "Application submitted successfully",
-              color: "green",
-            });
-            router.push({ name: "investor:ongoing" });
-          })
-          .catch((err) => console.log("error", err));
-      },
+      submit,
       router,
       window: window,
       formData,

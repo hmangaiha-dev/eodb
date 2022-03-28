@@ -9,14 +9,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+
 class Application extends Model
 {
     use HasFactory;
 
     const ONGOING_STATUSES = ['submitted'];
 
-    protected $fillable = ['application_code', 'regn_no','application_profile_id','user_id','department_id','paid','current_state','archived', 'remark'];
-    protected $appends = ['application_name','current_step','last_step'];
+    protected $fillable = ['application_code', 'regn_no', 'application_profile_id', 'user_id', 'department_id', 'paid', 'current_state', 'archived', 'remark'];
+    protected $appends = ['application_name', 'current_step', 'last_step', 'department'];
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
@@ -24,11 +25,15 @@ class Application extends Model
 
     public function certificates(): MorphMany
     {
-        return $this->morphMany(Certificate::class,'owner');
+        return $this->morphMany(Certificate::class, 'owner');
     }
     public function applicationValues(): HasMany
     {
         return $this->hasMany(ApplicationValue::class);
+    }
+    public function values()
+    {
+        return $this->applicationValues()->pluck('field_value','field_key');
     }
     public function lscDetails(): HasMany
     {
@@ -36,16 +41,16 @@ class Application extends Model
     }
     public function bamboos(): HasMany
     {
-        return $this->hasMany(Bamboo::class,'application_id','id');
+        return $this->hasMany(Bamboo::class, 'application_id', 'id');
     }
     public function powerSubsidyMachineries(): HasMany
     {
-        return $this->hasMany(PowerSubsidyMachinery::class,'application_id','id');
+        return $this->hasMany(PowerSubsidyMachinery::class, 'application_id', 'id');
     }
 
     public function states()
     {
-        return $this->morphMany(State::class,'owner');
+        return $this->morphMany(State::class, 'owner');
     }
 
     public function profile(): BelongsTo
@@ -59,7 +64,7 @@ class Application extends Model
 
     public function notesheets(): MorphMany
     {
-        return $this->morphMany(Notesheet::class,'noteable');
+        return $this->morphMany(Notesheet::class, 'noteable');
     }
 
     public function staff(): BelongsToMany
@@ -83,13 +88,18 @@ class Application extends Model
     }
     public function getLastStepAttribute()
     {
-        $profile= $this->profile()->first();
-        return $profile->processFlows()->orderBy('step','desc')->latest()?->first()?->step;
+        $profile = $this->profile()->first();
+        return $profile->processFlows()->orderBy('step', 'desc')->latest()?->first()?->step;
     }
 
     public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class,'department_id','id');
+        return $this->belongsTo(Department::class, 'department_id', 'id');
+    }
+
+    public function getDepartmentAttribute()
+    {
+        return $this->department()->first();
     }
 
     public function office(): BelongsToMany
@@ -104,12 +114,17 @@ class Application extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
-    
+
 
     protected function serializeDate(DateTimeInterface $date): string
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function draft()
+    {
+        return $this->hasOne(DraftApplication::class, 'application_id', 'id');
     }
 }

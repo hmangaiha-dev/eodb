@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDraftsTable extends Migration
+class AddFeeToApplicationProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateDraftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('drafts', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('application_profiles', function (Blueprint $table) {
+            $table->integer('fee')->default(0)->nullable();
+
         });
     }
 
@@ -26,6 +26,8 @@ class CreateDraftsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drafts');
+        Schema::table('application_profiles', function (Blueprint $table) {
+            $table->dropColumn('fee');
+        });
     }
 }

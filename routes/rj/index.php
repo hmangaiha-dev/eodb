@@ -68,6 +68,8 @@ Route::group(['prefix' => 'investor/common-applications', 'middleware' => 'auth:
 
 
 
+
+
 // Route::post('/forgot-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password:email');
 // Route::post('/forgot-password', function (Request $request) {
 //     $request->validate(['email' => 'required|email']);
