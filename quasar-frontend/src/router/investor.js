@@ -639,6 +639,15 @@ export default {
               "pages/common/dept_services/phe/newconnection/Application.vue"
             ),
         },
+
+        {
+          path: "new-water-commercial",
+          name: "phe:new-connection-commercial",
+          component: () =>
+            import(
+              "pages/common/dept_services/phe/newconnectionCommercial/Application.vue"
+            ),
+        },
         {
           path: "transfer-of-house-water-connection",
           name: "phe:transfer-connection",

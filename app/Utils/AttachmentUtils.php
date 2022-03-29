@@ -418,10 +418,32 @@ const PHE_WATER_CONNECTION_LSC=[
     'folder'=>'land/5/attachments'
 ];
 
+const PHE_WATER_CONNECTION_COMMERCIAL_LSC=[
+    'size'=>2048,
+    'mime'=>'images/*',
+    'application_code'=>'PHE_NEW_CONNECTION_COMMERCIAL',
+    'key'=>'phe_water_connection_commercial_nine_doc',
+    'label'=>'LSC',
+    'disk'=>'public',
+    'folder'=>'phe/2/attachments'
+];
+const PHE_WATER_CONNECTION_COMMERCIAL_SIGN=[
+    'size'=>2048,
+    'mime'=>'images/*',
+    'application_code'=>'PHE_NEW_CONNECTION_COMMERCIAL',
+    'key'=>'signature_phe_water_connection_commercial',
+    'label'=>'Signature of applicant',
+    'disk'=>'public',
+    'folder'=>'phe/2/attachments'
+];
+
 
     const ATTACHMENTS = [
         'signature_phe_water_connection'=>self::PHE_WATER_CONNECTION_SIGNATURE,
         'phe_water_connection_thirteen'=>self::PHE_WATER_CONNECTION_LSC,
+        'phe_water_connection_commercial_nine_doc'=>self::PHE_WATER_CONNECTION_COMMERCIAL_LSC,
+        'signature_phe_water_connection_commercial'=>self::PHE_WATER_CONNECTION_COMMERCIAL_SIGN,
+
         'legal_licence_manuf_signature_designation'=>self::SIGN_LEGAL_LICENCE_MANUFACTURING,
         'legal_licence_renewal_manuf_signature_designation'=>self::SIGN_LEGAL_LICENCE_RENEWAL_MANUFACTURER,
         'legal_dealer_renewal_signature_designation'=>self::SIGN_LEGAL_DEALER_RENEWAL,

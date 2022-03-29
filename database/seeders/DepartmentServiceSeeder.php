@@ -1268,7 +1268,7 @@ class DepartmentServiceSeeder extends Seeder
                 'document_to_submit' => 'dummy',
                 'timeline' => 'dummy',
                 'fees' => $faker->randomNumber(3),
-                'path' => "link",
+                'path' => "new-water-commercial",
                 'sample_form' => 'dummy'
             ],
             [

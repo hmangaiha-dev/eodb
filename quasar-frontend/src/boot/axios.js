@@ -78,62 +78,45 @@ export default boot(({ app, router, store }) => {
   app.config.globalProperties.$api = api;
   // ^ ^ ^ this will allow you to use this.$api (for Vue Options API form)
   //       so you can easily perform requests against your app's API
-<<<<<<< HEAD
-});
-
-export { api };
-=======
 
 
 
-  api2.interceptors.response.use((response) => {
-    // if(response?.status === 401) {
-    //   LocalStorage.remove('user');
-    //   LocalStorage.remove('token');
-    //   store.dispatch('authData/setCurrentUser', null);
-    //   store.dispatch('authData/setToken', null);
-    //   router.replace({name:'home'})
-    //   Notify.create({
-    //     message: "Session/Token expired",
-    //     position: "top",
-    //     icon: "warnings",
-    //   });
-    // }
-    if (response?.status === 500) {
-    }
-    return response;
-  }, (error) => {
+  // api2.interceptors.response.use((response) => {
 
-    if (error?.response?.status === 401) {
-      LocalStorage.remove('user');
-      LocalStorage.remove('token');
-      store.dispatch('authData/setCurrentUser', null);
-      store.dispatch('authData/setToken', null)
-      router.replace({name:"home"});
-      Notify.create({
-            message: "Session/Token expired",
-            position: "top",
-          });
-    }
+  //   if (response?.status === 500) {
+  //   }
+  //   return response;
+  // }, (error) => {
 
-    return Promise.reject(error,);
-  });
-  api2.interceptors.request.use(
-    function(config) {
-      let token=store.getters['authData/getToken'];
-      config.headers['Authorization']=`Bearer ${token}`;
-      return config;
-    },
-    function(error) {
-      return Promise.reject(error);
-    }
-  );
-  app.config.globalProperties.$axios = axios
-  // ^ ^ ^ this will allow you to use this.$axios (for Vue Options API form)
-  //       so you won't necessarily have to import axios in each vue file
+  //   if (error?.response?.status === 401) {
+  //     LocalStorage.remove('user');
+  //     LocalStorage.remove('token');
+  //     store.dispatch('authData/setCurrentUser', null);
+  //     store.dispatch('authData/setToken', null)
+  //     router.replace({name:"home"});
+  //     Notify.create({
+  //           message: "Session/Token expired",
+  //           position: "top",
+  //         });
+  //   }
 
-  app.config.globalProperties.$api2 = api2
+  //   return Promise.reject(error,);
+  // });
+  // api2.interceptors.request.use(
+  //   function(config) {
+  //     let token=store.getters['authData/getToken'];
+  //     config.headers['Authorization']=`Bearer ${token}`;
+  //     return config;
+  //   },
+  //   function(error) {
+  //     return Promise.reject(error);
+  //   }
+  // );
+  // app.config.globalProperties.$axios = axios
+  // // ^ ^ ^ this will allow you to use this.$axios (for Vue Options API form)
+  // //       so you won't necessarily have to import axios in each vue file
+
+  // app.config.globalProperties.$api2 = api2
 })
 
-export { api,api2 }
->>>>>>> dev2
+export { api }
