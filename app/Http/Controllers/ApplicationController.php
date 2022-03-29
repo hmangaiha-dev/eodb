@@ -91,6 +91,10 @@ class ApplicationController extends Controller
         // // return $request->all();
         // return auth()->user();
         // // return 'jje';
+        // return $request->all();
+
+        $fees = DepartmentService::query()->firstWhere('code',$request->get('application_code'));
+        // return $fees;
 
 
         $this->validate($request, [
@@ -117,7 +121,7 @@ class ApplicationController extends Controller
             'user_id' => Auth::id(),
             'department_id' => $request->get('department_id'),
             'current_state' => 'submitted',
-            'paid' => true,
+            'paid' => $fees->fees > 0 ? false : true,
         ]);
 
 
@@ -187,7 +191,9 @@ class ApplicationController extends Controller
         }
 
         return response()->json([
-            'message' => 'Application submitted successfully'
+            'message' => 'Application submitted successfully',
+            'fees' => $fees->fees,
+            'application' => $application
         ], 200);
     }
 

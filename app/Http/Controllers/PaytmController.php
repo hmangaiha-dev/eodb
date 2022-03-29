@@ -66,6 +66,7 @@ class PaytmController extends Controller
         ]);
 
         $this->saveApplication($request);
+        $this->saveOrderApplication($request);
 
 
         $response = json_decode($response->getBody());
@@ -237,5 +238,13 @@ class PaytmController extends Controller
         // return response()->json([
         //     'message' => 'Application submitted successfully'
         // ], 200);
+    }
+
+    public function saveOrderApplication(Application $model)
+    {
+        $order = new Order();
+        $order->application_id = $model->id;
+        $order->order_id = $this->orderId;
+        $order->save();
     }
 }

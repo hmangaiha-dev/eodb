@@ -95,10 +95,9 @@ export default {
 
     const formData = reactive({
       application_code: "C&E_ALLOTMENT_PLOT",
-      // application_code: "C&E_COST_PROJECT",
       department_id: 1,
       route: "industries:allotment",
-    });``
+    });
 
     const submit = (type) => {
       var formDatas = new FormData();
@@ -115,11 +114,11 @@ export default {
 
       if (type == "final") {
         api
-          .get("applications/fee/" + formData.application_code)
+          .post("/applications/submit", formDatas)
           .then((res) => {
-            let { fee } = res.data;
-            return console.log('model',fee);
-            if (fee) {
+            let { fees } = res.data;
+            // return console.log('model',fees);
+            if (fees) {
               formDatas.append("amount", fee);
 
               api
@@ -137,17 +136,10 @@ export default {
                   });
                 });
             } else {
-              api
-                .post("/applications/submit", formDatas)
-                .then((res) => {
-                  // return console.log("response value", res.data);
-                  q.notify({
-                    message: "Application submitted successfully",
-                    color: "green",
-                  });
-                  router.push({ name: "investor:ongoing" });
-                })
-                .catch((err) => console.log("error", err));
+              q.notify({
+                message: "Application submitted successfully",
+                color: "green",
+              });
             }
             // else return console.log('no');
             // console.log("fees", fee);
@@ -191,7 +183,7 @@ export default {
             );
           })
           .catch((err) => {
-            router.push('invalid')
+            router.push("invalid");
             console.log(err);
           });
       }
