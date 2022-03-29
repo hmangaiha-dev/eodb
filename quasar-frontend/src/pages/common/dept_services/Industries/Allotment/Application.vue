@@ -95,9 +95,10 @@ export default {
 
     const formData = reactive({
       application_code: "C&E_ALLOTMENT_PLOT",
+      // application_code: "C&E_COST_PROJECT",
       department_id: 1,
       route: "industries:allotment",
-    });
+    });``
 
     const submit = (type) => {
       var formDatas = new FormData();
@@ -117,6 +118,7 @@ export default {
           .get("applications/fee/" + formData.application_code)
           .then((res) => {
             let { fee } = res.data;
+            return console.log('model',fee);
             if (fee) {
               formDatas.append("amount", fee);
 
@@ -189,6 +191,7 @@ export default {
             );
           })
           .catch((err) => {
+            router.push('invalid')
             console.log(err);
           });
       }

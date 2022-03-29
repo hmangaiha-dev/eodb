@@ -98,6 +98,13 @@ class ApplicationController extends Controller
             'department_id' => ['required'],
         ]);
 
+        if ($request->has('draft_id')) {
+            $draft_id = $request->get('draft_id');
+            $application = Application::find($draft_id);
+            $application->delete();
+            $application->draft()->delete();
+        }
+
         $appProfile = ApplicationProfile::query()
             ->where('code', $request->get('application_code'))
             ->where('published', true)
@@ -113,13 +120,7 @@ class ApplicationController extends Controller
             'paid' => true,
         ]);
 
-        if($request->has('draft_id')) {
-            $draft_id = $request->get('draft_id');
-            $application = Application::find($draft_id);
-            $application->delete();
-            // $draft = DraftApplication::where('application_id',$draft_id)->delete();
-            $application->draft()->delete();
-        }
+
 
         if ($request->draft == 'draft') {
             $application->draft()->create([
@@ -331,10 +332,12 @@ class ApplicationController extends Controller
         ], 200);
     }
 
-    public function getApplicatonFee(string $code)
+    public function getApplicatonFee(ApplicationProfile $model)
     {
-        // return $code;
-        return ApplicationProfile::query()->firstWhere('code', $code);
+        return response()->json([
+            'fee' => $model->service->fees
+        ]);
+        // return ApplicationProfile::query()->firstWhere('code', $code);
     }
 
     private function replaceTemplate($str, $replace_vars)
