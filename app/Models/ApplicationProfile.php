@@ -12,8 +12,8 @@ class ApplicationProfile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['code', 'title','application_id', 'operational_type','remark','published','office_id'];
-    protected $appends = ['last_step','actions','dept_name'];
+    protected $fillable = ['code', 'title', 'application_id', 'operational_type', 'remark', 'published', 'office_id', 'fee'];
+    protected $appends = ['last_step', 'actions', 'dept_name'];
 
     public function printTemplate(): HasOne
     {
@@ -29,7 +29,7 @@ class ApplicationProfile extends Model
     }
     public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class,'office_id','id');
+        return $this->belongsTo(Department::class, 'office_id', 'id');
     }
     public function processFlows(): HasMany
     {
@@ -38,7 +38,7 @@ class ApplicationProfile extends Model
 
     public function getLastStepAttribute()
     {
-        return $this->processFlows()->orderBy('step','desc')->latest()?->first()?->step;
+        return $this->processFlows()->orderBy('step', 'desc')->latest()?->first()?->step;
     }
 
     public function getDeptNameAttribute()
@@ -46,9 +46,13 @@ class ApplicationProfile extends Model
         return $this->department()->first()->dept_name;
     }
 
-  public function getActionsAttribute()
+    public function getActionsAttribute()
     {
-        return $this->processFlows()->orderBy('step','desc')->latest()?->first()?->step;
+        return $this->processFlows()->orderBy('step', 'desc')->latest()?->first()?->step;
     }
 
+    public function service()
+    {
+        return $this->belongsTo(DepartmentService::class,'code','code');
+    }
 }

@@ -47,7 +47,12 @@
       </div>
 
       <div class="text-center q-mt-md col-12">
-        <q-btn @click="submit('draft')" color="blue" label="Draft" />
+        <!-- <q-btn
+          v-if="!route.query.draft"
+          @click="submit('draft')"
+          color="blue"
+          label="Draft"
+        /> -->
         <q-btn class="q-mx-md" type="submit" color="green-5" label="Submit" />
         <q-btn class="q-mx-md" color="red-4" label="Reset" />
       </div>
@@ -97,7 +102,7 @@ export default {
     const submit = (type) => {
       var formDatas = new FormData();
       formDatas.append("draft", type);
-      // return console.log('event',type);
+      if (route.query.draft) formDatas.append("draft_id", route.query.draft);
       let fields = Object.assign(
         formData,
         part1Form.value.formData,
@@ -106,58 +111,57 @@ export default {
       );
       for (let data in fields) formDatas.append(`${data}`, formData[data]);
 
-      if (type == "final") {
-        api
-          .get("applications/fee/" + formData.application_code)
-          .then((res) => {
-            let { fee } = res.data;
-            if (fee) {
-              formDatas.append("amount", fee);
+      // if (type == "final") {
+      api
+        .post("/applications/submit", formDatas)
+        .then((res) => {
+          let { fees, application } = res.data;
+          //  console.log('model fees',fees);
+          if (fees) {
+            formDatas.append("amount", fees);
 
-              api
-                .post("/initiate-payment", formDatas)
-                .then((res) => {
-                  let paymentURL = res.data;
-                  window.open(paymentURL, "_self").focus();
-                })
-                .catch((err) => {
-                  console.log("error", err);
-
-                  q.notify({
-                    type: "negative",
-                    message: "Something went wrong",
-                  });
+            api
+              .post("/initiate-payment/" + application, {
+                amount: fees,
+              })
+              .then((res) => {
+                let paymentURL = res.data;
+                // return console.log('model amount',paymentURL);
+                window.open(paymentURL, "_self").focus();
+              })
+              .catch((err) => {
+                q.notify({
+                  type: "negative",
+                  message: err.response?.data?.message,
                 });
-            } else {
-              api
-                .post("/applications/submit", formDatas)
-                .then((res) => {
-                  // return console.log("response value", res.data);
-                  q.notify({
-                    message: "Application submitted successfully",
-                    color: "green",
-                  });
-                  router.push({ name: "investor:ongoing" });
-                })
-                .catch((err) => console.log("error", err));
-            }
-            // else return console.log('no');
-            // console.log("fees", fee);
-          })
-          .catch((err) => {});
-      } else {
-        api
-          .post("/applications/submit", formDatas)
-          .then((res) => {
-            // return console.log("response value", res.data);
+              });
+          } else {
             q.notify({
               message: "Application submitted successfully",
               color: "green",
             });
-            router.push({ name: "investor:ongoing" });
-          })
-          .catch((err) => console.log("error", err));
-      }
+          }
+        })
+        .catch((err) => {
+          q.notify({
+            type: "negative",
+            message: err.response?.data?.message,
+          });
+        });
+      // }
+      // else {
+      //   api
+      //     .post("/applications/submit", formDatas)
+      //     .then((res) => {
+      //       // return console.log("response value", res.data);
+      //       q.notify({
+      //         message: "Application submitted successfully",
+      //         color: "green",
+      //       });
+      //       router.push({ name: "investor:ongoing" });
+      //     })
+      //     .catch((err) => console.log("error", err));
+      // }
     };
 
     //  return console.log('payment res',res.data);
@@ -183,6 +187,7 @@ export default {
             );
           })
           .catch((err) => {
+            router.push("invalid");
             console.log(err);
           });
       }
@@ -196,6 +201,7 @@ export default {
       page: "https://paymentgw.mizoram.gov.in/msegs-payment/6",
       submit,
       router,
+      route,
       window: window,
       formData,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
