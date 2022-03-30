@@ -193,7 +193,7 @@ class ApplicationController extends Controller
         return response()->json([
             'message' => 'Application submitted successfully',
             'fees' => $fees->fees,
-            'application' => $application
+            'application' => $application->id
         ], 200);
     }
 

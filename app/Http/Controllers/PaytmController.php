@@ -40,13 +40,14 @@ class PaytmController extends Controller
     protected Request $application;
 
 
-    public function makePayment(Request $request)
+    public function makePayment(Request $request, Application $model)
     {
-        // return $this->saveApplication($request);
-        
-
+        // return $request->amount;
+       
         $this->orderId = now()->timestamp;
-        // return $request->all();
+        $model->order()->create([
+            'order_id' => $this->orderId
+        ]);
         $orderId = $this->orderId;
         $callbackUrl = $this->callbackUrl;
         $amount = $request->amount;
@@ -64,10 +65,6 @@ class PaytmController extends Controller
                 'customer' => $customer,
             ]
         ]);
-
-        $this->saveApplication($request);
-        $this->saveOrderApplication($request);
-
 
         $response = json_decode($response->getBody());
         return $response;
@@ -149,102 +146,7 @@ class PaytmController extends Controller
 
 
     }
-    public function saveApplication(Request $request)
-    {
+   
 
-        $this->validate($request, [
-            'application_code' => ['required'],
-            'department_id' => ['required'],
-        ]);
-
-        $appProfile = ApplicationProfile::query()
-            ->where('code', $request->get('application_code'))
-            ->where('published', true)
-            ->first();
-
-        $application = Application::query()->create([
-            'application_code' => $request->get('application_code'),
-            'regn_no' => NumberGenerator::fakeIdGenerator($request->get('application_code')),
-            'application_profile_id' => $appProfile->id,
-            'user_id' => Auth::id(),
-            'department_id' => $request->get('department_id'),
-            'current_state' => 'submitted',
-        ]);
-
-        $order = new Order();
-        $order->application_id = $application->id;
-        $order->order_id = $this->orderId;
-        $order->save();
-
-        $application->states()->create([
-            'name' => 'submitted',
-            'remark' => 'Application submitted at ' . now()->toDateString()
-        ]);
-        $application->office()->attach($appProfile->office_id);
-
-        if ($request->application_code == 'LAND_REVENUE_LSC' || $request->application_code == 'LAND_REVENUE_PATTA' || $request->application_code == 'ENV_FOREST_BAMBOO' || $request->application_code == 'C&E_POWER_SUBSIDY') {
-            if ($request->application_code == 'ENV_FOREST_BAMBOO') {
-                $arrs = (array) json_decode($request->bamboo_particulars, true);
-                $application->bamboos()->createMany($arrs);
-            } else if ($request->application_code == 'C&E_POWER_SUBSIDY') {
-                $arrs = (array) json_decode($request->machineries, true);
-                $application->powerSubsidyMachineries()->createMany($arrs);
-            } else {
-                $arrs =  (array)json_decode($request->lsc_details, true);
-                $application->lscDetails()->createMany($arrs);
-            }
-        }
-
-        DB::transaction(function ($cb) use ($appProfile, $request, $application) {
-            $keysArr = KeysUtil::getApplicationKeys($request->get('application_code'));
-            foreach ($keysArr as $key) {
-                $application->applicationValues()->create([
-                    'field_key' => $key,
-                    'field_value' => $request->get($key),
-                    'field_label' => KeysUtil::getApplicationLabel($key),
-                ]);
-            }
-            $flow = $appProfile->processFlows()
-                ->orderBy('step')
-                ->first();
-
-            $movement = ApplicationMovement::query()->create([
-                'application_id' => $application->id,
-                'staff_id' => $flow->staff_id,
-                'status' => 'dealing',
-                'step' => $flow->step,
-            ]);
-        });
-        //Attachment upload
-        foreach ($request->file() as $key => $file) {
-            $attachmentProfile = AttachmentUtils::getAttachment($key);
-            if (!blank($attachmentProfile)) {
-                $disk = $attachmentProfile['disk'];
-                $folder = $attachmentProfile['folder'];
-                $path = Storage::disk($disk)->put($folder, $file);
-                $application->attachments()->create([
-                    'original_name' => $file->getClientOriginalName(),
-                    'mime' => $file->getMimeType(),
-                    'label' => $attachmentProfile['label'],
-                    'size' => $file->getSize(),
-                    'path' => $path
-                ]);
-            }
-        }
-
-        // return view('transaction.success', ['status' => 'failure']);
-        // $views = view('bamboo.table', ["details" => $details, 'code' => $model->application_code, 'total' => $total])->render();
-
-        // return response()->json([
-        //     'message' => 'Application submitted successfully'
-        // ], 200);
-    }
-
-    public function saveOrderApplication(Application $model)
-    {
-        $order = new Order();
-        $order->application_id = $model->id;
-        $order->order_id = $this->orderId;
-        $order->save();
-    }
+  
 }

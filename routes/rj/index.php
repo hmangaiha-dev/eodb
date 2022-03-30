@@ -101,7 +101,7 @@ Route::post('/update-password', [ResetPasswordController::class, 'updatePassword
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
 
-    Route::post('initiate-payment', [PaytmController::class, 'makePayment']);
+    Route::post('initiate-payment/{model}', [PaytmController::class, 'makePayment']);
 });
 Route::get('response-handler', [PaytmController::class, 'responseHandler']);
 // Route::get('initiate-payment', [PaytmController::class, 'makePayment']);
