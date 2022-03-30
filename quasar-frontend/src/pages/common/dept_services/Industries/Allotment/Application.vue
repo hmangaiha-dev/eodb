@@ -116,8 +116,9 @@ export default {
         .post("/applications/submit", formDatas)
         .then((res) => {
           let { fees, application } = res.data;
-          //  console.log('model fees',fees);
+          //  return console.log('model fees',fees);
           if (fees) {
+            //  return console.log('model amout fees',fees);
             formDatas.append("amount", fees);
 
             api
@@ -140,6 +141,7 @@ export default {
               message: "Application submitted successfully",
               color: "green",
             });
+            router.push({ name: "investor:ongoing" });
           }
         })
         .catch((err) => {

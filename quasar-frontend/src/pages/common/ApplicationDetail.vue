@@ -8,6 +8,21 @@
     </q-dialog>
 
     <br />
+
+    <div class="q-py-md">
+      <q-radio v-model="localData.state" val="submitted" label="Under Review" />
+      <q-radio v-model="localData.state" val="Approved" label="Approved" />
+      <q-radio v-model="localData.state" val="Reject" label="Reject" />
+      <q-radio v-model="localData.state" val="Pending" label="Pending" />
+
+      <q-btn
+        class="q-ml-md"
+        outline
+        color="primary"
+        label="Update"
+        @click="updateStatus"
+      />
+    </div>
     <div
       style="padding: 36px; border: 1px solid #ccc"
       v-html="localData.template"
@@ -24,6 +39,8 @@
     </div>
     <br />
     <Attachments class="print-hide" :attachments="localData.attachment" />
+
+    <!-- <q-radio v-model="shape" val="line" label="Pending" /> -->
   </q-page>
 </template>
 <script>
@@ -46,6 +63,7 @@ export default {
       application: {},
       template: "test",
       attachment: [],
+      state: "submitted",
     });
 
     const getPrint = (id) => {
@@ -59,6 +77,26 @@ export default {
         })
         .catch((err) =>
           q.notify({ type: "negative", message: err.response?.message || "" })
+        );
+    };
+
+    const updateStatus = () => {
+      const id = route.params.id;
+      api
+        .put(`applications/${id}/states`, {
+          state: localData.state,
+        })
+        .then((res) => {
+          q.notify({
+            color: "primary",
+            message: res.data.state || "State updated",
+          });
+        })
+        .catch((err) =>
+          q.notify({
+            type: "negative",
+            message: err.response?.data.message || "",
+          })
         );
     };
     // const getAttachment = (id) => {
@@ -84,6 +122,7 @@ export default {
         dialog.value = true;
         console.log("attachment", attachment.value);
       },
+      updateStatus,
     };
   },
 };

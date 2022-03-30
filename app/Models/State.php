@@ -15,6 +15,8 @@ class State extends Model
 
     use HasFactory;
 
+    protected $appends = ['profile'];
+
     protected $fillable = ['name', 'remark','owner'];
     protected $with = ['attachment'];
 
@@ -27,4 +29,10 @@ class State extends Model
     {
         return $this->morphOne(Attachment::class, 'owner');
     }
+
+    public function getProfileAttribute()
+    {
+        return $this->owner()->first();
+    }
+
 }

@@ -41,7 +41,7 @@ class ApplicationController extends Controller
         $currentMovement = $model->movements()->latest()->first();
         $appProfile = $model->profile()->first();
 
-        if ($currentMovement->step >= $appProfile->last_step) {
+        if ($currentMovement->step > $appProfile->last_step) {
             throw new Exception('Process finish exception');
         }
         $flow = $appProfile->processFlows()->where('step', $currentMovement->step + 1)?->first();
@@ -61,12 +61,15 @@ class ApplicationController extends Controller
     }
     public function backward(Request $request, Application $model)
     {
+        // return 'test';
         $staff = auth('sanctum')->user();
+
+        // return $staff;
 
         $currentMovement = $model->movements()->latest()->first();
         $appProfile = $model->profile()->first();
 
-        if ($currentMovement->step <= 1) {
+        if ($currentMovement->step < 1) {
             throw new ValidationException('Process finish exception');
         }
         $flow = $appProfile->processFlows()->where('step', $currentMovement->step - 1)?->first();
@@ -87,11 +90,6 @@ class ApplicationController extends Controller
 
     public function submitApplication(Request $request)
     {
-        // return $request->draft;
-        // // return $request->all();
-        // return auth()->user();
-        // // return 'jje';
-        // return $request->all();
 
         $fees = DepartmentService::query()->firstWhere('code',$request->get('application_code'));
         // return $fees;
@@ -192,16 +190,28 @@ class ApplicationController extends Controller
 
         return response()->json([
             'message' => 'Application submitted successfully',
-            'fees' => $fees->fees,
+            'fees' => $fees->fees > 0 ? $fees->fees : false,
             'application' => $application->id
         ], 200);
     }
 
     public function getStates(Request $request, Application $model)
     {
-        $states = $model?->states()?->get();
+        // return 'test';
+        $states = $model?->states()?->first();
         return response()->json($states, 200);
     }
+    public function updateState(Request $request, Application $model)
+    {
+        // return $request->state;
+        $states = $model?->states()?->first();
+        $states->name = $request->state;
+        $states->save();
+        return response()->json([
+            'state' => "State updated sucessfully"
+        ],200);
+    }
+    
 
     public function createState(Request $request, Application $model)
     {

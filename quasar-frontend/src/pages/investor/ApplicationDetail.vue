@@ -7,44 +7,35 @@
     </q-dialog>
 
     <div class="row">
-      <div class="col-xs-12 ztitle">
-        {{ localData.application?.application_name }}
-      </div>
     </div>
-    <div class="row q-col-gutter-xs q-ma-lg">
-      <div style="padding: 36px; border: 1px solid #ccc" v-html="localData.template" class="col-12" />
+    <div
+      style="padding: 36px; border: 1px solid #ccc"
+      class="row q-col-gutter-xs q-ma-lg"
+    >
+      <div class="col-12 ">
+        Application Reference Number: <span class="text-weight-bold">{{ localData.application.id }}</span>
+      </div>
+      <div class="col-12">
+        Submitted to: <span class="text-weight-bold">{{ localData.application?.department?.dept_name }}</span>
+      </div>
+      <div class="col-12">
+        Reg.No.: <span class="text-weight-bold">{{ localData.application?.regn_no }}</span>
+      </div>
+      <div v-html="localData.template" class="col-12" />
       <div class="col-12">
         <Attachments :attachments="localData.attachment" />
       </div>
 
-      <!-- <div
-        :class="[item.field_value != null ? 'q-ml-md' : '']"
-        v-for="(item, i) in localData.fields"
-        :key="i"
-        class="col-12 row"
-      >
-        <div
-        v-html="item.field_label"
-          :class="[
-            item.field_value == null ? 'col-12 nofield' : 'col-6 zlabel',
-          ]"
-        >
-          
-        </div>
-        <div style="align-self: flex-end;" class="col-6 zvalue">{{ item.field_value }}</div>
-      </div> -->
+      <div class="col-12">
+        <q-btn
+          @click="printApplication"
+          label="Print"
+          outline
+          class="print-hide"
+        />
+      </div>
     </div>
 
-    <!-- <div class="ztitle">Attachments</div> -->
-
-    <!-- <div v-for="(item, i) in localData.attachments" :key="i" class="row">
-      <div v-html="item.label" class="zlabel col-4" />
-      
-
-      <div style="align-self: flex-end;" class="zlabel col-4">
-        <q-btn flat color="primary" label="view" @click="getFile(item.path)" />
-      </div>
-    </div> -->
     <q-separator class="q-my-md" />
   </q-page>
 </template>
@@ -82,6 +73,7 @@ export default {
         .then((res) => {
           console.log("applicant templates", res.data);
           localData.template = res.data.template;
+          localData.application = res.data.application;
           localData.attachment = res.data.attachment;
           // const {
           //   application_code,
@@ -114,6 +106,7 @@ export default {
       route,
       router,
       attachment,
+      printApplication: () => window.print(),
       getFile: (path) => {
         attachment.value = "http://localhost:8000/storage/" + path;
         dialog.value = true;

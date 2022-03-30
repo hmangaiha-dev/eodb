@@ -126,6 +126,7 @@ Route::group(['prefix' => 'applications', 'middleware' => ['auth:sanctum']], fun
 
     Route::post('{model}/states', [ApplicationController::class, 'createState']);
     Route::get('{model}/states', [ApplicationController::class, 'getStates']);
+    Route::put('{model}/states', [ApplicationController::class, 'updateState']);
 
     Route::post('{model}/forward', [ApplicationController::class, 'forward']);
     Route::post('{model}/backward', [ApplicationController::class, 'backward']);
@@ -143,6 +144,7 @@ Route::group(['prefix' => 'applications', 'middleware' => ['auth:sanctum']], fun
     Route::get('{model}/certificates', [ApplicationController::class, 'getCertificates']);
 
     Route::post('{model}/close', [ApplicationController::class, 'close']);
+    Route::get('{model}/print', [ApplicationController::class, 'getPrint']);
     Route::get('{model}/print', [ApplicationController::class, 'getPrint']);
     Route::get('{model}/attachments', [ApplicationController::class, 'getAttachment']);
 

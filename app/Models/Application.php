@@ -16,8 +16,8 @@ class Application extends Model
 
     const ONGOING_STATUSES = ['submitted'];
 
-    protected $fillable = ['application_code', 'regn_no', 'application_profile_id', 'user_id', 'department_id', 'paid', 'current_state', 'archived', 'remark'];
-    protected $appends = ['application_name', 'current_step', 'last_step', 'department'];
+    protected $fillable = ['application_code', 'regn_no', 'application_profile_id', 'user_id', 'department_id', 'paid', 'current_state', 'archived', 'remark','profile'];
+    protected $appends = ['application_name', 'current_step', 'last_step', 'department','username'];
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
@@ -81,6 +81,16 @@ class Application extends Model
     {
 
         return $this->profile()->first()->title;
+    }
+
+    public function getProfileAttribute()
+    {
+        return $this->profile()->first()->title;
+    }
+
+    public function getUsernameAttribute()
+    {
+        return $this->user()->first()->full_name;
     }
     public function getCurrentStepAttribute()
     {
