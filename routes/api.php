@@ -146,7 +146,7 @@ Route::group(['prefix' => 'applications', 'middleware' => ['auth:sanctum']], fun
     Route::get('{model}/print', [ApplicationController::class, 'getPrint']);
     Route::get('{model}/attachments', [ApplicationController::class, 'getAttachment']);
 
-    Route::get('fee/{code}', [ApplicationController::class, 'getApplicatonFee']);
+    Route::get('fee/{model:code}', [ApplicationController::class, 'getApplicatonFee']);
 });
 
 Route::group(['prefix' => 'web'], function () {

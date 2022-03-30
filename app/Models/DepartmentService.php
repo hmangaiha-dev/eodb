@@ -10,7 +10,7 @@ class DepartmentService extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['service_name', 'who_should_apply', 'how_to_apply', 'document_to_submit', 'timeline', 'fees', 'path', 'sample_form', 'operational_type'];
+    protected $fillable = ['service_name', 'who_should_apply', 'how_to_apply', 'document_to_submit', 'timeline', 'fees', 'path', 'sample_form', 'operational_type','fee_structure'];
 
     protected $appends = ['dept'];
 

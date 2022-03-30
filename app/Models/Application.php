@@ -127,4 +127,10 @@ class Application extends Model
     {
         return $this->hasOne(DraftApplication::class, 'application_id', 'id');
     }
+
+    public function order()
+    {
+        return $this->hasOne(Order::class,'application_id','id');
+    }
 }
+

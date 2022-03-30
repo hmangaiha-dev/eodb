@@ -8,6 +8,7 @@ use App\Models\ApplicationProfile;
 use App\Models\Attachment;
 use App\Models\Certificate;
 use App\Models\DepartmentService;
+use App\Models\DraftApplication;
 use App\Utils\AttachmentUtils;
 use App\Utils\KeysUtil;
 use App\Utils\NumberGenerator;
@@ -90,12 +91,23 @@ class ApplicationController extends Controller
         // // return $request->all();
         // return auth()->user();
         // // return 'jje';
+        // return $request->all();
+
+        $fees = DepartmentService::query()->firstWhere('code',$request->get('application_code'));
+        // return $fees;
 
 
         $this->validate($request, [
             'application_code' => ['required'],
             'department_id' => ['required'],
         ]);
+
+        if ($request->has('draft_id')) {
+            $draft_id = $request->get('draft_id');
+            $application = Application::find($draft_id);
+            $application->delete();
+            $application->draft()->delete();
+        }
 
         $appProfile = ApplicationProfile::query()
             ->where('code', $request->get('application_code'))
@@ -109,8 +121,10 @@ class ApplicationController extends Controller
             'user_id' => Auth::id(),
             'department_id' => $request->get('department_id'),
             'current_state' => 'submitted',
-            'paid' => true,
+            'paid' => $fees->fees > 0 ? false : true,
         ]);
+
+
 
         if ($request->draft == 'draft') {
             $application->draft()->create([
@@ -177,7 +191,9 @@ class ApplicationController extends Controller
         }
 
         return response()->json([
-            'message' => 'Application submitted successfully'
+            'message' => 'Application submitted successfully',
+            'fees' => $fees->fees,
+            'application' => $application->id
         ], 200);
     }
 
@@ -322,10 +338,12 @@ class ApplicationController extends Controller
         ], 200);
     }
 
-    public function getApplicatonFee(string $code)
+    public function getApplicatonFee(ApplicationProfile $model)
     {
-        // return $code;
-        return ApplicationProfile::query()->firstWhere('code', $code);
+        return response()->json([
+            'fee' => $model->service->fees
+        ]);
+        // return ApplicationProfile::query()->firstWhere('code', $code);
     }
 
     private function replaceTemplate($str, $replace_vars)

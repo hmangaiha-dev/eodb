@@ -26,6 +26,7 @@ class DepartmentServiceSeeder extends Seeder
         $services = [
             [
                 'id' => 1,
+                'code' => 'C&E_ALLOTMENT_PLOT',
                 'operational_type' => OperationalType::PRE_PROCESSING,
                 'department_id' => 1,
                 'service_name' => "Application for Allotment of Industrial Plot",
@@ -41,6 +42,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 2,
                 'operational_type' => OperationalType::PRE_PROCESSING,
                 'department_id' => 1,
+                'code' => 'C&E_INTEREST_SUBSIDY',
                 'service_name' => "Application for Claiming Interest Subsidy",
                 'who_should_apply' => '1. An industrial unit is eligible to claim subsidy only on the amount of interest on term loan and working capital loan already paid to the concerned Banks/Financial Institution/ Agencies.
 
@@ -58,6 +60,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 3,
                 'operational_type' => OperationalType::PRE_PROCESSING,
                 'department_id' => 1,
+                'code' => 'C&E_FORM_3',
                 'service_name' => "Application form for Claiming Central Capital Investment Subsidy Scheme",
                 'who_should_apply' => 'dummy',
                 'how_to_apply' => 'dummy',
@@ -69,6 +72,7 @@ class DepartmentServiceSeeder extends Seeder
             ],
             [
                 'id' => 4,
+                'code' => 'C&E_FACTORY_SHED',
                 'operational_type' => OperationalType::PRE_PROCESSING,
                 'department_id' => 1,
                 'service_name' => "Application for Claim Of Subsidy On Rent Of Factory Shed",
@@ -83,6 +87,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 5,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'C&E_POWER_SUBSIDY',
                 'department_id' => 1,
                 'service_name' => "Application for Claiming Power Subsidy",
                 'who_should_apply' => 'dummy',
@@ -97,7 +102,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 6,
                 'department_id' => 1,
                 'operational_type' => OperationalType::PRE_PROCESSING,
-
+                'code' => 'C&E_POWER_GENERATING',
                 'service_name' => "Application For Subsidy On Power Generating Set",
                 'who_should_apply' => 'dummy',
                 'how_to_apply' => 'dummy',
@@ -110,6 +115,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 7,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'C&E_POWER_LINE',
                 'department_id' => 1,
                 'service_name' => "Application For Subsidy On Power Line",
                 'who_should_apply' => 'dummy',
@@ -123,6 +129,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 8,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'C&E_COST_PROJECT',
                 'department_id' => 1,
                 'service_name' => "Application For Subsidy On Cost Of Project Report",
                 'who_should_apply' => 'dummy',
@@ -136,6 +143,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 9,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'C&E_FORM_9',
                 'department_id' => 1,
                 'service_name' => "Application For Claim Of Interest Subsidy",
                 'who_should_apply' => 'dummy',
@@ -149,6 +157,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'C&E_SUBSIDY_COST_TRANSPORTATION_MACHINERIES',
                 'department_id' => 1,
                 'service_name' => "Application For State Transportation Subsidy on Plant & Machineries",
                 'who_should_apply' => 'dummy',
@@ -162,6 +171,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'CE_GRANT_OF_SUBSIDY',
                 'department_id' => 1,
                 'service_name' => "Application For Grant Of Land Subsidy",
                 'who_should_apply' => 'dummy',
@@ -178,6 +188,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 12,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
                 'department_id' => 2,
                 'service_name' => "Approval - Inspection - Payments ",
                 'who_should_apply' => 'dummy',
@@ -192,6 +203,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 13,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
                 'department_id' => 2,
                 'service_name' => "Licensing",
                 'who_should_apply' => 'dummy',
@@ -208,6 +220,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 14,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'ENV_FOREST_BAMBOO',
                 'department_id' => 3,
                 'service_name' => "Application for Bamboo plantation in Non-forest Area",
                 'who_should_apply' => 'dummy',
@@ -223,6 +236,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 15,
                 'department_id' => 3,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'ENV_FOREST_FELL_TREES',
 
                 'service_name' => "Application for Permission to fell tress/ tree plantation in in non-forest area",
                 'who_should_apply' => 'dummy',
@@ -241,6 +255,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 16,
                 'department_id' => 4,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
 
                 'service_name' => "to be filled",
                 'who_should_apply' => 'dummy',
@@ -255,6 +270,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 17,
                 'department_id' => 4,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
 
                 'service_name' => "to be filled",
                 'who_should_apply' => 'dummy',
@@ -272,6 +288,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 18,
                 'department_id' => 5,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'FIRE_NOC ',
 
                 'service_name' => "Fire NOC",
                 'who_should_apply' => 'dummy',
@@ -288,6 +305,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 19,
                 'department_id' => 6,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'FOOD_DRUG_GENERAL_RETAIL',
 
                 'service_name' => "Application for General (Retail) Licence Form 19",
                 'who_should_apply' => 'dummy',
@@ -302,6 +320,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 20,
                 'department_id' => 6,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'FOOD_DRUG_RESTRICTED_RETAIL',
 
                 'service_name' => "Application for Restricted (Retail) Licence Form 19A",
                 'who_should_apply' => 'dummy',
@@ -316,6 +335,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 21,
                 'department_id' => 6,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'FOOD_DRUG_WHOLESALE',
 
                 'service_name' => "Application for Wholesale Licence Form 19",
                 'who_should_apply' => 'dummy',
@@ -330,6 +350,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 22,
                 'department_id' => 6,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'FOOD_DRUG_FORM19AA',
 
                 'service_name' => "Application for Licence to sell drugs by wholesale or distribute from motor vehicle Form 19AA",
                 'who_should_apply' => 'dummy',
@@ -344,6 +365,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 23,
                 'department_id' => 6,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'FOOD_DRUG_FORM19B',
 
                 'service_name' => "Application for Homoeopathic Retail Licence Form 19B",
                 'who_should_apply' => 'dummy',
@@ -361,6 +383,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 24,
                 'department_id' => 7,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LABOUR_CERTIFICATE_REGISTRATION',
 
                 'service_name' => "Application for Certificate of Registration under Shops & Establishment",
                 'who_should_apply' => 'dummy',
@@ -377,6 +400,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 25,
                 'department_id' => 7,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LABOUR_LICENCE_REGISTRATION',
 
                 'service_name' => "Application for registration of license for the year and notice of occupation specified in section 6&7 of the Factories Act, 1948",
                 'who_should_apply' => 'dummy',
@@ -392,6 +416,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 26,
                 'department_id' => 7,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LABOUR_EMPLOYMENT_CONTRACT',
 
                 'service_name' => "Application for Registration of Establishment Employing Contract Labour (Contract labour Act Principal Employer Registration)",
                 'who_should_apply' => 'dummy',
@@ -407,6 +432,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 27,
                 'department_id' => 7,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LABOUR_CONTRACT_LICENCE',
 
                 'service_name' => "Application for Licence for Engaging Contract Labour under The Mizoram Contract Labour (R & A) Rules 2004",
                 'who_should_apply' => 'dummy',
@@ -422,6 +448,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 28,
                 'department_id' => 7,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LABOUR_MIGRANT_WORKMEN',
 
                 'service_name' => "Application for Registration of establishment Employing Migrant Workmen (Interstate Migrant Workers Principal Employer Registration)",
                 'who_should_apply' => 'dummy',
@@ -438,6 +465,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 29,
                 'department_id' => 7,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LABOUR_CONSTRUCT_PERMISSION',
 
                 'service_name' => "Application for permission to Construct, Extend or take into use any building as a factory under Factories Act, 1948",
                 'who_should_apply' => 'dummy',
@@ -453,6 +481,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 30,
                 'department_id' => 7,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LABOUR_CONTRACT_RENEWAL',
 
                 'service_name' => "Application for Renewal of Licence for engaging Contract Labour under The Mizoram Contract Labour (R & A) Rules 2004",
                 'who_should_apply' => 'dummy',
@@ -468,6 +497,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 31,
                 'department_id' => 7,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LABOUR_EMPLOY_WORKERS',
 
                 'service_name' => "Application for Registration of establishments employing building workers under The Mizoram Building & Other Construction Workers (RE&CS) Rules 2015",
                 'who_should_apply' => 'dummy',
@@ -485,6 +515,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 32,
                 'department_id' => 8,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LAND_REVENUE_PATTA',
 
                 'service_name' => "APPLICATION FOR PERIODIC PATTA (PERIODIC PATTA DILNA)",
                 'who_should_apply' => 'dummy',
@@ -501,6 +532,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 33,
                 'department_id' => 8,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LAND_REVENUE_LAND_HOUSE',
 
                 'service_name' => "APPLICATION FOR ALLOTMENT OF LAND FOR HOUSE SITE",
                 'who_should_apply' => 'dummy',
@@ -517,6 +549,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 34,
                 'department_id' => 8,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LAND_REVENUE_LAND_SHOP',
 
                 'service_name' => "APPLICATION FOR ALLOTMENT OF LAND FOR SHOP/STALL",
                 'who_should_apply' => 'dummy',
@@ -532,6 +565,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 35,
                 'department_id' => 8,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LAND_REVENUE_LAND_SETTLEMENT',
 
                 'service_name' => "APPLICATION FOR RESIDENTIAL LAND SETTLEMENT CERTIFICATE INHMUN/LAND SETTLEMENT CERTIFICATE TURA DILNA",
                 'who_should_apply' => 'dummy',
@@ -547,6 +581,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 36,
                 'department_id' => 8,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LAND_REVENUE_LAND_DIVERSION',
 
                 'service_name' => "Diversion Of Land Use/Change Of Land",
                 'who_should_apply' => 'dummy',
@@ -562,6 +597,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 37,
                 'department_id' => 8,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LAND_REVENUE_LAND_TRANSFER',
 
                 'service_name' => "APPLICATION FOR TRANSFER OF OWNERSHIP OF LAND HOLDING",
                 'who_should_apply' => 'dummy',
@@ -578,6 +614,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 38,
                 'department_id' => 8,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LAND_REVENUE_LSC',
 
                 'service_name' => "APPLICATION FOR PARTITION OF LSC",
                 'who_should_apply' => 'dummy',
@@ -593,6 +630,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 39,
                 'department_id' => 8,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LAND_REVENUE_ALLOTMENT_GOVERNMENT',
 
                 'service_name' => "Application For The Allotment Of Land To The Government Department/Corporation/Boards etc. On Land Lease/Limited Lease ",
                 'who_should_apply' => 'dummy',
@@ -610,6 +648,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 40,
                 'department_id' => 9,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
 
                 'service_name' => "No data",
                 'who_should_apply' => 'dummy',
@@ -627,6 +666,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 41,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_LICENCE_MANUFACTURING',
 
                 'service_name' => "Licensing of Manufacturer of Weights & Measures",
                 'who_should_apply' => 'dummy',
@@ -641,6 +681,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 42,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_LICENCE_RENEWAL_MANUFACTURER',
 
                 'service_name' => "Renewal of Manufacturer of Weights & Measures",
                 'who_should_apply' => 'dummy',
@@ -655,6 +696,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 43,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_DEALER_RENEWAL',
 
                 'service_name' => "Renewal of Dealer in Weight & Measures ",
                 'who_should_apply' => 'dummy',
@@ -669,6 +711,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 44,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_LICENCE_REPAIR',
 
                 'service_name' => "Licence of Repairer of Weights & Measures",
                 'who_should_apply' => 'dummy',
@@ -683,6 +726,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 45,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_LICENCE_DEALER',
 
                 'service_name' => "Licence of Dealers in Weights & Measures ",
                 'who_should_apply' => 'dummy',
@@ -697,6 +741,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 46,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_REGISTRATION_MANUFACTURER_PACKER',
 
                 'service_name' => "Registration of Manufacturer/Packer",
                 'who_should_apply' => 'dummy',
@@ -711,6 +756,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 47,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_REGISTRATION_IMPORTER_PACKER',
 
                 'service_name' => "Registration of Importer/Packer",
                 'who_should_apply' => 'dummy',
@@ -725,6 +771,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 48,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_LICENCE_RENEWAL_REPAIRER',
 
                 'service_name' => "Renewal of Licence of Repairer of Weights & Measures",
                 'who_should_apply' => 'dummy',
@@ -739,6 +786,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 49,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_LICENCE_REGISTRATION_IMPORTER',
 
                 'service_name' => "Licence of Importers of Weights & Measures",
                 'who_should_apply' => 'dummy',
@@ -753,6 +801,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 50,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_VERIFICATION',
 
                 'service_name' => "Verification of Weights & Measures",
                 'who_should_apply' => 'dummy',
@@ -767,6 +816,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 51,
                 'department_id' => 10,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'LEGAL_REVERIFICATION',
 
                 'service_name' => "Re-verification of Weights & Measures",
                 'who_should_apply' => 'dummy',
@@ -784,6 +834,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 52,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_CONSENT_INDUSTRIES',
 
                 'service_name' => "Application For Consent To Establishment Industries Etc.",
                 'who_should_apply' => 'dummy',
@@ -798,6 +849,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 53,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_ACCIDENT_MEDICAL',
 
                 'service_name' => "Accident Reporting for Bio-Medical Wastes",
                 'who_should_apply' => 'dummy',
@@ -812,6 +864,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 54,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_5',
 
                 'service_name' => "Submission of Annual report for Bio-Medical Wastes.",
                 'who_should_apply' => 'dummy',
@@ -826,6 +879,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 55,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_ACCIDENT_HAZARDOUS',
 
                 'service_name' => "Accident Reporting for Hazardous Waste",
                 'who_should_apply' => 'dummy',
@@ -840,6 +894,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 56,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_5',
 
                 'service_name' => "Submission of Annual Report for Hazardous Waste.",
                 'who_should_apply' => 'dummy',
@@ -854,6 +909,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 57,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_ACCIDENT_SOLIDWASTE',
 
                 'service_name' => "Accident Report Due To Solid Waste",
                 'who_should_apply' => 'dummy',
@@ -868,6 +924,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 58,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_AUTHORISE_SOLID_WASTE',
 
                 'service_name' => "Application For Authorisation Under Solid Waste Management Rules For Processing/Recycling/Treatment And Disposal Of Solid Waste",
                 'who_should_apply' => 'dummy',
@@ -882,6 +939,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 59,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_8',
 
                 'service_name' => "Format Of Annual Report To Be Submitted By The Operator Of Facility To The Local Body.",
                 'who_should_apply' => 'dummy',
@@ -896,6 +954,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 60,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
 
                 'service_name' => "Application for renewal of authorisation under Solid Waste Management",
                 'who_should_apply' => 'dummy',
@@ -910,6 +969,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 61,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_PRODUCER_BRAND',
 
                 'service_name' => "Application For Registration As Producers Or Brand Owners Under Plastic Waste Management",
                 'who_should_apply' => 'dummy',
@@ -924,6 +984,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 62,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_11',
 
                 'service_name' => "Application For Registration of Units Engaged in Processing or Recycling of Plastic Waste.",
                 'who_should_apply' => 'dummy',
@@ -938,6 +999,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 63,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_12',
 
                 'service_name' => "Application For Registration For Manufacturers Of Plastic Raw Materials",
                 'who_should_apply' => 'dummy',
@@ -952,6 +1014,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 64,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_13',
 
                 'service_name' => "Submission Of Annual Report By Operator Of Plastic Waste Processing Or Recycling Facility To The Local Body",
                 'who_should_apply' => 'dummy',
@@ -966,6 +1029,7 @@ class DepartmentServiceSeeder extends Seeder
                 'id' => 65,
                 'department_id' => 11,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_14',
 
                 'service_name' => "Submission For Annual Report On Plastic Waste Management To Be Submitted By The Local Body.",
                 'who_should_apply' => 'dummy',
@@ -979,6 +1043,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 66,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_15',
                 'department_id' => 11,
                 'service_name' => "Application Form For Registration Of Batteries Dealers",
                 'who_should_apply' => 'dummy',
@@ -992,6 +1057,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 67,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_16',
                 'department_id' => 11,
                 'service_name' => "Application For Registration Of Importer Of New Lead Acid Batteries / Primary Lead Under Batteries Management & Handling Waste",
                 'who_should_apply' => 'dummy',
@@ -1005,6 +1071,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 68,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_17',
                 'department_id' => 11,
                 'service_name' => "Application For Obtaining Authorization Under Construction & Demolition Waste",
                 'who_should_apply' => 'dummy',
@@ -1020,6 +1087,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 69,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_18',
                 'department_id' => 11,
                 'service_name' => "Form For Filing Returns By Auctioneer Of Used Batteries Under Batteries (Management & Handling) Waste.",
                 'who_should_apply' => 'dummy',
@@ -1033,6 +1101,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 70,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_FORM_19',
                 'department_id' => 11,
                 'service_name' => "Application for Authorization (Hazardous and Other Wastes)",
                 'who_should_apply' => 'dummy',
@@ -1046,6 +1115,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 71,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_RETURN_SALE_BATTERY',
                 'department_id' => 11,
                 'service_name' => "Form For Filing Returns Of Sale Of New Batteries And Collection Of Old Batteries Under Batteries (Management & Handling) Rules",
                 'who_should_apply' => 'dummy',
@@ -1059,6 +1129,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 72,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_AUTHORIZATION_GENERATION_OR_STORAGE',
                 'department_id' => 11,
                 'service_name' => "Application For Obtaining Authorisation For Generation Or Storage Or Treatment Or Disposal Of E-Waste By Manufacturer Or Refurbisher Under e-Waste(Management) Rules",
                 'who_should_apply' => 'dummy',
@@ -1072,6 +1143,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 73,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_AUTHORIZATION_FACILITIES',
                 'department_id' => 11,
                 'service_name' => "Application For Authorisation Of Facilities Possessing Environmentally Sound Management Practice For Dismantling Or Recycling Of E-Waste",
                 'who_should_apply' => 'dummy',
@@ -1085,6 +1157,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 74,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_AUTHORIZATION_BIO_WASTE',
                 'department_id' => 11,
                 'service_name' => "Application for Authorization (Bio Medical Waste).",
                 'who_should_apply' => 'dummy',
@@ -1098,6 +1171,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 75,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_AUTHORIZATION_EWASTE',
                 'department_id' => 11,
                 'service_name' => "Application for Authorization (e-Waste Management)",
                 'who_should_apply' => 'dummy',
@@ -1111,6 +1185,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 76,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POLLUTION_APPROVAL_NOTIFICATION',
                 'department_id' => 11,
                 'service_name' => "Application for Approval & Notification of sites",
                 'who_should_apply' => 'dummy',
@@ -1128,6 +1203,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 77,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POWER_NEW_CONNECTION',
                 'department_id' => 12,
                 'service_name' => "Application form - New Connection (Low Tension Service)",
                 'who_should_apply' => 'dummy',
@@ -1141,6 +1217,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 78,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POWER_NEW_CONNECTION2',
                 'department_id' => 12,
                 'service_name' => "Application Form - New Connection (High Tension / Extra High-Tension Service)",
                 'who_should_apply' => 'dummy',
@@ -1154,6 +1231,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 79,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POWER_CHANGE_NAME',
                 'department_id' => 12,
                 'service_name' => "Application For Changing The Name of Registered Consumer",
                 'who_should_apply' => 'dummy',
@@ -1167,6 +1245,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 80,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POWER_OWNERSHIP_TRANSFER',
                 'department_id' => 12,
                 'service_name' => "Transfer of Ownership to Legal Heir",
                 'who_should_apply' => 'dummy',
@@ -1180,6 +1259,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 81,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POWER_CONVERSION_SERVICE',
                 'department_id' => 12,
                 'service_name' => "Conversion of Services / Change of Consumer Category / Shifting of Connection",
                 'who_should_apply' => 'dummy',
@@ -1193,6 +1273,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 82,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POWER_LOAD_ENC_RDC',
                 'department_id' => 12,
                 'service_name' => "Load Enhancement / Load Reduction",
                 'who_should_apply' => 'dummy',
@@ -1206,6 +1287,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 83,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POWER_CONNECTED_LOAD',
                 'department_id' => 12,
                 'service_name' => "Procedure for Determination of Connected Load",
                 'who_should_apply' => 'dummy',
@@ -1219,6 +1301,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 84,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POWER_METER_COMPLAINTS',
                 'department_id' => 12,
                 'service_name' => "Meter Related Complaints / Request for Testing of Meter",
                 'who_should_apply' => 'dummy',
@@ -1232,6 +1315,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 85,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'POWER_DISCONNECTION',
                 'department_id' => 12,
                 'service_name' => "Request for Permanent Disconnection & Termination of Agreement",
                 'who_should_apply' => 'dummy',
@@ -1248,6 +1332,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 86,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'PHE_WATER_CONNECTION',
                 'department_id' => 13,
                 'service_name' => "Application for New Water Connection (Domestic)",
                 'who_should_apply' => 'dummy',
@@ -1261,6 +1346,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 87,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
                 'department_id' => 13,
                 'service_name' => "Application for New Water Connection (Commercial)",
                 'who_should_apply' => 'dummy',
@@ -1274,6 +1360,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 88,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'PHE_WATER_TRANSFER',
                 'department_id' => 13,
                 'service_name' => "Application for Transfer Of House Water Connection",
                 'who_should_apply' => 'dummy',
@@ -1287,6 +1374,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 89,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'PHE_CHANGE_NAME',
                 'department_id' => 13,
                 'service_name' => "Application for Change of Ownership of Consumer",
                 'who_should_apply' => 'dummy',
@@ -1300,6 +1388,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 90,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'PHE_RECONNECTION',
                 'department_id' => 13,
                 'service_name' => "Application for Re-Connection of Temporary Disconnected Water Connection",
                 'who_should_apply' => 'dummy',
@@ -1313,6 +1402,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 91,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'PHE_DISCONNECTION',
                 'department_id' => 13,
                 'service_name' => "Application for Disconnection of Water Connection",
                 'who_should_apply' => 'dummy',
@@ -1330,6 +1420,7 @@ class DepartmentServiceSeeder extends Seeder
 
                 'id' => 92,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'PWD_ROAD_CUTTING',
                 'department_id' => 14,
                 'service_name' => "Issue of Road Cutting Permission on (Scheduled Roads Under PWD)",
                 'who_should_apply' => 'dummy',
@@ -1344,6 +1435,7 @@ class DepartmentServiceSeeder extends Seeder
 
                 'id' => 93,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'PWD_NOC',
                 'department_id' => 14,
                 'service_name' => "Issue of No Objection Certificate for Right of Way(Along scheduled Roads under PWD & PWD Land) [(Excluding NH)]",
                 'who_should_apply' => 'dummy',
@@ -1359,6 +1451,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 94,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
                 'department_id' => 15,
                 'service_name' => "GST Registration",
                 'who_should_apply' => 'dummy',
@@ -1372,6 +1465,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 95,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
                 'department_id' => 15,
                 'service_name' => "Registration of A Society",
                 'who_should_apply' => 'dummy',
@@ -1387,6 +1481,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 96,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
                 'department_id' => 16,
                 'service_name' => "Application for General (Retail) Licence Form 19",
                 'who_should_apply' => 'dummy',
@@ -1400,6 +1495,7 @@ class DepartmentServiceSeeder extends Seeder
             [
                 'id' => 97,
                 'operational_type' => OperationalType::PRE_PROCESSING,
+                'code' => 'TEST',
                 'department_id' => 17,
                 'service_name' => "Mining lease/Composite License/ Non-exclusive Reconnaissance Permit",
                 'who_should_apply' => 'dummy',

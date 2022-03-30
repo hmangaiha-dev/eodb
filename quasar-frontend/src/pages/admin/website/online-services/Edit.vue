@@ -41,6 +41,18 @@
         :rules="[(val) => !!val || 'Department is required']"
         :options="departments"
       />
+      <label class="zlabel">Application fee</label>
+
+      <q-input
+        type="number"
+        v-model="formData.fees"
+        outlined
+        label="Application fee"
+        @blur="delete localData.errors['fees']"
+        :error="localData.errors.hasOwnProperty('fees')"
+        :error-message="localData.errors['fees']?.toString()"
+        :rules="[(val) => !!val || 'Application is required']"
+      />
 
       <label class="zlabel">Who should apply</label>
       <q-editor
@@ -67,24 +79,22 @@
       />
 
       <br />
-      <q-input
-        v-model="formData.timeline"
-        outlined
-        label="Timeline"
-        @blur="delete localData.errors['timeline']"
-        :error="localData.errors.hasOwnProperty('timeline')"
-        :error-message="localData.errors['timeline']?.toString()"
+      <label class="zlabel">Timeline</label>
+      <q-editor
         :rules="[(val) => !!val || 'Timeline is required']"
+        v-model="formData.timeline"
+        :definitions="{
+          bold: { label: 'Bold', icon: null, tip: '' },
+        }"
       />
+      <label class="zlabel">Fees structure</label>
 
-      <q-input
-        v-model="formData.fees"
-        outlined
-        label="Fee"
-        @blur="delete localData.errors['fees']"
-        :error="localData.errors.hasOwnProperty('fees')"
-        :error-message="localData.errors['fees']?.toString()"
-        :rules="[(val) => !!val || 'Fee is required']"
+      <q-editor
+        :rules="[(val) => !!val || 'Fees is required']"
+        v-model="formData.fee_structure"
+        :definitions="{
+          bold: { label: 'Bold', icon: null, tip: '' },
+        }"
       />
 
       <q-separator class="q-my-md" />
@@ -124,7 +134,8 @@ export default {
       how_to_apply: "",
       document_to_submit: "",
       timeline: "",
-      fees: "",
+      fee_structure: "",
+      fees: null,
     });
     const operational_types = ref([
       "PRE-PROCESSING",
@@ -174,10 +185,11 @@ export default {
       api
         .get(`web/online-services/${id}`)
         .then((res) => {
-          // console.log('fetch id',res.data);
+          console.log('fetch id',res.data);
           const { data } = res.data;
           formData.service_name = data.service_name;
           formData.operational_type = data.operational_type;
+          formData.fees = data.fees;
           formData.department = departments.value.find(
             (d) => d.value === data.department_id
           );

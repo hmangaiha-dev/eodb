@@ -40,97 +40,14 @@ class PaytmController extends Controller
     protected Request $application;
 
 
-    public function initiateTransaction(Request $request)
+    public function makePayment(Request $request, Application $model)
     {
-        return $request->all();
-        // $orderId = $request->order_id;
-        // $order_detail = OrderDetail::where('order_id', $orderId)->first();
-
-        $callbackUrl = 'https://thenzawlgolfresort.com/api/response-handler';
-
-        $paytmParams = array();
-
-        $paytmParams["body"] = array(
-            "requestType" => "Payment",
-            "mid" => $this->mid,
-            "websiteName" => $this->websiteName,
-            "orderId" => $this->orderId,
-            "callbackUrl" => $this->callbackUrl,
-            "txnAmount" => array(
-                "value" => $request->amount,
-                "currency" => "INR",
-            ),
-            "userInfo" => array(
-                "custId" => $order_detail->id,
-                "mobile" => $order_detail->contact,
-                "email" => $order_detail->email,
-                "firstName" => $order_detail->name,
-            ),
-        );
-
-        /*
-      * Generate checksum by parameters we have in body
-      * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
-      */
-
-        $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"]), $this->merchantKey);
-        // $url = "https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=$this->mid&orderId=$orderId";
-
-        /* for Production */
-        $url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=$this->mid&orderId=$orderId";
-
-        $paytmParams["head"] = array(
-            "signature" => $checksum,
-            "requestTimestamp" => now()->timestamp,
-            "channelId" => $this->channel,
-        );
-
-        $response = Http::withHeaders([
-            "accept" => "application/json",
-            "content-type" => "application/json"
-        ])->post($url, $paytmParams);
-
-        if ($response->status() == 200) {
-            $result = json_decode($response->body(), true);
-            $head = $result['head'];
-            $body = $result['body'];
-            $resultInfo = $body['resultInfo'];
-
-            if ($resultInfo['resultStatus'] === 'S') {
-                return response()->json([
-                    'token' => $body['txnToken'],
-                    'orderId' => $orderId,
-                    'amount' => $request->amount,
-                    "checksum" => $checksum
-                ], 200);
-            };
-            dd($resultInfo);
-            return $resultInfo['resultMsg'];
-        } else {
-            dd($response->body());
-            throw new \Exception("Something went wrong");
-        }
-
-        $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
-
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-        $response = curl_exec($ch);
-        $res = json_decode($response);
-        return $res;
-    }
-
-    public function makePayment(Request $request)
-    {
-        // return $this->saveApplication($request);
-        
-
+        // return $request->amount;
+       
         $this->orderId = now()->timestamp;
-        // return $request->all();
+        $model->order()->create([
+            'order_id' => $this->orderId
+        ]);
         $orderId = $this->orderId;
         $callbackUrl = $this->callbackUrl;
         $amount = $request->amount;
@@ -148,9 +65,6 @@ class PaytmController extends Controller
                 'customer' => $customer,
             ]
         ]);
-
-        $this->saveApplication($request);
-
 
         $response = json_decode($response->getBody());
         return $response;
@@ -232,94 +146,7 @@ class PaytmController extends Controller
 
 
     }
-    public function saveApplication(Request $request)
-    {
+   
 
-        $this->validate($request, [
-            'application_code' => ['required'],
-            'department_id' => ['required'],
-        ]);
-
-        $appProfile = ApplicationProfile::query()
-            ->where('code', $request->get('application_code'))
-            ->where('published', true)
-            ->first();
-
-        $application = Application::query()->create([
-            'application_code' => $request->get('application_code'),
-            'regn_no' => NumberGenerator::fakeIdGenerator($request->get('application_code')),
-            'application_profile_id' => $appProfile->id,
-            'user_id' => Auth::id(),
-            'department_id' => $request->get('department_id'),
-            'current_state' => 'submitted',
-        ]);
-
-        $order = new Order();
-        $order->application_id = $application->id;
-        $order->order_id = $this->orderId;
-        $order->save();
-
-        $application->states()->create([
-            'name' => 'submitted',
-            'remark' => 'Application submitted at ' . now()->toDateString()
-        ]);
-        $application->office()->attach($appProfile->office_id);
-
-        if ($request->application_code == 'LAND_REVENUE_LSC' || $request->application_code == 'LAND_REVENUE_PATTA' || $request->application_code == 'ENV_FOREST_BAMBOO' || $request->application_code == 'C&E_POWER_SUBSIDY') {
-            if ($request->application_code == 'ENV_FOREST_BAMBOO') {
-                $arrs = (array) json_decode($request->bamboo_particulars, true);
-                $application->bamboos()->createMany($arrs);
-            } else if ($request->application_code == 'C&E_POWER_SUBSIDY') {
-                $arrs = (array) json_decode($request->machineries, true);
-                $application->powerSubsidyMachineries()->createMany($arrs);
-            } else {
-                $arrs =  (array)json_decode($request->lsc_details, true);
-                $application->lscDetails()->createMany($arrs);
-            }
-        }
-
-        DB::transaction(function ($cb) use ($appProfile, $request, $application) {
-            $keysArr = KeysUtil::getApplicationKeys($request->get('application_code'));
-            foreach ($keysArr as $key) {
-                $application->applicationValues()->create([
-                    'field_key' => $key,
-                    'field_value' => $request->get($key),
-                    'field_label' => KeysUtil::getApplicationLabel($key),
-                ]);
-            }
-            $flow = $appProfile->processFlows()
-                ->orderBy('step')
-                ->first();
-
-            $movement = ApplicationMovement::query()->create([
-                'application_id' => $application->id,
-                'staff_id' => $flow->staff_id,
-                'status' => 'dealing',
-                'step' => $flow->step,
-            ]);
-        });
-        //Attachment upload
-        foreach ($request->file() as $key => $file) {
-            $attachmentProfile = AttachmentUtils::getAttachment($key);
-            if (!blank($attachmentProfile)) {
-                $disk = $attachmentProfile['disk'];
-                $folder = $attachmentProfile['folder'];
-                $path = Storage::disk($disk)->put($folder, $file);
-                $application->attachments()->create([
-                    'original_name' => $file->getClientOriginalName(),
-                    'mime' => $file->getMimeType(),
-                    'label' => $attachmentProfile['label'],
-                    'size' => $file->getSize(),
-                    'path' => $path
-                ]);
-            }
-        }
-
-        // return view('transaction.success', ['status' => 'failure']);
-        // $views = view('bamboo.table', ["details" => $details, 'code' => $model->application_code, 'total' => $total])->render();
-
-        // return response()->json([
-        //     'message' => 'Application submitted successfully'
-        // ], 200);
-    }
+  
 }
