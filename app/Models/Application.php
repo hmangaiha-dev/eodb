@@ -142,5 +142,10 @@ class Application extends Model
     {
         return $this->hasOne(Order::class,'application_id','id');
     }
+
+    public function payment()
+    {
+        return $this->morphOne(Payment::class, 'owner');
+    }
 }
 

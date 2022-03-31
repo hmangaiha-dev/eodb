@@ -15,4 +15,12 @@ class Order extends Model
     {
         return $this->belongsTo(Application::class,'application_id','id');
     }
+
+
+    public function payment()
+    {
+        return $this->morphOne(Payment::class, 'owner');
+    }
+   
+    
 }

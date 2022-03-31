@@ -30,8 +30,8 @@ class OfficeController extends Controller
         // if (!$staff->tokenCan('office:read'))
         //     throw new UnauthorizedException('Unauthorized access');
         $per_page = $request->has('per_page') ? $request->get('per_page') : 15;
-        return response()->json(Office::query()->when(isset($office), function($q) use($office) {
-            return $q->where('id',$office->id);
+        return response()->json(Office::query()->when(isset($office), function ($q) use ($office) {
+            return $q->where('id', $office->id);
         })->paginate($per_page), 200);
     }
 
@@ -85,8 +85,8 @@ class OfficeController extends Controller
         // $bankDetail = $request->get('bank_detail');
         // $profile = $request->get('profile');
         $office->update($request->only($office->getFillable()));
-      
-        $bank_data = json_decode($request->bank_detail,true);
+
+        $bank_data = json_decode($request->bank_detail, true);
         $bank = Arr::only($bank_data, (new BankDetail())->getFillable());
         $office->bankDetail()->update($bank);
         // }
@@ -141,21 +141,40 @@ class OfficeController extends Controller
     {
         $staff = auth('sanctum')->user();
         $office = $staff->currentPost();
-        $applications = $staff?->myApplication()
+        $applications = $staff->myApplication()
+            ->where([['status', '=', 'dealing'], ['paid', '=', true]])
+            ->where('applications.archived', false)
             ->paginate();
         return response()->json($applications, 200);
     }
 
     public function archivedApplications(Request $request)
     {
-        $staff = auth('sanctum')->user();
+        $staff = auth()->user();
+        // return $staff?->myApplication()->get();
         $office = $staff->currentPost();
         //        $office = new Office();
-        $applications = $office?->applications()
+        $applications = $staff?->myApplication()
             ->where('archived', true)
             ->paginate();
         return response()->json($applications, 200);
     }
+    public function reopenApplication(Request $request,Application $model)
+    {
+         $model->update([
+            'archived' => false
+        ]);
+        $staff = auth()->user();
+        $office = $staff->currentPost();
+        $applications = $staff?->myApplication()
+            ->where('archived', true)
+            ->paginate();
+        return response()->json([
+            'message' => 'Application reopened'
+        ]);
+    }
+
+    
 
     public function officeUsers(Request $request, Office $office)
     {

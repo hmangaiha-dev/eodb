@@ -2,7 +2,10 @@
   <div class="my-layout">
     <q-layout view="hHh Lpr lff">
       <q-header elevated class="bg-white text-white" height-hint="98">
-        <q-toolbar :class="$q.screen.gt.sm && 'q-px-xl'" class="text-dark q-py-none">
+        <q-toolbar
+          :class="$q.screen.gt.sm && 'q-px-xl'"
+          class="text-dark q-py-none"
+        >
           <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
           <router-link to="/"
             ><img style="width: 80px" src="~assets/eodb-logo.png"
@@ -26,7 +29,6 @@
           >
             <ProfileMenu />
           </q-btn-dropdown>
-
         </q-toolbar>
       </q-header>
 
@@ -119,7 +121,7 @@
             </q-item-section>
             <q-item-section> Certificates </q-item-section>
           </q-item>
-           <q-item
+          <q-item
             active-class="active-item q-px-md"
             class="q-ml-md zitem"
             :to="{ name: 'investor:drafts' }"
@@ -144,6 +146,19 @@
             <q-item-section> {{ dept.name }} </q-item-section>
           </q-item>
         </q-expansion-item>
+
+        <q-item
+          exact
+          class="zitem"
+          active-class="active-item q-px-md"
+          :to="{ name: 'investor:transactiions' }"
+          clickable
+        >
+          <q-item-section avatar>
+            <q-icon color="blue" name="payments" />
+          </q-item-section>
+          <q-item-section> Transactions </q-item-section>
+        </q-item>
         <q-separator />
       </q-drawer>
 

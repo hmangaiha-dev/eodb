@@ -53,6 +53,13 @@ class InvestorController extends Controller
         }
     }
 
+
+    public function getPayments()
+    {
+        // return Auth::user()->payments()->get();
+        return Auth::user()->applications()->with('payment')->get()->pluck('payment');
+    }
+
     public function getApplications()
     {
         $user =  Auth::user();

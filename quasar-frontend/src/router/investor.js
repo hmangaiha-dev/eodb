@@ -112,6 +112,11 @@ export default {
       name: "investor:application-track",
       component: () => import("pages/investor/TrackApplication.vue"),
     },
+    {
+      path: "transactions",
+      name: "investor:transactiions",
+      component: () => import("pages/investor/Transaction.vue"),
+    },
 
     //COMMERCE AND INDUSTRIES
 

@@ -154,8 +154,9 @@ export default {
     }
     const reopen=(id)=>{
       console.info(id)
-      api.get(`applications/${id}/reopen`)
+      api.get(`office/application/${id}/reopen`)
         .then(res=>{
+          // return console.log('reopen',res.data);
           q.notify({type:'positive',message:res.data?.message})
 
           setTimeout(()=>{

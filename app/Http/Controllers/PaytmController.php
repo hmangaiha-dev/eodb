@@ -43,8 +43,25 @@ class PaytmController extends Controller
     public function makePayment(Request $request, Application $model)
     {
         // return $request->amount;
-       
+
         $this->orderId = now()->timestamp;
+        //Added
+        $order = $model->order()->create([
+            'order_id' => $this->orderId
+        ]);
+
+        $payment = new Payment();
+        $payment->callback_url = $this->callbackUrl;
+        $payment->order_id = $this->orderId;
+        $payment->txn_date = Carbon::now();
+        $payment->txn_id = '-';
+        // $payment->payment_mode = $result->body->paymentMode;
+        $payment->amount = $request->amount;
+        $payment->status = 'Unpaid';
+        $payment->owner()->associate($order->application);
+        $payment->save();
+        //Added
+
         $model->order()->create([
             'order_id' => $this->orderId
         ]);
@@ -74,6 +91,7 @@ class PaytmController extends Controller
     public function responseHandler(Request $request)
     {
 
+
         $paytmParams = array();
 
         /* body parameters */
@@ -85,7 +103,7 @@ class PaytmController extends Controller
             /* Enter your order id which needs to be check status for */
             // "orderId" => "1648106989", //correct
             "orderId" => $request->get('orderId'),
-            // "orderId" => "1642774999", //test
+            // "orderId" => "164277499", //test
         );
 
         /**
@@ -114,11 +132,10 @@ class PaytmController extends Controller
         // $response = json_decode($response->getBody());
         $result =  json_decode($response);
 
-        // return $result;
-
-        // $payment_status = 'success';
 
         if ($result->body->resultInfo->resultStatus == 'TXN_SUCCESS') {
+
+            $status = $result->body->resultInfo->resultStatus;
 
             $order = Order::query()->firstWhere('order_id', $request->get('orderId'));
 
@@ -126,19 +143,27 @@ class PaytmController extends Controller
                 'paid' => true
             ]);
 
-            $payment = new Payment();
-            // $payment->transaction_id = ;
-            $payment->order_id = $request->get('orderId');
-            $payment->currency = $request->currency;
-            $payment->status = $result->body->resultInfo->resultStatus;
-            $payment->amount = $result->body->txnAmount;
-            $payment->callback_url = $this->callbackUrl;
-            $payment->save();
+            $order->application->payment->update([
+                'txn_date' => $result->body->txnDate,
+                'txn_id' => $result->body->txnId,
+                'payment_mode' => $result->body->paymentMode,
+                'status' => $status,
+            ]);
+
+            // $order = Order::query()->findOrFail($request->get('orderId'));
+            // $payment = new Payment();
+            // $payment->callback_url = $this->callbackUrl;
+            // $payment->order_id = $request->get('orderId');
+            // $payment->txn_date = $result->body->txnDate;
+            // $payment->txn_id = $result->body->txnId;
+            // $payment->payment_mode = $result->body->paymentMode;
+            // $payment->amount = $result->body->txnAmount;
+            // $payment->status = $status;
+            // $payment->owner()->associate($order->application);
+            // $payment->save();
+            //  return $payment;
+
             return view('transaction.success', ['status' => 'success']);
-
-
-
-            // $this->submitApplication($this->application);
         } else
             return view('transaction.success', ['status' => 'failure']);
         // return redirect()->away('http://localhost:8080/investor/commerce-and-industries/allotment-of-industrial-plot?status=' . $payment_status);
@@ -146,7 +171,4 @@ class PaytmController extends Controller
 
 
     }
-   
-
-  
 }

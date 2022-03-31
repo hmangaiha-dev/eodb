@@ -1,8 +1,8 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-12 ztitle text-center">
-    APPLICATION FORM FOR OBTAINING N.O.C. FROM FIRE & EMERGENCY
-SERVICES DEPARTMENT, MIZORAM
+      APPLICATION FORM FOR OBTAINING N.O.C. FROM FIRE & EMERGENCY SERVICES
+      DEPARTMENT, MIZORAM
     </div>
     <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
@@ -31,7 +31,6 @@ import { useRouter } from "vue-router";
 import Form from "./Form.vue";
 import router from "src/router";
 
-
 export default {
   components: {
     Form,
@@ -47,9 +46,7 @@ export default {
 
     const submit = () => {
       // return console.log('my router',myRouter);
-      var formData = reactive({
-       
-      });
+      var formData = reactive({});
 
       formData = Object.assign(formData, applicantRef.value.formData);
 
@@ -64,14 +61,41 @@ export default {
       api
         .post("/applications/submit", formDatas)
         .then((res) => {
-          console.log("response value", res.data);
-          $q.notify({
-            message: "Application submitted successfully",
-            color: "green",
-          });
-          router.push({ name: "investor:ongoing" });
+          // return console.log('model fees',res.data);
+          let { fees, application } = res.data;
+          if (fees) {
+            //  return console.log('model amout fees',fees);
+            formDatas.append("amount", fees);
+
+            api
+              .post("/initiate-payment/" + application, {
+                amount: fees,
+              })
+              .then((res) => {
+                // return console.log('model amount',res.data);
+                let paymentURL = res.data;
+                window.open(paymentURL, "_self").focus();
+              })
+              .catch((err) => {
+                q.notify({
+                  type: "negative",
+                  message: err.response?.data?.message,
+                });
+              });
+          } else {
+            q.notify({
+              message: "Application submitted successfully",
+              color: "green",
+            });
+            router.push({ name: "investor:ongoing" });
+          }
         })
-        .catch((err) => console.log("error", err));
+        .catch((err) => {
+          q.notify({
+            type: "negative",
+            message: err.response?.data?.message,
+          });
+        });
     };
 
     return {

@@ -115,8 +115,8 @@ export default {
       api
         .post("/applications/submit", formDatas)
         .then((res) => {
+          // return console.log('model fees',res.data);
           let { fees, application } = res.data;
-          //  return console.log('model fees',fees);
           if (fees) {
             //  return console.log('model amout fees',fees);
             formDatas.append("amount", fees);
@@ -126,8 +126,8 @@ export default {
                 amount: fees,
               })
               .then((res) => {
+                // return console.log('model amount',res.data);
                 let paymentURL = res.data;
-                // return console.log('model amount',paymentURL);
                 window.open(paymentURL, "_self").focus();
               })
               .catch((err) => {

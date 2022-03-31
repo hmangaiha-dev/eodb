@@ -78,6 +78,7 @@ Route::group(['prefix' => 'office', 'middleware' => ['auth:sanctum', 'staff']], 
     Route::delete('{office}', [OfficeController::class, 'destroy']);
     Route::get('applications/ongoing', [OfficeController::class, 'onGoingApplications']);
     Route::get('applications/archived', [OfficeController::class, 'archivedApplications']);
+    Route::get('application/{model}/reopen', [OfficeController::class, 'reopenApplication']);
     Route::get('users/{office}', [OfficeController::class, 'officeUsers']);
 });
 Route::group(['prefix' => 'staff', 'middleware' => ['auth:sanctum', 'staff']], function () {

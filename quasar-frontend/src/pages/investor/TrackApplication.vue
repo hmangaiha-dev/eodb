@@ -1,7 +1,7 @@
 <template>
   <div class="row q-py-lg container justify-center q-col-gutter-lg">
     <div class="col-12 q-mt-lg">
-      <div class="service-offer q-mb-lg">Track Application</div>
+      <div class="ztitle q-mb-lg">Track Application</div>
       <q-separator />
     </div>
 
@@ -30,6 +30,10 @@
                 <tr>
                   <td class="text-left text-weight-bold">Status</td>
                   <td class="text-center">{{ localData?.data.name }}</td>
+                </tr>
+                <tr>
+                  <td class="text-left text-weight-bold">Remark</td>
+                  <td class="text-center">{{ localData?.data.remark }}</td>
                 </tr>
                 <tr>
                   <td class="text-left text-weight-bold">Submitted Application Form :</td>

@@ -9,20 +9,27 @@
 
     <br />
 
-    <div class="q-py-md">
-      <q-radio v-model="localData.state" val="submitted" label="Under Review" />
-      <q-radio v-model="localData.state" val="Approved" label="Approved" />
-      <q-radio v-model="localData.state" val="Reject" label="Reject" />
-      <q-radio v-model="localData.state" val="Pending" label="Pending" />
+    <q-form @submit.prevent="updateStatus" >
+      <div class="q-py-md">
+        <q-radio v-model="localData.states.name" val="submitted" label="Under Review" />
+        <q-radio v-model="localData.states.name" val="Approved" label="Approve" />
+        <q-radio v-model="localData.states.name" val="Rejected" label="Reject" />
+        <q-radio v-model="localData.states.name" val="Verified" label="Verified" />
+        <q-btn
+          class="q-ml-md"
+          outline
+          type="submit"
+          color="primary"
+          label="Update"
+          
+        />
+      </div>
+      <div class="q-mb-md">
+        <q-input :rules="[(val) => (val && val.length > 0) || 'Please type something']" v-model="localData.states.remark" outlined type="textarea" label="Remark" />
+      </div>
+    </q-form>
 
-      <q-btn
-        class="q-ml-md"
-        outline
-        color="primary"
-        label="Update"
-        @click="updateStatus"
-      />
-    </div>
+    
     <div
       style="padding: 36px; border: 1px solid #ccc"
       v-html="localData.template"
@@ -61,19 +68,21 @@ export default {
     const attachment = ref("");
     const localData = reactive({
       application: {},
+      remark: null,
       template: "test",
       attachment: [],
-      state: "submitted",
+      states: {},
     });
 
     const getPrint = (id) => {
       api
         .get(`applications/${id}/print`)
         .then((res) => {
-          const { template, application, attachment } = res.data;
+          const { template, application, attachment,states } = res.data;
           localData.template = template;
           localData.application = application;
           localData.attachment = attachment;
+          localData.states = states;
         })
         .catch((err) =>
           q.notify({ type: "negative", message: err.response?.message || "" })
@@ -81,12 +90,15 @@ export default {
     };
 
     const updateStatus = () => {
+      // return console.log('test');
       const id = route.params.id;
       api
         .put(`applications/${id}/states`, {
-          state: localData.state,
+          state: localData.states?.name,
+          remark: localData.states.remark
         })
         .then((res) => {
+          // return console.log('remart',res.data);
           q.notify({
             color: "primary",
             message: res.data.state || "State updated",

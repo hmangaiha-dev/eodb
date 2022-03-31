@@ -206,6 +206,8 @@ class ApplicationController extends Controller
         // return $request->state;
         $states = $model?->states()?->first();
         $states->name = $request->state;
+        $states->remark = $request->remark;
+        // $request->get('state') == 'Rejected' && $states->remark = $request->get('remark');
         $states->save();
         return response()->json([
             'state' => "State updated sucessfully"
@@ -293,6 +295,8 @@ class ApplicationController extends Controller
 
     public function getPrint(Request $request, Application $model)
     {
+        
+
         $appProfile = $model->profile()->first();
         //        $appProfile = new ApplicationProfile();
         $template = $appProfile?->printTemplate()->first()->content ?? '';
@@ -334,10 +338,16 @@ class ApplicationController extends Controller
 
         $result = $this->replaceTemplate($template, $vars);
 
+
+
+        // $states = $model?->states()?->first();
+        // return response()->json($states, 200);
+
         return response()->json([
             'template' => $result,
             'application' => $model,
             'attachment' => $model->attachments()->get(),
+            'states' => $model?->states()?->first()
         ], 200);
     }
 

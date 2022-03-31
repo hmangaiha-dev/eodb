@@ -49,6 +49,7 @@ Route::get('attach', function () {
 Route::group(['prefix' => 'investor/applications', 'middleware' => 'auth:sanctum'], function () {
     Route::get('', [InvestorController::class, 'getApplications']);
     Route::get('{application}', [InvestorController::class, 'detail'])->where('application', '[0-9]+');
+    Route::get('payments', [InvestorController::class, 'getPayments']);
 });
 
 
