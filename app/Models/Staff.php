@@ -105,5 +105,10 @@ class Staff extends Authenticatable
         return $this->belongsToMany(Application::class, 'application_movements', 'staff_id', 'application_id',);
     }
 
+    // public function payments()
+    // {
+    //     return $this->hasManyThrough(Payment::class,ApplicationMovement::class,'application_id','')
+    // }
+
 
 }

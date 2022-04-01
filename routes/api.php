@@ -72,6 +72,7 @@ Route::group(['prefix' => 'roles', 'middleware' => ['auth:sanctum', 'staff']], f
 
 Route::group(['prefix' => 'office', 'middleware' => ['auth:sanctum', 'staff']], function () {
     Route::get('', [OfficeController::class, 'index']);
+    Route::get('payments', [OfficeController::class, 'payments']);
     Route::post('', [OfficeController::class, 'store']);
     Route::get('{id}', [OfficeController::class, 'show']);
     Route::put('{office}', [OfficeController::class, 'update']);

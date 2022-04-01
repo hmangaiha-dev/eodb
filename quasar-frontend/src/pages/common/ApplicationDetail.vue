@@ -11,6 +11,7 @@
 
     <q-form @submit.prevent="updateStatus" >
       <div class="q-py-md">
+        <div class="zlabel">Please select below action as appropriate. This helps investor to track the application status</div>
         <q-radio v-model="localData.states.name" val="submitted" label="Under Review" />
         <q-radio v-model="localData.states.name" val="Approved" label="Approve" />
         <q-radio v-model="localData.states.name" val="Rejected" label="Reject" />

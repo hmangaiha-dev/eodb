@@ -58,13 +58,14 @@ class PaytmController extends Controller
         // $payment->payment_mode = $result->body->paymentMode;
         $payment->amount = $request->amount;
         $payment->status = 'Unpaid';
-        $payment->owner()->associate($order->application);
+        // $payment->owner()->associate($order->application);
+        $payment->owner()->associate($model);
         $payment->save();
         //Added
 
-        $model->order()->create([
-            'order_id' => $this->orderId
-        ]);
+        // $model->order()->create([
+        //     'order_id' => $this->orderId
+        // ]);
         $orderId = $this->orderId;
         $callbackUrl = $this->callbackUrl;
         $amount = $request->amount;

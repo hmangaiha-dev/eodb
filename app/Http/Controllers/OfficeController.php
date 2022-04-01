@@ -6,8 +6,11 @@ use App\Models\Application;
 use App\Models\BankDetail;
 use App\Models\DepartmentProfile;
 use App\Models\Office;
+use App\Models\Payment;
 use App\Models\Staff;
+use Auth;
 use File;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\UnauthorizedException;
@@ -33,6 +36,34 @@ class OfficeController extends Controller
         return response()->json(Office::query()->when(isset($office), function ($q) use ($office) {
             return $q->where('id', $office->id);
         })->paginate($per_page), 200);
+    }
+
+    public function payments()
+    {
+        $staff = auth('sanctum')->user();
+
+        $office = $staff->currentPost();
+
+        // return $office;
+
+        $payment = Payment::query();
+
+        $list = $payment->when(isset($office), function ($q) use ($staff, $office) {
+            // $application  = $staff->myApplication()->first()->pivot->application_id;
+            return $q->whereHasMorph('owner', Application::class, function (Builder $query) use ($office) {
+                return $query->whereRelation('department', 'dept_code', '=', $office->code);
+            })->get();
+        }, function ($q) {
+            return $q->get();
+        });
+        return $list;
+        // return $application;
+
+
+
+
+
+        // $application = $staff->myApplication()->first()->pivot->application_id;
     }
 
     public function show(Request $request, int $id)
@@ -159,9 +190,9 @@ class OfficeController extends Controller
             ->paginate();
         return response()->json($applications, 200);
     }
-    public function reopenApplication(Request $request,Application $model)
+    public function reopenApplication(Request $request, Application $model)
     {
-         $model->update([
+        $model->update([
             'archived' => false
         ]);
         $staff = auth()->user();
@@ -174,7 +205,7 @@ class OfficeController extends Controller
         ]);
     }
 
-    
+
 
     public function officeUsers(Request $request, Office $office)
     {

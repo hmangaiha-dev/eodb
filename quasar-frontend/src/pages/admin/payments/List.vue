@@ -1,7 +1,7 @@
 <template>
   <div class="row q-py-lg container start q-col-gutter-lg">
     <div class="col-12 q-mt-lg">
-      <div class="ztitle q-mb-lg">My Payments</div>
+      <div class="ztitle q-mb-lg">Payment    List</div>
       <q-separator />
     </div>
 
@@ -9,27 +9,29 @@
       <q-markup-table wrap-cells separator="vertical" flat bordered>
         <thead>
           <tr>
-            <th class="text-left">#</th>
-            <th class="text-left">Service applied</th>
-            <th class="text-right">Department</th>
-            <th class="text-right">Order ID</th>
-            <th class="text-right">Txn ID</th>
-            <th class="text-right">Mode</th>
-            <th class="text-right">Amount</th>
-            <th class="text-right">Status</th>
+            <th class="text-center">#</th>
+            <th class="text-center">Service applied</th>
+            <th class="text-center">Department</th>
+            <th class="text-center">Order ID</th>
+            <th class="text-center">Txn ID</th>
+            <th class="text-center">Txn ID</th>
+            <th class="text-center">Mode</th>
+            <th class="text-center">Amount</th>
+            <th class="text-center">Status</th>
           </tr>
         </thead>
         <tbody>
           <!-- {{ localData?.payments }} -->
           <tr v-for="(item,index) in localData?.payments" :key="item">
             
-            <td class="text-left"> {{ index+1 }} </td>
-            <td class="text-left"> {{ item?.services?.application_name }} </td>
-            <td class="text-right"> {{ item.services?.department?.dept_name }} </td>
-            <td class="text-right"> {{ item.order_id }} </td>
-            <td class="text-right"> {{ item.txn_id }} </td>
-            <td class="text-right"> {{ item.payment_mode }} </td>
-            <td class="text-right"> {{ item.amount }} </td>
+            <td class="text-center"> {{ index+1 }} </td>
+            <td class="text-center"> {{ item?.services?.application_name }} </td>
+            <td class="text-center"> {{ item.services?.department?.dept_name }} </td>
+            <td class="text-center"> {{ item.order_id }} </td>
+            <td class="text-center"> {{ item.txn_id }} </td>
+            <td class="text-center"> {{ item.txn_date }} </td>
+            <td class="text-center"> {{ item.payment_mode }} </td>
+            <td class="text-center"> {{ item.amount }} </td>
             <td :class="item?.status == 'TXN_SUCCESS' ? 'text-green' : 'text-red'"  class="text-right"> {{ item.status }} </td>
           </tr>
           
@@ -66,9 +68,9 @@ export default {
 
     onMounted(async() => {
       await api
-        .get('investor/applications/payments')
+        .get('office/payments')
         .then((res) => {
-           console.log("status", res.data);
+        //    return console.log("payments", res.data);
           localData.payments = res.data
           //  console.log("payment", localData.payments[0].order_id);
           // localData.data = res.data;

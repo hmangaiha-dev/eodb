@@ -39,7 +39,7 @@ export default {
   setup(props, context) {
     const applicantRef = ref(null);
     const store = useStore();
-    const $q = useQuasar();
+    const q = useQuasar();
     const router = useRouter();
     const draft = store.getters["applicantData/getCurrentDraft"];
     const currentUser = store.getters["auth/getCurrentUser"];
