@@ -81,6 +81,8 @@
 
       <div class="col-md-8 col-xs-12">
         <q-input
+          @keyup.enter="handleTracking"
+          v-model="localData.trackId"
           placeholder="Enter form number"
           class="long-input zsubtitle"
           standout="bg-white text-white"
@@ -89,10 +91,14 @@
         >
           <template v-slot:append>
             <!-- <q-avatar> -->
-            <q-btn class="btn-track" rounded label="Track" />
+            <q-btn :disable="!localData.trackId" @click="handleTracking" class="btn-track" rounded label="Track" />
+            <!-- {{ localData.data }} -->
             <!-- </q-avatar> -->
           </template>
         </q-input>
+       
+
+        <TrackCard @closeDialog="localData.dialog = false" v-if="localData.dialog" :data="localData.data" />
       </div>
     </div>
   </div>
@@ -224,19 +230,34 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref,reactive } from "vue";
 import { scroll } from "quasar";
+import TrackCard from './TrackCard.vue'
+import { useMeta, useQuasar } from "quasar";
+
+import { api } from "src/boot/axios";
 const { getScrollTarget, setVerticalScrollPosition } = scroll;
 
 export default defineComponent({
   name: "PageIndex",
+  components: {
+    TrackCard
+  },
 
   setup() {
+    const localData = reactive({
+      trackId : null,
+      dialog: false,
+      data : {}
+    })
+     const q = useQuasar();
+    // const trackId = ref(null);
     const navigate = (id) => {
       var el = document.getElementById(id);
       const target = getScrollTarget(el);
       const offset = el.offsetTop;
       const duration = 1000;
+
       setVerticalScrollPosition(target, offset, duration);
     };
     const depts = [
@@ -331,9 +352,31 @@ export default defineComponent({
       },
     ];
 
+    const handleTracking = () => {
+      api
+        .get(`applications/${localData.trackId}/states`)
+        .then((res) => {
+          localData.data = res.data;
+
+          // return console.log("status", localData.data);
+          localData.dialog = true;
+        })
+        .catch((err) => {
+          if (err?.response?.data?.errors)
+            localData.errors = err.response.data?.errors;
+          err?.response?.data?.message &&
+            q.notify({
+              type: "negative",
+              message: err.response?.data?.message,
+            });
+        });
+    };
+
     return {
       depts,
       navigate,
+      handleTracking,
+      localData,
     };
   },
 });

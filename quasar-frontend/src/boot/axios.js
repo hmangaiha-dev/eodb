@@ -11,7 +11,8 @@ import { LocalStorage, Notify, Quasar } from "quasar";
 const BASE_URL = "http://164.100.124.152/api";
 const LOCAL_BASE_URL = "http://localhost:8000/api";
 const api = axios.create({
-  baseURL: process.env.DEV ? LOCAL_BASE_URL : BASE_URL,
+  // baseURL: process.env.DEV ? LOCAL_BASE_URL : BASE_URL,
+  baseURL:  LOCAL_BASE_URL,
   // withCredentials: false,
   headers: {
     'Access-Control-Allow-Origin' : '*',

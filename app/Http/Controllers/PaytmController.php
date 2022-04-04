@@ -30,8 +30,7 @@ use Storage;
 class PaytmController extends Controller
 {
     private $orderId = '';
-    private $callbackUrl = 'http://127.0.0.1:8000/api/response-handler';
-
+    private $callbackUrl = 'api/response-handler';
     private $mid = "Mizora49434774766128";
     private $merchantKey = "Ljli6x1KDfxEZc6q";
     private $websiteName = "DEFAULT";
@@ -51,24 +50,18 @@ class PaytmController extends Controller
         ]);
 
         $payment = new Payment();
-        $payment->callback_url = $this->callbackUrl;
+        $payment->callback_url = url($this->callbackUrl);
         $payment->order_id = $this->orderId;
         $payment->txn_date = Carbon::now();
         $payment->txn_id = '-';
         // $payment->payment_mode = $result->body->paymentMode;
         $payment->amount = $request->amount;
-        $payment->status = 'Unpaid';
+        $payment->status = 'Pending';
         // $payment->owner()->associate($order->application);
         $payment->owner()->associate($model);
         $payment->save();
         //Added
 
-        // $model->order()->create([
-        //     'order_id' => $this->orderId
-        // ]);
-        $orderId = $this->orderId;
-        $callbackUrl = $this->callbackUrl;
-        $amount = $request->amount;
         $departmentId = 2;
         $customer = 'EODB(staging)';
 
@@ -76,9 +69,9 @@ class PaytmController extends Controller
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', 'https://paymentgw.mizoram.gov.in/api/initiate-payment', [
             'form_params' => [
-                'callback_url' => $callbackUrl,
-                'order_id' => $orderId,
-                'amount' => $amount,
+                'callback_url' => url($this->callbackUrl),
+                'order_id' => $this->orderId,
+                'amount' => $request->amount,
                 'department_id' => $departmentId,
                 'customer' => $customer,
             ]
@@ -86,41 +79,26 @@ class PaytmController extends Controller
 
         $response = json_decode($response->getBody());
         return $response;
-        // return redirect($response);
     }
 
     public function responseHandler(Request $request)
     {
-
-
         $paytmParams = array();
 
         /* body parameters */
         $paytmParams["body"] = array(
 
-            /* Find your MID in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys */
-            "mid" => "Mizora49434774766128",
-
-            /* Enter your order id which needs to be check status for */
+            "mid" => $this->mid,
             // "orderId" => "1648106989", //correct
             "orderId" => $request->get('orderId'),
             // "orderId" => "164277499", //test
         );
+        $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $this->merchantKey);
 
-        /**
-         * Generate checksum by parameters we have in body
-         * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
-         */
-        $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), "Ljli6x1KDfxEZc6q");
-
-        /* head parameters */
         $paytmParams["head"] = array(
-
-            /* put generated checksum value here */
             "signature"    => $checksum
         );
 
-        /* prepare JSON string for request */
         $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
         $url = "https://securegw.paytm.in/v3/order/status";
 
@@ -130,9 +108,7 @@ class PaytmController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
         $response = curl_exec($ch);
-        // $response = json_decode($response->getBody());
         $result =  json_decode($response);
-
 
         if ($result->body->resultInfo->resultStatus == 'TXN_SUCCESS') {
 
