@@ -105,7 +105,7 @@ class ApplicationController extends Controller
             $application = Application::find($draft_id);
             $application->delete();
             $application->draft()->delete();
-        }
+        } 
 
         $appProfile = ApplicationProfile::query()
             ->where('code', $request->get('application_code'))
@@ -197,8 +197,8 @@ class ApplicationController extends Controller
 
     public function getStates(Request $request, Application $model)
     {
-        // return 'test';
-        $states = $model?->states()?->first();
+        $states = $model?->doesntHave('draft')->first()->states->first();
+        // $states = $model?->states()->first();
         return response()->json($states, 200);
     }
     public function updateState(Request $request, Application $model)

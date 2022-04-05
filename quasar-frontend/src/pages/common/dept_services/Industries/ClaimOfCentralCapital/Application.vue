@@ -5,22 +5,27 @@
     <p class="col-12 q-my-none q-py-none text-center">
       APPLICATION FORM FOR CLAIMING OF CENTRAL CAPITAL INVESTMENT SUBSIDY
     </p>
-   
-    <p class="col-12  q-py-none text-center">SCHEME UNDER NEIIPP, 2007</p>
+
+    <p class="col-12 q-py-none text-center">SCHEME UNDER NEIIPP, 2007</p>
     <p class="col-12 text-caption q-py-none text-center">(See Rule 6A)</p>
-    <p class="col-12  text-center">
-     PART-I: COMMON FOR BOTH MANUFACTURING AS WELL AS SERVICE SECTORS
+    <p class="col-12 text-center">
+      PART-I: COMMON FOR BOTH MANUFACTURING AS WELL AS SERVICE SECTORS
     </p>
     <q-form @submit.prevent="submit">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />
         </div>
-
       </div>
 
       <div class="text-center q-mt-md col-12">
-        <q-btn type="submit" color="green-5" label="Submit" />
+        <q-btn
+          v-if="!route.query.draft_id"
+          @click="handleDraft"
+          color="blue"
+          label="Draft"
+        />
+        <q-btn type="submit" color="green-5" class="q-mx-md" label="Submit" />
         <q-btn class="q-mx-md" color="red-4" label="Reset" />
       </div>
     </q-form>
@@ -31,6 +36,7 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { onMounted, ref } from "vue";
 import { useQuasar } from "quasar";
+import { useRoute } from "vue-router";
 // import { useQuasar } from "quasar";
 
 import { api } from "src/boot/axios";
@@ -48,6 +54,8 @@ export default {
   },
   setup(props, context) {
     const store = useStore();
+    const route = useRoute();
+
     const q = useQuasar();
 
     const router = useRouter();
@@ -55,19 +63,21 @@ export default {
 
     const submit = () => {
       // return console.log();
-      var formData = reactive({});
-
+      let formData = reactive({});
 
       formData = Object.assign(formData, applicantRef.value.formData);
 
-      var formDatas = new FormData();
+      let formDatas = new FormData();
+
+      if (route.query.draft_id)
+        formDatas.append("draft_id", route.query.draft_id);
 
       for (let data in formData) {
         formDatas.append(`${data}`, formData[data]);
       }
       // return console.log('formdatas',formData);
 
-     api
+      api
         .post("/applications/submit", formDatas)
         .then((res) => {
           let { fees, application } = res.data;
@@ -105,10 +115,56 @@ export default {
         });
     };
 
-    onMounted(() => {});
+    const handleDraft = () => {
+      let formDatas = new FormData();
+
+      let formData = reactive({});
+
+      formData = Object.assign(formData, applicantRef.value.formData);
+
+      formDatas.append("draft", "draft");
+
+      for (let data in formData) {
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+      api
+        .post("/applications/submit", formDatas)
+        .then((res) => {
+          // return console.log("response value", res.data);
+          q.notify({
+            message: "Application submitted successfully",
+            color: "green",
+          });
+          router.push({ name: "investor:drafts" });
+        })
+        .catch((err) => console.log("error", err));
+    };
+
+    onMounted(() => {
+      if (route.query.draft_id) {
+        let id = route.query.draft_id;
+        api
+          .get("investor/applications/" + id)
+          .then((res) => {
+            let { values } = res.data;
+            applicantRef.value.formData = Object.assign(
+              applicantRef.value.formData,
+              values
+            );
+            
+          })
+          .catch((err) => {
+            router.push("invalid");
+            console.log(err);
+          });
+      }
+    });
     return {
       applicantRef,
+      handleDraft,
       q,
+      route,
       submit,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),

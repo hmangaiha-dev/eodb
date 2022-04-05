@@ -25,7 +25,7 @@ import { useQuasar } from "quasar";
 // import { useQuasar } from "quasar";
 
 import { api } from "src/boot/axios";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 import Form from "./Form.vue";
 // import Part2 from "./Part2.vue";
@@ -40,6 +40,7 @@ export default {
   setup(props, context) {
     const store = useStore();
     const q = useQuasar();
+    const route = useRoute();
 
     const router = useRouter();
     const applicantRef = ref(null);
@@ -58,7 +59,7 @@ export default {
       }
       // return console.log('formdatas',formData);
 
-     api
+      api
         .post("/applications/submit", formDatas)
         .then((res) => {
           let { fees, application } = res.data;
@@ -96,11 +97,60 @@ export default {
         });
     };
 
-    onMounted(() => {});
+    const handleDraft = () => {
+      let formData = reactive({});
+
+      // return console.log(q);
+
+      formData = Object.assign(formData, applicantRef.value.formData);
+
+      let formDatas = new FormData();
+
+      for (let data in formData) {
+        formDatas.append(`${data}`, formData[data]);
+      }
+
+      if (route.query.draft_id)
+        formDatas.append("draft_id", route.query.draft_id);
+
+      api
+        .post("/applications/submit", formDatas)
+        .then((res) => {
+          // return console.log("response value", res.data);
+          $q.notify({
+            message: "Application submitted successfully",
+            color: "green",
+          });
+          router.push({ name: "investor:drafts" });
+        })
+        .catch((err) => console.log("error", err));
+    };
+
+    onMounted(() => {
+      if (route.query.draft_id) {
+        let id = route.query.draft_id;
+        api
+          .get("investor/applications/" + id)
+          .then((res) => {
+            let { values } = res.data;
+            applicantRef.value.formData = Object.assign(
+              applicantRef .value.formData,
+              values
+            );
+          })
+          .catch((err) => {
+            router.push("invalid");
+            console.log(err);
+          });
+      }
+    });
+
     return {
       applicantRef,
       q,
       submit,
+      handleDraft,
+      route,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };

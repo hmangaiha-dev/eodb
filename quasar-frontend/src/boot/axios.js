@@ -16,15 +16,32 @@ const api = axios.create({
   // withCredentials: false,
   headers: {
     'Access-Control-Allow-Origin' : '*',
-    'Access-Control-Allow-Credentials':true,
+    // 'Access-Control-Allow-Credentials':true,
     'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     // 'Content-Type': 'application/json',
     // 'Content-Type': 'application/x-www-form-urlencoded'
     
     }
 });
+const api2 = axios.create({
+  // baseURL: process.env.DEV ? LOCAL_BASE_URL : BASE_URL,
+  baseURL:  'https://pwdroadcutting.mizoram.gov.in',
+  // withCredentials: false,
+  headers: {
+    'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Credentials':true,
+    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    'Content-Type': 'application/json',
+    'Content-Type': 'application/x-www-form-urlencoded'
+    
+    }
+});
+
+
+
 
 api.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+api2.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 // api.defaults.withCredentials =
 
@@ -81,4 +98,4 @@ export default boot(({ app, router, store }) => {
   //       so you can easily perform requests against your app's API
 });
 
-export { api };
+export { api,api2 };

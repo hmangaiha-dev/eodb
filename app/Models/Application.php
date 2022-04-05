@@ -17,7 +17,7 @@ class Application extends Model
     const ONGOING_STATUSES = ['submitted'];
 
     protected $fillable = ['application_code', 'regn_no', 'application_profile_id', 'user_id', 'department_id', 'paid', 'current_state', 'archived', 'remark','profile'];
-    protected $appends = ['application_name', 'current_step', 'last_step', 'department','username'];
+    protected $appends = ['application_name', 'current_step', 'last_step', 'department','username','draft'];
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
@@ -34,6 +34,10 @@ class Application extends Model
     public function values()
     {
         return $this->applicationValues()->pluck('field_value','field_key');
+    }
+    public function getDraftAttribute()
+    {
+        return $this->draft()?->first()?->application_id;
     }
     public function lscDetails(): HasMany
     {
@@ -52,6 +56,7 @@ class Application extends Model
     {
         return $this->morphMany(State::class, 'owner');
     }
+    
 
     public function profile(): BelongsTo
     {

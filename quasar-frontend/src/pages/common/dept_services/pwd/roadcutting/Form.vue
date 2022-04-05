@@ -7,7 +7,7 @@
       >
       <q-input
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.pwd_road_cutting_one"
+        v-model="formData.name"
         dense
         outlined
       />
@@ -17,13 +17,13 @@
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            a) Landline No <span class="asterisk">*</span></label
+            a) Mobile No <span class="asterisk">*</span></label
           >
           <q-input
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.pwd_road_cutting_two_a"
+            v-model="formData.phone"
             dense
             outlined
           />
@@ -31,28 +31,9 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            b) Mobile No <span class="asterisk">*</span></label
+            b) Email identity <span class="asterisk">*</span></label
           >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.pwd_road_cutting_two_b"
-            dense
-            outlined
-          />
-        </div>
-
-        <div class="col-md-6 col-xs-10">
-          <label class="zlabel" for="gender">
-            c) Email identity <span class="asterisk">*</span></label
-          >
-          <q-input
-          
-            v-model="formData.pwd_road_cutting_two_c"
-            dense
-            outlined
-          />
+          <q-input v-model="formData.email" dense outlined />
         </div>
       </div>
     </div>
@@ -64,25 +45,20 @@
           <label class="zlabel" for="gender">
             a) House No if any <span class="asterisk">*</span></label
           >
-          <q-input
-            
-            v-model="formData.pwd_road_cutting_three_a"
-            dense
-            outlined
-          />
+          <q-input v-model="formData.rhouseno" dense outlined />
         </div>
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            b) Locality/Veng <span class="asterisk">*</span></label
+            b) Locality/Street/Veng <span class="asterisk">*</span></label
           >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.pwd_road_cutting_three_b"
-            dense
+          <q-select
             outlined
+            emit-value
+            option-label="name"
+            option-value="name"
+            v-model="formData.rlocalcouncil_name"
+            :options="pwdData.councils"
           />
         </div>
 
@@ -94,7 +70,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.pwd_road_cutting_three_c"
+            v-model="formData.rcity"
             dense
             outlined
           />
@@ -104,22 +80,23 @@
           <label class="zlabel" for="gender">
             d) District <span class="asterisk">*</span></label
           >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.pwd_road_cutting_three_d"
-            dense
+          <q-select
+            emit-value
             outlined
+            option-label="name"
+            option-value="name"
+            v-model="formData.rdistrict"
+            :options="pwdData.districts"
           />
         </div>
       </div>
     </div>
 
-
-
-     <div class="col-12">
-      <label for="" class="zlabel">4. Location of proposed land with respect to the road (specify landmark if any):</label>
+    <div class="col-12">
+      <label for="" class="zlabel"
+        >4. Location of proposed land with respect to the road (specify landmark
+        if any):</label
+      >
       <div class="row justify q-col-gutter-md q-ml-md">
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
@@ -129,7 +106,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.pwd_road_cutting_four_a"
+            v-model="formData.houseno"
             dense
             outlined
           />
@@ -137,15 +114,15 @@
 
         <div class="col-md-6 col-xs-10">
           <label class="zlabel" for="gender">
-            b) Locality/Veng <span class="asterisk">*</span></label
+            b) Locality/Street/Veng <span class="asterisk">*</span></label
           >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.pwd_road_cutting_four_b"
-            dense
+          <q-select
+            emit-value
             outlined
+            option-label="name"
+            option-value="name"
+            v-model="formData.localcouncil_name"
+            :options="pwdData.councils"
           />
         </div>
 
@@ -157,7 +134,7 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
-            v-model="formData.pwd_road_cutting_four_c"
+            v-model="formData.city"
             dense
             outlined
           />
@@ -167,49 +144,65 @@
           <label class="zlabel" for="gender">
             d) District <span class="asterisk">*</span></label
           >
-          <q-input
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please type something',
-            ]"
-            v-model="formData.pwd_road_cutting_four_d"
-            dense
+          <q-select
+            emit-value
             outlined
+            option-label="name"
+            option-value="name"
+            v-model="formData.district"
+            :options="pwdData.districts"
           />
         </div>
       </div>
     </div>
 
-  
+    <div class="col-12">
+      <label class="zlabel" for="gender">
+        5. Land pass no (copy of pass shall be produced at the time of spot
+        verification) <span class="asterisk">*</span></label
+      >
+    </div>
 
-  
-
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-10 zlabel">
       <label class="zlabel" for="gender"
-        > 5. Land pass no (copy of pass shall be produced at the time of spot verification)
+        >6. Purpose of cutting/Kawng laih duh chhan:
         <span class="asterisk">*</span></label
       >
-      <q-input
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.pwd_road_cutting_five"
-        dense
-        outlined
-      />
+      <br />
+      <div style="display: grid">
+        <q-radio
+          v-model="formData.water_id"
+          val="0"
+          label="Tui Connection Thar (New)"
+        />
+        <q-radio
+          v-model="formData.water_id"
+          val="1"
+          label="Tui Connection Thar (Old)"
+        />
+        <q-radio v-model="formData.water_id" val="2" label="Others" />
+      </div>
     </div>
-
-    <div class="col-md-6 col-xs-10">
+    <div class="col-md-6 col-xs-10 zlabel">
       <label class="zlabel" for="gender"
-        >6. Purpose of land applied for: <span class="asterisk">*</span></label
+        >7. Type of Road/Pavement: <span class="asterisk">*</span></label
       >
-      <q-input
-        type="textarea"
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        v-model="formData.pwd_road_cutting_six"
-        dense
-        outlined
-      />
+      <br />
+      <div style="display: grid">
+        <q-radio
+          v-model="formData.road_type"
+          val="0"
+          label="Flexible Pavement (Alkatra luan)"
+        />
+        <q-radio
+          v-model="formData.road_type"
+          val="1"
+          label="Rigid Pavement (Concrete-a siam)"
+        />
+        <q-radio v-model="formData.road_type" val="2" label="Others" />
+      </div>
     </div>
 
-   
     <div class="col-xs-12" />
   </div>
 </template>
@@ -217,10 +210,10 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { onMounted,watch } from "vue";
+import { onMounted, watch } from "vue";
 import { date } from "quasar";
 import { ref } from "vue";
-
+import { api2, api } from "src/boot/axios";
 
 export default {
   setup(props, context) {
@@ -229,30 +222,32 @@ export default {
     const currentUser = store.getters["auth/getCurrentUser"];
 
     const formData = reactive({
-      application_code: "PWD_ROAD_CUTTING",
-      department_id: 14,
+      user_id: 0,
+      name: "",
+      email: "",
+      phone: 8258865517,
+      rhouseno: "",
+      rlocalcouncil_name: "",
+      rcity: "",
+      rdistrict: "",
 
-      pwd_road_cutting_one: "",
-      pwd_road_cutting_two: "",
-      pwd_road_cutting_two_a: "",
-      pwd_road_cutting_two_b: "",
-      pwd_road_cutting_two_c: "",
-      pwd_road_cutting_three: "",
-      pwd_road_cutting_three_a: "",
-      pwd_road_cutting_three_b: "",
-      pwd_road_cutting_three_c: "",
-      pwd_road_cutting_three_d: "",
-      pwd_road_cutting_four: "",
-      pwd_road_cutting_four_a: "",
-      pwd_road_cutting_four_b: "",
-      pwd_road_cutting_four_c: "",
-      pwd_road_cutting_four_d: "",
-      pwd_road_cutting_five: "",
-      pwd_road_cutting_six: "",
-      
+      houseno: "",
+      localcouncil_name: "",
+      city: "",
+      district: "",
+
+      water_id: "",
+      road_type: "",
+
+      division_id: "",
     });
 
- watch(store.state.globalData.common, () => {
+    const pwdData = reactive({
+      councils: [],
+      districts: [],
+    });
+
+    watch(store.state.globalData.common, () => {
       getA();
     });
 
@@ -270,19 +265,24 @@ export default {
         tin_no,
       } = store.state.globalData.common.partA;
 
-      formData.pwd_road_cutting_one = applicant_name  ;
-      formData.pwd_road_cutting_two_b = mobile_no ;
-      formData.pwd_road_cutting_two_c = email ;
+      formData.pwd_road_cutting_one = applicant_name;
+      formData.pwd_road_cutting_two_b = mobile_no;
+      formData.pwd_road_cutting_two_c = email;
       formData.pwd_road_cutting_three_c = city_town;
-
-      
-
     };
 
-    onMounted(() => {});
+    onMounted(() => {
+      // let url = 'http://10.180.243.14:8000/api/auth/localcouncil';
+      api.get("pwd").then((res) => {
+        let { councils, districts } = res.data;
+        pwdData.councils = councils;
+        pwdData.districts = districts;
+        return console.log("council", pwdData);
+      });
+    });
     return {
-     
       formData,
+      pwdData,
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
   },

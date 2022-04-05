@@ -6,6 +6,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\InvestorProfileController;
 use App\Http\Controllers\PaytmController;
+use App\Http\Controllers\PWDController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Models\Application;
 use Illuminate\Http\Request;
@@ -66,6 +67,14 @@ Route::group(['prefix' => 'investor/common-applications', 'middleware' => 'auth:
     Route::post('store', [CommonApplicationController::class, 'store']);
     // Route::get('{application}', [InvestorController::class, 'detail'])->where('application', '[0-9]+');
 });
+Route::group(['prefix' => 'pwd', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('', [PWDController::class, 'getLocalCouncil']);
+    Route::post('store', [PWDController::class, 'store']);
+    // Route::get('{application}', [InvestorController::class, 'detail'])->where('application', '[0-9]+');
+});
+
+
+
 
 
 

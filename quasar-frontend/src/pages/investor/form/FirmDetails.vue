@@ -1,10 +1,8 @@
 <template>
   <div class="zcard row items-center q-col-gutter-md">
     <div class="col-xs-12 text-h6">4.Firm details</div>
-    attach {{ attachment }}
 
     <div class="row q-col-gutter-md items-center col-12 q-ml-sm">
-      
       <q-dialog v-model="dialog">
         <q-card class="col-12">
           <q-card-section>
@@ -362,7 +360,6 @@
           label="view"
           @click="showAttachment(formData.cst_cert)"
         />
-
       </div>
       <!-- <div class="col-xs-12 col-md-6"> -->
       <!-- </div> -->
@@ -373,7 +370,7 @@
           <span class="asterisk">*</span>
         </label>
         <q-uploader
-         @removed="formData.mou_deed = null"
+          @removed="formData.mou_deed = null"
           accept=".pdf"
           flat
           @added="
@@ -453,7 +450,6 @@
           label="view"
           @click="showAttachment(formData.company_reg_cert)"
         />
-
       </div>
       <div class="col-xs-12 col-md-6">
         <label class="zlabel" for="gender">
@@ -461,7 +457,7 @@
           <span class="asterisk">*</span>
         </label>
         <q-uploader
-         @removed="formData.udyog_memorandum = null"
+          @removed="formData.udyog_memorandum = null"
           accept=".pdf"
           flat
           @added="

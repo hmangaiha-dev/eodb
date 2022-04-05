@@ -1399,6 +1399,7 @@ export default {
 
     const formData = reactive({
       application_code: "C&E_FORM_3",
+      route: "industries:central-captial",
       department_id: 1,
       c_n_e_1A: "",
       c_n_e_1B1: "",

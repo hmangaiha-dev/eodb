@@ -22,7 +22,7 @@ import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { date } from "quasar";
 import { ref } from "vue";
-import { api } from "src/boot/axios";
+import { api,api2 } from "src/boot/axios";
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 
@@ -43,7 +43,7 @@ export default {
 
     const submit = () => {
       // return console.log('my router',myRouter);
-      var formData = reactive({
+      let formData = reactive({
        
       });
 
@@ -51,15 +51,16 @@ export default {
 
       // return console.log('formData',formData);
 
-      var formDatas = new FormData();
+      let formDatas = new FormData();
 
       for (let data in formData) {
         formDatas.append(`${data}`, formData[data]);
       }
 
       api
-        .post("/applications/submit", formDatas)
+        .post("pwd/store", formDatas)
         .then((res) => {
+          return console.log('store all',res.data);
           $q.notify({
             message: "Application submitted successfully",
             color: "green",

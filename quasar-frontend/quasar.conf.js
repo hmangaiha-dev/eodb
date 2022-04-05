@@ -62,6 +62,7 @@ module.exports = configure(function (ctx) {
     devServer: {
       https: false,
       port: 8080,
+      // allowedHosts: ['10.180.243.14'],
       open: true, // opens browser window automatically
       proxy: {
         // proxy all requests starting with /api to jsonplaceholder

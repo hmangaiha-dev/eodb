@@ -231,6 +231,7 @@ export default {
     const formData = reactive({
       application_code: "C&E_COST_PROJECT",
       department_id: 1,
+      route: 'industries:cost-project',
       rows: 2,
       constitution_types: [
         "Proprietorship",
