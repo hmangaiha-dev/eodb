@@ -91,14 +91,23 @@
         >
           <template v-slot:append>
             <!-- <q-avatar> -->
-            <q-btn :disable="!localData.trackId" @click="handleTracking" class="btn-track" rounded label="Track" />
+            <q-btn
+              :disable="!localData.trackId"
+              @click="handleTracking"
+              class="btn-track"
+              rounded
+              label="Track"
+            />
             <!-- {{ localData.data }} -->
             <!-- </q-avatar> -->
           </template>
         </q-input>
-       
 
-        <TrackCard @closeDialog="localData.dialog = false" v-if="localData.dialog" :data="localData.data" />
+        <TrackCard
+          @closeDialog="localData.dialog = false"
+          v-if="localData.dialog"
+          :data="localData.data"
+        />
       </div>
     </div>
   </div>
@@ -230,9 +239,9 @@
 </template>
 
 <script>
-import { defineComponent, ref,reactive } from "vue";
+import { defineComponent, ref, reactive } from "vue";
 import { scroll } from "quasar";
-import TrackCard from './TrackCard.vue'
+import TrackCard from "./TrackCard.vue";
 import { useMeta, useQuasar } from "quasar";
 
 import { api } from "src/boot/axios";
@@ -241,16 +250,16 @@ const { getScrollTarget, setVerticalScrollPosition } = scroll;
 export default defineComponent({
   name: "PageIndex",
   components: {
-    TrackCard
+    TrackCard,
   },
 
   setup() {
     const localData = reactive({
-      trackId : null,
+      trackId: null,
       dialog: false,
-      data : {}
-    })
-     const q = useQuasar();
+      data: {},
+    });
+    const q = useQuasar();
     // const trackId = ref(null);
     const navigate = (id) => {
       var el = document.getElementById(id);
@@ -357,17 +366,16 @@ export default defineComponent({
         .get(`applications/${localData.trackId}/states`)
         .then((res) => {
           localData.data = res.data;
-
           // return console.log("status", localData.data);
           localData.dialog = true;
         })
         .catch((err) => {
-          if (err?.response?.data?.errors)
-            localData.errors = err.response.data?.errors;
+          // if (err?.response?.data?.errors)
+          //   localData.errors = err.response.data?.errors;
           err?.response?.data?.message &&
             q.notify({
               type: "negative",
-              message: err.response?.data?.message,
+              message: "Application not found",
             });
         });
     };

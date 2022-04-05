@@ -60,7 +60,7 @@
           color="primary"
           v-if="isAuthenticated"
           outline
-          class="q-pa-xs"
+          class="q-pa-xs q-mx-sm"
           icon="account_circle"
           rounded
         >

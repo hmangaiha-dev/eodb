@@ -70,7 +70,7 @@ export default {
         router.push({
           name: item.route,
           query: {
-            draft: item.application_id
+            draft_id: item.application_id
           }
          
         });

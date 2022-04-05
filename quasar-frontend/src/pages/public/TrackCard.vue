@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="dialog">
+  <q-dialog persistent v-model="dialog">
     <div style="max-width: 900px" class="row">
       <q-card class="col-12 full-width">
         <q-card-section>
