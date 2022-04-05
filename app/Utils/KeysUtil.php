@@ -881,6 +881,30 @@ class KeysUtil
             'phe_water_connection_fourteen_b',
             // 'phe_water_connection_fifteen',
         ],
+
+// phe water connection commercial
+'PHE_NEW_CONNECTION_COMMERCIAL'=>[
+    'phe_water_connection_commercial_one',
+    'phe_water_connection_commercial_two',
+    'phe_water_connection_commercial_three',
+    'phe_water_connection_commercial_four',
+    'phe_water_connection_commercial_four_a',
+    'phe_water_connection_commercial_four_b',
+    'phe_water_connection_commercial_four_c',
+    'phe_water_connection_commercial_four_d',
+    'phe_water_connection_commercial_four_e',
+    'phe_water_connection_commercial_four_f',
+    'phe_water_connection_commercial_four_g',
+    'phe_water_connection_commercial_four_h',
+
+    'phe_water_connection_commercial_five',
+
+    'phe_water_connection_commercial_six',
+    'phe_water_connection_commercial_seven',
+    'phe_water_connection_commercial_eight_a',
+    'phe_water_connection_commercial_eight_b',
+],
+
         'PHE_WATER_TRANSFER' => [
             'phe_water_transfer_one',
             'phe_water_transfer_two',
@@ -2994,6 +3018,9 @@ class KeysUtil
         'phe_water_connection_fourteen_a' => "a)Department atanga lei",
         'phe_water_connection_fourteen_b' => "b)Mahni in tum",
         'phe_water_connection_fifteen' => "15.Signature Of The Applicant",
+
+        //PHE NEW WATER CONNECTION COMMERCIAL
+
 
         //PHE APPLICATION FOR TRANSFER OF HOUSE WATER CONNECTION
         'phe_water_transfer_one' => "1.Applicant's Name (in Block Letter)",

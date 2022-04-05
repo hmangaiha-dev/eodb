@@ -72,18 +72,41 @@ export default {
       // console.log("formData: ", formData);
 
       // return console.log("formDatas", formDatas);
-
-      api
-        .post("/applications/submit", formDatas)
+ api.post("/applications/submit", formDatas)
         .then((res) => {
-          console.log("response value", res.data);
-          $q.notify({
-            message: "Application submitted successfully",
-            color: "green",
-          });
-          router.push({ name: "investor:ongoing" });
+          let { fees, application } = res.data;
+          //  console.log('model fees',fees);
+          if (fees) {
+            formDatas.append("amount", fees);
+
+            api
+              .post("/initiate-payment/" + application, {
+                amount: fees,
+              })
+              .then((res) => {
+                let paymentURL = res.data;
+                // return console.log('model amount',paymentURL);
+                window.open(paymentURL, "_self").focus();
+              })
+              .catch((err) => {
+                q.notify({
+                  type: "negative",
+                  message: err.response?.data?.message,
+                });
+              });
+          } else {
+            q.notify({
+              message: "Application submitted successfully",
+              color: "green",
+            });
+          }
         })
-        .catch((err) => console.log("error", err));
+        .catch((err) => {
+          q.notify({
+            type: "negative",
+            message: err.response?.data?.message,
+          });
+        });
     };
 
     return {

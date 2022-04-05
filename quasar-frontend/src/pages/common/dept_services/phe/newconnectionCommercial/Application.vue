@@ -1,11 +1,13 @@
-	<template>
-	  <div class="zcard row items-center q-col-gutter-md">
-	    <div class="col-12 text-h6 q-pb-none text-center"></div>
-	    <p class="col-12 text-caption q-py-none text-center"></p>
-	    <div class="col-12 ztitle text-center">
-	     APPLICATION FORM FOR GRANT OF LAND SUBSIDY 
-	    </div>
-	    <q-form @submit.prevent="submit" class="row">
+<template>
+  <div class="zcard row items-center q-col-gutter-md">
+    <div class="col-12 ztitle text-center">
+      <p>ANNEXURE - I (C) </p>
+    Application Form for Commercial Consumer
+(See Section 2, 3 & 4 of Act and Rules 2, 3, 7) 
+
+     
+    </div>
+    <q-form @submit.prevent="submit" class="row">
       <div class="row q-col-gutter-lg">
         <div class="col-xs-12">
           <Form ref="applicantRef" />
@@ -48,9 +50,7 @@ export default {
 
     const submit = () => {
       // return console.log('my router',myRouter);
-      var formData = reactive({
-       
-      });
+      var formData = reactive({});
 
       formData = Object.assign(formData, applicantRef.value.formData);
 
@@ -65,39 +65,14 @@ export default {
       api
         .post("/applications/submit", formDatas)
         .then((res) => {
-          let { fees, application } = res.data;
-          //  console.log('model fees',fees);
-          if (fees) {
-            formDatas.append("amount", fees);
-
-            api
-              .post("/initiate-payment/" + application, {
-                amount: fees,
-              })
-              .then((res) => {
-                let paymentURL = res.data;
-                // return console.log('model amount',paymentURL);
-                window.open(paymentURL, "_self").focus();
-              })
-              .catch((err) => {
-                q.notify({
-                  type: "negative",
-                  message: err.response?.data?.message,
-                });
-              });
-          } else {
-            q.notify({
-              message: "Application submitted successfully",
-              color: "green",
-            });
-          }
-        })
-        .catch((err) => {
-          q.notify({
-            type: "negative",
-            message: err.response?.data?.message,
+          console.log("response value", res.data);
+          $q.notify({
+            message: "Application submitted successfully",
+            color: "green",
           });
-        });
+          router.push({ name: "investor:ongoing" });
+        })
+        .catch((err) => console.log("error", err));
     };
 
     return {
@@ -107,7 +82,6 @@ export default {
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       maxDate: () => date.formatDate(Date.now(), "YYYY-MM-DD"),
     };
-    //test
   },
 };
 </script>

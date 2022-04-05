@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
 //            ServiceCategorySeeder::class,
             InvestorSeeder::class,
             OfficeSeeder::class,
-            CommonApplicationSeeder::class
+            // CommonApplicationSeeder::class
         ]);
     }
 }
