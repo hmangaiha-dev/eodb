@@ -114,10 +114,10 @@ export default {
     },
     {
       path: "transactions",
-      name: "investor:transactiions",
+      name: "investor:transactions",
       component: () => import("pages/investor/Transaction.vue"),
     },
-
+    
     //COMMERCE AND INDUSTRIES
 
     {

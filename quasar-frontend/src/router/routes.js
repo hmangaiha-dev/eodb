@@ -1,6 +1,7 @@
 import admin from "src/router/admin";
 import investor from "src/router/investor";
 import dev from "src/router/dev";
+import pwd from "./pwd";
 // import { checkAuth } from "./investor";
 import { api } from "src/boot/axios";
 // import service from "src/router/service";
@@ -74,6 +75,7 @@ const routes = [
   { ...admin },
   { ...investor },
   { ...dev },
+  {...pwd},
 
   // Always leave this as last one,
   // but you can also remove it

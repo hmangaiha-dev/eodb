@@ -151,7 +151,7 @@
           exact
           class="zitem"
           active-class="active-item q-px-md"
-          :to="{ name: 'investor:transactiions' }"
+          :to="{ name: 'investor:transactions' }"
           clickable
         >
           <q-item-section avatar>
@@ -159,6 +159,37 @@
           </q-item-section>
           <q-item-section> Transactions </q-item-section>
         </q-item>
+
+        <q-expansion-item
+          default-opened
+          expand-icon="expand_more"
+          group="somegroup"
+          icon="engineering"
+          label="PWD Road Cutting"
+        >
+          <q-item
+            class="q-ml-md zitem"
+            active-class="active-item q-px-md"
+            :to="{ name: 'pwd:track' }"
+            clickable
+          >
+            <q-item-section avatar>
+              <q-icon color="yellow-7" name="trending_up" />
+            </q-item-section>
+            <q-item-section> Track Form </q-item-section>
+          </q-item>
+          <q-item
+            class="q-ml-md zitem"
+            active-class="active-item q-px-md"
+            :to="{ name: 'investor:ongoing' }"
+            clickable
+          >
+            <q-item-section avatar>
+              <q-icon color="green" name="summarize" />
+            </q-item-section>
+            <q-item-section> Report na </q-item-section>
+          </q-item>
+        </q-expansion-item>
         <q-separator />
       </q-drawer>
 
