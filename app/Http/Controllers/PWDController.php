@@ -8,20 +8,20 @@ use Illuminate\Support\Facades\Http;
 class PWDController extends Controller
 {
 
-    private $local = 'http://10.180.243.14:8000/';
-    private $prod = 'https://pwdroadcutting.mizoram.gov.in/';
+    // private $url = 'http://10.180.243.14:8000/';
+    private $url = 'https://pwdroadcutting.mizoram.gov.in/';
     public function getLocalCouncil()
     {
-        // return 'local council';
+        // return 'url council';
 
-        // $local = 'http://10.180.243.14:8000/';
+        // $url = 'http://10.180.243.14:8000/';
         // $prod = 'https://pwdroadcutting.mizoram.gov.in/';
 
 
 
         $client = new \GuzzleHttp\Client();
-        $council = $client->get($this->local.'/api/auth/localcouncil');
-        $district = $client->get($this->prod.'/api/auth/district');
+        $council = $client->get($this->url.'api/auth/localcouncil');
+        $district = $client->get($this->url.'api/auth/district');
 
         return response()->json([
             'councils' => json_decode($council->getBody())->localcouncils,
@@ -35,7 +35,7 @@ class PWDController extends Controller
         // return $request->all();
         // $customer = json_encode($customer);
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('POST', $this->local.'api/auth/form', [
+        $response = $client->request('POST', $this->url.'api/auth/form', [
             'form_params' => 
                 $request->all()
             

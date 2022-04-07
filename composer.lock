@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "40a8ac726abdf817c67e1d8a35182620",
-=======
     "content-hash": "5bd021a7fb1d0bedb30ef95a05059ea6",
->>>>>>> 0927f04f75c985f2a79cf15a4c1fc90ace9d7df5
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7577,11 +7573,7 @@
                     "type": "github"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2021-09-25T07:38:51+00:00"
-=======
             "time": "2022-01-24T07:33:35+00:00"
->>>>>>> 0927f04f75c985f2a79cf15a4c1fc90ace9d7df5
         },
         {
             "name": "sebastian/cli-parser",
